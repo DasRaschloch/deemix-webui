@@ -1,0 +1,93 @@
+html{height: 100%;}
+body{margin: 0px;width: 100%;height: 100%;font-family: sans-serif; overflow: hidden; background-color: #ffffff; color: #333333;}
+
+/* Sidebar section selector */
+aside#sidebar{
+	background-color: #222324;
+	width: 48px;
+	height: 100%;
+	position: absolute;
+	color: #ffffff;
+}
+aside#sidebar > .side_icon{
+	font-size: 24px;
+	margin: 12px;
+}
+
+/* Rest of the app */
+main#main_content{
+	margin-left: 48px;
+	width: calc(100% - 48px);
+	height: 100%;
+	display: flex;
+}
+
+/* Middle section */
+div#middle_section {
+  background-color: #ffffff;
+  width: 100%;
+  height: 100%;
+  min-width: 10px;
+}
+
+/* Center section */
+#search > input#searchbar{
+	width: calc(100% - 16px);
+	height: 32px;
+	padding: 0px 8px;
+	margin: 8px;
+	border: 0px;
+	border-radius: 6px;
+	background-color: #eeeeee;
+}
+#content{
+	background-color: #eeeeee;
+	width: 100%;
+	height: calc(100% - 48px);
+	overflow-y: scroll;
+}
+#content::-webkit-scrollbar {
+  width: 10px;
+}
+
+#content::-webkit-scrollbar-track {
+  background: #eeeeee;
+}
+
+#content::-webkit-scrollbar-thumb {
+  background: #555;
+	border-radius: 4px;
+	width: 6px;
+	padding: 0px 2px;
+}
+
+#container{
+	margin: 8px;
+}
+
+/* Download tab section */
+div#download_tab_container{
+  background-color: #222324;
+	color: #ffffff;
+  height: 100%;
+	width: auto;
+	display: flex;
+}
+div#download_tab_bar{
+  height: 100%;
+	width: 32px;
+}
+div#download_tab_bar > label{
+	writing-mode: vertical-rl;
+	line-height: 32px;
+	padding-top: 8px;
+}
+div#download_tab{
+  height: 100%;
+	width: 300px;
+	display: none;
+}
+.download_bar_icon{
+	font-size: 24px;
+	margin: 4px;
+}

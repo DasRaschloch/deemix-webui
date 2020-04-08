@@ -108,8 +108,9 @@ div#middle_section {
 	margin: 0px;
 	margin-bottom: 4px;
 }
-.top_result > .info_box > .subtitle {
+.top_result > .info_box > p.subtitle, .release > p.subtitle {
 	opacity: 0.75;
+	font-size: 14px;
 }
 
 .release_grid{

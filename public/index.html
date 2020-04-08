@@ -52,7 +52,7 @@
 								</div>
 								<div v-if="section != 'TRACK' && section != 'TOP_RESULT'" class="release_grid">
 									<div v-for="release in results[section].data.slice(0, 6)" class="release">
-										<img v-bind:class="section == 'ARTIST' ? 'circle' : 'rounded'" v-bind:src="(section == 'ARTIST' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/' + (section == 'ALBUM' ? release.ALB_PICTURE : section == 'PLAYLIST' ? release.PLAYLIST_PICTURE : '')) + '/156x156-000000-80-0-0.jpg'">
+										<img v-bind:class="section == 'ARTIST' ? 'circle' : 'rounded'" v-bind:src="(section == 'ARTIST' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE : section == 'ALBUM' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE : section == 'PLAYLIST' ? 'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/' ) + '/156x156-000000-80-0-0.jpg'">
 										<p class="title">{{ section == 'ARTIST' ? release.ART_NAME : section == 'ALBUM' ? release.ALB_TITLE : section == 'PLAYLIST' ? release.TITLE : '' }}</p>
 										<p class="subtitle">{{ section == 'ARTIST' ? release.NB_FAN + ' fans' : section == 'ALBUM' ? release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks' : section == 'PLAYLIST' ? release.NB_SONG+' tracks' : '' }}</p>
 									</div>

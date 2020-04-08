@@ -20,13 +20,32 @@
 		</aside>
 		<main id="main_content">
 			<div id="middle_section">
-				<header id="search">
-					<input id="searchbar" type="search" name="searchbar" value="">
-				</header>
-				<section id="content">
-					<div id="container">
+				<header id="search"><input id="searchbar" type="text" name="searchbar" value="" placeholder="Search..."></header>
+				<section id="content"><div id="container">
+
+					<!-- ### Main Search Tab ### -->
+					<div id="main_search">
+						<template v-for="section in results.ORDER">
+							<div v-if="(section != 'TOP_RESULT' && results[section].data.length > 0) || (results[section].length > 0)" class="search_section">
+								<h1>{{ names[section] }}</h1>
+								<!-- Top result -->
+								<div v-if="section == 'TOP_RESULT'" class="top_result">
+									<img v-bind:src="(results[section][0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results[section][0].ART_PICTURE : results[section][0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results[section][0].ALB_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
+										v-bind:class="results[section][0].__TYPE__ == 'artist' ? 'rounded' : ''"></img>
+									<div class="info_box">
+										<p class="title">{{ results[section][0].__TYPE__ == 'artist' ? results[section][0].ART_NAME : results[section][0].__TYPE__ == 'album' ? results[section][0].ALB_TITLE : '' }}</p>
+										<p class="subtitle">{{ results[section][0].__TYPE__ == 'artist' ? results[section][0].NB_FAN + ' fans' : results[section][0].__TYPE__ == 'album' ? 'by '+results[section][0].ART_NAME+' - '+results[section][0].NUMBER_TRACK+' tracks' : '' }}</p>
+										<span class="tag">{{ results[section][0].__TYPE__.charAt(0).toUpperCase() + results[section][0].__TYPE__.substring(1)}}</span>
+									</div>
+								</div>
+								<div v-if="section != 'TOP_RESULT'">
+
+								</div>
+							</div>
+						</template>
 					</div>
-				</section>
+
+				</div></section>
 			</div>
 			<div id="download_tab_container">
 				<div id="download_tab_bar">

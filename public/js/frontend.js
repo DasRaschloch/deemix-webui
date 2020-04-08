@@ -79,7 +79,10 @@ $("#searchbar").keyup(function(e){
   if(e.keyCode == 13){
 		term = this.value
 		console.log(term)
-		doAjax("/search", "POST", searchHandler, {term: term});
+		if (isValidURL(term))
+			doAjax("/download", "POST", null, {url: term});
+		else
+			doAjax("/search", "POST", searchHandler, {term: term});
   }
 })
 

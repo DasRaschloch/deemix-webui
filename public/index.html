@@ -30,16 +30,32 @@
 								<h1>{{ names[section] }}</h1>
 								<!-- Top result -->
 								<div v-if="section == 'TOP_RESULT'" class="top_result">
-									<img v-bind:src="(results[section][0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results[section][0].ART_PICTURE : results[section][0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results[section][0].ALB_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
-										v-bind:class="results[section][0].__TYPE__ == 'artist' ? 'rounded' : ''"></img>
+									<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
+										v-bind:class="results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'circle' : 'rounded'"></img>
 									<div class="info_box">
-										<p class="title">{{ results[section][0].__TYPE__ == 'artist' ? results[section][0].ART_NAME : results[section][0].__TYPE__ == 'album' ? results[section][0].ALB_TITLE : '' }}</p>
-										<p class="subtitle">{{ results[section][0].__TYPE__ == 'artist' ? results[section][0].NB_FAN + ' fans' : results[section][0].__TYPE__ == 'album' ? 'by '+results[section][0].ART_NAME+' - '+results[section][0].NUMBER_TRACK+' tracks' : '' }}</p>
-										<span class="tag">{{ results[section][0].__TYPE__.charAt(0).toUpperCase() + results[section][0].__TYPE__.substring(1)}}</span>
+										<p class="title">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_NAME : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_TITLE : '' }}</p>
+										<p class="subtitle">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].NB_FAN + ' fans' : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'by '+results.TOP_RESULT[0].ART_NAME+' - '+results.TOP_RESULT[0].NUMBER_TRACK+' tracks' : '' }}</p>
+										<span class="tag">{{ results.TOP_RESULT[0].__TYPE__.charAt(0).toUpperCase() + results.TOP_RESULT[0].__TYPE__.substring(1)}}</span>
 									</div>
 								</div>
-								<div v-if="section != 'TOP_RESULT'">
-
+								<div v-if="section == 'TRACK'">
+									<table class="tracks_table">
+										<tr v-for="track in results.TRACK.data.slice(0, 6)">
+											<td><img class="rounded" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
+											<td>{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+											<td><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
+											<td>{{track.ALB_TITLE}}</td>
+											<td>{{track.DURATION}}</td>
+											<td><i class="material-icons">get_app</i></td>
+										</tr>
+									</table>
+								</div>
+								<div v-if="section != 'TRACK' && section != 'TOP_RESULT'" class="release_grid">
+									<div v-for="release in results[section].data.slice(0, 5)" class="release">
+										<img v-bind:class="section == 'ARTIST' ? 'circle' : 'rounded'" v-bind:src="(section == 'ARTIST' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/' + (section == 'ALBUM' ? release.ALB_PICTURE : section == 'PLAYLIST' ? release.PLAYLIST_PICTURE : '')) + '/156x156-000000-80-0-0.jpg'">
+										<p class="title">{{ section == 'ARTIST' ? release.ART_NAME : section == 'ALBUM' ? release.ALB_TITLE : section == 'PLAYLIST' ? release.TITLE : '' }}</p>
+										<p class="subtitle"></p>
+									</div>
 								</div>
 							</div>
 						</template>

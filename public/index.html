@@ -48,7 +48,7 @@
 									</div>
 									<div v-if="section == 'TRACK'">
 										<table class="tracks_table">
-											<tr v-for="track in results.TRACK.data.slice(0, 6)">
+											<tr v-for="track in results.TRACK.data.slice(0, 6)" class="track_row">
 												<td style="width: 48px;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
 												<td>{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
 												<td><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
@@ -85,7 +85,7 @@
 									<th><i class="material-icons">timer</i></th>
 									<th style="width: 56px;"></th>
 								</tr>
-								<tr v-for="track in results.data">
+								<tr v-for="track in results.data" class="track_row">
 									<td><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
 									<td>{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
 									<td><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>

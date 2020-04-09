@@ -158,7 +158,14 @@ div#download_tab{
 	font-size: 24px;
 	margin: 4px;
 }
-
+.release > img{
+	width: 156px;
+	height: 156px;
+}
+.track_row > td > img{
+	width: 32px;
+	height: 32px;
+}
 /* Global stuff */
 img.rounded {
 	border-radius: 5px;

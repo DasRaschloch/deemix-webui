@@ -53,6 +53,20 @@ document.querySelector("#hide_download_tab").onclick = (ev)=>{
 	document.querySelector("#download_tab").style.display = "none";
 }
 
+function changeTab(evt, section, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName(section+"_tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName(section+"_tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
 // searchTab
 
 function searchTab(evt, tabName) {
@@ -134,7 +148,7 @@ $("#searchbar").keyup(function(e){
 		if (isValidURL(term))
 			doAjax("/download", "POST", null, {url: term});
 		else{
-			document.getElementById("search_tab").style.display = "none";
+			document.getElementById("search_tab_content").style.display = "none";
 			doAjax("/search", "POST", searchHandler, {term: term});
 		}
   }
@@ -148,5 +162,10 @@ function searchHandler(result){
 	artistSearch.results = result.ARTIST
 	playlistSearch.results = result.PLAYLIST
 	document.getElementById("search_defaultopen").click();
-	document.getElementById("search_tab").style.display = "block";
+	document.getElementById("search_tab_content").style.display = "block";
+	document.getElementById("show_searchtab").click();
 }
+
+$(function(){
+	document.getElementById("main_defaultopen").click();
+})

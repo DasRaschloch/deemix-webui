@@ -13,6 +13,9 @@ aside#sidebar > .side_icon{
 	font-size: 24px;
 	margin: 12px;
 }
+.side_icon.active{
+	color: #0A84FF;
+}
 
 /* Rest of the app */
 main#main_content{
@@ -85,12 +88,9 @@ div#middle_section {
   }
 }
 
-/* Search Tab */
-.search_tabcontent {
+/* Tabs */
+.search_tabcontent, .main_tabcontent {
   display: none;
-}
-#search_tab{
-	display: none;
 }
 
 /* Main Search Tab */

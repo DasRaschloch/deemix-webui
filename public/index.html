@@ -40,11 +40,11 @@
 										<h1>{{ names[section] }}</h1>
 										<!-- Top result -->
 										<div v-if="section == 'TOP_RESULT'" class="top_result">
-											<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
+											<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'https://e-cdns-images.dzcdn.net/images/'+ results.TOP_RESULT[0].PICTURE_TYPE +'/' + results.TOP_RESULT[0].PLAYLIST_PICTURE :'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
 												v-bind:class="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
 											<div class="info_box">
-												<p class="title">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_NAME : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_TITLE : '' }}</p>
-												<p class="subtitle">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? numberWithDots(results.TOP_RESULT[0].NB_FAN) + ' fans' : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'by '+results.TOP_RESULT[0].ART_NAME+' - '+results.TOP_RESULT[0].NUMBER_TRACK+' tracks' : '' }}</p>
+												<p class="title">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_NAME : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_TITLE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].TITLE : '' }}</p>
+												<p class="subtitle">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? numberWithDots(results.TOP_RESULT[0].NB_FAN) + ' fans' : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'by '+results.TOP_RESULT[0].ART_NAME+' - '+results.TOP_RESULT[0].NUMBER_TRACK+' tracks' : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'by '+results.TOP_RESULT[0].PARENT_USERNAME+' - '+results.TOP_RESULT[0].NB_SONG+' tracks' : '' }}</p>
 												<span class="tag">{{ results.TOP_RESULT[0].__TYPE__.charAt(0).toUpperCase() + results.TOP_RESULT[0].__TYPE__.substring(1)}}</span>
 											</div>
 										</div>

@@ -98,6 +98,9 @@ div#middle_section {
 #main_search > .search_section{
 	float: none;
 }
+#search_tab .tab{
+	margin-bottom: 24px;
+}
 
 .top_result {
 	display: flex;
@@ -122,14 +125,21 @@ div#middle_section {
 }
 
 .release_grid{
-	display: flex;
-	align-items:flex-start;
+	display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(156px, 1fr));
+  grid-gap: 1rem;
+}
+
+.release_grid.firstrow_only{
+	grid-template-rows: 1fr;
+	grid-auto-rows: 0;
+	grid-row-gap: 0px;
+	overflow-y: hidden;
 }
 
 .release{
 	display: inline-block;
 	width: 156px;
-	margin-right: 24px;
 }
 
 /* Download tab section */

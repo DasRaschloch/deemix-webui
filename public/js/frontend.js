@@ -67,20 +67,8 @@ function changeTab(evt, section, tabName) {
   evt.currentTarget.className += " active";
 }
 
-// searchTab
-
-function searchTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("search_tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("search_tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
+function clickElement(button){
+	return document.getElementById(button).click()
 }
 
 var mainSearch = new Vue({
@@ -100,8 +88,14 @@ var mainSearch = new Vue({
 			TRACK: {},
 			TOP_RESULT: [],
 			PLAYLIST: {}
+		},
+  },
+	methods: {
+		changeSearchTab: function (section) {
+			if (section != "TOP_RESULT")
+				clickElement('search_'+section.toLowerCase()+'_tab')
 		}
-  }
+	}
 })
 
 var trackSearch = new Vue({

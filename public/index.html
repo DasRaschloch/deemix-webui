@@ -27,17 +27,17 @@
 					<div id="search_tab" class="main_tabcontent">
 						<div class="tab">
 							<button class="search_tablinks" id="search_defaultopen" onclick="changeTab(event, 'search', 'main_search')">All</button>
-							<button class="search_tablinks" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
-							<button class="search_tablinks" onclick="changeTab(event, 'search', 'album_search')">Album</button>
-							<button class="search_tablinks" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
-							<button class="search_tablinks" onclick="changeTab(event, 'search', 'playlist_search')">Playlist</button>
+							<button class="search_tablinks" id="search_track_tab" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
+							<button class="search_tablinks" id="search_album_tab" onclick="changeTab(event, 'search', 'album_search')">Album</button>
+							<button class="search_tablinks" id="search_artist_tab" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
+							<button class="search_tablinks" id="search_playlist_tab" onclick="changeTab(event, 'search', 'playlist_search')">Playlist</button>
 						</div>
 						<div id="search_tab_content">
 							<!-- ### Main Search Tab ### -->
 							<div id="main_search" class="search_tabcontent">
 								<template v-for="section in results.ORDER">
 									<div v-if="(section != 'TOP_RESULT' && results[section].data.length > 0) || (results[section].length > 0)" class="search_section">
-										<h1>{{ names[section] }}</h1>
+										<h1 v-on:click="changeSearchTab(section)">{{ names[section] }}</h1>
 										<!-- Top result -->
 										<div v-if="section == 'TOP_RESULT'" class="top_result">
 											<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'https://e-cdns-images.dzcdn.net/images/'+ results.TOP_RESULT[0].PICTURE_TYPE +'/' + results.TOP_RESULT[0].PLAYLIST_PICTURE :'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"

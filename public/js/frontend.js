@@ -1,5 +1,7 @@
 // Initialization
 doAjax("/init", "POST");
+search_selected = ""
+main_selected=""
 
 // Functions to connect to the Flask server
 function getHttpRequestObject(){
@@ -64,7 +66,49 @@ function changeTab(evt, section, tabName) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
   document.getElementById(tabName).style.display = "block";
+	window[section+"_selected"] = tabName
   evt.currentTarget.className += " active";
+	if (document.getElementById("content").offsetHeight >= document.getElementById("content").scrollHeight && main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
+		scrolledSearch(window[search_selected.split("_")[0]+"Search"])
+	}
+}
+
+$('#content').on('scroll', function() {
+  if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+    if (main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
+			scrolledSearch(window[search_selected.split("_")[0]+"Search"])
+		}
+  }
+})
+
+function scrolledSearch(vueTab){
+	query = vueTab.query
+	if (vueTab.results.next < vueTab.results.total){
+		doAjax("/search", "POST", searchUpadate, {term: vueTab.query, type: vueTab.type, start: vueTab.results.next, nb: vueTab.nb});
+	}
+}
+
+function searchUpadate(result){
+	console.log(result)
+	vueTab = null;
+	switch (result.type) {
+		case "TRACK":
+			vueTab = trackSearch;
+		break;
+		case "ALBUM":
+			vueTab = albumSearch;
+		break;
+		case "ARTIST":
+			vueTab = artistSearch;
+		break;
+		case "PLAYLIST":
+			vueTab = playlistSearch;
+		break;
+	}
+	if (vueTab && vueTab.results.next != result.next){
+		vueTab.results.next = result.next
+		vueTab.results.data = vueTab.results.data.concat(result.data)
+	}
 }
 
 function clickElement(button){
@@ -82,6 +126,7 @@ var mainSearch = new Vue({
 			"PLAYLIST": "Playlists"
 		},
     results: {
+			QUERY: "",
 			ORDER: [],
 			ALBUM: {},
 			ARTIST: {},
@@ -101,8 +146,13 @@ var mainSearch = new Vue({
 var trackSearch = new Vue({
   el: '#track_search',
   data: {
+		type: "TRACK",
+		nb: 40,
+		query: "",
     results: {
-			data: []
+			data: [],
+			next: 0,
+			total: 0
 		}
   }
 })
@@ -110,8 +160,13 @@ var trackSearch = new Vue({
 var albumSearch = new Vue({
   el: '#album_search',
   data: {
+		type: "ALBUM",
+		nb: 20,
+		query: "",
     results: {
-			data: []
+			data: [],
+			next: 0,
+			total: 0
 		}
   }
 })
@@ -119,8 +174,13 @@ var albumSearch = new Vue({
 var artistSearch = new Vue({
   el: '#artist_search',
   data: {
+		type: "ARTIST",
+		nb: 20,
+		query: "",
     results: {
-			data: []
+			data: [],
+			next: 0,
+			total: 0
 		}
   }
 })
@@ -128,8 +188,13 @@ var artistSearch = new Vue({
 var playlistSearch = new Vue({
   el: '#playlist_search',
   data: {
+		type: "PLAYLIST",
+		nb: 20,
+		query: "",
     results: {
-			data: []
+			data: [],
+			next: 0,
+			total: 0
 		}
   }
 })
@@ -143,7 +208,7 @@ $("#searchbar").keyup(function(e){
 			doAjax("/download", "POST", null, {url: term});
 		else{
 			document.getElementById("search_tab_content").style.display = "none";
-			doAjax("/search", "POST", searchHandler, {term: term});
+			doAjax("/mainsearch", "POST", searchHandler, {term: term});
 		}
   }
 })
@@ -155,6 +220,10 @@ function searchHandler(result){
 	albumSearch.results = result.ALBUM
 	artistSearch.results = result.ARTIST
 	playlistSearch.results = result.PLAYLIST
+	trackSearch.query = result.QUERY
+	albumSearch.query = result.QUERY
+	artistSearch.query = result.QUERY
+	playlistSearch.query = result.QUERY
 	document.getElementById("search_defaultopen").click();
 	document.getElementById("search_tab_content").style.display = "block";
 	document.getElementById("show_searchtab").click();

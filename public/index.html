@@ -106,7 +106,7 @@
 									<div v-for="release in results.data" class="release">
 										<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
 										<p class="title">{{ release.ALB_TITLE }}</p>
-										<p class="subtitle">{{ release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks' }}</p>
+										<p class="subtitle">{{ 'by '+release.ART_NAME }}</p>
 									</div>
 								</div>
 							</div>

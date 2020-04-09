@@ -85,6 +85,14 @@ div#middle_section {
   }
 }
 
+/* Search Tab */
+.search_tabcontent {
+  display: none;
+}
+#search_tab{
+	display: none;
+}
+
 /* Main Search Tab */
 
 #main_search > .search_section{
@@ -157,6 +165,10 @@ img.rounded {
 }
 img.circle {
 	border-radius: 50%;
+}
+
+.coverart{
+	background-color: #eee;
 }
 span.tag {
 	background-color: #222324;

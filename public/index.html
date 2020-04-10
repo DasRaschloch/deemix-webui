@@ -4,9 +4,15 @@
 		<meta charset="utf-8">
 		<title>deemix</title>
 		<link rel="stylesheet" type="text/css" href="/public/css/style.css">
+		<link rel="stylesheet" type="text/css" href="/public/css/darkMode.css" name="darkMode" disabled/>
 		<link rel="stylesheet" type="text/css" href="/public/css/animate.css">
 		<link rel="stylesheet" type="text/css" href="/public/css/material-icons.css"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
+		<script type='text/javascript'>
+			if (eval(localStorage.darkMode)){
+				document.getElementsByName("darkMode")[0].removeAttribute("disabled");
+			}
+		</script>
 	</head>
 	<body>
 		<aside id="sidebar">
@@ -153,12 +159,20 @@
 				</div>
 				<div id="download_tab">
 					<i id="hide_download_tab" class="material-icons download_bar_icon">chevron_right</i>
+					<div id="download_list">
+						<div v-for="item in queue">
+							{{ item.artist }} - {{ item.title }} | {{ item.downloaded }} {{ item.size }}
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>
 	</body>
+	<script type="text/javascript" src="/public/js/socket.io.js"></script>
 	<script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/public/js/vue.min.js"></script>
+	<script type="text/javascript" src="/public/js/init.js"></script>
 	<script type="text/javascript" src="/public/js/utils.js"></script>
-	<script type="text/javascript" src="/public/js/frontend.js"></script>
+	<script type="text/javascript" src="/public/js/app.js"></script>
+	<script type="text/javascript" src="/public/js/downloadList.js"></script>
 </html>

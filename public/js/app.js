@@ -1,81 +1,54 @@
-// Initialization
-doAjax("/init", "POST");
-search_selected = ""
-main_selected=""
+// Debug messages for socketio
+socket.emit("init");
+socket.on("message", function(msg){
+	console.log(msg)
+})
 
-// Functions to connect to the Flask server
-function getHttpRequestObject(){
-	var xmlHttpRequst = false;
-	if (window.XMLHttpRequest){
-		xmlHttpRequst = new XMLHttpRequest();
-	}else if (window.ActiveXObject){
-		xmlHttpRequst = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	return xmlHttpRequst;
-}
-function doAjax(url, method, responseHandler, data){
-	url = url || "";
-	method = method || "GET";
-	async = true;
-	data = data || {};
-
-	if(url == ""){
-		alert("URL cannot be null/blank");
-		return false;
-	}
-	var xmlHttpRequest = getHttpRequestObject();
-
-	if(xmlHttpRequest != false){
-		xmlHttpRequest.open(method, url, async);
-		if(method == "POST"){
-				xmlHttpRequest.setRequestHeader("Content-Type", "application/json");
-		}
-		if (typeof responseHandler === "function"){
-			xmlHttpRequest.onreadystatechange = function(){
-				if(this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-			    responseHandler(JSON.parse(this.responseText))
-			  }
-			}
-		}
-		xmlHttpRequest.send(JSON.stringify(data));
-	}else{
-		alert("Please use a browser with Ajax support!");
-	}
-}
+$(function() {
+	// Check if download tab should be open
+	if (eval(localStorage.getItem("downloadTabOpen")))
+		$("#show_download_tab").click()
+	else
+		$("#hide_download_tab").click()
+})
 
 // Show/Hide Download Tab
 document.querySelector("#show_download_tab").onclick = (ev)=>{
 	ev.preventDefault();
 	document.querySelector("#download_tab_bar").style.display = "none";
 	document.querySelector("#download_tab").style.display = "block";
+	localStorage.setItem("downloadTabOpen", true)
 }
 document.querySelector("#hide_download_tab").onclick = (ev)=>{
 	ev.preventDefault();
 	document.querySelector("#download_tab_bar").style.display = "block";
 	document.querySelector("#download_tab").style.display = "none";
+	localStorage.setItem("downloadTabOpen", false)
 }
 
 function changeTab(evt, section, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName(section+"_tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
+	tabcontent[i].style.display = "none";
   }
   tablinks = document.getElementsByClassName(section+"_tablinks");
   for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
+	tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
   document.getElementById(tabName).style.display = "block";
 	window[section+"_selected"] = tabName
   evt.currentTarget.className += " active";
+	// Check if you need to load more content in the search tab
 	if (document.getElementById("content").offsetHeight >= document.getElementById("content").scrollHeight && main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
 		scrolledSearch(window[search_selected.split("_")[0]+"Search"])
 	}
 }
 
+// Load more content when the search page is at the end
 $('#content').on('scroll', function() {
   if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-    if (main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
+		if (main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
 			scrolledSearch(window[search_selected.split("_")[0]+"Search"])
 		}
   }
@@ -84,7 +57,7 @@ $('#content').on('scroll', function() {
 function scrolledSearch(vueTab){
 	query = vueTab.query
 	if (vueTab.results.next < vueTab.results.total){
-		doAjax("/search", "POST", searchUpadate, {term: vueTab.query, type: vueTab.type, start: vueTab.results.next, nb: vueTab.nb});
+		socket.emit("search", {term: vueTab.query, type: vueTab.type, start: vueTab.results.next, nb: vueTab.nb});
 	}
 }
 
@@ -110,6 +83,7 @@ function searchUpadate(result){
 		vueTab.results.data = vueTab.results.data.concat(result.data)
 	}
 }
+socket.on("search", function(result){searchUpadate(result)})
 
 function clickElement(button){
 	return document.getElementById(button).click()
@@ -125,7 +99,7 @@ var mainSearch = new Vue({
 			"ALBUM": "Albums",
 			"PLAYLIST": "Playlists"
 		},
-    results: {
+	results: {
 			QUERY: "",
 			ORDER: [],
 			ALBUM: {},
@@ -149,7 +123,7 @@ var trackSearch = new Vue({
 		type: "TRACK",
 		nb: 40,
 		query: "",
-    results: {
+	results: {
 			data: [],
 			next: 0,
 			total: 0
@@ -163,7 +137,7 @@ var albumSearch = new Vue({
 		type: "ALBUM",
 		nb: 20,
 		query: "",
-    results: {
+	results: {
 			data: [],
 			next: 0,
 			total: 0
@@ -177,7 +151,7 @@ var artistSearch = new Vue({
 		type: "ARTIST",
 		nb: 20,
 		query: "",
-    results: {
+	results: {
 			data: [],
 			next: 0,
 			total: 0
@@ -191,7 +165,7 @@ var playlistSearch = new Vue({
 		type: "PLAYLIST",
 		nb: 20,
 		query: "",
-    results: {
+	results: {
 			data: [],
 			next: 0,
 			total: 0
@@ -205,15 +179,15 @@ $("#searchbar").keyup(function(e){
 		term = this.value
 		console.log(term)
 		if (isValidURL(term))
-			doAjax("/download", "POST", null, {url: term});
+			socket.emit("addToQueue", {url: term});
 		else{
 			document.getElementById("search_tab_content").style.display = "none";
-			doAjax("/mainsearch", "POST", searchHandler, {term: term});
+			socket.emit("mainSearch", {term: term});
 		}
   }
 })
 
-function searchHandler(result){
+function mainSearchHandler(result){
 	console.log(result)
 	mainSearch.results = result
 	trackSearch.results = result.TRACK
@@ -228,6 +202,7 @@ function searchHandler(result){
 	document.getElementById("search_tab_content").style.display = "block";
 	document.getElementById("show_searchtab").click();
 }
+socket.on("mainSearch", function(result){mainSearchHandler(result)})
 
 $(function(){
 	document.getElementById("main_defaultopen").click();

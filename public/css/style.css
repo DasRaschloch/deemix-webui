@@ -5,6 +5,7 @@
 	--main-scroll: #555;
 	--panels-background: #222324;
 	--panels-text: #ffffff;
+	--panels-scroll: #2a2c2c;
 	--accent-color: #0A84FF;
 	--tag-background: #0062c4;
 	--tag-text: #ffffff;
@@ -192,8 +193,23 @@ div#download_tab{
 }
 
 #download_list{
-	margin: 0px 8px;
+	padding: 0px 8px;
+	height: calc(100% - 32px);
+  overflow-y: scroll;
 }
+#download_list::-webkit-scrollbar {
+  width: 10px;
+}
+#download_list::-webkit-scrollbar-track {
+  background: var(--panels-background);
+}
+#download_list::-webkit-scrollbar-thumb {
+  background: var(--panels-scroll);
+	border-radius: 4px;
+	width: 6px;
+	padding: 0px 2px;
+}
+
 #download_list > .download_object{
 	padding-bottom: 8px;
 }

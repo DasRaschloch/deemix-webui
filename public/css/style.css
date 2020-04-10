@@ -54,6 +54,7 @@ div#middle_section {
 	border: 0px;
 	border-radius: 6px;
 	background-color: var(--secondary-background);
+	color: var(--primary-text)
 }
 #content{
 	background-color: var(--main-background);
@@ -132,7 +133,7 @@ div#middle_section {
 	margin: 0px;
 	margin-bottom: 4px;
 }
-.top_result > .info_box > p.subtitle, .release > p.subtitle {
+.secondary-text {
 	opacity: 0.75;
 	font-size: 14px;
 }
@@ -153,6 +154,14 @@ div#middle_section {
 .release{
 	display: inline-block;
 	width: 156px;
+}
+.release > img{
+	width: 156px;
+	height: 156px;
+}
+.track_row > td > img{
+	width: 32px;
+	height: 32px;
 }
 
 /* Download tab section */
@@ -181,14 +190,59 @@ div#download_tab{
 	font-size: 24px;
 	margin: 4px;
 }
-.release > img{
-	width: 156px;
-	height: 156px;
+
+#download_list{
+	margin: 0px 8px;
 }
-.track_row > td > img{
-	width: 32px;
-	height: 32px;
+#download_list > .download_object{
+	padding-bottom: 8px;
 }
+
+#download_list > .download_object .download_info{
+	display: flex;
+	align-items: center;
+}
+#download_list > .download_object .download_info img{
+	width: 75px;
+	height: 75px;
+	display: inline-block;
+}
+#download_list > .download_object .download_info .download_line{
+	display: block;
+}
+#download_list > .download_object .download_info .download_slim_separator{
+	display: none;
+}
+#download_list > .download_object .download_info_data{
+	width: calc(100% - 83px);
+	padding-left: 8px;
+}
+#download_list > .download_object .download_info_status{
+	width: 80px;
+}
+#download_list.slim > .download_object .download_info img{
+	display: none;
+}
+#download_list.slim > .download_object .download_info .download_line{
+	display: inline-block;
+}
+#download_list.slim > .download_object .download_info .download_slim_separator{
+	display: inline-block;
+}
+#download_list.slim > .download_object .download_info_data{
+	width: auto;
+	display: inline-block;
+	padding-left: 0px;
+}
+#download_list.slim > .download_object .download_info_status{
+	width: auto;
+	display: inline-block;
+	float: right;
+}
+#download_list.slim > .download_object .download_info{
+	display: block;
+}
+
 /* Global stuff */
 img.rounded {
 	border-radius: 5px;
@@ -196,7 +250,6 @@ img.rounded {
 img.circle {
 	border-radius: 50%;
 }
-
 .coverart{
 	background-color: var(--secondary-background);
 }
@@ -208,7 +261,9 @@ span.tag {
   font-size: 10px;
   padding: 3px 6px;
 }
-
 .tracks_table{
 	width: 100%;
+}
+.clickable{
+	cursor: pointer;
 }

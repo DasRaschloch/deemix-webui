@@ -99,7 +99,7 @@ var mainSearch = new Vue({
 			"ALBUM": "Albums",
 			"PLAYLIST": "Playlists"
 		},
-	results: {
+		results: {
 			QUERY: "",
 			ORDER: [],
 			ALBUM: {},
@@ -113,7 +113,9 @@ var mainSearch = new Vue({
 		changeSearchTab: function (section) {
 			if (section != "TOP_RESULT")
 				clickElement('search_'+section.toLowerCase()+'_tab')
-		}
+		},
+		addToQueue: function(url){socket.emit("addToQueue", {url: url})
+	console.log(url)}
 	}
 })
 
@@ -123,12 +125,15 @@ var trackSearch = new Vue({
 		type: "TRACK",
 		nb: 40,
 		query: "",
-	results: {
+		results: {
 			data: [],
 			next: 0,
 			total: 0
 		}
-  }
+  },
+	methods: {
+		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+	}
 })
 
 var albumSearch = new Vue({
@@ -137,12 +142,15 @@ var albumSearch = new Vue({
 		type: "ALBUM",
 		nb: 20,
 		query: "",
-	results: {
+		results: {
 			data: [],
 			next: 0,
 			total: 0
 		}
-  }
+  },
+	methods: {
+		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+	}
 })
 
 var artistSearch = new Vue({
@@ -151,12 +159,15 @@ var artistSearch = new Vue({
 		type: "ARTIST",
 		nb: 20,
 		query: "",
-	results: {
+		results: {
 			data: [],
 			next: 0,
 			total: 0
 		}
-  }
+  },
+	methods: {
+		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+	}
 })
 
 var playlistSearch = new Vue({
@@ -165,12 +176,15 @@ var playlistSearch = new Vue({
 		type: "PLAYLIST",
 		nb: 20,
 		query: "",
-	results: {
+		results: {
 			data: [],
 			next: 0,
 			total: 0
 		}
-  }
+  },
+	methods: {
+		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+	}
 })
 
 // Search section

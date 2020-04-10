@@ -30,7 +30,6 @@ socket.on("updateQueue", function(update){
 		if (update.downloaded){
 			queueList[update.uuid].downloaded++
 			$("#download_"+update.uuid+" .queue_downloaded").text(queueList[update.uuid].downloaded)
-			$('#bar_' + update.uuid).css('width', ((queueList[update.uuid].downloaded + queueList[update.uuid].failed) / queueList[update.uuid].size)*100 + '%')
 		}
 		if (update.failed){
 			queueList[update.uuid].failed++
@@ -42,6 +41,7 @@ socket.on("updateQueue", function(update){
 		}
 		if (update.progress){
 			queueList[update.uuid].progress = update.progress
+			$('#bar_' + update.uuid).css('width', update.progress + '%')
 		}
 	}
 })

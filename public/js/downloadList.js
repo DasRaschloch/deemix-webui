@@ -16,8 +16,12 @@ socket.on("addedToQueue", function(queueItem){
 				<span class="download_line"><span class="queue_downloaded">0</span>/${queueItem.size}</span>
 			</div>
 		</div>
-			<div class="download_bar progress" id="bar-uuid"></div>
+			<div class="download_bar progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
 	</div>`)
+})
+
+socket.on("startDownload", function(uuid){
+	$('#bar_' + uuid).removeClass('indeterminate').addClass('determinate')
 })
 
 socket.on("updateQueue", function(update){
@@ -26,6 +30,7 @@ socket.on("updateQueue", function(update){
 		if (update.downloaded){
 			queueList[update.uuid].downloaded++
 			$("#download_"+update.uuid+" .queue_downloaded").text(queueList[update.uuid].downloaded)
+			$('#bar_' + update.uuid).css('width', ((queueList[update.uuid].downloaded + queueList[update.uuid].failed) / queueList[update.uuid].size)*100 + '%')
 		}
 		if (update.failed){
 			queueList[update.uuid].failed++

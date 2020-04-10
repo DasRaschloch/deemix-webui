@@ -114,8 +114,7 @@ var mainSearch = new Vue({
 			if (section != "TOP_RESULT")
 				clickElement('search_'+section.toLowerCase()+'_tab')
 		},
-		addToQueue: function(url){socket.emit("addToQueue", {url: url})
-	console.log(url)}
+		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
 	}
 })
 

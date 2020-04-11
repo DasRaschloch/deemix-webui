@@ -1,5 +1,4 @@
 // Debug messages for socketio
-socket.emit("init");
 socket.on("message", function(msg){
 	console.log(msg)
 })

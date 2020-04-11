@@ -24,6 +24,12 @@ socket.on("startDownload", function(uuid){
 	$('#bar_' + uuid).removeClass('indeterminate').addClass('determinate')
 })
 
+socket.on("finishDownload", function(uuid){
+	console.log(uuid+" finished downloading")
+	toast(`${queueList[uuid].title} finished downloading.`)
+	$('#bar_' + uuid).css('width', '100%')
+})
+
 socket.on("updateQueue", function(update){
 	if (update.uuid && queue.indexOf(update.uuid) > -1){
 		console.log(update)

@@ -16,8 +16,31 @@ socket.on("addedToQueue", function(queueItem){
 				<span class="download_line"><span class="queue_downloaded">0</span>/${queueItem.size}</span>
 			</div>
 		</div>
-			<div class="download_bar progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
+		<div class="download_bar">
+			<div class="progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
+			<i onclick="downloadAction(event)" class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
+		</div>
 	</div>`)
+})
+
+function downloadAction(evt){
+	let icon = $(evt.currentTarget).text()
+	let uuid = $(evt.currentTarget).data("uuid")
+	switch (icon) {
+		case 'remove':
+			socket.emit('removeFromQueue', uuid)
+		break;
+		default:
+	}
+}
+
+socket.on("removedFromQueue", function(uuid){
+	let index = queue.indexOf(uuid)
+	if (index > -1){
+		queue.splice(index, 1)
+		$(`#download_${queueList[uuid].uuid}`).remove()
+		delete queueList[uuid]
+	}
 })
 
 socket.on("startDownload", function(uuid){

@@ -259,6 +259,15 @@ div#download_tab{
 	display: block;
 }
 
+.download_object > .download_bar{
+	display: flex;
+	align-items: center;
+	height: 24px;
+}
+.download_object > .download_bar > .progress{
+	margin: 0px;
+}
+
 /* Global stuff */
 img.rounded {
 	border-radius: 5px;

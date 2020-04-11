@@ -53,6 +53,12 @@ socket.on("finishDownload", function(uuid){
 	$('#bar_' + uuid).css('width', '100%')
 })
 
+socket.on("removedAllDownloads", function(){
+	queue = []
+	queueList = {}
+	$("#download_list").html("")
+})
+
 socket.on("updateQueue", function(update){
 	if (update.uuid && queue.indexOf(update.uuid) > -1){
 		console.log(update)

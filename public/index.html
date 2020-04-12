@@ -155,7 +155,18 @@
 					<div id="analyzer_tab" class="main_tabcontent"><h1>Link Analyzer</h1></div>
 					<div id="settings_tab" class="main_tabcontent">
 						<h1>Settings</h1>
-						<button type="button" name="button" onclick="openLoginPrompt()">Login with Email and Password</button>
+						<div id="logged_in_info">
+							<img id="settings_picture" src="" alt="Profile Picture" class="circle" style="width: 125px;height:125px; margin-right: 12px;"/>
+							<p>You are logged in as <b id="settings_username"></b></p>
+							<button onclick="logout()" id="settings_btn_logout">Logout</button>
+						</div>
+						<button id="open_login_prompt" type="button" name="button" onclick="openLoginPrompt()" disabled>Login with e-mail</button>
+						<div class="inline-flex">
+							<input autocomplete="off" type="password" id="login_input_arl" placeholder="ARL"/>
+							<button onclick="copyARLtoClipboard()" id="settings_btn_copyArl"><i class="material-icons">assignment</i></button>
+						</div>
+						<p><a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">How do I get my own ARL?</a></p>
+						<p><button onclick="loginButton()" style="width:100%;" id="settings_btn_updateArl">Update ARL</button></p>
 					</div>
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
 				</div></section>

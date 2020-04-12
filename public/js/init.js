@@ -20,7 +20,10 @@ function toast(msg, icon=null, dismiss=true, id=null){
 			toastDOM.find(".toast-icon").html(icon)
 		}
 		if (dismiss !== null && dismiss){
-			setTimeout(function(){ toastObj.hideToast() }, 3000);
+			setTimeout(function(){
+				toastObj.hideToast()
+				delete toastsWithId[id]
+			}, 3000);
 		}
 	}else{
 		if (icon == null)
@@ -54,21 +57,86 @@ function openLoginPrompt(){
 	socket.emit("loginpage")
 }
 
-socket.emit("init");
-if (localStorage.getItem("arl")){
-	socket.emit("login", localStorage.getItem("arl"));
+function loginButton(){
+	let arl = document.querySelector("#login_input_arl").value
+	if (arl != "" && arl != localStorage.getItem("arl")){
+		socket.emit("login", arl, true)
+	}
 }
+
+function copyARLtoClipboard(){
+	$("#login_input_arl").attr("type", "text");
+	let copyText = document.querySelector("#login_input_arl")
+	copyText.select();
+	copyText.setSelectionRange(0, 99999);
+	document.execCommand("copy");
+	$("#login_input_arl").attr("type", "password");
+	toast("ARL copied to clipboard", 'assignment')
+}
+
+function logout(){
+	socket.emit("logout");
+}
+
+window.addEventListener('pywebviewready', function() {
+	$('#open_login_prompt').prop('disabled', false);
+})
+
+$(function(){
+	socket.emit("init");
+	if (localStorage.getItem("arl")){
+		socket.emit("login", localStorage.getItem("arl"));
+		$("#login_input_arl").val(data.arl)
+	}
+})
 
 socket.on("logging_in", function(){
 	toast("Logging in", "loading", false, "login-toast")
 })
 
 socket.on("logged_in", function(data){
-	if (data.status != 0){
-		console.log(data)
-		toast("Logged in", "done", true, "login-toast")
-		if (data.arl && data.status == 1) localStorage.setItem("arl", data.arl)
-	}else{
-		toast("Couldn't log in", "close", true, "login-toast")
+	console.log(data)
+	switch (data.status) {
+		case 1:
+		case 3:
+			toast("Logged in", "done", true, "login-toast")
+			if (data.arl){
+				localStorage.setItem("arl", data.arl)
+				$("#login_input_arl").val(data.arl)
+			}
+			$('#open_login_prompt').hide()
+			if (data.user){
+				$("#settings_username").text(data.user.name)
+				$("#settings_picture").attr("src",`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`)
+				$("#logged_in_info").show()
+			}
+		break;
+		case 2:
+			toast("Already logged in", "done", true, "login-toast")
+			if (data.user){
+				$("#settings_username").text(data.user.name)
+				$("#settings_picture").attr("src",`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`)
+				$("#logged_in_info").show()
+			}
+		break;
+		case 0:
+			toast("Couldn't log in", "close", true, "login-toast")
+			localStorage.removeItem("arl")
+			$("#login_input_arl").val("")
+			$('#open_login_prompt').show()
+			$("#logged_in_info").hide()
+			$("#settings_username").text("Not Logged")
+			$("#settings_picture").attr("src",`https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
+		break;
 	}
+})
+
+socket.on("logged_out", function(){
+	toast("Logged out", "done", true, "login-toast")
+	localStorage.removeItem("arl")
+	$("#login_input_arl").val("")
+	$('#open_login_prompt').show()
+	$("#logged_in_info").hide()
+	$("#settings_username").text("Not Logged")
+	$("#settings_picture").attr("src",`https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })

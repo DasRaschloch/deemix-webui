@@ -109,6 +109,30 @@ div#middle_section {
   display: none;
 }
 
+/* Settings */
+#open_login_prompt{
+	margin: 8px 0px;
+}
+#login_input_arl{
+	width: 100%;
+  border: 0px solid black;
+  line-height: 36px;
+  padding: 0px 8px;
+  border-radius: 4px;
+	background-color: var(--secondary-background);
+	color: var(--primary-text);
+}
+#settings_btn_copyArl{
+	min-width: 24px;
+	width: 48px;
+	margin: 0px 0px 0px 8px;
+	padding: 0px 4px;
+}
+#logged_in_info{
+	display: none;
+	margin-bottom: 12px;
+}
+
 /* Main Search Tab */
 
 .search_tablinks{
@@ -309,6 +333,10 @@ span.tag {
 	box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(0, 0, 0, 0.3);
 	background: #333333;
 }
+.inline-flex{
+	display: flex;
+	align-items:center;
+}
 button{
 	font-family : inherit;
 	font-weight: 600;
@@ -322,4 +350,9 @@ button{
 	min-width: 64px;
 	text-transform: uppercase;
 	color: var(--accent-text);
+}
+button[disabled]{
+	background-color: var(--secondary-background);
+	color: var(--main-text);
+	opacity: 0.75;
 }

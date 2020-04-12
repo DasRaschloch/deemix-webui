@@ -7,12 +7,13 @@
 	--panels-text: #ffffff;
 	--panels-scroll: #2a2c2c;
 	--accent-color: #0A84FF;
+	--accent-text: #ffffff;
 	--tag-background: #0062c4;
 	--tag-text: #ffffff;
 }
 
 html{height: 100%;}
-body{margin: 0px;width: 100%;height: 100%;font-family: sans-serif; overflow: hidden; background-color: var(--main-background); color: var(--main-text);}
+body{margin: 0px;width: 100%;height: 100%;font-family: 'Open Sans'; overflow: hidden; background-color: var(--main-background); color: var(--main-text);}
 
 /* Sidebar section selector */
 aside#sidebar{
@@ -24,7 +25,7 @@ aside#sidebar{
 }
 aside#sidebar > .side_icon{
 	font-size: 24px;
-	margin: 12px;
+	padding: 12px;
 }
 .side_icon.active{
 	color: var(--accent-color);
@@ -109,6 +110,16 @@ div#middle_section {
 }
 
 /* Main Search Tab */
+
+.search_tablinks{
+	background-color: var(--main-background);
+	color: var(--main-text);
+}
+
+.search_tablinks.active{
+	background-color: var(--accent-color);
+	color: var(--accent-text);
+}
 
 #main_search > .search_section{
 	float: none;
@@ -292,10 +303,23 @@ span.tag {
 .clickable{
 	cursor: pointer;
 }
-
 .toastify{
 	display: flex;
 	align-items:center;
 	box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(0, 0, 0, 0.3);
 	background: #333333;
+}
+button{
+	font-family : inherit;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 0px 8px;
+	margin-right: 8px;
+	height: 36px;
+	background-color: var(--accent-color);
+	border: 0px solid black;
+	border-radius: 4px;
+	min-width: 64px;
+	text-transform: uppercase;
+	color: var(--accent-text);
 }

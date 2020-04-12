@@ -6,23 +6,39 @@ main_selected=""
 toastsWithId = {}
 
 function toast(msg, icon=null, dismiss=true, id=null){
-	if (id && $(`div.toastify[toast_id=${id}]`).length)
-		return
-	if (icon == null)
-		icon = ""
-	else if (icon=='loading')
-		icon = `<div class="circle-loader"></div>`
-	else
-		icon = `<i class="material-icons">${icon}</i>`
-	toastObj = Toastify({
-		text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
-		duration: dismiss ? 3000 : 0,
-		gravity: 'bottom',
-		position: 'left'
-	}).showToast()
-	if (id){
-		toastsWithId[id] = toastObj
-		$(toastObj.toastElement).attr('toast_id', id)
+	if (toastsWithId[id]){
+		toastObj = toastsWithId[id]
+		toastDOM = $(`div.toastify[toast_id=${id}]`)
+		if (msg){
+			toastDOM.find(".toast-message").html(msg)
+		}
+		if (icon){
+			if (icon=='loading')
+				icon = `<div class="circle-loader"></div>`
+			else
+				icon = `<i class="material-icons">${icon}</i>`
+			toastDOM.find(".toast-icon").html(icon)
+		}
+		if (dismiss !== null && dismiss){
+			setTimeout(function(){ toastObj.hideToast() }, 3000);
+		}
+	}else{
+		if (icon == null)
+			icon = ""
+		else if (icon=='loading')
+			icon = `<div class="circle-loader"></div>`
+		else
+			icon = `<i class="material-icons">${icon}</i>`
+		toastObj = Toastify({
+			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
+			duration: dismiss ? 3000 : 0,
+			gravity: 'bottom',
+			position: 'left'
+		}).showToast()
+		if (id){
+			toastsWithId[id] = toastObj
+			$(toastObj.toastElement).attr('toast_id', id)
+		}
 	}
 }
 
@@ -31,23 +47,28 @@ socket.on("toast", (data)=>{
 })
 
 socket.on("updateToast", (data)=>{
-	if (toastsWithId[data.id]){
-		toastObj = toastsWithId[data.id]
-		toastDOM = $(`div.toastify[toast_id=${data.id}]`)
-		if (data.msg){
-			toastDOM.find(".toast-message").html(data.msg)
-		}
-		if (data.icon){
-			if (data.icon=='loading')
-				icon = `<div class="circle-loader"></div>`
-			else
-				icon = `<i class="material-icons">${data.icon}</i>`
-			toastDOM.find(".toast-icon").html(icon)
-		}
-		if (data.dismiss !== null && data.dismiss){
-			setTimeout(function(){ toastObj.hideToast() }, 3000);
-		}
+	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
+})
+
+function openLoginPrompt(){
+	socket.emit("loginpage")
+}
+
+socket.emit("init");
+if (localStorage.getItem("arl")){
+	socket.emit("login", localStorage.getItem("arl"));
+}
+
+socket.on("logging_in", function(){
+	toast("Logging in", "loading", false, "login-toast")
+})
+
+socket.on("logged_in", function(data){
+	if (data.status != 0){
+		console.log(data)
+		toast("Logged in", "done", true, "login-toast")
+		if (data.arl && data.status == 1) localStorage.setItem("arl", data.arl)
 	}else{
-		toast(data.msg, data.icon || null, data.dismiss !== null ? data.dismiss : true, data.id || null)
+		toast("Couldn't log in", "close", true, "login-toast")
 	}
 })

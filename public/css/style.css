@@ -10,6 +10,9 @@
 	--accent-text: #ffffff;
 	--tag-background: #0062c4;
 	--tag-text: #ffffff;
+	--toast-background: #000000dd;
+	--toast-secondary: #ffffff22;
+	--toast-text: #ffffffde;
 }
 
 html{height: 100%;}
@@ -37,6 +40,21 @@ main#main_content{
 	width: calc(100% - 48px);
 	height: 100%;
 	display: flex;
+}
+
+/* Tracks preview */
+.preview_controls {
+	opacity: 0;
+  display: block;
+  background: rgba(0, 0, 0, .5);
+	width: 56px;
+	height: 56px;
+	text-align: center;
+	line-height: 56px;
+  position: absolute;
+	border-radius: 5px;
+  top: 0;
+  right: 0;
 }
 
 /* Middle section */
@@ -257,6 +275,7 @@ div#download_tab{
 	width: 75px;
 	height: 75px;
 	display: inline-block;
+	flex-shrink: 0;
 }
 #download_list > .download_object .download_info .download_line{
 	display: block;
@@ -265,7 +284,7 @@ div#download_tab{
 	display: none;
 }
 #download_list > .download_object .download_info_data{
-	width: calc(100% - 83px);
+	width: 100%;
 	padding-left: 8px;
 }
 #download_list > .download_object .download_info_status{
@@ -323,6 +342,23 @@ span.tag {
 }
 .tracks_table{
 	width: 100%;
+	-webkit-border-horizontal-spacing: 0px;
+	-webkit-border-vertical-spacing: 0px;
+}
+.tracks_table td{
+	padding: 4px 12px 4px 5px;
+	vertical-align: middle;
+	border: 0px black solid;
+}
+td img {
+  vertical-align: middle;
+}
+.tracks_table tr:nth-child(even){
+	background-color: var(--secondary-background);
+	border: 0px black solid;
+}
+p, .tracks_table td.breakline{
+  word-break: break-word;
 }
 .clickable{
 	cursor: pointer;
@@ -331,7 +367,8 @@ span.tag {
 	display: flex;
 	align-items:center;
 	box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(0, 0, 0, 0.3);
-	background: #333333;
+	background: var(--toast-background);
+	color: var(--toast-text);
 }
 .inline-flex{
 	display: flex;

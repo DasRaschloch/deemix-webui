@@ -20,13 +20,13 @@
 	<body>
 		<aside id="sidebar">
 			<i class="material-icons side_icon">menu</i>
-			<i onclick="changeTab(event, 'main', 'search_tab')" id="show_searchtab" class="material-icons side_icon main_tablinks">search</i>
-			<i onclick="changeTab(event, 'main', 'home_tab')" id="main_defaultopen" class="material-icons side_icon main_tablinks">home</i>
-			<i onclick="changeTab(event, 'main', 'charts_tab')" class="material-icons side_icon main_tablinks">bubble_chart</i>
-			<i onclick="changeTab(event, 'main', 'favorites_tab')" class="material-icons side_icon main_tablinks">album</i>
-			<i onclick="changeTab(event, 'main', 'analyzer_tab')" class="material-icons side_icon main_tablinks">link</i>
-			<i onclick="changeTab(event, 'main', 'settings_tab')" class="material-icons side_icon main_tablinks">settings</i>
-			<i onclick="changeTab(event, 'main', 'about_tab')" class="material-icons side_icon main_tablinks">info</i>
+			<i onclick="changeTab(event, 'main', 'search_tab')" id="main_search_tablink" class="main_tablinks"></i>
+			<i onclick="changeTab(event, 'main', 'home_tab')" id="main_home_tablink" class="material-icons side_icon main_tablinks">home</i>
+			<i onclick="changeTab(event, 'main', 'charts_tab')" id="main_charts_tablink" class="material-icons side_icon main_tablinks">bubble_chart</i>
+			<i onclick="changeTab(event, 'main', 'favorites_tab')" id="main_favorites_tablink" class="material-icons side_icon main_tablinks">album</i>
+			<i onclick="changeTab(event, 'main', 'analyzer_tab')" id="main_analyzer_tablink" class="material-icons side_icon main_tablinks">link</i>
+			<i onclick="changeTab(event, 'main', 'settings_tab')" id="main_settings_tablink" class="material-icons side_icon main_tablinks">settings</i>
+			<i onclick="changeTab(event, 'main', 'about_tab')" id="main_about_tablink" class="material-icons side_icon main_tablinks">info</i>
 		</aside>
 		<main id="main_content">
 			<div id="middle_section">
@@ -35,7 +35,7 @@
 
 					<div id="search_tab" class="main_tabcontent">
 						<div class="tab">
-							<button class="search_tablinks" id="search_defaultopen" onclick="changeTab(event, 'search', 'main_search')">All</button>
+							<button class="search_tablinks" id="search_all_tab" onclick="changeTab(event, 'search', 'main_search')">All</button>
 							<button class="search_tablinks" id="search_track_tab" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
 							<button class="search_tablinks" id="search_album_tab" onclick="changeTab(event, 'search', 'album_search')">Album</button>
 							<button class="search_tablinks" id="search_artist_tab" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
@@ -60,12 +60,12 @@
 										<div v-if="section == 'TRACK'">
 											<table class="tracks_table">
 												<tr v-for="track in results.TRACK.data.slice(0, 6)" class="track_row">
-													<td style="width: 48px;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
-													<td>{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
-													<td><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
-													<td>{{track.ALB_TITLE}}</td>
+													<td style="width: 48px; text-align: center;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
+													<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+													<td class="breakline"><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
+													<td class="breakline">{{track.ALB_TITLE}}</td>
 													<td>{{convertDuration(track.DURATION)}}</td>
-													<td v-on:click="addToQueue('https://www.deezer.com/track/'+track.SNG_ID)" style="width: 56px;" class="clickable"><i class="material-icons">get_app</i></td>
+													<td v-on:click="addToQueue('https://www.deezer.com/track/'+track.SNG_ID)" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
 												</tr>
 											</table>
 										</div>
@@ -97,12 +97,12 @@
 										<th style="width: 56px;"></th>
 									</tr>
 									<tr v-for="track in results.data" class="track_row">
-										<td style="width: 48px;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
-										<td>{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
-										<td><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
-										<td>{{track.ALB_TITLE}}</td>
+										<td style="width: 48px; text-align: center;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
+										<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+										<td class="breakline"><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
+										<td class="breakline">{{track.ALB_TITLE}}</td>
 										<td>{{convertDuration(track.DURATION)}}</td>
-										<td v-on:click="addToQueue('https://www.deezer.com/track/'+track.SNG_ID)" style="width: 56px;" class="clickable"><i class="material-icons">get_app</i></td>
+										<td v-on:click="addToQueue('https://www.deezer.com/track/'+track.SNG_ID)" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
 									</tr>
 								</table>
 							</div>
@@ -184,6 +184,9 @@
 				</div>
 			</div>
 		</main>
+		<audio id="preview-track">
+			<source id="preview-track_source" src="" type="audio/mpeg">
+		</audio>
 	</body>
 	<script type="text/javascript" src="/public/js/socket.io.js"></script>
 	<script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>

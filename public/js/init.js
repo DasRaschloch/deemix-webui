@@ -1,9 +1,22 @@
 // Initialization
 const socket = io.connect(window.location.href)
 localStorage = window.localStorage;
+// tabs stuff
 search_selected = ""
 main_selected=""
+// toasts stuff
 toastsWithId = {}
+// track previews stuff
+let preview_track = document.getElementById('preview-track')
+let preview_stopped = true
+let preview_max_volume;
+
+preview_track.volume = 0
+preview_max_volume = parseFloat(localStorage.getItem("previewVolume"))
+if (preview_max_volume === null){
+	preview_max_volume = 0.8
+	localStorage.setItem("previewVolume", preview_max_volume)
+}
 
 function toast(msg, icon=null, dismiss=true, id=null){
 	if (toastsWithId[id]){
@@ -53,6 +66,41 @@ socket.on("updateToast", (data)=>{
 	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
 })
 
+window.addEventListener('pywebviewready', function() {
+	$('#open_login_prompt').prop('disabled', false);
+})
+
+$(function(){
+	socket.emit("init");
+	if (localStorage.getItem("arl")){
+		socket.emit("login", localStorage.getItem("arl"));
+		$("#login_input_arl").val(localStorage.getItem("arl"))
+	}
+	// Check if download tab should be open
+	if (eval(localStorage.getItem("downloadTabOpen")))
+		$("#show_download_tab").click()
+	else
+		$("#hide_download_tab").click()
+
+	// Open default tab
+	document.getElementById("main_home_tablink").click();
+})
+
+// Show/Hide Download Tab
+document.querySelector("#show_download_tab").onclick = (ev)=>{
+	ev.preventDefault();
+	document.querySelector("#download_tab_bar").style.display = "none";
+	document.querySelector("#download_tab").style.display = "block";
+	localStorage.setItem("downloadTabOpen", true)
+}
+document.querySelector("#hide_download_tab").onclick = (ev)=>{
+	ev.preventDefault();
+	document.querySelector("#download_tab_bar").style.display = "block";
+	document.querySelector("#download_tab").style.display = "none";
+	localStorage.setItem("downloadTabOpen", false)
+}
+
+// Login stuff
 function openLoginPrompt(){
 	socket.emit("loginpage")
 }
@@ -77,18 +125,6 @@ function copyARLtoClipboard(){
 function logout(){
 	socket.emit("logout");
 }
-
-window.addEventListener('pywebviewready', function() {
-	$('#open_login_prompt').prop('disabled', false);
-})
-
-$(function(){
-	socket.emit("init");
-	if (localStorage.getItem("arl")){
-		socket.emit("login", localStorage.getItem("arl"));
-		$("#login_input_arl").val(data.arl)
-	}
-})
 
 socket.on("logging_in", function(){
 	toast("Logging in", "loading", false, "login-toast")

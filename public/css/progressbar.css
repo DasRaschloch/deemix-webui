@@ -125,6 +125,10 @@
   animation: spin 1s linear infinite;
 }
 
+.toastify .circle-loader{
+  border-bottom-color: var(--toast-secondary)
+}
+
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }

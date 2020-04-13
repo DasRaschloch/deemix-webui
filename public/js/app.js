@@ -3,28 +3,6 @@ socket.on("message", function(msg){
 	console.log(msg)
 })
 
-$(function() {
-	// Check if download tab should be open
-	if (eval(localStorage.getItem("downloadTabOpen")))
-		$("#show_download_tab").click()
-	else
-		$("#hide_download_tab").click()
-})
-
-// Show/Hide Download Tab
-document.querySelector("#show_download_tab").onclick = (ev)=>{
-	ev.preventDefault();
-	document.querySelector("#download_tab_bar").style.display = "none";
-	document.querySelector("#download_tab").style.display = "block";
-	localStorage.setItem("downloadTabOpen", true)
-}
-document.querySelector("#hide_download_tab").onclick = (ev)=>{
-	ev.preventDefault();
-	document.querySelector("#download_tab_bar").style.display = "block";
-	document.querySelector("#download_tab").style.display = "none";
-	localStorage.setItem("downloadTabOpen", false)
-}
-
 function changeTab(evt, section, tabName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName(section+"_tabcontent");
@@ -210,12 +188,8 @@ function mainSearchHandler(result){
 	albumSearch.query = result.QUERY
 	artistSearch.query = result.QUERY
 	playlistSearch.query = result.QUERY
-	document.getElementById("search_defaultopen").click();
+	document.getElementById("search_all_tab").click();
 	document.getElementById("search_tab_content").style.display = "block";
-	document.getElementById("show_searchtab").click();
+	document.getElementById("main_search_tablink").click();
 }
 socket.on("mainSearch", function(result){mainSearchHandler(result)})
-
-$(function(){
-	document.getElementById("main_defaultopen").click();
-})

@@ -51,10 +51,6 @@ socket.on("toast", (data)=>{
 	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
 })
 
-socket.on("updateToast", (data)=>{
-	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
-})
-
 window.addEventListener('pywebviewready', function() {
 	$('#open_login_prompt').prop('disabled', false);
 })

@@ -58,8 +58,7 @@ socket.on("startDownload", function(uuid){
 })
 
 socket.on("finishDownload", function(uuid){
-	console.log(uuid+" finished downloading")
-	toast(`${queueList[uuid].title} finished downloading.`)
+	toast(`${queueList[uuid].title} finished downloading.`, 'done')
 	$('#bar_' + uuid).css('width', '100%')
 	let result_icon = $('#download_'+uuid).find('.queue_icon')
 	if (queueList[uuid].failed == 0){
@@ -74,6 +73,9 @@ socket.on("finishDownload", function(uuid){
 		queue.splice(index, 1)
 		delete queueList[uuid]
 	}
+	if (queue.length <= 0){
+		toast('All downloads completed!', 'all_done')
+	}
 })
 
 socket.on("removedAllDownloads", function(){
@@ -84,7 +86,6 @@ socket.on("removedAllDownloads", function(){
 
 socket.on("updateQueue", function(update){
 	if (update.uuid && queue.indexOf(update.uuid) > -1){
-		console.log(update)
 		if (update.downloaded){
 			queueList[update.uuid].downloaded++
 			$("#download_"+update.uuid+" .queue_downloaded").text(queueList[update.uuid].downloaded)

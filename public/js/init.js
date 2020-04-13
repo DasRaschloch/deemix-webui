@@ -160,3 +160,17 @@ socket.on("logged_out", function(){
 	$("#settings_username").text("Not Logged")
 	$("#settings_picture").attr("src",`https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })
+
+// settings
+var settingsTab = new Vue({
+  el: '#settings_tab',
+  data: {
+		settings: {}
+  }
+})
+
+socket.on("init_settings", function(settings){
+	console.log(settings)
+	settingsTab.settings = settings
+	toast("Loaded Settings", 'done')
+})

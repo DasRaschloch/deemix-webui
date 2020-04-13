@@ -61,7 +61,7 @@ socket.on("finishDownload", function(uuid){
 	console.log(uuid+" finished downloading")
 	toast(`${queueList[uuid].title} finished downloading.`)
 	$('#bar_' + uuid).css('width', '100%')
-	let result_icon = $('download_'+uuid).find('.queue_icon')
+	let result_icon = $('#download_'+uuid).find('.queue_icon')
 	if (queueList[uuid].failed == 0){
 		result_icon.text("done")
 	}else if (queueList[uuid].failed >= queueList[uuid].size){

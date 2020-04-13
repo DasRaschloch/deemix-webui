@@ -189,17 +189,145 @@
 								<p>Playlsit track template</p>
 								<input type="text" v-model="settings.playlistTracknameTemplate">
 							</div>
+							<div class="input_group">
+								<p>Create folder for playlist</p>
+								<input type="checkbox" v-model="settings.createPlaylistFolder">
+							</div>
 							<div class="input_group" v-if="settings.createPlaylistFolder">
 								<p>Playlsit folder template</p>
 								<input type="text" v-model="settings.playlistNameTemplate">
+							</div>
+							<div class="input_group">
+								<p>Create folder for artist</p>
+								<input type="checkbox" v-model="settings.createArtistFolder">
 							</div>
 							<div class="input_group" v-if="settings.createArtistFolder">
 								<p>Artist folder template</p>
 								<input type="text" v-model="settings.artistNameTemplate">
 							</div>
+							<div class="input_group">
+								<p>Create folder for album</p>
+								<input type="checkbox" v-model="settings.createAlbumFolder">
+							</div>
 							<div class="input_group" v-if="settings.createAlbumFolder">
 								<p>Album folder template</p>
 								<input type="text" v-model="settings.albumNameTemplate">
+							</div>
+							<div class="input_group">
+								<p>Create folder for CDs</p>
+								<input type="checkbox" v-model="settings.createCDFolder">
+							</div>
+							<div class="input_group">
+								<p>Create folder structure for playlists</p>
+								<input type="checkbox" v-model="settings.createStructurePlaylist">
+							</div>
+							<div class="input_group">
+								<p>Create folder structure for singles</p>
+								<input type="checkbox" v-model="settings.createSingleFolder">
+							</div>
+							<div class="input_group">
+								<p>Pad tracks</p>
+								<input type="checkbox" v-model="settings.padTracks">
+							</div>
+							<div class="input_group">
+								<p>Overwrite padding size</p>
+								<input type="number" v-model="settings.paddingSize">
+							</div>
+							<div class="input_group">
+								<p>Illegal Character replacer</p>
+								<input type="text" v-model="settings.illegalCharacterReplacer">
+							</div>
+							<div class="input_group">
+								<p>Concurrent Downloads</p>
+								<input type="number" v-model="settings.queueConcurrency">
+							</div>
+							<div class="input_group">
+								<p>Preferred Bitrate</p>
+								<select v-model="settings.maxBitrate">
+									<option value="9">FLAC 1411kbps</option>
+									<option value="3">MP3 320kbps</option>
+									<option value="1">MP3 128kbps</option>
+								</select>
+							</div>
+							<div class="input_group">
+								<p>Bitrate fallback</p>
+								<input type="checkbox" v-model="settings.fallbackBitrate">
+							</div>
+							<div class="input_group">
+								<p>Search fallback</p>
+								<input type="checkbox" v-model="settings.fallbackSearch">
+							</div>
+							<div class="input_group">
+								<p>Create log file for errors</p>
+								<input type="checkbox" v-model="settings.logErrors">
+							</div>
+							<div class="input_group">
+								<p>Create log file for searched tracks</p>
+								<input type="checkbox" v-model="settings.logSearched">
+							</div>
+							<div class="input_group">
+								<p>Create playlist file</p>
+								<input type="checkbox" v-model="settings.createM3U8File">
+							</div>
+							<div class="input_group">
+								<p>Create .lyr files (Sync Lyrics)</p>
+								<input type="checkbox" v-model="settings.syncedLyrics">
+							</div>
+							<div class="input_group">
+								<p>Save covers</p>
+								<input type="checkbox" v-model="settings.saveArtwork">
+							</div>
+							<div class="input_group">
+								<p>Cover name template</p>
+								<input type="text" v-model="settings.coverImageTemplate">
+							</div>
+							<div class="input_group">
+								<p>Save artist image</p>
+								<input type="checkbox" v-model="settings.saveArtworkArtist">
+							</div>
+							<div class="input_group">
+								<p>Artist picture name template</p>
+								<input type="text" v-model="settings.artistImageTemplate">
+							</div>
+							<div class="input_group">
+								<p>Save images as png</p>
+								<input type="checkbox" v-model="settings.PNGcovers">
+							</div>
+							<div class="input_group">
+								<p>Save playlists as compilation</p>
+								<input type="checkbox" v-model="settings.savePlaylistAsCompilation">
+							</div>
+							<div class="input_group">
+								<p>Remove album version from track title</p>
+								<input type="checkbox" v-model="settings.removeAlbumVersion">
+							</div>
+							<div class="input_group">
+								<p>What should I do with featured artists</p>
+								<select v-model="settings.featuredToTitle">
+									<option value="0">Nothing</option>
+									<option value="1">Remove it from the title</option>
+									<option value="2">Move it to the title</option>
+								</select>
+							</div>
+							<div class="input_group">
+								<p>Title casing</p>
+								<select v-model="settings.titleCasing">
+									<option value="nothing">Keep unchanged</option>
+									<option value="lower">lowercase</option>
+									<option value="upper">UPPERCASE</option>
+									<option value="start">Start Of Each Word</option>
+									<option value="sentence">Like a sentence</option>
+								</select>
+							</div>
+							<div class="input_group">
+								<p>Artist casing</p>
+								<select v-model="settings.artistCasing">
+									<option value="nothing">Keep unchanged</option>
+									<option value="lower">lowercase</option>
+									<option value="upper">UPPERCASE</option>
+									<option value="start">Start Of Each Word</option>
+									<option value="sentence">Like a sentence</option>
+								</select>
 							</div>
 						</div>
 					</div>

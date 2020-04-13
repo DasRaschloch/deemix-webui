@@ -1,7 +1,13 @@
 var queueList = {}
 var queue = []
 
-socket.on("addedToQueue", function(queueItem){
+socket.on("init_downloadQueue", function(data){
+	data['queue'].forEach(item=>{
+		addToQueue(data['queueList'][item])
+	})
+})
+
+function addToQueue(queueItem){
 	queueList[queueItem.uuid] = queueItem
 	queue.push(queueItem.uuid)
 	$("#download_list").append(
@@ -21,6 +27,10 @@ socket.on("addedToQueue", function(queueItem){
 			<i onclick="downloadAction(event)" class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
 		</div>
 	</div>`)
+}
+
+socket.on("addedToQueue", function(queueItem){
+	addToQueue(queueItem)
 })
 
 function downloadAction(evt){
@@ -51,6 +61,19 @@ socket.on("finishDownload", function(uuid){
 	console.log(uuid+" finished downloading")
 	toast(`${queueList[uuid].title} finished downloading.`)
 	$('#bar_' + uuid).css('width', '100%')
+	let result_icon = $('download_'+uuid).find('.queue_icon')
+	if (queueList[uuid].failed == 0){
+		result_icon.text("done")
+	}else if (queueList[uuid].failed >= queueList[uuid].size){
+		result_icon.text("error")
+	}else{
+		result_icon.text("warning")
+	}
+	let index = queue.indexOf(uuid)
+	if (index > -1){
+		queue.splice(index, 1)
+		delete queueList[uuid]
+	}
 })
 
 socket.on("removedAllDownloads", function(){
@@ -69,7 +92,7 @@ socket.on("updateQueue", function(update){
 		if (update.failed){
 			queueList[update.uuid].failed++
 			if (queueList[update.uuid].failed == 1){
-				$("#download_"+update.uuid+" .download_info_status").append(`<span class="secondary-text"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> Failed<span class="download_slim_separator">)</span></span>`)
+				$("#download_"+update.uuid+" .download_info_status").append(`<span class="secondary-text"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`)
 			}else{
 				$("#download_"+update.uuid+" .queue_failed").text(queueList[update.uuid].failed)
 			}

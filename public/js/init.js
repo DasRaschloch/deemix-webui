@@ -6,17 +6,6 @@ search_selected = ""
 main_selected=""
 // toasts stuff
 toastsWithId = {}
-// track previews stuff
-let preview_track = document.getElementById('preview-track')
-let preview_stopped = true
-let preview_max_volume;
-
-preview_track.volume = 0
-preview_max_volume = parseFloat(localStorage.getItem("previewVolume"))
-if (preview_max_volume === null){
-	preview_max_volume = 0.8
-	localStorage.setItem("previewVolume", preview_max_volume)
-}
 
 function toast(msg, icon=null, dismiss=true, id=null){
 	if (toastsWithId[id]){
@@ -71,7 +60,6 @@ window.addEventListener('pywebviewready', function() {
 })
 
 $(function(){
-	socket.emit("init");
 	if (localStorage.getItem("arl")){
 		socket.emit("login", localStorage.getItem("arl"));
 		$("#login_input_arl").val(localStorage.getItem("arl"))

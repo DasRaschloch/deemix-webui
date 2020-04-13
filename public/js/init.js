@@ -52,7 +52,9 @@ socket.on("toast", (data)=>{
 })
 
 window.addEventListener('pywebviewready', function() {
-	$('#open_login_prompt').prop('disabled', false);
+	if (window.pywebview.platform == "gtk"){
+		$('#open_login_prompt').prop('disabled', false);
+	}
 })
 
 $(function(){

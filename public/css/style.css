@@ -42,21 +42,6 @@ main#main_content{
 	display: flex;
 }
 
-/* Tracks preview */
-.preview_controls {
-	opacity: 0;
-  display: block;
-  background: rgba(0, 0, 0, .5);
-	width: 56px;
-	height: 56px;
-	text-align: center;
-	line-height: 56px;
-  position: absolute;
-	border-radius: 5px;
-  top: 0;
-  right: 0;
-}
-
 /* Middle section */
 div#middle_section {
   background-color: var(--main-background);
@@ -130,15 +115,6 @@ div#middle_section {
 /* Settings */
 #open_login_prompt{
 	margin: 8px 0px;
-}
-#login_input_arl{
-	width: 100%;
-  border: 0px solid black;
-  line-height: 36px;
-  padding: 0px 8px;
-  border-radius: 4px;
-	background-color: var(--secondary-background);
-	color: var(--primary-text);
 }
 #settings_btn_copyArl{
 	min-width: 24px;
@@ -392,4 +368,14 @@ button[disabled]{
 	background-color: var(--secondary-background);
 	color: var(--main-text);
 	opacity: 0.75;
+}
+input[type="text"], input[type="password"]{
+	width: 100%;
+  border: 0px solid black;
+  line-height: 36px;
+  padding: 0px 8px;
+  border-radius: 4px;
+	background-color: var(--secondary-background);
+	color: var(--primary-text);
+	margin-bottom: 8px;
 }

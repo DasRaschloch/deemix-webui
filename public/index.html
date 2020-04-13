@@ -147,12 +147,17 @@
 							</div>
 						</div>
 					</div>
+
 					<div id="home_tab" class="main_tabcontent">
 						<h1>Home</h1>
 					</div>
+
 					<div id="charts_tab" class="main_tabcontent"><h1>Charts</h1></div>
+
 					<div id="favorites_tab" class="main_tabcontent"><h1>Favorites</h1></div>
+
 					<div id="analyzer_tab" class="main_tabcontent"><h1>Link Analyzer</h1></div>
+
 					<div id="settings_tab" class="main_tabcontent">
 						<h1>Settings</h1>
 						<div id="logged_in_info">
@@ -167,10 +172,43 @@
 						</div>
 						<p><a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">How do I get my own ARL?</a></p>
 						<p><button onclick="loginButton()" style="width:100%;" id="settings_btn_updateArl">Update ARL</button></p>
+						<div id="settings_generic_tab">
+							<div class="input_group">
+								<p>Download Path</p>
+								<input type="text" v-model="settings.downloadLocation">
+							</div>
+							<div class="input_group">
+								<p>Trackname template</p>
+								<input type="text" v-model="settings.tracknameTemplate">
+							</div>
+							<div class="input_group">
+								<p>Album track template</p>
+								<input type="text" v-model="settings.albumTracknameTemplate">
+							</div>
+							<div class="input_group">
+								<p>Playlsit track template</p>
+								<input type="text" v-model="settings.playlistTracknameTemplate">
+							</div>
+							<div class="input_group" v-if="settings.createPlaylistFolder">
+								<p>Playlsit folder template</p>
+								<input type="text" v-model="settings.playlistNameTemplate">
+							</div>
+							<div class="input_group" v-if="settings.createArtistFolder">
+								<p>Artist folder template</p>
+								<input type="text" v-model="settings.artistNameTemplate">
+							</div>
+							<div class="input_group" v-if="settings.createAlbumFolder">
+								<p>Album folder template</p>
+								<input type="text" v-model="settings.albumNameTemplate">
+							</div>
+						</div>
 					</div>
+
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
+
 				</div></section>
 			</div>
+
 			<div id="download_tab_container">
 				<div id="download_tab_bar">
 					<i id="show_download_tab" class="material-icons download_bar_icon">chevron_left</i>
@@ -178,15 +216,11 @@
 				</div>
 				<div id="download_tab">
 					<i id="hide_download_tab" class="material-icons download_bar_icon">chevron_right</i>
-					<div id="download_list" class="">
-
-					</div>
+					<div id="download_list" class=""></div>
 				</div>
 			</div>
+
 		</main>
-		<audio id="preview-track">
-			<source id="preview-track_source" src="" type="audio/mpeg">
-		</audio>
 	</body>
 	<script type="text/javascript" src="/public/js/socket.io.js"></script>
 	<script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>

@@ -110,11 +110,22 @@ socket.on("finishDownload", function(uuid){
 	}
 })
 
-socket.on("removedAllDownloads", function(){
-	queue = []
-	queueList = {}
+socket.on("removedAllDownloads", function(currentItem){
 	queueComplete = []
-	$("#download_list").html("")
+	if (currentItem == ""){
+		queue = []
+		queueList = {}
+		$("#download_list").html("")
+	}else{
+		queue = [currentItem, ]
+		tempQueueItem = queueList[currentItem]
+		queueList = {}
+		queueList[currentItem] = tempQueueItem
+		$(".download_object").each(function(index){
+			if ($(this).attr('id') != "download_"+currentItem)
+				$(this).remove()
+		})
+	}
 })
 
 socket.on("removedFinishedDownloads", function(){

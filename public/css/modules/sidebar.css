@@ -1,0 +1,17 @@
+/* Sidebar section selector */
+#sidebar {
+	background-color: var(--panels-background);
+	width: 48px;
+	height: 100%;
+	position: absolute;
+	color: var(--panels-text);
+}
+
+#sidebar > .side_icon {
+	font-size: 24px;
+	padding: 12px;
+}
+
+.side_icon.active {
+	color: var(--accent-color);
+}

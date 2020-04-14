@@ -1,0 +1,5 @@
+/* Tabs */
+.search_tabcontent,
+.main_tabcontent {
+	display: none;
+}

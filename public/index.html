@@ -201,7 +201,7 @@
 								<input type="text" v-model="settings.albumTracknameTemplate">
 							</div>
 							<div class="input_group">
-								<p>Playlsit track template</p>
+								<p>Playlist track template</p>
 								<input type="text" v-model="settings.playlistTracknameTemplate">
 							</div>
 							<div class="input_group">
@@ -301,8 +301,16 @@
 								<input type="checkbox" v-model="settings.saveArtworkArtist">
 							</div>
 							<div class="input_group">
-								<p>Artist picture name template</p>
+								<p>Artist image name template</p>
 								<input type="text" v-model="settings.artistImageTemplate">
+							</div>
+							<div class="input_group">
+								<p>Local artwork size</p>
+								<input type="number" min="100" max="1800" step="100" v-model="settings.localArtworkSize">
+							</div>
+							<div class="input_group">
+								<p>Embedded artwork size</p>
+								<input type="number" min="100" max="1800" step="100" v-model="settings.embeddedArtworkSize">
 							</div>
 							<div class="input_group">
 								<p>Save images as png</p>

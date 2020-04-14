@@ -2,6 +2,14 @@ var queueList = {}
 var queue = []
 
 socket.on("init_downloadQueue", function(data){
+	if (data.currentItem){
+		addToQueue(data['queueList'][data.currentItem])
+		$('#bar_' + data.currentItem).removeClass('indeterminate').addClass('determinate')
+		$('#bar_' + data.currentItem).css('width', data['queueList'][data.currentItem].progress + '%')
+		if (queueList[data.currentItem].failed >= 1){
+			$("#download_"+data.currentItem+" .download_info_status").append(`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueList[data.currentItem].failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`)
+		}
+	}
 	data['queue'].forEach(item=>{
 		addToQueue(data['queueList'][item])
 	})
@@ -19,7 +27,7 @@ function addToQueue(queueItem){
 				<span class="secondary-text">${queueItem.artist}</span>
 			</div>
 			<div class="download_info_status">
-				<span class="download_line"><span class="queue_downloaded">0</span>/${queueItem.size}</span>
+				<span class="download_line"><span class="queue_downloaded">${queueItem.downloaded + queueItem.failed}</span>/${queueItem.size}</span>
 			</div>
 		</div>
 		<div class="download_bar">
@@ -75,7 +83,7 @@ socket.on("finishDownload", function(uuid){
 			delete queueList[uuid]
 		}
 		if (queue.length <= 0){
-			toast('All downloads completed!', 'all_done')
+			toast('All downloads completed!', 'done_all')
 		}
 	}
 })
@@ -90,12 +98,13 @@ socket.on("updateQueue", function(update){
 	if (update.uuid && queue.indexOf(update.uuid) > -1){
 		if (update.downloaded){
 			queueList[update.uuid].downloaded++
-			$("#download_"+update.uuid+" .queue_downloaded").text(queueList[update.uuid].downloaded)
+			$("#download_"+update.uuid+" .queue_downloaded").text(queueList[update.uuid].downloaded + queueList[update.uuid].failed)
 		}
 		if (update.failed){
 			queueList[update.uuid].failed++
+			$("#download_"+update.uuid+" .queue_downloaded").text(queueList[update.uuid].downloaded + queueList[update.uuid].failed)
 			if (queueList[update.uuid].failed == 1){
-				$("#download_"+update.uuid+" .download_info_status").append(`<span class="secondary-text"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`)
+				$("#download_"+update.uuid+" .download_info_status").append(`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`)
 			}else{
 				$("#download_"+update.uuid+" .queue_failed").text(queueList[update.uuid].failed)
 			}

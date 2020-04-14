@@ -265,7 +265,6 @@ div#download_tab{
 #download_list > .download_object .download_info_status{
 	margin-left: 8px;
 	width: 80px;
-	text-align: right;
 }
 #download_list.slim > .download_object .download_info img{
 	display: none;
@@ -277,7 +276,7 @@ div#download_tab{
 	display: inline-block;
 }
 #download_list.slim > .download_object .download_info_data{
-	width: calc(80% - 8px);
+	width: calc(80% - 16px);
 	display: inline-block;
 	padding-left: 0px;
 }
@@ -388,6 +387,10 @@ p, .tracks_table td.breakline{
 .inline-flex{
 	display: flex;
 	align-items:center;
+}
+.secondary-text .material-icons{
+	font-size: 17px !important;
+	margin-left: 4px;
 }
 button{
 	font-family : inherit;

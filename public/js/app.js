@@ -66,6 +66,11 @@ function clickElement(button){
 	return document.getElementById(button).click()
 }
 
+function sendAddToQueue(url, bitrate = null){
+	console.log(url)
+	socket.emit("addToQueue", {url: url, bitrate:bitrate})
+}
+
 var mainSearch = new Vue({
   el: '#main_search',
   data: {
@@ -91,7 +96,7 @@ var mainSearch = new Vue({
 			if (section != "TOP_RESULT")
 				clickElement('search_'+section.toLowerCase()+'_tab')
 		},
-		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+		addToQueue: function(url){sendAddToQueue(url)}
 	}
 })
 
@@ -108,7 +113,7 @@ var trackSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+		addToQueue: function(url){sendAddToQueue(url)}
 	}
 })
 
@@ -125,7 +130,7 @@ var albumSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+		addToQueue: function(url){sendAddToQueue(url)}
 	}
 })
 
@@ -142,7 +147,7 @@ var artistSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+		addToQueue: function(url){sendAddToQueue(url)}
 	}
 })
 
@@ -159,7 +164,7 @@ var playlistSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){socket.emit("addToQueue", {url: url})}
+		addToQueue: function(url){sendAddToQueue(url)}
 	}
 })
 

@@ -150,8 +150,7 @@ div#middle_section {
 	display: flex;
 	align-items:center;
 }
-.top_result > img {
-	display: inline-block;
+.top_result > .cover_container {
 	width: 156px;
 	height: 156px;
 }
@@ -185,7 +184,7 @@ div#middle_section {
 	display: inline-block;
 	width: 156px;
 }
-.release > img{
+.release > .cover_container{
 	width: 156px;
 	height: 156px;
 }
@@ -307,6 +306,40 @@ img.circle {
 }
 .coverart{
 	background-color: var(--secondary-background);
+}
+.cover_container{
+	position: relative;
+}
+.cover_container .coverart {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+.cover_container .download_overlay {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+.cover_container .download_overlay i{
+	background-color: #000000;
+	color: white;
+	border-radius: 50%;
+	padding: 10px;
+	cursor: pointer;
+}
+.cover_container:hover .coverart {
+  opacity: 0.75
+}
+.cover_container:hover .download_overlay {
+  opacity: 1;
 }
 span.tag {
 	background-color: var(--tag-background);

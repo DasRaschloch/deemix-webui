@@ -6,6 +6,8 @@ search_selected = ""
 main_selected=""
 // toasts stuff
 toastsWithId = {}
+// settings
+lastSettings = {}
 
 function toast(msg, icon=null, dismiss=true, id=null){
 	if (toastsWithId[id]){
@@ -50,6 +52,11 @@ function toast(msg, icon=null, dismiss=true, id=null){
 
 socket.on("toast", (data)=>{
 	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
+})
+
+// Debug messages for socketio
+socket.on("message", function(msg){
+	console.log(msg)
 })
 
 window.addEventListener('pywebviewready', function() {
@@ -164,7 +171,7 @@ socket.on("logged_out", function(){
 	$("#settings_picture").attr("src",`https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })
 
-// settings
+// settings stuff
 var settingsTab = new Vue({
   el: '#settings_tab',
   data: {
@@ -173,7 +180,44 @@ var settingsTab = new Vue({
 })
 
 socket.on("init_settings", function(settings){
-	console.log(settings)
-	settingsTab.settings = settings
-	toast("Loaded Settings", 'done')
+	loadSettings(settings)
+	toast("Settings loaded!", 'settings')
 })
+
+socket.on("updateSettings", function(settings){
+	loadSettings(settings)
+	toast("Settings updated!", 'settings')
+})
+
+function loadSettings(settings){
+	lastSettings = {...settings}
+	settingsTab.settings = settings
+}
+
+function saveSettings(){
+	lastSettings = {...settingsTab.settings}
+	socket.emit("saveSettings", lastSettings)
+}
+
+// tabs stuff
+function changeTab(evt, section, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName(section+"_tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+	tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName(section+"_tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+	tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+	if (tabName == "settings_tab" && main_selected != "settings_tab"){
+		settingsTab.settings = {...lastSettings}
+	}
+  document.getElementById(tabName).style.display = "block";
+	window[section+"_selected"] = tabName
+  evt.currentTarget.className += " active";
+	// Check if you need to load more content in the search tab
+	if (document.getElementById("content").offsetHeight >= document.getElementById("content").scrollHeight && main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
+		scrolledSearch(window[search_selected.split("_")[0]+"Search"])
+	}
+}

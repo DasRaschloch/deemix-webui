@@ -173,7 +173,7 @@
 
 					<div id="analyzer_tab" class="main_tabcontent"><h1>Link Analyzer</h1></div>
 
-					<div id="settings_tab" class="main_tabcontent">
+					<div id="settings_tab" class="main_tabcontent fixed_footer">
 						<h1>Settings</h1>
 						<div id="logged_in_info">
 							<img id="settings_picture" src="" alt="Profile Picture" class="circle" style="width: 125px;height:125px; margin-right: 12px;"/>
@@ -345,6 +345,9 @@
 								</select>
 							</div>
 						</div>
+						<footer>
+							<button onclick="saveSettings()">Save</button>
+						</footer>
 					</div>
 
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
@@ -373,8 +376,8 @@
 	<script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/public/js/vue.min.js"></script>
 	<script type="text/javascript" src="/public/js/toastify.js"></script>
-	<script type="text/javascript" src="/public/js/init.js"></script>
-	<script type="text/javascript" src="/public/js/utils.js"></script>
-	<script type="text/javascript" src="/public/js/app.js"></script>
-	<script type="text/javascript" src="/public/js/downloadList.js"></script>
+	<script type="text/javascript" src="/public/js/app/app.js"></script>
+	<script type="text/javascript" src="/public/js/app/utils.js"></script>
+	<script type="text/javascript" src="/public/js/app/search.js"></script>
+	<script type="text/javascript" src="/public/js/app/downloadList.js"></script>
 </html>

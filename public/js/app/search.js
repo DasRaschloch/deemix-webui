@@ -1,27 +1,3 @@
-// Debug messages for socketio
-socket.on("message", function(msg){
-	console.log(msg)
-})
-
-function changeTab(evt, section, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName(section+"_tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-	tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName(section+"_tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-	tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-	window[section+"_selected"] = tabName
-  evt.currentTarget.className += " active";
-	// Check if you need to load more content in the search tab
-	if (document.getElementById("content").offsetHeight >= document.getElementById("content").scrollHeight && main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
-		scrolledSearch(window[search_selected.split("_")[0]+"Search"])
-	}
-}
-
 // Load more content when the search page is at the end
 $('#content').on('scroll', function() {
   if($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {

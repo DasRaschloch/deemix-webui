@@ -430,3 +430,15 @@ input[type="text"], input[type="password"], input[type="number"]{
 .right{
 	float: right;
 }
+.fixed_footer footer{
+	position: sticky;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	justify-content: flex-end;
+	background-color: var(--main-background);
+	bottom: 0px;
+	height: 64px;
+	width: 100%;
+	margin-top: 24px;
+}

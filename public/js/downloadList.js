@@ -58,23 +58,25 @@ socket.on("startDownload", function(uuid){
 })
 
 socket.on("finishDownload", function(uuid){
-	toast(`${queueList[uuid].title} finished downloading.`, 'done')
-	$('#bar_' + uuid).css('width', '100%')
-	let result_icon = $('#download_'+uuid).find('.queue_icon')
-	if (queueList[uuid].failed == 0){
-		result_icon.text("done")
-	}else if (queueList[uuid].failed >= queueList[uuid].size){
-		result_icon.text("error")
-	}else{
-		result_icon.text("warning")
-	}
-	let index = queue.indexOf(uuid)
-	if (index > -1){
-		queue.splice(index, 1)
-		delete queueList[uuid]
-	}
-	if (queue.length <= 0){
-		toast('All downloads completed!', 'all_done')
+	if (queue.indexOf(uuid) > -1){
+		toast(`${queueList[uuid].title} finished downloading.`, 'done')
+		$('#bar_' + uuid).css('width', '100%')
+		let result_icon = $('#download_'+uuid).find('.queue_icon')
+		if (queueList[uuid].failed == 0){
+			result_icon.text("done")
+		}else if (queueList[uuid].failed >= queueList[uuid].size){
+			result_icon.text("error")
+		}else{
+			result_icon.text("warning")
+		}
+		let index = queue.indexOf(uuid)
+		if (index > -1){
+			queue.splice(index, 1)
+			delete queueList[uuid]
+		}
+		if (queue.length <= 0){
+			toast('All downloads completed!', 'all_done')
+		}
 	}
 })
 

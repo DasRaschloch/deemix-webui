@@ -1,11 +1,12 @@
 function isValidURL(text){
-	if (text.toLowerCase().startsWith("http"))
+	if (text.toLowerCase().startsWith("http")){
 		if (text.toLowerCase().indexOf("deezer.com") >= 0 || text.toLowerCase().indexOf("open.spotify.com") >= 0)
 			return true
-	else if (text.toLowerCase().startsWith("spotify:"))
+	}else if (text.toLowerCase().startsWith("spotify:"))
 		return true
 	return false
 }
+
 function convertDuration(duration) {
 	//convert from seconds only to mm:ss format
 	var mm, ss

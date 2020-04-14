@@ -1,23 +1,28 @@
 var queueList = {}
 var queue = []
+var queueComplete = []
 
 socket.on("init_downloadQueue", function(data){
+	console.log(data)
+	if (data.queueComplete.length){
+		data.queueComplete.forEach(item=>{
+			addToQueue(data.queueList[item])
+		})
+	}
 	if (data.currentItem){
 		addToQueue(data['queueList'][data.currentItem])
-		$('#bar_' + data.currentItem).removeClass('indeterminate').addClass('determinate')
-		$('#bar_' + data.currentItem).css('width', data['queueList'][data.currentItem].progress + '%')
-		if (queueList[data.currentItem].failed >= 1){
-			$("#download_"+data.currentItem+" .download_info_status").append(`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueList[data.currentItem].failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`)
-		}
 	}
-	data['queue'].forEach(item=>{
-		addToQueue(data['queueList'][item])
+	data.queue.forEach(item=>{
+		addToQueue(data.queueList[item])
 	})
 })
 
 function addToQueue(queueItem){
 	queueList[queueItem.uuid] = queueItem
-	queue.push(queueItem.uuid)
+	if ((queueItem.downloaded + queueItem.failed) == queueItem.size)
+		queueComplete.push(queueItem.uuid)
+	else
+		queue.push(queueItem.uuid)
 	$("#download_list").append(
 	`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
 		<div class="download_info">
@@ -35,6 +40,23 @@ function addToQueue(queueItem){
 			<i onclick="downloadAction(event)" class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
 		</div>
 	</div>`)
+	if (queueItem.progress>0){
+		$('#bar_' + queueItem.uuid).removeClass('indeterminate').addClass('determinate')
+	}
+	$('#bar_' +queueItem.uuid).css('width', queueItem.progress + '%')
+	if (queueItem.failed >= 1){
+		$("#download_"+queueItem.uuid+" .download_info_status").append(`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`)
+	}
+	if ((queueItem.downloaded + queueItem.failed) == queueItem.size){
+		let result_icon = $('#download_'+queueItem.uuid).find('.queue_icon')
+		if (queueItem.failed == 0){
+			result_icon.text("done")
+		}else if (queueItem.failed == queueItem.size){
+			result_icon.text("error")
+		}else{
+			result_icon.text("warning")
+		}
+	}
 }
 
 socket.on("addedToQueue", function(queueItem){
@@ -80,7 +102,7 @@ socket.on("finishDownload", function(uuid){
 		let index = queue.indexOf(uuid)
 		if (index > -1){
 			queue.splice(index, 1)
-			delete queueList[uuid]
+			queueComplete.push(uuid)
 		}
 		if (queue.length <= 0){
 			toast('All downloads completed!', 'done_all')
@@ -91,7 +113,23 @@ socket.on("finishDownload", function(uuid){
 socket.on("removedAllDownloads", function(){
 	queue = []
 	queueList = {}
+	queueComplete = []
 	$("#download_list").html("")
+})
+
+socket.on("removedFinishedDownloads", function(){
+	queueComplete.forEach((item) => {
+		$("#download_"+item).remove()
+	})
+	queueComplete = []
+})
+
+$("#clean_queue").on("click", function(){
+	socket.emit("removeFinishedDownloads")
+})
+
+$("#cancel_queue").on("click", function(){
+	socket.emit("cancelAllDownloads")
 })
 
 socket.on("updateQueue", function(update){

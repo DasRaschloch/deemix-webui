@@ -67,7 +67,6 @@ function clickElement(button){
 }
 
 function sendAddToQueue(url, bitrate = null){
-	console.log(url)
 	socket.emit("addToQueue", {url: url, bitrate:bitrate})
 }
 

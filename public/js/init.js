@@ -9,8 +9,8 @@ toastsWithId = {}
 
 function toast(msg, icon=null, dismiss=true, id=null){
 	if (toastsWithId[id]){
-		toastObj = toastsWithId[id]
-		toastDOM = $(`div.toastify[toast_id=${id}]`)
+		let toastObj = toastsWithId[id]
+		let toastDOM = $(`div.toastify[toast_id=${id}]`)
 		if (msg){
 			toastDOM.find(".toast-message").html(msg)
 		}
@@ -21,6 +21,7 @@ function toast(msg, icon=null, dismiss=true, id=null){
 				icon = `<i class="material-icons">${icon}</i>`
 			toastDOM.find(".toast-icon").html(icon)
 		}
+		console.log(dismiss)
 		if (dismiss !== null && dismiss){
 			setTimeout(function(){
 				toastObj.hideToast()
@@ -34,7 +35,7 @@ function toast(msg, icon=null, dismiss=true, id=null){
 			icon = `<div class="circle-loader"></div>`
 		else
 			icon = `<i class="material-icons">${icon}</i>`
-		toastObj = Toastify({
+		let toastObj = Toastify({
 			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
 			duration: dismiss ? 3000 : 0,
 			gravity: 'bottom',

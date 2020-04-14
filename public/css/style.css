@@ -427,3 +427,6 @@ input[type="text"], input[type="password"], input[type="number"]{
 	color: var(--primary-text);
 	margin-bottom: 8px;
 }
+.right{
+	float: right;
+}

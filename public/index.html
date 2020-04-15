@@ -209,7 +209,7 @@
 								<input type="checkbox" v-model="settings.createPlaylistFolder">
 							</div>
 							<div class="input_group" v-if="settings.createPlaylistFolder">
-								<p>Playlsit folder template</p>
+								<p>Playlist folder template</p>
 								<input type="text" v-model="settings.playlistNameTemplate">
 							</div>
 							<div class="input_group">
@@ -254,7 +254,7 @@
 							</div>
 							<div class="input_group">
 								<p>Concurrent Downloads</p>
-								<input type="number" v-model="settings.queueConcurrency">
+								<input type="number" v-model.number="settings.queueConcurrency">
 							</div>
 							<div class="input_group">
 								<p>Preferred Bitrate</p>
@@ -306,11 +306,11 @@
 							</div>
 							<div class="input_group">
 								<p>Local artwork size</p>
-								<input type="number" min="100" max="1800" step="100" v-model="settings.localArtworkSize">
+								<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize">
 							</div>
 							<div class="input_group">
 								<p>Embedded artwork size</p>
-								<input type="number" min="100" max="1800" step="100" v-model="settings.embeddedArtworkSize">
+								<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize">
 							</div>
 							<div class="input_group">
 								<p>Save images as png</p>

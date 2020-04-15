@@ -59,12 +59,6 @@ socket.on("message", function(msg){
 	console.log(msg)
 })
 
-window.addEventListener('pywebviewready', function() {
-	if (window.pywebview.platform == "gtk"){
-		$('#open_login_prompt').prop('disabled', false);
-	}
-})
-
 $(function(){
 	if (localStorage.getItem("arl")){
 		socket.emit("login", localStorage.getItem("arl"));
@@ -95,9 +89,6 @@ document.querySelector("#hide_download_tab").onclick = (ev)=>{
 }
 
 // Login stuff
-function openLoginPrompt(){
-	socket.emit("loginpage")
-}
 
 function loginButton(){
 	let arl = document.querySelector("#login_input_arl").value

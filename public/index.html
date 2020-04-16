@@ -353,6 +353,16 @@
 								</select>
 							</div>
 						</div>
+						<div id="settings_spotify_tab">
+							<div class="input_group">
+								<p>Spotify clientID</p>
+								<input type="text" v-model="spotifyFeatures.clientId">
+							</div>
+							<div class="input_group">
+								<p>Spotify Client Secret</p>
+								<input type="password" v-model="spotifyFeatures.clientSecret">
+							</div>
+						</div>
 						<footer>
 							<button onclick="saveSettings()">Save</button>
 						</footer>

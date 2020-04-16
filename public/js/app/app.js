@@ -8,6 +8,7 @@ main_selected=""
 toastsWithId = {}
 // settings
 lastSettings = {}
+lastCredentials = {}
 
 function toast(msg, icon=null, dismiss=true, id=null){
 	if (toastsWithId[id]){
@@ -23,7 +24,6 @@ function toast(msg, icon=null, dismiss=true, id=null){
 				icon = `<i class="material-icons">${icon}</i>`
 			toastDOM.find(".toast-icon").html(icon)
 		}
-		console.log(dismiss)
 		if (dismiss !== null && dismiss){
 			setTimeout(function(){
 				toastObj.hideToast()
@@ -166,28 +166,33 @@ socket.on("logged_out", function(){
 var settingsTab = new Vue({
   el: '#settings_tab',
   data: {
-		settings: {}
+		settings: {},
+		spotifyFeatures: {}
   }
 })
 
-socket.on("init_settings", function(settings){
-	loadSettings(settings)
+socket.on("init_settings", function(settings, credentials){
+	console.log(settings,credentials)
+	loadSettings(settings, credentials)
 	toast("Settings loaded!", 'settings')
 })
 
-socket.on("updateSettings", function(settings){
-	loadSettings(settings)
+socket.on("updateSettings", function(settings, credentials){
+	loadSettings(settings, credentials)
 	toast("Settings updated!", 'settings')
 })
 
-function loadSettings(settings){
+function loadSettings(settings, spotifyCredentials){
 	lastSettings = {...settings}
+	lastCredentials = {...spotifyCredentials}
 	settingsTab.settings = settings
+	settingsTab.spotifyFeatures = spotifyCredentials
 }
 
 function saveSettings(){
 	lastSettings = {...settingsTab.settings}
-	socket.emit("saveSettings", lastSettings)
+	lastCredentials = {...settingsTab.spotifyFeatures}
+	socket.emit("saveSettings", lastSettings, lastCredentials)
 }
 
 // tabs stuff

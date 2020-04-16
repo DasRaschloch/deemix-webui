@@ -149,13 +149,16 @@ var playlistSearch = new Vue({
 })
 
 // Search section
-$("#searchbar").keyup(function(e){
+$("#searchbar").keydown(function(e){
   if(e.keyCode == 13){
-		term = this.value
-		console.log(term)
-		if (isValidURL(term))
-			sendAddToQueue(term);
-		else{
+    term = this.value
+    if (isValidURL(term)){
+      if (e.ctrlKey){
+        openQualityModal(term);
+      }else{
+        sendAddToQueue(term);
+      }
+    }else{
 			document.getElementById("search_tab_content").style.display = "none";
 			socket.emit("mainSearch", {term: term});
 		}

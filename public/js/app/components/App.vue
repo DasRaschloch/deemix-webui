@@ -1,17 +1,13 @@
 <template>
-	<div></div>
+	<the-search-tab />
 </template>
 
 <script>
-// const Import = httpVueLoader('./Import.vue')
+const TheSearchTab = httpVueLoader('./TheSearchTab.vue')
 
 module.exports = {
-	data: () => ({
-		who: 'world'
-	}),
-	mounted() {
-		console.log( 'First Vue SFC try' );
-		
+	components: {
+		TheSearchTab
 	}
 }
 </script>

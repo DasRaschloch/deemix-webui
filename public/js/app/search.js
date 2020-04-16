@@ -192,6 +192,7 @@ function mainSearchHandler(result) {
 	document.getElementById('search_tab_content').style.display = 'block'
 	document.getElementById('main_search_tablink').click()
 }
+
 socket.on('mainSearch', function (result) {
 	mainSearchHandler(result)
 })

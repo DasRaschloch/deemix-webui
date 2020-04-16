@@ -71,7 +71,8 @@ var mainSearch = new Vue({
 			if (section != "TOP_RESULT")
 				clickElement('search_'+section.toLowerCase()+'_tab')
 		},
-		addToQueue: function(url){sendAddToQueue(url)}
+    addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -88,7 +89,8 @@ var trackSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){sendAddToQueue(url)}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -105,7 +107,8 @@ var albumSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){sendAddToQueue(url)}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -122,7 +125,8 @@ var artistSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){sendAddToQueue(url)}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -139,7 +143,8 @@ var playlistSearch = new Vue({
 		}
   },
 	methods: {
-		addToQueue: function(url){sendAddToQueue(url)}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 

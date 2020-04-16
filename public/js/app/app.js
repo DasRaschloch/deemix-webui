@@ -166,7 +166,7 @@ socket.on("logged_out", function(){
 var settingsTab = new Vue({
   el: '#settings_tab',
   data: {
-		settings: {},
+		settings: {tags: {}},
 		spotifyFeatures: {}
   }
 })
@@ -216,4 +216,28 @@ function changeTab(evt, section, tabName) {
 	if (document.getElementById("content").offsetHeight >= document.getElementById("content").scrollHeight && main_selected == "search_tab" && ["track_search", "album_search", "artist_search", "playlist_search"].indexOf(search_selected) != -1){
 		scrolledSearch(window[search_selected.split("_")[0]+"Search"])
 	}
+}
+
+// quality modal stuff
+var modalQuality = document.getElementById('modal_quality');
+modalQuality.open = false
+
+function openQualityModal(link){
+	$(modalQuality).data("url", link)
+	$(modalQuality).css('display', 'block')
+	$(modalQuality).addClass('animated fadeIn')
+}
+
+function modalQualityButton(bitrate){
+	var url=$(modalQuality).data("url")
+	if (url.indexOf(";") != -1){
+		urls = url.split(";")
+		urls.forEach(url=>{
+			sendAddToQueue(url, bitrate)
+		})
+	}else{
+		sendAddToQueue(url, bitrate)
+	}
+	$(modalQuality).addClass('animated fadeOut')
+	$(modalQuality).css('display', 'none')
 }

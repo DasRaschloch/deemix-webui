@@ -53,7 +53,7 @@
 											<div class="cover_container">
 												<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'https://e-cdns-images.dzcdn.net/images/'+ results.TOP_RESULT[0].PICTURE_TYPE +'/' + results.TOP_RESULT[0].PLAYLIST_PICTURE :'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
 													v-bind:class="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
-													<div v-on:click="addToQueue('https://deezer.com/'+results.TOP_RESULT[0].__TYPE__+'/'+(results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_ID : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_ID : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].PLAYLIST_ID : ''))" class="download_overlay"><i class="material-icons">get_app</i></div>
+													<div v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/'+results.TOP_RESULT[0].__TYPE__+'/'+(results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_ID : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_ID : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].PLAYLIST_ID : '')" class="download_overlay"><i class="material-icons">get_app</i></div>
 											</div>
 											<div class="info_box">
 												<p class="primary-text">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_NAME : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_TITLE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].TITLE : '' }}</p>
@@ -69,7 +69,7 @@
 													<td class="breakline"><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
 													<td class="breakline">{{track.ALB_TITLE}}</td>
 													<td>{{convertDuration(track.DURATION)}}</td>
-													<td v-on:click="addToQueue('https://www.deezer.com/track/'+track.SNG_ID)" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
+													<td v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
 												</tr>
 											</table>
 										</div>
@@ -77,7 +77,7 @@
 											<div v-for="release in results[section].data.slice(0, 10)" class="release">
 												<div class="cover_container">
 													<img v-bind:class="(section == 'ARTIST' ? 'circle' : 'rounded') + ' coverart'" v-bind:src="(section == 'ARTIST' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE : section == 'ALBUM' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE : section == 'PLAYLIST' ? 'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/' ) + '/156x156-000000-80-0-0.jpg'">
-													<div v-on:click="addToQueue('https://deezer.com/'+(section == 'ARTIST' ? 'artist/'+release.ART_ID : section == 'ALBUM' ? 'album/'+release.ALB_ID : section == 'PLAYLIST' ? 'playlist/'+release.PLAYLIST_ID : ''))" class="download_overlay"><i class="material-icons">get_app</i></div>
+													<div v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/'+(section == 'ARTIST' ? 'artist/'+release.ART_ID : section == 'ALBUM' ? 'album/'+release.ALB_ID : section == 'PLAYLIST' ? 'playlist/'+release.PLAYLIST_ID : '')" class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{ section == 'ARTIST' ? release.ART_NAME : section == 'ALBUM' ? release.ALB_TITLE : section == 'PLAYLIST' ? release.TITLE : '' }}</p>
 												<p class="secondary-text">{{ section == 'ARTIST' ? numberWithDots(release.NB_FAN) + ' fans' : section == 'ALBUM' ? release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks' : section == 'PLAYLIST' ? release.NB_SONG+' tracks' : '' }}</p>
@@ -109,7 +109,7 @@
 										<td class="breakline"><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
 										<td class="breakline">{{track.ALB_TITLE}}</td>
 										<td>{{convertDuration(track.DURATION)}}</td>
-										<td v-on:click="addToQueue('https://www.deezer.com/track/'+track.SNG_ID)" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
+										<td v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
 									</tr>
 								</table>
 							</div>
@@ -122,7 +122,7 @@
 									<div v-for="release in results.data" class="release">
 										<div class="cover_container">
 											<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
-											<div v-on:click="addToQueue('https://www.deezer.com/album/'+release.ALB_ID)" class="download_overlay"><i class="material-icons">get_app</i></div>
+											<div v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/album/'+release.ALB_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.ALB_TITLE }}</p>
 										<p class="secondary-text">{{ 'by '+release.ART_NAME }}</p>
@@ -138,7 +138,7 @@
 									<div v-for="release in results.data" class="release">
 										<div class="cover_container">
 											<img class="circle coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
-											<div v-on:click="addToQueue('https://www.deezer.com/artist/'+release.ART_ID)" class="download_overlay"><i class="material-icons">get_app</i></div>
+											<div v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/artist/'+release.ART_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.ART_NAME }}</p>
 										<p class="secondary-text">{{ numberWithDots(release.NB_FAN) + ' fans' }}</p>
@@ -154,7 +154,7 @@
 									<div v-for="release in results.data" class="release">
 										<div class="cover_container">
 											<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
-											<div v-on:click="addToQueue('https://www.deezer.com/playlist/'+release.PLAYLIST_ID)" class="download_overlay"><i class="material-icons">get_app</i></div>
+											<div v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/playlist/'+release.PLAYLIST_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.TITLE }}</p>
 										<p class="secondary-text">{{ release.NB_SONG+' tracks' }}</p>
@@ -393,6 +393,17 @@
 			</div>
 
 		</main>
+		<div id="modal_quality" class="smallmodal">
+			<!-- Modal content -->
+			<div class="smallmodal-content">
+				<button onclick="modalQualityButton(9)">Download FLAC</button><br>
+				<button onclick="modalQualityButton(3)">Download MP3 320kbps</button><br>
+				<button onclick="modalQualityButton(1)">Download MP3 128kbps</button><br>
+				<button onclick="modalQualityButton(15)">Download 360 Reality Audio [HQ]</button><br>
+				<button onclick="modalQualityButton(14)">Download 360 Reality Audio [MQ]</button><br>
+				<button onclick="modalQualityButton(13)">Download 360 Reality Audio [LQ]</button><br>
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript" src="/public/js/socket.io.js"></script>
 	<script type="text/javascript" src="/public/js/jquery-3.3.1.min.js"></script>

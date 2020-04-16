@@ -15,3 +15,7 @@
 .side_icon.active {
 	color: var(--accent-color);
 }
+
+.main_tablinks {
+	cursor: pointer;
+}

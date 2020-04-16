@@ -121,6 +121,7 @@ button {
 	min-width: 64px;
 	text-transform: uppercase;
 	color: var(--accent-text);
+	cursor: pointer;
 }
 
 button[disabled] {

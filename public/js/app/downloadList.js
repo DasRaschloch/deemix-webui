@@ -9,15 +9,15 @@ socket.on('init_downloadQueue', function (data) {
 			addToQueue(data.queueList[item])
 		})
 	}
-	if (data.currentItem) {
-		addToQueue(data['queueList'][data.currentItem])
+	if (data.currentItem){
+		addToQueue(data['queueList'][data.currentItem], true)
 	}
 	data.queue.forEach(item => {
 		addToQueue(data.queueList[item])
 	})
 })
 
-function addToQueue(queueItem) {
+function addToQueue(queueItem, current=false){
 	queueList[queueItem.uuid] = queueItem
 	if (queueItem.downloaded + queueItem.failed == queueItem.size) queueComplete.push(queueItem.uuid)
 	else queue.push(queueItem.uuid)
@@ -39,12 +39,9 @@ function addToQueue(queueItem) {
 			<div class="progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
 			<i onclick="downloadAction(event)" class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
 		</div>
-	</div>`
-	)
-	if (queueItem.progress > 0) {
-		$('#bar_' + queueItem.uuid)
-			.removeClass('indeterminate')
-			.addClass('determinate')
+	</div>`)
+	if (queueItem.progress>0 || current){
+		$('#bar_' + queueItem.uuid).removeClass('indeterminate').addClass('determinate')
 	}
 	$('#bar_' + queueItem.uuid).css('width', queueItem.progress + '%')
 	if (queueItem.failed >= 1) {

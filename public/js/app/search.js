@@ -82,9 +82,8 @@ let MainSearch = new Vue({
 		changeSearchTab(section) {
 			if (section != 'TOP_RESULT') clickElement('search_' + section.toLowerCase() + '_tab')
 		},
-		addToQueue(url) {
-			sendAddToQueue(url)
-		}
+    addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -101,9 +100,8 @@ var trackSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function (url) {
-			sendAddToQueue(url)
-		}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -120,9 +118,8 @@ var albumSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function (url) {
-			sendAddToQueue(url)
-		}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -139,9 +136,8 @@ var artistSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function (url) {
-			sendAddToQueue(url)
-		}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
@@ -158,23 +154,26 @@ var playlistSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function (url) {
-			sendAddToQueue(url)
-		}
+		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
 
 let term = null
 
 // Search section
-$('#searchbar').keyup(function (e) {
-	if (e.keyCode == 13) {
-		term = this.value
-		console.log(term)
-		if (isValidURL(term)) socket.emit('addToQueue', { url: term })
-		else {
-			document.getElementById('search_tab_content').style.display = 'none'
-			socket.emit('mainSearch', { term: term })
+$("#searchbar").keyup(function(e){
+  if(e.keyCode == 13){
+    term = this.value
+    if (isValidURL(term)){
+      if (e.ctrlKey){
+        openQualityModal(term);
+      }else{
+        sendAddToQueue(term);
+      }
+    }else{
+			document.getElementById("search_tab_content").style.display = "none";
+			socket.emit("mainSearch", {term: term});
 		}
 	}
 })

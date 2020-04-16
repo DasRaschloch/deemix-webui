@@ -7,7 +7,8 @@ let main_selected = ''
 // toasts stuff
 let toastsWithId = {}
 // settings
-let lastSettings = {}
+lastSettings = {}
+lastCredentials = {}
 
 function toast(msg, icon = null, dismiss = true, id = null) {
 	if (toastsWithId[id]) {
@@ -21,9 +22,8 @@ function toast(msg, icon = null, dismiss = true, id = null) {
 			else icon = `<i class="material-icons">${icon}</i>`
 			toastDOM.find('.toast-icon').html(icon)
 		}
-		console.log({ dismiss })
-		if (dismiss !== null && dismiss) {
-			setTimeout(function () {
+		if (dismiss !== null && dismiss){
+			setTimeout(function(){
 				toastObj.hideToast()
 				delete toastsWithId[id]
 			}, 3000)
@@ -163,30 +163,35 @@ socket.on('logged_out', function () {
 
 // settings stuff
 var settingsTab = new Vue({
-	el: '#settings_tab',
-	data: {
-		settings: {}
-	}
+  el: '#settings_tab',
+  data: {
+		settings: {tags: {}},
+		spotifyFeatures: {}
+  }
 })
 
-socket.on('init_settings', function (settings) {
-	loadSettings(settings)
-	toast('Settings loaded!', 'settings')
+socket.on("init_settings", function(settings, credentials){
+	console.log(settings,credentials)
+	loadSettings(settings, credentials)
+	toast("Settings loaded!", 'settings')
 })
 
-socket.on('updateSettings', function (settings) {
-	loadSettings(settings)
-	toast('Settings updated!', 'settings')
+socket.on("updateSettings", function(settings, credentials){
+	loadSettings(settings, credentials)
+	toast("Settings updated!", 'settings')
 })
 
-function loadSettings(settings) {
-	lastSettings = { ...settings }
+function loadSettings(settings, spotifyCredentials){
+	lastSettings = {...settings}
+	lastCredentials = {...spotifyCredentials}
 	settingsTab.settings = settings
+	settingsTab.spotifyFeatures = spotifyCredentials
 }
 
-function saveSettings() {
-	lastSettings = { ...settingsTab.settings }
-	socket.emit('saveSettings', lastSettings)
+function saveSettings(){
+	lastSettings = {...settingsTab.settings}
+	lastCredentials = {...settingsTab.spotifyFeatures}
+	socket.emit("saveSettings", lastSettings, lastCredentials)
 }
 
 // tabs stuff
@@ -216,4 +221,45 @@ function changeTab(evt, section, tabName) {
 	) {
 		scrolledSearch(window[search_selected.split('_')[0] + 'Search'])
 	}
+}
+
+// quality modal stuff
+var modalQuality = document.getElementById('modal_quality');
+modalQuality.open = false
+
+window.onclick = function(event) {
+	if (event.target == modalQuality && modalQuality.open) {
+		$(modalQuality).addClass('animated fadeOut')
+	}
+}
+
+$(modalQuality).on('webkitAnimationEnd', function () {
+	if (modalQuality.open){
+		$(this).removeClass('animated fadeOut')
+		$(this).css('display', 'none')
+		modalQuality.open = false
+	}else{
+		$(this).removeClass('animated fadeIn')
+		$(this).css('display', 'block')
+		modalQuality.open = true
+	}
+})
+
+function openQualityModal(link){
+	$(modalQuality).data("url", link)
+	$(modalQuality).css('display', 'block')
+	$(modalQuality).addClass('animated fadeIn')
+}
+
+function modalQualityButton(bitrate){
+	var url=$(modalQuality).data("url")
+	if (url.indexOf(";") != -1){
+		urls = url.split(";")
+		urls.forEach(url=>{
+			sendAddToQueue(url, bitrate)
+		})
+	}else{
+		sendAddToQueue(url, bitrate)
+	}
+	$(modalQuality).addClass('animated fadeOut')
 }

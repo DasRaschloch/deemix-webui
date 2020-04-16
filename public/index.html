@@ -19,15 +19,15 @@
 		</script> -->
 	</head>
 	<body>
-		<aside id="sidebar">
+		<aside role="navigation" id="sidebar">
 			<i class="material-icons side_icon">menu</i>
 			<i onclick="changeTab(event, 'main', 'search_tab')" id="main_search_tablink" class="main_tablinks"></i>
-			<i onclick="changeTab(event, 'main', 'home_tab')" id="main_home_tablink" class="material-icons side_icon main_tablinks">home</i>
-			<i onclick="changeTab(event, 'main', 'charts_tab')" id="main_charts_tablink" class="material-icons side_icon main_tablinks">bubble_chart</i>
-			<i onclick="changeTab(event, 'main', 'favorites_tab')" id="main_favorites_tablink" class="material-icons side_icon main_tablinks">album</i>
-			<i onclick="changeTab(event, 'main', 'analyzer_tab')" id="main_analyzer_tablink" class="material-icons side_icon main_tablinks">link</i>
-			<i onclick="changeTab(event, 'main', 'settings_tab')" id="main_settings_tablink" class="material-icons side_icon main_tablinks">settings</i>
-			<i onclick="changeTab(event, 'main', 'about_tab')" id="main_about_tablink" class="material-icons side_icon main_tablinks">info</i>
+			<i role="link" aria-label="home" onclick="changeTab(event, 'main', 'home_tab')" id="main_home_tablink" class="material-icons side_icon main_tablinks">home</i>
+			<i role="link" aria-label="charts" onclick="changeTab(event, 'main', 'charts_tab')" id="main_charts_tablink" class="material-icons side_icon main_tablinks">bubble_chart</i>
+			<i role="link" aria-label="favorites" onclick="changeTab(event, 'main', 'favorites_tab')" id="main_favorites_tablink" class="material-icons side_icon main_tablinks">album</i>
+			<i role="link" aria-label="link analyzer" onclick="changeTab(event, 'main', 'analyzer_tab')" id="main_analyzer_tablink" class="material-icons side_icon main_tablinks">link</i>
+			<i role="link" aria-label="settings" onclick="changeTab(event, 'main', 'settings_tab')" id="main_settings_tablink" class="material-icons side_icon main_tablinks">settings</i>
+			<i role="link" aria-label="about" onclick="changeTab(event, 'main', 'about_tab')" id="main_about_tablink" class="material-icons side_icon main_tablinks">info</i>
 		</aside>
 		<main id="main_content">
 			<div id="middle_section">
@@ -320,8 +320,12 @@
 								<input type="checkbox" v-model="settings.PNGcovers">
 							</div>
 							<div class="input_group">
+								<p>JPEG image quality</p>
+								<input type="number" min="1" max="100" v-model.number="settings.jpegImageQuality">
+							</div>
+							<div class="input_group">
 								<p>Save playlists as compilation</p>
-								<input type="checkbox" v-model="settings.savePlaylistAsCompilation">
+								<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation">
 							</div>
 							<div class="input_group">
 								<p>Remove album version from track title</p>
@@ -356,6 +360,16 @@
 								</select>
 							</div>
 						</div>
+						<div id="settings_spotify_tab">
+							<div class="input_group">
+								<p>Spotify clientID</p>
+								<input type="text" v-model="spotifyFeatures.clientId">
+							</div>
+							<div class="input_group">
+								<p>Spotify Client Secret</p>
+								<input type="password" v-model="spotifyFeatures.clientSecret">
+							</div>
+						</div>
 						<footer>
 							<button onclick="saveSettings()">Save</button>
 						</footer>
@@ -381,6 +395,17 @@
 				</div>
 			</div>
 		</main>
+		<div id="modal_quality" class="smallmodal">
+			<!-- Modal content -->
+			<div class="smallmodal-content">
+				<button onclick="modalQualityButton(9)">Download FLAC</button><br>
+				<button onclick="modalQualityButton(3)">Download MP3 320kbps</button><br>
+				<button onclick="modalQualityButton(1)">Download MP3 128kbps</button><br>
+				<button onclick="modalQualityButton(15)">Download 360 Reality Audio [HQ]</button><br>
+				<button onclick="modalQualityButton(14)">Download 360 Reality Audio [MQ]</button><br>
+				<button onclick="modalQualityButton(13)">Download 360 Reality Audio [LQ]</button><br>
+			</div>
+		</div>
 	</body>
 	<script type="text/javascript" src="/public/js/vendor/httpVueLoader.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/socket.io.js"></script>

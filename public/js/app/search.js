@@ -149,7 +149,7 @@ var playlistSearch = new Vue({
 })
 
 // Search section
-$("#searchbar").keydown(function(e){
+$("#searchbar").keyup(function(e){
   if(e.keyCode == 13){
     term = this.value
     if (isValidURL(term)){

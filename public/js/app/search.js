@@ -154,7 +154,7 @@ $("#searchbar").keyup(function(e){
 		term = this.value
 		console.log(term)
 		if (isValidURL(term))
-			socket.emit("addToQueue", {url: term});
+			sendAddToQueue(term);
 		else{
 			document.getElementById("search_tab_content").style.display = "none";
 			socket.emit("mainSearch", {term: term});

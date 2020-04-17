@@ -1,8 +1,5 @@
 // Initialization
 const socket = io.connect(window.location.href)
-// tabs stuff
-search_selected = ''
-main_selected = ''
 var localStorage = window.localStorage
 // toasts stuff
 var toastsWithId = {}
@@ -192,36 +189,6 @@ function saveSettings(){
 	lastSettings = {...settingsTab.settings}
 	lastCredentials = {...settingsTab.spotifyFeatures}
 	socket.emit("saveSettings", lastSettings, lastCredentials)
-}
-
-// tabs stuff
-function changeTab(evt, section, tabName) {
-	console.log( {evt, section, tabName} );
-
-	var i, tabcontent, tablinks
-	tabcontent = document.getElementsByClassName(section + '_tabcontent')
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = 'none'
-	}
-	tablinks = document.getElementsByClassName(section + '_tablinks')
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(' active', '')
-	}
-	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
-		settingsTab.settings = { ...lastSettings }
-	}
-	document.getElementById(tabName).style.display = 'block'
-	window[section + '_selected'] = tabName
-	console.log(section + '_selected', window[section + '_selected'])
-	evt.currentTarget.className += ' active'
-	// Check if you need to load more content in the search tab
-	if (
-		document.getElementById('content').offsetHeight >= document.getElementById('content').scrollHeight &&
-		main_selected == 'search_tab' &&
-		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
-	) {
-		scrolledSearch(window[search_selected.split('_')[0] + 'Search'])
-	}
 }
 
 // quality modal stuff

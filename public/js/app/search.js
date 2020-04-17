@@ -22,16 +22,6 @@ function scrolledSearch(vueTab) {
 	}
 }
 
-function artistView(){
-	console.log("ARTIST")
-}
-function albumView(){
-	console.log("ALBUM")
-}
-function playlistView(){
-	console.log("PLAYLIST")
-}
-
 function searchUpadate(result) {
 	console.log(result)
 	vueTab = null

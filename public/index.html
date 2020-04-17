@@ -74,7 +74,7 @@
 											</table>
 										</div>
 										<div v-if="section != 'TRACK' && section != 'TOP_RESULT'" class="release_grid firstrow_only">
-											<div v-for="release in results[section].data.slice(0, 10)" class="release" v-on:click="window[section.toLowerCase()+'View']()">
+											<div v-for="release in results[section].data.slice(0, 10)" class="release" v-on:click="window[section.toLowerCase()+'View'](event)" v-bind:data-id="section == 'ARTIST' ? release.ART_ID : section == 'ALBUM' ? release.ALB_ID : section == 'PLAYLIST' ? release.PLAYLIST_ID : ''">
 												<div class="cover_container">
 													<img v-bind:class="(section == 'ARTIST' ? 'circle' : 'rounded') + ' coverart'" v-bind:src="(section == 'ARTIST' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE : section == 'ALBUM' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE : section == 'PLAYLIST' ? 'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/' ) + '/156x156-000000-80-0-0.jpg'">
 													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/'+(section == 'ARTIST' ? 'artist/'+release.ART_ID : section == 'ALBUM' ? 'album/'+release.ALB_ID : section == 'PLAYLIST' ? 'playlist/'+release.PLAYLIST_ID : '')" class="download_overlay"><i class="material-icons">get_app</i></div>
@@ -374,6 +374,60 @@
 
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
 
+					<div id="artist_tab" class="main_tabcontent fixed_footer">
+						<header>
+							<h1>{{ title }}</h1>
+							<div class="fab"><i class="material-icons">get_app</i></div>
+						</header>
+
+						<div>
+				      <ul id="artist-tabs">
+								<template v-for="(item, name, index) in body">
+									<li class="tab"><a v-bind:class="index==0 ? 'active' : ''" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</a></li>
+								</template>
+				      </ul>
+						</div>
+
+						<table>
+							<thead>
+								<tr>
+									<td v-for="data in head" v-on:click="data.sortKey ? sortBy(data.sortKey) : null" v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
+											{{data.title}}
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<template v-for="release in showTable">
+									<tr>
+										<td>
+											<img v-bind:src="release.cover_small"/>
+											<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit">explicit</i>
+											{{release.title}}
+											<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color:#FF7300;">fiber_new</i>
+										</td>
+										<td>{{release.release_date}}</td>
+										<td><i v-on:click="addToQueue(event)" v-on:contextmenu="openQualityModal(event)" v-bind:data-link="release.link" class="material-icons">file_download</i></td>
+									</tr>
+								</template>
+							</tbody>
+						</table>
+
+						<footer>
+							<button onclick="backTab()">Back</button>
+						</footer>
+					</div>
+
+					<div id="tracklist_tab" class="main_tabcontent fixed_footer">
+						<header>
+							<h1>{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
+							<h2><span v-if="metadata">{{ metadata }}</span><span v-if="release_date">{{ release_date }}</span></h2>
+						</header>
+
+						<footer>
+							<button onclick="backTab()">Back</button>
+						</footer>
+					</div>
+
 				</div></section>
 			</div>
 
@@ -408,9 +462,12 @@
 	<script type="text/javascript" src="/public/js/vendor/socket.io.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/vue.min.js"></script>
+	<script type="text/javascript" src="/public/js/vendor/lodash.min.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/toastify.js"></script>
 	<!-- <script type="text/javascript" src="/public/js/app/v-app.js"></script> -->
 	<script type="text/javascript" src="/public/js/app/app.js"></script>
+	<script type="text/javascript" src="/public/js/app/tabs.js"></script>
+	<script type="text/javascript" src="/public/js/app/stackedTabs.js"></script>
 	<script type="text/javascript" src="/public/js/app/utils.js"></script>
 	<script type="text/javascript" src="/public/js/app/search.js"></script>
 	<script type="text/javascript" src="/public/js/app/downloadList.js"></script>

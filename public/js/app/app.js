@@ -1,14 +1,14 @@
 // Initialization
 const socket = io.connect(window.location.href)
-localStorage = window.localStorage
 // tabs stuff
 search_selected = ''
 main_selected = ''
+var localStorage = window.localStorage
 // toasts stuff
-let toastsWithId = {}
+var toastsWithId = {}
 // settings
-lastSettings = {}
-lastCredentials = {}
+var lastSettings = {}
+var lastCredentials = {}
 
 function toast(msg, icon = null, dismiss = true, id = null) {
 	if (toastsWithId[id]) {

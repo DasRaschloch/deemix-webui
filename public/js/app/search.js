@@ -22,6 +22,16 @@ function scrolledSearch(vueTab) {
 	}
 }
 
+function artistView(){
+	console.log("ARTIST")
+}
+function albumView(){
+	console.log("ALBUM")
+}
+function playlistView(){
+	console.log("PLAYLIST")
+}
+
 function searchUpadate(result) {
 	console.log(result)
 	vueTab = null
@@ -82,7 +92,7 @@ let MainSearch = new Vue({
 		changeSearchTab(section) {
 			if (section != 'TOP_RESULT') clickElement('search_' + section.toLowerCase() + '_tab')
 		},
-    addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+    addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
 		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
@@ -100,7 +110,7 @@ var trackSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
 		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
@@ -118,7 +128,7 @@ var albumSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
 		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
@@ -136,7 +146,7 @@ var artistSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
 		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
@@ -154,7 +164,7 @@ var playlistSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){sendAddToQueue(e.currentTarget.dataset.link)},
+		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
 		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
 	}
 })
@@ -172,8 +182,14 @@ $("#searchbar").keyup(function(e){
         sendAddToQueue(term);
       }
     }else{
-			document.getElementById("search_tab_content").style.display = "none";
-			socket.emit("mainSearch", {term: term});
+			if (term != MainSearch.results.QUERY || main_selected == 'search_tab'){
+				document.getElementById("search_tab_content").style.display = "none";
+				socket.emit("mainSearch", {term: term});
+			}else{
+				document.getElementById('search_all_tab').click()
+				document.getElementById('search_tab_content').style.display = 'block'
+				document.getElementById('main_search_tablink').click()
+			}
 		}
 	}
 })

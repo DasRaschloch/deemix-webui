@@ -2,8 +2,8 @@
 const socket = io.connect(window.location.href)
 localStorage = window.localStorage
 // tabs stuff
-let search_selected = ''
-let main_selected = ''
+search_selected = ''
+main_selected = ''
 // toasts stuff
 let toastsWithId = {}
 // settings
@@ -197,7 +197,7 @@ function saveSettings(){
 // tabs stuff
 function changeTab(evt, section, tabName) {
 	console.log( {evt, section, tabName} );
-	
+
 	var i, tabcontent, tablinks
 	tabcontent = document.getElementsByClassName(section + '_tabcontent')
 	for (i = 0; i < tabcontent.length; i++) {
@@ -212,6 +212,7 @@ function changeTab(evt, section, tabName) {
 	}
 	document.getElementById(tabName).style.display = 'block'
 	window[section + '_selected'] = tabName
+	console.log(section + '_selected', window[section + '_selected'])
 	evt.currentTarget.className += ' active'
 	// Check if you need to load more content in the search tab
 	if (

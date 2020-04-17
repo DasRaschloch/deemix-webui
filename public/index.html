@@ -36,11 +36,11 @@
 					<!-- <div id="v-app" style="height: 300px;"><app/></div> -->
 					<div id="search_tab" class="main_tabcontent">
 						<div class="tab">
-							<button class="search_tablinks" id="search_all_tab" onclick="changeTab(event, 'search', 'main_search')">All</button>
-							<button class="search_tablinks" id="search_track_tab" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
-							<button class="search_tablinks" id="search_album_tab" onclick="changeTab(event, 'search', 'album_search')">Album</button>
-							<button class="search_tablinks" id="search_artist_tab" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
-							<button class="search_tablinks" id="search_playlist_tab" onclick="changeTab(event, 'search', 'playlist_search')">Playlist</button>
+							<button class="search_tablinks selective" id="search_all_tab" onclick="changeTab(event, 'search', 'main_search')">All</button>
+							<button class="search_tablinks selective" id="search_track_tab" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
+							<button class="search_tablinks selective" id="search_album_tab" onclick="changeTab(event, 'search', 'album_search')">Album</button>
+							<button class="search_tablinks selective" id="search_artist_tab" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
+							<button class="search_tablinks selective" id="search_playlist_tab" onclick="changeTab(event, 'search', 'playlist_search')">Playlist</button>
 						</div>
 						<div id="search_tab_content">
 							<!-- ### Main Search Tab ### -->
@@ -375,17 +375,15 @@
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
 
 					<div id="artist_tab" class="main_tabcontent fixed_footer">
-						<header>
+						<header v-bind:style="{ 'background-image': ' url(\''+image+'\')' }">
 							<h1>{{ title }}</h1>
 							<div class="fab"><i class="material-icons">get_app</i></div>
 						</header>
 
 						<div>
-				      <ul id="artist-tabs">
-								<template v-for="(item, name, index) in body">
-									<li class="tab"><a v-bind:class="index==0 ? 'active' : ''" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</a></li>
-								</template>
-				      </ul>
+							<template v-for="(item, name, index) in body">
+								<button v-bind:class="'selective' + (name==currentTab ? 'active' : '')" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</button>
+							</template>
 						</div>
 
 						<table>

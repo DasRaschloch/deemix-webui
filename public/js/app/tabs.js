@@ -19,6 +19,8 @@ function changeTab(evt, section, tabName) {
 	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
 		settingsTab.settings = { ...lastSettings }
 	}
+	console.log( {tabName} );
+	
 	document.getElementById(tabName).style.display = 'block'
 	window[section + '_selected'] = tabName
 	evt.currentTarget.className += ' active'

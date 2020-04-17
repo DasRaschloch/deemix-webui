@@ -172,6 +172,8 @@ $("#searchbar").keyup(function(e){
         sendAddToQueue(term);
       }
     }else{
+			console.log( term );
+			
 			if (term != MainSearch.results.QUERY || main_selected == 'search_tab'){
 				document.getElementById("search_tab_content").style.display = "none";
 				socket.emit("mainSearch", {term: term});

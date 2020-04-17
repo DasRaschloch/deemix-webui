@@ -33,8 +33,136 @@
 			<div id="middle_section">
 				<header id="search"><input id="searchbar" type="text" name="searchbar" value="" placeholder="Search..."></header>
 				<section id="content"><div id="container">
-					<!-- Search Tab -->
-					<div id="v-app"><app/></div>
+					<!-- <div id="v-app" style="height: 300px;"><app/></div> -->
+					<div id="search_tab" class="main_tabcontent">
+						<div class="tab">
+							<button class="search_tablinks" id="search_all_tab" onclick="changeTab(event, 'search', 'main_search')">All</button>
+							<button class="search_tablinks" id="search_track_tab" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
+							<button class="search_tablinks" id="search_album_tab" onclick="changeTab(event, 'search', 'album_search')">Album</button>
+							<button class="search_tablinks" id="search_artist_tab" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
+							<button class="search_tablinks" id="search_playlist_tab" onclick="changeTab(event, 'search', 'playlist_search')">Playlist</button>
+						</div>
+						<div id="search_tab_content">
+							<!-- ### Main Search Tab ### -->
+							<div id="main_search" class="search_tabcontent">
+								<template v-for="section in results.ORDER">
+									<div v-if="(section != 'TOP_RESULT' && results[section].data.length > 0) || (results[section].length > 0)" class="search_section">
+										<h1 v-on:click="changeSearchTab(section)">{{ names[section] }}</h1>
+										<!-- Top result -->
+										<div v-if="section == 'TOP_RESULT'" class="top_result">
+											<div class="cover_container">
+												<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'https://e-cdns-images.dzcdn.net/images/'+ results.TOP_RESULT[0].PICTURE_TYPE +'/' + results.TOP_RESULT[0].PLAYLIST_PICTURE :'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
+													v-bind:class="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
+													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/'+results.TOP_RESULT[0].__TYPE__+'/'+(results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_ID : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_ID : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].PLAYLIST_ID : '')" class="download_overlay"><i class="material-icons">get_app</i></div>
+											</div>
+											<div class="info_box">
+												<p class="primary-text">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_NAME : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_TITLE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].TITLE : '' }}</p>
+												<p class="secondary-text">{{ results.TOP_RESULT[0].__TYPE__ == 'artist' ? numberWithDots(results.TOP_RESULT[0].NB_FAN) + ' fans' : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'by '+results.TOP_RESULT[0].ART_NAME+' - '+results.TOP_RESULT[0].NUMBER_TRACK+' tracks' : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'by '+results.TOP_RESULT[0].PARENT_USERNAME+' - '+results.TOP_RESULT[0].NB_SONG+' tracks' : '' }}</p>
+												<span class="tag">{{ results.TOP_RESULT[0].__TYPE__.charAt(0).toUpperCase() + results.TOP_RESULT[0].__TYPE__.substring(1)}}</span>
+											</div>
+										</div>
+										<div v-if="section == 'TRACK'">
+											<table class="tracks_table">
+												<tr v-for="track in results.TRACK.data.slice(0, 6)" class="track_row">
+													<td style="width: 48px; text-align: center;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
+													<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+													<td class="breakline"><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
+													<td class="breakline">{{track.ALB_TITLE}}</td>
+													<td>{{convertDuration(track.DURATION)}}</td>
+													<td role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
+												</tr>
+											</table>
+										</div>
+										<div v-if="section != 'TRACK' && section != 'TOP_RESULT'" class="release_grid firstrow_only">
+											<div v-for="release in results[section].data.slice(0, 10)" class="release" v-on:click="window[section.toLowerCase()+'View'](event)" v-bind:data-id="section == 'ARTIST' ? release.ART_ID : section == 'ALBUM' ? release.ALB_ID : section == 'PLAYLIST' ? release.PLAYLIST_ID : ''">
+												<div class="cover_container">
+													<img v-bind:class="(section == 'ARTIST' ? 'circle' : 'rounded') + ' coverart'" v-bind:src="(section == 'ARTIST' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE : section == 'ALBUM' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE : section == 'PLAYLIST' ? 'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE : 'https://e-cdns-images.dzcdn.net/images/cover/' ) + '/156x156-000000-80-0-0.jpg'">
+													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/'+(section == 'ARTIST' ? 'artist/'+release.ART_ID : section == 'ALBUM' ? 'album/'+release.ALB_ID : section == 'PLAYLIST' ? 'playlist/'+release.PLAYLIST_ID : '')" class="download_overlay"><i class="material-icons">get_app</i></div>
+												</div>
+												<p class="primary-text">{{ section == 'ARTIST' ? release.ART_NAME : section == 'ALBUM' ? release.ALB_TITLE : section == 'PLAYLIST' ? release.TITLE : '' }}</p>
+												<p class="secondary-text">{{ section == 'ARTIST' ? numberWithDots(release.NB_FAN) + ' fans' : section == 'ALBUM' ? release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks' : section == 'PLAYLIST' ? release.NB_SONG+' tracks' : '' }}</p>
+											</div>
+										</div>
+									</div>
+								</template>
+								<div v-if="results.ORDER.every(section => section == 'TOP_RESULT' ? results[section].length == 0 : results[section].data.length == 0)">
+									<h1>No results</h1>
+								</div>
+							</div>
+							<!-- ### Track Search Tab ### -->
+							<div id="track_search" class="search_tabcontent">
+								<div v-if="results.data.length == 0">
+									<h1>No Tracks found</h1>
+								</div>
+								<table class="tracks_table" v-if="results.data.length > 0">
+									<tr>
+										<th style="width: 48px;"></th>
+										<th>Title</th>
+										<th>Artists</th>
+										<th>Album</th>
+										<th><i class="material-icons">timer</i></th>
+										<th style="width: 56px;"></th>
+									</tr>
+									<tr v-for="track in results.data" class="track_row">
+										<td style="width: 48px; text-align: center;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
+										<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+										<td class="breakline"><span v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
+										<td class="breakline">{{track.ALB_TITLE}}</td>
+										<td>{{convertDuration(track.DURATION)}}</td>
+										<td role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
+									</tr>
+								</table>
+							</div>
+							<!-- ### Album Search Tab ### -->
+							<div id="album_search" class="search_tabcontent">
+								<div v-if="results.data.length == 0">
+									<h1>No Albums found</h1>
+								</div>
+								<div class="release_grid" v-if="results.data.length > 0">
+									<div v-for="release in results.data" class="release">
+										<div class="cover_container">
+											<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
+											<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/album/'+release.ALB_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
+										</div>
+										<p class="primary-text">{{ release.ALB_TITLE }}</p>
+										<p class="secondary-text">{{ 'by '+release.ART_NAME }}</p>
+									</div>
+								</div>
+							</div>
+							<!-- ### Artist Search Tab ### -->
+							<div id="artist_search" class="search_tabcontent">
+								<div v-if="results.data.length == 0">
+									<h1>No Artists found</h1>
+								</div>
+								<div class="release_grid" v-if="results.data.length > 0">
+									<div v-for="release in results.data" class="release">
+										<div class="cover_container">
+											<img class="circle coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
+											<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/artist/'+release.ART_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
+										</div>
+										<p class="primary-text">{{ release.ART_NAME }}</p>
+										<p class="secondary-text">{{ numberWithDots(release.NB_FAN) + ' fans' }}</p>
+									</div>
+								</div>
+							</div>
+							<!-- ### Playlist Search Tab ### -->
+							<div id="playlist_search" class="search_tabcontent">
+								<div v-if="results.data.length == 0">
+									<h1>No Playlists found</h1>
+								</div>
+								<div class="release_grid" v-if="results.data.length > 0">
+									<div v-for="release in results.data" class="release">
+										<div class="cover_container">
+											<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
+											<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/playlist/'+release.PLAYLIST_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
+										</div>
+										<p class="primary-text">{{ release.TITLE }}</p>
+										<p class="secondary-text">{{ release.NB_SONG+' tracks' }}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					<div id="home_tab" class="main_tabcontent">
 						<h1>Home</h1>
@@ -334,7 +462,7 @@
 	<script type="text/javascript" src="/public/js/vendor/vue.min.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/lodash.min.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/toastify.js"></script>
-	<script type="text/javascript" src="/public/js/app/v-app.js"></script>
+	<!-- <script type="text/javascript" src="/public/js/app/v-app.js"></script> -->
 	<script type="text/javascript" src="/public/js/app/app.js"></script>
 	<script type="text/javascript" src="/public/js/app/tabs.js"></script>
 	<script type="text/javascript" src="/public/js/app/stackedTabs.js"></script>

@@ -247,17 +247,15 @@
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
 
 					<div id="artist_tab" class="main_tabcontent fixed_footer">
-						<header>
+						<header v-bind:style="{ 'background-image': ' url(\''+image+'\')' }">
 							<h1>{{ title }}</h1>
 							<div class="fab"><i class="material-icons">get_app</i></div>
 						</header>
 
 						<div>
-				      <ul id="artist-tabs">
-								<template v-for="(item, name, index) in body">
-									<li class="tab"><a v-bind:class="index==0 ? 'active' : ''" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</a></li>
-								</template>
-				      </ul>
+							<template v-for="(item, name, index) in body">
+								<button v-bind:class="'selective' + (name==currentTab ? 'active' : '')" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</button>
+							</template>
 						</div>
 
 						<table>

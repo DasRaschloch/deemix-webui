@@ -130,6 +130,16 @@ button[disabled] {
 	opacity: 0.75;
 }
 
+button.selective {
+	background-color: var(--main-background);
+	color: var(--main-text);
+}
+
+button.selective.active {
+	background-color: var(--accent-color);
+	color: var(--accent-text);
+}
+
 input[type="text"],
 input[type="password"],
 input[type="number"] {

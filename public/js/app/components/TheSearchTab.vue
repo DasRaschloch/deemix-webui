@@ -2,28 +2,28 @@
 	<div id="search_tab" class="main_tabcontent">
 		<div class="tab">
 			<button
+				class="search_tablinks selective"
 				id="search_all_tab"
-				class="search_tablinks"
 				onclick="changeTab(event, 'search', 'main_search')"
 			>All</button>
 			<button
+				class="search_tablinks selective"
 				id="search_track_tab"
-				class="search_tablinks"
 				onclick="changeTab(event, 'search', 'track_search')"
 			>Tracks</button>
 			<button
+				class="search_tablinks selective"
 				id="search_album_tab"
-				class="search_tablinks"
 				onclick="changeTab(event, 'search', 'album_search')"
 			>Album</button>
 			<button
+				class="search_tablinks selective"
 				id="search_artist_tab"
-				class="search_tablinks"
 				onclick="changeTab(event, 'search', 'artist_search')"
 			>Artist</button>
 			<button
+				class="search_tablinks selective"
 				id="search_playlist_tab"
-				class="search_tablinks"
 				onclick="changeTab(event, 'search', 'playlist_search')"
 			>Playlist</button>
 		</div>

@@ -1,15 +1,4 @@
 /* Main Search Tab */
-
-.search_tablinks {
-	background-color: var(--main-background);
-	color: var(--main-text);
-}
-
-.search_tablinks.active {
-	background-color: var(--accent-color);
-	color: var(--accent-text);
-}
-
 #main_search>.search_section {
 	float: none;
 }

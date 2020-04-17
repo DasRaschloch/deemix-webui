@@ -15,7 +15,7 @@
 	--toast-text: #ffffffde;
 }
 
-/* Add to body to switch dark mode */
+/* Add to body to switch to dark mode */
 .dark-theme {
 	--main-background: #141414;
 	--secondary-background: #242424;

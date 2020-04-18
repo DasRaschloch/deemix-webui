@@ -165,7 +165,7 @@ socket.on('show_album', function(data){
 		{title: 'Song'},
 		{title: 'Artist'},
 		{title: '<i class="material-icons">timer</i>', width: "40px"},
-		{title: '<input onclick="tracklistTab.toggleAll(event)" class="selectAll" type="checkbox" id="selectAll"><span></span>', width: "24px"}
+		{title: '<input onclick="tracklistTab.toggleAll(event)" class="selectAll" type="checkbox"><span></span>', width: "24px"}
 	]
 	if (_.isEmpty(data.tracks)){
 		tracklistTab.body = null
@@ -188,7 +188,7 @@ socket.on('show_playlist', function(data){
 		{title: 'Artist'},
 		{title: 'Album'},
 		{title: '<i class="material-icons">timer</i>', width: "40px"},
-		{title: '<div class="valign-wrapper"><label><input class="selectAll" type="checkbox" id="selectAll"><span></span></label></div>', width: "24px"}
+		{title: '<input onclick="tracklistTab.toggleAll(event)" class="selectAll" type="checkbox"><span></span>', width: "24px"}
 	]
 	if (_.isEmpty(data.tracks)){
 		tracklistTab.body = null

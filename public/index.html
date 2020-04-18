@@ -37,7 +37,7 @@
 									<div v-if="(section != 'TOP_RESULT' && results[section].data.length > 0) || (results[section].length > 0)" class="search_section">
 										<h1 v-on:click="changeSearchTab(section)">{{ names[section] }}</h1>
 										<!-- Top result -->
-										<div v-if="section == 'TOP_RESULT'" class="top_result">
+										<div v-if="section == 'TOP_RESULT'" class="top_result" v-on:click="window[results.TOP_RESULT[0].__TYPE__.toLowerCase()+'View'](event)" v-bind:data-id="results.TOP_RESULT[0].__TYPE__ == 'artist' ? results.TOP_RESULT[0].ART_ID : results.TOP_RESULT[0].__TYPE__ == 'album' ? results.TOP_RESULT[0].ALB_ID : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? results.TOP_RESULT[0].PLAYLIST_ID : ''">
 											<div class="cover_container">
 												<img v-bind:src="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'https://e-cdns-images.dzcdn.net/images/artist/' + results.TOP_RESULT[0].ART_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'album' ? 'https://e-cdns-images.dzcdn.net/images/cover/' + results.TOP_RESULT[0].ALB_PICTURE : results.TOP_RESULT[0].__TYPE__ == 'playlist' ? 'https://e-cdns-images.dzcdn.net/images/'+ results.TOP_RESULT[0].PICTURE_TYPE +'/' + results.TOP_RESULT[0].PLAYLIST_PICTURE :'https://e-cdns-images.dzcdn.net/images/cover/') + '/156x156-000000-80-0-0.jpg'"
 													v-bind:class="(results.TOP_RESULT[0].__TYPE__ == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
@@ -164,10 +164,12 @@
 
 					<div id="settings_tab" class="main_tabcontent fixed_footer">
 						<h1>Settings</h1>
-						<div id="logged_in_info">
+						<div id="logged_in_info" class="inline-flex">
 							<img id="settings_picture" src="" alt="Profile Picture" class="circle" style="width: 125px;height:125px; margin-right: 12px;"/>
-							<p>You are logged in as <b id="settings_username"></b></p>
-							<button onclick="logout()" id="settings_btn_logout">Logout</button>
+							<div>
+								<p>You are logged in as <b id="settings_username"></b></p>
+								<button onclick="logout()" id="settings_btn_logout">Logout</button>
+							</div>
 						</div>
 						<div class="inline-flex">
 							<input autocomplete="off" type="password" id="login_input_arl" placeholder="ARL"/>
@@ -363,12 +365,12 @@
 					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
 
 					<div id="artist_tab" class="main_tabcontent fixed_footer">
-						<header v-bind:style="{ 'background-image': ' url(\''+image+'\')' }">
+						<header class="inline-flex" v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
 							<h1>{{ title }}</h1>
-							<div class="fab"><i class="material-icons">get_app</i></div>
+							<div class="fab right"><i class="material-icons">get_app</i></div>
 						</header>
 
-						<div>
+						<div class="tab">
 							<template v-for="(item, name, index) in body">
 								<button v-bind:class="'selective' + (name==currentTab ? 'active' : '')" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</button>
 							</template>
@@ -377,17 +379,17 @@
 						<table>
 							<thead>
 								<tr>
-									<td v-for="data in head" v-on:click="data.sortKey ? sortBy(data.sortKey) : null" v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
+									<th v-for="data in head" v-on:click="data.sortKey ? sortBy(data.sortKey) : null" v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
 											{{data.title}}
-									</td>
+									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<template v-for="release in showTable">
 									<tr>
-										<td>
-											<img v-bind:src="release.cover_small"/>
-											<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit">explicit</i>
+										<td class="inline-flex">
+											<img class="rounded" v-bind:src="release.cover_small" style="margin-right: 16px;"/>
+											<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit" style="color:#FF3B30;">explicit</i>
 											{{release.title}}
 											<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color:#FF7300;">fiber_new</i>
 										</td>

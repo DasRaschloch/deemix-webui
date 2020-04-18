@@ -3,10 +3,6 @@
 	float: none;
 }
 
-#search_tab .tab {
-	margin-bottom: 24px;
-}
-
 .top_result {
 	display: flex;
 	align-items: center;

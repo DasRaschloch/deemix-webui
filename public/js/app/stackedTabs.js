@@ -67,7 +67,14 @@ var tracklistTab = new Vue({
 	},
 	methods: {
 		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
-		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
+		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)},
+		toggleAll: function(e){
+			tracklistTab.body.forEach((item) => {
+				if (item.type == 'track'){
+					item.selected = e.currentTarget.checked
+				}
+			});
+		}
 	}
 })
 
@@ -122,7 +129,7 @@ socket.on('show_artist', function(data){
 	artistTab.image = data.picture_xl
 	artistTab.type = "Artist"
 	artistTab.link = `https://www.deezer.com/artist/${data.id}`
-	artistTab.currentTab = Object.keys(data.data)[0]
+	artistTab.currentTab = Object.keys(data.releases)[0]
 	artistTab.sortKey = 'release_date'
 	artistTab.sortOrder = 'desc'
 	artistTab.head = [
@@ -130,9 +137,34 @@ socket.on('show_artist', function(data){
 		{title: 'Release Date', sortKey: "release_date"},
 		{title: '', width: "56px"}
 	]
-	if (_.isEmpty(data.data)){
+	if (_.isEmpty(data.releases)){
 		artistTab.body = null
 	}else{
-		artistTab.body = data.data
+		artistTab.body = data.releases
+	}
+})
+
+socket.on('show_album', function(data){
+	tracklistTab.type = 'Album'
+	tracklistTab.link = `https://www.deezer.com/album/${data.id}`
+	tracklistTab.title = data.title
+	tracklistTab.explicit = data.explicit_lyrics
+	tracklistTab.label = data.label
+	tracklistTab.metadata = `${data.artist.name} • ${data.tracks.length} songs`
+	tracklistTab.release_date = data.release_date.substring(0,10)
+	tracklistTab.image = data.cover_xl
+	console.log(data.tracks)
+	tracklistTab.head = [
+		{title: '<i class="material-icons">music_note</i>', width: "24px"},
+		{title: '#'},
+		{title: 'Song'},
+		{title: 'Artist'},
+		{title: '<i class="material-icons">timer</i>', width: "40px"},
+		{title: '<input onclick="tracklistTab.toggleAll(event)" class="selectAll" type="checkbox" id="selectAll"><span></span>', width: "24px"}
+	]
+	if (_.isEmpty(data.tracks)){
+		tracklistTab.body = null
+	}else{
+		tracklistTab.body = data.tracks
 	}
 })

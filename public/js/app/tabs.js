@@ -23,7 +23,7 @@ function changeTab(evt, section, tabName) {
 	document.getElementById(tabName).style.display = 'block'
 	window[section + '_selected'] = tabName
 
-	// Not choosing .currentTarget beacuse the event 
+	// Not choosing .currentTarget beacuse the event
 	// is delegated, so it refers to #sidebar
 	evt.target.classList.add('active')
 
@@ -37,9 +37,9 @@ function changeTab(evt, section, tabName) {
 	}
 }
 
-function showTab(type, id) {
+function showTab(type, id, back=false) {
 	if (windows_stack.length == 0) windows_stack.push({ tab: main_selected })
-	else windows_stack.push(currentStack)
+	else if (!back) windows_stack.push(currentStack)
 	if (type == 'artist') tab = 'artist_tab'
 	else tab = 'tracklist_tab'
 	currentStack = { type: type, id: id }
@@ -55,7 +55,7 @@ function backTab() {
 		clickElement('main_' + main_selected + 'link')
 	} else {
 		let tabObj = windows_stack.pop()
-		showTab(tabObj.type, tabObj.id)
+		showTab(tabObj.type, tabObj.id, true)
 	}
 }
 

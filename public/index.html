@@ -416,17 +416,23 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr v-for="track in body">
-									<td><i class="material-icons">play_arrow</i></td>
-									<td>{{ track.track_position }}</td>
-									<td><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span v-if="track.title_version">{{track.title_version}}</span></td>
-									<td>{{ track.artist.name }}</td>
-									<td>{{ convertDuration(track.duration) }}</td>
-									<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
-								</tr>
+								<template v-for="track in body">
+									<tr v-if="track.type == 'track'">
+										<td><i class="material-icons">play_arrow</i></td>
+										<td>{{ track.track_position }}</td>
+										<td><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span v-if="track.title_version">{{track.title_version}}</span></td>
+										<td>{{ track.artist.name }}</td>
+										<td>{{ convertDuration(track.duration) }}</td>
+										<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+									</tr>
+									<tr v-if="track.type == 'disc_separator'">
+										<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
+									</tr>
+								</template>
+
 							</tbody>
 						</table>
-
+						<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 						<footer>
 							<button v-bind:data-link="link">Download {{ type }}</button>
 							<button>Download selection<i class="material-icons right">file_download</i></button>

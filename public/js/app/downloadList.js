@@ -3,7 +3,6 @@ var queue = []
 var queueComplete = []
 
 socket.on('init_downloadQueue', function (data) {
-	console.log(data)
 	if (data.queueComplete.length) {
 		data.queueComplete.forEach(item => {
 			addToQueue(data.queueList[item])

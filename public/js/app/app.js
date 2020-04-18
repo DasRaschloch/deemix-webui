@@ -106,7 +106,6 @@ socket.on('logging_in', function () {
 })
 
 socket.on('logged_in', function (data) {
-	console.log(data)
 	switch (data.status) {
 		case 1:
 		case 3:
@@ -168,7 +167,6 @@ var settingsTab = new Vue({
 })
 
 socket.on("init_settings", function(settings, credentials){
-	console.log(settings,credentials)
 	loadSettings(settings, credentials)
 	toast("Settings loaded!", 'settings')
 })

@@ -23,7 +23,6 @@ function scrolledSearch(vueTab) {
 }
 
 function searchUpadate(result) {
-	console.log(result)
 	vueTab = null
 	switch (result.type) {
 		case 'TRACK':
@@ -179,8 +178,6 @@ $("#searchbar").keyup(function(e){
         sendAddToQueue(term);
       }
     }else{
-			console.log( term );
-
 			if (term != MainSearch.results.QUERY || main_selected == 'search_tab'){
 				document.getElementById("search_tab_content").style.display = "none";
 				socket.emit("mainSearch", {term: term});

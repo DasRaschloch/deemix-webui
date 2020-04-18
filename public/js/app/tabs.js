@@ -4,7 +4,6 @@ var windows_stack = []
 var currentStack = {}
 
 function changeTab(evt, section, tabName) {
-	console.log({ evt, section, tabName })
 	windows_stack = []
 	currentStack = {}
 	var i, tabcontent, tablinks
@@ -55,6 +54,9 @@ function backTab() {
 		clickElement('main_' + main_selected + 'link')
 	} else {
 		let tabObj = windows_stack.pop()
+		if (tabObj.type == 'artist') resetArtistTab()
+		else resetTracklistTab()
+		socket.emit('getTracklist', {type: tabObj.type, id: tabObj.id})
 		showTab(tabObj.type, tabObj.id, true)
 	}
 }

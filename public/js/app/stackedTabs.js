@@ -87,48 +87,45 @@ var tracklistTab = new Vue({
 	}
 })
 
-function artistView(ev){
-	console.log("ARTIST")
-	let id = ev.currentTarget.dataset.id
+function resetArtistTab(){
 	artistTab.title = "Loading..."
 	artistTab.image = ""
 	artistTab.type = ""
 	artistTab.currentTab = ''
 	artistTab.sortKey = 'release_date'
 	artistTab.sortOrder = 'desc'
-	artistTab.link = 'https://deezer.com/artist/'+id
+	artistTab.link = ''
 	artistTab.head = []
 	artistTab.body = null
+}
+
+function resetTracklistTab(){
+	tracklistTab.title = "Loading..."
+	tracklistTab.image = ""
+	tracklistTab.metadata = ""
+	tracklistTab.label = ""
+	tracklistTab.release_date = ""
+	tracklistTab.explicit = false
+	tracklistTab.type = ""
+	tracklistTab.head = []
+	tracklistTab.body = []
+}
+
+function artistView(ev){
+	let id = ev.currentTarget.dataset.id
+	resetArtistTab()
 	socket.emit('getTracklist', {type: 'artist', id: id})
 	showTab('artist', id)
 }
 function albumView(ev){
-	console.log("ALBUM")
-	tracklistTab.title = "Loading..."
-	tracklistTab.image = ""
-	tracklistTab.metadata = ""
-	tracklistTab.label = ""
-	tracklistTab.release_date = ""
-	tracklistTab.explicit = false
-	tracklistTab.type = ""
-	tracklistTab.head = []
-	tracklistTab.body = []
 	let id = ev.currentTarget.dataset.id
+	resetTracklistTab()
 	socket.emit('getTracklist', {type: 'album', id: id})
 	showTab('album', id)
 }
 function playlistView(ev){
-	console.log("PLAYLIST")
-	tracklistTab.title = "Loading..."
-	tracklistTab.image = ""
-	tracklistTab.metadata = ""
-	tracklistTab.label = ""
-	tracklistTab.release_date = ""
-	tracklistTab.explicit = false
-	tracklistTab.type = ""
-	tracklistTab.head = []
-	tracklistTab.body = []
 	let id = ev.currentTarget.dataset.id
+	resetTracklistTab()
 	socket.emit('getTracklist', {type: 'playlist', id: id})
 	showTab('playlist', id)
 }
@@ -162,7 +159,6 @@ socket.on('show_album', function(data){
 	tracklistTab.metadata = `${data.artist.name} • ${data.tracks.length} songs`
 	tracklistTab.release_date = data.release_date.substring(0,10)
 	tracklistTab.image = data.cover_xl
-	console.log(data.tracks)
 	tracklistTab.head = [
 		{title: '<i class="material-icons">music_note</i>', width: "24px"},
 		{title: '#'},

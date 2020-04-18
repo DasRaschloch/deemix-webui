@@ -367,7 +367,7 @@
 					<div id="artist_tab" class="main_tabcontent fixed_footer image_header">
 						<header class="inline-flex" v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
 							<h1>{{ title }}</h1>
-							<div class="fab right"><i class="material-icons">get_app</i></div>
+							<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="link" class="fab right"><i class="material-icons">get_app</i></div>
 						</header>
 
 						<div class="tab">
@@ -435,7 +435,7 @@
 						</table>
 						<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 						<footer>
-							<button v-bind:data-link="link">Download {{ type }}</button>
+							<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="link">Download {{ type }}</button>
 							<button>Download selection<i class="material-icons right">file_download</i></button>
 							<button onclick="backTab()">Back</button>
 						</footer>

@@ -422,10 +422,11 @@
 										<td>{{ track.track_position }}</td>
 										<td><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span v-if="track.title_version">{{track.title_version}}</span></td>
 										<td>{{ track.artist.name }}</td>
+										<td v-if="type == 'Playlist'">{{ track.album.title }}</td>
 										<td>{{ convertDuration(track.duration) }}</td>
 										<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
 									</tr>
-									<tr v-if="track.type == 'disc_separator'">
+									<tr v-else-if="track.type == 'disc_separator'">
 										<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
 									</tr>
 								</template>

@@ -168,3 +168,26 @@ socket.on('show_album', function(data){
 		tracklistTab.body = data.tracks
 	}
 })
+
+socket.on('show_playlist', function(data){
+	tracklistTab.type = "Playlist"
+	tracklistTab.link = `https://www.deezer.com/playlist/${data.id}`
+	tracklistTab.title = data.title
+	tracklistTab.image = data.picture_xl
+	tracklistTab.release_date = data.creation_date.substring(0,10)
+	tracklistTab.metadata = `by ${data.creator.name} • ${data.tracks.length} songs`
+	tracklistTab.head = [
+		{title: '<i class="material-icons">music_note</i>', width: "24px"},
+		{title: '#'},
+		{title: 'Song'},
+		{title: 'Artist'},
+		{title: 'Album'},
+		{title: '<i class="material-icons">timer</i>', width: "40px"},
+		{title: '<div class="valign-wrapper"><label><input class="selectAll" type="checkbox" id="selectAll"><span></span></label></div>', width: "24px"}
+	]
+	if (_.isEmpty(data.tracks)){
+		tracklistTab.body = null
+	}else{
+		tracklistTab.body = data.tracks
+	}
+})

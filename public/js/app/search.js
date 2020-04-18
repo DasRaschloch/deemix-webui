@@ -53,7 +53,14 @@ function clickElement(button) {
 }
 
 function sendAddToQueue(url, bitrate = null) {
-	socket.emit('addToQueue', { url: url, bitrate: bitrate })
+	if (url.indexOf(";") != -1){
+		urls = url.split(";")
+		urls.forEach(url=>{
+			socket.emit('addToQueue', { url: url, bitrate: bitrate })
+		})
+	}else{
+		socket.emit('addToQueue', { url: url, bitrate: bitrate })
+	}
 }
 
 let MainSearch = new Vue({
@@ -173,7 +180,7 @@ $("#searchbar").keyup(function(e){
       }
     }else{
 			console.log( term );
-			
+
 			if (term != MainSearch.results.QUERY || main_selected == 'search_tab'){
 				document.getElementById("search_tab_content").style.display = "none";
 				socket.emit("mainSearch", {term: term});

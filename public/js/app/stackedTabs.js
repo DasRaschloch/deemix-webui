@@ -69,11 +69,20 @@ var tracklistTab = new Vue({
 		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
 		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)},
 		toggleAll: function(e){
-			tracklistTab.body.forEach((item) => {
+			this.body.forEach((item) => {
 				if (item.type == 'track'){
 					item.selected = e.currentTarget.checked
 				}
 			});
+		},
+		selectedLinks: function(){
+			selected = []
+			if (this.body){
+				this.body.forEach((item) => {
+					if (item.type == 'track' && item.selected) selected.push(item.link)
+				})
+			}
+			return selected.join(";")
 		}
 	}
 })

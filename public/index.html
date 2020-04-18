@@ -436,7 +436,7 @@
 						<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 						<footer>
 							<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="link">Download {{ type }}</button>
-							<button>Download selection<i class="material-icons right">file_download</i></button>
+							<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="selectedLinks()">Download selection<i class="material-icons right">file_download</i></button>
 							<button onclick="backTab()">Back</button>
 						</footer>
 					</div>

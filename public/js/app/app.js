@@ -221,13 +221,6 @@ function openQualityModal(link){
 
 function modalQualityButton(bitrate){
 	var url=$(modalQuality).data("url")
-	if (url.indexOf(";") != -1){
-		urls = url.split(";")
-		urls.forEach(url=>{
-			sendAddToQueue(url, bitrate)
-		})
-	}else{
-		sendAddToQueue(url, bitrate)
-	}
+	sendAddToQueue(url, bitrate)
 	$(modalQuality).addClass('animated fadeOut')
 }

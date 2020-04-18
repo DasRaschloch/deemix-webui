@@ -58,7 +58,7 @@ function sendAddToQueue(url, bitrate = null) {
 		urls.forEach(url=>{
 			socket.emit('addToQueue', { url: url, bitrate: bitrate })
 		})
-	}else{
+	}else if(url != ""){
 		socket.emit('addToQueue', { url: url, bitrate: bitrate })
 	}
 }

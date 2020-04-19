@@ -28,11 +28,11 @@ function changeTab(evt, section, tabName) {
 
 	// Check if you need to load more content in the search tab
 	if (
-		document.getElementById('content').offsetHeight >= document.getElementById('content').scrollHeight &&
 		main_selected == 'search_tab' &&
-		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
+		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1 &&
+		MainSearch.results[search_selected.split('_')[0]+"Tab"].data.length == 0
 	) {
-		scrolledSearch(window[search_selected.split('_')[0] + 'Search'])
+		search(search_selected.split('_')[0])
 	}
 }
 

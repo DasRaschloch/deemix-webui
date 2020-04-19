@@ -19,8 +19,8 @@ function toast(msg, icon = null, dismiss = true, id = null) {
 			else icon = `<i class="material-icons">${icon}</i>`
 			toastDOM.find('.toast-icon').html(icon)
 		}
-		if (dismiss !== null && dismiss){
-			setTimeout(function(){
+		if (dismiss !== null && dismiss) {
+			setTimeout(function () {
 				toastObj.hideToast()
 				delete toastsWithId[id]
 			}, 3000)
@@ -42,6 +42,7 @@ function toast(msg, icon = null, dismiss = true, id = null) {
 	}
 }
 
+/* ===== Socketio listeners ===== */
 socket.on('toast', data => {
 	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
 })
@@ -51,33 +52,6 @@ socket.on('message', function (msg) {
 	console.log(msg)
 })
 
-$(function () {
-	if (localStorage.getItem('arl')) {
-		socket.emit('login', localStorage.getItem('arl'))
-		$('#login_input_arl').val(localStorage.getItem('arl'))
-	}
-	// Check if download tab should be open
-	if (eval(localStorage.getItem('downloadTabOpen'))) $('#show_download_tab').click()
-	else $('#hide_download_tab').click()
-
-	// Open default tab
-	document.getElementById('main_home_tablink').click()
-})
-
-// Show/Hide Download Tab
-document.querySelector('#show_download_tab').onclick = ev => {
-	ev.preventDefault()
-	document.querySelector('#download_tab_bar').style.display = 'none'
-	document.querySelector('#download_tab').style.display = 'block'
-	localStorage.setItem('downloadTabOpen', true)
-}
-document.querySelector('#hide_download_tab').onclick = ev => {
-	ev.preventDefault()
-	document.querySelector('#download_tab_bar').style.display = 'block'
-	document.querySelector('#download_tab').style.display = 'none'
-	localStorage.setItem('downloadTabOpen', false)
-}
-
 // Login stuff
 
 function loginButton() {
@@ -85,20 +59,6 @@ function loginButton() {
 	if (arl != '' && arl != localStorage.getItem('arl')) {
 		socket.emit('login', arl, true)
 	}
-}
-
-function copyARLtoClipboard() {
-	$('#login_input_arl').attr('type', 'text')
-	let copyText = document.querySelector('#login_input_arl')
-	copyText.select()
-	copyText.setSelectionRange(0, 99999)
-	document.execCommand('copy')
-	$('#login_input_arl').attr('type', 'password')
-	toast('ARL copied to clipboard', 'assignment')
-}
-
-function logout() {
-	socket.emit('logout')
 }
 
 socket.on('logging_in', function () {
@@ -157,68 +117,85 @@ socket.on('logged_out', function () {
 	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })
 
-// settings stuff
-var settingsTab = new Vue({
-  el: '#settings_tab',
-  data: {
-		settings: {tags: {}},
-		spotifyFeatures: {}
-  }
-})
-
-socket.on("init_settings", function(settings, credentials){
-	loadSettings(settings, credentials)
-	toast("Settings loaded!", 'settings')
-})
-
-socket.on("updateSettings", function(settings, credentials){
-	loadSettings(settings, credentials)
-	toast("Settings updated!", 'settings')
-})
-
-function loadSettings(settings, spotifyCredentials){
-	lastSettings = {...settings}
-	lastCredentials = {...spotifyCredentials}
-	settingsTab.settings = settings
-	settingsTab.spotifyFeatures = spotifyCredentials
-}
-
-function saveSettings(){
-	lastSettings = {...settingsTab.settings}
-	lastCredentials = {...settingsTab.spotifyFeatures}
-	socket.emit("saveSettings", lastSettings, lastCredentials)
-}
-
 // quality modal stuff
-var modalQuality = document.getElementById('modal_quality');
+var modalQuality = document.getElementById('modal_quality')
 modalQuality.open = false
 
-window.onclick = function(event) {
+window.onclick = function (event) {
 	if (event.target == modalQuality && modalQuality.open) {
 		$(modalQuality).addClass('animated fadeOut')
 	}
 }
 
 $(modalQuality).on('webkitAnimationEnd', function () {
-	if (modalQuality.open){
+	if (modalQuality.open) {
 		$(this).removeClass('animated fadeOut')
 		$(this).css('display', 'none')
 		modalQuality.open = false
-	}else{
+	} else {
 		$(this).removeClass('animated fadeIn')
 		$(this).css('display', 'block')
 		modalQuality.open = true
 	}
 })
 
-function openQualityModal(link){
-	$(modalQuality).data("url", link)
+function openQualityModal(link) {
+	$(modalQuality).data('url', link)
 	$(modalQuality).css('display', 'block')
 	$(modalQuality).addClass('animated fadeIn')
 }
 
-function modalQualityButton(bitrate){
-	var url=$(modalQuality).data("url")
+function modalQualityButton(event) {
+	if (!event.target.matches('.quality-button')) {
+		return
+	}
+
+	let bitrate = event.target.dataset.qualityValue
+
+	var url = $(modalQuality).data('url')
 	sendAddToQueue(url, bitrate)
 	$(modalQuality).addClass('animated fadeOut')
 }
+
+/**
+ * Adds event listeners.
+ * @returns		{void}
+ * @since			0.1.0 (?)
+ */
+function linkEventListeners() {
+	// document.getElementById('show_download_tab').addEventListener('click', handleDownloadTabClick.bind(null, true))
+	// document.getElementById('hide_download_tab').addEventListener('click', handleDownloadTabClick.bind(null, false))
+	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
+
+	document.getElementById('modal_quality').addEventListener('click', modalQualityButton)
+}
+
+/**
+ * App initialization.
+ * @returns		{void}
+ * @since			0.1.0 (?)
+ */
+function init() {
+	linkEventListeners()
+
+	if ('true' === localStorage.darkMode) {
+		document.documentElement.classList.add('dark-theme')
+	}
+
+	if (localStorage.getItem('arl')) {
+		let arl = localStorage.getItem('arl')
+
+		socket.emit('login', arl)
+		$('#login_input_arl').val(arl)
+	}
+
+	// Check if download tab should be open
+	if ('true' === localStorage.getItem('downloadTabOpen')) {
+		document.querySelector('#download_tab_container').classList.remove('tab_hidden')
+	}
+
+	// Open default tab
+	document.getElementById('main_home_tablink').click()
+}
+
+document.addEventListener('DOMContentLoaded', init)

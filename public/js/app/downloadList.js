@@ -1,3 +1,12 @@
+// Show/Hide Download Tab
+function toggleDownloadTab(ev) {
+	ev.preventDefault()
+
+	let isHidden = document.querySelector('#download_tab_container').classList.toggle('tab_hidden')
+
+	localStorage.setItem('downloadTabOpen', !isHidden)
+}
+
 var queueList = {}
 var queue = []
 var queueComplete = []

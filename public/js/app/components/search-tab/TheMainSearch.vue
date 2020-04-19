@@ -94,7 +94,6 @@
 		>
 			<h1>No results</h1>
 		</div>
-		<p>marco</p>
 	</div>
 </template>
 

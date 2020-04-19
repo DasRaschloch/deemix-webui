@@ -66,7 +66,7 @@ function backTab() {
  * according to clicked icon.
  * Uses event delegation
  * @param		{Event}		event
- * @since		?.?.?
+ * @since		0.1.0
  */
 function handleSidebarClick(event) {
 	let targetID = event.target.id

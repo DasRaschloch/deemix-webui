@@ -117,45 +117,7 @@ socket.on('logged_out', function () {
 	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })
 
-// quality modal stuff
-var modalQuality = document.getElementById('modal_quality')
-modalQuality.open = false
 
-window.onclick = function (event) {
-	if (event.target == modalQuality && modalQuality.open) {
-		$(modalQuality).addClass('animated fadeOut')
-	}
-}
-
-$(modalQuality).on('webkitAnimationEnd', function () {
-	if (modalQuality.open) {
-		$(this).removeClass('animated fadeOut')
-		$(this).css('display', 'none')
-		modalQuality.open = false
-	} else {
-		$(this).removeClass('animated fadeIn')
-		$(this).css('display', 'block')
-		modalQuality.open = true
-	}
-})
-
-function openQualityModal(link) {
-	$(modalQuality).data('url', link)
-	$(modalQuality).css('display', 'block')
-	$(modalQuality).addClass('animated fadeIn')
-}
-
-function modalQualityButton(event) {
-	if (!event.target.matches('.quality-button')) {
-		return
-	}
-
-	let bitrate = event.target.dataset.qualityValue
-
-	var url = $(modalQuality).data('url')
-	sendAddToQueue(url, bitrate)
-	$(modalQuality).addClass('animated fadeOut')
-}
 
 /**
  * Adds event listeners.
@@ -163,11 +125,9 @@ function modalQualityButton(event) {
  * @since			0.1.0 (?)
  */
 function linkEventListeners() {
-	// document.getElementById('show_download_tab').addEventListener('click', handleDownloadTabClick.bind(null, true))
-	// document.getElementById('hide_download_tab').addEventListener('click', handleDownloadTabClick.bind(null, false))
 	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
-
 	document.getElementById('modal_quality').addEventListener('click', modalQualityButton)
+	document.getElementById('settings_btn_updateArl').addEventListener('click', loginButton)
 }
 
 /**

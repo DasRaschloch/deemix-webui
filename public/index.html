@@ -1,477 +1,562 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+
 	<head>
 		<meta charset="utf-8">
 		<title>deemix</title>
 		<link rel="stylesheet" type="text/css" href="/public/css/style.css">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
 	</head>
+
 	<body>
 		<aside role="navigation" id="sidebar">
 			<i class="material-icons side_icon">menu</i>
 			<i id="main_search_tablink" class="main_tablinks"></i>
 			<i role="link" aria-label="home" id="main_home_tablink" class="material-icons side_icon main_tablinks">home</i>
-			<i role="link" aria-label="charts" id="main_charts_tablink" class="material-icons side_icon main_tablinks">bubble_chart</i>
-			<i role="link" aria-label="favorites" id="main_favorites_tablink" class="material-icons side_icon main_tablinks">album</i>
-			<i role="link" aria-label="link analyzer" id="main_analyzer_tablink" class="material-icons side_icon main_tablinks">link</i>
-			<i role="link" aria-label="settings" id="main_settings_tablink" class="material-icons side_icon main_tablinks">settings</i>
+			<i role="link" aria-label="charts" id="main_charts_tablink"
+				class="material-icons side_icon main_tablinks">bubble_chart</i>
+			<i role="link" aria-label="favorites" id="main_favorites_tablink"
+				class="material-icons side_icon main_tablinks">album</i>
+			<i role="link" aria-label="link analyzer" id="main_analyzer_tablink"
+				class="material-icons side_icon main_tablinks">link</i>
+			<i role="link" aria-label="settings" id="main_settings_tablink"
+				class="material-icons side_icon main_tablinks">settings</i>
 			<i role="link" aria-label="about" id="main_about_tablink" class="material-icons side_icon main_tablinks">info</i>
 		</aside>
 		<main id="main_content">
 			<div id="middle_section">
-				<header id="search"><input id="searchbar" autocomplete="off" type="text" name="searchbar" value="" placeholder="Search..." autofocus></header>
-				<section id="content"><div id="container">
-					<div id="search_tab" class="main_tabcontent">
-						<div class="tab">
-							<button class="search_tablinks" id="search_all_tab" onclick="changeTab(event, 'search', 'main_search')">All</button>
-							<button class="search_tablinks" id="search_track_tab" onclick="changeTab(event, 'search', 'track_search')">Tracks</button>
-							<button class="search_tablinks" id="search_album_tab" onclick="changeTab(event, 'search', 'album_search')">Album</button>
-							<button class="search_tablinks" id="search_artist_tab" onclick="changeTab(event, 'search', 'artist_search')">Artist</button>
-							<button class="search_tablinks" id="search_playlist_tab" onclick="changeTab(event, 'search', 'playlist_search')">Playlist</button>
-						</div>
-						<div id="search_tab_content">
-							<!-- ### Main Search Tab ### -->
-							<div id="main_search" class="search_tabcontent">
-								<template v-for="section in results.allTab.ORDER">
-									<div v-if="(section != 'TOP_RESULT' && results.allTab[section].data.length > 0) || (results.allTab[section].length > 0)" class="search_section">
-										<h1 v-on:click="changeSearchTab(section)">{{ names[section] }}</h1>
-										<!-- Top result -->
-										<div v-if="section == 'TOP_RESULT'" class="top_result clickable" v-on:click="window[results.allTab.TOP_RESULT[0].type+'View'](event)" v-bind:data-id="results.allTab.TOP_RESULT[0].id">
+				<header id="search"><input id="searchbar" autocomplete="off" type="text" name="searchbar" value=""
+						placeholder="Search..." autofocus></header>
+				<section id="content">
+					<div id="container">
+						<div id="search_tab" class="main_tabcontent">
+							<div class="tab">
+								<button class="search_tablinks" id="search_all_tab">All</button>
+								<button class="search_tablinks" id="search_track_tab">Tracks</button>
+								<button class="search_tablinks" id="search_album_tab">Album</button>
+								<button class="search_tablinks" id="search_artist_tab">Artist</button>
+								<button class="search_tablinks" id="search_playlist_tab">Playlist</button>
+							</div>
+							<div id="search_tab_content">
+								<!-- ### Main Search Tab ### -->
+								<div id="main_search" class="search_tabcontent">
+									<template v-for="section in results.allTab.ORDER">
+										<div
+											v-if="(section != 'TOP_RESULT' && results.allTab[section].data.length > 0) || (results.allTab[section].length > 0)"
+											class="search_section">
+											<h1 v-on:click="changeSearchTab(section)">{{ names[section] }}</h1>
+											<!-- Top result -->
+											<div v-if="section == 'TOP_RESULT'" class="top_result clickable"
+												v-on:click="window[results.allTab.TOP_RESULT[0].type+'View'](event)"
+												v-bind:data-id="results.allTab.TOP_RESULT[0].id">
+												<div class="cover_container">
+													<img v-bind:src="results.allTab.TOP_RESULT[0].picture"
+														v-bind:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
+													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+														v-on:click="addToQueue(event)" v-bind:data-link="results.allTab.TOP_RESULT[0].link"
+														class="download_overlay"><i class="material-icons">get_app</i></div>
+												</div>
+												<div class="info_box">
+													<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
+													<p class="secondary-text">
+														{{ results.allTab.TOP_RESULT[0].type == 'artist' ? numberWithDots(results.allTab.TOP_RESULT[0].nb_fan) + ' fans' : 'by '+results.allTab.TOP_RESULT[0].artist+' - '+results.allTab.TOP_RESULT[0].nb_song+' tracks'}}
+													</p>
+													<span
+														class="tag">{{ results.allTab.TOP_RESULT[0].type.charAt(0).toUpperCase() + results.allTab.TOP_RESULT[0].type.substring(1)}}</span>
+												</div>
+											</div>
+											<div v-else-if="section == 'TRACK'">
+												<table class="tracks_table">
+													<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)" class="track_row">
+														<td style="width: 48px; text-align: center;"><img class="rounded coverart"
+																v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
+														</td>
+														<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+														<td class="breakline"><span class="clickable" v-on:click="artistView(event)"
+																v-bind:data-id="artist.ART_ID" v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span>
+														</td>
+														<td class="breakline clickable" v-on:click="albumView(event)" v-bind:data-id="track.ALB_ID">
+															{{track.ALB_TITLE}}</td>
+														<td>{{convertDuration(track.DURATION)}}</td>
+														<td role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+															v-on:click="addToQueue(event)"
+															v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID"
+															style="width: 56px; text-align: center;" class="clickable"><i
+																class="material-icons">get_app</i></td>
+													</tr>
+												</table>
+											</div>
+											<div v-else-if="section == 'ARTIST'" class="release_grid firstrow_only">
+												<div v-for="release in results.allTab.ARTIST.data.slice(0, 10)" class="release clickable"
+													v-on:click="artistView(event)" v-bind:data-id="release.ART_ID">
+													<div class="cover_container">
+														<img class="circle coverart"
+															v-bind:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
+														<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+															v-on:click="addToQueue(event)"
+															v-bind:data-link="'https://deezer.com/artist/'+release.ART_ID" class="download_overlay"><i
+																class="material-icons">get_app</i></div>
+													</div>
+													<p class="primary-text">{{release.ART_NAME}}</p>
+													<p class="secondary-text">{{numberWithDots(release.NB_FAN) + ' fans'}}</p>
+												</div>
+											</div>
+											<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
+												<div v-for="release in results.allTab.ALBUM.data.slice(0, 10)" class="release clickable"
+													v-on:click="albumView(event)" v-bind:data-id="release.ALB_ID">
+													<div class="cover_container">
+														<img class="rounded coverart"
+															v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
+														<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+															v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/album/'+release.ALB_ID"
+															class="download_overlay"><i class="material-icons">get_app</i></div>
+													</div>
+													<p class="primary-text">{{release.ALB_TITLE}}</p>
+													<p class="secondary-text">{{release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks'}}</p>
+												</div>
+											</div>
+											<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
+												<div v-for="release in results.allTab.PLAYLIST.data.slice(0, 10)" class="release clickable"
+													v-on:click="playlistView(event)" v-bind:data-id="release.PLAYLIST_ID">
+													<div class="cover_container">
+														<img class="rounded coverart"
+															v-bind:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
+														<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+															v-on:click="addToQueue(event)"
+															v-bind:data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID"
+															class="download_overlay"><i class="material-icons">get_app</i></div>
+													</div>
+													<p class="primary-text">{{ release.TITLE }}</p>
+													<p class="secondary-text">{{release.NB_SONG+' tracks'}}</p>
+												</div>
+											</div>
+										</div>
+									</template>
+									<div
+										v-if="results.allTab.ORDER.every(section => section == 'TOP_RESULT' ? results.allTab[section].length == 0 : results.allTab[section].data.length == 0)">
+										<h1>No results</h1>
+									</div>
+								</div>
+								<!-- ### Track Search Tab ### -->
+								<div id="track_search" class="search_tabcontent">
+									<div v-if="!results.trackTab.loaded">
+										<h1>Loading</h1>
+									</div>
+									<div v-else-if="results.trackTab.data.length == 0">
+										<h1>No Tracks found</h1>
+									</div>
+									<table class="tracks_table" v-if="results.trackTab.data.length > 0">
+										<tr>
+											<th style="width: 48px;"></th>
+											<th>Title</th>
+											<th>Artists</th>
+											<th>Album</th>
+											<th><i class="material-icons">timer</i></th>
+											<th style="width: 56px;"></th>
+										</tr>
+										<tr v-for="track in results.trackTab.data" class="track_row">
+											<td style="width: 48px; text-align: center;"><img class="rounded coverart"
+													v-bind:src="track.album.cover_small"></td>
+											<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
+											<td class="breakline" class="clickable" v-on:click="artistView(event)"
+												v-bind:data-id="track.artist.id">{{track.artist.name}}</td>
+											<td class="breakline clickable" v-on:click="albumView(event)" v-bind:data-id="track.album.id">
+												{{track.album.title}}</td>
+											<td>{{convertDuration(track.duration)}}</td>
+											<td role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+												v-on:click="addToQueue(event)" v-bind:data-link="track.link"
+												style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i>
+											</td>
+										</tr>
+									</table>
+								</div>
+								<!-- ### Album Search Tab ### -->
+								<div id="album_search" class="search_tabcontent">
+									<div v-if="!results.albumTab.loaded">
+										<h1>Loading</h1>
+									</div>
+									<div v-else-if="results.albumTab.data.length == 0">
+										<h1>No Albums found</h1>
+									</div>
+									<div class="release_grid" v-if="results.albumTab.data.length > 0">
+										<div v-for="release in results.albumTab.data" class="release clickable" v-on:click="albumView(event)"
+											v-bind:data-id="release.id">
 											<div class="cover_container">
-												<img v-bind:src="results.allTab.TOP_RESULT[0].picture" v-bind:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
-													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="results.allTab.TOP_RESULT[0].link" class="download_overlay"><i class="material-icons">get_app</i></div>
+												<img class="rounded coverart" v-bind:src="release.cover_medium">
+												<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+													v-on:click="addToQueue(event)" v-bind:data-link="release.link" class="download_overlay"><i
+														class="material-icons">get_app</i></div>
 											</div>
-											<div class="info_box">
-												<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
-												<p class="secondary-text">{{ results.allTab.TOP_RESULT[0].type == 'artist' ? numberWithDots(results.allTab.TOP_RESULT[0].nb_fan) + ' fans' : 'by '+results.allTab.TOP_RESULT[0].artist+' - '+results.allTab.TOP_RESULT[0].nb_song+' tracks'}}</p>
-												<span class="tag">{{ results.allTab.TOP_RESULT[0].type.charAt(0).toUpperCase() + results.allTab.TOP_RESULT[0].type.substring(1)}}</span>
-											</div>
-										</div>
-										<div v-else-if="section == 'TRACK'">
-											<table class="tracks_table">
-												<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)" class="track_row">
-													<td style="width: 48px; text-align: center;"><img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'"></td>
-													<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
-													<td class="breakline"><span class="clickable" v-on:click="artistView(event)" v-bind:data-id="artist.ART_ID" v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span></td>
-													<td class="breakline clickable" v-on:click="albumView(event)" v-bind:data-id="track.ALB_ID">{{track.ALB_TITLE}}</td>
-													<td>{{convertDuration(track.DURATION)}}</td>
-													<td role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
-												</tr>
-											</table>
-										</div>
-										<div v-else-if="section == 'ARTIST'" class="release_grid firstrow_only">
-											<div v-for="release in results.allTab.ARTIST.data.slice(0, 10)" class="release clickable" v-on:click="artistView(event)" v-bind:data-id="release.ART_ID">
-												<div class="cover_container">
-													<img class="circle coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
-													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/artist/'+release.ART_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
-												</div>
-												<p class="primary-text">{{release.ART_NAME}}</p>
-												<p class="secondary-text">{{numberWithDots(release.NB_FAN) + ' fans'}}</p>
-											</div>
-										</div>
-										<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
-											<div v-for="release in results.allTab.ALBUM.data.slice(0, 10)" class="release clickable" v-on:click="albumView(event)" v-bind:data-id="release.ALB_ID">
-												<div class="cover_container">
-													<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
-													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/album/'+release.ALB_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
-												</div>
-												<p class="primary-text">{{release.ALB_TITLE}}</p>
-												<p class="secondary-text">{{release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks'}}</p>
-											</div>
-										</div>
-										<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
-											<div v-for="release in results.allTab.PLAYLIST.data.slice(0, 10)" class="release clickable" v-on:click="playlistView(event)" v-bind:data-id="release.PLAYLIST_ID">
-												<div class="cover_container">
-													<img class="rounded coverart" v-bind:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
-													<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID" class="download_overlay"><i class="material-icons">get_app</i></div>
-												</div>
-												<p class="primary-text">{{ release.TITLE }}</p>
-												<p class="secondary-text">{{release.NB_SONG+' tracks'}}</p>
-											</div>
+											<p class="primary-text">{{ release.title }}</p>
+											<p class="secondary-text">{{ 'by '+release.artist.name+' - '+release.nb_tracks+' tracks' }}</p>
 										</div>
 									</div>
-								</template>
-								<div v-if="results.allTab.ORDER.every(section => section == 'TOP_RESULT' ? results.allTab[section].length == 0 : results.allTab[section].data.length == 0)">
-									<h1>No results</h1>
+								</div>
+								<!-- ### Artist Search Tab ### -->
+								<div id="artist_search" class="search_tabcontent">
+									<div v-if="!results.artistTab.loaded">
+										<h1>Loading</h1>
+									</div>
+									<div v-else-if="results.artistTab.data.length == 0">
+										<h1>No Artists found</h1>
+									</div>
+									<div class="release_grid" v-if="results.artistTab.data.length > 0">
+										<div v-for="release in results.artistTab.data" class="release clickable"
+											v-on:click="artistView(event)" v-bind:data-id="release.id">
+											<div class="cover_container">
+												<img class="circle coverart" v-bind:src="release.picture_medium">
+												<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+													v-on:click="addToQueue(event)" v-bind:data-link="release.link" class="download_overlay"><i
+														class="material-icons">get_app</i></div>
+											</div>
+											<p class="primary-text">{{ release.name }}</p>
+											<p class="secondary-text">{{ release.nb_album + ' releases' }}</p>
+										</div>
+									</div>
+								</div>
+								<!-- ### Playlist Search Tab ### -->
+								<div id="playlist_search" class="search_tabcontent">
+									<div v-if="!results.playlistTab.loaded">
+										<h1>Loading</h1>
+									</div>
+									<div v-else-if="results.playlistTab.data.length == 0">
+										<h1>No Playlists found</h1>
+									</div>
+									<div class="release_grid" v-if="results.playlistTab.data.length > 0">
+										<div v-for="release in results.playlistTab.data" class="release clickable"
+											v-on:click="playlistView(event)" v-bind:data-id="release.id">
+											<div class="cover_container">
+												<img class="rounded coverart" v-bind:src="release.picture_medium">
+												<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+													v-on:click="addToQueue(event)" v-bind:data-link="release.link" class="download_overlay"><i
+														class="material-icons">get_app</i></div>
+											</div>
+											<p class="primary-text">{{ release.title }}</p>
+											<p class="secondary-text">{{ 'by '+release.user.name+' - '+release.nb_tracks+' tracks' }}</p>
+										</div>
+									</div>
 								</div>
 							</div>
-							<!-- ### Track Search Tab ### -->
-							<div id="track_search" class="search_tabcontent">
-								<div v-if="!results.trackTab.loaded">
-									<h1>Loading</h1>
+						</div>
+
+						<div id="home_tab" class="main_tabcontent">
+							<h1>Home</h1>
+						</div>
+
+						<div id="charts_tab" class="main_tabcontent">
+							<h1>Charts</h1>
+						</div>
+
+						<div id="favorites_tab" class="main_tabcontent">
+							<h1>Favorites</h1>
+						</div>
+
+						<div id="analyzer_tab" class="main_tabcontent">
+							<h1>Link Analyzer</h1>
+						</div>
+
+						<div id="settings_tab" class="main_tabcontent fixed_footer">
+							<h1>Settings</h1>
+							<div id="logged_in_info" class="inline-flex">
+								<img id="settings_picture" src="" alt="Profile Picture" class="circle"
+									style="width: 125px;height:125px; margin-right: 12px;" />
+								<div>
+									<p>You are logged in as <b id="settings_username"></b></p>
+									<button id="settings_btn_logout">Logout</button>
 								</div>
-								<div v-else-if="results.trackTab.data.length == 0">
-									<h1>No Tracks found</h1>
+							</div>
+							<div class="inline-flex">
+								<input autocomplete="off" type="password" id="login_input_arl" placeholder="ARL" />
+								<button id="settings_btn_copyArl"><i class="material-icons">assignment</i></button>
+							</div>
+							<p><a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">How do I
+									get my own ARL?</a></p>
+							<p><button style="width:100%;" id="settings_btn_updateArl">Update ARL</button></p>
+							<div id="settings_generic_tab">
+								<div class="input_group">
+									<p>Download Path</p>
+									<input type="text" v-model="settings.downloadLocation">
 								</div>
-								<table class="tracks_table" v-if="results.trackTab.data.length > 0">
+								<div class="input_group">
+									<p>Trackname template</p>
+									<input type="text" v-model="settings.tracknameTemplate">
+								</div>
+								<div class="input_group">
+									<p>Album track template</p>
+									<input type="text" v-model="settings.albumTracknameTemplate">
+								</div>
+								<div class="input_group">
+									<p>Playlist track template</p>
+									<input type="text" v-model="settings.playlistTracknameTemplate">
+								</div>
+								<div class="input_group">
+									<p>Create folder for playlist</p>
+									<input type="checkbox" v-model="settings.createPlaylistFolder">
+								</div>
+								<div class="input_group" v-if="settings.createPlaylistFolder">
+									<p>Playlist folder template</p>
+									<input type="text" v-model="settings.playlistNameTemplate">
+								</div>
+								<div class="input_group">
+									<p>Create folder for artist</p>
+									<input type="checkbox" v-model="settings.createArtistFolder">
+								</div>
+								<div class="input_group" v-if="settings.createArtistFolder">
+									<p>Artist folder template</p>
+									<input type="text" v-model="settings.artistNameTemplate">
+								</div>
+								<div class="input_group">
+									<p>Create folder for album</p>
+									<input type="checkbox" v-model="settings.createAlbumFolder">
+								</div>
+								<div class="input_group" v-if="settings.createAlbumFolder">
+									<p>Album folder template</p>
+									<input type="text" v-model="settings.albumNameTemplate">
+								</div>
+								<div class="input_group">
+									<p>Create folder for CDs</p>
+									<input type="checkbox" v-model="settings.createCDFolder">
+								</div>
+								<div class="input_group">
+									<p>Create folder structure for playlists</p>
+									<input type="checkbox" v-model="settings.createStructurePlaylist">
+								</div>
+								<div class="input_group">
+									<p>Create folder structure for singles</p>
+									<input type="checkbox" v-model="settings.createSingleFolder">
+								</div>
+								<div class="input_group">
+									<p>Pad tracks</p>
+									<input type="checkbox" v-model="settings.padTracks">
+								</div>
+								<div class="input_group">
+									<p>Overwrite padding size</p>
+									<input type="number" v-model="settings.paddingSize">
+								</div>
+								<div class="input_group">
+									<p>Illegal Character replacer</p>
+									<input type="text" v-model="settings.illegalCharacterReplacer">
+								</div>
+								<div class="input_group">
+									<p>Concurrent Downloads</p>
+									<input type="number" v-model.number="settings.queueConcurrency">
+								</div>
+								<div class="input_group">
+									<p>Preferred Bitrate</p>
+									<select v-model="settings.maxBitrate">
+										<option value="9">FLAC 1411kbps</option>
+										<option value="3">MP3 320kbps</option>
+										<option value="1">MP3 128kbps</option>
+									</select>
+								</div>
+								<div class="input_group">
+									<p>Bitrate fallback</p>
+									<input type="checkbox" v-model="settings.fallbackBitrate">
+								</div>
+								<div class="input_group">
+									<p>Search fallback</p>
+									<input type="checkbox" v-model="settings.fallbackSearch">
+								</div>
+								<div class="input_group">
+									<p>Create log file for errors</p>
+									<input type="checkbox" v-model="settings.logErrors">
+								</div>
+								<div class="input_group">
+									<p>Create log file for searched tracks</p>
+									<input type="checkbox" v-model="settings.logSearched">
+								</div>
+								<div class="input_group">
+									<p>Create playlist file</p>
+									<input type="checkbox" v-model="settings.createM3U8File">
+								</div>
+								<div class="input_group">
+									<p>Create .lyr files (Sync Lyrics)</p>
+									<input type="checkbox" v-model="settings.syncedLyrics">
+								</div>
+								<div class="input_group">
+									<p>Save covers</p>
+									<input type="checkbox" v-model="settings.saveArtwork">
+								</div>
+								<div class="input_group">
+									<p>Cover name template</p>
+									<input type="text" v-model="settings.coverImageTemplate">
+								</div>
+								<div class="input_group">
+									<p>Save artist image</p>
+									<input type="checkbox" v-model="settings.saveArtworkArtist">
+								</div>
+								<div class="input_group">
+									<p>Artist image name template</p>
+									<input type="text" v-model="settings.artistImageTemplate">
+								</div>
+								<div class="input_group">
+									<p>Local artwork size</p>
+									<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize">
+								</div>
+								<div class="input_group">
+									<p>Embedded artwork size</p>
+									<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize">
+								</div>
+								<div class="input_group">
+									<p>Save images as png</p>
+									<input type="checkbox" v-model="settings.PNGcovers">
+								</div>
+								<div class="input_group">
+									<p>JPEG image quality</p>
+									<input type="number" min="1" max="100" v-model.number="settings.jpegImageQuality">
+								</div>
+								<div class="input_group">
+									<p>Save playlists as compilation</p>
+									<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation">
+								</div>
+								<div class="input_group">
+									<p>Remove album version from track title</p>
+									<input type="checkbox" v-model="settings.removeAlbumVersion">
+								</div>
+								<div class="input_group">
+									<p>What should I do with featured artists</p>
+									<select v-model="settings.featuredToTitle">
+										<option value="0">Nothing</option>
+										<option value="1">Remove it from the title</option>
+										<option value="2">Move it to the title</option>
+									</select>
+								</div>
+								<div class="input_group">
+									<p>Title casing</p>
+									<select v-model="settings.titleCasing">
+										<option value="nothing">Keep unchanged</option>
+										<option value="lower">lowercase</option>
+										<option value="upper">UPPERCASE</option>
+										<option value="start">Start Of Each Word</option>
+										<option value="sentence">Like a sentence</option>
+									</select>
+								</div>
+								<div class="input_group">
+									<p>Artist casing</p>
+									<select v-model="settings.artistCasing">
+										<option value="nothing">Keep unchanged</option>
+										<option value="lower">lowercase</option>
+										<option value="upper">UPPERCASE</option>
+										<option value="start">Start Of Each Word</option>
+										<option value="sentence">Like a sentence</option>
+									</select>
+								</div>
+							</div>
+							<div id="settings_spotify_tab">
+								<div class="input_group">
+									<p>Spotify clientID</p>
+									<input type="text" v-model="spotifyFeatures.clientId">
+								</div>
+								<div class="input_group">
+									<p>Spotify Client Secret</p>
+									<input type="password" v-model="spotifyFeatures.clientSecret">
+								</div>
+							</div>
+							<footer>
+								<button id="settings_btn_save">Save</button>
+							</footer>
+						</div>
+
+						<div id="about_tab" class="main_tabcontent">
+							<h1>About</h1>
+						</div>
+
+						<div id="artist_tab" class="main_tabcontent fixed_footer image_header">
+							<header class="inline-flex"
+								v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
+								<h1>{{ title }}</h1>
+								<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)"
+									v-on:click="addToQueue(event)" v-bind:data-link="link" class="fab right"><i
+										class="material-icons">get_app</i></div>
+							</header>
+
+							<div class="tab">
+								<template v-for="(item, name, index) in body">
+									<button v-bind:class="'selective' + (name==currentTab ? 'active' : '')" v-bind:href="'#artist_' + name"
+										v-on:click="changeTab(name)">{{ name }}</button>
+								</template>
+							</div>
+
+							<table>
+								<thead>
 									<tr>
-										<th style="width: 48px;"></th>
-										<th>Title</th>
-										<th>Artists</th>
-										<th>Album</th>
-										<th><i class="material-icons">timer</i></th>
-										<th style="width: 56px;"></th>
-									</tr>
-									<tr v-for="track in results.trackTab.data" class="track_row">
-										<td style="width: 48px; text-align: center;"><img class="rounded coverart" v-bind:src="track.album.cover_small"></td>
-										<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
-										<td class="breakline" class="clickable" v-on:click="artistView(event)" v-bind:data-id="track.artist.id">{{track.artist.name}}</td>
-										<td class="breakline clickable" v-on:click="albumView(event)" v-bind:data-id="track.album.id">{{track.album.title}}</td>
-										<td>{{convertDuration(track.duration)}}</td>
-										<td role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="track.link" style="width: 56px; text-align: center;" class="clickable"><i class="material-icons">get_app</i></td>
-									</tr>
-								</table>
-							</div>
-							<!-- ### Album Search Tab ### -->
-							<div id="album_search" class="search_tabcontent">
-								<div v-if="!results.albumTab.loaded">
-									<h1>Loading</h1>
-								</div>
-								<div v-else-if="results.albumTab.data.length == 0">
-									<h1>No Albums found</h1>
-								</div>
-								<div class="release_grid" v-if="results.albumTab.data.length > 0">
-									<div v-for="release in results.albumTab.data" class="release clickable" v-on:click="albumView(event)" v-bind:data-id="release.id">
-										<div class="cover_container">
-											<img class="rounded coverart" v-bind:src="release.cover_medium">
-											<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="release.link" class="download_overlay"><i class="material-icons">get_app</i></div>
-										</div>
-										<p class="primary-text">{{ release.title }}</p>
-										<p class="secondary-text">{{ 'by '+release.artist.name+' - '+release.nb_tracks+' tracks' }}</p>
-									</div>
-								</div>
-							</div>
-							<!-- ### Artist Search Tab ### -->
-							<div id="artist_search" class="search_tabcontent">
-								<div v-if="!results.artistTab.loaded">
-									<h1>Loading</h1>
-								</div>
-								<div v-else-if="results.artistTab.data.length == 0">
-									<h1>No Artists found</h1>
-								</div>
-								<div class="release_grid" v-if="results.artistTab.data.length > 0">
-									<div v-for="release in results.artistTab.data" class="release clickable" v-on:click="artistView(event)" v-bind:data-id="release.id">
-										<div class="cover_container">
-											<img class="circle coverart" v-bind:src="release.picture_medium">
-											<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="release.link" class="download_overlay"><i class="material-icons">get_app</i></div>
-										</div>
-										<p class="primary-text">{{ release.name }}</p>
-										<p class="secondary-text">{{ release.nb_album + ' releases' }}</p>
-									</div>
-								</div>
-							</div>
-							<!-- ### Playlist Search Tab ### -->
-							<div id="playlist_search" class="search_tabcontent">
-								<div v-if="!results.playlistTab.loaded">
-									<h1>Loading</h1>
-								</div>
-								<div v-else-if="results.playlistTab.data.length == 0">
-									<h1>No Playlists found</h1>
-								</div>
-								<div class="release_grid" v-if="results.playlistTab.data.length > 0">
-									<div v-for="release in results.playlistTab.data" class="release clickable" v-on:click="playlistView(event)" v-bind:data-id="release.id">
-										<div class="cover_container">
-											<img class="rounded coverart" v-bind:src="release.picture_medium">
-											<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="release.link" class="download_overlay"><i class="material-icons">get_app</i></div>
-										</div>
-										<p class="primary-text">{{ release.title }}</p>
-										<p class="secondary-text">{{ 'by '+release.user.name+' - '+release.nb_tracks+' tracks' }}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div id="home_tab" class="main_tabcontent">
-						<h1>Home</h1>
-					</div>
-
-					<div id="charts_tab" class="main_tabcontent"><h1>Charts</h1></div>
-
-					<div id="favorites_tab" class="main_tabcontent"><h1>Favorites</h1></div>
-
-					<div id="analyzer_tab" class="main_tabcontent"><h1>Link Analyzer</h1></div>
-
-					<div id="settings_tab" class="main_tabcontent fixed_footer">
-						<h1>Settings</h1>
-						<div id="logged_in_info" class="inline-flex">
-							<img id="settings_picture" src="" alt="Profile Picture" class="circle" style="width: 125px;height:125px; margin-right: 12px;"/>
-							<div>
-								<p>You are logged in as <b id="settings_username"></b></p>
-								<button id="settings_btn_logout">Logout</button>
-							</div>
-						</div>
-						<div class="inline-flex">
-							<input autocomplete="off" type="password" id="login_input_arl" placeholder="ARL"/>
-							<button id="settings_btn_copyArl"><i class="material-icons">assignment</i></button>
-						</div>
-						<p><a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">How do I get my own ARL?</a></p>
-						<p><button style="width:100%;" id="settings_btn_updateArl">Update ARL</button></p>
-						<div id="settings_generic_tab">
-							<div class="input_group">
-								<p>Download Path</p>
-								<input type="text" v-model="settings.downloadLocation">
-							</div>
-							<div class="input_group">
-								<p>Trackname template</p>
-								<input type="text" v-model="settings.tracknameTemplate">
-							</div>
-							<div class="input_group">
-								<p>Album track template</p>
-								<input type="text" v-model="settings.albumTracknameTemplate">
-							</div>
-							<div class="input_group">
-								<p>Playlist track template</p>
-								<input type="text" v-model="settings.playlistTracknameTemplate">
-							</div>
-							<div class="input_group">
-								<p>Create folder for playlist</p>
-								<input type="checkbox" v-model="settings.createPlaylistFolder">
-							</div>
-							<div class="input_group" v-if="settings.createPlaylistFolder">
-								<p>Playlist folder template</p>
-								<input type="text" v-model="settings.playlistNameTemplate">
-							</div>
-							<div class="input_group">
-								<p>Create folder for artist</p>
-								<input type="checkbox" v-model="settings.createArtistFolder">
-							</div>
-							<div class="input_group" v-if="settings.createArtistFolder">
-								<p>Artist folder template</p>
-								<input type="text" v-model="settings.artistNameTemplate">
-							</div>
-							<div class="input_group">
-								<p>Create folder for album</p>
-								<input type="checkbox" v-model="settings.createAlbumFolder">
-							</div>
-							<div class="input_group" v-if="settings.createAlbumFolder">
-								<p>Album folder template</p>
-								<input type="text" v-model="settings.albumNameTemplate">
-							</div>
-							<div class="input_group">
-								<p>Create folder for CDs</p>
-								<input type="checkbox" v-model="settings.createCDFolder">
-							</div>
-							<div class="input_group">
-								<p>Create folder structure for playlists</p>
-								<input type="checkbox" v-model="settings.createStructurePlaylist">
-							</div>
-							<div class="input_group">
-								<p>Create folder structure for singles</p>
-								<input type="checkbox" v-model="settings.createSingleFolder">
-							</div>
-							<div class="input_group">
-								<p>Pad tracks</p>
-								<input type="checkbox" v-model="settings.padTracks">
-							</div>
-							<div class="input_group">
-								<p>Overwrite padding size</p>
-								<input type="number" v-model="settings.paddingSize">
-							</div>
-							<div class="input_group">
-								<p>Illegal Character replacer</p>
-								<input type="text" v-model="settings.illegalCharacterReplacer">
-							</div>
-							<div class="input_group">
-								<p>Concurrent Downloads</p>
-								<input type="number" v-model.number="settings.queueConcurrency">
-							</div>
-							<div class="input_group">
-								<p>Preferred Bitrate</p>
-								<select v-model="settings.maxBitrate">
-									<option value="9">FLAC 1411kbps</option>
-									<option value="3">MP3 320kbps</option>
-									<option value="1">MP3 128kbps</option>
-								</select>
-							</div>
-							<div class="input_group">
-								<p>Bitrate fallback</p>
-								<input type="checkbox" v-model="settings.fallbackBitrate">
-							</div>
-							<div class="input_group">
-								<p>Search fallback</p>
-								<input type="checkbox" v-model="settings.fallbackSearch">
-							</div>
-							<div class="input_group">
-								<p>Create log file for errors</p>
-								<input type="checkbox" v-model="settings.logErrors">
-							</div>
-							<div class="input_group">
-								<p>Create log file for searched tracks</p>
-								<input type="checkbox" v-model="settings.logSearched">
-							</div>
-							<div class="input_group">
-								<p>Create playlist file</p>
-								<input type="checkbox" v-model="settings.createM3U8File">
-							</div>
-							<div class="input_group">
-								<p>Create .lyr files (Sync Lyrics)</p>
-								<input type="checkbox" v-model="settings.syncedLyrics">
-							</div>
-							<div class="input_group">
-								<p>Save covers</p>
-								<input type="checkbox" v-model="settings.saveArtwork">
-							</div>
-							<div class="input_group">
-								<p>Cover name template</p>
-								<input type="text" v-model="settings.coverImageTemplate">
-							</div>
-							<div class="input_group">
-								<p>Save artist image</p>
-								<input type="checkbox" v-model="settings.saveArtworkArtist">
-							</div>
-							<div class="input_group">
-								<p>Artist image name template</p>
-								<input type="text" v-model="settings.artistImageTemplate">
-							</div>
-							<div class="input_group">
-								<p>Local artwork size</p>
-								<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize">
-							</div>
-							<div class="input_group">
-								<p>Embedded artwork size</p>
-								<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize">
-							</div>
-							<div class="input_group">
-								<p>Save images as png</p>
-								<input type="checkbox" v-model="settings.PNGcovers">
-							</div>
-							<div class="input_group">
-								<p>JPEG image quality</p>
-								<input type="number" min="1" max="100" v-model.number="settings.jpegImageQuality">
-							</div>
-							<div class="input_group">
-								<p>Save playlists as compilation</p>
-								<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation">
-							</div>
-							<div class="input_group">
-								<p>Remove album version from track title</p>
-								<input type="checkbox" v-model="settings.removeAlbumVersion">
-							</div>
-							<div class="input_group">
-								<p>What should I do with featured artists</p>
-								<select v-model="settings.featuredToTitle">
-									<option value="0">Nothing</option>
-									<option value="1">Remove it from the title</option>
-									<option value="2">Move it to the title</option>
-								</select>
-							</div>
-							<div class="input_group">
-								<p>Title casing</p>
-								<select v-model="settings.titleCasing">
-									<option value="nothing">Keep unchanged</option>
-									<option value="lower">lowercase</option>
-									<option value="upper">UPPERCASE</option>
-									<option value="start">Start Of Each Word</option>
-									<option value="sentence">Like a sentence</option>
-								</select>
-							</div>
-							<div class="input_group">
-								<p>Artist casing</p>
-								<select v-model="settings.artistCasing">
-									<option value="nothing">Keep unchanged</option>
-									<option value="lower">lowercase</option>
-									<option value="upper">UPPERCASE</option>
-									<option value="start">Start Of Each Word</option>
-									<option value="sentence">Like a sentence</option>
-								</select>
-							</div>
-						</div>
-						<div id="settings_spotify_tab">
-							<div class="input_group">
-								<p>Spotify clientID</p>
-								<input type="text" v-model="spotifyFeatures.clientId">
-							</div>
-							<div class="input_group">
-								<p>Spotify Client Secret</p>
-								<input type="password" v-model="spotifyFeatures.clientSecret">
-							</div>
-						</div>
-						<footer>
-							<button id="settings_btn_save">Save</button>
-						</footer>
-					</div>
-
-					<div id="about_tab" class="main_tabcontent"><h1>About</h1></div>
-
-					<div id="artist_tab" class="main_tabcontent fixed_footer image_header">
-						<header class="inline-flex" v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
-							<h1>{{ title }}</h1>
-							<div role="button" aria-label="download" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="link" class="fab right"><i class="material-icons">get_app</i></div>
-						</header>
-
-						<div class="tab">
-							<template v-for="(item, name, index) in body">
-								<button v-bind:class="'selective' + (name==currentTab ? 'active' : '')" v-bind:href="'#artist_' + name" v-on:click="changeTab(name)">{{ name }}</button>
-							</template>
-						</div>
-
-						<table>
-							<thead>
-								<tr>
-									<th v-for="data in head" v-on:click="data.sortKey ? sortBy(data.sortKey) : null" v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
+										<th v-for="data in head" v-on:click="data.sortKey ? sortBy(data.sortKey) : null"
+											v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
 											{{data.title}}
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr v-for="release in showTable">
-									<td class="inline-flex clickable" v-on:click="albumView(event)" v-bind:data-id="release.id">
-										<img class="rounded" v-bind:src="release.cover_small" style="margin-right: 16px;"/>
-										<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit" style="color:#FF3B30;">explicit</i>
-										{{release.title}}
-										<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color:#FF7300;">fiber_new</i>
-									</td>
-									<td>{{release.release_date}}</td>
-									<td><i v-on:click="addToQueue(event)" v-on:contextmenu="openQualityModal(event)" v-bind:data-link="release.link" class="material-icons">file_download</i></td>
-								</tr>
-							</tbody>
-						</table>
-
-						<footer>
-							<button onclick="backTab()">Back</button>
-						</footer>
-					</div>
-
-					<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
-						<header v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
-							<h1>{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
-							<h2><span v-if="metadata">{{ metadata }}</span><span v-if="release_date">{{ release_date }}</span></h2>
-						</header>
-
-						<table>
-							<thead>
-								<tr>
-									<th v-for="data in head" v-html="data.title"></th>
-								</tr>
-							</thead>
-							<tbody>
-								<template v-for="track in body">
-									<tr v-if="track.type == 'track'">
-										<td><i class="material-icons">play_arrow</i></td>
-										<td>{{ track.track_position }}</td>
-										<td><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span v-if="track.title_version">{{track.title_version}}</span></td>
-										<td class="clickable" v-on:click="artistView(event)" v-bind:data-id="track.artist.id">{{ track.artist.name }}</td>
-										<td class="clickable" v-if="type == 'Playlist'" v-on:click="albumView(event)" v-bind:data-id="track.album.id">{{ track.album.title }}</td>
-										<td>{{ convertDuration(track.duration) }}</td>
-										<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+										</th>
 									</tr>
-									<tr v-else-if="track.type == 'disc_separator'">
-										<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
+								</thead>
+								<tbody>
+									<tr v-for="release in showTable">
+										<td class="inline-flex clickable" v-on:click="albumView(event)" v-bind:data-id="release.id">
+											<img class="rounded" v-bind:src="release.cover_small" style="margin-right: 16px;" />
+											<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit"
+												style="color:#FF3B30;">explicit</i>
+											{{release.title}}
+											<i v-if="checkNewRelease(release.release_date)" class="material-icons"
+												style="color:#FF7300;">fiber_new</i>
+										</td>
+										<td>{{release.release_date}}</td>
+										<td><i v-on:click="addToQueue(event)" v-on:contextmenu="openQualityModal(event)"
+												v-bind:data-link="release.link" class="material-icons">file_download</i></td>
 									</tr>
-								</template>
+								</tbody>
+							</table>
 
-							</tbody>
-						</table>
-						<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
-						<footer>
-							<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="link">Download {{ type }}</button>
-							<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)" v-bind:data-link="selectedLinks()">Download selection<i class="material-icons right">file_download</i></button>
-							<button onclick="backTab()">Back</button>
-						</footer>
+							<footer>
+								<button onclick="backTab()">Back</button>
+							</footer>
+						</div>
+
+						<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
+							<header
+								v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
+								<h1>{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
+								<h2><span v-if="metadata">{{ metadata }}</span><span v-if="release_date">{{ release_date }}</span></h2>
+							</header>
+
+							<table>
+								<thead>
+									<tr>
+										<th v-for="data in head" v-html="data.title"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<template v-for="track in body">
+										<tr v-if="track.type == 'track'">
+											<td><i class="material-icons">play_arrow</i></td>
+											<td>{{ track.track_position }}</td>
+											<td><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span
+													v-if="track.title_version">{{track.title_version}}</span></td>
+											<td class="clickable" v-on:click="artistView(event)" v-bind:data-id="track.artist.id">
+												{{ track.artist.name }}</td>
+											<td class="clickable" v-if="type == 'Playlist'" v-on:click="albumView(event)"
+												v-bind:data-id="track.album.id">{{ track.album.title }}</td>
+											<td>{{ convertDuration(track.duration) }}</td>
+											<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+										</tr>
+										<tr v-else-if="track.type == 'disc_separator'">
+											<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
+										</tr>
+									</template>
+
+								</tbody>
+							</table>
+							<span v-if="label"
+								style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
+							<footer>
+								<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)"
+									v-bind:data-link="link">Download {{ type }}</button>
+								<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)"
+									v-bind:data-link="selectedLinks()">Download selection<i
+										class="material-icons right">file_download</i></button>
+								<button onclick="backTab()">Back</button>
+							</footer>
+						</div>
+
 					</div>
-
-				</div></section>
+				</section>
 			</div>
 
 			<div id="download_tab_container" class="tab_hidden">
@@ -501,13 +586,7 @@
 	<script type="text/javascript" src="/public/js/vendor/vue.min.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/lodash.min.js"></script>
 	<script type="text/javascript" src="/public/js/vendor/toastify.js"></script>
-	
-	<script type="text/javascript" src="/public/js/app/app.js"></script>
-	<script type="text/javascript" src="/public/js/app/settings.js"></script>
-	<script type="text/javascript" src="/public/js/app/modals.js"></script>
-	<script type="text/javascript" src="/public/js/app/tabs.js"></script>
-	<script type="text/javascript" src="/public/js/app/stackedTabs.js"></script>
-	<script type="text/javascript" src="/public/js/app/utils.js"></script>
-	<script type="text/javascript" src="/public/js/app/search.js"></script>
-	<script type="text/javascript" src="/public/js/app/downloadList.js"></script>
+
+	<script type="module" src="/public/js/app.js"></script>
+
 </html>

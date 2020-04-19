@@ -16,7 +16,7 @@ function changeTab(evt, section, tabName) {
 		tablinks[i].classList.remove('active')
 	}
 	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
-		settingsTab.settings = { ...lastSettings }
+		SettingsTab.settings = { ...lastSettings }
 	}
 
 	document.getElementById(tabName).style.display = 'block'

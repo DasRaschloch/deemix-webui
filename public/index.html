@@ -21,7 +21,7 @@
 			<div id="middle_section">
 				<header id="search"><input id="searchbar" autocomplete="off" type="text" name="searchbar" value="" placeholder="Search..." autofocus></header>
 				<section id="content"><div id="container">
-					<!-- <div id="v-app" style="height: 300px;"><app/></div> -->
+					<!-- <div id="v-app"><app/></div> -->
 					<div id="search_tab" class="main_tabcontent">
 						<div class="tab">
 							<button class="search_tablinks" id="search_all_tab" onclick="changeTab(event, 'search', 'main_search')">All</button>
@@ -168,12 +168,12 @@
 							<img id="settings_picture" src="" alt="Profile Picture" class="circle" style="width: 125px;height:125px; margin-right: 12px;"/>
 							<div>
 								<p>You are logged in as <b id="settings_username"></b></p>
-								<button onclick="logout()" id="settings_btn_logout">Logout</button>
+								<button id="settings_btn_logout">Logout</button>
 							</div>
 						</div>
 						<div class="inline-flex">
 							<input autocomplete="off" type="password" id="login_input_arl" placeholder="ARL"/>
-							<button onclick="copyARLtoClipboard()" id="settings_btn_copyArl"><i class="material-icons">assignment</i></button>
+							<button id="settings_btn_copyArl"><i class="material-icons">assignment</i></button>
 						</div>
 						<p><a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">How do I get my own ARL?</a></p>
 						<p><button onclick="loginButton()" style="width:100%;" id="settings_btn_updateArl">Update ARL</button></p>
@@ -358,7 +358,7 @@
 							</div>
 						</div>
 						<footer>
-							<button onclick="saveSettings()">Save</button>
+							<button id="settings_btn_save">Save</button>
 						</footer>
 					</div>
 
@@ -444,30 +444,24 @@
 				</div></section>
 			</div>
 
-			<div id="download_tab_container">
-				<div id="download_tab_bar">
-					<i id="show_download_tab" class="material-icons download_bar_icon">chevron_left</i>
-					<label>downloads</label>
+			<div id="download_tab_container" class="tab_hidden">
+				<i id="toggle_download_tab" class="material-icons download_bar_icon"></i>
+				<div id="queue_buttons" class="right">
+					<i id="clean_queue" class="material-icons download_bar_icon">clear_all</i>
+					<i id="cancel_queue" class="material-icons download_bar_icon">delete_sweep</i>
 				</div>
-				<div id="download_tab">
-					<i id="hide_download_tab" class="material-icons download_bar_icon">chevron_right</i>
-					<div class="inline-flex right">
-						<i id="clean_queue" class="material-icons download_bar_icon">clear_all</i>
-						<i id="cancel_queue" class="material-icons download_bar_icon">delete_sweep</i>
-					</div>
-					<div id="download_list" class=""></div>
-				</div>
+				<div id="download_list"></div>
 			</div>
 		</main>
 		<div id="modal_quality" class="smallmodal">
 			<!-- Modal content -->
 			<div class="smallmodal-content">
-				<button onclick="modalQualityButton(9)">Download FLAC</button><br>
-				<button onclick="modalQualityButton(3)">Download MP3 320kbps</button><br>
-				<button onclick="modalQualityButton(1)">Download MP3 128kbps</button><br>
-				<button onclick="modalQualityButton(15)">Download 360 Reality Audio [HQ]</button><br>
-				<button onclick="modalQualityButton(14)">Download 360 Reality Audio [MQ]</button><br>
-				<button onclick="modalQualityButton(13)">Download 360 Reality Audio [LQ]</button><br>
+				<button class="quality-button" data-quality-value="9">Download FLAC</button><br>
+				<button class="quality-button" data-quality-value="3">Download MP3 320kbps</button><br>
+				<button class="quality-button" data-quality-value="1">Download MP3 128kbps</button><br>
+				<button class="quality-button" data-quality-value="15">Download 360 Reality Audio [HQ]</button><br>
+				<button class="quality-button" data-quality-value="14">Download 360 Reality Audio [MQ]</button><br>
+				<button class="quality-button" data-quality-value="13">Download 360 Reality Audio [LQ]</button><br>
 			</div>
 		</div>
 	</body>
@@ -479,6 +473,7 @@
 	<script type="text/javascript" src="/public/js/vendor/toastify.js"></script>
 	<!-- <script type="text/javascript" src="/public/js/app/v-app.js"></script> -->
 	<script type="text/javascript" src="/public/js/app/app.js"></script>
+	<script type="text/javascript" src="/public/js/app/settings.js"></script>
 	<script type="text/javascript" src="/public/js/app/tabs.js"></script>
 	<script type="text/javascript" src="/public/js/app/stackedTabs.js"></script>
 	<script type="text/javascript" src="/public/js/app/utils.js"></script>

@@ -1,15 +1,5 @@
+/* ===== Scrolled search ===== */
 // Load more content when the search page is at the end
-$('#content').on('scroll', function () {
-	if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-		if (
-			main_selected == 'search_tab' &&
-			['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
-		) {
-			scrolledSearch(window[search_selected.split('_')[0] + 'Search'])
-		}
-	}
-})
-
 function scrolledSearch(vueTab) {
 	query = vueTab.query
 	if (vueTab.results.next < vueTab.results.total) {
@@ -22,7 +12,9 @@ function scrolledSearch(vueTab) {
 	}
 }
 
-function searchUpadate(result) {
+function searchUpdate(result) {
+	console.log('search update')
+
 	vueTab = null
 	switch (result.type) {
 		case 'TRACK':
@@ -43,21 +35,35 @@ function searchUpadate(result) {
 		vueTab.results.data = vueTab.results.data.concat(result.data)
 	}
 }
+
 socket.on('search', function (result) {
-	searchUpadate(result)
+	searchUpdate(result)
 })
+
+function handleContentScroll() {
+	if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+		if (
+			main_selected == 'search_tab' &&
+			['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
+		) {
+			scrolledSearch(window[search_selected.split('_')[0] + 'Search'])
+		}
+	}
+}
+
+document.getElementById('content').addEventListener('scroll', debounce(handleContentScroll, 50))
 
 function clickElement(button) {
 	return document.getElementById(button).click()
 }
 
 function sendAddToQueue(url, bitrate = null) {
-	if (url.indexOf(";") != -1){
-		urls = url.split(";")
-		urls.forEach(url=>{
+	if (url.indexOf(';') != -1) {
+		urls = url.split(';')
+		urls.forEach(url => {
 			socket.emit('addToQueue', { url: url, bitrate: bitrate })
 		})
-	}else if(url != ""){
+	} else if (url != '') {
 		socket.emit('addToQueue', { url: url, bitrate: bitrate })
 	}
 }
@@ -88,8 +94,14 @@ let MainSearch = new Vue({
 		changeSearchTab(section) {
 			if (section != 'TOP_RESULT') clickElement('search_' + section.toLowerCase() + '_tab')
 		},
-    addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
-		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
+		addToQueue: function (e) {
+			e.stopPropagation()
+			sendAddToQueue(e.currentTarget.dataset.link)
+		},
+		openQualityModal: function (e) {
+			e.preventDefault()
+			openQualityModal(e.currentTarget.dataset.link)
+		}
 	}
 })
 
@@ -106,8 +118,14 @@ var trackSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
-		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
+		addToQueue: function (e) {
+			e.stopPropagation()
+			sendAddToQueue(e.currentTarget.dataset.link)
+		},
+		openQualityModal: function (e) {
+			e.preventDefault()
+			openQualityModal(e.currentTarget.dataset.link)
+		}
 	}
 })
 
@@ -124,8 +142,14 @@ var albumSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
-		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
+		addToQueue: function (e) {
+			e.stopPropagation()
+			sendAddToQueue(e.currentTarget.dataset.link)
+		},
+		openQualityModal: function (e) {
+			e.preventDefault()
+			openQualityModal(e.currentTarget.dataset.link)
+		}
 	}
 })
 
@@ -142,8 +166,14 @@ var artistSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
-		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
+		addToQueue: function (e) {
+			e.stopPropagation()
+			sendAddToQueue(e.currentTarget.dataset.link)
+		},
+		openQualityModal: function (e) {
+			e.preventDefault()
+			openQualityModal(e.currentTarget.dataset.link)
+		}
 	}
 })
 
@@ -160,28 +190,34 @@ var playlistSearch = new Vue({
 		}
 	},
 	methods: {
-		addToQueue: function(e){e.stopPropagation(); sendAddToQueue(e.currentTarget.dataset.link)},
-		openQualityModal: function(e){e.preventDefault(); openQualityModal(e.currentTarget.dataset.link)}
+		addToQueue: function (e) {
+			e.stopPropagation()
+			sendAddToQueue(e.currentTarget.dataset.link)
+		},
+		openQualityModal: function (e) {
+			e.preventDefault()
+			openQualityModal(e.currentTarget.dataset.link)
+		}
 	}
 })
 
 let term = null
 
 // Search section
-$("#searchbar").keyup(function(e){
-  if(e.keyCode == 13){
-    term = this.value
-    if (isValidURL(term)){
-      if (e.ctrlKey){
-        openQualityModal(term);
-      }else{
-        sendAddToQueue(term);
-      }
-    }else{
-			if (term != MainSearch.results.QUERY || main_selected == 'search_tab'){
-				document.getElementById("search_tab_content").style.display = "none";
-				socket.emit("mainSearch", {term: term});
-			}else{
+$('#searchbar').keyup(function (e) {
+	if (e.keyCode == 13) {
+		term = this.value
+		if (isValidURL(term)) {
+			if (e.ctrlKey) {
+				openQualityModal(term)
+			} else {
+				sendAddToQueue(term)
+			}
+		} else {
+			if (term != MainSearch.results.QUERY  || main_selected == 'search_tab') {
+				document.getElementById('search_tab_content').style.display = 'none'
+				socket.emit('mainSearch', { term: term })
+			} else {
 				document.getElementById('search_all_tab').click()
 				document.getElementById('search_tab_content').style.display = 'block'
 				document.getElementById('main_search_tablink').click()

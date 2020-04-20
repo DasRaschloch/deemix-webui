@@ -159,6 +159,49 @@ input[type="number"] {
 	margin-bottom: 8px;
 }
 
+select{
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	border: 0px solid black;
+	line-height: 36px;
+	padding: 0px 40px 0px 8px;
+	border-radius: 4px;
+	background-color: var(--secondary-background);
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath style='fill%3A%23000000%3Bfill-opacity%3A0.25' d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: 24px;
+	background-position: calc(100% - 8px) center;
+	background-clip: border-box;
+	color: var(--primary-text);
+	margin-bottom: 8px;
+}
+
+input[type='checkbox'] {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: none;
+	border: 2px solid black;
+	opacity: .50;
+	border-radius: 2px;
+	padding: 7px;
+	margin: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+input[type='checkbox']:checked {
+	opacity: 1;
+	background-color: var(--accent-color);
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18' viewBox='3 3 18 18' width='18'%3E%3Cpath fill='%23ffffff' d='M 10,17 5,12 6.41,10.59 10,14.17 17.59,6.58 19,8 Z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+	background-position: center center;
+	border: 0px solid var(--accent-color);
+	border-radius: 2px;
+	padding: 9px;
+	margin: 3px;
+	color: var(--accent-text);
+}
+
 .right {
 	float: right;
 }

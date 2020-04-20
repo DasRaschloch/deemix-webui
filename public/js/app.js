@@ -365,6 +365,17 @@ var tracklistTab = new Vue({
 				})
 			}
 			return selected.join(';')
+		},
+		convertDuration(duration) {
+			//convert from seconds only to mm:ss format
+			let mm, ss
+			mm = Math.floor(duration / 60)
+			ss = duration - mm * 60
+			//add leading zero if ss < 0
+			if (ss < 10) {
+				ss = '0' + ss
+			}
+			return mm + ':' + ss
 		}
 	}
 })
@@ -446,11 +457,7 @@ socket.on('show_album', function (data) {
 		{ title: '#' },
 		{ title: 'Song' },
 		{ title: 'Artist' },
-		{ title: '<i class="material-icons">timer</i>', width: '40px' },
-		{
-			title: '<input onclick="tracklistTab.toggleAll(event)" class="selectAll" type="checkbox"><span></span>',
-			width: '24px'
-		}
+		{ title: '<i class="material-icons">timer</i>', width: '40px' }
 	]
 	if (_.isEmpty(data.tracks)) {
 		tracklistTab.body = null
@@ -472,11 +479,7 @@ socket.on('show_playlist', function (data) {
 		{ title: 'Song' },
 		{ title: 'Artist' },
 		{ title: 'Album' },
-		{ title: '<i class="material-icons">timer</i>', width: '40px' },
-		{
-			title: '<input onclick="tracklistTab.toggleAll(event)" class="selectAll" type="checkbox"><span></span>',
-			width: '24px'
-		}
+		{ title: '<i class="material-icons">timer</i>', width: '40px' }
 	]
 	if (_.isEmpty(data.tracks)) {
 		tracklistTab.body = null

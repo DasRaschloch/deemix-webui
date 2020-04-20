@@ -520,6 +520,7 @@
 								<thead>
 									<tr>
 										<th v-for="data in head" v-html="data.title"></th>
+										<th><input v-on:click="toggleAll(event)" class="selectAll" type="checkbox"></th>
 									</tr>
 								</thead>
 								<tbody>

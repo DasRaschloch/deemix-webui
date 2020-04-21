@@ -434,7 +434,7 @@ socket.on('show_artist', function (data) {
 	artistTab.head = [
 		{ title: 'Title', sortKey: 'title' },
 		{ title: 'Release Date', sortKey: 'release_date' },
-		{ title: '', width: '56px' }
+		{ title: '', width: '32px' }
 	]
 	if (_.isEmpty(data.releases)) {
 		artistTab.body = null
@@ -512,7 +512,7 @@ window.search = function (type) {
 }
 
 window.scrolledSearch = function (type) {
-	query = MainSearch.results.query
+	let query = MainSearch.results.query
 	if (MainSearch.results[type + 'Tab'].next < MainSearch.results[type + 'Tab'].total) {
 		socket.emit('search', {
 			term: query,

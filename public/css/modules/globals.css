@@ -66,7 +66,7 @@ table {
 	-webkit-border-vertical-spacing: 0px;
 }
 
-table td {
+table td, table th {
 	padding: 4px 12px 4px 5px;
 	vertical-align: middle;
 	border: 0px black solid;
@@ -144,6 +144,15 @@ button.selective {
 button.selective.active {
 	background-color: var(--accent-color);
 	color: var(--accent-text);
+}
+
+button.with_icon {
+	display: flex;
+	align-items: center;
+}
+
+button.with_icon i {
+	margin-left: 8px;
 }
 
 input[type="text"],
@@ -234,6 +243,7 @@ th.sort-desc:after {content: "\25bc";font-size: 0.7em;padding-left: 3px;line-hei
 	display: inline-block;
 	background-color: var(--accent-color);
 	color: var(--accent-text);
+	cursor: pointer;
 }
 .fab i{
 	font-size: 24px;

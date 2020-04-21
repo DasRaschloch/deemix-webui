@@ -482,6 +482,7 @@
 								<thead>
 									<tr>
 										<th v-for="data in head" v-on:click="data.sortKey ? sortBy(data.sortKey) : null"
+											v-bind:style="{ 'width': data.width ? data.width : 'auto'}"
 											v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
 											{{data.title}}
 										</th>
@@ -512,15 +513,15 @@
 						<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
 							<header
 								v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
-								<h1>{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
-								<h2><span v-if="metadata">{{ metadata }}</span><span v-if="release_date">{{ release_date }}</span></h2>
+								<h1 class="inline-flex">{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
+								<h2  class="inline-flex"><span v-if="metadata">{{ metadata }}</span><span class="right" v-if="release_date">{{ release_date }}</span></h2>
 							</header>
 
 							<table>
 								<thead>
 									<tr>
-										<th v-for="data in head" v-html="data.title"></th>
-										<th><input v-on:click="toggleAll(event)" class="selectAll" type="checkbox"></th>
+										<th v-for="data in head" v-html="data.title" v-bind:style="{ 'width': data.width ? data.width : 'auto'}"></th>
+										<th style="width: 32px"><input v-on:click="toggleAll(event)" class="selectAll" type="checkbox"></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -528,7 +529,7 @@
 										<tr v-if="track.type == 'track'">
 											<td><i class="material-icons">play_arrow</i></td>
 											<td>{{ track.track_position }}</td>
-											<td><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span
+											<td class="inline-flex"><i v-if="track.explicit_lyrics" class="material-icons">explicit</i>{{ track.title }} <span
 													v-if="track.title_version">{{track.title_version}}</span></td>
 											<td class="clickable" v-on:click="artistView(event)" v-bind:data-id="track.artist.id">
 												{{ track.artist.name }}</td>
@@ -549,9 +550,9 @@
 							<footer>
 								<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)"
 									v-bind:data-link="link">Download {{ type }}</button>
-								<button v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)"
+								<button class="with_icon" v-on:contextmenu="openQualityModal(event)" v-on:click="addToQueue(event)"
 									v-bind:data-link="selectedLinks()">Download selection<i
-										class="material-icons right">file_download</i></button>
+										class="material-icons">file_download</i></button>
 								<button onclick="backTab()">Back</button>
 							</footer>
 						</div>

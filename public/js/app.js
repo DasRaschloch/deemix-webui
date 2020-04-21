@@ -1,69 +1,28 @@
+/* ===== Imports ===== */
+
 import * as Utils from './modules/utils.js'
-import { MainSearch } from './modules/search-tab/main-search.js'
 
-const socket = io.connect(window.location.href)
-const localStorage = window.localStorage
+/* ===== Vue components ===== */
+import { MainSearch } from './modules/main-search.js'
+import { SettingsTab } from './modules/settings-tab.js'
 
-// Toasts stuff
-window.toastsWithId = {}
+import { resetTracklistTab } from './modules/tracklist-tab.js'
+import { resetArtistTab } from './modules/artist-tab.js'
+import { toast } from './modules/toasts.js'
+import { socket } from './modules/socket.js'
 
-// Settings
-window.lastSettings = {}
-window.lastCredentials = {}
-
-window.toast = function (msg, icon = null, dismiss = true, id = null) {
-	if (toastsWithId[id]) {
-		let toastObj = toastsWithId[id]
-		let toastDOM = $(`div.toastify[toast_id=${id}]`)
-		if (msg) {
-			toastDOM.find('.toast-message').html(msg)
-		}
-		if (icon) {
-			if (icon == 'loading') icon = `<div class="circle-loader"></div>`
-			else icon = `<i class="material-icons">${icon}</i>`
-			toastDOM.find('.toast-icon').html(icon)
-		}
-		if (dismiss !== null && dismiss) {
-			setTimeout(function () {
-				toastObj.hideToast()
-				delete toastsWithId[id]
-			}, 3000)
-		}
-	} else {
-		if (icon == null) icon = ''
-		else if (icon == 'loading') icon = `<div class="circle-loader"></div>`
-		else icon = `<i class="material-icons">${icon}</i>`
-		let toastObj = Toastify({
-			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
-			duration: dismiss ? 3000 : 0,
-			gravity: 'bottom',
-			position: 'left'
-		}).showToast()
-		if (id) {
-			toastsWithId[id] = toastObj
-			$(toastObj.toastElement).attr('toast_id', id)
-		}
-	}
-}
+/* ===== Globals ===== */
 
 /* ===== Socketio listeners ===== */
-socket.on('toast', data => {
-	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
-})
 
 // Debug messages for socketio
 socket.on('message', function (msg) {
 	console.log(msg)
 })
 
-// Login stuff
-
-window.loginButton = function () {
-	let arl = document.querySelector('#login_input_arl').value
-	if (arl != '' && arl != localStorage.getItem('arl')) {
-		socket.emit('login', arl, true)
-	}
-}
+socket.on('toast', data => {
+	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
+})
 
 socket.on('logging_in', function () {
 	toast('Logging in', 'loading', false, 'login-toast')
@@ -122,27 +81,34 @@ socket.on('logged_out', function () {
 })
 
 /**
- * Adds event listeners.
+ * Adds all event listeners.
  * @returns		{void}
  * @since			0.1.0 (?)
  */
 function linkEventListeners() {
 	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
 	document.getElementById('modal_quality').addEventListener('click', modalQualityButton)
-	document.getElementById('settings_btn_updateArl').addEventListener('click', loginButton)
+	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
+	document.getElementById('search_tab').addEventListener('click', handleTabClick)
+
+	const backButtons = Array.from(document.getElementsByClassName('back-button'))
+
+	backButtons.forEach(button => {
+		button.addEventListener('click', backTab)
+	})
+
+	document.getElementById('clean_queue').addEventListener('click', () => {
+		socket.emit('removeFinishedDownloads')
+	})
+
+	document.getElementById('cancel_queue').addEventListener('click', () => {
+		socket.emit('cancelAllDownloads')
+	})
 }
 
-/**
- * App initialization.
- * @returns		{void}
- * @since			0.1.0 (?)
- */
+/* ===== App initialization ===== */
 function init() {
 	linkEventListeners()
-
-	if ('true' === localStorage.darkMode) {
-		document.documentElement.classList.add('dark-theme')
-	}
 
 	if (localStorage.getItem('arl')) {
 		let arl = localStorage.getItem('arl')
@@ -217,13 +183,16 @@ window.showTab = function (type, id, back = false) {
 	document.getElementById(tab).style.display = 'block'
 }
 
-window.backTab = function () {
+function backTab() {
 	if (windows_stack.length == 1) {
-		clickElement('main_' + main_selected + 'link')
+		document.getElementById(`main_${main_selected}link`).click()
 	} else {
 		let tabObj = windows_stack.pop()
-		if (tabObj.type == 'artist') resetArtistTab()
-		else resetTracklistTab()
+		if (tabObj.type == 'artist') {
+			resetArtistTab()
+		} else {
+			resetTracklistTab()
+		}
 		socket.emit('getTracklist', { type: tabObj.type, id: tabObj.id })
 		showTab(tabObj.type, tabObj.id, true)
 	}
@@ -236,7 +205,7 @@ window.backTab = function () {
  * @param		{Event}		event
  * @since		0.1.0
  */
-window.handleSidebarClick = function (event) {
+function handleSidebarClick(event) {
 	let targetID = event.target.id
 
 	switch (targetID) {
@@ -267,142 +236,7 @@ window.handleSidebarClick = function (event) {
 	}
 }
 
-document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
-
 /* stackedTabs.js */
-var artistTab = new Vue({
-	el: '#artist_tab',
-	data: {
-		currentTab: '',
-		sortKey: 'release_date',
-		sortOrder: 'desc',
-		title: '',
-		image: '',
-		type: '',
-		link: '',
-		head: null,
-		body: null
-	},
-	methods: {
-		addToQueue: function (e) {
-			e.stopPropagation()
-			sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal: function (e) {
-			e.preventDefault()
-			openQualityModal(e.currentTarget.dataset.link)
-		},
-		moreInfo: function (url, e) {
-			if (e) e.preventDefault()
-			showTrackListSelective(url, true)
-		},
-		sortBy: function (key) {
-			if (key == this.sortKey) {
-				this.sortOrder = this.sortOrder == 'asc' ? 'desc' : 'asc'
-			} else {
-				this.sortKey = key
-				this.sortOrder = 'asc'
-			}
-		},
-		changeTab: function (tab) {
-			this.currentTab = tab
-		},
-		checkNewRelease: function (date) {
-			var g1 = new Date()
-			var g2 = new Date(date)
-			g2.setDate(g2.getDate() + 3)
-			g1.setHours(0, 0, 0, 0)
-			if (g1.getTime() <= g2.getTime()) {
-				return true
-			} else {
-				return false
-			}
-		}
-	},
-	computed: {
-		showTable() {
-			if (this.body) return _.orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
-			else return []
-		}
-	}
-})
-
-var tracklistTab = new Vue({
-	el: '#tracklist_tab',
-	data: {
-		title: '',
-		metadata: '',
-		release_date: '',
-		label: '',
-		explicit: false,
-		image: '',
-		type: '',
-		link: '',
-		head: null,
-		body: []
-	},
-	methods: {
-		addToQueue: function (e) {
-			e.stopPropagation()
-			sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal: function (e) {
-			e.preventDefault()
-			openQualityModal(e.currentTarget.dataset.link)
-		},
-		toggleAll: function (e) {
-			this.body.forEach(item => {
-				if (item.type == 'track') {
-					item.selected = e.currentTarget.checked
-				}
-			})
-		},
-		selectedLinks: function () {
-			var selected = []
-			if (this.body) {
-				this.body.forEach(item => {
-					if (item.type == 'track' && item.selected) selected.push(item.link)
-				})
-			}
-			return selected.join(';')
-		},
-		convertDuration(duration) {
-			//convert from seconds only to mm:ss format
-			let mm, ss
-			mm = Math.floor(duration / 60)
-			ss = duration - mm * 60
-			//add leading zero if ss < 0
-			if (ss < 10) {
-				ss = '0' + ss
-			}
-			return mm + ':' + ss
-		}
-	}
-})
-
-window.resetArtistTab = function () {
-	artistTab.title = 'Loading...'
-	artistTab.image = ''
-	artistTab.type = ''
-	artistTab.currentTab = ''
-	artistTab.sortKey = 'release_date'
-	artistTab.sortOrder = 'desc'
-	artistTab.link = ''
-	artistTab.head = []
-	artistTab.body = null
-}
-
-window.resetTracklistTab = function () {
-	tracklistTab.title = 'Loading...'
-	tracklistTab.image = ''
-	tracklistTab.metadata = ''
-	tracklistTab.label = ''
-	tracklistTab.release_date = ''
-	tracklistTab.explicit = false
-	tracklistTab.type = ''
-	tracklistTab.head = []
-	tracklistTab.body = []
-}
 
 window.artistView = function (ev) {
 	let id = ev.currentTarget.dataset.id
@@ -422,71 +256,6 @@ window.playlistView = function (ev) {
 	socket.emit('getTracklist', { type: 'playlist', id: id })
 	showTab('playlist', id)
 }
-
-socket.on('show_artist', function (data) {
-	artistTab.title = data.name
-	artistTab.image = data.picture_xl
-	artistTab.type = 'Artist'
-	artistTab.link = `https://www.deezer.com/artist/${data.id}`
-	artistTab.currentTab = Object.keys(data.releases)[0]
-	artistTab.sortKey = 'release_date'
-	artistTab.sortOrder = 'desc'
-	artistTab.head = [
-		{ title: 'Title', sortKey: 'title' },
-		{ title: 'Release Date', sortKey: 'release_date' },
-		{ title: '', width: '32px' }
-	]
-	if (_.isEmpty(data.releases)) {
-		artistTab.body = null
-	} else {
-		artistTab.body = data.releases
-	}
-})
-
-socket.on('show_album', function (data) {
-	tracklistTab.type = 'Album'
-	tracklistTab.link = `https://www.deezer.com/album/${data.id}`
-	tracklistTab.title = data.title
-	tracklistTab.explicit = data.explicit_lyrics
-	tracklistTab.label = data.label
-	tracklistTab.metadata = `${data.artist.name} • ${data.tracks.length} songs`
-	tracklistTab.release_date = data.release_date.substring(0, 10)
-	tracklistTab.image = data.cover_xl
-	tracklistTab.head = [
-		{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-		{ title: '#' },
-		{ title: 'Song' },
-		{ title: 'Artist' },
-		{ title: '<i class="material-icons">timer</i>', width: '40px' }
-	]
-	if (_.isEmpty(data.tracks)) {
-		tracklistTab.body = null
-	} else {
-		tracklistTab.body = data.tracks
-	}
-})
-
-socket.on('show_playlist', function (data) {
-	tracklistTab.type = 'Playlist'
-	tracklistTab.link = `https://www.deezer.com/playlist/${data.id}`
-	tracklistTab.title = data.title
-	tracklistTab.image = data.picture_xl
-	tracklistTab.release_date = data.creation_date.substring(0, 10)
-	tracklistTab.metadata = `by ${data.creator.name} • ${data.tracks.length} songs`
-	tracklistTab.head = [
-		{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-		{ title: '#' },
-		{ title: 'Song' },
-		{ title: 'Artist' },
-		{ title: 'Album' },
-		{ title: '<i class="material-icons">timer</i>', width: '40px' }
-	]
-	if (_.isEmpty(data.tracks)) {
-		tracklistTab.body = null
-	} else {
-		tracklistTab.body = data.tracks
-	}
-})
 
 /* search.js */
 // Load more content when the search page is at the end
@@ -523,27 +292,6 @@ window.scrolledSearch = function (type) {
 	}
 }
 
-window.searchUpdate = function (result) {
-	let next = 0
-	if (result.next) next = parseInt(result.next.match(/index=(\d*)/)[1])
-	else next = result.total
-	if (MainSearch.results[result.type + 'Tab'].total != result.total)
-		MainSearch.results[result.type + 'Tab'].total = result.total
-	if (MainSearch.results[result.type + 'Tab'].next != next) {
-		MainSearch.results[result.type + 'Tab'].next = next
-		MainSearch.results[result.type + 'Tab'].data = MainSearch.results[result.type + 'Tab'].data.concat(result.data)
-	}
-	MainSearch.results[result.type + 'Tab'].loaded = true
-}
-
-socket.on('search', function (result) {
-	searchUpdate(result)
-})
-
-window.clickElement = function (button) {
-	return document.getElementById(button).click()
-}
-
 window.sendAddToQueue = function (url, bitrate = null) {
 	if (url.indexOf(';') != -1) {
 		urls = url.split(';')
@@ -555,7 +303,7 @@ window.sendAddToQueue = function (url, bitrate = null) {
 	}
 }
 
-window.handleTabClick = function (event) {
+function handleTabClick(event) {
 	let targetID = event.target.id
 
 	switch (targetID) {
@@ -580,8 +328,6 @@ window.handleTabClick = function (event) {
 	}
 }
 
-document.getElementById('search_tab').addEventListener('click', handleTabClick)
-
 // Search section
 $('#searchbar').keyup(function (e) {
 	if (e.keyCode == 13) {
@@ -605,82 +351,11 @@ $('#searchbar').keyup(function (e) {
 	}
 })
 
-window.mainSearchHandler = function (result) {
-	let resetObj = { data: [], next: 0, total: 0, loaded: false }
-	MainSearch.results.allTab = result
-	MainSearch.results.query = result.QUERY
-	MainSearch.results.trackTab = { ...resetObj }
-	MainSearch.results.albumTab = { ...resetObj }
-	MainSearch.results.artistTab = { ...resetObj }
-	MainSearch.results.playlistTab = { ...resetObj }
-	document.getElementById('search_all_tab').click()
-	document.getElementById('search_tab_content').style.display = 'block'
-	document.getElementById('main_search_tablink').click()
-}
-
-socket.on('mainSearch', function (result) {
-	mainSearchHandler(result)
-})
-
 /* settings.js */
-const SettingsTab = new Vue({
-	el: '#settings_tab',
-	data: {
-		settings: { tags: {} },
-		spotifyFeatures: {}
-	},
-	methods: {
-		addListeners() {
-			document.getElementById('settings_btn_save').addEventListener('click', window.saveSettings)
-			document.getElementById('settings_btn_copyArl').addEventListener('click', window.copyARLtoClipboard)
-			document.getElementById('settings_btn_logout').addEventListener('click', window.logout)
-		}
-	},
-	mounted() {
-		this.addListeners()
-	}
-})
-
-socket.on('init_settings', function (settings, credentials) {
-	loadSettings(settings, credentials)
-	toast('Settings loaded!', 'settings')
-})
-
-socket.on('updateSettings', function (settings, credentials) {
-	loadSettings(settings, credentials)
-	toast('Settings updated!', 'settings')
-})
-
-window.loadSettings = function (settings, spotifyCredentials) {
-	lastSettings = { ...settings }
-	lastCredentials = { ...spotifyCredentials }
-	SettingsTab.settings = settings
-	SettingsTab.spotifyFeatures = spotifyCredentials
-}
-
-window.saveSettings = function () {
-	lastSettings = { ...SettingsTab.settings }
-	lastCredentials = { ...SettingsTab.spotifyFeatures }
-	socket.emit('saveSettings', lastSettings, lastCredentials)
-}
-
-window.copyARLtoClipboard = function () {
-	$('#login_input_arl').attr('type', 'text')
-	let copyText = document.querySelector('#login_input_arl')
-	copyText.select()
-	copyText.setSelectionRange(0, 99999)
-	document.execCommand('copy')
-	$('#login_input_arl').attr('type', 'password')
-	toast('ARL copied to clipboard', 'assignment')
-}
-
-window.logout = function () {
-	socket.emit('logout')
-}
 
 /* downloadList.js */
 // Show/Hide Download Tab
-window.toggleDownloadTab = function (ev) {
+function toggleDownloadTab(ev) {
 	ev.preventDefault()
 
 	let isHidden = document.querySelector('#download_tab_container').classList.toggle('tab_hidden')
@@ -753,9 +428,7 @@ window.addToQueue = function (queueItem, current = false) {
 	}
 }
 
-socket.on('addedToQueue', function (queueItem) {
-	addToQueue(queueItem)
-})
+socket.on('addedToQueue', addToQueue)
 
 window.downloadAction = function (evt) {
 	let icon = $(evt.currentTarget).text()
@@ -830,14 +503,6 @@ socket.on('removedFinishedDownloads', function () {
 	queueComplete = []
 })
 
-$('#clean_queue').on('click', function () {
-	socket.emit('removeFinishedDownloads')
-})
-
-$('#cancel_queue').on('click', function () {
-	socket.emit('cancelAllDownloads')
-})
-
 socket.on('updateQueue', function (update) {
 	if (update.uuid && queue.indexOf(update.uuid) > -1) {
 		if (update.downloaded) {
@@ -869,40 +534,41 @@ socket.on('updateQueue', function (update) {
 /* modals.js */
 // quality modal stuff
 var modalQuality = document.getElementById('modal_quality')
+var $modalQuality = $(modalQuality)
 modalQuality.open = false
 
 window.onclick = function (event) {
 	if (event.target == modalQuality && modalQuality.open) {
-		$(modalQuality).addClass('animated fadeOut')
+		$modalQuality.addClass('animated fadeOut')
 	}
 }
 
-$(modalQuality).on('webkitAnimationEnd', function () {
+$modalQuality.on('webkitAnimationEnd', function () {
 	if (modalQuality.open) {
-		$(this).removeClass('animated fadeOut')
-		$(this).css('display', 'none')
+		$modalQuality.removeClass('animated fadeOut')
+		$modalQuality.css('display', 'none')
 		modalQuality.open = false
 	} else {
-		$(this).removeClass('animated fadeIn')
-		$(this).css('display', 'block')
+		$modalQuality.removeClass('animated fadeIn')
+		$modalQuality.css('display', 'block')
 		modalQuality.open = true
 	}
 })
 
 window.openQualityModal = function (link) {
-	$(modalQuality).data('url', link)
-	$(modalQuality).css('display', 'block')
-	$(modalQuality).addClass('animated fadeIn')
+	$modalQuality.data('url', link)
+	$modalQuality.css('display', 'block')
+	$modalQuality.addClass('animated fadeIn')
 }
 
-window.modalQualityButton = function (event) {
+function modalQualityButton(event) {
 	if (!event.target.matches('.quality-button')) {
 		return
 	}
 
 	let bitrate = event.target.dataset.qualityValue
 
-	var url = $(modalQuality).data('url')
+	var url = $modalQuality.data('url')
 	sendAddToQueue(url, bitrate)
-	$(modalQuality).addClass('animated fadeOut')
+	$modalQuality.addClass('animated fadeOut')
 }

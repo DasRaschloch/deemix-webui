@@ -159,7 +159,7 @@
 											<td style="width: 48px; text-align: center;"><img class="rounded coverart"
 													v-bind:src="track.album.cover_small"></td>
 											<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
-											<td class="breakline" class="clickable" v-on:click="artistView(event)"
+											<td class="breakline clickable" v-on:click="artistView(event)"
 												v-bind:data-id="track.artist.id">{{track.artist.name}}</td>
 											<td class="breakline clickable" v-on:click="albumView(event)" v-bind:data-id="track.album.id">
 												{{track.album.title}}</td>
@@ -499,8 +499,8 @@
 												style="color:#FF7300;">fiber_new</i>
 										</td>
 										<td>{{release.release_date}}</td>
-										<td><i v-on:click="addToQueue(event)" v-on:contextmenu="openQualityModal(event)"
-												v-bind:data-link="release.link" class="material-icons">file_download</i></td>
+										<td v-on:click="addToQueue(event)" v-on:contextmenu="openQualityModal(event)"
+												v-bind:data-link="release.link" class="clickable"><i class="material-icons">file_download</i></td>
 									</tr>
 								</tbody>
 							</table>

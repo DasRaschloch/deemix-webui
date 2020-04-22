@@ -1,6 +1,9 @@
 import { socket } from './socket.js'
+import { artistView, albumView, playlistView } from './stacked-tabs.js'
+import Downloads from './downloads.js'
+import QualityModal from './quality-modal.js'
 
-export const MainSearch = new Vue({
+const MainSearch = new Vue({
 	data: {
 		names: {
 			TOP_RESULT: 'Top Result',
@@ -46,6 +49,27 @@ export const MainSearch = new Vue({
 		}
 	},
 	methods: {
+		artistView,
+		albumView,
+		playlistView,
+		handleClickTopResult(event) {
+			let topResultType = this.results.allTab.TOP_RESULT[0].type
+
+			switch (topResultType) {
+				case 'artist':
+					artistView(event)
+					break
+				case 'album':
+					albumView(event)
+					break
+				case 'playlist':
+					playlistView(event)
+					break
+
+				default:
+					break
+			}
+		},
 		changeSearchTab(section) {
 			if (section != 'TOP_RESULT') {
 				document.getElementById(`search_${section.toLowerCase()}_tab`).click()
@@ -53,11 +77,11 @@ export const MainSearch = new Vue({
 		},
 		addToQueue: function (e) {
 			e.stopPropagation()
-			sendAddToQueue(e.currentTarget.dataset.link)
+			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal: function (e) {
 			e.preventDefault()
-			openQualityModal(e.currentTarget.dataset.link)
+			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		numberWithDots(x) {
 			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
@@ -72,7 +96,28 @@ export const MainSearch = new Vue({
 				ss = '0' + ss
 			}
 			return mm + ':' + ss
+		},
+		search(type) {
+			socket.emit('search', {
+				term: this.results.query,
+				type: type,
+				start: this.results[type + 'Tab'].next,
+				nb: 30
+			})
+		},
+		scrolledSearch(type) {
+			if (this.results[type + 'Tab'].next < this.results[type + 'Tab'].total) {
+				socket.emit('search', {
+					term: this.results.query,
+					type: type,
+					start: this.results[type + 'Tab'].next,
+					nb: 30
+				})
+			}
 		}
+	},
+	mounted() {
+		console.log('main search mounted')
 	}
 }).$mount('#search_tab')
 
@@ -108,3 +153,5 @@ socket.on('search', result => {
 	}
 	MainSearch.results[result.type + 'Tab'].loaded = true
 })
+
+export default MainSearch

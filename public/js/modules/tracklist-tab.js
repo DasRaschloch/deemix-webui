@@ -1,4 +1,7 @@
 import { socket } from './socket.js'
+import { artistView, albumView } from './stacked-tabs.js'
+import Downloads from './downloads.js'
+import QualityModal from './quality-modal.js'
 
 export const TracklistTab = new Vue({
 	el: '#tracklist_tab',
@@ -15,13 +18,15 @@ export const TracklistTab = new Vue({
 		body: []
 	},
 	methods: {
+		artistView,
+		albumView,
 		addToQueue: function (e) {
 			e.stopPropagation()
-			sendAddToQueue(e.currentTarget.dataset.link)
+			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal: function (e) {
 			e.preventDefault()
-			openQualityModal(e.currentTarget.dataset.link)
+			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		toggleAll: function (e) {
 			this.body.forEach(item => {
@@ -50,6 +55,9 @@ export const TracklistTab = new Vue({
 			}
 			return mm + ':' + ss
 		}
+	},
+	mounted() {
+		console.log('tracklist tab mounted')
 	}
 })
 

@@ -1,4 +1,7 @@
 import { socket } from './socket.js'
+import { albumView } from './stacked-tabs.js'
+import Downloads from './downloads.js'
+import QualityModal from './quality-modal.js'
 
 export const ArtistTab = new Vue({
 	el: '#artist_tab',
@@ -14,13 +17,14 @@ export const ArtistTab = new Vue({
 		body: null
 	},
 	methods: {
+		albumView,
 		addToQueue(e) {
 			e.stopPropagation()
-			sendAddToQueue(e.currentTarget.dataset.link)
+			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
 			e.preventDefault()
-			openQualityModal(e.currentTarget.dataset.link)
+			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		moreInfo(url, e) {
 			if (e) e.preventDefault()
@@ -54,6 +58,9 @@ export const ArtistTab = new Vue({
 			if (this.body) return _.orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
 			else return []
 		}
+	},
+	mounted() {
+		console.log('artist tab mounted')
 	}
 })
 

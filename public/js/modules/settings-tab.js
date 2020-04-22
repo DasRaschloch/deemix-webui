@@ -5,7 +5,7 @@ import { socket } from './socket.js'
 window.lastSettings = {}
 window.lastCredentials = {}
 
-export const SettingsTab = new Vue({
+const SettingsTab = new Vue({
 	data() {
 		return {
 			settings: { tags: {} },
@@ -25,8 +25,6 @@ export const SettingsTab = new Vue({
 			toast('ARL copied to clipboard', 'assignment')
 		},
 		saveSettings() {
-			console.log(socket)
-
 			lastSettings = { ...SettingsTab.settings }
 			lastCredentials = { ...SettingsTab.spotifyFeatures }
 			socket.emit('saveSettings', lastSettings, lastCredentials)
@@ -59,3 +57,5 @@ function loadSettings(settings, spotifyCredentials) {
 	SettingsTab.settings = settings
 	SettingsTab.spotifyFeatures = spotifyCredentials
 }
+
+export default SettingsTab

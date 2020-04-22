@@ -3,15 +3,15 @@
 import * as Utils from './modules/utils.js'
 
 /* ===== Vue components ===== */
-import { MainSearch } from './modules/main-search.js'
-import { SettingsTab } from './modules/settings-tab.js'
+import MainSearch from './modules/main-search.js'
+import SettingsTab from './modules/settings-tab.js'
 
+import { socket } from './modules/socket.js'
+import { toast } from './modules/toasts.js'
 import { resetTracklistTab } from './modules/tracklist-tab.js'
 import { resetArtistTab } from './modules/artist-tab.js'
-import { toast } from './modules/toasts.js'
-import { socket } from './modules/socket.js'
-
-/* ===== Globals ===== */
+import Downloads from './modules/downloads.js'
+import QualityModal from './modules/quality-modal.js'
 
 /* ===== Socketio listeners ===== */
 
@@ -20,14 +20,14 @@ socket.on('message', function (msg) {
 	console.log(msg)
 })
 
-socket.on('toast', data => {
-	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
-})
-
+// Needs:
+// 1. toast
 socket.on('logging_in', function () {
 	toast('Logging in', 'loading', false, 'login-toast')
 })
 
+// Needs:
+// 1. toast
 socket.on('logged_in', function (data) {
 	switch (data.status) {
 		case 1:
@@ -70,6 +70,8 @@ socket.on('logged_in', function (data) {
 	}
 })
 
+// Needs:
+// 1. toast
 socket.on('logged_out', function () {
 	toast('Logged out', 'done', true, 'login-toast')
 	localStorage.removeItem('arl')
@@ -86,17 +88,17 @@ socket.on('logged_out', function () {
  * @since			0.1.0 (?)
  */
 function linkEventListeners() {
-	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
-	document.getElementById('modal_quality').addEventListener('click', modalQualityButton)
 	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
 	document.getElementById('search_tab').addEventListener('click', handleTabClick)
 
+	// Back buttons
 	const backButtons = Array.from(document.getElementsByClassName('back-button'))
 
 	backButtons.forEach(button => {
 		button.addEventListener('click', backTab)
 	})
 
+	// Queue buttons
 	document.getElementById('clean_queue').addEventListener('click', () => {
 		socket.emit('removeFinishedDownloads')
 	})
@@ -109,6 +111,8 @@ function linkEventListeners() {
 /* ===== App initialization ===== */
 function init() {
 	linkEventListeners()
+	Downloads.linkListeners()
+	QualityModal.init()
 
 	if (localStorage.getItem('arl')) {
 		let arl = localStorage.getItem('arl')
@@ -134,6 +138,14 @@ window.main_selected = ''
 window.windows_stack = []
 window.currentStack = {}
 
+// Needs:
+// 1. windows_stack
+// 2. currentStack
+// 3. main_selected
+// 4. SettingsTab
+// 5. lastSettings
+// 6. search_selected
+// 7. MainSearch
 window.changeTab = function (evt, section, tabName) {
 	windows_stack = []
 	currentStack = {}
@@ -154,7 +166,7 @@ window.changeTab = function (evt, section, tabName) {
 	window[section + '_selected'] = tabName
 
 	// Not choosing .currentTarget beacuse the event
-	// is delegated, so it refers to #sidebar
+	// is delegated
 	evt.target.classList.add('active')
 
 	// Check if you need to load more content in the search tab
@@ -163,10 +175,14 @@ window.changeTab = function (evt, section, tabName) {
 		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1 &&
 		MainSearch.results[search_selected.split('_')[0] + 'Tab'].data.length == 0
 	) {
-		search(search_selected.split('_')[0])
+		MainSearch.search(search_selected.split('_')[0])
 	}
 }
 
+// Needs:
+// 1. windows_stack
+// 2. main_selected
+// 3. currentStack
 window.showTab = function (type, id, back = false) {
 	if (windows_stack.length == 0) windows_stack.push({ tab: main_selected })
 	else if (!back) windows_stack.push(currentStack)
@@ -183,6 +199,13 @@ window.showTab = function (type, id, back = false) {
 	document.getElementById(tab).style.display = 'block'
 }
 
+// Needs:
+// 1. windows_stack
+// 2. main_selected
+// 3. resetArtistTab
+// 4. resetTracklistTab
+// 5. socket
+// 6. showTab
 function backTab() {
 	if (windows_stack.length == 1) {
 		document.getElementById(`main_${main_selected}link`).click()
@@ -197,6 +220,54 @@ function backTab() {
 		showTab(tabObj.type, tabObj.id, true)
 	}
 }
+
+/* search.js */
+// Load more content when the search page is at the end
+// Needs:
+// 1. main_selected
+// 2. search_selected
+// 3. MainSearch
+$('#content').on('scroll', function () {
+	if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+		if (
+			main_selected == 'search_tab' &&
+			['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
+		) {
+			MainSearch.scrolledSearch(search_selected.split('_')[0])
+		}
+	}
+})
+
+// Search section
+// Needs:
+// 1. QualityModal
+// 2. Downloads
+// 3. socket
+// 4. MainSearch
+// 5. main_selected
+$('#searchbar').keyup(function (e) {
+	if (e.keyCode == 13) {
+		let term = this.value
+		if (Utils.isValidURL(term)) {
+			if (e.ctrlKey) {
+				QualityModal.open(term)
+			} else {
+				Downloads.sendAddToQueue(term)
+			}
+		} else {
+			if (term != MainSearch.query || main_selected == 'search_tab') {
+				document.getElementById('search_tab_content').style.display = 'none'
+				socket.emit('mainSearch', { term: term })
+			} else {
+				document.getElementById('search_all_tab').click()
+				document.getElementById('search_tab_content').style.display = 'block'
+				document.getElementById('main_search_tablink').click()
+			}
+		}
+	}
+})
+
+/* ===== Handlers ===== */
 
 /**
  * Handles click Event on the sidebar and changes tab
@@ -236,73 +307,6 @@ function handleSidebarClick(event) {
 	}
 }
 
-/* stackedTabs.js */
-
-window.artistView = function (ev) {
-	let id = ev.currentTarget.dataset.id
-	resetArtistTab()
-	socket.emit('getTracklist', { type: 'artist', id: id })
-	showTab('artist', id)
-}
-window.albumView = function (ev) {
-	let id = ev.currentTarget.dataset.id
-	resetTracklistTab()
-	socket.emit('getTracklist', { type: 'album', id: id })
-	showTab('album', id)
-}
-window.playlistView = function (ev) {
-	let id = ev.currentTarget.dataset.id
-	resetTracklistTab()
-	socket.emit('getTracklist', { type: 'playlist', id: id })
-	showTab('playlist', id)
-}
-
-/* search.js */
-// Load more content when the search page is at the end
-$('#content').on('scroll', function () {
-	if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
-		if (
-			main_selected == 'search_tab' &&
-			['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
-		) {
-			scrolledSearch(search_selected.split('_')[0])
-		}
-	}
-})
-
-window.search = function (type) {
-	let query = MainSearch.results.query
-	socket.emit('search', {
-		term: query,
-		type: type,
-		start: MainSearch.results[type + 'Tab'].next,
-		nb: 30
-	})
-}
-
-window.scrolledSearch = function (type) {
-	let query = MainSearch.results.query
-	if (MainSearch.results[type + 'Tab'].next < MainSearch.results[type + 'Tab'].total) {
-		socket.emit('search', {
-			term: query,
-			type: type,
-			start: MainSearch.results[type + 'Tab'].next,
-			nb: 30
-		})
-	}
-}
-
-window.sendAddToQueue = function (url, bitrate = null) {
-	if (url.indexOf(';') != -1) {
-		urls = url.split(';')
-		urls.forEach(url => {
-			socket.emit('addToQueue', { url: url, bitrate: bitrate })
-		})
-	} else if (url != '') {
-		socket.emit('addToQueue', { url: url, bitrate: bitrate })
-	}
-}
-
 function handleTabClick(event) {
 	let targetID = event.target.id
 
@@ -326,249 +330,4 @@ function handleTabClick(event) {
 		default:
 			break
 	}
-}
-
-// Search section
-$('#searchbar').keyup(function (e) {
-	if (e.keyCode == 13) {
-		let term = this.value
-		if (Utils.isValidURL(term)) {
-			if (e.ctrlKey) {
-				openQualityModal(term)
-			} else {
-				sendAddToQueue(term)
-			}
-		} else {
-			if (term != MainSearch.query || main_selected == 'search_tab') {
-				document.getElementById('search_tab_content').style.display = 'none'
-				socket.emit('mainSearch', { term: term })
-			} else {
-				document.getElementById('search_all_tab').click()
-				document.getElementById('search_tab_content').style.display = 'block'
-				document.getElementById('main_search_tablink').click()
-			}
-		}
-	}
-})
-
-/* settings.js */
-
-/* downloadList.js */
-// Show/Hide Download Tab
-function toggleDownloadTab(ev) {
-	ev.preventDefault()
-
-	let isHidden = document.querySelector('#download_tab_container').classList.toggle('tab_hidden')
-
-	localStorage.setItem('downloadTabOpen', !isHidden)
-}
-
-var queueList = {}
-var queue = []
-var queueComplete = []
-
-socket.on('init_downloadQueue', function (data) {
-	if (data.queueComplete.length) {
-		data.queueComplete.forEach(item => {
-			addToQueue(data.queueList[item])
-		})
-	}
-	if (data.currentItem) {
-		addToQueue(data['queueList'][data.currentItem], true)
-	}
-	data.queue.forEach(item => {
-		addToQueue(data.queueList[item])
-	})
-})
-
-window.addToQueue = function (queueItem, current = false) {
-	queueList[queueItem.uuid] = queueItem
-	if (queueItem.downloaded + queueItem.failed == queueItem.size) queueComplete.push(queueItem.uuid)
-	else queue.push(queueItem.uuid)
-	$('#download_list').append(
-		`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
-		<div class="download_info">
-			<img width="75px" class="rounded coverart" src="${queueItem.cover}" alt="Cover ${queueItem.title}"/>
-			<div class="download_info_data">
-				<span class="download_line">${queueItem.title}</span> <span class="download_slim_separator"> - </span>
-				<span class="secondary-text">${queueItem.artist}</span>
-			</div>
-			<div class="download_info_status">
-				<span class="download_line"><span class="queue_downloaded">${queueItem.downloaded + queueItem.failed}</span>/${
-			queueItem.size
-		}</span>
-			</div>
-		</div>
-		<div class="download_bar">
-			<div class="progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
-			<i onclick="downloadAction(event)" class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
-		</div>
-	</div>`
-	)
-	if (queueItem.progress > 0 || current) {
-		$('#bar_' + queueItem.uuid)
-			.removeClass('indeterminate')
-			.addClass('determinate')
-	}
-	$('#bar_' + queueItem.uuid).css('width', queueItem.progress + '%')
-	if (queueItem.failed >= 1) {
-		$('#download_' + queueItem.uuid + ' .download_info_status').append(
-			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
-		)
-	}
-	if (queueItem.downloaded + queueItem.failed == queueItem.size) {
-		let result_icon = $('#download_' + queueItem.uuid).find('.queue_icon')
-		if (queueItem.failed == 0) {
-			result_icon.text('done')
-		} else if (queueItem.failed == queueItem.size) {
-			result_icon.text('error')
-		} else {
-			result_icon.text('warning')
-		}
-	}
-}
-
-socket.on('addedToQueue', addToQueue)
-
-window.downloadAction = function (evt) {
-	let icon = $(evt.currentTarget).text()
-	let uuid = $(evt.currentTarget).data('uuid')
-	switch (icon) {
-		case 'remove':
-			socket.emit('removeFromQueue', uuid)
-			break
-		default:
-	}
-}
-
-socket.on('removedFromQueue', function (uuid) {
-	let index = queue.indexOf(uuid)
-	if (index > -1) {
-		queue.splice(index, 1)
-		$(`#download_${queueList[uuid].uuid}`).remove()
-		delete queueList[uuid]
-	}
-})
-
-socket.on('startDownload', function (uuid) {
-	$('#bar_' + uuid)
-		.removeClass('indeterminate')
-		.addClass('determinate')
-})
-
-socket.on('finishDownload', function (uuid) {
-	if (queue.indexOf(uuid) > -1) {
-		toast(`${queueList[uuid].title} finished downloading.`, 'done')
-		$('#bar_' + uuid).css('width', '100%')
-		let result_icon = $('#download_' + uuid).find('.queue_icon')
-		if (queueList[uuid].failed == 0) {
-			result_icon.text('done')
-		} else if (queueList[uuid].failed >= queueList[uuid].size) {
-			result_icon.text('error')
-		} else {
-			result_icon.text('warning')
-		}
-		let index = queue.indexOf(uuid)
-		if (index > -1) {
-			queue.splice(index, 1)
-			queueComplete.push(uuid)
-		}
-		if (queue.length <= 0) {
-			toast('All downloads completed!', 'done_all')
-		}
-	}
-})
-
-socket.on('removedAllDownloads', function (currentItem) {
-	queueComplete = []
-	if (currentItem == '') {
-		queue = []
-		queueList = {}
-		$('#download_list').html('')
-	} else {
-		queue = [currentItem]
-		let tempQueueItem = queueList[currentItem]
-		queueList = {}
-		queueList[currentItem] = tempQueueItem
-		$('.download_object').each(function (index) {
-			if ($(this).attr('id') != 'download_' + currentItem) $(this).remove()
-		})
-	}
-})
-
-socket.on('removedFinishedDownloads', function () {
-	queueComplete.forEach(item => {
-		$('#download_' + item).remove()
-	})
-	queueComplete = []
-})
-
-socket.on('updateQueue', function (update) {
-	if (update.uuid && queue.indexOf(update.uuid) > -1) {
-		if (update.downloaded) {
-			queueList[update.uuid].downloaded++
-			$('#download_' + update.uuid + ' .queue_downloaded').text(
-				queueList[update.uuid].downloaded + queueList[update.uuid].failed
-			)
-		}
-		if (update.failed) {
-			queueList[update.uuid].failed++
-			$('#download_' + update.uuid + ' .queue_downloaded').text(
-				queueList[update.uuid].downloaded + queueList[update.uuid].failed
-			)
-			if (queueList[update.uuid].failed == 1) {
-				$('#download_' + update.uuid + ' .download_info_status').append(
-					`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
-				)
-			} else {
-				$('#download_' + update.uuid + ' .queue_failed').text(queueList[update.uuid].failed)
-			}
-		}
-		if (update.progress) {
-			queueList[update.uuid].progress = update.progress
-			$('#bar_' + update.uuid).css('width', update.progress + '%')
-		}
-	}
-})
-
-/* modals.js */
-// quality modal stuff
-var modalQuality = document.getElementById('modal_quality')
-var $modalQuality = $(modalQuality)
-modalQuality.open = false
-
-window.onclick = function (event) {
-	if (event.target == modalQuality && modalQuality.open) {
-		$modalQuality.addClass('animated fadeOut')
-	}
-}
-
-$modalQuality.on('webkitAnimationEnd', function () {
-	if (modalQuality.open) {
-		$modalQuality.removeClass('animated fadeOut')
-		$modalQuality.css('display', 'none')
-		modalQuality.open = false
-	} else {
-		$modalQuality.removeClass('animated fadeIn')
-		$modalQuality.css('display', 'block')
-		modalQuality.open = true
-	}
-})
-
-window.openQualityModal = function (link) {
-	$modalQuality.data('url', link)
-	$modalQuality.css('display', 'block')
-	$modalQuality.addClass('animated fadeIn')
-}
-
-function modalQualityButton(event) {
-	if (!event.target.matches('.quality-button')) {
-		return
-	}
-
-	let bitrate = event.target.dataset.qualityValue
-
-	var url = $modalQuality.data('url')
-	sendAddToQueue(url, bitrate)
-	$modalQuality.addClass('animated fadeOut')
 }

@@ -1,3 +1,5 @@
+import { socket } from './socket.js'
+
 let toastsWithId = {}
 
 export const toast = function (msg, icon = null, dismiss = true, id = null) {
@@ -34,3 +36,7 @@ export const toast = function (msg, icon = null, dismiss = true, id = null) {
 		}
 	}
 }
+
+socket.on('toast', data => {
+	toast(data.msg, data.icon || null, data.dismiss !== undefined ? data.dismiss : true, data.id || null)
+})

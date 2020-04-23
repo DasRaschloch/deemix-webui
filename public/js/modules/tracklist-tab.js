@@ -113,8 +113,6 @@ const TracklistTab = new Vue({
 		}
 	},
 	mounted() {
-		console.log('tracklist tab mounted')
-
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)
 	}

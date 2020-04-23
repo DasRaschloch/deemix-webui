@@ -21,7 +21,6 @@ export function artistView(ev) {
 
 export function albumView(ev) {
 	let id = ev.currentTarget.dataset.id
-	console.log('album view', id)
 	TracklistTab.reset()
 	socket.emit('getTracklist', { type: 'album', id: id })
 	showTab('album', id)
@@ -29,7 +28,6 @@ export function albumView(ev) {
 
 export function playlistView(ev) {
 	let id = ev.currentTarget.dataset.id
-	console.log('playlist view', id)
 	TracklistTab.reset()
 	socket.emit('getTracklist', { type: 'playlist', id: id })
 	showTab('playlist', id)

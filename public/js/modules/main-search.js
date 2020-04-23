@@ -115,9 +115,6 @@ const MainSearch = new Vue({
 				})
 			}
 		}
-	},
-	mounted() {
-		console.log('main search mounted')
 	}
 }).$mount('#search_tab')
 

@@ -88,8 +88,6 @@ const ArtistTab = new Vue({
 		}
 	},
 	mounted() {
-		console.log('artist tab mounted')
-
 		socket.on('show_artist', this.showArtist)
 	}
 }).$mount('#artist_tab')

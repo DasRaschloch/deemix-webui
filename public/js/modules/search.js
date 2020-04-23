@@ -1,5 +1,5 @@
 import MainSearch from './main-search.js'
-import * as Utils from './utils.js'
+import Utils from './utils.js'
 import QualityModal from './quality-modal.js'
 import Downloads from './downloads.js'
 import { socket } from './socket.js'

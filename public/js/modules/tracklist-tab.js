@@ -4,7 +4,6 @@ import Downloads from './downloads.js'
 import QualityModal from './quality-modal.js'
 
 const TracklistTab = new Vue({
-	el: '#tracklist_tab',
 	data: {
 		title: '',
 		metadata: '',
@@ -116,6 +115,6 @@ const TracklistTab = new Vue({
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)
 	}
-})
+}).$mount('#tracklist_tab')
 
 export default TracklistTab

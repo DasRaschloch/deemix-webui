@@ -57,13 +57,13 @@ const MainSearch = new Vue({
 
 			switch (topResultType) {
 				case 'artist':
-					artistView(event)
+					this.artistView(event)
 					break
 				case 'album':
-					albumView(event)
+					this.albumView(event)
 					break
 				case 'playlist':
-					playlistView(event)
+					this.playlistView(event)
 					break
 
 				default:
@@ -114,41 +114,43 @@ const MainSearch = new Vue({
 					nb: 30
 				})
 			}
+		},
+		handleMainSearch(result) {
+			let resetObj = { data: [], next: 0, total: 0, loaded: false }
+			this.results.allTab = result
+			this.results.query = result.QUERY
+			this.results.trackTab = { ...resetObj }
+			this.results.albumTab = { ...resetObj }
+			this.results.artistTab = { ...resetObj }
+			this.results.playlistTab = { ...resetObj }
+			document.getElementById('search_all_tab').click()
+			document.getElementById('search_tab_content').style.display = 'block'
+			document.getElementById('main_search_tablink').click()
+		},
+		handleSearch(result) {
+			let next = 0
+
+			if (result.next) {
+				next = parseInt(result.next.match(/index=(\d*)/)[1])
+			} else {
+				next = result.total
+			}
+
+			if (this.results[result.type + 'Tab'].total != result.total) {
+				this.results[result.type + 'Tab'].total = result.total
+			}
+
+			if (this.results[result.type + 'Tab'].next != next) {
+				this.results[result.type + 'Tab'].next = next
+				this.results[result.type + 'Tab'].data = this.results[result.type + 'Tab'].data.concat(result.data)
+			}
+			this.results[result.type + 'Tab'].loaded = true
 		}
+	},
+	mounted() {
+		socket.on('mainSearch', this.handleMainSearch)
+		socket.on('search', this.handleSearch)
 	}
 }).$mount('#search_tab')
-
-socket.on('mainSearch', result => {
-	let resetObj = { data: [], next: 0, total: 0, loaded: false }
-	MainSearch.results.allTab = result
-	MainSearch.results.query = result.QUERY
-	MainSearch.results.trackTab = { ...resetObj }
-	MainSearch.results.albumTab = { ...resetObj }
-	MainSearch.results.artistTab = { ...resetObj }
-	MainSearch.results.playlistTab = { ...resetObj }
-	document.getElementById('search_all_tab').click()
-	document.getElementById('search_tab_content').style.display = 'block'
-	document.getElementById('main_search_tablink').click()
-})
-
-socket.on('search', result => {
-	let next = 0
-
-	if (result.next) {
-		next = parseInt(result.next.match(/index=(\d*)/)[1])
-	} else {
-		next = result.total
-	}
-
-	if (MainSearch.results[result.type + 'Tab'].total != result.total) {
-		MainSearch.results[result.type + 'Tab'].total = result.total
-	}
-
-	if (MainSearch.results[result.type + 'Tab'].next != next) {
-		MainSearch.results[result.type + 'Tab'].next = next
-		MainSearch.results[result.type + 'Tab'].data = MainSearch.results[result.type + 'Tab'].data.concat(result.data)
-	}
-	MainSearch.results[result.type + 'Tab'].loaded = true
-})
 
 export default MainSearch

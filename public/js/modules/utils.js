@@ -1,4 +1,4 @@
-export function isValidURL(text) {
+function isValidURL(text) {
 	if (text.toLowerCase().startsWith('http')) {
 		if (text.toLowerCase().indexOf('deezer.com') >= 0 || text.toLowerCase().indexOf('open.spotify.com') >= 0)
 			return true
@@ -6,7 +6,7 @@ export function isValidURL(text) {
 	return false
 }
 
-export function convertDuration(duration) {
+function convertDuration(duration) {
 	//convert from seconds only to mm:ss format
 	let mm, ss
 	mm = Math.floor(duration / 60)
@@ -18,7 +18,7 @@ export function convertDuration(duration) {
 	return mm + ':' + ss
 }
 
-export function convertDurationSeparated(duration) {
+function convertDurationSeparated(duration) {
 	let hh, mm, ss
 	mm = Math.floor(duration / 60)
 	hh = Math.floor(mm / 60)
@@ -29,7 +29,7 @@ export function convertDurationSeparated(duration) {
 
 // On scroll event, returns currentTarget = null
 // Probably on other events too
-export function debounce(func, wait, immediate) {
+function debounce(func, wait, immediate) {
 	var timeout
 	return function () {
 		var context = this
@@ -43,4 +43,11 @@ export function debounce(func, wait, immediate) {
 		timeout = setTimeout(later, wait)
 		if (callNow) func.apply(context, args)
 	}
+}
+
+export default {
+	isValidURL,
+	convertDuration,
+	convertDurationSeparated,
+	debounce
 }

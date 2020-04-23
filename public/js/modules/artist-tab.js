@@ -1,23 +1,35 @@
 import { socket } from './socket.js'
-import { albumView } from './stacked-tabs.js'
+import { albumView } from './tabs.js'
 import Downloads from './downloads.js'
 import QualityModal from './quality-modal.js'
 
-export const ArtistTab = new Vue({
-	el: '#artist_tab',
-	data: {
-		currentTab: '',
-		sortKey: 'release_date',
-		sortOrder: 'desc',
-		title: '',
-		image: '',
-		type: '',
-		link: '',
-		head: null,
-		body: null
+const ArtistTab = new Vue({
+	data() {
+		return {
+			currentTab: '',
+			sortKey: 'release_date',
+			sortOrder: 'desc',
+			title: '',
+			image: '',
+			type: '',
+			link: '',
+			head: null,
+			body: null
+		}
 	},
 	methods: {
 		albumView,
+		reset() {
+			this.title = 'Loading...'
+			this.image = ''
+			this.type = ''
+			this.currentTab = ''
+			this.sortKey = 'release_date'
+			this.sortOrder = 'desc'
+			this.link = ''
+			this.head = []
+			this.body = null
+		},
 		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
@@ -42,14 +54,30 @@ export const ArtistTab = new Vue({
 			this.currentTab = tab
 		},
 		checkNewRelease(date) {
-			var g1 = new Date()
-			var g2 = new Date(date)
+			let g1 = new Date()
+			let g2 = new Date(date)
 			g2.setDate(g2.getDate() + 3)
 			g1.setHours(0, 0, 0, 0)
-			if (g1.getTime() <= g2.getTime()) {
-				return true
+
+			return g1.getTime() <= g2.getTime()
+		},
+		showArtist(data) {
+			this.title = data.name
+			this.image = data.picture_xl
+			this.type = 'Artist'
+			this.link = `https://www.deezer.com/artist/${data.id}`
+			this.currentTab = Object.keys(data.releases)[0]
+			this.sortKey = 'release_date'
+			this.sortOrder = 'desc'
+			this.head = [
+				{ title: 'Title', sortKey: 'title' },
+				{ title: 'Release Date', sortKey: 'release_date' },
+				{ title: '', width: '32px' }
+			]
+			if (_.isEmpty(data.releases)) {
+				this.body = null
 			} else {
-				return false
+				this.body = data.releases
 			}
 		}
 	},
@@ -61,37 +89,9 @@ export const ArtistTab = new Vue({
 	},
 	mounted() {
 		console.log('artist tab mounted')
-	}
-})
 
-export function resetArtistTab() {
-	ArtistTab.title = 'Loading...'
-	ArtistTab.image = ''
-	ArtistTab.type = ''
-	ArtistTab.currentTab = ''
-	ArtistTab.sortKey = 'release_date'
-	ArtistTab.sortOrder = 'desc'
-	ArtistTab.link = ''
-	ArtistTab.head = []
-	ArtistTab.body = null
-}
-
-socket.on('show_artist', data => {
-	ArtistTab.title = data.name
-	ArtistTab.image = data.picture_xl
-	ArtistTab.type = 'Artist'
-	ArtistTab.link = `https://www.deezer.com/artist/${data.id}`
-	ArtistTab.currentTab = Object.keys(data.releases)[0]
-	ArtistTab.sortKey = 'release_date'
-	ArtistTab.sortOrder = 'desc'
-	ArtistTab.head = [
-		{ title: 'Title', sortKey: 'title' },
-		{ title: 'Release Date', sortKey: 'release_date' },
-		{ title: '', width: '32px' }
-	]
-	if (_.isEmpty(data.releases)) {
-		ArtistTab.body = null
-	} else {
-		ArtistTab.body = data.releases
+		socket.on('show_artist', this.showArtist)
 	}
-})
+}).$mount('#artist_tab')
+
+export default ArtistTab

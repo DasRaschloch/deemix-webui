@@ -1,14 +1,12 @@
 import { toast } from './toasts.js'
 import { socket } from './socket.js'
 
-// Globals
-window.lastSettings = {}
-window.lastCredentials = {}
-
 const SettingsTab = new Vue({
 	data() {
 		return {
 			settings: { tags: {} },
+			lastSettings: {},
+			lastCredentials: {},
 			spotifyFeatures: {}
 		}
 	},
@@ -25,9 +23,15 @@ const SettingsTab = new Vue({
 			toast('ARL copied to clipboard', 'assignment')
 		},
 		saveSettings() {
-			lastSettings = { ...SettingsTab.settings }
-			lastCredentials = { ...SettingsTab.spotifyFeatures }
-			socket.emit('saveSettings', lastSettings, lastCredentials)
+			this.lastSettings = { ...SettingsTab.settings }
+			this.lastCredentials = { ...SettingsTab.spotifyFeatures }
+			socket.emit('saveSettings', this.lastSettings, this.lastCredentials)
+		},
+		loadSettings(settings, spotifyCredentials) {
+			this.lastSettings = { ...settings }
+			this.lastCredentials = { ...spotifyCredentials }
+			this.settings = settings
+			this.spotifyFeatures = spotifyCredentials
 		},
 		login() {
 			let arl = this.$refs.loginInput.value
@@ -37,25 +41,20 @@ const SettingsTab = new Vue({
 		},
 		logout() {
 			socket.emit('logout')
+		},
+		initSettings(settings, credentials) {
+			this.loadSettings(settings, credentials)
+			toast('Settings loaded!', 'settings')
+		},
+		updateSettings(settings, credentials) {
+			this.loadSettings(settings, credentials)
+			toast('Settings updated!', 'settings')
 		}
+	},
+	mounted() {
+		socket.on('init_settings', this.initSettings)
+		socket.on('updateSettings', this.updateSettings)
 	}
 }).$mount('#settings_tab')
-
-socket.on('init_settings', function (settings, credentials) {
-	loadSettings(settings, credentials)
-	toast('Settings loaded!', 'settings')
-})
-
-socket.on('updateSettings', function (settings, credentials) {
-	loadSettings(settings, credentials)
-	toast('Settings updated!', 'settings')
-})
-
-function loadSettings(settings, spotifyCredentials) {
-	lastSettings = { ...settings }
-	lastCredentials = { ...spotifyCredentials }
-	SettingsTab.settings = settings
-	SettingsTab.spotifyFeatures = spotifyCredentials
-}
 
 export default SettingsTab

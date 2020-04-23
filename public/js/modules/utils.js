@@ -27,6 +27,8 @@ export function convertDurationSeparated(duration) {
 	return [hh, mm, ss]
 }
 
+// On scroll event, returns currentTarget = null
+// Probably on other events too
 export function debounce(func, wait, immediate) {
 	var timeout
 	return function () {

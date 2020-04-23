@@ -10,6 +10,15 @@ const downloadListEl = document.getElementById('download_list')
 function linkListeners() {
 	downloadListEl.addEventListener('click', handleListClick)
 	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
+
+	// Queue buttons
+	document.getElementById('clean_queue').addEventListener('click', () => {
+		socket.emit('removeFinishedDownloads')
+	})
+
+	document.getElementById('cancel_queue').addEventListener('click', () => {
+		socket.emit('cancelAllDownloads')
+	})
 }
 
 function sendAddToQueue(url, bitrate = null) {

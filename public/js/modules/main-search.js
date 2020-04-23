@@ -1,5 +1,5 @@
 import { socket } from './socket.js'
-import { artistView, albumView, playlistView } from './stacked-tabs.js'
+import { artistView, albumView, playlistView } from './tabs.js'
 import Downloads from './downloads.js'
 import QualityModal from './quality-modal.js'
 

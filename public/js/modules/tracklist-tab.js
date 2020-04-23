@@ -1,9 +1,9 @@
 import { socket } from './socket.js'
-import { artistView, albumView } from './stacked-tabs.js'
+import { artistView, albumView } from './tabs.js'
 import Downloads from './downloads.js'
 import QualityModal from './quality-modal.js'
 
-export const TracklistTab = new Vue({
+const TracklistTab = new Vue({
 	el: '#tracklist_tab',
 	data: {
 		title: '',
@@ -20,6 +20,17 @@ export const TracklistTab = new Vue({
 	methods: {
 		artistView,
 		albumView,
+		reset() {
+			this.title = 'Loading...'
+			this.image = ''
+			this.metadata = ''
+			this.label = ''
+			this.release_date = ''
+			this.explicit = false
+			this.type = ''
+			this.head = []
+			this.body = []
+		},
 		addToQueue: function (e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
@@ -54,66 +65,59 @@ export const TracklistTab = new Vue({
 				ss = '0' + ss
 			}
 			return mm + ':' + ss
+		},
+		showAlbum(data) {
+			this.type = 'Album'
+			this.link = `https://www.deezer.com/album/${data.id}`
+			this.title = data.title
+			this.explicit = data.explicit_lyrics
+			this.label = data.label
+			this.metadata = `${data.artist.name} • ${data.tracks.length} songs`
+			this.release_date = data.release_date.substring(0, 10)
+			this.image = data.cover_xl
+			this.head = [
+				{ title: '<i class="material-icons">music_note</i>', width: '24px' },
+				{ title: '#' },
+				{ title: 'Song' },
+				{ title: 'Artist' },
+				{ title: '<i class="material-icons">timer</i>', width: '40px' }
+			]
+			if (_.isEmpty(data.tracks)) {
+				console.log('show e lodash ok')
+
+				this.body = null
+			} else {
+				this.body = data.tracks
+			}
+		},
+		showPlaylist(data) {
+			this.type = 'Playlist'
+			this.link = `https://www.deezer.com/playlist/${data.id}`
+			this.title = data.title
+			this.image = data.picture_xl
+			this.release_date = data.creation_date.substring(0, 10)
+			this.metadata = `by ${data.creator.name} • ${data.tracks.length} songs`
+			this.head = [
+				{ title: '<i class="material-icons">music_note</i>', width: '24px' },
+				{ title: '#' },
+				{ title: 'Song' },
+				{ title: 'Artist' },
+				{ title: 'Album' },
+				{ title: '<i class="material-icons">timer</i>', width: '40px' }
+			]
+			if (_.isEmpty(data.tracks)) {
+				this.body = null
+			} else {
+				this.body = data.tracks
+			}
 		}
 	},
 	mounted() {
 		console.log('tracklist tab mounted')
+
+		socket.on('show_album', this.showAlbum)
+		socket.on('show_playlist', this.showPlaylist)
 	}
 })
 
-export function resetTracklistTab() {
-	TracklistTab.title = 'Loading...'
-	TracklistTab.image = ''
-	TracklistTab.metadata = ''
-	TracklistTab.label = ''
-	TracklistTab.release_date = ''
-	TracklistTab.explicit = false
-	TracklistTab.type = ''
-	TracklistTab.head = []
-	TracklistTab.body = []
-}
-
-socket.on('show_album', data => {
-	TracklistTab.type = 'Album'
-	TracklistTab.link = `https://www.deezer.com/album/${data.id}`
-	TracklistTab.title = data.title
-	TracklistTab.explicit = data.explicit_lyrics
-	TracklistTab.label = data.label
-	TracklistTab.metadata = `${data.artist.name} • ${data.tracks.length} songs`
-	TracklistTab.release_date = data.release_date.substring(0, 10)
-	TracklistTab.image = data.cover_xl
-	TracklistTab.head = [
-		{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-		{ title: '#' },
-		{ title: 'Song' },
-		{ title: 'Artist' },
-		{ title: '<i class="material-icons">timer</i>', width: '40px' }
-	]
-	if (_.isEmpty(data.tracks)) {
-		TracklistTab.body = null
-	} else {
-		TracklistTab.body = data.tracks
-	}
-})
-
-socket.on('show_playlist', data => {
-	TracklistTab.type = 'Playlist'
-	TracklistTab.link = `https://www.deezer.com/playlist/${data.id}`
-	TracklistTab.title = data.title
-	TracklistTab.image = data.picture_xl
-	TracklistTab.release_date = data.creation_date.substring(0, 10)
-	TracklistTab.metadata = `by ${data.creator.name} • ${data.tracks.length} songs`
-	TracklistTab.head = [
-		{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-		{ title: '#' },
-		{ title: 'Song' },
-		{ title: 'Artist' },
-		{ title: 'Album' },
-		{ title: '<i class="material-icons">timer</i>', width: '40px' }
-	]
-	if (_.isEmpty(data.tracks)) {
-		TracklistTab.body = null
-	} else {
-		TracklistTab.body = data.tracks
-	}
-})
+export default TracklistTab

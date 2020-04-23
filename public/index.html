@@ -492,7 +492,7 @@
 							<tbody>
 								<tr v-for="release in showTable">
 									<td class="inline-flex clickable" @click="albumView" v-bind:data-id="release.id">
-										<img class="rounded" v-bind:src="release.cover_small" style="margin-right: 16px;" />
+										<img class="rounded coverart" v-bind:src="release.cover_small" style="margin-right: 16px; width: 56px; height: 56px;" />
 										<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit"
 											style="color:#FF3B30;">explicit</i>
 										{{release.title}}

@@ -9,6 +9,7 @@
 	background-color: var(--panels-background);
 	color: var(--panels-text);
 	transition: width 125ms ease-in-out 150ms;
+	z-index: 999;
 }
 
 #sidebar:hover {

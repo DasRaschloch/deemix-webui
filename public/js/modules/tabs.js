@@ -54,29 +54,34 @@ export class Tabs {
  * @since		0.1.0
  */
 function handleSidebarClick(event) {
-	let targetID = event.target.id
+	if (!(event.target.matches('.main_tablinks') || event.target.parentElement.matches('.main_tablinks'))) {
+		return
+	}
+
+	let sidebarEl = event.target.matches('.main_tablinks') ? event.target : event.target.parentElement
+	let targetID = sidebarEl.getAttribute('id')
 
 	switch (targetID) {
 		case 'main_search_tablink':
-			changeTab(event, 'main', 'search_tab')
+			changeTab(sidebarEl, 'main', 'search_tab')
 			break
 		case 'main_home_tablink':
-			changeTab(event, 'main', 'home_tab')
+			changeTab(sidebarEl, 'main', 'home_tab')
 			break
 		case 'main_charts_tablink':
-			changeTab(event, 'main', 'charts_tab')
+			changeTab(sidebarEl, 'main', 'charts_tab')
 			break
 		case 'main_favorites_tablink':
-			changeTab(event, 'main', 'favorites_tab')
+			changeTab(sidebarEl, 'main', 'favorites_tab')
 			break
 		case 'main_analyzer_tablink':
-			changeTab(event, 'main', 'analyzer_tab')
+			changeTab(sidebarEl, 'main', 'analyzer_tab')
 			break
 		case 'main_settings_tablink':
-			changeTab(event, 'main', 'settings_tab')
+			changeTab(sidebarEl, 'main', 'settings_tab')
 			break
 		case 'main_about_tablink':
-			changeTab(event, 'main', 'about_tab')
+			changeTab(sidebarEl, 'main', 'about_tab')
 			break
 
 		default:
@@ -89,19 +94,19 @@ function handleTabClick(event) {
 
 	switch (targetID) {
 		case 'search_all_tab':
-			changeTab(event, 'search', 'main_search')
+			changeTab(event.target, 'search', 'main_search')
 			break
 		case 'search_track_tab':
-			changeTab(event, 'search', 'track_search')
+			changeTab(event.target, 'search', 'track_search')
 			break
 		case 'search_album_tab':
-			changeTab(event, 'search', 'album_search')
+			changeTab(event.target, 'search', 'album_search')
 			break
 		case 'search_artist_tab':
-			changeTab(event, 'search', 'artist_search')
+			changeTab(event.target, 'search', 'artist_search')
 			break
 		case 'search_playlist_tab':
-			changeTab(event, 'search', 'playlist_search')
+			changeTab(event.target, 'search', 'playlist_search')
 			break
 
 		default:
@@ -117,7 +122,7 @@ function handleTabClick(event) {
 // 5. lastSettings
 // 6. search_selected
 // 7. MainSearch
-function changeTab(evt, section, tabName) {
+function changeTab(sidebarEl, section, tabName) {
 	windows_stack = []
 	currentStack = {}
 	var i, tabcontent, tablinks
@@ -145,7 +150,7 @@ function changeTab(evt, section, tabName) {
 
 	// Not choosing .currentTarget beacuse the event
 	// is delegated
-	evt.target.classList.add('active')
+	sidebarEl.classList.add('active')
 
 	// Check if you need to load more content in the search tab
 	if (

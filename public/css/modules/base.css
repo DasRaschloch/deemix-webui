@@ -1,3 +1,14 @@
+* {
+	/* Normalizing */
+	/* margin: 0; */
+	/* padding: 0; */
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 16px;
+}
+
 :root {
 	--main-background: #ffffff;
 	--secondary-background: #eeeeee;
@@ -6,7 +17,7 @@
 	--panels-background: #222324;
 	--panels-text: #ffffff;
 	--panels-scroll: #2a2c2c;
-	--accent-color: #0A84FF;
+	--accent-color: #0a84ff;
 	--accent-text: #ffffff;
 	--tag-background: #0062c4;
 	--tag-text: #ffffff;

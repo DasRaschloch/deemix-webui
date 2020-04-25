@@ -2,6 +2,7 @@ import { socket } from './socket.js'
 import { artistView, albumView, playlistView } from './tabs.js'
 import Downloads from './downloads.js'
 import QualityModal from './quality-modal.js'
+import { playPausePreview, previewMouseEnter, previewMouseLeave } from './track-preview.js'
 
 const MainSearch = new Vue({
 	data: {
@@ -52,6 +53,9 @@ const MainSearch = new Vue({
 		artistView,
 		albumView,
 		playlistView,
+    playPausePreview,
+    previewMouseEnter,
+    previewMouseLeave,
 		handleClickTopResult(event) {
 			let topResultType = this.results.allTab.TOP_RESULT[0].type
 

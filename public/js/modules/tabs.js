@@ -3,6 +3,7 @@ import TracklistTab from './tracklist-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './settings-tab.js'
 import MainSearch from './main-search.js'
+import { stopStackedTabsPreview } from './track-preview.js'
 
 /* ===== Globals ====== */
 window.search_selected = ''
@@ -182,6 +183,7 @@ function showTab(type, id, back = false) {
 		tabcontent[i].style.display = 'none'
 	}
 	document.getElementById(tab).style.display = 'block'
+  stopStackedTabsPreview()
 }
 
 // Uses:
@@ -204,4 +206,5 @@ function backTab() {
 		socket.emit('getTracklist', { type: tabObj.type, id: tabObj.id })
 		showTab(tabObj.type, tabObj.id, true)
 	}
+  stopStackedTabsPreview()
 }

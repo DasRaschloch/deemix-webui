@@ -257,24 +257,24 @@
 					</div>
 
 					<div id="analyzer_tab" class="main_tabcontent">
-            <h1>Link Analyzer</h1>
-            <h1>{{ title }}</h1>
+						<h1>Link Analyzer</h1>
+						<h1>{{ title }}</h1>
 						<h2>{{ subtitle }}</h2>
-            <table>
-              <tr v-if="data.isrc"><td>ISRC</td><td>{{ data.isrc }}</td></tr>
-              <tr v-if="data.upc"><td>UPC</td><td>{{ data.upc }}</td></tr>
-              <tr v-if="data.duration"><td>Duration</td><td>{{ convertDuration(data.duration) }}</td></tr>
-              <tr v-if="data.disk_number"><td>Disk Number</td><td>{{ data.disk_number }}</td></tr>
-              <tr v-if="data.track_position"><td>Track Number</td><td>{{ data.track_position }}</td></tr>
-              <tr v-if="data.release_date"><td>Release Date</td><td>{{ data.release_date }}</td></tr>
-              <tr v-if="data.bpm"><td>BPM</td><td>{{ data.bpm }}</td></tr>
-              <tr v-if="data.label"><td>Label</td><td>{{ data.label }}</td></tr>
-              <tr v-if="data.record_type"><td>Record Type</td><td>{{ data.record_type }}</td></tr>
-              <tr v-if="data.genres && data.genres.data.length"><td>Genres</td><td>{{ data.genres.data.map(x => x.name).join("; ") }}</td></tr>
-            </table>
-            <div v-if="countries.length">
-              <p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
-            </div>
+						<table>
+							<tr v-if="data.isrc"><td>ISRC</td><td>{{ data.isrc }}</td></tr>
+							<tr v-if="data.upc"><td>UPC</td><td>{{ data.upc }}</td></tr>
+							<tr v-if="data.duration"><td>Duration</td><td>{{ convertDuration(data.duration) }}</td></tr>
+							<tr v-if="data.disk_number"><td>Disk Number</td><td>{{ data.disk_number }}</td></tr>
+							<tr v-if="data.track_position"><td>Track Number</td><td>{{ data.track_position }}</td></tr>
+							<tr v-if="data.release_date"><td>Release Date</td><td>{{ data.release_date }}</td></tr>
+							<tr v-if="data.bpm"><td>BPM</td><td>{{ data.bpm }}</td></tr>
+							<tr v-if="data.label"><td>Label</td><td>{{ data.label }}</td></tr>
+							<tr v-if="data.record_type"><td>Record Type</td><td>{{ data.record_type }}</td></tr>
+							<tr v-if="data.genres && data.genres.data.length"><td>Genres</td><td>{{ data.genres.data.map(x => x.name).join("; ") }}</td></tr>
+						</table>
+						<div v-if="countries.length">
+							<p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
+						</div>
 					</div>
 
 					<div id="settings_tab" class="main_tabcontent fixed_footer">

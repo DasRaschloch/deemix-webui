@@ -36,9 +36,9 @@ export function playlistView(ev) {
 }
 
 export function analyzeLink(link) {
-  console.log("Analyzing: "+link)
-  LinkAnalyzerTab.reset()
-  socket.emit('analyzeLink', link)
+	console.log("Analyzing: "+link)
+	LinkAnalyzerTab.reset()
+	socket.emit('analyzeLink', link)
 }
 
 export class Tabs {

@@ -32,11 +32,11 @@ export default class Search {
 				if (e.ctrlKey) {
 					QualityModal.open(term)
 				} else {
-          if (window.main_selected  == 'analyzer_tab'){
-            analyzeLink(term)
-          }else{
-            Downloads.sendAddToQueue(term)
-          }
+					if (window.main_selected == 'analyzer_tab') {
+						analyzeLink(term)
+					} else {
+						Downloads.sendAddToQueue(term)
+					}
 				}
 			} else {
 				if (term != MainSearch.query || main_selected == 'search_tab') {

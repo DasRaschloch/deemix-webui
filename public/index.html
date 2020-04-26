@@ -16,10 +16,10 @@
 
 <body>
 	<aside id="sidebar" role="navigation">
-    <span id="main_home_tablink" class="main_tablinks" role="link" aria-label="home"><i
-      class="material-icons side_icon">home</i><span class="main_tablinks_text">Home</span></span>
+		<span id="main_home_tablink" class="main_tablinks" role="link" aria-label="home"><i
+				class="material-icons side_icon">home</i><span class="main_tablinks_text">Home</span></span>
 		<span id="main_search_tablink" class="main_tablinks" role="link" aria-label="search"><i
-      class="material-icons side_icon">search</i><span class="main_tablinks_text">Search</span></span>
+				class="material-icons side_icon">search</i><span class="main_tablinks_text">Search</span></span>
 		<span id="main_charts_tablink" class="main_tablinks" role="link" aria-label="charts"><i
 				class="material-icons side_icon">bubble_chart</i><span class="main_tablinks_text">Charts</span></span>
 		<span id="main_favorites_tablink" class="main_tablinks" role="link" aria-label="favorites"><i
@@ -160,8 +160,13 @@
 									</tr>
 									<tr v-for="track in results.trackTab.data" class="track_row">
 										<td style="width: 48px; text-align: center;">
-                      <a href="#" @click="playPausePreview" v-bind:class="'rounded' + (track.preview ? ' single-cover' : '')" v-bind:data-preview="track.preview"><i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave" v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img class="rounded coverart" v-bind:src="track.album.cover_small">
-                    </td>
+											<a href="#" @click="playPausePreview"
+												v-bind:class="'rounded' + (track.preview ? ' single-cover' : '')"
+												v-bind:data-preview="track.preview"><i @mouseenter="previewMouseEnter"
+													@mouseleave="previewMouseLeave" v-if="track.preview"
+													class="material-icons preview_controls">play_arrow</i><img class="rounded coverart"
+													v-bind:src="track.album.cover_small">
+										</td>
 										<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
 										<td class="breakline clickable" @click="artistView" v-bind:data-id="track.artist.id">
 											{{track.artist.name}}</td>
@@ -257,24 +262,54 @@
 					</div>
 
 					<div id="analyzer_tab" class="main_tabcontent">
-            <h1>Link Analyzer</h1>
-            <h1>{{ title }}</h1>
+						<h1>Link Analyzer</h1>
+						<h1>{{ title }}</h1>
 						<h2>{{ subtitle }}</h2>
-            <table>
-              <tr v-if="data.isrc"><td>ISRC</td><td>{{ data.isrc }}</td></tr>
-              <tr v-if="data.upc"><td>UPC</td><td>{{ data.upc }}</td></tr>
-              <tr v-if="data.duration"><td>Duration</td><td>{{ convertDuration(data.duration) }}</td></tr>
-              <tr v-if="data.disk_number"><td>Disk Number</td><td>{{ data.disk_number }}</td></tr>
-              <tr v-if="data.track_position"><td>Track Number</td><td>{{ data.track_position }}</td></tr>
-              <tr v-if="data.release_date"><td>Release Date</td><td>{{ data.release_date }}</td></tr>
-              <tr v-if="data.bpm"><td>BPM</td><td>{{ data.bpm }}</td></tr>
-              <tr v-if="data.label"><td>Label</td><td>{{ data.label }}</td></tr>
-              <tr v-if="data.record_type"><td>Record Type</td><td>{{ data.record_type }}</td></tr>
-              <tr v-if="data.genres && data.genres.data.length"><td>Genres</td><td>{{ data.genres.data.map(x => x.name).join("; ") }}</td></tr>
-            </table>
-            <div v-if="countries.length">
-              <p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
-            </div>
+						<table>
+							<tr v-if="data.isrc">
+								<td>ISRC</td>
+								<td>{{ data.isrc }}</td>
+							</tr>
+							<tr v-if="data.upc">
+								<td>UPC</td>
+								<td>{{ data.upc }}</td>
+							</tr>
+							<tr v-if="data.duration">
+								<td>Duration</td>
+								<td>{{ convertDuration(data.duration) }}</td>
+							</tr>
+							<tr v-if="data.disk_number">
+								<td>Disk Number</td>
+								<td>{{ data.disk_number }}</td>
+							</tr>
+							<tr v-if="data.track_position">
+								<td>Track Number</td>
+								<td>{{ data.track_position }}</td>
+							</tr>
+							<tr v-if="data.release_date">
+								<td>Release Date</td>
+								<td>{{ data.release_date }}</td>
+							</tr>
+							<tr v-if="data.bpm">
+								<td>BPM</td>
+								<td>{{ data.bpm }}</td>
+							</tr>
+							<tr v-if="data.label">
+								<td>Label</td>
+								<td>{{ data.label }}</td>
+							</tr>
+							<tr v-if="data.record_type">
+								<td>Record Type</td>
+								<td>{{ data.record_type }}</td>
+							</tr>
+							<tr v-if="data.genres && data.genres.data.length">
+								<td>Genres</td>
+								<td>{{ data.genres.data.map(x => x.name).join("; ") }}</td>
+							</tr>
+						</table>
+						<div v-if="countries.length">
+							<p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
+						</div>
 					</div>
 
 					<div id="settings_tab" class="main_tabcontent fixed_footer">
@@ -551,10 +586,13 @@
 							<tbody>
 								<template v-for="track in body">
 									<tr v-if="track.type == 'track'">
-										<td><i @click=playPausePreview v-bind:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')" v-bind:data-preview="track.preview">play_arrow</i></td>
+										<td><i @click=playPausePreview
+												v-bind:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
+												v-bind:data-preview="track.preview">play_arrow</i></td>
 										<td>{{ track.track_position }}</td>
 										<td class="inline-flex"><i v-if="track.explicit_lyrics"
-												class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+track.title_version : '') }} </td>
+												class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+track.title_version : '') }}
+										</td>
 										<td class="clickable" @click="artistView" v-bind:data-id="track.artist.id">
 											{{ track.artist.name }}</td>
 										<td class="clickable" v-if="type == 'Playlist'" @click="albumView" v-bind:data-id="track.album.id">
@@ -586,8 +624,8 @@
 		</div>
 
 		<div id="download_tab_container" class="tab_hidden">
+			<div id="download_tab_drag_handler"></div>
 			<i id="toggle_download_tab" class="material-icons download_bar_icon"></i>
-			<!-- <div id="queue_buttons" class="right"> -->
 			<div id="queue_buttons">
 				<i id="clean_queue" class="material-icons download_bar_icon">clear_all</i>
 				<i id="cancel_queue" class="material-icons download_bar_icon">delete_sweep</i>
@@ -596,11 +634,11 @@
 		</div>
 	</main>
 
-  <audio id="preview-track">
-  	<source id="preview-track_source" src="" type="audio/mpeg">
-  </audio>
+	<audio id="preview-track">
+		<source id="preview-track_source" src="" type="audio/mpeg">
+	</audio>
 
-  <div id="modal_quality" class="smallmodal">
+	<div id="modal_quality" class="smallmodal">
 		<!-- Modal content -->
 		<div class="smallmodal-content">
 			<button class="quality-button" data-quality-value="9">Download FLAC</button><br>

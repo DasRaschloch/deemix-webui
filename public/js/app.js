@@ -71,22 +71,17 @@ socket.on('logged_out', function () {
 
 /* ===== App initialization ===== */
 function startApp() {
-	Downloads.linkListeners()
+	Downloads.init()
 	QualityModal.init()
 	Tabs.linkListeners()
 	Search.linkListeners()
-  initTrackPreview()
+	initTrackPreview()
 
 	if (localStorage.getItem('arl')) {
 		let arl = localStorage.getItem('arl')
 
 		socket.emit('login', arl)
 		$('#login_input_arl').val(arl)
-	}
-
-	// Check if download tab should be open
-	if ('true' === localStorage.getItem('downloadTabOpen')) {
-		document.querySelector('#download_tab_container').classList.remove('tab_hidden')
 	}
 
 	// Open default tab

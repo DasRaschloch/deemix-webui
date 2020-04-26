@@ -1,16 +1,17 @@
 #download_tab_container {
-	width: 300px;
+	/* width: 300px; */
 	height: 100%;
 	background-color: var(--panels-background);
 	color: var(--panels-text);
 	display: block;
 	flex-direction: column;
-	transition: all 250ms ease-in-out;
+	/* transition: all 250ms ease-in-out; */
 }
 
 #toggle_download_tab {
 	width: 25px;
 	height: 25px;
+	margin-left: 20px;
 }
 
 #toggle_download_tab::before {
@@ -134,7 +135,7 @@
 }
 
 #download_tab_container #download_list {
-	width: 300px;
+	/* width: 300px; */
 }
 
 #download_tab_container #download_tab_label {
@@ -143,9 +144,25 @@
 	transition: all 250ms ease-in-out;
 }
 
+#download_tab_drag_handler {
+	width: 15px;
+	height: 100%;
+	position: absolute;
+	background-color: #333;
+	cursor: ew-resize;
+}
+
 /* ===== Hidden tab styles ===== */
 #download_tab_container.tab_hidden {
 	width: 32px;
+}
+
+#download_tab_container.tab_hidden #toggle_download_tab {
+	margin-left: 4px;
+}
+
+#download_tab_container.tab_hidden #download_tab_drag_handler {
+	display: none;
 }
 
 #download_tab_container.tab_hidden #toggle_download_tab::before {

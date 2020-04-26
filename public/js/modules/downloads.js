@@ -1,14 +1,36 @@
 import { socket } from './socket.js'
 import { toast } from './toasts.js'
+import Utils from './utils.js'
 
+/* ===== Locals ===== */
+const tabMinWidth = 250
+const tabMaxWidth = 500
+let cachedTabWidth = parseInt(localStorage.getItem('downloadTabWidth')) || 300
 let queueList = {}
 let queue = []
 let queueComplete = []
+let tabContainerEl
+let listEl
+let dragHandlerEl
 
-const downloadListEl = document.getElementById('download_list')
+function init() {
+	// Find download DOM elements
+	tabContainerEl = document.getElementById('download_tab_container')
+	listEl = document.getElementById('download_list')
+	dragHandlerEl = document.getElementById('download_tab_drag_handler')
+
+	// Check if download tab should be open
+	if ('true' === localStorage.getItem('downloadTabOpen')) {
+		tabContainerEl.classList.remove('tab_hidden')
+
+		setTabWidth(cachedTabWidth)
+	}
+
+	linkListeners()
+}
 
 function linkListeners() {
-	downloadListEl.addEventListener('click', handleListClick)
+	listEl.addEventListener('click', handleListClick)
 	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
 
 	// Queue buttons
@@ -19,6 +41,48 @@ function linkListeners() {
 	document.getElementById('cancel_queue').addEventListener('click', () => {
 		socket.emit('cancelAllDownloads')
 	})
+
+	dragHandlerEl.addEventListener('mousedown', event => {
+		event.preventDefault()
+
+		document.addEventListener('mousemove', handleDrag)
+	})
+
+	document.addEventListener('mouseup', () => {
+		document.removeEventListener('mousemove', handleDrag)
+	})
+
+	tabContainerEl.addEventListener('transitionend', () => {
+		tabContainerEl.style.transition = ''
+	})
+
+	window.addEventListener('beforeunload', () => {
+		localStorage.setItem('downloadTabWidth', cachedTabWidth)
+	})
+}
+
+function setTabWidth(newWidth) {
+	if (undefined === newWidth) {
+		tabContainerEl.style.width = ''
+		listEl.style.width = ''
+	} else {
+		tabContainerEl.style.width = newWidth + 'px'
+		listEl.style.width = newWidth + 'px'
+	}
+}
+
+function handleDrag(event) {
+	let newWidth = window.innerWidth - event.pageX + 2
+
+	if (newWidth < tabMinWidth) {
+		newWidth = tabMinWidth
+	} else if (newWidth > tabMaxWidth) {
+		newWidth = tabMaxWidth
+	}
+
+	cachedTabWidth = newWidth
+
+	setTabWidth(newWidth)
 }
 
 function sendAddToQueue(url, bitrate = null) {
@@ -39,7 +103,7 @@ function addToQueue(queueItem, current = false) {
 	} else {
 		queue.push(queueItem.uuid)
 	}
-	$(downloadListEl).append(
+	$(listEl).append(
 		`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
 		<div class="download_info">
 			<img width="75px" class="rounded coverart" src="${queueItem.cover}" alt="Cover ${queueItem.title}"/>
@@ -124,7 +188,16 @@ function handleListClick(event) {
 function toggleDownloadTab(ev) {
 	ev.preventDefault()
 
-	let isHidden = document.querySelector('#download_tab_container').classList.toggle('tab_hidden')
+	setTabWidth()
+
+	tabContainerEl.style.transition = 'all 250ms ease-in-out'
+
+	// Toggle returns a Boolean based on the action it performed
+	let isHidden = tabContainerEl.classList.toggle('tab_hidden')
+
+	if (!isHidden) {
+		setTabWidth(cachedTabWidth)
+	}
 
 	localStorage.setItem('downloadTabOpen', !isHidden)
 }
@@ -141,18 +214,8 @@ function removeFromQueue(uuid) {
 	}
 }
 
-// Needs:
-// 1. socket
-// 2. queue
-// 3. queueList
 socket.on('removedFromQueue', removeFromQueue)
 
-// Needs:
-// 1. socket
-// 2. queue
-// 3. queueList
-// 4. queueComplete
-// 5. toast
 function finishDownload(uuid) {
 	if (queue.indexOf(uuid) > -1) {
 		toast(`${queueList[uuid].title} finished downloading.`, 'done')
@@ -178,18 +241,12 @@ function finishDownload(uuid) {
 
 socket.on('finishDownload', finishDownload)
 
-// Needs:
-// 1. socket
-// 2. queueComplete
-// 3. queue
-// 4. queueList
-
 function removeAllDownloads(currentItem) {
 	queueComplete = []
 	if (currentItem == '') {
 		queue = []
 		queueList = {}
-		$(downloadListEl).html('')
+		$(listEl).html('')
 	} else {
 		queue = [currentItem]
 		let tempQueueItem = queueList[currentItem]
@@ -203,9 +260,6 @@ function removeAllDownloads(currentItem) {
 
 socket.on('removedAllDownloads', removeAllDownloads)
 
-// Needs:
-// 1. socket
-// 2. queueComplete
 function removedFinishedDownloads() {
 	queueComplete.forEach(item => {
 		$('#download_' + item).remove()
@@ -215,10 +269,6 @@ function removedFinishedDownloads() {
 
 socket.on('removedFinishedDownloads', removedFinishedDownloads)
 
-// Needs:
-// 1. socket
-// 2. queue
-// 3. queueList
 function updateQueue(update) {
 	if (update.uuid && queue.indexOf(update.uuid) > -1) {
 		if (update.downloaded) {
@@ -250,7 +300,7 @@ function updateQueue(update) {
 socket.on('updateQueue', updateQueue)
 
 export default {
-	linkListeners,
+	init,
 	sendAddToQueue,
 	addToQueue
 }

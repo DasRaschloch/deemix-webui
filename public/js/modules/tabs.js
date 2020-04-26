@@ -36,9 +36,9 @@ export function playlistView(ev) {
 }
 
 export function analyzeLink(link) {
-  console.log("Analyzing: "+link)
-  LinkAnalyzerTab.reset()
-  socket.emit('analyzeLink', link)
+	console.log('Analyzing: ' + link)
+	LinkAnalyzerTab.reset()
+	socket.emit('analyzeLink', link)
 }
 
 export class Tabs {
@@ -190,7 +190,7 @@ function showTab(type, id, back = false) {
 		tabcontent[i].style.display = 'none'
 	}
 	document.getElementById(tab).style.display = 'block'
-  stopStackedTabsPreview()
+	stopStackedTabsPreview()
 }
 
 // Uses:
@@ -213,5 +213,5 @@ function backTab() {
 		socket.emit('getTracklist', { type: tabObj.type, id: tabObj.id })
 		showTab(tabObj.type, tabObj.id, true)
 	}
-  stopStackedTabsPreview()
+	stopStackedTabsPreview()
 }

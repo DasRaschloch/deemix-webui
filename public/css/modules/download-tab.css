@@ -28,8 +28,9 @@
 }
 
 #download_list {
-	padding: 0px 8px;
+	width: 100%;
 	height: calc(100% - 32px);
+	padding: 0px 8px 0px 28px;
 	overflow-y: scroll;
 }
 

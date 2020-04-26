@@ -1,10 +1,10 @@
 import { socket } from './socket.js'
 import { toast } from './toasts.js'
-import Utils from './utils.js'
 
 /* ===== Locals ===== */
 const tabMinWidth = 250
 const tabMaxWidth = 500
+
 let cachedTabWidth = parseInt(localStorage.getItem('downloadTabWidth')) || 300
 let queueList = {}
 let queue = []

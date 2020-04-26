@@ -1,5 +1,6 @@
 import ArtistTab from './artist-tab.js'
 import TracklistTab from './tracklist-tab.js'
+import LinkAnalyzerTab from './link-analyzer-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './settings-tab.js'
 import MainSearch from './main-search.js'
@@ -32,6 +33,12 @@ export function playlistView(ev) {
 	TracklistTab.reset()
 	socket.emit('getTracklist', { type: 'playlist', id: id })
 	showTab('playlist', id)
+}
+
+export function analyzeLink(link) {
+  console.log("Analyzing: "+link)
+  LinkAnalyzerTab.reset()
+  socket.emit('analyzeLink', link)
 }
 
 export class Tabs {

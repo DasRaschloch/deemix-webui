@@ -27,6 +27,10 @@ function convertDurationSeparated(duration) {
 	return [hh, mm, ss]
 }
 
+function numberWithDots(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+}
+
 // On scroll event, returns currentTarget = null
 // Probably on other events too
 function debounce(func, wait, immediate) {
@@ -49,5 +53,6 @@ export default {
 	isValidURL,
 	convertDuration,
 	convertDurationSeparated,
+  numberWithDots,
 	debounce
 }

@@ -3,6 +3,7 @@ import { artistView, albumView, playlistView } from './tabs.js'
 import Downloads from './downloads.js'
 import QualityModal from './quality-modal.js'
 import { playPausePreview, previewMouseEnter, previewMouseLeave } from './track-preview.js'
+import Utils from './utils.js'
 
 const MainSearch = new Vue({
 	data: {
@@ -87,20 +88,8 @@ const MainSearch = new Vue({
 			e.preventDefault()
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
-		numberWithDots(x) {
-			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-		},
-		convertDuration(duration) {
-			//convert from seconds only to mm:ss format
-			let mm, ss
-			mm = Math.floor(duration / 60)
-			ss = duration - mm * 60
-			//add leading zero if ss < 0
-			if (ss < 10) {
-				ss = '0' + ss
-			}
-			return mm + ':' + ss
-		},
+    numberWithDots: Utils.numberWithDots,
+		convertDuration: Utils.convertDuration,
 		search(type) {
 			socket.emit('search', {
 				term: this.results.query,

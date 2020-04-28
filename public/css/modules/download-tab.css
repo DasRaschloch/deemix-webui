@@ -5,7 +5,6 @@
 	color: var(--panels-text);
 	display: block;
 	flex-direction: column;
-	/* transition: all 250ms ease-in-out; */
 }
 
 #toggle_download_tab {

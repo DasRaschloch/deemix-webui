@@ -81,11 +81,9 @@ const MainSearch = new Vue({
 			}
 		},
 		addToQueue: function (e) {
-			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal: function (e) {
-			e.preventDefault()
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		numberWithDots: Utils.numberWithDots,

@@ -37,7 +37,6 @@ const TracklistTab = new Vue({
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal: function (e) {
-			e.preventDefault()
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		toggleAll: function (e) {

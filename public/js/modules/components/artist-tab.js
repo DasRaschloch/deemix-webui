@@ -35,11 +35,12 @@ const ArtistTab = new Vue({
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
-			e.preventDefault()
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		moreInfo(url, e) {
-			if (e) e.preventDefault()
+			if (e) {
+				e.preventDefault()
+			}
 			showTrackListSelective(url, true)
 		},
 		sortBy(key) {

@@ -59,9 +59,9 @@
 											<div class="cover_container">
 												<img :src="results.allTab.TOP_RESULT[0].picture"
 													:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
-												<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-													@click="addToQueue" :data-link="results.allTab.TOP_RESULT[0].link" class="download_overlay"><i
-														class="material-icons">get_app</i></div>
+												<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+													@click.stop="addToQueue" :data-link="results.allTab.TOP_RESULT[0].link"
+													class="download_overlay"><i class="material-icons">get_app</i></div>
 											</div>
 											<div class="info_box">
 												<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
@@ -85,8 +85,8 @@
 													<td class="breakline clickable" @click="albumView" :data-id="track.ALB_ID">
 														{{track.ALB_TITLE}}</td>
 													<td>{{convertDuration(track.DURATION)}}</td>
-													<td role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" :data-link="'https://www.deezer.com/track/'+track.SNG_ID"
+													<td role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+														@click.stop="addToQueue" :data-link="'https://www.deezer.com/track/'+track.SNG_ID"
 														style="width: 56px; text-align: center;" class="clickable"><i
 															class="material-icons">get_app</i></td>
 												</tr>
@@ -98,8 +98,8 @@
 												<div class="cover_container">
 													<img class="circle coverart"
 														:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
-													<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" :data-link="'https://deezer.com/artist/'+release.ART_ID"
+													<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+														@click.stop="addToQueue" :data-link="'https://deezer.com/artist/'+release.ART_ID"
 														class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{release.ART_NAME}}</p>
@@ -112,8 +112,8 @@
 												<div class="cover_container">
 													<img class="rounded coverart"
 														:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
-													<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" :data-link="'https://deezer.com/album/'+release.ALB_ID"
+													<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+														@click.stop="addToQueue" :data-link="'https://deezer.com/album/'+release.ALB_ID"
 														class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{release.ALB_TITLE}}</p>
@@ -126,8 +126,8 @@
 												<div class="cover_container">
 													<img class="rounded coverart"
 														:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
-													<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" :data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID"
+													<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+														@click.stop="addToQueue" :data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID"
 														class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{ release.TITLE }}</p>
@@ -171,9 +171,9 @@
 										<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
 											{{track.album.title}}</td>
 										<td>{{convertDuration(track.duration)}}</td>
-										<td role="button" aria-label="download" @contextmenu="openQualityModal(event)" @click="addToQueue"
-											:data-link="track.link" style="width: 56px; text-align: center;" class="clickable"><i
-												class="material-icons">get_app</i>
+										<td role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+											@click.stop="addToQueue" :data-link="track.link" style="width: 56px; text-align: center;"
+											class="clickable"><i class="material-icons">get_app</i>
 										</td>
 									</tr>
 								</table>
@@ -191,8 +191,8 @@
 										:data-id="release.id">
 										<div class="cover_container">
 											<img class="rounded coverart" :src="release.cover_medium">
-											<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-												@click="addToQueue" :data-link="release.link" class="download_overlay"><i
+											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.title }}</p>
@@ -213,8 +213,8 @@
 										:data-id="release.id">
 										<div class="cover_container">
 											<img class="circle coverart" :src="release.picture_medium">
-											<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-												@click="addToQueue" :data-link="release.link" class="download_overlay"><i
+											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.name }}</p>
@@ -235,8 +235,8 @@
 										:data-id="release.id">
 										<div class="cover_container">
 											<img class="rounded coverart" :src="release.picture_medium">
-											<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-												@click="addToQueue" :data-link="release.link" class="download_overlay"><i
+											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.title }}</p>
@@ -521,7 +521,7 @@
 						<header class="inline-flex"
 							:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
 							<h1>{{ title }}</h1>
-							<div role="button" aria-label="download" @contextmenu="openQualityModal(event)" @click="addToQueue"
+							<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
 								:data-link="link" class="fab right"><i class="material-icons">get_app</i></div>
 						</header>
 
@@ -554,7 +554,7 @@
 											style="color:#FF7300;">fiber_new</i>
 									</td>
 									<td>{{release.release_date}}</td>
-									<td @click="addToQueue" @contextmenu="openQualityModal(event)" :data-link="release.link"
+									<td @click.stop="addToQueue" @contextmenu.prevent="openQualityModal" :data-link="release.link"
 										class="clickable"><i class="material-icons">file_download</i></td>
 								</tr>
 							</tbody>
@@ -578,7 +578,7 @@
 								<tr>
 									<th v-for="data in head" v-html="data.title" :style="{ 'width': data.width ? data.width : 'auto'}">
 									</th>
-									<th style="width: 32px"><input @click="toggleAll(event)" class="selectAll" type="checkbox"></th>
+									<th style="width: 32px"><input @click="toggleAll" class="selectAll" type="checkbox"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -608,9 +608,9 @@
 						<span v-if="label"
 							style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 						<footer>
-							<button @contextmenu="openQualityModal(event)" @click="addToQueue" :data-link="link">Download
+							<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="link">Download
 								{{ type }}</button>
-							<button class="with_icon" @contextmenu="openQualityModal(event)" @click="addToQueue"
+							<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
 								:data-link="selectedLinks()">Download selection<i class="material-icons">file_download</i></button>
 							<button class="back-button">Back</button>
 						</footer>

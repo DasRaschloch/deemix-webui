@@ -1,5 +1,5 @@
-import { toast } from './toasts.js'
-import { socket } from './socket.js'
+import { toast } from '../toasts.js'
+import { socket } from '../socket.js'
 
 const SettingsTab = new Vue({
 	data() {

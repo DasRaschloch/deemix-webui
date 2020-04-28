@@ -2,9 +2,9 @@ import { socket } from './modules/socket.js'
 import { toast } from './modules/toasts.js'
 import Downloads from './modules/downloads.js'
 import QualityModal from './modules/quality-modal.js'
-import { Tabs } from './modules/tabs.js'
+import Tabs from './modules/tabs.js'
 import Search from './modules/search.js'
-import { initTrackPreview } from './modules/track-preview.js'
+import TrackPreview from './modules/track-preview.js'
 
 /* ===== Socketio listeners ===== */
 
@@ -75,7 +75,7 @@ function startApp() {
 	QualityModal.init()
 	Tabs.linkListeners()
 	Search.linkListeners()
-	initTrackPreview()
+	TrackPreview.init()
 
 	if (localStorage.getItem('arl')) {
 		let arl = localStorage.getItem('arl')

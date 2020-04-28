@@ -1,8 +1,8 @@
-import { socket } from './socket.js'
-import { artistView, albumView } from './tabs.js'
-import Downloads from './downloads.js'
-import QualityModal from './quality-modal.js'
-import { playPausePreview } from './track-preview.js'
+import { socket } from '../socket.js'
+import { albumView, artistView } from '../tabs.js'
+import Downloads from '../downloads.js'
+import QualityModal from '../quality-modal.js'
+import TrackPreview from '../track-preview.js'
 
 const TracklistTab = new Vue({
 	data: {
@@ -20,7 +20,7 @@ const TracklistTab = new Vue({
 	methods: {
 		artistView,
 		albumView,
-    playPausePreview,
+		playPausePreview: TrackPreview.playPausePreview,
 		reset() {
 			this.title = 'Loading...'
 			this.image = ''

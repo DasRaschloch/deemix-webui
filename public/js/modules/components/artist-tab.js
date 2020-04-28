@@ -1,7 +1,7 @@
-import { socket } from './socket.js'
-import { albumView } from './tabs.js'
-import Downloads from './downloads.js'
-import QualityModal from './quality-modal.js'
+import { socket } from '../socket.js'
+import Downloads from '../downloads.js'
+import QualityModal from '../quality-modal.js'
+import { albumView } from '../tabs.js'
 
 const ArtistTab = new Vue({
 	data() {

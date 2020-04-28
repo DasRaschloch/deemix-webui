@@ -6,7 +6,7 @@ let preview_track = document.getElementById('preview-track')
 let preview_stopped = true
 
 // init stuff
-export function initTrackPreview() {
+function init() {
 	preview_track.volume = 1
 	/*preview_max_volume = parseFloat(localStorage.getItem("previewVolume"))
   if (preview_max_volume === null){
@@ -35,7 +35,7 @@ export function initTrackPreview() {
 }
 
 // on modal closing
-export function stopStackedTabsPreview() {
+function stopStackedTabsPreview() {
 	if (
 		$('.preview_playlist_controls').filter(function () {
 			return $(this).attr('playing')
@@ -49,10 +49,11 @@ export function stopStackedTabsPreview() {
 }
 
 // on hover event
-export function previewMouseEnter(e) {
+function previewMouseEnter(e) {
 	$(e.currentTarget).css({ opacity: 1 })
 }
-export function previewMouseLeave(e) {
+
+function previewMouseLeave(e) {
 	let obj = e.currentTarget
 	if (($(obj).parent().attr('playing') && preview_stopped) || !$(obj).parent().attr('playing')) {
 		$(obj).css({ opacity: 0 }, 200)
@@ -60,7 +61,7 @@ export function previewMouseLeave(e) {
 }
 
 // on click event
-export function playPausePreview(e) {
+function playPausePreview(e) {
 	e.preventDefault()
 	console.log('PlayPause')
 	let obj = e.currentTarget
@@ -93,4 +94,12 @@ export function playPausePreview(e) {
 			preview_track.load()
 		})
 	}
+}
+
+export default {
+	init,
+	stopStackedTabsPreview,
+	previewMouseEnter,
+	previewMouseLeave,
+	playPausePreview
 }

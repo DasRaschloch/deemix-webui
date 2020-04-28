@@ -1,10 +1,10 @@
-import ArtistTab from './artist-tab.js'
-import TracklistTab from './tracklist-tab.js'
-import LinkAnalyzerTab from './link-analyzer-tab.js'
+import ArtistTab from './components/artist-tab.js'
+import TracklistTab from './components/tracklist-tab.js'
+import LinkAnalyzerTab from './components/link-analyzer-tab.js'
 import { socket } from './socket.js'
-import SettingsTab from './settings-tab.js'
-import MainSearch from './main-search.js'
-import { stopStackedTabsPreview } from './track-preview.js'
+import SettingsTab from './components/settings-tab.js'
+import MainSearch from './components/main-search.js'
+import TrackPreview from './track-preview.js'
 
 /* ===== Globals ====== */
 window.search_selected = ''
@@ -35,23 +35,21 @@ export function playlistView(ev) {
 	showTab('playlist', id)
 }
 
-export function analyzeLink(link) {
+function analyzeLink(link) {
 	console.log('Analyzing: ' + link)
 	LinkAnalyzerTab.reset()
 	socket.emit('analyzeLink', link)
 }
 
-export class Tabs {
-	static linkListeners() {
-		document.getElementById('search_tab').addEventListener('click', handleTabClick)
-		document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
+function linkListeners() {
+	document.getElementById('search_tab').addEventListener('click', handleTabClick)
+	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
 
-		const backButtons = Array.from(document.getElementsByClassName('back-button'))
+	const backButtons = Array.from(document.getElementsByClassName('back-button'))
 
-		backButtons.forEach(button => {
-			button.addEventListener('click', backTab)
-		})
-	}
+	backButtons.forEach(button => {
+		button.addEventListener('click', backTab)
+	})
 }
 
 /**
@@ -122,14 +120,6 @@ function handleTabClick(event) {
 	}
 }
 
-// Uses:
-// 1. windows_stack
-// 2. currentStack
-// 3. main_selected
-// 4. SettingsTab
-// 5. lastSettings
-// 6. search_selected
-// 7. MainSearch
 function changeTab(sidebarEl, section, tabName) {
 	windows_stack = []
 	currentStack = {}
@@ -170,10 +160,6 @@ function changeTab(sidebarEl, section, tabName) {
 	}
 }
 
-// Uses:
-// 1. windows_stack
-// 2. main_selected
-// 3. currentStack
 function showTab(type, id, back = false) {
 	if (windows_stack.length == 0) {
 		windows_stack.push({ tab: main_selected })
@@ -190,16 +176,9 @@ function showTab(type, id, back = false) {
 		tabcontent[i].style.display = 'none'
 	}
 	document.getElementById(tab).style.display = 'block'
-	stopStackedTabsPreview()
+	TrackPreview.stopStackedTabsPreview()
 }
 
-// Uses:
-// 1. windows_stack
-// 2. main_selected
-// 3. showTab
-// 4. ArtistTab
-// 5. TracklistTab
-// 6. socket
 function backTab() {
 	if (windows_stack.length == 1) {
 		document.getElementById(`main_${main_selected}link`).click()
@@ -213,5 +192,13 @@ function backTab() {
 		socket.emit('getTracklist', { type: tabObj.type, id: tabObj.id })
 		showTab(tabObj.type, tabObj.id, true)
 	}
-	stopStackedTabsPreview()
+	TrackPreview.stopStackedTabsPreview()
+}
+
+export default {
+	linkListeners,
+	artistView,
+	albumView,
+	playlistView,
+	analyzeLink
 }

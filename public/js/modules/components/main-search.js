@@ -1,9 +1,9 @@
-import { socket } from './socket.js'
-import { artistView, albumView, playlistView } from './tabs.js'
-import Downloads from './downloads.js'
-import QualityModal from './quality-modal.js'
-import { playPausePreview, previewMouseEnter, previewMouseLeave } from './track-preview.js'
-import Utils from './utils.js'
+import { socket } from '../socket.js'
+import { artistView, albumView, playlistView } from '../tabs.js'
+import Downloads from '../downloads.js'
+import QualityModal from '../quality-modal.js'
+import TrackPreview from '../track-preview.js'
+import Utils from '../utils.js'
 
 const MainSearch = new Vue({
 	data: {
@@ -54,9 +54,9 @@ const MainSearch = new Vue({
 		artistView,
 		albumView,
 		playlistView,
-    playPausePreview,
-    previewMouseEnter,
-    previewMouseLeave,
+		playPausePreview: TrackPreview.playPausePreview,
+		previewMouseEnter: TrackPreview.previewMouseEnter,
+		previewMouseLeave: TrackPreview.previewMouseLeave,
 		handleClickTopResult(event) {
 			let topResultType = this.results.allTab.TOP_RESULT[0].type
 
@@ -88,7 +88,7 @@ const MainSearch = new Vue({
 			e.preventDefault()
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
-    numberWithDots: Utils.numberWithDots,
+		numberWithDots: Utils.numberWithDots,
 		convertDuration: Utils.convertDuration,
 		search(type) {
 			socket.emit('search', {

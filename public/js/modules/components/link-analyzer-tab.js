@@ -1,6 +1,6 @@
-import { socket } from './socket.js'
-import { albumView } from './tabs.js'
-import Utils from './utils.js'
+import { socket } from '../socket.js'
+import { albumView } from '../tabs.js'
+import Utils from '../utils.js'
 
 const LinkAnalyzerTab = new Vue({
 	data() {

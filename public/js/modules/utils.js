@@ -1,8 +1,13 @@
 function isValidURL(text) {
-	if (text.toLowerCase().startsWith('http')) {
-		if (text.toLowerCase().indexOf('deezer.com') >= 0 || text.toLowerCase().indexOf('open.spotify.com') >= 0)
+	let lowerCaseText = text.toLowerCase()
+
+	if (lowerCaseText.startsWith('http')) {
+		if (lowerCaseText.indexOf('deezer.com') >= 0 || lowerCaseText.indexOf('open.spotify.com') >= 0) {
 			return true
-	} else if (text.toLowerCase().startsWith('spotify:')) return true
+		}
+	} else if (lowerCaseText.startsWith('spotify:')) {
+		return true
+	}
 	return false
 }
 

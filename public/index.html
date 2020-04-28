@@ -57,11 +57,11 @@
 										<div v-if="section == 'TOP_RESULT'" class="top_result clickable" @click="handleClickTopResult"
 											:data-id="results.allTab.TOP_RESULT[0].id">
 											<div class="cover_container">
-												<img v-bind:src="results.allTab.TOP_RESULT[0].picture"
-													v-bind:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
+												<img :src="results.allTab.TOP_RESULT[0].picture"
+													:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
 												<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-													@click="addToQueue" v-bind:data-link="results.allTab.TOP_RESULT[0].link"
-													class="download_overlay"><i class="material-icons">get_app</i></div>
+													@click="addToQueue" :data-link="results.allTab.TOP_RESULT[0].link" class="download_overlay"><i
+														class="material-icons">get_app</i></div>
 											</div>
 											<div class="info_box">
 												<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
@@ -76,17 +76,17 @@
 											<table class="tracks_table">
 												<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)" class="track_row">
 													<td style="width: 48px; text-align: center;"><img class="rounded coverart"
-															v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
+															:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
 													</td>
 													<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
-													<td class="breakline"><span class="clickable" @click="artistView"
-															v-bind:data-id="artist.ART_ID" v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span>
+													<td class="breakline"><span class="clickable" @click="artistView" :data-id="artist.ART_ID"
+															v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span>
 													</td>
-													<td class="breakline clickable" @click="albumView" v-bind:data-id="track.ALB_ID">
+													<td class="breakline clickable" @click="albumView" :data-id="track.ALB_ID">
 														{{track.ALB_TITLE}}</td>
 													<td>{{convertDuration(track.DURATION)}}</td>
 													<td role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" v-bind:data-link="'https://www.deezer.com/track/'+track.SNG_ID"
+														@click="addToQueue" :data-link="'https://www.deezer.com/track/'+track.SNG_ID"
 														style="width: 56px; text-align: center;" class="clickable"><i
 															class="material-icons">get_app</i></td>
 												</tr>
@@ -94,12 +94,12 @@
 										</div>
 										<div v-else-if="section == 'ARTIST'" class="release_grid firstrow_only">
 											<div v-for="release in results.allTab.ARTIST.data.slice(0, 10)" class="release clickable"
-												@click="artistView" v-bind:data-id="release.ART_ID">
+												@click="artistView" :data-id="release.ART_ID">
 												<div class="cover_container">
 													<img class="circle coverart"
-														v-bind:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
+														:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
 													<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" v-bind:data-link="'https://deezer.com/artist/'+release.ART_ID"
+														@click="addToQueue" :data-link="'https://deezer.com/artist/'+release.ART_ID"
 														class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{release.ART_NAME}}</p>
@@ -108,12 +108,12 @@
 										</div>
 										<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
 											<div v-for="release in results.allTab.ALBUM.data.slice(0, 10)" class="release clickable"
-												@click="albumView" v-bind:data-id="release.ALB_ID">
+												@click="albumView" :data-id="release.ALB_ID">
 												<div class="cover_container">
 													<img class="rounded coverart"
-														v-bind:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
+														:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
 													<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" v-bind:data-link="'https://deezer.com/album/'+release.ALB_ID"
+														@click="addToQueue" :data-link="'https://deezer.com/album/'+release.ALB_ID"
 														class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{release.ALB_TITLE}}</p>
@@ -122,12 +122,12 @@
 										</div>
 										<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
 											<div v-for="release in results.allTab.PLAYLIST.data.slice(0, 10)" class="release clickable"
-												@click="playlistView" v-bind:data-id="release.PLAYLIST_ID">
+												@click="playlistView" :data-id="release.PLAYLIST_ID">
 												<div class="cover_container">
 													<img class="rounded coverart"
-														v-bind:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
+														:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
 													<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-														@click="addToQueue" v-bind:data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID"
+														@click="addToQueue" :data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID"
 														class="download_overlay"><i class="material-icons">get_app</i></div>
 												</div>
 												<p class="primary-text">{{ release.TITLE }}</p>
@@ -160,21 +160,19 @@
 									</tr>
 									<tr v-for="track in results.trackTab.data" class="track_row">
 										<td style="width: 48px; text-align: center;">
-											<a href="#" @click="playPausePreview"
-												v-bind:class="'rounded' + (track.preview ? ' single-cover' : '')"
-												v-bind:data-preview="track.preview"><i @mouseenter="previewMouseEnter"
-													@mouseleave="previewMouseLeave" v-if="track.preview"
-													class="material-icons preview_controls">play_arrow</i><img class="rounded coverart"
-													v-bind:src="track.album.cover_small">
+											<a href="#" @click="playPausePreview" :class="'rounded' + (track.preview ? ' single-cover' : '')"
+												:data-preview="track.preview"><i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave"
+													v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img
+													class="rounded coverart" :src="track.album.cover_small">
 										</td>
 										<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
-										<td class="breakline clickable" @click="artistView" v-bind:data-id="track.artist.id">
+										<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
 											{{track.artist.name}}</td>
-										<td class="breakline clickable" @click="albumView" v-bind:data-id="track.album.id">
+										<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
 											{{track.album.title}}</td>
 										<td>{{convertDuration(track.duration)}}</td>
 										<td role="button" aria-label="download" @contextmenu="openQualityModal(event)" @click="addToQueue"
-											v-bind:data-link="track.link" style="width: 56px; text-align: center;" class="clickable"><i
+											:data-link="track.link" style="width: 56px; text-align: center;" class="clickable"><i
 												class="material-icons">get_app</i>
 										</td>
 									</tr>
@@ -190,11 +188,11 @@
 								</div>
 								<div class="release_grid" v-if="results.albumTab.data.length > 0">
 									<div v-for="release in results.albumTab.data" class="release clickable" @click="albumView"
-										v-bind:data-id="release.id">
+										:data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" v-bind:src="release.cover_medium">
+											<img class="rounded coverart" :src="release.cover_medium">
 											<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-												@click="addToQueue" v-bind:data-link="release.link" class="download_overlay"><i
+												@click="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.title }}</p>
@@ -212,11 +210,11 @@
 								</div>
 								<div class="release_grid" v-if="results.artistTab.data.length > 0">
 									<div v-for="release in results.artistTab.data" class="release clickable" @click="artistView"
-										v-bind:data-id="release.id">
+										:data-id="release.id">
 										<div class="cover_container">
-											<img class="circle coverart" v-bind:src="release.picture_medium">
+											<img class="circle coverart" :src="release.picture_medium">
 											<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-												@click="addToQueue" v-bind:data-link="release.link" class="download_overlay"><i
+												@click="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.name }}</p>
@@ -234,11 +232,11 @@
 								</div>
 								<div class="release_grid" v-if="results.playlistTab.data.length > 0">
 									<div v-for="release in results.playlistTab.data" class="release clickable" @click="playlistView"
-										v-bind:data-id="release.id">
+										:data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" v-bind:src="release.picture_medium">
+											<img class="rounded coverart" :src="release.picture_medium">
 											<div role="button" aria-label="download" @contextmenu="openQualityModal(event)"
-												@click="addToQueue" v-bind:data-link="release.link" class="download_overlay"><i
+												@click="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
 										</div>
 										<p class="primary-text">{{ release.title }}</p>
@@ -521,15 +519,15 @@
 
 					<div id="artist_tab" class="main_tabcontent fixed_footer image_header">
 						<header class="inline-flex"
-							v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
+							:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
 							<h1>{{ title }}</h1>
 							<div role="button" aria-label="download" @contextmenu="openQualityModal(event)" @click="addToQueue"
-								v-bind:data-link="link" class="fab right"><i class="material-icons">get_app</i></div>
+								:data-link="link" class="fab right"><i class="material-icons">get_app</i></div>
 						</header>
 
 						<div class="tab">
 							<template v-for="(item, name, index) in body">
-								<button v-bind:class="'selective' + (name==currentTab ? 'active' : '')" v-bind:href="'#artist_' + name"
+								<button :class="'selective' + (name==currentTab ? 'active' : '')" :href="'#artist_' + name"
 									@click="changeTab(name)">{{ name }}</button>
 							</template>
 						</div>
@@ -538,16 +536,16 @@
 							<thead>
 								<tr>
 									<th v-for="data in head" @click="data.sortKey ? sortBy(data.sortKey) : null"
-										v-bind:style="{ 'width': data.width ? data.width : 'auto'}"
-										v-bind:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
+										:style="{ 'width': data.width ? data.width : 'auto'}"
+										:class="{ 'sort-asc': data.sortKey == sortKey && sortOrder == 'asc', 'sort-desc': data.sortKey == sortKey && sortOrder == 'desc', 'sortable': data.sortKey, 'clickable': data.sortKey }">
 										{{data.title}}
 									</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr v-for="release in showTable">
-									<td class="inline-flex clickable" @click="albumView" v-bind:data-id="release.id">
-										<img class="rounded coverart" v-bind:src="release.cover_small"
+									<td class="inline-flex clickable" @click="albumView" :data-id="release.id">
+										<img class="rounded coverart" :src="release.cover_small"
 											style="margin-right: 16px; width: 56px; height: 56px;" />
 										<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit"
 											style="color:#FF3B30;">explicit</i>
@@ -556,7 +554,7 @@
 											style="color:#FF7300;">fiber_new</i>
 									</td>
 									<td>{{release.release_date}}</td>
-									<td @click="addToQueue" @contextmenu="openQualityModal(event)" v-bind:data-link="release.link"
+									<td @click="addToQueue" @contextmenu="openQualityModal(event)" :data-link="release.link"
 										class="clickable"><i class="material-icons">file_download</i></td>
 								</tr>
 							</tbody>
@@ -569,7 +567,7 @@
 
 					<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
 						<header
-							v-bind:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
+							:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
 							<h1 class="inline-flex">{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
 							<h2 class="inline-flex"><span v-if="metadata">{{ metadata }}</span><span class="right"
 									v-if="release_date">{{ release_date }}</span></h2>
@@ -578,8 +576,8 @@
 						<table>
 							<thead>
 								<tr>
-									<th v-for="data in head" v-html="data.title"
-										v-bind:style="{ 'width': data.width ? data.width : 'auto'}"></th>
+									<th v-for="data in head" v-html="data.title" :style="{ 'width': data.width ? data.width : 'auto'}">
+									</th>
 									<th style="width: 32px"><input @click="toggleAll(event)" class="selectAll" type="checkbox"></th>
 								</tr>
 							</thead>
@@ -587,15 +585,15 @@
 								<template v-for="track in body">
 									<tr v-if="track.type == 'track'">
 										<td><i @click=playPausePreview
-												v-bind:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
-												v-bind:data-preview="track.preview">play_arrow</i></td>
+												:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
+												:data-preview="track.preview">play_arrow</i></td>
 										<td>{{ track.track_position }}</td>
 										<td class="inline-flex"><i v-if="track.explicit_lyrics"
 												class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+track.title_version : '') }}
 										</td>
-										<td class="clickable" @click="artistView" v-bind:data-id="track.artist.id">
+										<td class="clickable" @click="artistView" :data-id="track.artist.id">
 											{{ track.artist.name }}</td>
-										<td class="clickable" v-if="type == 'Playlist'" @click="albumView" v-bind:data-id="track.album.id">
+										<td class="clickable" v-if="type == 'Playlist'" @click="albumView" :data-id="track.album.id">
 											{{ track.album.title }}</td>
 										<td>{{ convertDuration(track.duration) }}</td>
 										<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
@@ -610,11 +608,10 @@
 						<span v-if="label"
 							style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 						<footer>
-							<button @contextmenu="openQualityModal(event)" @click="addToQueue" v-bind:data-link="link">Download
+							<button @contextmenu="openQualityModal(event)" @click="addToQueue" :data-link="link">Download
 								{{ type }}</button>
 							<button class="with_icon" @contextmenu="openQualityModal(event)" @click="addToQueue"
-								v-bind:data-link="selectedLinks()">Download selection<i
-									class="material-icons">file_download</i></button>
+								:data-link="selectedLinks()">Download selection<i class="material-icons">file_download</i></button>
 							<button class="back-button">Back</button>
 						</footer>
 					</div>

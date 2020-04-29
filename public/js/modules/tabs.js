@@ -15,6 +15,9 @@ window.windows_stack = []
 /* ===== Locals ===== */
 let currentStack = {}
 
+// Exporting this function out of the default export
+// because it's used in components that are needed
+// in this file too
 export function artistView(ev) {
 	let id = ev.currentTarget.dataset.id
 	ArtistTab.reset()
@@ -22,6 +25,9 @@ export function artistView(ev) {
 	showTab('artist', id)
 }
 
+// Exporting this function out of the default export
+// because it's used in components that are needed
+// in this file too
 export function albumView(ev) {
 	let id = ev.currentTarget.dataset.id
 	TracklistTab.reset()
@@ -29,6 +35,9 @@ export function albumView(ev) {
 	showTab('album', id)
 }
 
+// Exporting this function out of the default export
+// because it's used in components that are needed
+// in this file too
 export function playlistView(ev) {
 	let id = ev.currentTarget.dataset.id
 	TracklistTab.reset()
@@ -144,8 +153,6 @@ function changeTab(sidebarEl, section, tabName) {
 	} else if ('search' === section) {
 		search_selected = tabName
 	}
-
-	// window[section + '_selected'] = tabName
 
 	// Not choosing .currentTarget beacuse the event
 	// is delegated

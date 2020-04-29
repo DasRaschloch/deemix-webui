@@ -8,33 +8,32 @@ import Utils from '../utils.js'
 const HomeTab = new Vue({
 	data() {
 		return {
-      tracks: [],
-      albums: [],
-      artists: [],
-      playlists: []
+			tracks: [],
+			albums: [],
+			artists: [],
+			playlists: []
 		}
 	},
 	methods: {
-    artistView,
+		artistView,
 		albumView,
 		playlistView,
 		playPausePreview: TrackPreview.playPausePreview,
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
-    numberWithDots: Utils.numberWithDots,
+		numberWithDots: Utils.numberWithDots,
 		convertDuration: Utils.convertDuration,
-    addToQueue: function (e) {
+		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
-		openQualityModal: function (e) {
-			e.preventDefault()
+		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		initHome(data) {
-      this.tracks = data.tracks.data
-      this.albums = data.albums.data
-      this.artists = data.artists.data
+			this.tracks = data.tracks.data
+			this.albums = data.albums.data
+			this.artists = data.artists.data
 			this.playlists = data.playlists.data
 		}
 	},

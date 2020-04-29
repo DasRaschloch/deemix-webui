@@ -33,7 +33,8 @@ socket.on('logged_in', function (data) {
 					'src',
 					`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`
 				)
-				$('#logged_in_info').show()
+				// $('#logged_in_info').show()
+				document.getElementById('logged_in_info').classList.remove('hide')
 			}
 			break
 		case 2:
@@ -44,7 +45,8 @@ socket.on('logged_in', function (data) {
 					'src',
 					`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`
 				)
-				$('#logged_in_info').show()
+				// $('#logged_in_info').show()
+				document.getElementById('logged_in_info').classList.remove('hide')
 			}
 			break
 		case 0:
@@ -52,7 +54,8 @@ socket.on('logged_in', function (data) {
 			localStorage.removeItem('arl')
 			$('#login_input_arl').val('')
 			$('#open_login_prompt').show()
-			$('#logged_in_info').hide()
+			document.getElementById('logged_in_info').classList.add('hide')
+			// $('#logged_in_info').hide()
 			$('#settings_username').text('Not Logged')
 			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 			break
@@ -64,7 +67,8 @@ socket.on('logged_out', function () {
 	localStorage.removeItem('arl')
 	$('#login_input_arl').val('')
 	$('#open_login_prompt').show()
-	$('#logged_in_info').hide()
+	document.getElementById('logged_in_info').classList.add('hide')
+	// $('#logged_in_info').hide()
 	$('#settings_username').text('Not Logged')
 	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })

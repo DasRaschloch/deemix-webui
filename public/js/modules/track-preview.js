@@ -63,7 +63,6 @@ function previewMouseLeave(e) {
 // on click event
 function playPausePreview(e) {
 	e.preventDefault()
-	console.log('PlayPause')
 	let obj = e.currentTarget
 	var icon = obj.tagName == 'I' ? $(obj) : $(obj).children('i')
 	if ($(obj).attr('playing')) {

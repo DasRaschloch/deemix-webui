@@ -249,6 +249,76 @@
 
 					<div id="home_tab" class="main_tabcontent">
 						<h1>Home</h1>
+            <div v-if="tracks.length">
+              <h2>Top Tracks</h2>
+              <table>
+                <tr v-for="track in tracks" class="track_row">
+                  <td style="width: 48px; text-align: center;">
+                    <a href="#" @click="playPausePreview" :class="'rounded' + (track.preview ? ' single-cover' : '')"
+                      :data-preview="track.preview"><i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave"
+                        v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img
+                        class="rounded coverart" :src="track.album.cover_small">
+                  </td>
+                  <td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
+                  <td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
+                    {{track.artist.name}}</td>
+                  <td class="breakline clickable" @click="albumView" :data-id="track.album.id">
+                    {{track.album.title}}</td>
+                  <td>{{convertDuration(track.duration)}}</td>
+                  <td role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+                    @click.stop="addToQueue" :data-link="track.link" style="width: 56px; text-align: center;"
+                    class="clickable"><i class="material-icons">get_app</i>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div v-if="albums.length">
+              <h2>Top Albums</h2>
+              <div class="release_grid">
+                <div v-for="release in albums" class="release clickable" @click="albumView"
+                  :data-id="release.id">
+                  <div class="cover_container">
+                    <img class="rounded coverart" :src="release.cover_medium">
+                    <div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+                      @click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+                        class="material-icons">get_app</i></div>
+                  </div>
+                  <p class="primary-text">{{ release.title }}</p>
+                  <p class="secondary-text">{{ 'by '+release.artist.name }}</p>
+                </div>
+              </div>
+            </div>
+            <div v-if="artists.length">
+              <h2>Top Artists</h2>
+              <div class="release_grid">
+                <div v-for="release in artists" class="release clickable" @click="artistView"
+                  :data-id="release.id">
+                  <div class="cover_container">
+                    <img class="circle coverart" :src="release.picture_medium">
+                    <div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+                      @click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+                        class="material-icons">get_app</i></div>
+                  </div>
+                  <p class="primary-text">{{ release.name }}</p>
+                </div>
+              </div>
+            </div>
+            <div v-if="playlists.length">
+              <h2>Top Playlists</h2>
+              <div class="release_grid">
+                <div v-for="release in playlists" class="release clickable" @click="playlistView"
+                  :data-id="release.id">
+                  <div class="cover_container">
+                    <img class="rounded coverart" :src="release.picture_medium">
+                    <div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+                      @click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+                        class="material-icons">get_app</i></div>
+                  </div>
+                  <p class="primary-text">{{ release.title }}</p>
+                  <p class="secondary-text">{{ 'by '+release.user.name+' - '+release.nb_tracks+' tracks' }}</p>
+                </div>
+              </div>
+            </div>
 					</div>
 
 					<div id="charts_tab" class="main_tabcontent">

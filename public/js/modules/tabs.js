@@ -1,6 +1,7 @@
 import ArtistTab from './components/artist-tab.js'
 import TracklistTab from './components/tracklist-tab.js'
 import LinkAnalyzerTab from './components/link-analyzer-tab.js'
+import HomeTab from './components/home-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './components/settings-tab.js'
 import MainSearch from './components/main-search.js'

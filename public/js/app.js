@@ -81,6 +81,8 @@ function startApp() {
 	Search.linkListeners()
 	TrackPreview.init()
 
+	document.getElementById('logged_in_info').classList.add('hide')
+
 	if (localStorage.getItem('arl')) {
 		let arl = localStorage.getItem('arl')
 

@@ -321,18 +321,18 @@
 
 					<div id="charts_tab" class="main_tabcontent">
 						<h1>Charts</h1>
-            <div v-if='country == ""' id="charts_selection">
-              <div class="release_grid">
-                <div v-for="release in countries" class="release clickable" @click="getTrackList" :data-title="release.title" :data-id="release.id">
+						<div v-if='country == ""' id="charts_selection">
+							<div class="release_grid">
+								<div v-for="release in countries" class="release clickable" @click="getTrackList" :data-title="release.title" :data-id="release.id">
 									<img class="rounded coverart" :src="release.picture_medium">
 								</div>
-              </div>
-            </div>
-            <div v-else id="charts_table">
-              <button @click="changeCountry">Change Country</button>
-              <button @contextmenu.prevent="openQualityModal"
-                @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/'+id">Download Chart</button>
-              <table>
+							</div>
+						</div>
+						<div v-else id="charts_table">
+							<button @click="changeCountry">Change Country</button>
+							<button @contextmenu.prevent="openQualityModal"
+								@click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/'+id">Download Chart</button>
+							<table>
 								<tr v-for="track in chart" class="track_row">
 									<td class="top-tracks-position" :class="{ first: track.position === 1 }">{{ track.position }}</td>
 									<td style="width: 48px; text-align: center;">
@@ -353,7 +353,7 @@
 									</td>
 								</tr>
 							</table>
-            </div>
+						</div>
 					</div>
 
 					<div id="favorites_tab" class="main_tabcontent">
@@ -586,39 +586,39 @@
 								<p>Save playlists as compilation</p>
 								<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation">
 							</div>
-              <div class="input_group">
+							<div class="input_group">
 								<p>Use null separator</p>
 								<input type="checkbox" v-model="settings.tags.useNullSeparator">
 							</div>
-              <div class="input_group">
+							<div class="input_group">
 								<p>Save ID3v1 as well</p>
 								<input type="checkbox" v-model="settings.tags.saveID3v1">
 							</div>
-              <div class="input_group">
+							<div class="input_group">
 								<p>How would you like to separate your artists?</p>
-                <select v-model="settings.tags.multitagSeparator">
-                  <option value="default">Using standard specification</option>
-        					<option value="andFeat">Using & and feat.</option>
-        					<option value=" & ">Using " & "</option>
-        					<option value=",">Using ","</option>
-        					<option value=", ">Using ", "</option>
-        					<option value="/">Using "/"</option>
-        					<option value=" / ">Using "/ "</option>
-        					<option value=";">Using ";"</option>
-        					<option value="; ">Using "; "</option>
+								<select v-model="settings.tags.multitagSeparator">
+									<option value="default">Using standard specification</option>
+        							<option value="andFeat">Using & and feat.</option>
+        							<option value=" & ">Using " & "</option>
+        							<option value=",">Using ","</option>
+        							<option value=", ">Using ", "</option>
+        							<option value="/">Using "/"</option>
+        							<option value=" / ">Using "/ "</option>
+        							<option value=";">Using ";"</option>
+        							<option value="; ">Using "; "</option>
 								</select>
 							</div>
 							<div class="input_group">
 								<p>Remove album version from track title</p>
 								<input type="checkbox" v-model="settings.removeAlbumVersion">
 							</div>
-              <div class="input_group">
+							<div class="input_group">
 								<p>Date format for FLAC files</p>
-                <select v-model="settings.dateFormat">
-                  <option value="Y-M-D">YYYY-MM-DD</option>
-                  <option value="Y-D-M">YYYY-DD-MM</option>
-                  <option value="D-M-Y">DD-MM-YYYY</option>
-                  <option value="M-D-Y">MM-DD-YYYY</option>
+								<select v-model="settings.dateFormat">
+									<option value="Y-M-D">YYYY-MM-DD</option>
+									<option value="Y-D-M">YYYY-DD-MM</option>
+									<option value="D-M-Y">DD-MM-YYYY</option>
+									<option value="M-D-Y">MM-DD-YYYY</option>
 									<option value="Y">YYYY</option>
 								</select>
 							</div>
@@ -650,8 +650,8 @@
 									<option value="sentence">Like a sentence</option>
 								</select>
 							</div>
-              <div class="input_group">
-                <p>Command to execute after download</p>
+							<div class="input_group">
+								<p>Command to execute after download</p>
 								<p class="secondary-text">Leave blank for no action</p>
 								<input type="text" v-model="settings.executeCommand">
 							</div>
@@ -667,7 +667,7 @@
 							</div>
 						</div>
 						<footer>
-              <button @click="resetSettings">Reset to Default</button>
+							<button @click="resetSettings">Reset to Default</button>
 							<button @click="saveSettings">Save</button>
 						</footer>
 					</div>

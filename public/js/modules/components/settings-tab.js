@@ -7,7 +7,8 @@ const SettingsTab = new Vue({
 			settings: { tags: {} },
 			lastSettings: {},
 			lastCredentials: {},
-			spotifyFeatures: {}
+			spotifyFeatures: {},
+      defaultSettings: {}
 		}
 	},
 	methods: {
@@ -27,7 +28,8 @@ const SettingsTab = new Vue({
 			this.lastCredentials = { ...SettingsTab.spotifyFeatures }
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials)
 		},
-		loadSettings(settings, spotifyCredentials) {
+		loadSettings(settings, spotifyCredentials, defaults=null) {
+      if (defaults) this.defaultSettings = { ...defaults }
 			this.lastSettings = { ...settings }
 			this.lastCredentials = { ...spotifyCredentials }
 			this.settings = settings
@@ -42,14 +44,17 @@ const SettingsTab = new Vue({
 		logout() {
 			socket.emit('logout')
 		},
-		initSettings(settings, credentials) {
-			this.loadSettings(settings, credentials)
+		initSettings(settings, credentials, defaults) {
+			this.loadSettings(settings, credentials, defaults)
 			toast('Settings loaded!', 'settings')
 		},
 		updateSettings(settings, credentials) {
 			this.loadSettings(settings, credentials)
 			toast('Settings updated!', 'settings')
-		}
+		},
+    resetSettings(){
+      this.settings = { ...this.defaultSettings }
+    }
 	},
 	mounted() {
 		socket.on('init_settings', this.initSettings)

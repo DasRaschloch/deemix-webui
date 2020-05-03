@@ -57,3 +57,11 @@
 .settings_group > * {
 	margin-bottom: 15px;
 }
+
+.input_group {
+	margin-bottom: 25px;
+}
+
+.input_group .input_group_text {
+	margin-bottom: 7px;
+}

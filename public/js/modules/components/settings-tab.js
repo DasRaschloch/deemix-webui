@@ -2,13 +2,23 @@ import { toast } from '../toasts.js'
 import { socket } from '../socket.js'
 
 const SettingsTab = new Vue({
-	data() {
-		return {
-			settings: { tags: {} },
-			lastSettings: {},
-			lastCredentials: {},
-			spotifyFeatures: {},
-			defaultSettings: {}
+	data: () => ({
+		settings: { tags: {} },
+		lastSettings: {},
+		lastCredentials: {},
+		spotifyFeatures: {},
+		defaultSettings: {}
+	}),
+	computed: {
+		darkMode: {
+			get() {
+				return 'true' === localStorage.getItem('darkMode')
+			},
+			set(wantDarkMode) {
+				document.documentElement.setAttribute('data-theme', wantDarkMode ? 'dark' : 'default')
+
+				localStorage.setItem('darkMode', wantDarkMode)
+			}
 		}
 	},
 	methods: {
@@ -28,7 +38,7 @@ const SettingsTab = new Vue({
 			this.lastCredentials = { ...SettingsTab.spotifyFeatures }
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials)
 		},
-		loadSettings(settings, spotifyCredentials, defaults=null) {
+		loadSettings(settings, spotifyCredentials, defaults = null) {
 			if (defaults) this.defaultSettings = { ...defaults }
 			this.lastSettings = { ...settings }
 			this.lastCredentials = { ...spotifyCredentials }
@@ -52,7 +62,7 @@ const SettingsTab = new Vue({
 			this.loadSettings(settings, credentials)
 			toast('Settings updated!', 'settings')
 		},
-		resetSettings(){
+		resetSettings() {
 			this.settings = { ...this.defaultSettings }
 		}
 	},

@@ -7,7 +7,7 @@
 }
 
 /* Center section */
-#search>#searchbar {
+#search > #searchbar {
 	width: calc(100% - 32px);
 	height: 32px;
 	padding: 0px 8px;
@@ -15,7 +15,7 @@
 	border: 0px;
 	border-radius: 6px;
 	background-color: var(--secondary-background);
-	color: var(--primary-text)
+	color: var(--primary-text);
 }
 
 #content {
@@ -24,7 +24,7 @@
 	height: calc(100% - 48px);
 	overflow-y: scroll;
 	overflow-x: hidden;
-	padding-left: 10px
+	padding-left: 10px;
 }
 
 #content::-webkit-scrollbar {
@@ -58,8 +58,8 @@
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
 	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+	background-color: rgb(0, 0, 0); /* Fallback color */
+	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 	animation-duration: 0.3s;
 }
 
@@ -73,25 +73,28 @@
 	top: 50%;
 	transform: translateY(-50%);
 }
-.smallmodal-content button{
+.smallmodal-content button {
 	width: 100%;
 	margin-bottom: 8px;
 }
 
 @media only screen and (min-width: 601px) {
-	#container, .smallmodal-content {
+	#container,
+	.smallmodal-content {
 		width: 85%;
 	}
 }
 
 @media only screen and (min-width: 993px) {
-	#container, .smallmodal-content {
+	#container,
+	.smallmodal-content {
 		width: 70%;
 	}
 }
 
 @media only screen and (max-width: 600px) {
-	#container, .smallmodal-content {
+	#container,
+	.smallmodal-content {
 		width: 100%;
 	}
 }

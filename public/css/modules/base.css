@@ -1,15 +1,10 @@
-/* Normalizing */
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+	transition: background-color 500ms ease-in-out;
 }
 
-body {
-	font-size: 16px;
-}
+html {
+	height: 100%;
 
-:root {
 	--main-background: #ffffff;
 	--secondary-background: #eeeeee;
 	--main-text: #333333;
@@ -26,17 +21,12 @@ body {
 	--toast-text: #ffffffde;
 }
 
-/* Add to body to switch to dark mode */
-.dark-theme {
+html[data-theme='dark'] {
 	--main-background: #141414;
 	--secondary-background: #242424;
 	--main-text: #eeeeee;
 	--panels-background: #1a1a1a;
 	--panels-text: #ffffff;
-}
-
-html {
-	height: 100%;
 }
 
 body {
@@ -45,13 +35,6 @@ body {
 	height: 100%;
 	font-family: 'Open Sans';
 	overflow: hidden;
-	background-color: var(--main-background);
+	background: var(--main-background);
 	color: var(--main-text);
-}
-
-#main_content {
-	margin-left: 48px;
-	width: calc(100% - 48px);
-	height: 100%;
-	display: flex;
 }

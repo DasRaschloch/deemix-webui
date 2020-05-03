@@ -3,6 +3,7 @@
 @import './vendor/OpenSans.css';
 @import './vendor/toastify.css';
 
+@import './modules/normalize.css';
 @import './modules/base.css';
 @import './modules/globals.css';
 @import './modules/progressbar.css';

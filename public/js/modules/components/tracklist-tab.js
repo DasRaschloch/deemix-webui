@@ -5,7 +5,7 @@ import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
 
 const TracklistTab = new Vue({
-	data: {
+	data: () => ({
 		title: '',
 		metadata: '',
 		release_date: '',
@@ -16,7 +16,7 @@ const TracklistTab = new Vue({
 		link: '',
 		head: null,
 		body: []
-	},
+	}),
 	methods: {
 		artistView,
 		albumView,
@@ -32,21 +32,21 @@ const TracklistTab = new Vue({
 			this.head = []
 			this.body = []
 		},
-		addToQueue: function (e) {
+		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
-		openQualityModal: function (e) {
+		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
-		toggleAll: function (e) {
+		toggleAll(e) {
 			this.body.forEach(item => {
 				if (item.type == 'track') {
 					item.selected = e.currentTarget.checked
 				}
 			})
 		},
-		selectedLinks: function () {
+		selectedLinks() {
 			var selected = []
 			if (this.body) {
 				this.body.forEach(item => {

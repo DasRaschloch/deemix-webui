@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" data-theme="default">
 
 <head>
 	<meta charset="utf-8">
@@ -9,7 +9,7 @@
 		content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
 	<script>
 		if ('true' === localStorage.getItem('darkMode')) {
-			document.documentElement.classList.add('dark-theme')
+			document.documentElement.setAttribute('data-theme', 'dark')
 		}
 	</script>
 </head>
@@ -165,7 +165,9 @@
 													v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img
 													class="rounded coverart" :src="track.album.cover_small">
 										</td>
-										<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
+										<td class="breakline">
+											{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+										</td>
 										<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
 											{{track.artist.name}}</td>
 										<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
@@ -260,7 +262,9 @@
 												v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img
 												class="rounded coverart" :src="track.album.cover_small">
 									</td>
-									<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
+									<td class="breakline">
+										{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+									</td>
 									<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
 										{{track.artist.name}}</td>
 									<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
@@ -323,15 +327,16 @@
 						<h1>Charts</h1>
 						<div v-if='country == ""' id="charts_selection">
 							<div class="release_grid">
-								<div v-for="release in countries" class="release clickable" @click="getTrackList" :data-title="release.title" :data-id="release.id">
+								<div v-for="release in countries" class="release clickable" @click="getTrackList"
+									:data-title="release.title" :data-id="release.id">
 									<img class="rounded coverart" :src="release.picture_medium">
 								</div>
 							</div>
 						</div>
 						<div v-else id="charts_table">
 							<button @click="changeCountry">Change Country</button>
-							<button @contextmenu.prevent="openQualityModal"
-								@click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/'+id">Download Chart</button>
+							<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
+								:data-link="'https://www.deezer.com/playlist/'+id">Download Chart</button>
 							<table>
 								<tr v-for="track in chart" class="track_row">
 									<td class="top-tracks-position" :class="{ first: track.position === 1 }">{{ track.position }}</td>
@@ -341,7 +346,9 @@
 												v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img
 												class="rounded coverart" :src="track.album.cover_small">
 									</td>
-									<td class="breakline">{{track.title + (track.title_version ? ' '+track.title_version : '')}}</td>
+									<td class="breakline">
+										{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+									</td>
 									<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
 										{{track.artist.name}}</td>
 									<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
@@ -421,6 +428,13 @@
 						</div>
 
 						<div class="settings_group">
+							<label class="with_checkbox">
+								<input type="checkbox" v-model="darkMode">
+								<span class="checkbox_text">Dark Mode</span>
+							</label>
+						</div>
+
+						<div class="settings_group">
 							<h3>Login</h3>
 							<div class="inline-flex">
 								<input autocomplete="off" type="password" id="login_input_arl" ref="loginInput" placeholder="ARL" />
@@ -455,70 +469,75 @@
 						<div class="settings_group">
 							<h3>Folders</h3>
 
+							<label class="with_checkbox">
+								<input type="checkbox" v-model="settings.createPlaylistFolder">
+								<span class="checkbox_text">Create folder for playlist</span>
+							</label>
 
-							<label><input type="checkbox" v-model="settings.createPlaylistFolder">Create folder for playlist</label>
-
-							<div v-if="settings.createPlaylistFolder">
-								<p>Playlist folder template</p>
+							<div class="input_group" v-if="settings.createPlaylistFolder">
+								<p class="input_group_text">Playlist folder template</p>
 								<input type="text" v-model="settings.playlistNameTemplate">
 							</div>
 
-							<div>
-								<p>Create folder for artist</p>
+							<label class="with_checkbox">
 								<input type="checkbox" v-model="settings.createArtistFolder">
-							</div>
+								<span class="checkbox_text">Create folder for artist</span>
+							</label>
 
-							<div v-if="settings.createArtistFolder">
-								<p>Artist folder template</p>
+							<div class="input_group" v-if="settings.createArtistFolder">
+								<p class="input_group_text">Artist folder template</p>
 								<input type="text" v-model="settings.artistNameTemplate">
 							</div>
 
-							<div>
-								<p>Create folder for album</p>
+							<label class="with_checkbox">
 								<input type="checkbox" v-model="settings.createAlbumFolder">
-							</div>
+								<span class="checkbox_text">Create folder for album</span>
+							</label>
 
-							<div v-if="settings.createAlbumFolder">
-								<p>Album folder template</p>
+							<div class="input_group" v-if="settings.createAlbumFolder">
+								<p class="input_group_text">Album folder template</p>
 								<input type="text" v-model="settings.albumNameTemplate">
 							</div>
 
-							<div>
-								<p>Create folder for CDs</p>
+							<label class="with_checkbox">
 								<input type="checkbox" v-model="settings.createCDFolder">
-							</div>
+								<span class="checkbox_text">Create folder for CDs</span>
+							</label>
 
-							<div>
-								<p>Create folder structure for playlists</p>
+							<label class="with_checkbox">
 								<input type="checkbox" v-model="settings.createStructurePlaylist">
-							</div>
+								<span class="checkbox_text">Create folder structure for playlists</span>
+							</label>
 
-							<div>
-								<p>Create folder structure for singles</p>
+							<label class="with_checkbox">
 								<input type="checkbox" v-model="settings.createSingleFolder">
-							</div>
+								<span class="checkbox_text">Create folder structure for singles</span>
+							</label>
 						</div>
 
-						<div id="settings_generic_tab">
-
-
-							<div class="input_group">
+						<div class="settings_group">
+							<h3>Track titles</h3>
+							<div>
 								<p>Pad tracks</p>
 								<input type="checkbox" v-model="settings.padTracks">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Overwrite padding size</p>
 								<input type="number" v-model="settings.paddingSize">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Illegal Character replacer</p>
 								<input type="text" v-model="settings.illegalCharacterReplacer">
 							</div>
-							<div class="input_group">
+						</div>
+
+						<div class="settings_group">
+							<h3>Downloads</h3>
+							<div>
 								<p>Concurrent Downloads</p>
 								<input type="number" v-model.number="settings.queueConcurrency">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Preferred Bitrate</p>
 								<select v-model="settings.maxBitrate">
 									<option value="9">FLAC 1411kbps</option>
@@ -526,75 +545,84 @@
 									<option value="1">MP3 128kbps</option>
 								</select>
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Bitrate fallback</p>
 								<input type="checkbox" v-model="settings.fallbackBitrate">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Search fallback</p>
 								<input type="checkbox" v-model="settings.fallbackSearch">
 							</div>
-							<div class="input_group">
+
+							<div>
 								<p>Create log file for errors</p>
 								<input type="checkbox" v-model="settings.logErrors">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Create log file for searched tracks</p>
 								<input type="checkbox" v-model="settings.logSearched">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Create playlist file</p>
 								<input type="checkbox" v-model="settings.createM3U8File">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Create .lyr files (Sync Lyrics)</p>
 								<input type="checkbox" v-model="settings.syncedLyrics">
 							</div>
-							<div class="input_group">
+						</div>
+
+						<div class="settings_group">
+							<h3>Album covers</h3>
+							<div>
 								<p>Save covers</p>
 								<input type="checkbox" v-model="settings.saveArtwork">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Cover name template</p>
 								<input type="text" v-model="settings.coverImageTemplate">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Save artist image</p>
 								<input type="checkbox" v-model="settings.saveArtworkArtist">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Artist image name template</p>
 								<input type="text" v-model="settings.artistImageTemplate">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Local artwork size</p>
 								<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Embedded artwork size</p>
 								<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Save images as png</p>
 								<input type="checkbox" v-model="settings.PNGcovers">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>JPEG image quality</p>
 								<input type="number" min="1" max="100" v-model.number="settings.jpegImageQuality">
 							</div>
-							<div class="input_group">
+
+						</div>
+
+						<div class="settings_group">
+							<div>
 								<p>Save playlists as compilation</p>
 								<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Use null separator</p>
 								<input type="checkbox" v-model="settings.tags.useNullSeparator">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Save ID3v1 as well</p>
 								<input type="checkbox" v-model="settings.tags.saveID3v1">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>How would you like to separate your artists?</p>
 								<select v-model="settings.tags.multitagSeparator">
 									<option value="default">Using standard specification</option>
@@ -608,11 +636,11 @@
 									<option value="; ">Using "; "</option>
 								</select>
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Remove album version from track title</p>
 								<input type="checkbox" v-model="settings.removeAlbumVersion">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Date format for FLAC files</p>
 								<select v-model="settings.dateFormat">
 									<option value="Y-M-D">YYYY-MM-DD</option>
@@ -622,7 +650,7 @@
 									<option value="Y">YYYY</option>
 								</select>
 							</div>
-							<div class="input_group">
+							<div>
 								<p>What should I do with featured artists</p>
 								<select v-model="settings.featuredToTitle">
 									<option value="0">Nothing</option>
@@ -630,7 +658,7 @@
 									<option value="2">Move it to the title</option>
 								</select>
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Title casing</p>
 								<select v-model="settings.titleCasing">
 									<option value="nothing">Keep unchanged</option>
@@ -640,7 +668,7 @@
 									<option value="sentence">Like a sentence</option>
 								</select>
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Artist casing</p>
 								<select v-model="settings.artistCasing">
 									<option value="nothing">Keep unchanged</option>
@@ -650,18 +678,18 @@
 									<option value="sentence">Like a sentence</option>
 								</select>
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Command to execute after download</p>
 								<p class="secondary-text">Leave blank for no action</p>
 								<input type="text" v-model="settings.executeCommand">
 							</div>
 						</div>
 						<div id="settings_spotify_tab">
-							<div class="input_group">
+							<div>
 								<p>Spotify clientID</p>
 								<input type="text" v-model="spotifyFeatures.clientId">
 							</div>
-							<div class="input_group">
+							<div>
 								<p>Spotify Client Secret</p>
 								<input type="password" v-model="spotifyFeatures.clientSecret">
 							</div>
@@ -748,7 +776,7 @@
 												:data-preview="track.preview">play_arrow</i></td>
 										<td>{{ track.track_position }}</td>
 										<td class="inline-flex"><i v-if="track.explicit_lyrics"
-												class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+track.title_version : '') }}
+												class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
 										</td>
 										<td class="clickable" @click="artistView" :data-id="track.artist.id">
 											{{ track.artist.name }}</td>

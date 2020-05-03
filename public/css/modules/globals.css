@@ -1,4 +1,10 @@
-/* Global stuff */
+#main_content {
+	margin-left: 48px;
+	width: calc(100% - 48px);
+	height: 100%;
+	display: flex;
+}
+
 img.rounded {
 	border-radius: 5px;
 }
@@ -259,4 +265,22 @@ th.sort-desc:after {
 .fab i {
 	font-size: 24px;
 	padding: 16px;
+}
+
+.with_checkbox {
+	display: flex;
+	align-items: center;
+}
+
+.with_checkbox [type='checkbox'] {
+	cursor: pointer;
+}
+
+.with_checkbox .checkbox_text {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.with_checkbox .checkbox_text::selection {
+	background: none;
 }

@@ -9,27 +9,28 @@ const SettingsTab = new Vue({
 		lastCredentials: {},
 		defaultSettings: {},
 		lastUser: '',
-		spotifyUser: ''
+		spotifyUser: '',
+		darkMode: false,
+		slimDownloads: false
 	}),
 	computed: {
-		darkMode: {
+		changeDarkMode: {
 			get() {
-				return 'true' === localStorage.getItem('darkMode')
+				return this.darkMode
 			},
 			set(wantDarkMode) {
+				this.darkMode = wantDarkMode
 				document.documentElement.setAttribute('data-theme', wantDarkMode ? 'dark' : 'default')
 				localStorage.setItem('darkMode', wantDarkMode)
 			}
 		},
-		slimDownloads: {
+		changeSlimDownloads: {
 			get() {
-				return 'true' === localStorage.getItem('slimDownloads')
+				return this.slimDownloads
 			},
 			set(wantSlimDownloads) {
-				if (wantSlimDownloads)
-					document.getElementById("download_list").classList.add("slim")
-				else
-					document.getElementById("download_list").classList.remove("slim")
+				this.slimDownloads = wantSlimDownloads
+				document.getElementById('download_list').classList.toggle('slim', wantSlimDownloads)
 				localStorage.setItem('slimDownloads', wantSlimDownloads)
 			}
 		}
@@ -47,19 +48,24 @@ const SettingsTab = new Vue({
 			toast('ARL copied to clipboard', 'assignment')
 		},
 		saveSettings() {
-			this.lastSettings = { ...SettingsTab.settings }
-			this.lastCredentials = { ...SettingsTab.spotifyFeatures }
+			this.lastSettings = { ...this.settings }
+			this.lastCredentials = { ...this.spotifyFeatures }
 			let changed = false
-			if (this.lastUser != this.spotifyUser){
+			if (this.lastUser != this.spotifyUser) {
 				// force cloning without linking
 				this.lastUser = (' ' + this.spotifyUser).slice(1)
 				localStorage.setItem('spotifyUser', this.lastUser)
 				changed = true
 			}
+
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
+			console.log(this.darkMode)
 		},
 		loadSettings(settings, spotifyCredentials, defaults = null) {
-			if (defaults) this.defaultSettings = { ...defaults }
+			if (defaults) {
+				this.defaultSettings = { ...defaults }
+			}
+
 			this.lastSettings = { ...settings }
 			this.lastCredentials = { ...spotifyCredentials }
 			this.settings = settings
@@ -90,7 +96,7 @@ const SettingsTab = new Vue({
 		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)
 		let spotyUser = localStorage.getItem('spotifyUser')
-		if (spotyUser){
+		if ('' !== spotyUser) {
 			this.lastUser = spotyUser
 			this.spotifyUser = spotyUser
 		}

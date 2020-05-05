@@ -377,8 +377,7 @@
 								<h1>No Playlists found</h1>
 							</div>
 							<div class="release_grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
-								<div v-for="release in playlists" class="release clickable" @click="playlistView"
-									:data-id="release.id">
+								<div v-for="release in playlists" class="release clickable" @click="playlistView" :data-id="release.id">
 									<div class="cover_container">
 										<img class="rounded coverart" :src="release.picture_medium">
 										<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
@@ -526,11 +525,11 @@
 
 						<div class="settings_group">
 							<label class="with_checkbox">
-								<input type="checkbox" v-model="darkMode">
+								<input type="checkbox" v-model="changeDarkMode">
 								<span class="checkbox_text">Dark Mode</span>
 							</label>
 							<label class="with_checkbox">
-								<input type="checkbox" v-model="slimDownloads">
+								<input type="checkbox" v-model="changeSlimDownloads">
 								<span class="checkbox_text">Slim download tab</span>
 							</label>
 						</div>
@@ -997,8 +996,7 @@
 												:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
 												:data-preview="track.preview_url">play_arrow</i></td>
 										<td>{{ i+1 }}</td>
-										<td class="inline-flex"><i v-if="track.explicit"
-												class="material-icons">explicit</i>{{ track.name }}
+										<td class="inline-flex"><i v-if="track.explicit" class="material-icons">explicit</i>{{ track.name }}
 										</td>
 										<td>{{ track.artists[0].name }}</td>
 										<td>{{ track.album.name }}</td>

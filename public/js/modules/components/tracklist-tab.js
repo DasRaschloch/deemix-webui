@@ -50,7 +50,7 @@ const TracklistTab = new Vue({
 			var selected = []
 			if (this.body) {
 				this.body.forEach(item => {
-					if (item.type == 'track' && item.selected) selected.push(item.link)
+					if (item.type == 'track' && item.selected) selected.push(this.type == "Spotify Playlist" ? item.uri : item.link)
 				})
 			}
 			return selected.join(';')
@@ -110,11 +110,33 @@ const TracklistTab = new Vue({
 			} else {
 				this.body = data.tracks
 			}
+		},
+		showSpotifyPlaylist(data) {
+			this.type = 'Spotify Playlist'
+			this.link = data.uri
+			this.title = data.name
+			this.image = data.images.length ? data.images[0].url : "https://e-cdns-images.dzcdn.net/images/cover/d41d8cd98f00b204e9800998ecf8427e/1000x1000-000000-80-0-0.jpg"
+			this.release_date = ""
+			this.metadata = `by ${data.owner.display_name} • ${data.tracks.length} songs`
+			this.head = [
+				{ title: '<i class="material-icons">music_note</i>', width: '24px' },
+				{ title: '#' },
+				{ title: 'Song' },
+				{ title: 'Artist' },
+				{ title: 'Album' },
+				{ title: '<i class="material-icons">timer</i>', width: '40px' }
+			]
+			if (_.isEmpty(data.tracks)) {
+				this.body = null
+			} else {
+				this.body = data.tracks
+			}
 		}
 	},
 	mounted() {
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)
+		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
 	}
 }).$mount('#tracklist_tab')
 

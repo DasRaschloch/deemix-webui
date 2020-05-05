@@ -47,6 +47,13 @@ export function playlistView(ev) {
 	showTab('playlist', id)
 }
 
+export function spotifyPlaylistView(ev) {
+	let id = ev.currentTarget.dataset.id
+	TracklistTab.reset()
+	socket.emit('getTracklist', { type: 'spotifyplaylist', id: id })
+	showTab('spotifyplaylist', id)
+}
+
 function analyzeLink(link) {
 	console.log('Analyzing: ' + link)
 	LinkAnalyzerTab.reset()
@@ -169,6 +176,8 @@ function changeTab(sidebarEl, section, tabName) {
 	}
 	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
 		SettingsTab.settings = { ...SettingsTab.lastSettings }
+		SettingsTab.spotifyCredentials = { ...SettingsTab.lastCredentials }
+		SettingsTab.spotifyUser = (' ' + SettingsTab.lastUser).slice(1)
 	}
 
 	document.getElementById(tabName).style.display = 'block'

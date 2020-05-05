@@ -1,5 +1,5 @@
 import { socket } from '../socket.js'
-import { playlistView, artistView, albumView } from '../tabs.js'
+import { playlistView, artistView, albumView, spotifyPlaylistView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
@@ -11,13 +11,15 @@ const FavoritesTab = new Vue({
 			tracks: [],
 			albums: [],
 			artists: [],
-			playlists: []
+			playlists: [],
+			spotifyPlaylists: []
 		}
 	},
 	methods: {
 		playlistView,
 		artistView,
 		albumView,
+		spotifyPlaylistView,
 		playPausePreview: TrackPreview.playPausePreview,
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
@@ -29,6 +31,11 @@ const FavoritesTab = new Vue({
 		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
+		updated_userSpotifyPlaylists(data){this.spotifyPlaylists = data},
+		updated_userPlaylists(data){this.playlists = data},
+		updated_userAlbums(data){this.albums = data},
+		updated_userArtist(data){this.artists = data},
+		updated_userTracks(data){this.tracks = data},
 		initFavorites(data) {
 			this.tracks = data.tracks
 			this.albums = data.albums
@@ -39,6 +46,11 @@ const FavoritesTab = new Vue({
 	},
 	mounted() {
 		socket.on('init_favorites', this.initFavorites)
+		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
+		socket.on('updated_userPlaylists', this.updated_userPlaylists)
+		socket.on('updated_userAlbums', this.updated_userAlbums)
+		socket.on('updated_userArtist', this.updated_userArtist)
+		socket.on('updated_userTracks', this.updated_userTracks)
 	}
 }).$mount('#favorites_tab')
 

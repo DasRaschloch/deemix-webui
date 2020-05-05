@@ -376,8 +376,19 @@
 							<div v-if="playlists.length == 0">
 								<h1>No Playlists found</h1>
 							</div>
-							<div class="release_grid" v-if="playlists.length > 0">
+							<div class="release_grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
 								<div v-for="release in playlists" class="release clickable" @click="playlistView"
+									:data-id="release.id">
+									<div class="cover_container">
+										<img class="rounded coverart" :src="release.picture_medium">
+										<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+											@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+												class="material-icons">get_app</i></div>
+									</div>
+									<p class="primary-text">{{ release.title }}</p>
+									<p class="secondary-text">{{ 'by '+release.creator.name+' - '+release.nb_tracks+' tracks' }}</p>
+								</div>
+								<div v-for="release in spotifyPlaylists" class="release clickable" @click="spotifyPlaylistView"
 									:data-id="release.id">
 									<div class="cover_container">
 										<img class="rounded coverart" :src="release.picture_medium">
@@ -783,6 +794,10 @@
 								<p>Spotify Client Secret</p>
 								<input type="password" v-model="spotifyFeatures.clientSecret">
 							</div>
+							<div>
+								<p>Spotify username</p>
+								<input type="text" v-model="spotifyUser">
+							</div>
 						</div>
 						<footer>
 							<button @click="resetSettings">Reset to Default</button>
@@ -859,27 +874,43 @@
 								</tr>
 							</thead>
 							<tbody>
-								<template v-for="track in body">
-									<tr v-if="track.type == 'track'">
+								<template v-if="type!='Spotify Playlist'">
+									<template v-for="track in body">
+										<tr v-if="track.type == 'track'">
+											<td><i @click=playPausePreview
+													:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
+													:data-preview="track.preview">play_arrow</i></td>
+											<td>{{ track.track_position }}</td>
+											<td class="inline-flex"><i v-if="track.explicit_lyrics"
+													class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+											</td>
+											<td class="clickable" @click="artistView" :data-id="track.artist.id">
+												{{ track.artist.name }}</td>
+											<td class="clickable" v-if="type == 'Playlist'" @click="albumView" :data-id="track.album.id">
+												{{ track.album.title }}</td>
+											<td>{{ convertDuration(track.duration) }}</td>
+											<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+										</tr>
+										<tr v-else-if="track.type == 'disc_separator'">
+											<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
+										</tr>
+									</template>
+								</template>
+								<template v-else>
+									<tr v-for="(track, i) in body">
 										<td><i @click=playPausePreview
-												:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
-												:data-preview="track.preview">play_arrow</i></td>
-										<td>{{ track.track_position }}</td>
-										<td class="inline-flex"><i v-if="track.explicit_lyrics"
-												class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+												:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
+												:data-preview="track.preview_url">play_arrow</i></td>
+										<td>{{ i+1 }}</td>
+										<td class="inline-flex"><i v-if="track.explicit"
+												class="material-icons">explicit</i>{{ track.name }}
 										</td>
-										<td class="clickable" @click="artistView" :data-id="track.artist.id">
-											{{ track.artist.name }}</td>
-										<td class="clickable" v-if="type == 'Playlist'" @click="albumView" :data-id="track.album.id">
-											{{ track.album.title }}</td>
-										<td>{{ convertDuration(track.duration) }}</td>
+										<td>{{ track.artists[0].name }}</td>
+										<td>{{ track.album.name }}</td>
+										<td>{{ convertDuration(Math.floor(track.duration_ms/1000)) }}</td>
 										<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
 									</tr>
-									<tr v-else-if="track.type == 'disc_separator'">
-										<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
-									</tr>
 								</template>
-
 							</tbody>
 						</table>
 						<span v-if="label"

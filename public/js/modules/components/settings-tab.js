@@ -5,9 +5,11 @@ const SettingsTab = new Vue({
 	data: () => ({
 		settings: { tags: {} },
 		lastSettings: {},
-		lastCredentials: {},
 		spotifyFeatures: {},
-		defaultSettings: {}
+		lastCredentials: {},
+		defaultSettings: {},
+		lastUser: '',
+		spotifyUser: ''
 	}),
 	computed: {
 		darkMode: {
@@ -47,7 +49,14 @@ const SettingsTab = new Vue({
 		saveSettings() {
 			this.lastSettings = { ...SettingsTab.settings }
 			this.lastCredentials = { ...SettingsTab.spotifyFeatures }
-			socket.emit('saveSettings', this.lastSettings, this.lastCredentials)
+			let changed = false
+			if (this.lastUser != this.spotifyUser){
+				// force cloning without linking
+				this.lastUser = (' ' + this.spotifyUser).slice(1)
+				localStorage.setItem('spotifyUser', this.lastUser)
+				changed = true
+			}
+			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
 		},
 		loadSettings(settings, spotifyCredentials, defaults = null) {
 			if (defaults) this.defaultSettings = { ...defaults }
@@ -80,6 +89,11 @@ const SettingsTab = new Vue({
 	mounted() {
 		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)
+		let spotyUser = localStorage.getItem('spotifyUser')
+		if (spotyUser){
+			this.lastUser = spotyUser
+			this.spotifyUser = spotyUser
+		}
 	}
 }).$mount('#settings_tab')
 

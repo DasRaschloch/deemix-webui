@@ -96,6 +96,9 @@ function startApp() {
 		socket.emit('login', arl)
 		$('#login_input_arl').val(arl)
 	}
+	if ('true' === localStorage.getItem('slimDownloads')) {
+		document.getElementById("download_list").classList.add("slim")
+	}
 
 	// Open default tab
 	document.getElementById('main_home_tablink').click()

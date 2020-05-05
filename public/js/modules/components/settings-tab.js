@@ -16,8 +16,19 @@ const SettingsTab = new Vue({
 			},
 			set(wantDarkMode) {
 				document.documentElement.setAttribute('data-theme', wantDarkMode ? 'dark' : 'default')
-
 				localStorage.setItem('darkMode', wantDarkMode)
+			}
+		},
+		slimDownloads: {
+			get() {
+				return 'true' === localStorage.getItem('slimDownloads')
+			},
+			set(wantSlimDownloads) {
+				if (wantSlimDownloads)
+					document.getElementById("download_list").classList.add("slim")
+				else
+					document.getElementById("download_list").classList.remove("slim")
+				localStorage.setItem('slimDownloads', wantSlimDownloads)
 			}
 		}
 	},

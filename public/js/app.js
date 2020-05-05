@@ -73,7 +73,7 @@ socket.on('logged_out', function () {
 	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 })
 
-socket.on('init_serverwideARL', function(arl){
+socket.on('init_serverwideARL', function (arl) {
 	if (localStorage.getItem('arl') === null) {
 		socket.emit('login', arl)
 		$('#login_input_arl').val(arl)

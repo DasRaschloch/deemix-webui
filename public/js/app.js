@@ -97,10 +97,10 @@ function startApp() {
 		$('#login_input_arl').val(arl)
 	}
 	if ('true' === localStorage.getItem('slimDownloads')) {
-		document.getElementById("download_list").classList.add("slim")
+		document.getElementById('download_list').classList.add('slim')
 	}
 	let spotifyUser = localStorage.getItem('spotifyUser')
-	if (spotifyUser != ''){
+	if (spotifyUser != '') {
 		socket.emit('update_userSpotifyPlaylists', spotifyUser)
 	}
 	// Open default tab

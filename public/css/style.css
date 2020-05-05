@@ -6,6 +6,7 @@
 @import './modules/normalize.css';
 @import './modules/base.css';
 @import './modules/globals.css';
+@import './modules/animations.css';
 @import './modules/progressbar.css';
 
 @import './modules/sidebar.css';

@@ -1,3 +1,25 @@
+#loading_overlay {
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	flex-direction: column;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	display: none;
+	z-index: 1000;
+}
+
+#loading_overlay.active {
+	display: flex;
+}
+
+#loading_text {
+	margin-bottom: 20px;
+}
+
 #main_content {
 	margin-left: 48px;
 	width: calc(100% - 48px);

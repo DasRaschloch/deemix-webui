@@ -95,11 +95,16 @@ const SettingsTab = new Vue({
 	mounted() {
 		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)
+
 		let spotyUser = localStorage.getItem('spotifyUser')
+
 		if ('' !== spotyUser) {
 			this.lastUser = spotyUser
 			this.spotifyUser = spotyUser
 		}
+
+		this.changeDarkMode = 'true' === localStorage.getItem('darkMode')
+		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
 	}
 }).$mount('#settings_tab')
 

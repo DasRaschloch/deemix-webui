@@ -366,6 +366,91 @@
 
 					<div id="favorites_tab" class="main_tabcontent">
 						<h1>Favorites</h1>
+						<div class="tab">
+							<button class="favorites_tablinks" id="favorites_playlist_tab">Playlists</button>
+							<button class="favorites_tablinks" id="favorites_album_tab">Albums</button>
+							<button class="favorites_tablinks" id="favorites_artist_tab">Artists</button>
+							<button class="favorites_tablinks" id="favorites_track_tab">Tracks</button>
+						</div>
+						<div id="playlist_favorites" class="favorites_tabcontent">
+							<div v-if="playlists.length == 0">
+								<h1>No Playlists found</h1>
+							</div>
+							<div class="release_grid" v-if="playlists.length > 0">
+								<div v-for="release in playlists" class="release clickable" @click="playlistView"
+									:data-id="release.id">
+									<div class="cover_container">
+										<img class="rounded coverart" :src="release.picture_medium">
+										<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+											@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+												class="material-icons">get_app</i></div>
+									</div>
+									<p class="primary-text">{{ release.title }}</p>
+									<p class="secondary-text">{{ 'by '+release.creator.name+' - '+release.nb_tracks+' tracks' }}</p>
+								</div>
+							</div>
+						</div>
+						<div id="album_favorites" class="favorites_tabcontent">
+							<div v-if="albums.length == 0">
+								<h1>No Favorite Albums found</h1>
+							</div>
+							<div class="release_grid" v-if="albums.length > 0">
+								<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
+									<div class="cover_container">
+										<img class="rounded coverart" :src="release.cover_medium">
+										<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+											@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+												class="material-icons">get_app</i></div>
+									</div>
+									<p class="primary-text">{{ release.title }}</p>
+									<p class="secondary-text">{{ 'by '+release.artist.name }}</p>
+								</div>
+							</div>
+						</div>
+						<div id="artist_favorites" class="favorites_tabcontent">
+							<div v-if="artists.length == 0">
+								<h1>No Favorite Artist found</h1>
+							</div>
+							<div class="release_grid" v-if="artists.length > 0">
+								<div v-for="release in artists" class="release clickable" @click="artistView" :data-id="release.id">
+									<div class="cover_container">
+										<img class="circle coverart" :src="release.picture_medium">
+										<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+											@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+												class="material-icons">get_app</i></div>
+									</div>
+									<p class="primary-text">{{ release.name }}</p>
+								</div>
+							</div>
+						</div>
+						<div id="track_favorites" class="favorites_tabcontent">
+							<div v-if="tracks.length == 0">
+								<h1>No Favorite Tracks found</h1>
+							</div>
+							<table v-if="tracks.length > 0">
+								<tr v-for="track in tracks" class="track_row">
+									<td class="top-tracks-position" :class="{ first: track.position === 1 }">{{ track.position }}</td>
+									<td style="width: 48px; text-align: center;">
+										<a href="#" @click="playPausePreview" :class="'rounded' + (track.preview ? ' single-cover' : '')"
+											:data-preview="track.preview"><i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave"
+												v-if="track.preview" class="material-icons preview_controls">play_arrow</i><img
+												class="rounded coverart" :src="track.album.cover_small">
+									</td>
+									<td class="breakline">
+										{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+									</td>
+									<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
+										{{track.artist.name}}</td>
+									<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
+										{{track.album.title}}</td>
+									<td>{{convertDuration(track.duration)}}</td>
+									<td role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+										@click.stop="addToQueue" :data-link="track.link" style="width: 56px; text-align: center;"
+										class="clickable"><i class="material-icons">get_app</i>
+									</td>
+								</tr>
+							</table>
+						</div>
 					</div>
 
 					<div id="analyzer_tab" class="main_tabcontent">

@@ -1,5 +1,6 @@
 /* Tabs */
 .search_tabcontent,
-.main_tabcontent {
+.main_tabcontent,
+.favorites_tabcontent {
 	display: none;
 }

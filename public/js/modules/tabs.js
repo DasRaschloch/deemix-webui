@@ -3,6 +3,7 @@ import TracklistTab from './components/tracklist-tab.js'
 import LinkAnalyzerTab from './components/link-analyzer-tab.js'
 import HomeTab from './components/home-tab.js'
 import ChartsTab from './components/charts-tab.js'
+import FavoritesTab from './components/favorites-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './components/settings-tab.js'
 import MainSearch from './components/main-search.js'
@@ -53,7 +54,8 @@ function analyzeLink(link) {
 }
 
 function linkListeners() {
-	document.getElementById('search_tab').addEventListener('click', handleTabClick)
+	document.getElementById('search_tab').addEventListener('click', handleSearchTabClick)
+	document.getElementById('favorites_tab').addEventListener('click', handleFavoritesTabClick)
 	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
 
 	const backButtons = Array.from(document.getElementsByClassName('back-button'))
@@ -106,7 +108,7 @@ function handleSidebarClick(event) {
 	}
 }
 
-function handleTabClick(event) {
+function handleSearchTabClick(event) {
 	let targetID = event.target.id
 
 	switch (targetID) {
@@ -124,6 +126,28 @@ function handleTabClick(event) {
 			break
 		case 'search_playlist_tab':
 			changeTab(event.target, 'search', 'playlist_search')
+			break
+
+		default:
+			break
+	}
+}
+
+function handleFavoritesTabClick(event) {
+	let targetID = event.target.id
+
+	switch (targetID) {
+		case 'favorites_playlist_tab':
+			changeTab(event.target, 'favorites', 'playlist_favorites')
+			break
+		case 'favorites_album_tab':
+			changeTab(event.target, 'favorites', 'album_favorites')
+			break
+		case 'favorites_artist_tab':
+			changeTab(event.target, 'favorites', 'artist_favorites')
+			break
+		case 'favorites_track_tab':
+			changeTab(event.target, 'favorites', 'track_favorites')
 			break
 
 		default:

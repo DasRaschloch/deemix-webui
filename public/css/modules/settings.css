@@ -65,3 +65,7 @@
 .input_group .input_group_text {
 	margin-bottom: 7px;
 }
+
+.with_checkbox + .input_group {
+	margin-top: 10px;
+}

@@ -640,7 +640,7 @@
 
 							<div class="input_group">
 								<p class="input_group_text">Illegal Character replacer</p>
-								<input type="number" v-model="settings.illegalCharacterReplacer">
+								<input type="text" v-model="settings.illegalCharacterReplacer">
 							</div>
 						</div>
 
@@ -700,7 +700,7 @@
 								<span class="checkbox_text">Save covers</span>
 							</label>
 
-							<div class="input_group">
+							<div class="input_group" v-if="settings.saveArtwork">
 								<p class="input_group_text">Cover name template</p>
 								<input type="text" v-model="settings.coverImageTemplate">
 							</div>
@@ -710,7 +710,7 @@
 								<span class="checkbox_text">Save artist image</span>
 							</label>
 
-							<div class="input_group">
+							<div class="input_group" v-if="settings.saveArtworkArtist">
 								<p class="input_group_text">Artist image name template</p>
 								<input type="text" v-model="settings.artistImageTemplate">
 							</div>

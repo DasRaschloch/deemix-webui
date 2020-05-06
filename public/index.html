@@ -959,7 +959,7 @@
 
 						<div class="tab">
 							<template v-for="(item, name, index) in body">
-								<button :class="'selective' + (name==currentTab ? 'active' : '')" :href="'#artist_' + name"
+								<button :class="'selective' + (name==currentTab ? ' active' : '')" :href="'#artist_' + name"
 									@click="changeTab(name)">{{ name }}</button>
 							</template>
 						</div>

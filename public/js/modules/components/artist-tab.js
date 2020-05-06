@@ -37,12 +37,6 @@ const ArtistTab = new Vue({
 		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
-		moreInfo(url, e) {
-			if (e) {
-				e.preventDefault()
-			}
-			showTrackListSelective(url, true)
-		},
 		sortBy(key) {
 			if (key == this.sortKey) {
 				this.sortOrder = this.sortOrder == 'asc' ? 'desc' : 'asc'

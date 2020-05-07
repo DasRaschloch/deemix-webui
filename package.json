@@ -1,0 +1,23 @@
+{
+	"name": "deemix",
+	"version": "0.1.0-alpha",
+	"homepage": "https://notabug.org/RemixDev/deemix/src/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://notabug.org/RemixDev/deemix"
+	},
+	"devDependencies": {
+		"@rollup/plugin-commonjs": "^11.0.1",
+		"@rollup/plugin-node-resolve": "^7.0.0",
+		"npm-run-all": "^4.1.5",
+		"rollup": "^1.27.0",
+		"rollup-plugin-terser": "^5.0.0"
+	},
+	"scripts": {
+		"build:js": "rollup -c",
+		"watch:js": "rollup -c -w",
+		"serve": "python server.py",
+		"dev": "npm-run-all --parallel watch:js serve",
+		"build": "npm-run-all build:js"
+	}
+}

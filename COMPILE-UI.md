@@ -2,7 +2,7 @@ This file explains how to compile files for the UI.
 
 # What you need to do just the first time
 
-1. Download and install the LTS version of Node.js, you can download it [here](https://nodejs.org/it/download/) (also installs npm)
+1. Download and install the LTS version of Node.js, you can download it [here](https://nodejs.org/en/download/) (also installs npm)
 
 2. Once you have finished to install Node.js, check if everything is ok by running
 

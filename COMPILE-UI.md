@@ -14,7 +14,7 @@ and then
 $ npm -v
 ```
 
-If you will see the corresponding versions of node and npm, you are ready to code!
+If you see the corresponding versions of node and npm, you are ready to code!
 
 3. Go to the root of this project, open your favorite prompt and run
 
@@ -24,7 +24,7 @@ $ npm install
 
 # Scripts
 
-## Develpoment
+## Development
 
 By simply running
 
@@ -33,7 +33,7 @@ $ npm run dev
 ```
 
 you will have 2 tasks running at the same time:
-- the python server
+- the Python server
 - the [rollup](https://rollupjs.org/guide/en/) watcher pointing to the configured `.js` file and ready to re-bundle
 
 **You can now go to http://127.0.0.1:33333 and see the app running.**
@@ -50,4 +50,4 @@ If you want to deploy your application, you have to run
 $ npm run build
 ```
 
-This is necessary to get a bundled `.js` file **minified**, helping ro drop your final application size.
+This is necessary to get a bundled `.js` file **minified**, helping to drop your final application size.

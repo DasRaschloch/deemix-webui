@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import { socket } from './socket.js'
 import { toast } from './toasts.js'
 

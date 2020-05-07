@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 import { socket } from '../socket.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'

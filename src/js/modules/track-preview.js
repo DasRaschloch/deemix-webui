@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 /* ===== Globals ====== */
 window.preview_max_volume = 1
 

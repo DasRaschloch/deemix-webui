@@ -19,7 +19,7 @@ If you will see the corresponding versions of node and npm, you are ready to cod
 3. Go to the root of this project, open your favorite prompt and run
 
 ```console
-$ npm install
+$ npm i
 ```
 
 # Scripts
@@ -51,3 +51,11 @@ $ npm run build
 ```
 
 This is necessary to get a bundled `.js` file **minified**, helping ro drop your final application size.
+
+# Other
+
+If you notice that another member of the team installed one or more new packages, just run
+
+```bash
+$ npm i
+```

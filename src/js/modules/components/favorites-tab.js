@@ -1,3 +1,4 @@
+import Vue from 'vue/dist/vue.esm'
 import { socket } from '../socket.js'
 import { playlistView, artistView, albumView, spotifyPlaylistView } from '../tabs.js'
 import Downloads from '../downloads.js'
@@ -31,11 +32,21 @@ const FavoritesTab = new Vue({
 		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
-		updated_userSpotifyPlaylists(data){this.spotifyPlaylists = data},
-		updated_userPlaylists(data){this.playlists = data},
-		updated_userAlbums(data){this.albums = data},
-		updated_userArtist(data){this.artists = data},
-		updated_userTracks(data){this.tracks = data},
+		updated_userSpotifyPlaylists(data) {
+			this.spotifyPlaylists = data
+		},
+		updated_userPlaylists(data) {
+			this.playlists = data
+		},
+		updated_userAlbums(data) {
+			this.albums = data
+		},
+		updated_userArtist(data) {
+			this.artists = data
+		},
+		updated_userTracks(data) {
+			this.tracks = data
+		},
 		initFavorites(data) {
 			this.tracks = data.tracks
 			this.albums = data.albums

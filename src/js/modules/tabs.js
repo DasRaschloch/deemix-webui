@@ -61,6 +61,7 @@ function analyzeLink(link) {
 }
 
 function linkListeners() {
+	// console.log(document.documentElement.outerHTML)
 	document.getElementById('search_tab').addEventListener('click', handleSearchTabClick)
 	document.getElementById('favorites_tab').addEventListener('click', handleFavoritesTabClick)
 	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)

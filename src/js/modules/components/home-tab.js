@@ -1,3 +1,4 @@
+import Vue from 'vue/dist/vue.esm'
 import { socket } from '../socket.js'
 import { artistView, albumView, playlistView } from '../tabs.js'
 import Downloads from '../downloads.js'

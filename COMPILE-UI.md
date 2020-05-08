@@ -1,8 +1,10 @@
+<span style="font-size: 35px; text-transform: uppercase;">⚠ this file is needed just for developers of this project, if you aren't you can ignore it ⚠</span>
+
 This file explains how to compile files for the UI.
 
 # What you need to do just the first time
 
-1. Download and install the LTS version of Node.js, you can download it [here](https://nodejs.org/en/download/) (also installs npm)
+1. Download and install Node.js, you can download it [here](https://nodejs.org/en/download/) (also installs npm)
 
 2. Once you have finished to install Node.js, check if everything is ok by running
 
@@ -40,7 +42,7 @@ you will have 2 tasks running at the same time:
 
 You can edit `.css` and `.js` files and simply refresh the page to see your new and surely awesome code directly in the app 😉
 
-If you need to edit the `index.html` file you will have to kill the terminal and re-run `npm run dev` to see your edits.
+However, if you need to edit the `public/index.html` file you  have to kill the terminal and re-run `npm run dev` to see your edits.
 
 ## Building
 
@@ -50,7 +52,7 @@ If you want to deploy your application, you have to run
 $ npm run build
 ```
 
-This is necessary to get a bundled `.js` file **minified**, helping ro drop your final application size.
+This is necessary to get a bundled `.js` file **minified**, helping to drop the final application size.
 
 # Other
 

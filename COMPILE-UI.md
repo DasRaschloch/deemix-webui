@@ -1,4 +1,4 @@
-<span style="font-size: 35px; text-transform: uppercase;">⚠ this file is needed just for developers of this project, if you aren't you can ignore it ⚠</span>
+**NOTE: THIS FILE IS NEEDED JUST FOR DEVELOPERS OF THIS PROJECT, IF YOU AREN'T YOU CAN IGNORE IT**
 
 This file explains how to compile files for the UI.
 

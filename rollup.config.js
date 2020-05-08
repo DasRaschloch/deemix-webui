@@ -18,7 +18,7 @@ export default {
 	],
 	plugins: [
 		// Needed for Vue imports, could use alias plugin but they're not working with resolve plugin
-		// Assuming all the Vue imports are made like: import Vue from 'vue.esm' (vue.esm is made for bundlers)
+		// Assuming all the Vue imports are made like: import Vue from 'vue/dist/vue.esm' (vue.esm is made for bundlers)
 		replace({
 			'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development')
 		}),

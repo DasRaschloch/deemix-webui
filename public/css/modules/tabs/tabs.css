@@ -33,3 +33,8 @@
 	height: 156px;
 	margin-bottom: 10px;
 }
+
+.main_tablinks_text {
+	overflow: hidden;
+    white-space: nowrap;
+}

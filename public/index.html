@@ -65,19 +65,24 @@
 									<!-- ### Main Search Tab ### -->
 									<div id="main_search" class="search_tabcontent">
 										<template v-for="section in results.allTab.ORDER">
-											<div
+											<section
 												v-if="(section != 'TOP_RESULT' && results.allTab[section].data.length > 0) || (results.allTab[section].length > 0)"
 												class="search_section">
-												<h1 @click="changeSearchTab(section)">{{ names[section] }}</h1>
+												<h2 @click="changeSearchTab(section)" class="search_header"
+													:class="{ top_result_header : section === 'TOP_RESULT'}">
+													{{ names[section] }}
+												</h2>
 												<!-- Top result -->
 												<div v-if="section == 'TOP_RESULT'" class="top_result clickable" @click="handleClickTopResult"
 													:data-id="results.allTab.TOP_RESULT[0].id">
 													<div class="cover_container">
 														<img :src="results.allTab.TOP_RESULT[0].picture"
-															:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"></img>
+															:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'" />
 														<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 															@click.stop="addToQueue" :data-link="results.allTab.TOP_RESULT[0].link"
-															class="download_overlay"><i class="material-icons">get_app</i></div>
+															class="download_overlay">
+															<i class="material-icons">get_app</i>
+														</div>
 													</div>
 													<div class="info_box">
 														<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
@@ -150,7 +155,7 @@
 														<p class="secondary-text">{{release.NB_SONG+' tracks'}}</p>
 													</div>
 												</div>
-											</div>
+											</section>
 										</template>
 										<div
 											v-if="results.allTab.ORDER.every(section => section == 'TOP_RESULT' ? results.allTab[section].length == 0 : results.allTab[section].data.length == 0)">

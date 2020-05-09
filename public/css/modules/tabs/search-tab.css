@@ -1,6 +1,19 @@
-#main_search > .search_section {
+#main_search .search_section {
 	float: none;
 	cursor: pointer;
+	border-top: 1px solid var(--separator);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+/* Top Result */
+.top_result_header {
+	font-size: 2rem;
+}
+
+.search_header {
+	font-size: 1.75rem;
+	margin-bottom: 25px;
 }
 
 .top_result {
@@ -25,9 +38,15 @@
 	margin-bottom: 4px;
 }
 
-.secondary-text {
+/* Releases */
+.release .secondary-text {
 	opacity: 0.75;
 	font-size: 14px;
+}
+
+.release .secondary-text .material-icons {
+	font-size: 17px !important;
+	margin-left: 4px;
 }
 
 .release_grid {
@@ -41,17 +60,6 @@
 	grid-auto-rows: 0;
 	grid-row-gap: 0px;
 	overflow-y: hidden;
-}
-
-.release {
-	display: inline-block;
-	width: 156px;
-}
-
-.release .cover_container {
-	width: 156px;
-	height: 156px;
-	margin-bottom: 10px;
 }
 
 .track_row > td > img {

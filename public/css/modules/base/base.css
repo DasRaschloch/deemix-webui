@@ -1,9 +1,9 @@
 @import './normalize.css';
 @import './typography.css';
 
-* {
+/* * {
 	transition: background-color 500ms ease-in-out;
-}
+} */
 
 html {
 	height: 100%;

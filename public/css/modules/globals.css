@@ -138,11 +138,6 @@ p,
 	margin-left: auto;
 }
 
-.secondary-text .material-icons {
-	font-size: 17px !important;
-	margin-left: 4px;
-}
-
 button {
 	font-family: inherit;
 	font-weight: 600;

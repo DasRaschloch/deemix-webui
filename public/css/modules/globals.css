@@ -306,3 +306,7 @@ th.sort-desc:after {
 .with_checkbox .checkbox_text::selection {
 	background: none;
 }
+
+.hide {
+	display: none !important;
+}

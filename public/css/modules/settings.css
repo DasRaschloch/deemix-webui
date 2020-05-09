@@ -16,10 +16,6 @@
 	align-items: center;
 }
 
-#logged_in_info.hide {
-	display: none;
-}
-
 #log_info {
 	display: flex;
 	flex-direction: column;

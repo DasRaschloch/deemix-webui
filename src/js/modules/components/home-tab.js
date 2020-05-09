@@ -16,6 +16,9 @@ const HomeTab = new Vue({
 		artistView,
 		albumView,
 		playlistView,
+		openSettings(e){
+			document.getElementById("main_settings_tablink").click()
+		},
 		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)

@@ -37,6 +37,7 @@ socket.on('logged_in', function (data) {
 				// $('#logged_in_info').show()
 				document.getElementById('logged_in_info').classList.remove('hide')
 			}
+			document.getElementById('home_not_logged_in').classList.add('hide')
 			break
 		case 2:
 			toast('Already logged in', 'done', true, 'login-toast')
@@ -49,6 +50,7 @@ socket.on('logged_in', function (data) {
 				// $('#logged_in_info').show()
 				document.getElementById('logged_in_info').classList.remove('hide')
 			}
+			document.getElementById('home_not_logged_in').classList.add('hide')
 			break
 		case 0:
 			toast("Couldn't log in", 'close', true, 'login-toast')
@@ -59,6 +61,7 @@ socket.on('logged_in', function (data) {
 			// $('#logged_in_info').hide()
 			$('#settings_username').text('Not Logged')
 			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
+			document.getElementById('home_not_logged_in').classList.remove('hide')
 			break
 	}
 })
@@ -72,6 +75,7 @@ socket.on('logged_out', function () {
 	// $('#logged_in_info').hide()
 	$('#settings_username').text('Not Logged')
 	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
+	document.getElementById('home_not_logged_in').classList.remove('hide')
 })
 
 /* ===== App initialization ===== */
@@ -89,6 +93,7 @@ function startApp() {
 
 		socket.emit('login', arl)
 		$('#login_input_arl').val(arl)
+		document.getElementById('home_not_logged_in').classList.add('hide')
 	}
 	if ('true' === localStorage.getItem('slimDownloads')) {
 		document.getElementById('download_list').classList.add('slim')

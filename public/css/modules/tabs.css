@@ -1,18 +1,18 @@
-/* Tabs */
 .search_tabcontent,
 .main_tabcontent,
 .favorites_tabcontent {
 	display: none;
 }
 
-.main_tabcontent h1{
+.main_tabcontent h1 {
 	margin-bottom: 12px;
 }
 
-.tab button{
+.tab button {
 	background-color: var(--primary-background);
+	color: var(--main-text);
 }
 
-.tab button.active{
+.tab button.active {
 	background-color: var(--accent-color);
 }

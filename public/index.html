@@ -268,13 +268,14 @@
 						</div>
 
 						<div id="home_tab" class="main_tabcontent">
-							<h1>Welcome to deemix</h1>
-							<div id="home_not_logged_in">
-								<p>You need to log into your deezer account before starting downloading.</p>
+							<h2 class="page_heading">Welcome to deemix</h2>
+							<section id="home_not_logged_in" class="home_section">
+								<p id="home_not_logged_text">You need to log into your deezer account before you can start downloading.
+								</p>
 								<button type="button" name="button" @click="openSettings">Open Settings</button>
-							</div>
-							<div v-if="playlists.length">
-								<h2>Popular playlists</h2>
+							</section>
+							<section v-if="playlists.length" class="home_section">
+								<h3 class="section_heading">Popular playlists</h3>
 								<div class="release_grid">
 									<div v-for="release in playlists" class="release clickable" @click="playlistView"
 										:data-id="release.id">
@@ -288,7 +289,7 @@
 										<p class="secondary-text">{{ 'by '+release.user.name+' - '+release.nb_tracks+' tracks' }}</p>
 									</div>
 								</div>
-							</div>
+							</section>
 						</div>
 
 						<div id="charts_tab" class="main_tabcontent">
@@ -434,15 +435,20 @@
 						<div id="analyzer_tab" class="main_tabcontent image_header">
 							<h1>Link Analyzer</h1>
 							<div v-if="link == ''">
-								<p>You can use this section to find out more information about the link you are trying to download<br/>This is usefull if you're trying to download some tracks that are not available in your country and want to know where they are available</p>
+								<p>You can use this section to find out more information about the link you are trying to
+									download<br />This is usefull if you're trying to download some tracks that are not available in your
+									country and want to know where they are available</p>
 							</div>
 							<div v-else>
 								<header class="inline-flex"
 									:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
 									<div>
 										<h1>{{ title }}</h1>
-										<h2 v-if="type == 'track'">by <span class="clickable" @click="artistView" :data-id="data.artist.id">{{data.artist.name}}</span> • in <span class="clickable" @click="albumView" :data-id="data.album.id">{{data.album.title}}</span></h2>
-										<h2 v-else-if="type == 'album'">by <span class="clickable" @click="artistView" :data-id="data.artist.id">{{data.artist.name}}</span> • {{data.nb_tracks}} tracks</h2>
+										<h2 v-if="type == 'track'">by <span class="clickable" @click="artistView"
+												:data-id="data.artist.id">{{data.artist.name}}</span> • in <span class="clickable"
+												@click="albumView" :data-id="data.album.id">{{data.album.title}}</span></h2>
+										<h2 v-else-if="type == 'album'">by <span class="clickable" @click="artistView"
+												:data-id="data.artist.id">{{data.artist.name}}</span> • {{data.nb_tracks}} tracks</h2>
 									</div>
 									<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 										@click.stop="addToQueue" :data-link="link" class="fab right"><i class="material-icons">get_app</i>
@@ -497,7 +503,7 @@
 						</div>
 
 						<div id="settings_tab" class="main_tabcontent fixed_footer">
-							<h2 id="settings_heading">Settings</h2>
+							<h2 class="page_heading">Settings</h2>
 
 							<div id="logged_in_info">
 								<img id="settings_picture" src="" alt="Profile Picture" class="circle" />

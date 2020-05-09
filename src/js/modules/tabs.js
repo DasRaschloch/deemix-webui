@@ -61,7 +61,6 @@ function analyzeLink(link) {
 }
 
 function linkListeners() {
-	// console.log(document.documentElement.outerHTML)
 	document.getElementById('search_tab').addEventListener('click', handleSearchTabClick)
 	document.getElementById('favorites_tab').addEventListener('click', handleFavoritesTabClick)
 	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
@@ -189,8 +188,6 @@ function changeTab(sidebarEl, section, tabName) {
 		search_selected = tabName
 	}
 
-	// Not choosing .currentTarget beacuse the event
-	// is delegated
 	sidebarEl.classList.add('active')
 
 	// Check if you need to load more content in the search tab
@@ -199,6 +196,8 @@ function changeTab(sidebarEl, section, tabName) {
 		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1 &&
 		MainSearch.results[search_selected.split('_')[0] + 'Tab'].data.length == 0
 	) {
+		console.log(search_selected.split('_')[0] + 'Tab')
+
 		MainSearch.search(search_selected.split('_')[0])
 	}
 }

@@ -1,8 +1,3 @@
-#settings_heading {
-	font-size: 2.5rem;
-	margin-bottom: 35px;
-}
-
 #settings_picture {
 	width: 125px;
 	height: 125px;
@@ -45,7 +40,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	border-top: 1px solid #8f8f8f; /* Need less opacity */
+	border-top: 1px solid var(--separator); /* Need less opacity */
 	padding-top: 20px;
 	padding-bottom: 20px;
 }

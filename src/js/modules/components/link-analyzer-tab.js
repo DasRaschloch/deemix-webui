@@ -1,6 +1,6 @@
 import Vue from 'vue/dist/vue.esm'
 import { socket } from '../socket.js'
-import { albumView } from '../tabs.js'
+import { albumView, artistView } from '../tabs.js'
 import Utils from '../utils.js'
 
 const LinkAnalyzerTab = new Vue({
@@ -17,6 +17,7 @@ const LinkAnalyzerTab = new Vue({
 	},
 	methods: {
 		albumView,
+		artistView,
 		convertDuration: Utils.convertDuration,
 		reset() {
 			this.title = 'Loading...'
@@ -31,7 +32,6 @@ const LinkAnalyzerTab = new Vue({
 			this.title =
 				data.title +
 				(data.title_version && data.title.indexOf(data.title_version) == -1 ? ' ' + data.title_version : '')
-			this.subtitle = `by ${data.artist.name}\nin ${data.album.title}`
 			this.image = data.album.cover_xl
 			this.type = 'track'
 			this.link = data.link
@@ -47,7 +47,6 @@ const LinkAnalyzerTab = new Vue({
 		showAlbum(data) {
 			console.log(data)
 			this.title = data.title
-			this.subtitle = `by ${data.artist.name}\n${data.nb_tracks} tracks`
 			this.image = data.cover_xl
 			this.type = 'album'
 			this.link = data.link

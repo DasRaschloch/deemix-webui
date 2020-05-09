@@ -5,6 +5,10 @@
 	display: none;
 }
 
+.main_tabcontent h1{
+	margin-bottom: 12px;
+}
+
 .tab button{
 	background-color: var(--primary-background);
 }

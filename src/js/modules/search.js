@@ -42,7 +42,6 @@ function handleSearchBarKeyup(e) {
 				document.getElementById('search_tab_content').style.display = 'none'
 				socket.emit('mainSearch', { term: term })
 			} else {
-				document.getElementById('search_all_tab').click()
 				document.getElementById('search_tab_content').style.display = 'block'
 				document.getElementById('main_search_tablink').click()
 			}

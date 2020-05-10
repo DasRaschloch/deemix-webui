@@ -110,12 +110,12 @@ const MainSearch = new Vue({
 		handleMainSearch(result) {
 			let resetObj = { data: [], next: 0, total: 0, loaded: false }
 			this.results.allTab = result
-			this.results.query = result.QUERY
 			this.results.trackTab = { ...resetObj }
 			this.results.albumTab = { ...resetObj }
 			this.results.artistTab = { ...resetObj }
 			this.results.playlistTab = { ...resetObj }
-			document.getElementById('search_all_tab').click()
+			if (this.results.query == '') document.getElementById('search_all_tab').click()
+			this.results.query = result.QUERY
 			document.getElementById('search_tab_content').style.display = 'block'
 			document.getElementById('main_search_tablink').click()
 		},

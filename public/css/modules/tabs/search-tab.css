@@ -109,3 +109,8 @@
 	width: 32px;
 	height: 32px;
 }
+
+.track_row > td > a > img {
+	width: 56px;
+	height: 56px;
+}

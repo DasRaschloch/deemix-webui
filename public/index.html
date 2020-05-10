@@ -1000,9 +1000,12 @@
 									<template v-if="type!='Spotify Playlist'">
 										<template v-for="track in body">
 											<tr v-if="track.type == 'track'">
-												<td><i @click=playPausePreview
-														:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
-														:data-preview="track.preview">play_arrow</i></td>
+												<td>
+													<i v-if="track.preview" @click=playPausePreview
+													:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
+													:data-preview="track.preview">play_arrow</i>
+													<i v-else class="material-icons disabled">play_arrow</i>
+												</td>
 												<td>{{ track.track_position }}</td>
 												<td class="inline-flex"><i v-if="track.explicit_lyrics"
 														class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
@@ -1022,9 +1025,11 @@
 									</template>
 									<template v-else>
 										<tr v-for="(track, i) in body">
-											<td><i @click=playPausePreview
-													:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
-													:data-preview="track.preview_url">play_arrow</i></td>
+											<td>
+												<i v-if="track.preview_url" @click=playPausePreview
+												:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
+												:data-preview="track.preview_url">play_arrow</i></td>
+												<i v-else class="material-icons disabled">play_arrow</i>
 											<td>{{ i+1 }}</td>
 											<td class="inline-flex"><i v-if="track.explicit"
 													class="material-icons">explicit</i>{{ track.name }}

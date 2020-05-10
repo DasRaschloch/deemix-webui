@@ -79,6 +79,10 @@ img.circle {
 	opacity: 1;
 }
 
+i.disabled {
+	opacity: 0.5;
+}
+
 span.tag {
 	background-color: var(--tag-background);
 	border-radius: 2px;

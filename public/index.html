@@ -295,6 +295,22 @@
 									</div>
 								</div>
 							</section>
+							<section v-if="albums.length" class="home_section">
+								<h3 class="section_heading">Most streamed albums</h3>
+								<div class="release_grid">
+									<div v-for="release in albums" class="release clickable" @click="albumView"
+										:data-id="release.id">
+										<div class="cover_container">
+											<img class="rounded coverart" :src="release.cover_medium">
+											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
+												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
+													class="material-icons">get_app</i></div>
+										</div>
+										<p class="primary-text">{{ release.title }}</p>
+										<p class="secondary-text">{{ 'by '+release.artist.name+' - '+release.nb_tracks+' tracks' }}</p>
+									</div>
+								</div>
+							</section>
 						</div>
 
 						<div id="charts_tab" class="main_tabcontent">

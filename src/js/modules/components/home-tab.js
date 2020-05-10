@@ -9,7 +9,8 @@ import Utils from '../utils.js'
 const HomeTab = new Vue({
 	data() {
 		return {
-			playlists: []
+			playlists: [],
+			albums: []
 		}
 	},
 	methods: {
@@ -28,6 +29,7 @@ const HomeTab = new Vue({
 		},
 		initHome(data) {
 			this.playlists = data.playlists.data
+			this.albums = data.albums.data
 		}
 	},
 	mounted() {

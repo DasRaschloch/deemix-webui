@@ -122,6 +122,10 @@ p,
 	word-break: break-word;
 }
 
+a {
+	color: dodgerblue;
+}
+
 .clickable {
 	cursor: pointer;
 }

@@ -33,6 +33,7 @@ html[data-theme='dark'] {
 	--main-text-inverted: #333333;
 	--panels-background: #1a1a1a;
 	--panels-text: #ffffff;
+	--accent-text: #2e2e2e;
 }
 
 body {

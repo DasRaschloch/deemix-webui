@@ -24,6 +24,8 @@ html {
 	--toast-secondary: #ffffff22;
 	--toast-text: #ffffffde;
 	--separator: #8f8f8f;
+
+	--explicit-separator: 0.3125em;
 }
 
 html[data-theme='dark'] {

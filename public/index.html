@@ -298,8 +298,7 @@
 							<section v-if="albums.length" class="home_section">
 								<h3 class="section_heading">Most streamed albums</h3>
 								<div class="release_grid">
-									<div v-for="release in albums" class="release clickable" @click="albumView"
-										:data-id="release.id">
+									<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
 										<div class="cover_container">
 											<img class="rounded coverart" :src="release.cover_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
@@ -314,13 +313,24 @@
 						</div>
 
 						<div id="charts_tab" class="main_tabcontent">
-							<h1>Charts</h1>
-							<div v-if='country == ""' id="charts_selection">
-								<div class="release_grid">
-									<div v-for="release in countries" class="release clickable" @click="getTrackList"
-										:data-title="release.title" :data-id="release.id">
-										<img class="rounded coverart" :src="release.picture_medium">
-									</div>
+							<h2 class="page_heading">Charts</h2>
+							<div v-if='country === ""' id="charts_selection">
+								<div class="release_grid charts_grid">
+
+									<!-- Ugly af -->
+									<template v-for="release in countries">
+										<div v-if="release.title === 'Worldwide'" class="release clickable" @click="getTrackList"
+											:data-title="release.title" :data-id="release.id" :key="release.id">
+											<img class="rounded coverart" :src="release.picture_medium">
+										</div>
+									</template>
+
+									<template v-for="release in countries">
+										<div v-if="release.title !== 'Worldwide'" class="release clickable" @click="getTrackList"
+											:data-title="release.title" :data-id="release.id" :key="release.id">
+											<img class="rounded coverart" :src="release.picture_medium">
+										</div>
+									</template>
 								</div>
 							</div>
 							<div v-else id="charts_table">
@@ -999,15 +1009,18 @@
 						<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
 							<header
 								:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
-								<h1 class="inline-flex">{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
+								<h1 class="inline-flex">{{ title }} <i v-if="explicit"
+										class="material-icons explicit_tracklist">explicit</i></h1>
 								<h2 class="inline-flex"><span v-if="metadata">{{ metadata }}</span><span class="right"
 										v-if="release_date">{{ release_date }}</span></h2>
 							</header>
 
-							<table>
+							<table class="tracklist_table">
 								<thead>
 									<tr>
-										<th v-for="data in head" v-html="data.title" :style="{ 'width': data.width ? data.width : 'auto'}">
+										<th v-for="data in head" v-html="data.title"
+											:class="{ track_position_head: data.title.trim() === '#' }"
+											:style="{ 'width': data.width ? data.width : 'auto'}">
 										</th>
 										<th style="width: 32px"><input @click="toggleAll" class="selectAll" type="checkbox"></th>
 									</tr>
@@ -1018,20 +1031,21 @@
 											<tr v-if="track.type == 'track'">
 												<td>
 													<i v-if="track.preview" @click=playPausePreview
-													:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
-													:data-preview="track.preview">play_arrow</i>
+														:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
+														:data-preview="track.preview">play_arrow</i>
 													<i v-else class="material-icons disabled">play_arrow</i>
 												</td>
-												<td>{{ track.track_position }}</td>
-												<td class="inline-flex"><i v-if="track.explicit_lyrics"
-														class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+												<td class="track_position">{{ track.track_position }}</td>
+												<td>
+													<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
+													{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
 												</td>
 												<td class="clickable" @click="artistView" :data-id="track.artist.id">
 													{{ track.artist.name }}</td>
 												<td class="clickable" v-if="type == 'Playlist'" @click="albumView" :data-id="track.album.id">
 													{{ track.album.title }}</td>
 												<td>{{ convertDuration(track.duration) }}</td>
-												<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+												<td><input class="track_checkbox" type="checkbox" v-model="track.selected"></td>
 											</tr>
 											<tr v-else-if="track.type == 'disc_separator'">
 												<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}
@@ -1043,8 +1057,8 @@
 										<tr v-for="(track, i) in body">
 											<td>
 												<i v-if="track.preview_url" @click=playPausePreview
-												:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
-												:data-preview="track.preview_url">play_arrow</i>
+													:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
+													:data-preview="track.preview_url">play_arrow</i>
 												<i v-else class="material-icons disabled">play_arrow</i>
 											</td>
 											<td>{{ i+1 }}</td>
@@ -1054,7 +1068,7 @@
 											<td>{{ track.artists[0].name }}</td>
 											<td>{{ track.album.name }}</td>
 											<td>{{ convertDuration(Math.floor(track.duration_ms/1000)) }}</td>
-											<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+											<td><input class="track_checkbox" type="checkbox" v-model="track.selected"></td>
 										</tr>
 									</template>
 								</tbody>

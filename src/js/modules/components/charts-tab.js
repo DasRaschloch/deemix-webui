@@ -45,16 +45,20 @@ const ChartsTab = new Vue({
 		initCharts(data) {
 			this.countries = data
 			this.country = localStorage.getItem('chart') || ''
-			if (this.country) {
-				let i = 0
-				for (i; i < this.countries.length; i++) if (this.countries[i].title == this.country) break
-				if (i != this.countries.length) {
-					this.id = this.countries[i].id
-					socket.emit('getChartTracks', this.id)
-				} else {
-					this.country = ''
-					localStorage.setItem('chart', this.country)
-				}
+
+			if (!this.country) return
+
+			let i = 0
+			for (; i < this.countries.length; i++) {
+				if (this.countries[i].title == this.country) break
+			}
+
+			if (i !== this.countries.length) {
+				this.id = this.countries[i].id
+				socket.emit('getChartTracks', this.id)
+			} else {
+				this.country = ''
+				localStorage.setItem('chart', this.country)
 			}
 		}
 	},

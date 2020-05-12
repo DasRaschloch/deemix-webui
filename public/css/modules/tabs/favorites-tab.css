@@ -1,5 +1,5 @@
 /* Tab links */
 
 .favorites_tablinks.active {
-	color: var(--main-text-inverted);
+	color: var(--accent-text);
 }

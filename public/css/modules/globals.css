@@ -222,7 +222,7 @@ input[type='checkbox'] {
 	-webkit-appearance: none;
 	appearance: none;
 	background-color: none;
-	border: 2px solid black;
+	border: 2px solid gray;
 	opacity: 0.5;
 	border-radius: 2px;
 	padding: 7px;

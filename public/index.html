@@ -1044,8 +1044,9 @@
 											<td>
 												<i v-if="track.preview_url" @click=playPausePreview
 												:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
-												:data-preview="track.preview_url">play_arrow</i></td>
+												:data-preview="track.preview_url">play_arrow</i>
 												<i v-else class="material-icons disabled">play_arrow</i>
+											</td>
 											<td>{{ i+1 }}</td>
 											<td class="inline-flex"><i v-if="track.explicit"
 													class="material-icons">explicit</i>{{ track.name }}

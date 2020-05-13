@@ -80,12 +80,21 @@ function linkListeners() {
  * @since		0.1.0
  */
 function handleSidebarClick(event) {
-	if (!(event.target.matches('.main_tablinks') || event.target.parentElement.matches('.main_tablinks'))) {
+	if (
+		!(
+			event.target.matches('.main_tablinks') ||
+			event.target.parentElement.matches('.main_tablinks') ||
+			event.target.parentElement.parentElement.matches('.main_tablinks')
+		)
+	)
 		return
-	}
 
-	let sidebarEl = event.target.matches('.main_tablinks') ? event.target : event.target.parentElement
-	let targetID = sidebarEl.getAttribute('id')
+	let sidebarEl = event.target.matches('.main_tablinks')
+		? event.target
+		: event.target.parentElement.matches('.main_tablinks')
+		? event.target.parentElement
+		: event.target.parentElement.parentElement
+	let targetID = sidebarEl.id
 
 	switch (targetID) {
 		case 'main_search_tablink':
@@ -108,6 +117,30 @@ function handleSidebarClick(event) {
 			break
 		case 'main_about_tablink':
 			changeTab(sidebarEl, 'main', 'about_tab')
+			break
+		case 'theme_selector':
+			if (!event.target.matches('.theme_toggler')) return
+
+			event.target.parentElement.querySelector('.theme_toggler.active').classList.remove('active')
+			event.target.classList.add('active')
+
+			let wantDarkMode = event.target.id === 'dark'
+
+			document.querySelectorAll('*').forEach(el => {
+				el.style.transition = 'all 200ms ease-in-out'
+			})
+
+			document.documentElement.addEventListener('transitionend', function transitionHandler() {
+				document.querySelectorAll('*').forEach(el => {
+					el.style.transition = ''
+				})
+
+				document.documentElement.removeEventListener('transitionend', transitionHandler)
+			})
+
+			document.documentElement.setAttribute('data-theme', wantDarkMode ? 'dark' : 'default')
+			localStorage.setItem('darkMode', wantDarkMode)
+
 			break
 
 		default:

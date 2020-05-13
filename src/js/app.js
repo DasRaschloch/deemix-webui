@@ -86,6 +86,11 @@ function startApp() {
 	Search.linkListeners()
 	TrackPreview.init()
 
+	if ('true' === localStorage.getItem('darkMode')) {
+		document.querySelector('.theme_toggler.active').classList.remove('active')
+		document.querySelector('.theme_toggler#dark').classList.add('active')
+	}
+
 	document.getElementById('logged_in_info').classList.add('hide')
 
 	if (localStorage.getItem('arl')) {
@@ -95,10 +100,13 @@ function startApp() {
 		$('#login_input_arl').val(arl)
 		document.getElementById('home_not_logged_in').classList.add('hide')
 	}
+
 	if ('true' === localStorage.getItem('slimDownloads')) {
 		document.getElementById('download_list').classList.add('slim')
 	}
+
 	let spotifyUser = localStorage.getItem('spotifyUser')
+
 	if (spotifyUser != '') {
 		socket.emit('update_userSpotifyPlaylists', spotifyUser)
 	}

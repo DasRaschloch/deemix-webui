@@ -56,13 +56,13 @@
 				<i class="material-icons side_icon">info</i>
 				<span class="main_tablinks_text">Info</span>
 			</span>
-			<!-- <span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
+			<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
 				<i class="material-icons side_icon theme_selector_icon">brightness_3</i>
 				<div id="theme_togglers">
-					<div class="theme_toggler dark"></div>
-					<div class="theme_toggler light"></div>
+					<div id="dark" class="theme_toggler"></div>
+					<div id="light" class="theme_toggler active"></div>
 				</div>
-			</span> -->
+			</span>
 		</aside>
 		<main id="main_content">
 			<div id="middle_section">
@@ -564,10 +564,10 @@
 							</div>
 
 							<div class="settings_group">
-								<label class="with_checkbox">
+								<!-- <label class="with_checkbox">
 									<input type="checkbox" v-model="changeDarkMode">
 									<span class="checkbox_text">Dark Mode</span>
-								</label>
+								</label> -->
 								<label class="with_checkbox">
 									<input type="checkbox" v-model="changeSlimDownloads">
 									<span class="checkbox_text">Slim download tab</span>

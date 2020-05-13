@@ -38,7 +38,7 @@ you will have 2 tasks running at the same time:
 - the Python server
 - the [rollup](https://rollupjs.org/guide/en/) watcher pointing to the configured `.js` file and ready to re-bundle
 
-**You can now go to http://127.0.0.1:33333 and see the app running.**
+**You can now go to http://127.0.0.1:9666 and see the app running.**
 
 You can edit `.css` and `.js` files and simply refresh the page to see your new and surely awesome code directly in the app 😉
 

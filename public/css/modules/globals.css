@@ -83,6 +83,11 @@ i.disabled {
 	opacity: 0.5;
 }
 
+i.explicit_icon {
+	color: #FF3B30;
+	margin-right: var(--explicit-separator);
+}
+
 span.tag {
 	background-color: var(--tag-background);
 	border-radius: 2px;

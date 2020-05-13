@@ -120,7 +120,10 @@
 															<td style="width: 48px; text-align: center;"><img class="rounded coverart"
 																	:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
 															</td>
-															<td class="breakline">{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}</td>
+															<td class="breakline inline-flex">
+																<i v-if="track.EXPLICIT_LYRICS == 1" class="material-icons explicit_icon">explicit</i>
+																{{track.SNG_TITLE + (track.VERSION ? ' '+track.VERSION : '')}}
+															</td>
 															<td class="breakline"><span class="clickable" @click="artistView" :data-id="artist.ART_ID"
 																	v-for="artist in track.ARTISTS">{{artist.ART_NAME}} </span>
 															</td>
@@ -158,7 +161,10 @@
 																@click.stop="addToQueue" :data-link="'https://deezer.com/album/'+release.ALB_ID"
 																class="download_overlay"><i class="material-icons">get_app</i></div>
 														</div>
-														<p class="primary-text">{{release.ALB_TITLE}}</p>
+														<p class="primary-text inline-flex">
+															<i v-if="release.EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS == 1" class="material-icons explicit_icon">explicit</i>
+															{{release.ALB_TITLE}}
+														</p>
 														<p class="secondary-text">{{release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks'}}</p>
 													</div>
 												</div>
@@ -208,7 +214,8 @@
 															class="material-icons preview_controls">play_arrow</i><img class="rounded coverart"
 															:src="track.album.cover_small">
 												</td>
-												<td class="breakline">
+												<td class="breakline inline-flex">
+													<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
 													{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
 												</td>
 												<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
@@ -240,7 +247,10 @@
 														@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 															class="material-icons">get_app</i></div>
 												</div>
-												<p class="primary-text">{{ release.title }}</p>
+												<p class="primary-text inline-flex">
+													<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
+													{{ release.title }}
+												</p>
 												<p class="secondary-text">{{ 'by '+release.artist.name+' - '+release.nb_tracks+' tracks' }}</p>
 											</div>
 										</div>
@@ -1009,8 +1019,7 @@
 										<td class="inline-flex clickable" @click="albumView" :data-id="release.id">
 											<img class="rounded coverart" :src="release.cover_small"
 												style="margin-right: 16px; width: 56px; height: 56px;" />
-											<i v-if="release.explicit_lyrics" class="material-icons" data-tooltip="Explicit"
-												style="color:#FF3B30;">explicit</i>
+											<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
 											{{release.title}}
 											<i v-if="checkNewRelease(release.release_date)" class="material-icons"
 												style="color:#FF7300;">fiber_new</i>
@@ -1057,7 +1066,7 @@
 													<i v-else class="material-icons disabled">play_arrow</i>
 												</td>
 												<td class="track_position">{{ track.track_position }}</td>
-												<td>
+												<td class="inline-flex">
 													<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
 													{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
 												</td>
@@ -1083,8 +1092,9 @@
 												<i v-else class="material-icons disabled">play_arrow</i>
 											</td>
 											<td>{{ i+1 }}</td>
-											<td class="inline-flex"><i v-if="track.explicit"
-													class="material-icons">explicit</i>{{ track.name }}
+											<td class="inline-flex">
+												<i v-if="track.explicit" class="material-icons explicit_icon">explicit</i>
+												{{ track.name }}
 											</td>
 											<td>{{ track.artists[0].name }}</td>
 											<td>{{ track.album.name }}</td>

@@ -38,6 +38,17 @@ html[data-theme='dark'] {
 	--accent-text: #dfdfdf;
 }
 
+html[data-theme='purple'] {
+	--main-background: #0c041b;
+	--secondary-background: #130a29;
+	--main-text: #eeeeee;
+	--accent-color: #460ead;
+	--main-text-inverted: #100822;
+	--panels-background: #100727;
+	--panels-text: #ffffff;
+	--accent-text: #dfdfdf;
+}
+
 body {
 	margin: 0px;
 	width: 100%;

@@ -540,12 +540,12 @@
 							<footer>
 								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="comparePlaylists"
 									:data-link="selectedLinksNative()">compare (native) selection<i class="material-icons">compare</i></button>
-								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="comparePlaylists"
-									:data-link="selectedLinks()">compare selection<i class="material-icons">compare</i></button>
+								<!-- <button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="comparePlaylists"
+									:data-link="selectedLinks()">compare selection<i class="material-icons">compare</i></button> -->
 								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="mergePlaylists"
-									:data-link="selectedLinks()">merge selection<i class="material-icons">call_merge</i></button>
-								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="addToBucket"
-									:data-link="selectedLinks()">add selection to bucket<i class="material-icons">archive</i></button>
+									:data-link="selectedLinksNative()">merge (native) selection<i class="material-icons">call_merge</i></button>
+								<!-- <button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="addToBucket"
+									:data-link="selectedLinks()">add selection to bucket<i class="material-icons">archive</i></button> -->
 							</footer>
 						</div>
 

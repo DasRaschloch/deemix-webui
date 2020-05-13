@@ -162,7 +162,7 @@
 																class="download_overlay"><i class="material-icons">get_app</i></div>
 														</div>
 														<p class="primary-text inline-flex">
-															<i v-if="release.EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS == 1" class="material-icons explicit_icon">explicit</i>
+															<i v-if="[1, 4].indexOf(release.EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS) != -1" class="material-icons explicit_icon">explicit</i>
 															{{release.ALB_TITLE}}
 														</p>
 														<p class="secondary-text">{{release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks'}}</p>

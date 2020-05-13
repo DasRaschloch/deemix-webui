@@ -1,11 +1,9 @@
 import ArtistTab from './components/artist-tab.js'
 import TracklistTab from './components/tracklist-tab.js'
-import SpotifyTracklistTab from './components/spotify-tracklist-tab.js'
 import LinkAnalyzerTab from './components/link-analyzer-tab.js'
 import HomeTab from './components/home-tab.js'
 import ChartsTab from './components/charts-tab.js'
 import FavoritesTab from './components/favorites-tab.js'
-import SpotifyTab from './components/spotify-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './components/settings-tab.js'
 import MainSearch from './components/main-search.js'
@@ -56,13 +54,6 @@ export function spotifyPlaylistView(ev) {
 	showTab('spotifyplaylist', id)
 }
 
-export function spotifyTracklistResultView(ev) {
-	let id = ev.currentTarget.dataset.id
-	SpotifyTracklistTab.reset()
-	//socket.emit('getTracklist', { type: 'spotifyplaylist', id: id })
-	showTab('spotifytracklistresult', id)
-}
-
 function analyzeLink(link) {
 	console.log('Analyzing: ' + link)
 	LinkAnalyzerTab.reset()
@@ -72,7 +63,6 @@ function analyzeLink(link) {
 function linkListeners() {
 	document.getElementById('search_tab').addEventListener('click', handleSearchTabClick)
 	document.getElementById('favorites_tab').addEventListener('click', handleFavoritesTabClick)
-	document.getElementById('spotify_tab').addEventListener('click', handleSpotifyTabClick)
 	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
 
 	const backButtons = Array.from(document.getElementsByClassName('back-button'))
@@ -110,9 +100,6 @@ function handleSidebarClick(event) {
 		case 'main_favorites_tablink':
 			changeTab(sidebarEl, 'main', 'favorites_tab')
 			break
-		case 'main_spotify_tablink':
-			changeTab(sidebarEl, 'main', 'spotify_tab')
-			break
 		case 'main_analyzer_tablink':
 			changeTab(sidebarEl, 'main', 'analyzer_tab')
 			break
@@ -147,32 +134,6 @@ function handleSearchTabClick(event) {
 		case 'search_playlist_tab':
 			changeTab(event.target, 'search', 'playlist_search')
 			break
-
-		default:
-			break
-	}
-}
-
-function handleSpotifyTabClick(event) {
-	let targetID = event.target.id
-	let id = event.currentTarget.dataset.id
-	switch (targetID) {
-		case 'spotify_playlist_tab':
-			changeTab(event.target, 'spotify', 'playlist_spotify')
-			break
-		case 'spotify_result_tab':
-			showTab('spotifytracklistresult', id)
-			//changeTab(event.target, 'spotify', 'album_favorites') // TODO
-			break
-		// case 'favorites_album_tab':
-		// 	changeTab(event.target, 'favorites', 'album_favorites')
-		// 	break
-		// case 'favorites_artist_tab':
-		// 	changeTab(event.target, 'favorites', 'artist_favorites')
-		// 	break
-		// case 'favorites_track_tab':
-		// 	changeTab(event.target, 'favorites', 'track_favorites')
-		// 	break
 
 		default:
 			break
@@ -249,10 +210,6 @@ function showTab(type, id, back = false) {
 	}
 
 	window.tab = type == 'artist' ? 'artist_tab' : 'tracklist_tab'
-
-	if (type == 'spotifytracklistresult') {
-		window.tab = 'spotifytracklist_tab'
-	}
 
 	currentStack = { type: type, id: id }
 	let tabcontent = document.getElementsByClassName('main_tabcontent')

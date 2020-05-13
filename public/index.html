@@ -43,6 +43,10 @@
 				<i class="material-icons side_icon">album</i>
 				<span class="main_tablinks_text">Favorites</span>
 			</span>
+			<span id="main_spotify_tablink" class="main_tablinks" role="link" aria-label="spotify">
+				<i class="material-icons side_icon">extension</i>
+				<span class="main_tablinks_text">Spotify</span>
+			</span>
 			<span id="main_analyzer_tablink" class="main_tablinks" role="link" aria-label="link analyzer">
 				<i class="material-icons side_icon">link</i>
 				<span class="main_tablinks_text">Link
@@ -482,6 +486,67 @@
 									</tr>
 								</table>
 							</div>
+						</div>
+
+						<div id="spotify_tab" class="main_tabcontent">
+							<h1>Spotify</h1>
+							<div class="tab">
+								<button class="spotify_tablinks" id="spotify_playlist_tab">Playlists</button>
+								<button class="spotify_tablinks" id="spotify_result_tab">Result</button>
+							</div>
+							<div id="playlist_spotify" class="spotify_tabcontent">
+								<div v-if="spotifyNativePlaylists.length == 0">
+									<h1>No (native) Playlists found</h1>
+								</div>
+								<div v-else>
+									<h1>native Spotify Playlists</h1>
+									<table>
+										<tr>
+											<th>compare</th>
+											<th>title</th>
+											<th>tracks</th>
+											<th>id</th>
+										</tr>
+										<tr v-for="cPlaylist in spotifyNativePlaylists" :key="cPlaylist.uri">
+											<td><input class="playlistCheckbox" type="checkbox" v-model="cPlaylist.selected"></td>
+											<td>{{cPlaylist.name}}</td>
+											<td>{{cPlaylist.tracks.total}}</td>
+											<td class="clickable" @click="spotifyPlaylistView" :data-id="cPlaylist.id">{{cPlaylist.id}}</td>
+										</tr>
+									</table>
+								</div>
+								<div v-if="spotifyPlaylists.length == 0">
+									<h1>No Playlists found</h1>
+								</div>
+								<div v-else>
+									<table>
+										<tr>
+											<th>compare</th>
+											<th>title</th>
+											<th>creator</th>
+											<th>tracks</th>
+											<th>id</th>
+										</tr>
+										<tr v-for="release in spotifyPlaylists">
+											<td><input class="playlistCheckbox" type="checkbox" v-model="release.selected"></td>
+											<td>{{release.title}}</td>
+											<td>{{release.creator.name}}</td>
+											<td>{{release.nb_tracks}}</td>
+											<td class="clickable" @click="spotifyPlaylistView" :data-id="release.id">{{release.id}}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<footer>
+								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="comparePlaylists"
+									:data-link="selectedLinksNative()">compare (native) selection<i class="material-icons">compare</i></button>
+								<!-- <button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="comparePlaylists"
+									:data-link="selectedLinks()">compare selection<i class="material-icons">compare</i></button> -->
+								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="mergePlaylists"
+									:data-link="selectedLinksNative()">merge (native) selection<i class="material-icons">call_merge</i></button>
+								<!-- <button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="addToBucket"
+									:data-link="selectedLinks()">add selection to bucket<i class="material-icons">archive</i></button> -->
+							</footer>
 						</div>
 
 						<div id="analyzer_tab" class="main_tabcontent image_header">
@@ -1090,6 +1155,125 @@
 											<td>{{ track.album.name }}</td>
 											<td>{{ convertDuration(Math.floor(track.duration_ms/1000)) }}</td>
 											<td><input class="track_checkbox" type="checkbox" v-model="track.selected"></td>
+										</tr>
+									</template>
+								</tbody>
+							</table>
+							<span v-if="label"
+								style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
+							<footer>
+								<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="link">Download
+									{{ type }}</button>
+								<button class="with_icon" @contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
+									:data-link="selectedLinks()">Download selection<i class="material-icons">file_download</i></button>
+								<button class="back-button">Back</button>
+							</footer>
+						</div>
+
+						<div id="spotifytracklist_tab" class="main_tabcontent fixed_footer image_header">
+							<header
+								:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
+								<h1 class="inline-flex">{{ title }} <i v-if="explicit" class="material-icons">explicit</i></h1>
+								<h2 class="inline-flex"><span v-if="metadata">{{ metadata }}</span><span class="right"
+										v-if="release_date">{{ release_date }}</span></h2>
+							</header>
+							<div v-if="includedPlaylists.length == 0">
+								<h1>No included Playlist found</h1>
+							</div>
+							<div v-else>
+								<div>
+									<h1>Options</h1>
+									<span><input class="playlistCheckbox" type="checkbox" v-model="showTracksInSinglePlaylistOnly">showTracksInSinglePlaylistOnly</span>
+									<span><input class="playlistCheckbox" type="checkbox" v-model="hideTrackIfNoPlaylistSelected">hideTrackIfNoPlaylistSelected</span>
+									<span><input class="playlistCheckbox" type="checkbox" v-model="showTracksInMultiplePlaylistOnly">showTracksInMultiplePlaylistOnly</span>
+								</div>
+								<table>
+									<thead>
+										<tr>
+											<th>include</th>
+											<th>name</th>
+											<th>owner</th>
+											<th>tracks</th>
+											<th>id</th>
+											<th>uri</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr v-for="playlist in includedPlaylists">
+											<td><input class="playlistCheckbox" type="checkbox" v-model="playlist.selected"></td>
+											<td><span>{{playlist.name}}</span></td>
+											<td>
+												<span v-for="owner in playlist.owner">
+													{{owner.display_name}}<br />
+												</span>
+											</td>
+											<td><span>{{playlist.numTracks}}</span></td>
+											<td class="clickable" @click="spotifyPlaylistView" :data-id="playlist.id">{{playlist.id}}</td>
+											<td class="clickable" @click="spotifyPlaylistView" :data-id="playlist.uri">{{playlist.uri}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<table>
+								<thead>
+									<tr>
+										<th style="width: 32px">DL<input @click="toggleAll" class="selectAll" type="checkbox"></th>
+										<th v-for="data in head" v-html="data.title" :style="{ 'width': data.width ? data.width : 'auto'}">
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<template v-if="type!='Spotify Playlist'">
+										<template v-for="track in body">
+											<tr v-if="track.type == 'track'">
+												<td><i @click=playPausePreview
+														:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
+														:data-preview="track.preview">play_arrow</i></td>
+												<td>{{ track.track_position }}</td>
+												<td class="inline-flex"><i v-if="track.explicit_lyrics"
+														class="material-icons">explicit</i>{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+												</td>
+												<td class="clickable" @click="artistView" :data-id="track.artist.id">
+													{{ track.artist.name }}</td>
+												<td class="clickable" v-if="type == 'Playlist'" @click="albumView" :data-id="track.album.id">
+													{{ track.album.title }}</td>
+												<td>{{ convertDuration(track.duration) }}</td>
+												<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+											</tr>
+											<tr v-else-if="track.type == 'disc_separator'">
+												<td colspan="6" style="opacity: 0.54;"><i class="material-icons">album</i>{{ track.number }}</td>
+											</tr>
+										</template>
+									</template>
+									<template v-else>
+										<tr v-for="(track, i) in body">
+											<template v-if="(!hideTrackIfNoPlaylistSelected || trackInVisiblePlaylist(track)) &&
+															(!showTracksInSinglePlaylistOnly || (!trackInMoreThanOnePlaylist(track) && showTracksInSinglePlaylistOnly)) &&
+															(!showTracksInMultiplePlaylistOnly || (trackInMoreThanOnePlaylist(track) && showTracksInMultiplePlaylistOnly))">
+												
+											<!-- <template v-for="pl in track.inPlaylists">
+												<template v-if="includedPlaylists.includes(pl)">
+													<template v-if="includedPlaylists[includedPlaylists.indexOf(pl)].selected"> -->
+														<td><input class="trackCheckbox" type="checkbox" v-model="track.selected"></td>
+														<td><i @click=playPausePreview
+																:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
+																:data-preview="track.preview_url">play_arrow</i></td>
+														<td>{{ i+1 }}</td>
+														<td class="inline-flex"><i v-if="track.explicit" class="material-icons">explicit</i>{{ track.name }}
+														</td>
+														<td v-for="artist in track.artists">
+															{{ artist.name }}<br />
+														</td>
+														<td>{{ track.album.name }}</td>
+														<td>{{ convertDuration(Math.floor(track.duration_ms/1000)) }}</td>
+														<td v-for="playlistId in track.inPlaylists">
+															<input class="trackCheckbox" type="checkbox" v-model="getPlaylistObj(playlistId).selected">{{ getPlaylistObj(playlistId).name }}<br />
+														</td>
+													<!-- </template>
+												</template>
+											</template> -->
+												
+											</template>
 										</tr>
 									</template>
 								</tbody>

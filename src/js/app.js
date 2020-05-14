@@ -18,6 +18,11 @@ socket.on('logging_in', function () {
 	toast('Logging in', 'loading', false, 'login-toast')
 })
 
+socket.on('init_autologin', function() {
+	let arl = localStorage.getItem('arl')
+	if (arl) socket.emit('login', arl)
+})
+
 socket.on('logged_in', function (data) {
 	switch (data.status) {
 		case 1:
@@ -96,7 +101,6 @@ function startApp() {
 	if (localStorage.getItem('arl')) {
 		let arl = localStorage.getItem('arl')
 
-		socket.emit('login', arl)
 		$('#login_input_arl').val(arl)
 		document.getElementById('home_not_logged_in').classList.add('hide')
 	}

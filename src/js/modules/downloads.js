@@ -100,37 +100,40 @@ function sendAddToQueue(url, bitrate = null) {
 function addToQueue(queueItem, current = false) {
 	queueList[queueItem.uuid] = queueItem
 	if (queueItem.downloaded + queueItem.failed == queueItem.size) {
-		queueComplete.push(queueItem.uuid)
+		if (queueComplete.indexOf(queueItem.uuid) == -1) queueComplete.push(queueItem.uuid)
 	} else {
-		queue.push(queueItem.uuid)
+		if (queue.indexOf(queueItem.uuid) == -1) queue.push(queueItem.uuid)
 	}
-	$(listEl).append(
-		`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
-		<div class="download_info">
-			<img width="75px" class="rounded coverart" src="${queueItem.cover}" alt="Cover ${queueItem.title}"/>
-			<div class="download_info_data">
-				<span class="download_line">${queueItem.title}</span> <span class="download_slim_separator"> - </span>
-				<span class="secondary-text">${queueItem.artist}</span>
+	let queueDOM = document.getElementById("download_"+queueItem.uuid)
+	if (typeof(queueDOM) == 'undefined' || queueDOM == null){
+		$(listEl).append(
+			`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
+			<div class="download_info">
+				<img width="75px" class="rounded coverart" src="${queueItem.cover}" alt="Cover ${queueItem.title}"/>
+				<div class="download_info_data">
+					<span class="download_line">${queueItem.title}</span> <span class="download_slim_separator"> - </span>
+					<span class="secondary-text">${queueItem.artist}</span>
+				</div>
+				<div class="download_info_status">
+					<span class="download_line"><span class="queue_downloaded">${queueItem.downloaded + queueItem.failed}</span>/${
+				queueItem.size
+			}</span>
+				</div>
 			</div>
-			<div class="download_info_status">
-				<span class="download_line"><span class="queue_downloaded">${queueItem.downloaded + queueItem.failed}</span>/${
-			queueItem.size
-		}</span>
+			<div class="download_bar">
+				<div class="progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
+				<i class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
 			</div>
-		</div>
-		<div class="download_bar">
-			<div class="progress"><div id="bar_${queueItem.uuid}" class="indeterminate"></div></div>
-			<i class="material-icons queue_icon" data-uuid="${queueItem.uuid}">remove</i>
-		</div>
-	</div>`
-	)
+		</div>`
+		)
+	}
 	if (queueItem.progress > 0 || current) {
 		$('#bar_' + queueItem.uuid)
 			.removeClass('indeterminate')
 			.addClass('determinate')
 	}
 	$('#bar_' + queueItem.uuid).css('width', queueItem.progress + '%')
-	if (queueItem.failed >= 1) {
+	if (queueItem.failed >= 1 && $('#download_' + update.uuid + ' .queue_failed').length == 0) {
 		$('#download_' + queueItem.uuid + ' .download_info_status').append(
 			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
 		)
@@ -283,7 +286,7 @@ function updateQueue(update) {
 			$('#download_' + update.uuid + ' .queue_downloaded').text(
 				queueList[update.uuid].downloaded + queueList[update.uuid].failed
 			)
-			if (queueList[update.uuid].failed == 1) {
+			if (queueList[update.uuid].failed == 1 && $('#download_' + update.uuid + ' .queue_failed').length == 0) {
 				$('#download_' + update.uuid + ' .download_info_status').append(
 					`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
 				)

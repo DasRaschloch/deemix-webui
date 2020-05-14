@@ -25,26 +25,30 @@ function handleContentScroll(event) {
 }
 
 function handleSearchBarKeyup(e) {
-	if (e.keyCode == 13) {
-		let term = this.value
-		if (Utils.isValidURL(term)) {
-			if (e.ctrlKey) {
-				QualityModal.open(term)
-			} else {
-				if (window.main_selected == 'analyzer_tab') {
-					Tabs.analyzeLink(term)
-				} else {
-					Downloads.sendAddToQueue(term)
-				}
-			}
+	// Enter key
+	if (e.keyCode !== 13) return
+
+	let term = this.value
+
+	if (Utils.isValidURL(term)) {
+		if (e.ctrlKey) {
+			QualityModal.open(term)
 		} else {
-			if (term != MainSearch.query || main_selected == 'search_tab') {
-				document.getElementById('search_tab_content').style.display = 'none'
-				socket.emit('mainSearch', { term: term })
+			if (window.main_selected == 'analyzer_tab') {
+				Tabs.analyzeLink(term)
 			} else {
-				document.getElementById('search_tab_content').style.display = 'block'
-				document.getElementById('main_search_tablink').click()
+				Downloads.sendAddToQueue(term)
 			}
+		}
+	} else {
+		if (term === '') return
+
+		if (term !== MainSearch.results.query || main_selected == 'search_tab') {
+			document.getElementById('search_tab_content').style.display = 'none'
+			socket.emit('mainSearch', { term: term })
+		} else {
+			document.getElementById('search_tab_content').style.display = 'block'
+			document.getElementById('main_search_tablink').click()
 		}
 	}
 }

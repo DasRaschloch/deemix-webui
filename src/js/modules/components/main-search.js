@@ -90,6 +90,7 @@ const MainSearch = new Vue({
 		numberWithDots: Utils.numberWithDots,
 		convertDuration: Utils.convertDuration,
 		search(type) {
+			console.log('searcho')
 			socket.emit('search', {
 				term: this.results.query,
 				type: type,

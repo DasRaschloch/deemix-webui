@@ -67,13 +67,19 @@
 		</aside>
 		<main id="main_content">
 			<div id="middle_section">
-				<header id="search"><input id="searchbar" autocomplete="off" type="text" name="searchbar" value=""
-						placeholder="Search..." autofocus></header>
+				<header id="search">
+					<input id="searchbar" autocomplete="off" type="text" name="searchbar" value="" placeholder="Search..."
+						autofocus>
+				</header>
 				<section id="content">
 					<div id="container">
 						<div id="search_tab" class="main_tabcontent">
 							<div :class="{'hide': results.query != ''}">
 								<h2>Start searching!</h2>
+								<p>
+									You can search a track, a whole album, an artist, a plylist.... everything! You can also paste a
+									Deezer link
+								</p>
 							</div>
 							<div :class="{'hide': results.query == ''}">
 								<div class="tab">

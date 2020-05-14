@@ -30,6 +30,8 @@ const ChartsTab = new Vue({
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		getTrackList(e) {
+			document.getElementById('content').scrollTo(0, 0)
+
 			this.country = e.currentTarget.dataset.title
 			localStorage.setItem('chart', this.country)
 			this.id = e.currentTarget.dataset.id

@@ -8,16 +8,9 @@
 html {
 	height: 100vh;
 
-	--main-background: #ffffff;
-	--secondary-background: #eeeeee;
-	--main-text: #333333;
-	--main-text-inverted: #eeeeee;
 	--main-scroll: #555;
-	--panels-background: #222324;
-	--panels-text: #ffffff;
 	--panels-scroll: #2a2c2c;
 	--accent-color: #0a84ff;
-	--accent-text: #ffffff;
 	--tag-background: #0062c4;
 	--tag-text: #ffffff;
 	--toast-background: #000000dd;
@@ -26,6 +19,16 @@ html {
 	--separator: #8f8f8f;
 
 	--explicit-separator: 0.3125em;
+}
+
+html[data-theme='light'] {
+	--main-background: #ffffff;
+	--secondary-background: #eeeeee;
+	--main-text: #333333;
+	--main-text-inverted: #eeeeee;
+	--panels-background: #222324;
+	--panels-text: #ffffff;
+	--accent-text: #ffffff;
 }
 
 html[data-theme='dark'] {

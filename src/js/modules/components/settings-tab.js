@@ -11,20 +11,9 @@ const SettingsTab = new Vue({
 		defaultSettings: {},
 		lastUser: '',
 		spotifyUser: '',
-		darkMode: false,
 		slimDownloads: false
 	}),
 	computed: {
-		changeDarkMode: {
-			get() {
-				return this.darkMode
-			},
-			set(wantDarkMode) {
-				this.darkMode = wantDarkMode
-				document.documentElement.setAttribute('data-theme', wantDarkMode ? 'dark' : 'default')
-				localStorage.setItem('darkMode', wantDarkMode)
-			}
-		},
 		changeSlimDownloads: {
 			get() {
 				return this.slimDownloads
@@ -60,7 +49,6 @@ const SettingsTab = new Vue({
 			}
 
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
-			console.log(this.darkMode)
 		},
 		loadSettings(settings, spotifyCredentials, defaults = null) {
 			if (defaults) {
@@ -104,7 +92,6 @@ const SettingsTab = new Vue({
 			this.spotifyUser = spotyUser
 		}
 
-		this.changeDarkMode = 'true' === localStorage.getItem('darkMode')
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
 	}
 }).$mount('#settings_tab')

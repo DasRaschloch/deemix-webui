@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="default">
+<html lang="en" dir="ltr" data-theme="light">
 
 	<head>
 		<meta charset="utf-8">
@@ -9,8 +9,8 @@
 		<meta name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
 		<script>
-			if ('true' === localStorage.getItem('darkMode')) {
-				document.documentElement.setAttribute('data-theme', 'dark')
+			if (localStorage.getItem('selectedTheme')) {
+				document.documentElement.setAttribute('data-theme', localStorage.getItem('selectedTheme'))
 			}
 		</script>
 	</head>
@@ -57,10 +57,11 @@
 				<span class="main_tablinks_text">Info</span>
 			</span>
 			<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
-				<i class="material-icons side_icon theme_selector_icon">brightness_3</i>
+				<i class="material-icons side_icon side_icon--theme">palette</i>
 				<div id="theme_togglers">
-					<div id="dark" class="theme_toggler"></div>
-					<div id="light" class="theme_toggler active"></div>
+					<div class="theme_toggler" data-theme-variant="purple"></div>
+					<div class="theme_toggler" data-theme-variant="dark"></div>
+					<div class="theme_toggler theme_toggler--active" data-theme-variant="light"></div>
 				</div>
 			</span>
 		</aside>
@@ -162,7 +163,8 @@
 																class="download_overlay"><i class="material-icons">get_app</i></div>
 														</div>
 														<p class="primary-text inline-flex">
-															<i v-if="[1, 4].indexOf(release.EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS) != -1" class="material-icons explicit_icon">explicit</i>
+															<i v-if="[1, 4].indexOf(release.EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS) != -1"
+																class="material-icons explicit_icon">explicit</i>
 															{{release.ALB_TITLE}}
 														</p>
 														<p class="secondary-text">{{release.ART_NAME+' - '+release.NUMBER_TRACK+' tracks'}}</p>

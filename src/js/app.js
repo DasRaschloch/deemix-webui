@@ -18,7 +18,7 @@ socket.on('logging_in', function () {
 	toast('Logging in', 'loading', false, 'login-toast')
 })
 
-socket.on('init_autologin', function() {
+socket.on('init_autologin', function () {
 	let arl = localStorage.getItem('arl')
 	if (arl) socket.emit('login', arl)
 })
@@ -87,14 +87,9 @@ socket.on('logged_out', function () {
 function startApp() {
 	Downloads.init()
 	QualityModal.init()
-	Tabs.linkListeners()
+	Tabs.init()
 	Search.linkListeners()
 	TrackPreview.init()
-
-	if ('true' === localStorage.getItem('darkMode')) {
-		document.querySelector('.theme_toggler.active').classList.remove('active')
-		document.querySelector('.theme_toggler#dark').classList.add('active')
-	}
 
 	document.getElementById('logged_in_info').classList.add('hide')
 

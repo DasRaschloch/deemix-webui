@@ -80,21 +80,21 @@ function linkListeners() {
  * @since		0.1.0
  */
 function handleSidebarClick(event) {
-	if (
-		!(
-			event.target.matches('.main_tablinks') ||
-			event.target.parentElement.matches('.main_tablinks') ||
-			event.target.parentElement.parentElement.matches('.main_tablinks')
-		)
-	)
-		return
+	const wantToChangeTab = event.target.matches('.main_tablinks') || event.target.parentElement.matches('.main_tablinks')
+	const wantToChangeTheme = event.target.matches('.theme_toggler')
 
-	let sidebarEl = event.target.matches('.main_tablinks')
-		? event.target
-		: event.target.parentElement.matches('.main_tablinks')
-		? event.target.parentElement
-		: event.target.parentElement.parentElement
-	let targetID = sidebarEl.id
+	if (!(wantToChangeTab || wantToChangeTheme)) return
+
+	let sidebarEl
+	let targetID
+
+	if (wantToChangeTab) {
+		sidebarEl = event.target.matches('.main_tablinks') ? event.target : event.target.parentElement
+		targetID = sidebarEl.id
+	} else {
+		sidebarEl = event.target
+		targetID = 'theme_toggler'
+	}
 
 	switch (targetID) {
 		case 'main_search_tablink':
@@ -118,13 +118,14 @@ function handleSidebarClick(event) {
 		case 'main_about_tablink':
 			changeTab(sidebarEl, 'main', 'about_tab')
 			break
-		case 'theme_selector':
-			if (!event.target.matches('.theme_toggler')) return
+		case 'theme_toggler':
+			document.querySelector('.theme_toggler--active').classList.remove('theme_toggler--active')
+			sidebarEl.classList.add('theme_toggler--active')
 
-			event.target.parentElement.querySelector('.theme_toggler.active').classList.remove('active')
-			event.target.classList.add('active')
+			let themeColor = sidebarEl.dataset.themeVariant
+			document.documentElement.setAttribute('data-theme', themeColor)
 
-			let wantDarkMode = event.target.id === 'dark'
+			localStorage.setItem('selectedTheme', themeColor)
 
 			document.querySelectorAll('*').forEach(el => {
 				el.style.transition = 'all 200ms ease-in-out'
@@ -137,9 +138,6 @@ function handleSidebarClick(event) {
 
 				document.documentElement.removeEventListener('transitionend', transitionHandler)
 			})
-
-			document.documentElement.setAttribute('data-theme', wantDarkMode ? 'dark' : 'default')
-			localStorage.setItem('darkMode', wantDarkMode)
 
 			break
 
@@ -270,8 +268,21 @@ function backTab() {
 	TrackPreview.stopStackedTabsPreview()
 }
 
+function init() {
+	let selectedTheme = localStorage.getItem('selectedTheme')
+
+	if (selectedTheme) {
+		document.querySelector('.theme_toggler--active').classList.remove('theme_toggler--active')
+		document
+			.querySelector(`.theme_toggler[data-theme-variant="${selectedTheme}"]`)
+			.classList.add('theme_toggler--active')
+	}
+
+	linkListeners()
+}
+
 export default {
-	linkListeners,
+	init,
 	artistView,
 	albumView,
 	playlistView,

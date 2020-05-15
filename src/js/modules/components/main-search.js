@@ -81,10 +81,10 @@ const MainSearch = new Vue({
 				document.getElementById(`search_${section.toLowerCase()}_tab`).click()
 			}
 		},
-		addToQueue: function (e) {
+		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
-		openQualityModal: function (e) {
+		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		numberWithDots: Utils.numberWithDots,

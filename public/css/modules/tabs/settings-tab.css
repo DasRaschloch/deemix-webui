@@ -36,7 +36,15 @@
 	padding: 6px 0px;
 }
 
-.settings_group {
+#spotify-icon {
+	width: 24px;
+	height: 24px;
+	fill: #1db954;
+	margin-right: 15px;
+}
+
+/* Settings group */
+.settings-group {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -45,10 +53,51 @@
 	padding-bottom: 20px;
 }
 
-.settings_group > * {
+.settings-group > * {
 	margin-bottom: 15px;
 }
 
+/* Settings group header */
+.settings-group__header {
+	font-size: 1.5rem;
+	margin-bottom: 25px;
+}
+
+.settings-group__header--with-icon {
+	display: inline-flex;
+	align-items: center;
+}
+
+.settings-group__header--with-icon i.material-icons {
+	margin-right: 15px;
+}
+
+/* Settings container */
+.settings-container {
+	display: flex;
+}
+
+.settings-container__half > *,
+.settings-container__third > * {
+	margin-bottom: 15px;
+}
+
+.settings-container__half {
+	width: 50%;
+}
+
+.settings-container__third {
+	width: 33%;
+}
+
+.settings-container__third--only-checkbox {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: start;
+}
+
+/* Input group */
 .input_group {
 	margin-bottom: 25px;
 }

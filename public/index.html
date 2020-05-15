@@ -581,19 +581,10 @@
 								<button id="settings_btn_logout" @click="logout">Logout</button>
 							</div>
 
-							<div class="settings_group">
-								<!-- <label class="with_checkbox">
-									<input type="checkbox" v-model="changeDarkMode">
-									<span class="checkbox_text">Dark Mode</span>
-								</label> -->
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="changeSlimDownloads">
-									<span class="checkbox_text">Slim download tab</span>
-								</label>
-							</div>
-
-							<div class="settings_group">
-								<h3>Login</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">person</i>Login
+								</h3>
 								<div class="inline-flex">
 									<input autocomplete="off" type="password" id="login_input_arl" ref="loginInput" placeholder="ARL" />
 									<button id="settings_btn_copyArl" @click="copyARLtoClipboard">
@@ -606,13 +597,27 @@
 								<button id="settings_btn_updateArl" @click="login" style="width:100%;">Update ARL</button>
 							</div>
 
-							<div class="settings_group">
-								<h3>Download Path</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">web</i>Appearance
+								</h3>
+								<label class="with_checkbox">
+									<input type="checkbox" v-model="changeSlimDownloads">
+									<span class="checkbox_text">Slim download tab</span>
+								</label>
+							</div>
+
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">folder</i>Download Path
+								</h3>
 								<input type="text" v-model="settings.downloadLocation">
 							</div>
 
-							<div class="settings_group">
-								<h3>Templates</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">font_download</i>Templates
+								</h3>
 
 								<p>Trackname template</p>
 								<input type="text" v-model="settings.tracknameTemplate">
@@ -624,37 +629,43 @@
 								<input type="text" v-model="settings.playlistTracknameTemplate">
 							</div>
 
-							<div class="settings_group">
-								<h3>Folders</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">create_new_folder</i>Folders
+								</h3>
+								<div class="settings-container">
+									<div class="settings-container__third">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.createPlaylistFolder">
+											<span class="checkbox_text">Create folder for playlist</span>
+										</label>
+										<div class="input_group" v-if="settings.createPlaylistFolder">
+											<p class="input_group_text">Playlist folder template</p>
+											<input type="text" v-model="settings.playlistNameTemplate">
+										</div>
+									</div>
+									<div class="settings-container__third">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.createArtistFolder">
+											<span class="checkbox_text">Create folder for artist</span>
+										</label>
 
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.createPlaylistFolder">
-									<span class="checkbox_text">Create folder for playlist</span>
-								</label>
+										<div class="input_group" v-if="settings.createArtistFolder">
+											<p class="input_group_text">Artist folder template</p>
+											<input type="text" v-model="settings.artistNameTemplate">
+										</div>
+									</div>
+									<div class="settings-container__third">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.createAlbumFolder">
+											<span class="checkbox_text">Create folder for album</span>
+										</label>
 
-								<div class="input_group" v-if="settings.createPlaylistFolder">
-									<p class="input_group_text">Playlist folder template</p>
-									<input type="text" v-model="settings.playlistNameTemplate">
-								</div>
-
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.createArtistFolder">
-									<span class="checkbox_text">Create folder for artist</span>
-								</label>
-
-								<div class="input_group" v-if="settings.createArtistFolder">
-									<p class="input_group_text">Artist folder template</p>
-									<input type="text" v-model="settings.artistNameTemplate">
-								</div>
-
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.createAlbumFolder">
-									<span class="checkbox_text">Create folder for album</span>
-								</label>
-
-								<div class="input_group" v-if="settings.createAlbumFolder">
-									<p class="input_group_text">Album folder template</p>
-									<input type="text" v-model="settings.albumNameTemplate">
+										<div class="input_group" v-if="settings.createAlbumFolder">
+											<p class="input_group_text">Album folder template</p>
+											<input type="text" v-model="settings.albumNameTemplate">
+										</div>
+									</div>
 								</div>
 
 								<label class="with_checkbox">
@@ -673,27 +684,37 @@
 								</label>
 							</div>
 
-							<div class="settings_group">
-								<h3>Track titles</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">title</i>Track titles
+								</h3>
 
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.padTracks">
-									<span class="checkbox_text">Pad tracks</span>
-								</label>
-
-								<div class="input_group">
-									<p class="input_group_text">Overwrite padding size</p>
-									<input type="number" v-model="settings.paddingSize">
-								</div>
-
-								<div class="input_group">
-									<p class="input_group_text">Illegal Character replacer</p>
-									<input type="text" v-model="settings.illegalCharacterReplacer">
+								<div class="settings-container">
+									<div class="settings-container__third settings-container__third--only-checkbox">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.padTracks">
+											<span class="checkbox_text">Pad tracks</span>
+										</label>
+									</div>
+									<div class="settings-container__third">
+										<div class="input_group">
+											<p class="input_group_text">Overwrite padding size</p>
+											<input type="number" v-model="settings.paddingSize">
+										</div>
+									</div>
+									<div class="settings-container__third">
+										<div class="input_group">
+											<p class="input_group_text">Illegal Character replacer</p>
+											<input type="text" v-model="settings.illegalCharacterReplacer">
+										</div>
+									</div>
 								</div>
 							</div>
 
-							<div class="settings_group">
-								<h3>Downloads</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">get_app</i>Downloads
+								</h3>
 
 								<div class="input_group">
 									<p class="input_group_text">Concurrent Downloads</p>
@@ -709,39 +730,47 @@
 									</select>
 								</div>
 
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.fallbackBitrate">
-									<span class="checkbox_text">Bitrate fallback</span>
-								</label>
+								<div class="settings-container">
+									<div class="settings-container__third settings-container__third--only-checkbox">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.fallbackBitrate">
+											<span class="checkbox_text">Bitrate fallback</span>
+										</label>
 
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.fallbackSearch">
-									<span class="checkbox_text">Search fallback</span>
-								</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.fallbackSearch">
+											<span class="checkbox_text">Search fallback</span>
+										</label>
+									</div>
+									<div class="settings-container__third settings-container__third--only-checkbox">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.logErrors">
+											<span class="checkbox_text">Create log file for errors</span>
+										</label>
 
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.logErrors">
-									<span class="checkbox_text">Create log file for errors</span>
-								</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.logSearched">
+											<span class="checkbox_text">Create log file for searched tracks</span>
+										</label>
+									</div>
+									<div class="settings-container__third settings-container__third--only-checkbox">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.createM3U8File">
+											<span class="checkbox_text">Create playlist file</span>
+										</label>
 
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.logSearched">
-									<span class="checkbox_text">Create log file for searched tracks</span>
-								</label>
-
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.createM3U8File">
-									<span class="checkbox_text">Create playlist file</span>
-								</label>
-
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.syncedLyrics">
-									<span class="checkbox_text">Create .lyr files (Sync Lyrics)</span>
-								</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.syncedLyrics">
+											<span class="checkbox_text">Create .lyr files (Sync Lyrics)</span>
+										</label>
+									</div>
+								</div>
 							</div>
 
-							<div class="settings_group">
-								<h3>Album covers</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">album</i>Album covers
+								</h3>
 
 								<label class="with_checkbox">
 									<input type="checkbox" v-model="settings.saveArtwork">
@@ -784,8 +813,116 @@
 								</div>
 							</div>
 
-							<div class="settings_group">
-								<h3>Other</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons" style="width: 1em; height: 1em;">bookmarks</i>Which tags to save
+								</h3>
+
+								<div class="settings-container">
+									<div class="settings-container__half">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.title">
+											<span class="checkbox_text">Title</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.artist">
+											<span class="checkbox_text">Artists</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.album">
+											<span class="checkbox_text">Album</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.cover">
+											<span class="checkbox_text">Cover</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.trackNumber">
+											<span class="checkbox_text">Track Number</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.trackTotal">
+											<span class="checkbox_text">Track Total</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.discNumber">
+											<span class="checkbox_text">Disc Number</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.discTotal">
+											<span class="checkbox_text">Disc Total</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.albumArtist">
+											<span class="checkbox_text">Album Artist</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.genre">
+											<span class="checkbox_text">Genre</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.year">
+											<span class="checkbox_text">Year</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.date">
+											<span class="checkbox_text">Date</span>
+										</label>
+									</div>
+
+									<div class="settings-container__half">
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.explicit">
+											<span class="checkbox_text">Explicit Lyrics</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.isrc">
+											<span class="checkbox_text">ISRC</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.length">
+											<span class="checkbox_text">Track Length</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.barcode">
+											<span class="checkbox_text">Album Barcode (UPC)</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.bpm">
+											<span class="checkbox_text">BPM</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.replayGain">
+											<span class="checkbox_text">Replay Gain</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.label">
+											<span class="checkbox_text">Album Label</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.lyrics">
+											<span class="checkbox_text">Unsynchronized Lyrics</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.copyright">
+											<span class="checkbox_text">Copyright</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.composer">
+											<span class="checkbox_text">Composer</span>
+										</label>
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.tags.involvedPeople">
+											<span class="checkbox_text">Involved People</span>
+										</label>
+									</div>
+								</div>
+							</div>
+
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<i class="material-icons">list</i>Other
+								</h3>
 
 								<label class="with_checkbox">
 									<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation">
@@ -871,104 +1008,15 @@
 								</div>
 							</div>
 
-							<div class="settings_group">
-								<h3>Which tags to save</h3>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.title">
-									<span class="checkbox_text">Title</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.artist">
-									<span class="checkbox_text">Artists</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.album">
-									<span class="checkbox_text">Album</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.cover">
-									<span class="checkbox_text">Cover</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.trackNumber">
-									<span class="checkbox_text">Track Number</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.trackTotal">
-									<span class="checkbox_text">Track Total</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.discNumber">
-									<span class="checkbox_text">Disc Number</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.discTotal">
-									<span class="checkbox_text">Disc Total</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.albumArtist">
-									<span class="checkbox_text">Album Artist</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.genre">
-									<span class="checkbox_text">Genre</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.year">
-									<span class="checkbox_text">Year</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.date">
-									<span class="checkbox_text">Date</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.explicit">
-									<span class="checkbox_text">Explicit Lyrics</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.isrc">
-									<span class="checkbox_text">ISRC</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.length">
-									<span class="checkbox_text">Track Length</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.barcode">
-									<span class="checkbox_text">Album Barcode (UPC)</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.bpm">
-									<span class="checkbox_text">BPM</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.replayGain">
-									<span class="checkbox_text">Replay Gain</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.label">
-									<span class="checkbox_text">Album Label</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.lyrics">
-									<span class="checkbox_text">Unsynchronized Lyrics</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.copyright">
-									<span class="checkbox_text">Copyright</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.composer">
-									<span class="checkbox_text">Composer</span>
-								</label>
-								<label class="with_checkbox">
-									<input type="checkbox" v-model="settings.tags.involvedPeople">
-									<span class="checkbox_text">Involved People</span>
-								</label>
-							</div>
-
-							<div class="settings_group">
-								<h3>Spotify Features</h3>
+							<div class="settings-group">
+								<h3 class="settings-group__header settings-group__header--with-icon">
+									<svg id="spotify-icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24"
+										xmlns="http://www.w3.org/2000/svg">
+										<path
+											d="m12 24c6.624 0 12-5.376 12-12s-5.376-12-12-12-12 5.376-12 12 5.376 12 12 12zm4.872-6.344v.001c-.807 0-3.356-2.828-10.52-1.36-.189.049-.436.126-.576.126-.915 0-1.09-1.369-.106-1.578 3.963-.875 8.013-.798 11.467 1.268.824.526.474 1.543-.265 1.543zm1.303-3.173c-.113-.03-.08.069-.597-.203-3.025-1.79-7.533-2.512-11.545-1.423-.232.063-.358.126-.576.126-1.071 0-1.355-1.611-.188-1.94 4.716-1.325 9.775-.552 13.297 1.543.392.232.547.533.547.953-.005.522-.411.944-.938.944zm-13.627-7.485c4.523-1.324 11.368-.906 15.624 1.578 1.091.629.662 2.22-.498 2.22l-.001-.001c-.252 0-.407-.063-.625-.189-3.443-2.056-9.604-2.549-13.59-1.436-.175.048-.393.125-.625.125-.639 0-1.127-.499-1.127-1.142 0-.657.407-1.029.842-1.155z" />
+									</svg>
+									Spotify Features
+								</h3>
 
 								<div class="input_group">
 									<p class="input_group_text">Spotify clientID</p>

@@ -11266,6 +11266,11 @@ function init() {
 	listEl = document.getElementById('download_list');
 	dragHandlerEl = document.getElementById('download_tab_drag_handler');
 
+	// Check if download tab has slim entries
+	if ('true' === localStorage.getItem('slimDownloads')) {
+		listEl.classList.add('slim');
+	}
+
 	// Check if download tab should be open
 	if ('true' === localStorage.getItem('downloadTabOpen')) {
 		tabContainerEl.classList.remove('tab_hidden');
@@ -11350,8 +11355,8 @@ function addToQueue(queueItem, current = false) {
 	} else {
 		if (queue.indexOf(queueItem.uuid) == -1) queue.push(queueItem.uuid);
 	}
-	let queueDOM = document.getElementById("download_"+queueItem.uuid);
-	if (typeof(queueDOM) == 'undefined' || queueDOM == null){
+	let queueDOM = document.getElementById('download_' + queueItem.uuid);
+	if (typeof queueDOM == 'undefined' || queueDOM == null) {
 		jquery(listEl).append(
 			`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
 			<div class="download_info">
@@ -41377,8 +41382,8 @@ const HomeTab = new Vue({
 		artistView,
 		albumView,
 		playlistView,
-		openSettings(e){
-			document.getElementById("main_settings_tablink").click();
+		openSettings(e) {
+			document.getElementById('main_settings_tablink').click();
 		},
 		addToQueue(e) {
 			e.stopPropagation();
@@ -41393,6 +41398,10 @@ const HomeTab = new Vue({
 		}
 	},
 	mounted() {
+		if (localStorage.getItem('arl')) {
+			this.$refs.notLogged.classList.add('hide');
+		}
+
 		socket.on('init_home', this.initHome);
 	}
 }).$mount('#home_tab');
@@ -41600,17 +41609,24 @@ const SettingsTab = new Vue({
 		}
 	},
 	mounted() {
-		socket.on('init_settings', this.initSettings);
-		socket.on('updateSettings', this.updateSettings);
+		this.$refs.loggedInInfo.classList.add('hide');
 
-		let spotyUser = localStorage.getItem('spotifyUser');
+		if (localStorage.getItem('arl')) {
+			this.$refs.loginInput.value = localStorage.getItem('arl');
+		}
 
-		if ('' !== spotyUser) {
-			this.lastUser = spotyUser;
-			this.spotifyUser = spotyUser;
+		let spotifyUser = localStorage.getItem('spotifyUser');
+
+		if (spotifyUser) {
+			this.lastUser = spotifyUser;
+			this.spotifyUser = spotifyUser;
+			socket.emit('update_userSpotifyPlaylists', spotifyUser);
 		}
 
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads');
+
+		socket.on('init_settings', this.initSettings);
+		socket.on('updateSettings', this.updateSettings);
 	}
 }).$mount('#settings_tab');
 
@@ -41843,6 +41859,7 @@ function handleSidebarClick(event) {
 			changeTab(sidebarEl, 'main', 'search_tab');
 			break
 		case 'main_home_tablink':
+			console.log('al laod', sidebarEl);
 			changeTab(sidebarEl, 'main', 'home_tab');
 			break
 		case 'main_charts_tablink':
@@ -42002,20 +42019,15 @@ function backTab() {
 }
 
 function init$3() {
-	let selectedTheme = localStorage.getItem('selectedTheme');
-
-	if (selectedTheme) {
-		document.querySelector('.theme_toggler--active').classList.remove('theme_toggler--active');
-		document
-			.querySelector(`.theme_toggler[data-theme-variant="${selectedTheme}"]`)
-			.classList.add('theme_toggler--active');
-	}
+	// Open default tab
+	changeTab(document.getElementById('main_home_tablink'), 'main', 'home_tab');
 
 	linkListeners$2();
 }
 
 var Tabs = {
 	init: init$3,
+	changeTab,
 	artistView,
 	albumView,
 	playlistView,
@@ -42073,6 +42085,39 @@ function handleSearchBarKeyup(e) {
 var Search = {
 	linkListeners: linkListeners$3
 };
+
+/* ===== App initialization ===== */
+
+function startApp() {
+	// Setting current theme
+	setUserTheme();
+
+	Downloads.init();
+	QualityModal$1.init();
+	Tabs.init();
+	Search.linkListeners();
+	TrackPreview.init();
+}
+
+document.addEventListener('DOMContentLoaded', startApp);
+
+/* ===== General functions ===== */
+
+/**
+ * Sets the current theme according to
+ * the localStorage saved theme.
+ * @since		0.1.6
+ */
+function setUserTheme() {
+	let selectedTheme = localStorage.getItem('selectedTheme');
+
+	if (selectedTheme) {
+		let activeClass = 'theme_toggler--active';
+
+		document.querySelector(`.${activeClass}`).classList.remove(activeClass);
+		document.querySelector(`.theme_toggler[data-theme-variant="${selectedTheme}"]`).classList.add(activeClass);
+	}
+}
 
 /* ===== Socketio listeners ===== */
 
@@ -42144,41 +42189,8 @@ socket.on('logged_out', function () {
 	jquery('#login_input_arl').val('');
 	jquery('#open_login_prompt').show();
 	document.getElementById('logged_in_info').classList.add('hide');
-	// $('#logged_in_info').hide()
 	jquery('#settings_username').text('Not Logged');
 	jquery('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`);
 	document.getElementById('home_not_logged_in').classList.remove('hide');
 });
-
-/* ===== App initialization ===== */
-function startApp() {
-	Downloads.init();
-	QualityModal$1.init();
-	Tabs.init();
-	Search.linkListeners();
-	TrackPreview.init();
-
-	document.getElementById('logged_in_info').classList.add('hide');
-
-	if (localStorage.getItem('arl')) {
-		let arl = localStorage.getItem('arl');
-
-		jquery('#login_input_arl').val(arl);
-		document.getElementById('home_not_logged_in').classList.add('hide');
-	}
-
-	if ('true' === localStorage.getItem('slimDownloads')) {
-		document.getElementById('download_list').classList.add('slim');
-	}
-
-	let spotifyUser = localStorage.getItem('spotifyUser');
-
-	if (spotifyUser != '') {
-		socket.emit('update_userSpotifyPlaylists', spotifyUser);
-	}
-	// Open default tab
-	document.getElementById('main_home_tablink').click();
-}
-
-document.addEventListener('DOMContentLoaded', startApp);
 //# sourceMappingURL=bundle.js.map

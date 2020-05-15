@@ -17,8 +17,8 @@ const HomeTab = new Vue({
 		artistView,
 		albumView,
 		playlistView,
-		openSettings(e){
-			document.getElementById("main_settings_tablink").click()
+		openSettings(e) {
+			document.getElementById('main_settings_tablink').click()
 		},
 		addToQueue(e) {
 			e.stopPropagation()
@@ -33,6 +33,10 @@ const HomeTab = new Vue({
 		}
 	},
 	mounted() {
+		if (localStorage.getItem('arl')) {
+			this.$refs.notLogged.classList.add('hide')
+		}
+
 		socket.on('init_home', this.initHome)
 	}
 }).$mount('#home_tab')

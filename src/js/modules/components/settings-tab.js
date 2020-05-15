@@ -82,17 +82,24 @@ const SettingsTab = new Vue({
 		}
 	},
 	mounted() {
-		socket.on('init_settings', this.initSettings)
-		socket.on('updateSettings', this.updateSettings)
+		this.$refs.loggedInInfo.classList.add('hide')
 
-		let spotyUser = localStorage.getItem('spotifyUser')
+		if (localStorage.getItem('arl')) {
+			this.$refs.loginInput.value = localStorage.getItem('arl')
+		}
 
-		if ('' !== spotyUser) {
-			this.lastUser = spotyUser
-			this.spotifyUser = spotyUser
+		let spotifyUser = localStorage.getItem('spotifyUser')
+
+		if (spotifyUser) {
+			this.lastUser = spotifyUser
+			this.spotifyUser = spotifyUser
+			socket.emit('update_userSpotifyPlaylists', spotifyUser)
 		}
 
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
+
+		socket.on('init_settings', this.initSettings)
+		socket.on('updateSettings', this.updateSettings)
 	}
 }).$mount('#settings_tab')
 

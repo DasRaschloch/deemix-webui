@@ -313,7 +313,7 @@
 
 						<div id="home_tab" class="main_tabcontent">
 							<h2 class="page_heading">Welcome to deemix</h2>
-							<section id="home_not_logged_in" class="home_section">
+							<section id="home_not_logged_in" class="home_section" ref="notLogged">
 								<p id="home_not_logged_text">You need to log into your deezer account before you can start downloading.
 								</p>
 								<button type="button" name="button" @click="openSettings">Open Settings</button>
@@ -575,7 +575,7 @@
 						<div id="settings_tab" class="main_tabcontent fixed_footer">
 							<h2 class="page_heading">Settings</h2>
 
-							<div id="logged_in_info">
+							<div id="logged_in_info" ref="loggedInInfo">
 								<img id="settings_picture" src="" alt="Profile Picture" class="circle" />
 								<p>You are logged in as <strong id="settings_username"></strong></p>
 								<button id="settings_btn_logout" @click="logout">Logout</button>

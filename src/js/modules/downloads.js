@@ -20,6 +20,11 @@ function init() {
 	listEl = document.getElementById('download_list')
 	dragHandlerEl = document.getElementById('download_tab_drag_handler')
 
+	// Check if download tab has slim entries
+	if ('true' === localStorage.getItem('slimDownloads')) {
+		listEl.classList.add('slim')
+	}
+
 	// Check if download tab should be open
 	if ('true' === localStorage.getItem('downloadTabOpen')) {
 		tabContainerEl.classList.remove('tab_hidden')
@@ -104,8 +109,8 @@ function addToQueue(queueItem, current = false) {
 	} else {
 		if (queue.indexOf(queueItem.uuid) == -1) queue.push(queueItem.uuid)
 	}
-	let queueDOM = document.getElementById("download_"+queueItem.uuid)
-	if (typeof(queueDOM) == 'undefined' || queueDOM == null){
+	let queueDOM = document.getElementById('download_' + queueItem.uuid)
+	if (typeof queueDOM == 'undefined' || queueDOM == null) {
 		$(listEl).append(
 			`<div class="download_object" id="download_${queueItem.uuid}" data-deezerid="${queueItem.id}">
 			<div class="download_info">

@@ -7,6 +7,39 @@ import Tabs from './modules/tabs.js'
 import Search from './modules/search.js'
 import TrackPreview from './modules/track-preview.js'
 
+/* ===== App initialization ===== */
+
+function startApp() {
+	// Setting current theme
+	setUserTheme()
+
+	Downloads.init()
+	QualityModal.init()
+	Tabs.init()
+	Search.linkListeners()
+	TrackPreview.init()
+}
+
+document.addEventListener('DOMContentLoaded', startApp)
+
+/* ===== General functions ===== */
+
+/**
+ * Sets the current theme according to
+ * the localStorage saved theme.
+ * @since		0.1.6
+ */
+function setUserTheme() {
+	let selectedTheme = localStorage.getItem('selectedTheme')
+
+	if (selectedTheme) {
+		let activeClass = 'theme_toggler--active'
+
+		document.querySelector(`.${activeClass}`).classList.remove(activeClass)
+		document.querySelector(`.theme_toggler[data-theme-variant="${selectedTheme}"]`).classList.add(activeClass)
+	}
+}
+
 /* ===== Socketio listeners ===== */
 
 // Debug messages for socketio
@@ -77,40 +110,7 @@ socket.on('logged_out', function () {
 	$('#login_input_arl').val('')
 	$('#open_login_prompt').show()
 	document.getElementById('logged_in_info').classList.add('hide')
-	// $('#logged_in_info').hide()
 	$('#settings_username').text('Not Logged')
 	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 	document.getElementById('home_not_logged_in').classList.remove('hide')
 })
-
-/* ===== App initialization ===== */
-function startApp() {
-	Downloads.init()
-	QualityModal.init()
-	Tabs.init()
-	Search.linkListeners()
-	TrackPreview.init()
-
-	document.getElementById('logged_in_info').classList.add('hide')
-
-	if (localStorage.getItem('arl')) {
-		let arl = localStorage.getItem('arl')
-
-		$('#login_input_arl').val(arl)
-		document.getElementById('home_not_logged_in').classList.add('hide')
-	}
-
-	if ('true' === localStorage.getItem('slimDownloads')) {
-		document.getElementById('download_list').classList.add('slim')
-	}
-
-	let spotifyUser = localStorage.getItem('spotifyUser')
-
-	if (spotifyUser != '') {
-		socket.emit('update_userSpotifyPlaylists', spotifyUser)
-	}
-	// Open default tab
-	document.getElementById('main_home_tablink').click()
-}
-
-document.addEventListener('DOMContentLoaded', startApp)

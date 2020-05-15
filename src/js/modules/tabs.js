@@ -101,6 +101,7 @@ function handleSidebarClick(event) {
 			changeTab(sidebarEl, 'main', 'search_tab')
 			break
 		case 'main_home_tablink':
+			console.log('al laod', sidebarEl)
 			changeTab(sidebarEl, 'main', 'home_tab')
 			break
 		case 'main_charts_tablink':
@@ -269,20 +270,15 @@ function backTab() {
 }
 
 function init() {
-	let selectedTheme = localStorage.getItem('selectedTheme')
-
-	if (selectedTheme) {
-		document.querySelector('.theme_toggler--active').classList.remove('theme_toggler--active')
-		document
-			.querySelector(`.theme_toggler[data-theme-variant="${selectedTheme}"]`)
-			.classList.add('theme_toggler--active')
-	}
+	// Open default tab
+	changeTab(document.getElementById('main_home_tablink'), 'main', 'home_tab')
 
 	linkListeners()
 }
 
 export default {
 	init,
+	changeTab,
 	artistView,
 	albumView,
 	playlistView,

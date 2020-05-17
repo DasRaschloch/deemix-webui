@@ -11384,7 +11384,7 @@ function addToQueue(queueItem, current = false) {
 			.addClass('determinate');
 	}
 	jquery('#bar_' + queueItem.uuid).css('width', queueItem.progress + '%');
-	if (queueItem.failed >= 1 && jquery('#download_' + update.uuid + ' .queue_failed').length == 0) {
+	if (queueItem.failed >= 1 && jquery('#download_' + queueItem.uuid + ' .queue_failed').length == 0) {
 		jquery('#download_' + queueItem.uuid + ' .download_info_status').append(
 			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
 		);

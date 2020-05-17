@@ -730,6 +730,15 @@
 									</select>
 								</div>
 
+								<div class="input_group">
+									<p class="input_group_text">Should I overwrite the files?</p>
+									<select v-model="settings.overwriteFile">
+										<option value="y">Yes, overwrite the file</option>
+										<option value="n">No, don't overwrite the file</option>
+										<option value="t">Overwrite only the tags</option>
+									</select>
+								</div>
+
 								<div class="settings-container">
 									<div class="settings-container__third settings-container__third--only-checkbox">
 										<label class="with_checkbox">
@@ -765,6 +774,10 @@
 										</label>
 									</div>
 								</div>
+								<label class="with_checkbox">
+									<input type="checkbox" v-model="settings.saveDownloadQueue">
+									<span class="checkbox_text">Save download queue when closing the app</span>
+								</label>
 							</div>
 
 							<div class="settings-group">

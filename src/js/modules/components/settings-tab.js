@@ -69,6 +69,9 @@ const SettingsTab = new Vue({
 		logout() {
 			socket.emit('logout')
 		},
+		applogin() {
+			if (window.clientMode) socket.emit('applogin')
+		},
 		initSettings(settings, credentials, defaults) {
 			this.loadSettings(settings, credentials, defaults)
 			toast('Settings loaded!', 'settings')

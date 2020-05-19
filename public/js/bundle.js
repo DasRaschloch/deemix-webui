@@ -11294,6 +11294,10 @@ function linkListeners() {
 		socket.emit('cancelAllDownloads');
 	});
 
+	document.getElementById('open_downloads_folder').addEventListener('click', ()=>{
+		if (window.clientMode) socket.emit('openDownloadsFolder');
+	});
+
 	dragHandlerEl.addEventListener('mousedown', event => {
 		event.preventDefault();
 
@@ -42098,8 +42102,13 @@ function startApp() {
 	Search.linkListeners();
 	TrackPreview.init();
 }
+function initClient(){
+	window.clientMode = true;
+	document.querySelector(`#open_downloads_folder`).classList.remove('hide');
+}
 
 document.addEventListener('DOMContentLoaded', startApp);
+window.addEventListener('pywebviewready', initClient);
 
 /* ===== General functions ===== */
 

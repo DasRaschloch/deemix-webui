@@ -19,8 +19,13 @@ function startApp() {
 	Search.linkListeners()
 	TrackPreview.init()
 }
+function initClient(){
+	window.clientMode = true
+	document.querySelector(`#open_downloads_folder`).classList.remove('hide')
+}
 
 document.addEventListener('DOMContentLoaded', startApp)
+window.addEventListener('pywebviewready', initClient)
 
 /* ===== General functions ===== */
 

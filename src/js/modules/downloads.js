@@ -48,6 +48,10 @@ function linkListeners() {
 		socket.emit('cancelAllDownloads')
 	})
 
+	document.getElementById('open_downloads_folder').addEventListener('click', ()=>{
+		if (window.clientMode) socket.emit('openDownloadsFolder')
+	})
+
 	dragHandlerEl.addEventListener('mousedown', event => {
 		event.preventDefault()
 

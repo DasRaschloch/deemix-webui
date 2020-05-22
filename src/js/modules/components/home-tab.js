@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { socket } from '../socket.js'
-import { artistView, albumView, playlistView } from '../tabs.js'
+import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
@@ -14,10 +14,10 @@ const HomeTab = new Vue({
 		}
 	},
 	methods: {
-		artistView,
-		albumView,
-		playlistView,
-		openSettings(e) {
+		artistView: showView.bind(null, 'artist'),
+		albumView: showView.bind(null, 'album'),
+		playlistView: showView.bind(null, 'playlist'),
+		openSettings() {
 			document.getElementById('main_settings_tablink').click()
 		},
 		addToQueue(e) {

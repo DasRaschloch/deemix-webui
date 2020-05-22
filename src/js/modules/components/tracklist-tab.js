@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import Vue from 'vue'
 import { socket } from '../socket.js'
-import { albumView, artistView } from '../tabs.js'
+import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
@@ -20,8 +20,8 @@ const TracklistTab = new Vue({
 		body: []
 	}),
 	methods: {
-		artistView,
-		albumView,
+		artistView: showView.bind(null, 'artist'),
+		albumView: showView.bind(null, 'album'),
 		playPausePreview: TrackPreview.playPausePreview,
 		reset() {
 			this.title = 'Loading...'

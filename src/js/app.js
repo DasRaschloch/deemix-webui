@@ -19,7 +19,8 @@ function startApp() {
 	Search.linkListeners()
 	TrackPreview.init()
 }
-function initClient(){
+
+function initClient() {
 	window.clientMode = true
 	document.querySelector(`#open_downloads_folder`).classList.remove('hide')
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { socket } from '../socket.js'
-import { albumView, artistView } from '../tabs.js'
+import { showView } from '../tabs.js'
 import Utils from '../utils.js'
 
 const LinkAnalyzerTab = new Vue({
@@ -16,8 +16,8 @@ const LinkAnalyzerTab = new Vue({
 		}
 	},
 	methods: {
-		albumView,
-		artistView,
+		artistView: showView.bind(null, 'artist'),
+		albumView: showView.bind(null, 'album'),
 		convertDuration: Utils.convertDuration,
 		reset() {
 			this.title = 'Loading...'
@@ -45,7 +45,6 @@ const LinkAnalyzerTab = new Vue({
 			this.data = data
 		},
 		showAlbum(data) {
-			console.log(data)
 			this.title = data.title
 			this.image = data.cover_xl
 			this.type = 'album'

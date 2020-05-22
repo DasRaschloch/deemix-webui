@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { socket } from '../socket.js'
-import { playlistView, artistView, albumView, spotifyPlaylistView } from '../tabs.js'
+import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
@@ -17,10 +17,10 @@ const FavoritesTab = new Vue({
 		}
 	},
 	methods: {
-		playlistView,
-		artistView,
-		albumView,
-		spotifyPlaylistView,
+		artistView: showView.bind(null, 'artist'),
+		albumView: showView.bind(null, 'album'),
+		playlistView: showView.bind(null, 'playlist'),
+		spotifyPlaylistView: showView.bind(null, 'spotifyplaylist'),
 		playPausePreview: TrackPreview.playPausePreview,
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
@@ -48,10 +48,12 @@ const FavoritesTab = new Vue({
 			this.tracks = data
 		},
 		initFavorites(data) {
-			this.tracks = data.tracks
-			this.albums = data.albums
-			this.artists = data.artists
-			this.playlists = data.playlists
+			const { tracks, albums, artists, playlists } = data
+
+			this.tracks = tracks
+			this.albums = albums
+			this.artists = artists
+			this.playlists = playlists
 			document.getElementById('favorites_playlist_tab').click()
 		}
 	},

@@ -48,10 +48,11 @@ function linkListeners() {
 		socket.emit('cancelAllDownloads')
 	})
 
-	document.getElementById('open_downloads_folder').addEventListener('click', ()=>{
+	document.getElementById('open_downloads_folder').addEventListener('click', () => {
 		if (window.clientMode) socket.emit('openDownloadsFolder')
 	})
 
+	// Downloads tab drag handling
 	dragHandlerEl.addEventListener('mousedown', event => {
 		event.preventDefault()
 
@@ -160,16 +161,20 @@ function addToQueue(queueItem, current = false) {
 }
 
 function initQueue(data) {
-	if (data.queueComplete.length) {
-		data.queueComplete.forEach(item => {
-			addToQueue(data.queueList[item])
+	const { queue, queueComplete, currentItem, queueList } = data
+
+	if (queueComplete.length) {
+		queueComplete.forEach(item => {
+			addToQueue(queueList[item])
 		})
 	}
-	if (data.currentItem) {
-		addToQueue(data['queueList'][data.currentItem], true)
+
+	if (currentItem) {
+		addToQueue(queueList[currentItem], true)
 	}
-	data.queue.forEach(item => {
-		addToQueue(data.queueList[item])
+
+	queue.forEach(item => {
+		addToQueue(queueList[item])
 	})
 }
 
@@ -182,12 +187,14 @@ function startDownload(uuid) {
 socket.on('startDownload', startDownload)
 
 function handleListClick(event) {
-	if (!event.target.matches('.queue_icon[data-uuid]')) {
+	const { target } = event
+
+	if (!target.matches('.queue_icon[data-uuid]')) {
 		return
 	}
 
-	let icon = event.target.innerText
-	let uuid = $(event.target).data('uuid')
+	let icon = target.innerText
+	let uuid = $(target).data('uuid')
 
 	switch (icon) {
 		case 'remove':
@@ -198,8 +205,8 @@ function handleListClick(event) {
 }
 
 // Show/Hide Download Tab
-function toggleDownloadTab(ev) {
-	ev.preventDefault()
+function toggleDownloadTab(clickEvent) {
+	clickEvent.preventDefault()
 
 	setTabWidth()
 
@@ -283,29 +290,28 @@ function removedFinishedDownloads() {
 socket.on('removedFinishedDownloads', removedFinishedDownloads)
 
 function updateQueue(update) {
-	if (update.uuid && queue.indexOf(update.uuid) > -1) {
-		if (update.downloaded) {
-			queueList[update.uuid].downloaded++
-			$('#download_' + update.uuid + ' .queue_downloaded').text(
-				queueList[update.uuid].downloaded + queueList[update.uuid].failed
-			)
+	// downloaded and failed default to false?
+	const { uuid, downloaded, failed, progress } = update
+
+	if (uuid && queue.indexOf(uuid) > -1) {
+		if (downloaded) {
+			queueList[uuid].downloaded++
+			$('#download_' + uuid + ' .queue_downloaded').text(queueList[uuid].downloaded + queueList[uuid].failed)
 		}
-		if (update.failed) {
-			queueList[update.uuid].failed++
-			$('#download_' + update.uuid + ' .queue_downloaded').text(
-				queueList[update.uuid].downloaded + queueList[update.uuid].failed
-			)
-			if (queueList[update.uuid].failed == 1 && $('#download_' + update.uuid + ' .queue_failed').length == 0) {
-				$('#download_' + update.uuid + ' .download_info_status').append(
+		if (failed) {
+			queueList[uuid].failed++
+			$('#download_' + uuid + ' .queue_downloaded').text(queueList[uuid].downloaded + queueList[uuid].failed)
+			if (queueList[uuid].failed == 1 && $('#download_' + uuid + ' .queue_failed').length == 0) {
+				$('#download_' + uuid + ' .download_info_status').append(
 					`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
 				)
 			} else {
-				$('#download_' + update.uuid + ' .queue_failed').text(queueList[update.uuid].failed)
+				$('#download_' + uuid + ' .queue_failed').text(queueList[uuid].failed)
 			}
 		}
-		if (update.progress) {
-			queueList[update.uuid].progress = update.progress
-			$('#bar_' + update.uuid).css('width', update.progress + '%')
+		if (progress) {
+			queueList[uuid].progress = progress
+			$('#bar_' + uuid).css('width', progress + '%')
 		}
 	}
 }

@@ -3,7 +3,8 @@ import Downloads from './downloads.js'
 const QualityModal = {
 	// Defaults
 	open: false,
-	url: ''
+	url: '',
+	element: null
 }
 
 function init() {
@@ -24,13 +25,15 @@ function linkListeners() {
 }
 
 function handleClick(event) {
+	const { target } = event
+
 	QualityModal.element.classList.add('animated', 'fadeOut')
 
-	if (!event.target.matches('.quality-button')) {
+	if (!target.matches('.quality-button')) {
 		return
 	}
 
-	let bitrate = event.target.dataset.qualityValue
+	let bitrate = target.dataset.qualityValue
 
 	Downloads.sendAddToQueue(QualityModal.url, bitrate)
 }

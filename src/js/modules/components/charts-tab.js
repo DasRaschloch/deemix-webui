@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { socket } from '../socket.js'
-import { artistView, albumView } from '../tabs.js'
+import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
@@ -16,8 +16,8 @@ const ChartsTab = new Vue({
 		}
 	},
 	methods: {
-		artistView,
-		albumView,
+		artistView: showView.bind(null, 'artist'),
+		albumView: showView.bind(null, 'album'),
 		playPausePreview: TrackPreview.playPausePreview,
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
@@ -29,12 +29,21 @@ const ChartsTab = new Vue({
 		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
-		getTrackList(e) {
+		getTrackList(event) {
 			document.getElementById('content').scrollTo(0, 0)
 
-			this.country = e.currentTarget.dataset.title
+			const {
+				currentTarget: {
+					dataset: { title }
+				},
+				currentTarget: {
+					dataset: { id }
+				}
+			} = event
+
+			this.country = title
 			localStorage.setItem('chart', this.country)
-			this.id = e.currentTarget.dataset.id
+			this.id = id
 			socket.emit('getChartTracks', this.id)
 		},
 		setTracklist(data) {

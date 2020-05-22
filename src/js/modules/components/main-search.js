@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { socket } from '../socket.js'
-import { artistView, albumView, playlistView } from '../tabs.js'
+import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
@@ -52,9 +52,9 @@ const MainSearch = new Vue({
 		}
 	},
 	methods: {
-		artistView,
-		albumView,
-		playlistView,
+		artistView: showView.bind(null, 'artist'),
+		albumView: showView.bind(null, 'album'),
+		playlistView: showView.bind(null, 'playlist'),
 		playPausePreview: TrackPreview.playPausePreview,
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
@@ -90,7 +90,6 @@ const MainSearch = new Vue({
 		numberWithDots: Utils.numberWithDots,
 		convertDuration: Utils.convertDuration,
 		search(type) {
-			console.log('searcho')
 			socket.emit('search', {
 				term: this.results.query,
 				type: type,

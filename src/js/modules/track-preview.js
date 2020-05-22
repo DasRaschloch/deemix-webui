@@ -55,8 +55,9 @@ function previewMouseEnter(e) {
 	$(e.currentTarget).css({ opacity: 1 })
 }
 
-function previewMouseLeave(e) {
-	let obj = e.currentTarget
+function previewMouseLeave(event) {
+	const { currentTarget: obj } = event
+
 	if (($(obj).parent().attr('playing') && preview_stopped) || !$(obj).parent().attr('playing')) {
 		$(obj).css({ opacity: 0 }, 200)
 	}
@@ -65,7 +66,9 @@ function previewMouseLeave(e) {
 // on click event
 function playPausePreview(e) {
 	e.preventDefault()
-	let obj = e.currentTarget
+
+	const { currentTarget: obj } = event
+
 	var icon = obj.tagName == 'I' ? $(obj) : $(obj).children('i')
 	if ($(obj).attr('playing')) {
 		if (preview_track.paused) {

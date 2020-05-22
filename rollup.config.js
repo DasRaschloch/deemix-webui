@@ -4,8 +4,8 @@ import replace from '@rollup/plugin-replace'
 import alias from '@rollup/plugin-alias'
 import { terser } from 'rollup-plugin-terser'
 
-// 'npm run watch:js' -> 'production' is false
-// 'npm run build:js' -> 'production' is true
+// 'rollup -c' -> 'production' is false
+// 'rollup -c -w' -> 'production' is true
 const production = !process.env.ROLLUP_WATCH
 
 export default {

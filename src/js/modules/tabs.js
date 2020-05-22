@@ -20,42 +20,32 @@ let currentStack = {}
 // Exporting this function out of the default export
 // because it's used in components that are needed
 // in this file too
-export function artistView(ev) {
-	let id = ev.currentTarget.dataset.id
-	ArtistTab.reset()
-	socket.emit('getTracklist', { type: 'artist', id: id })
-	showTab('artist', id)
-}
+export function showView(viewType, event) {
+	const {
+		currentTarget: {
+			dataset: { id }
+		}
+	} = event
 
-// Exporting this function out of the default export
-// because it's used in components that are needed
-// in this file too
-export function albumView(ev) {
-	let id = ev.currentTarget.dataset.id
-	TracklistTab.reset()
-	socket.emit('getTracklist', { type: 'album', id: id })
-	showTab('album', id)
-}
+	switch (viewType) {
+		case 'artist':
+			ArtistTab.reset()
+			break
+		case 'album':
+		case 'playlist':
+		case 'spotifyplaylist':
+			TracklistTab.reset()
+			break
 
-// Exporting this function out of the default export
-// because it's used in components that are needed
-// in this file too
-export function playlistView(ev) {
-	let id = ev.currentTarget.dataset.id
-	TracklistTab.reset()
-	socket.emit('getTracklist', { type: 'playlist', id: id })
-	showTab('playlist', id)
-}
+		default:
+			break
+	}
 
-export function spotifyPlaylistView(ev) {
-	let id = ev.currentTarget.dataset.id
-	TracklistTab.reset()
-	socket.emit('getTracklist', { type: 'spotifyplaylist', id: id })
-	showTab('spotifyplaylist', id)
+	socket.emit('getTracklist', { type: viewType, id })
+	showTab(viewType, id)
 }
 
 function analyzeLink(link) {
-	console.log('Analyzing: ' + link)
 	LinkAnalyzerTab.reset()
 	socket.emit('analyzeLink', link)
 }
@@ -80,8 +70,10 @@ function linkListeners() {
  * @since		0.1.0
  */
 function handleSidebarClick(event) {
-	const wantToChangeTab = event.target.matches('.main_tablinks') || event.target.parentElement.matches('.main_tablinks')
-	const wantToChangeTheme = event.target.matches('.theme_toggler')
+	const { target } = event
+
+	const wantToChangeTab = target.matches('.main_tablinks') || target.parentElement.matches('.main_tablinks')
+	const wantToChangeTheme = target.matches('.theme_toggler')
 
 	if (!(wantToChangeTab || wantToChangeTheme)) return
 
@@ -89,10 +81,10 @@ function handleSidebarClick(event) {
 	let targetID
 
 	if (wantToChangeTab) {
-		sidebarEl = event.target.matches('.main_tablinks') ? event.target : event.target.parentElement
+		sidebarEl = target.matches('.main_tablinks') ? target : target.parentElement
 		targetID = sidebarEl.id
 	} else {
-		sidebarEl = event.target
+		sidebarEl = target
 		targetID = 'theme_toggler'
 	}
 
@@ -122,10 +114,13 @@ function handleSidebarClick(event) {
 			document.querySelector('.theme_toggler--active').classList.remove('theme_toggler--active')
 			sidebarEl.classList.add('theme_toggler--active')
 
-			let themeColor = sidebarEl.dataset.themeVariant
-			document.documentElement.setAttribute('data-theme', themeColor)
+			const {
+				dataset: { themeVariant }
+			} = sidebarEl
 
-			localStorage.setItem('selectedTheme', themeColor)
+			document.documentElement.setAttribute('data-theme', themeVariant)
+
+			localStorage.setItem('selectedTheme', themeVariant)
 
 			document.querySelectorAll('*').forEach(el => {
 				el.style.transition = 'all 200ms ease-in-out'
@@ -147,23 +142,26 @@ function handleSidebarClick(event) {
 }
 
 function handleSearchTabClick(event) {
-	let targetID = event.target.id
+	const {
+		target,
+		target: { id }
+	} = event
 
-	switch (targetID) {
+	switch (id) {
 		case 'search_all_tab':
-			changeTab(event.target, 'search', 'main_search')
+			changeTab(target, 'search', 'main_search')
 			break
 		case 'search_track_tab':
-			changeTab(event.target, 'search', 'track_search')
+			changeTab(target, 'search', 'track_search')
 			break
 		case 'search_album_tab':
-			changeTab(event.target, 'search', 'album_search')
+			changeTab(target, 'search', 'album_search')
 			break
 		case 'search_artist_tab':
-			changeTab(event.target, 'search', 'artist_search')
+			changeTab(target, 'search', 'artist_search')
 			break
 		case 'search_playlist_tab':
-			changeTab(event.target, 'search', 'playlist_search')
+			changeTab(target, 'search', 'playlist_search')
 			break
 
 		default:
@@ -172,20 +170,23 @@ function handleSearchTabClick(event) {
 }
 
 function handleFavoritesTabClick(event) {
-	let targetID = event.target.id
+	const {
+		target,
+		target: { id }
+	} = event
 
-	switch (targetID) {
+	switch (id) {
 		case 'favorites_playlist_tab':
-			changeTab(event.target, 'favorites', 'playlist_favorites')
+			changeTab(target, 'favorites', 'playlist_favorites')
 			break
 		case 'favorites_album_tab':
-			changeTab(event.target, 'favorites', 'album_favorites')
+			changeTab(target, 'favorites', 'album_favorites')
 			break
 		case 'favorites_artist_tab':
-			changeTab(event.target, 'favorites', 'artist_favorites')
+			changeTab(target, 'favorites', 'artist_favorites')
 			break
 		case 'favorites_track_tab':
-			changeTab(event.target, 'favorites', 'track_favorites')
+			changeTab(target, 'favorites', 'track_favorites')
 			break
 
 		default:
@@ -242,7 +243,7 @@ function showTab(type, id, back = false) {
 
 	window.tab = type == 'artist' ? 'artist_tab' : 'tracklist_tab'
 
-	currentStack = { type: type, id: id }
+	currentStack = { type, id }
 	let tabcontent = document.getElementsByClassName('main_tabcontent')
 
 	for (let i = 0; i < tabcontent.length; i++) {
@@ -256,15 +257,18 @@ function backTab() {
 	if (windows_stack.length == 1) {
 		document.getElementById(`main_${main_selected}link`).click()
 	} else {
-		let tabObj = windows_stack.pop()
-		if (tabObj.type == 'artist') {
+		// Retrieving tab type and tab id
+		let { type, id } = windows_stack.pop()
+
+		if (type === 'artist') {
 			ArtistTab.reset()
 		} else {
 			TracklistTab.reset()
 		}
-		socket.emit('getTracklist', { type: tabObj.type, id: tabObj.id })
-		showTab(tabObj.type, tabObj.id, true)
+		socket.emit('getTracklist', { type, id })
+		showTab(type, id, true)
 	}
+
 	TrackPreview.stopStackedTabsPreview()
 }
 
@@ -278,8 +282,6 @@ function init() {
 export default {
 	init,
 	changeTab,
-	artistView,
-	albumView,
-	playlistView,
+	showView,
 	analyzeLink
 }

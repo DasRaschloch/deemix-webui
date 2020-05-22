@@ -3,7 +3,7 @@ import Vue from 'vue'
 import { socket } from '../socket.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
-import { albumView } from '../tabs.js'
+import { showView } from '../tabs.js'
 
 const ArtistTab = new Vue({
 	data() {
@@ -20,7 +20,7 @@ const ArtistTab = new Vue({
 		}
 	},
 	methods: {
-		albumView,
+		albumView: showView.bind(null, 'album'),
 		reset() {
 			this.title = 'Loading...'
 			this.image = ''
@@ -59,11 +59,13 @@ const ArtistTab = new Vue({
 			return g1.getTime() <= g2.getTime()
 		},
 		showArtist(data) {
-			this.title = data.name
-			this.image = data.picture_xl
+			const { name, picture_xl, id, releases } = data
+
+			this.title = name
+			this.image = picture_xl
 			this.type = 'Artist'
-			this.link = `https://www.deezer.com/artist/${data.id}`
-			this.currentTab = Object.keys(data.releases)[0]
+			this.link = `https://www.deezer.com/artist/${id}`
+			this.currentTab = Object.keys(releases)[0]
 			this.sortKey = 'release_date'
 			this.sortOrder = 'desc'
 			this.head = [
@@ -71,10 +73,10 @@ const ArtistTab = new Vue({
 				{ title: 'Release Date', sortKey: 'release_date' },
 				{ title: '', width: '32px' }
 			]
-			if (_.isEmpty(data.releases)) {
+			if (_.isEmpty(releases)) {
 				this.body = null
 			} else {
-				this.body = data.releases
+				this.body = releases
 			}
 		}
 	},

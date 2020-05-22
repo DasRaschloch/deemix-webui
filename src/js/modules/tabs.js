@@ -101,7 +101,6 @@ function handleSidebarClick(event) {
 			changeTab(sidebarEl, 'main', 'search_tab')
 			break
 		case 'main_home_tablink':
-			console.log('al laod', sidebarEl)
 			changeTab(sidebarEl, 'main', 'home_tab')
 			break
 		case 'main_charts_tablink':

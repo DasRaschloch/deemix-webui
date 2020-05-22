@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
+import alias from '@rollup/plugin-alias'
 import { terser } from 'rollup-plugin-terser'
 
 // 'npm run watch:js' -> 'production' is false
@@ -17,8 +18,15 @@ export default {
 		}
 	],
 	plugins: [
-		// Needed for Vue imports, could use alias plugin but they're not working with resolve plugin
-		// Assuming all the Vue imports are made like: import Vue from 'vue/dist/vue.esm' (vue.esm is made for bundlers)
+		alias({
+			entries: [
+				{
+					find: 'vue',
+					replacement: 'vue/dist/vue.esm'
+				}
+			]
+		}),
+		// Needed for Vue imports
 		replace({
 			'process.env.NODE_ENV': JSON.stringify(production ? 'production' : 'development')
 		}),

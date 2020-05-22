@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue.esm'
+import Vue from 'vue'
 import { toast } from '../toasts.js'
 import { socket } from '../socket.js'
 

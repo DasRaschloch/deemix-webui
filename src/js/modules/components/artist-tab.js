@@ -1,5 +1,5 @@
 import _ from 'lodash'
-import Vue from 'vue/dist/vue.esm'
+import Vue from 'vue'
 import { socket } from '../socket.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'

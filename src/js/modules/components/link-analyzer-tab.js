@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue.esm'
+import Vue from 'vue'
 import { socket } from '../socket.js'
 import { albumView, artistView } from '../tabs.js'
 import Utils from '../utils.js'

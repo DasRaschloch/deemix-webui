@@ -104,7 +104,7 @@
 												<div v-if="section == 'TOP_RESULT'" class="top_result clickable" @click="handleClickTopResult"
 													:data-id="results.allTab.TOP_RESULT[0].id">
 													<div class="cover_container">
-														<img :src="results.allTab.TOP_RESULT[0].picture"
+														<img aria-hidden="true" :src="results.allTab.TOP_RESULT[0].picture"
 															:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'" />
 														<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 															@click.stop="addToQueue" :data-link="results.allTab.TOP_RESULT[0].link"
@@ -124,7 +124,7 @@
 												<div v-else-if="section == 'TRACK'">
 													<table class="tracks_table">
 														<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)" class="track_row">
-															<td style="width: 48px; text-align: center;"><img class="rounded coverart"
+															<td aria-hidden="true" style="width: 48px; text-align: center;"><img class="rounded coverart"
 																	:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
 															</td>
 															<td class="breakline inline-flex">
@@ -148,7 +148,7 @@
 													<div v-for="release in results.allTab.ARTIST.data.slice(0, 10)" class="release clickable"
 														@click="artistView" :data-id="release.ART_ID">
 														<div class="cover_container">
-															<img class="circle coverart"
+															<img aria-hidden="true" class="circle coverart"
 																:src="'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'">
 															<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 																@click.stop="addToQueue" :data-link="'https://deezer.com/artist/'+release.ART_ID"
@@ -162,7 +162,7 @@
 													<div v-for="release in results.allTab.ALBUM.data.slice(0, 10)" class="release clickable"
 														@click="albumView" :data-id="release.ALB_ID">
 														<div class="cover_container">
-															<img class="rounded coverart"
+															<img aria-hidden="true" class="rounded coverart"
 																:src="'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'">
 															<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 																@click.stop="addToQueue" :data-link="'https://deezer.com/album/'+release.ALB_ID"
@@ -180,7 +180,7 @@
 													<div v-for="release in results.allTab.PLAYLIST.data.slice(0, 10)" class="release clickable"
 														@click="playlistView" :data-id="release.PLAYLIST_ID">
 														<div class="cover_container">
-															<img class="rounded coverart"
+															<img aria-hidden="true" class="rounded coverart"
 																:src="'https://e-cdns-images.dzcdn.net/images/'+ release.PICTURE_TYPE +'/' + release.PLAYLIST_PICTURE + '/156x156-000000-80-0-0.jpg'">
 															<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 																@click.stop="addToQueue" :data-link="'https://deezer.com/playlist/'+release.PLAYLIST_ID"
@@ -250,7 +250,7 @@
 											<div v-for="release in results.albumTab.data" class="release clickable" @click="albumView"
 												:data-id="release.id">
 												<div class="cover_container">
-													<img class="rounded coverart" :src="release.cover_medium">
+													<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium">
 													<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 														@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 															class="material-icons">get_app</i></div>
@@ -275,7 +275,7 @@
 											<div v-for="release in results.artistTab.data" class="release clickable" @click="artistView"
 												:data-id="release.id">
 												<div class="cover_container">
-													<img class="circle coverart" :src="release.picture_medium">
+													<img aria-hidden="true" class="circle coverart" :src="release.picture_medium">
 													<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 														@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 															class="material-icons">get_app</i></div>
@@ -297,7 +297,7 @@
 											<div v-for="release in results.playlistTab.data" class="release clickable" @click="playlistView"
 												:data-id="release.id">
 												<div class="cover_container">
-													<img class="rounded coverart" :src="release.picture_medium">
+													<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium">
 													<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 														@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 															class="material-icons">get_app</i></div>
@@ -324,7 +324,7 @@
 									<div v-for="release in playlists" class="release clickable" @click="playlistView"
 										:data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" :src="release.picture_medium">
+											<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
@@ -339,7 +339,7 @@
 								<div class="release_grid">
 									<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" :src="release.cover_medium">
+											<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
@@ -418,7 +418,7 @@
 									<div v-for="release in playlists" class="release clickable" @click="playlistView"
 										:data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" :src="release.picture_medium">
+											<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
@@ -429,7 +429,7 @@
 									<div v-for="release in spotifyPlaylists" class="release clickable" @click="spotifyPlaylistView"
 										:data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" :src="release.picture_medium">
+											<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
@@ -446,7 +446,7 @@
 								<div class="release_grid" v-if="albums.length > 0">
 									<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
 										<div class="cover_container">
-											<img class="rounded coverart" :src="release.cover_medium">
+											<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>
@@ -463,7 +463,7 @@
 								<div class="release_grid" v-if="artists.length > 0">
 									<div v-for="release in artists" class="release clickable" @click="artistView" :data-id="release.id">
 										<div class="cover_container">
-											<img class="circle coverart" :src="release.picture_medium">
+											<img aria-hidden="true" class="circle coverart" :src="release.picture_medium">
 											<div role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue" :data-link="release.link" class="download_overlay"><i
 													class="material-icons">get_app</i></div>

@@ -1,7 +1,10 @@
 import $ from 'jquery'
 
 /* ===== Globals ====== */
-window.preview_max_volume = 1
+// Object is needed for vue proxy
+window.vol = {
+	preview_max_volume: 100
+}
 
 /* ===== Locals ===== */
 let preview_track = document.getElementById('preview-track')
@@ -10,17 +13,12 @@ let preview_stopped = true
 // init stuff
 function init() {
 	preview_track.volume = 1
-	/*preview_max_volume = parseFloat(localStorage.getItem("previewVolume"))
-  if (preview_max_volume === null){
-    preview_max_volume = 0.8
-    localStorage.setItem("previewVolume", preview_max_volume)
-  }*/
 
 	// start playing when track loaded
 	preview_track.addEventListener('canplay', function () {
 		preview_track.play()
 		preview_stopped = false
-		$(preview_track).animate({ volume: preview_max_volume }, 500)
+		$(preview_track).animate({ volume: vol.preview_max_volume/100 }, 500)
 	})
 
 	// auto fadeout when at the end of the song
@@ -75,7 +73,7 @@ function playPausePreview(e) {
 			preview_track.play()
 			preview_stopped = false
 			icon.text('pause')
-			$(preview_track).animate({ volume: preview_max_volume }, 500)
+			$(preview_track).animate({ volume: vol.preview_max_volume/100 }, 500)
 		} else {
 			preview_stopped = true
 			icon.text('play_arrow')

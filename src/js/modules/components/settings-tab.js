@@ -11,7 +11,8 @@ const SettingsTab = new Vue({
 		defaultSettings: {},
 		lastUser: '',
 		spotifyUser: '',
-		slimDownloads: false
+		slimDownloads: false,
+		previewVolume: window.vol
 	}),
 	computed: {
 		changeSlimDownloads: {
@@ -36,6 +37,9 @@ const SettingsTab = new Vue({
 			copyText.setAttribute('type', 'password')
 
 			toast('ARL copied to clipboard', 'assignment')
+		},
+		updateMaxVolume(){
+			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
 		},
 		saveSettings() {
 			this.lastSettings = { ...this.settings }
@@ -97,6 +101,14 @@ const SettingsTab = new Vue({
 		}
 
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
+
+		let volume = parseInt(localStorage.getItem('previewVolume'))
+		if (isNaN(volume)){
+			volume = 80
+			localStorage.setItem('previewVolume', volume)
+		}
+		window.vol.preview_max_volume = volume
+
 
 		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)

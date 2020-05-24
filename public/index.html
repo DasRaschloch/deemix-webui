@@ -1015,6 +1015,12 @@
 								</div>
 
 								<div class="input_group">
+									<p class="input_group_text">Preview Volume</p>
+									<input type="range" @change="updateMaxVolume" min="0" max="100" step="1" class="slider" v-model.number="previewVolume.preview_max_volume">
+									<span>{{previewVolume.preview_max_volume}}%</span>
+								</div>
+
+								<div class="input_group">
 									<p class="input_group_text">Command to execute after download</p>
 									<p class="secondary-text">Leave blank for no action</p>
 									<input type="text" v-model="settings.executeCommand">

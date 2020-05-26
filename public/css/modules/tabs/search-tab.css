@@ -104,13 +104,3 @@
 	grid-row-gap: 0px;
 	overflow-y: hidden;
 }
-
-.track_row > td > img {
-	width: 32px;
-	height: 32px;
-}
-
-.track_row > td > a > img {
-	width: 56px;
-	height: 56px;
-}

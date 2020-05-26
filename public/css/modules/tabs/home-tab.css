@@ -2,12 +2,6 @@
 	margin-bottom: 15px;
 }
 
-.top-tracks-position {
-	padding: 12px;
-	text-align: center;
-	cursor: default;
-}
-
 .home_section {
 	border-top: 1px solid var(--separator);
 	padding-top: 25px;

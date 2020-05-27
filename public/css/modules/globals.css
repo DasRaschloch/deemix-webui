@@ -2,26 +2,68 @@
 
 .table {
 	width: 100%;
+	background: var(--table-bg);
 	-webkit-border-horizontal-spacing: 0px;
 	-webkit-border-vertical-spacing: 0px;
 }
 
 .table td,
 .table th {
-	height: 50px;
-	padding: 4px 12px 4px 5px;
+	/* min-height: 50px; */
+	/* padding: 4px 12px 4px 5px; */
 	vertical-align: middle;
-	/* border: 0px black solid; */
 }
 
 .table th {
-	text-align: left;
+	/* text-align: left; */
 }
 
 .table tr:nth-child(even) {
-	background-color: var(--secondary-background);
-	border: 0px black solid;
+	background: var(--table-zebra);
 }
+
+.table tbody tr:hover {
+	background: var(--table-highlight);
+}
+
+/* === Tracks Table === */
+.table--design-1 {
+	border-collapse: collapse;
+}
+
+.table--design-1 td {
+	vertical-align: middle;
+}
+
+.table--design-1 td:first-child {
+	/* width: 32px; */
+	padding: 0 10px 0 20px;
+}
+
+.table--design-1 td:nth-child(2) {
+	width: 45%;
+	padding: 0 10px;
+}
+
+.table--design-1 td:nth-child(3) {
+	width: 16.8%;
+	padding: 0 10px;
+}
+
+.table--design-1 td:nth-child(4) {
+	width: 16.8%;
+	padding: 0 10px;
+}
+.table--design-1 td:nth-child(5) {
+	width: 6%;
+	padding: 0 10px;
+}
+
+.table--design-1 td:last-child {
+	padding: 0 20px 0 10px;
+}
+
+/* === Tracks Table End === */
 
 .table td img {
 	vertical-align: middle;

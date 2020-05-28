@@ -1,0 +1,164 @@
+.table {
+	width: 100%;
+	-webkit-border-horizontal-spacing: 0px;
+	-webkit-border-vertical-spacing: 0px;
+}
+
+.table td,
+.table th {
+	vertical-align: middle;
+}
+
+.table tr {
+	background: var(--table-bg);
+	transition: background-color 175ms ease-in-out;
+}
+
+.table tr:not(:last-child) {
+	border-bottom: 1px solid var(--table-highlight);
+}
+
+.table tbody tr:hover {
+	background: var(--table-highlight);
+}
+
+.table .table__cover {
+	box-sizing: content-box;
+	width: 32px;
+}
+
+.table .table__cover.table__cover--big {
+	width: 48px;
+	text-align: center;
+}
+
+/* === Tracks Table === */
+.table--tracks {
+	border-collapse: collapse;
+
+	--radius: 3px;
+	--vertical-separator: 7px;
+}
+
+.table--tracks thead {
+	position: sticky;
+	border-bottom: 2px solid var(--table-highlight);
+}
+
+.table--tracks td {
+	height: 35px;
+}
+
+.table--tracks th {
+	padding-bottom: 10px;
+}
+
+.table--tracks .table__col.table__col--centered {
+	text-align: center;
+}
+
+.table--tracks td.breakline {
+	word-break: break-word;
+}
+
+.table--tracks tr:first-child td:first-child {
+	border-top-left-radius: var(--radius);
+}
+
+.table--tracks tr:first-child td:last-child {
+	border-top-right-radius: var(--radius);
+}
+
+.table--tracks tr:last-child td:first-child {
+	border-bottom-left-radius: var(--radius);
+}
+
+.table--tracks tr:last-child td:last-child {
+	border-bottom-right-radius: var(--radius);
+}
+
+.table--tracks td:first-child {
+	padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
+}
+
+.table--tracks td:nth-child(2) {
+	width: 50%;
+	padding: var(--vertical-separator) 10px;
+}
+
+.table--tracks td:nth-child(3) {
+	width: 16.8%;
+	padding: var(--vertical-separator) 10px;
+}
+
+.table--tracks td:nth-child(4) {
+	width: 16.8%;
+	padding: var(--vertical-separator) 10px;
+}
+
+.table--tracks td:nth-child(5) {
+	width: 6%;
+	padding: var(--vertical-separator) 10px;
+}
+
+.table--tracks td:last-child {
+	padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
+}
+
+.table--tracks .table__download {
+	text-align: center;
+}
+
+.table--tracks .table__download i.material-icons {
+	transition: color 175ms ease-in-out;
+}
+
+.table--tracks .table__download:hover i.material-icons {
+	color: var(--table-bg);
+}
+
+/* === Tracks Table End === */
+
+.table td img {
+	vertical-align: middle;
+}
+
+.tracklist_table td {
+	height: 50px;
+	vertical-align: middle;
+}
+
+.tracklist_table .explicit_icon {
+	vertical-align: middle;
+	margin-right: var(--explicit-separator);
+}
+
+.tracklist_table .track_position_head,
+.tracklist_table .track_position {
+	width: 10px;
+	text-align: center;
+}
+
+.explicit_tracklist {
+	margin-left: var(--explicit-separator);
+}
+
+.track_checkbox {
+	cursor: pointer;
+}
+
+.track_row > td > img {
+	width: 32px;
+	height: 32px;
+}
+
+.track_row > td > a > img {
+	width: 56px;
+	height: 56px;
+}
+
+.top-tracks-position {
+	padding: 12px;
+	text-align: center;
+	cursor: default;
+}

@@ -4,7 +4,8 @@
 @import './vendor/toastify.css';
 
 @import './modules/base/base.css';
-@import './modules/globals.css';
+@import './modules/globals/globals.css';
+@import './modules/globals/tables.css';
 @import './modules/animations.css';
 @import './modules/progressbar.css';
 

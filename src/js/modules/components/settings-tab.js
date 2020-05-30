@@ -76,11 +76,8 @@ const SettingsTab = new Vue({
 			socket.emit('changeAccount', this.accountNum)
 		},
 		accountChanged(user, accountNum){
-			$('#settings_username').text(user.name)
-			$('#settings_picture').attr(
-				'src',
-				`https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
-			)
+			this.$refs.username.innerText = user.name
+			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
 			this.accountNum = accountNum
 			localStorage.setItem('accountNum', this.accountNum)
 		},

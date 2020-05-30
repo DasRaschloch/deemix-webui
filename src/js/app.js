@@ -59,7 +59,14 @@ socket.on('logging_in', function () {
 
 socket.on('init_autologin', function () {
 	let arl = localStorage.getItem('arl')
-	if (arl) socket.emit('login', arl)
+	let accountNum = localStorage.getItem('accountNum')
+	if (arl){
+		if (accountNum != 0){
+			socket.emit('login', arl, true, accountNum)
+		}else{
+			socket.emit('login', arl)
+		}
+	}
 })
 
 socket.on('logged_in', function (data) {

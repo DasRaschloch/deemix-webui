@@ -12,7 +12,9 @@ const SettingsTab = new Vue({
 		lastUser: '',
 		spotifyUser: '',
 		slimDownloads: false,
-		previewVolume: window.vol
+		previewVolume: window.vol,
+		accountNum: 0,
+		accounts: []
 	}),
 	computed: {
 		changeSlimDownloads: {
@@ -67,8 +69,23 @@ const SettingsTab = new Vue({
 		login() {
 			let arl = this.$refs.loginInput.value
 			if (arl != '' && arl != localStorage.getItem('arl')) {
-				socket.emit('login', arl, true)
+				socket.emit('login', arl, true, this.accountNum)
 			}
+		},
+		changeAccount(){
+			socket.emit('changeAccount', this.accountNum)
+		},
+		accountChanged(user, accountNum){
+			$('#settings_username').text(user.name)
+			$('#settings_picture').attr(
+				'src',
+				`https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
+			)
+			this.accountNum = accountNum
+			localStorage.setItem('accountNum', this.accountNum)
+		},
+		initAccounts(accounts){
+			this.accounts = accounts;
 		},
 		logout() {
 			socket.emit('logout')
@@ -91,6 +108,9 @@ const SettingsTab = new Vue({
 		if (localStorage.getItem('arl')) {
 			this.$refs.loginInput.value = localStorage.getItem('arl')
 		}
+		if (localStorage.getItem('accountNum')) {
+			this.accountNum = localStorage.getItem('accountNum')
+		}
 
 		let spotifyUser = localStorage.getItem('spotifyUser')
 
@@ -112,6 +132,8 @@ const SettingsTab = new Vue({
 
 		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)
+		socket.on('accountChanged', this.accountChanged)
+		socket.on('familyAccounts', this.initAccounts)
 	}
 }).$mount('#settings_tab')
 

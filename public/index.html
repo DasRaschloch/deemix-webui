@@ -580,7 +580,7 @@
 								<p>You are logged in as <strong id="settings_username"></strong></p>
 								<button id="settings_btn_logout" @click="logout">Logout</button>
 								<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
-									<option v-for="(account, i) in accounts" :value="i.toString()">account.BLOG_NAME</option>
+									<option v-for="(account, i) in accounts" :value="i.toString()">{{ account.BLOG_NAME }}</option>
 								</select>
 							</div>
 

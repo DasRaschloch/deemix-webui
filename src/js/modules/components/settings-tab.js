@@ -67,7 +67,7 @@ const SettingsTab = new Vue({
 			this.spotifyFeatures = spotifyCredentials
 		},
 		login() {
-			let arl = this.$refs.loginInput.value
+			let arl = this.$refs.loginInput.value.trim()
 			if (arl != '' && arl != localStorage.getItem('arl')) {
 				socket.emit('login', arl, true, this.accountNum)
 			}
@@ -103,7 +103,7 @@ const SettingsTab = new Vue({
 		this.$refs.loggedInInfo.classList.add('hide')
 
 		if (localStorage.getItem('arl')) {
-			this.$refs.loginInput.value = localStorage.getItem('arl')
+			this.$refs.loginInput.value = localStorage.getItem('arl').trim()
 		}
 		if (localStorage.getItem('accountNum')) {
 			this.accountNum = localStorage.getItem('accountNum')

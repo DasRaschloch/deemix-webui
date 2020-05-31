@@ -58,9 +58,10 @@ socket.on('logging_in', function () {
 })
 
 socket.on('init_autologin', function () {
-	let arl = localStorage.getItem('arl').trim()
+	let arl = localStorage.getItem('arl')
 	let accountNum = localStorage.getItem('accountNum')
 	if (arl){
+		arl = arl.trim()
 		if (accountNum != 0){
 			socket.emit('login', arl, true, accountNum)
 		}else{

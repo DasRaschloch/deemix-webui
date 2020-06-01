@@ -85,9 +85,8 @@ const TracklistTab = new Vue({
 				{ title: 'Artist' },
 				{ title: '<i class="material-icons">timer</i>', width: '40px' }
 			]
-			if (_.isEmpty(data.tracks)) {
-				console.log('show e lodash ok')
 
+			if (_.isEmpty(data.tracks)) {
 				this.body = null
 			} else {
 				this.body = data.tracks
@@ -108,6 +107,7 @@ const TracklistTab = new Vue({
 				{ title: 'Album' },
 				{ title: '<i class="material-icons">timer</i>', width: '40px' }
 			]
+
 			if (_.isEmpty(data.tracks)) {
 				this.body = null
 			} else {

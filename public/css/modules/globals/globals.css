@@ -81,6 +81,7 @@ img.circle {
 
 i.disabled {
 	opacity: 0.5;
+	cursor: default;
 }
 
 i.explicit_icon {

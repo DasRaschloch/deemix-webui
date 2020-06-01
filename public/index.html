@@ -125,30 +125,32 @@
 													<table class="table table--tracks">
 														<tbody>
 															<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)">
-																<td class="table__cover" aria-hidden="true">
+																<td class="table__icon" aria-hidden="true">
 																	<img class="rounded coverart"
 																		:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
 																</td>
-																<td class="table__col breakline">
+																<td class="table__cell table__cell--large breakline">
 																	<i v-if="track.EXPLICIT_LYRICS == 1" class="material-icons explicit_icon">
 																		explicit
 																	</i>
 																	{{ track.SNG_TITLE + (track.VERSION ? ' ' + track.VERSION : '') }}
 																</td>
-																<td class="table__col breakline">
+																<td class="table__cell table__cell--medium table__cell--center breakline">
 																	<span class="clickable" @click="artistView" :data-id="artist.ART_ID"
 																		v-for="artist in track.ARTISTS">{{artist.ART_NAME}}
 																	</span>
 																</td>
-																<td class="breakline clickable" @click="albumView" :data-id="track.ALB_ID">
+																<td class="table__cell--medium table__cell--center breakline clickable"
+																	@click="albumView" :data-id="track.ALB_ID">
 																	{{track.ALB_TITLE}}
 																</td>
-																<td class="table__col table__col--centered">
+																<td class="table__cell table__cell--center">
 																	{{convertDuration(track.DURATION)}}
 																</td>
-																<td class="table__download clickable" @contextmenu.prevent="openQualityModal"
-																	@click.stop="addToQueue" :data-link="'https://www.deezer.com/track/'+track.SNG_ID"
-																	role="button" aria-label="download">
+																<td class="table__cell--download table__cell--center clickable"
+																	@contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
+																	:data-link="'https://www.deezer.com/track/'+track.SNG_ID" role="button"
+																	aria-label="download">
 																	<i class="material-icons">
 																		get_app
 																	</i>
@@ -234,7 +236,7 @@
 											</thead>
 											<tbody>
 												<tr v-for="track in results.trackTab.data">
-													<td class="table__cover table__cover--big">
+													<td class="table__icon table__icon--big">
 														<a href="#" @click="playPausePreview"
 															:class="'rounded' + (track.preview ? ' single-cover' : '')" :data-preview="track.preview">
 															<i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave" v-if="track.preview"
@@ -243,25 +245,26 @@
 															</i>
 															<img class="rounded coverart" :src="track.album.cover_small">
 													</td>
-													<td class="table__col breakline">
+													<td class="table__cell table__cell--large breakline">
 														<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
 															explicit
 														</i>
 														{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
 													</td>
-													<td class="table__col table__col--centered breakline clickable" @click="artistView"
-														:data-id="track.artist.id">
+													<td class="table__cell table__cell--medium table__cell--center breakline clickable"
+														@click="artistView" :data-id="track.artist.id">
 														{{track.artist.name}}
 													</td>
-													<td class="table__col table__col--centered breakline clickable" @click="albumView"
-														:data-id="track.album.id">
+													<td class="table__cell table__cell--medium table__cell--center breakline clickable"
+														@click="albumView" :data-id="track.album.id">
 														{{track.album.title}}
 													</td>
-													<td class="table__col table__col--centered">
+													<td class="table__cell table__cell--small table__cell--center">
 														{{convertDuration(track.duration)}}
 													</td>
-													<td class="table__download clickable" @contextmenu.prevent="openQualityModal"
-														@click.stop="addToQueue" :data-link="track.link" role="button" aria-label="download">
+													<td class="table__cell--download table__cell--center clickable"
+														@contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="track.link"
+														role="button" aria-label="download">
 														<i class="material-icons">
 															get_app
 														</i>
@@ -408,38 +411,42 @@
 								<button @click="changeCountry">Change Country</button>
 								<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
 									:data-link="'https://www.deezer.com/playlist/'+id">Download Chart</button>
-								<table class="table">
-									<tr v-for="track in chart" class="track_row">
-										<td class="top-tracks-position" :class="{ first: track.position === 1 }">
-											{{ track.position }}
-										</td>
-										<td style="width: 48px; text-align: center;">
-											<a href="#" @click="playPausePreview" :class="'rounded' + (track.preview ? ' single-cover' : '')"
-												:data-preview="track.preview">
-												<i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave" v-if="track.preview"
-													class="material-icons preview_controls">
-													play_arrow
-												</i>
-												<img class="rounded coverart" :src="track.album.cover_small">
-										</td>
-										<td class="breakline">
-											{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
-										</td>
-										<td class="breakline clickable" @click="artistView" :data-id="track.artist.id">
-											{{track.artist.name}}
-										</td>
-										<td class="breakline clickable" @click="albumView" :data-id="track.album.id">
-											{{track.album.title}}
-										</td>
-										<td>
-											{{convertDuration(track.duration)}}
-										</td>
-										<td role="button" aria-label="download" @contextmenu.prevent="openQualityModal"
-											@click.stop="addToQueue" :data-link="track.link" style="width: 56px; text-align: center;"
-											class="clickable">
-											<i class="material-icons">get_app</i>
-										</td>
-									</tr>
+								<table class="table table--charts">
+									<tbody>
+										<tr v-for="track in chart" class="track_row">
+											<td class="top-tracks-position" :class="{ first: track.position === 1 }">
+												{{ track.position }}
+											</td>
+											<td class="table__icon table__icon--big">
+												<a href="#" @click="playPausePreview" class="rounded"
+													:class="{ 'single-cover' : track.preview }" :data-preview="track.preview">
+													<i @mouseenter="previewMouseEnter" @mouseleave="previewMouseLeave" v-if="track.preview"
+														class="material-icons preview_controls">
+														play_arrow
+													</i>
+													<img class="rounded coverart" :src="track.album.cover_small">
+												</a>
+											</td>
+											<td class="table__cell--large breakline">
+												{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+											</td>
+											<td class="table__cell--medium table__cell--center breakline clickable" @click="artistView"
+												:data-id="track.artist.id">
+												{{track.artist.name}}
+											</td>
+											<td class="table__cell--medium table__cell--center breakline clickable" @click="albumView"
+												:data-id="track.album.id">
+												{{track.album.title}}
+											</td>
+											<td class="table__cell--small table__cell--center">
+												{{convertDuration(track.duration)}}
+											</td>
+											<td class="table__cell--download" @contextmenu.prevent="openQualityModal" @click.stop="addToQueue"
+												:data-link="track.link" role="button" aria-label="download">
+												<i class="material-icons">get_app</i>
+											</td>
+										</tr>
+									</tbody>
 								</table>
 							</div>
 						</div>
@@ -1198,61 +1205,75 @@
 										v-if="release_date">{{ release_date }}</span></h2>
 							</header>
 
-							<table class="table tracklist_table">
+							<table class="table table--tracklist">
 								<thead>
 									<tr>
-										<th v-for="data in head" v-html="data.title"
-											:class="{ track_position_head: data.title.trim() === '#' }"
-											:style="{ 'width': data.width ? data.width : 'auto'}">
+										<th>
+											<i class="material-icons">music_note</i>
 										</th>
-										<th style="width: 32px">
+										<th>#</th>
+										<th>Song</th>
+										<th>Artist</th>
+										<th v-if="type == 'Playlist'">Album</th>
+										<th>
+											<i class="material-icons">timer</i>
+										</th>
+										<th class="table__icon table__cell--center clickable">
 											<input @click="toggleAll" class="selectAll" type="checkbox">
 										</th>
 									</tr>
 								</thead>
 								<tbody>
-									<template v-if="type!='Spotify Playlist'">
+									<template v-if="type !== 'Spotify Playlist'">
 										<template v-for="track in body">
 											<tr v-if="track.type == 'track'">
-												<td>
-													<i v-if="track.preview" @click=playPausePreview
-														:class="'material-icons' + (track.preview ? ' preview_playlist_controls' : '')"
-														:data-preview="track.preview">
-														play_arrow
-													</i>
-													<i v-else class="material-icons disabled">
-														play_arrow
-													</i>
+												<td class="table__cell--x-small table__cell--center">
+													<div class="table__cell-content table__cell-content--vertical-center">
+														<i class="material-icons"
+															:class="{ 'preview_playlist_controls' : track.preview, disabled: !track.preview }"
+															@click='track.preview ? playPausePreview : null' :data-preview="track.preview">
+															play_arrow
+														</i>
+													</div>
 												</td>
-												<td class="track_position">
-													{{ track.track_position }}
+												<td class="table__cell--small table__cell--center track_position">
+													{{ type === 'Album' ? track.track_position : (body.indexOf(track) + 1) }}
 												</td>
-												<td class="inline-flex">
-													<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
-														explicit
-													</i>
-													{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+												<td class="table__cell--large table__cell--with-icon">
+													<div class="table__cell-content table__cell-content--vertical-center">
+														<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
+															explicit
+														</i>
+														{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+													</div>
 												</td>
-												<td class="clickable" @click="artistView" :data-id="track.artist.id">
+												<td class="table__cell--medium table__cell--center clickable" @click="artistView"
+													:data-id="track.artist.id">
 													{{ track.artist.name }}
 												</td>
-												<td class="clickable" v-if="type == 'Playlist'" @click="albumView" :data-id="track.album.id">
+												<td v-if="type == 'Playlist'" class="table__cell--medium table__cell--center clickable"
+													@click="albumView" :data-id="track.album.id">
 													{{ track.album.title }}
 												</td>
-												<td>
+												<td class="table__cell--center"
+													:class="{ 'table__cell--small' : type === 'Album', 'table__cell--x-small' : type === 'Playlist' }">
 													{{ convertDuration(track.duration) }}
 												</td>
-												<td>
-													<input class="track_checkbox" type="checkbox" v-model="track.selected">
+												<td class="table__icon table__cell--center">
+													<input class="clickable" type="checkbox" v-model="track.selected">
 												</td>
 											</tr>
-											<tr v-else-if="track.type == 'disc_separator'">
-												<td colspan="6" style="opacity: 0.54;">
-													<i class="material-icons">
-														album
-													</i>
+											<tr v-else-if="track.type == 'disc_separator'" class="table__row-no-highlight"
+												style="opacity: 0.54;">
+												<td>
+													<div class="table__cell-content table__cell-content--vertical-center" style="opacity: 0.54;">
+														<i class="material-icons">album</i>
+													</div>
+												</td>
+												<td class="table__cell--center">
 													{{ track.number }}
 												</td>
+												<td colspan="4"></td>
 											</tr>
 										</template>
 									</template>
@@ -1272,7 +1293,7 @@
 											<td>{{ track.artists[0].name }}</td>
 											<td>{{ track.album.name }}</td>
 											<td>{{ convertDuration(Math.floor(track.duration_ms/1000)) }}</td>
-											<td><input class="track_checkbox" type="checkbox" v-model="track.selected"></td>
+											<td><input class="clickable" type="checkbox" v-model="track.selected"></td>
 										</tr>
 									</template>
 								</tbody>

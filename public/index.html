@@ -358,15 +358,17 @@
 
 									<!-- Ugly af -->
 									<template v-for="release in countries">
-										<div v-if="release.title === 'Worldwide'" class="release clickable" @click="getTrackList"
-											:data-title="release.title" :data-id="release.id" :key="release.id">
+										<div role="button" :aria-label="release.title" v-if="release.title === 'Worldwide'"
+											class="release clickable" @click="getTrackList" :data-title="release.title"
+											:data-id="release.id" :key="release.id">
 											<img class="rounded coverart" :src="release.picture_medium">
 										</div>
 									</template>
 
 									<template v-for="release in countries">
-										<div v-if="release.title !== 'Worldwide'" class="release clickable" @click="getTrackList"
-											:data-title="release.title" :data-id="release.id" :key="release.id">
+										<div role="button" :aria-label="release.title" v-if="release.title !== 'Worldwide'"
+											class="release clickable" @click="getTrackList" :data-title="release.title"
+											:data-id="release.id" :key="release.id">
 											<img class="rounded coverart" :src="release.picture_medium">
 										</div>
 									</template>

@@ -1,0 +1,200 @@
+.table {
+	width: 100%;
+	-webkit-border-horizontal-spacing: 0px;
+	-webkit-border-vertical-spacing: 0px;
+
+	--vertical-separator: 7px;
+}
+
+.table tr {
+	background: var(--table-bg);
+	transition: background-color 175ms ease-in-out;
+}
+
+.table tr:nth-child(even) {
+	background: var(--table-zebra);
+	transition: background-color 175ms ease-in-out;
+}
+
+.table tr:not(:last-child) {
+	border-bottom: 1px solid var(--table-highlight);
+}
+
+.table tbody tr:not(.table__row-no-highlight):hover {
+	background: var(--table-highlight);
+}
+
+.table td,
+.table th {
+	vertical-align: middle;
+}
+
+.table td {
+	padding: var(--vertical-separator) 10px;
+}
+
+.table td:first-child {
+	padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
+}
+
+.table td:last-child {
+	padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
+}
+
+.table td img {
+	vertical-align: middle;
+}
+
+.table .table__icon {
+	box-sizing: content-box;
+	width: 32px;
+}
+
+.table__icon.table__icon--big {
+	width: 48px;
+	text-align: center;
+}
+
+/* .table .table__cell {} */
+
+.table__cell--x-small {
+	width: 0.32%;
+}
+
+.table__cell--small {
+	width: 3.2%;
+}
+
+.table__cell--medium {
+	width: 28.7%;
+}
+
+.table__cell--large {
+	width: 50%;
+}
+
+.table__cell--left {
+	text-align: left;
+}
+
+.table__cell--center {
+	text-align: center;
+}
+
+.table__cell--right {
+	text-align: right;
+}
+
+/* .table__cell-content {} */
+
+.table__cell-content.table__cell-content--vertical-center {
+	/*  Wrap cell content in this to center vertically cells
+	with material icons or both material icons and text */
+	display: flex;
+	align-items: center;
+}
+
+.table__cell--download {
+	cursor: pointer;
+}
+
+.table__cell--download i.material-icons {
+	transition: color 175ms ease-in-out;
+}
+
+.table__cell--download:hover i.material-icons {
+	color: var(--table-bg);
+}
+
+.track_row > td > img {
+	width: 32px;
+	height: 32px;
+}
+
+.track_row > td > a > img {
+	width: 56px;
+	height: 56px;
+}
+
+.top-tracks-position {
+	padding: 12px;
+	text-align: center;
+	cursor: default;
+}
+
+/* === Tracks Table === */
+.table--tracks {
+	border-collapse: collapse;
+
+	--radius: 3px;
+}
+
+.table--tracks thead {
+	border-bottom: 2px solid var(--table-highlight);
+}
+
+.table--tracks th {
+	padding-bottom: 10px;
+	height: 45px;
+}
+
+.table--tracks td {
+	height: 35px;
+}
+
+.table--tracks td.breakline {
+	word-break: break-word;
+}
+
+.table--tracks tr:first-child td:first-child {
+	border-top-left-radius: var(--radius);
+}
+
+.table--tracks tr:first-child td:last-child {
+	border-top-right-radius: var(--radius);
+}
+
+.table--tracks tr:last-child td:first-child {
+	border-bottom-left-radius: var(--radius);
+}
+
+.table--tracks tr:last-child td:last-child {
+	border-bottom-right-radius: var(--radius);
+}
+
+/* === Tracklist Table === */
+
+/* .table--tracklist {} */
+
+.table--tracklist thead {
+	border-bottom: 2px solid var(--table-highlight);
+}
+
+.table--tracklist th {
+	height: 45px;
+	padding: var(--vertical-separator) 10px;
+}
+
+.table--tracklist th:first-child {
+	padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
+}
+
+.table--tracklist th:last-child {
+	padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
+}
+
+.table--tracklist td {
+	height: 35px;
+}
+
+.explicit_tracklist {
+	margin-left: var(--explicit-separator);
+}
+
+/* === Charts Table === */
+
+/* .table--charts {} */
+
+.table--charts td {
+	height: 35px;
+}

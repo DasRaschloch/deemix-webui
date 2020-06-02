@@ -1,6 +1,5 @@
 #main_search .search_section {
 	float: none;
-	cursor: pointer;
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
@@ -11,6 +10,7 @@
 
 .search_header {
 	display: inline-block;
+	cursor: pointer;
 	font-size: 1.75rem;
 	margin-bottom: 25px;
 }
@@ -103,14 +103,4 @@
 	grid-auto-rows: 0;
 	grid-row-gap: 0px;
 	overflow-y: hidden;
-}
-
-.track_row > td > img {
-	width: 32px;
-	height: 32px;
-}
-
-.track_row > td > a > img {
-	width: 56px;
-	height: 56px;
 }

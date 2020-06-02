@@ -6,12 +6,22 @@
 	--vertical-separator: 7px;
 }
 
-.table td:first-child {
-	padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
+.table tr {
+	background: var(--table-bg);
+	transition: background-color 175ms ease-in-out;
 }
 
-.table td:last-child {
-	padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
+.table tr:nth-child(even) {
+	background: var(--table-zebra);
+	transition: background-color 175ms ease-in-out;
+}
+
+.table tr:not(:last-child) {
+	border-bottom: 1px solid var(--table-highlight);
+}
+
+.table tbody tr:not(.table__row-no-highlight):hover {
+	background: var(--table-highlight);
 }
 
 .table td,
@@ -23,21 +33,16 @@
 	padding: var(--vertical-separator) 10px;
 }
 
+.table td:first-child {
+	padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
+}
+
+.table td:last-child {
+	padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
+}
+
 .table td img {
 	vertical-align: middle;
-}
-
-.table tr {
-	background: var(--table-bg);
-	transition: background-color 175ms ease-in-out;
-}
-
-.table tr:not(:last-child) {
-	border-bottom: 1px solid var(--table-highlight);
-}
-
-.table tbody tr:not(.table__row-no-highlight):hover {
-	background: var(--table-highlight);
 }
 
 .table .table__icon {
@@ -82,7 +87,9 @@
 
 /* .table__cell-content {} */
 
-.table__cell-content--vertical-center {
+.table__cell-content.table__cell-content--vertical-center {
+	/*  Wrap cell content in this to center vertically cells
+	with material icons or both material icons and text */
 	display: flex;
 	align-items: center;
 }
@@ -97,6 +104,22 @@
 
 .table__cell--download:hover i.material-icons {
 	color: var(--table-bg);
+}
+
+.track_row > td > img {
+	width: 32px;
+	height: 32px;
+}
+
+.track_row > td > a > img {
+	width: 56px;
+	height: 56px;
+}
+
+.top-tracks-position {
+	padding: 12px;
+	text-align: center;
+	cursor: default;
 }
 
 /* === Tracks Table === */
@@ -139,8 +162,6 @@
 	border-bottom-right-radius: var(--radius);
 }
 
-/* === Tracks Table End === */
-
 /* === Tracklist Table === */
 
 /* .table--tracklist {} */
@@ -166,17 +187,9 @@
 	height: 35px;
 }
 
-.tracklist_table .track_position_head,
-.tracklist_table .track_position {
-	width: 10px;
-	text-align: center;
-}
-
 .explicit_tracklist {
 	margin-left: var(--explicit-separator);
 }
-
-/* === Tracklist Table End === */
 
 /* === Charts Table === */
 
@@ -184,22 +197,4 @@
 
 .table--charts td {
 	height: 35px;
-}
-
-/* === Charts Table End === */
-
-.track_row > td > img {
-	width: 32px;
-	height: 32px;
-}
-
-.track_row > td > a > img {
-	width: 56px;
-	height: 56px;
-}
-
-.top-tracks-position {
-	padding: 12px;
-	text-align: center;
-	cursor: default;
 }

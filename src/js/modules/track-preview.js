@@ -18,7 +18,7 @@ function init() {
 	preview_track.addEventListener('canplay', function () {
 		preview_track.play()
 		preview_stopped = false
-		$(preview_track).animate({ volume: vol.preview_max_volume/100 }, 500)
+		$(preview_track).animate({ volume: vol.preview_max_volume / 100 }, 500)
 	})
 
 	// auto fadeout when at the end of the song
@@ -50,6 +50,7 @@ function stopStackedTabsPreview() {
 
 // on hover event
 function previewMouseEnter(e) {
+	console.log('mouse Enter')
 	$(e.currentTarget).css({ opacity: 1 })
 }
 
@@ -68,12 +69,13 @@ function playPausePreview(e) {
 	const { currentTarget: obj } = event
 
 	var icon = obj.tagName == 'I' ? $(obj) : $(obj).children('i')
+
 	if ($(obj).attr('playing')) {
 		if (preview_track.paused) {
 			preview_track.play()
 			preview_stopped = false
 			icon.text('pause')
-			$(preview_track).animate({ volume: vol.preview_max_volume/100 }, 500)
+			$(preview_track).animate({ volume: vol.preview_max_volume / 100 }, 500)
 		} else {
 			preview_stopped = true
 			icon.text('play_arrow')

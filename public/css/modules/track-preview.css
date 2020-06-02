@@ -1,7 +1,7 @@
 .preview_controls {
 	opacity: 0;
 	display: block;
-	background: rgba(0, 0, 0, .5);
+	background: rgba(0, 0, 0, 0.5);
 	width: 56px;
 	height: 56px;
 	text-align: center;
@@ -11,8 +11,9 @@
 	top: 0;
 	right: 0;
 }
-.preview_playlist_controls{
-	cursor:pointer;
+
+.preview_playlist_controls {
+	cursor: pointer;
 }
 
 a.single-cover {

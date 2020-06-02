@@ -1236,7 +1236,7 @@
 													<div class="table__cell-content table__cell-content--vertical-center">
 														<i class="material-icons"
 															:class="{ 'preview_playlist_controls' : track.preview, disabled: !track.preview }"
-															@click='track.preview ? playPausePreview : null' :data-preview="track.preview">
+															v-on="{ click: track.preview ? playPausePreview : null }" :data-preview="track.preview">
 															play_arrow
 														</i>
 													</div>
@@ -1285,7 +1285,7 @@
 									<template v-else>
 										<tr v-for="(track, i) in body">
 											<td>
-												<i v-if="track.preview_url" @click=playPausePreview
+												<i v-if="track.preview_url" @click="playPausePreview"
 													:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
 													:data-preview="track.preview_url">play_arrow</i>
 												<i v-else class="material-icons disabled">play_arrow</i>

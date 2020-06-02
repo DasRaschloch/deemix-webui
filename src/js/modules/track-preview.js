@@ -50,7 +50,6 @@ function stopStackedTabsPreview() {
 
 // on hover event
 function previewMouseEnter(e) {
-	console.log('mouse Enter')
 	$(e.currentTarget).css({ opacity: 1 })
 }
 
@@ -68,17 +67,17 @@ function playPausePreview(e) {
 
 	const { currentTarget: obj } = event
 
-	var icon = obj.tagName == 'I' ? $(obj) : $(obj).children('i')
+	var $icon = obj.tagName == 'I' ? $(obj) : $(obj).children('i')
 
 	if ($(obj).attr('playing')) {
 		if (preview_track.paused) {
 			preview_track.play()
 			preview_stopped = false
-			icon.text('pause')
+			$icon.text('pause')
 			$(preview_track).animate({ volume: vol.preview_max_volume / 100 }, 500)
 		} else {
 			preview_stopped = true
-			icon.text('play_arrow')
+			$icon.text('play_arrow')
 			$(preview_track).animate({ volume: 0 }, 250, 'swing', () => {
 				preview_track.pause()
 			})
@@ -89,8 +88,8 @@ function playPausePreview(e) {
 		$('.preview_controls').text('play_arrow')
 		$('.preview_playlist_controls').text('play_arrow')
 		$('.preview_controls').css({ opacity: 0 })
-		icon.text('pause')
-		icon.css({ opacity: 1 })
+		$icon.text('pause')
+		$icon.css({ opacity: 1 })
 		preview_stopped = false
 		$(preview_track).animate({ volume: 0 }, 250, 'swing', () => {
 			preview_track.pause()

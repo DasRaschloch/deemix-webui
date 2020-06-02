@@ -77,9 +77,30 @@ const MainSearch = new Vue({
 			}
 		},
 		changeSearchTab(section) {
-			if (section != 'TOP_RESULT') {
-				document.getElementById(`search_${section.toLowerCase()}_tab`).click()
+			if (section === 'TOP_RESULT') return
+
+			let tabID
+
+			// Using the switch beacuse it's tricky to find refernces of the belo IDs
+			switch (section) {
+				case 'TRACK':
+					tabID = 'search_track_tab'
+					break
+				case 'ALBUM':
+					tabID = 'search_album_tab'
+					break
+				case 'ARTIST':
+					tabID = 'search_artist_tab'
+					break
+				case 'PLAYLIST':
+					tabID = 'search_playlist_tab'
+					break
+
+				default:
+					break
 			}
+
+			document.getElementById(tabID).click()
 		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
@@ -98,45 +119,54 @@ const MainSearch = new Vue({
 			})
 		},
 		scrolledSearch(type) {
-			if (this.results[type + 'Tab'].next < this.results[type + 'Tab'].total) {
+			let currentTab = type + 'Tab'
+
+			if (this.results[currentTab].next < this.results[currentTab].total) {
 				socket.emit('search', {
 					term: this.results.query,
 					type: type,
-					start: this.results[type + 'Tab'].next,
+					start: this.results[currentTab].next,
 					nb: 30
 				})
 			}
 		},
 		handleMainSearch(result) {
 			let resetObj = { data: [], next: 0, total: 0, loaded: false }
+
 			this.results.allTab = result
 			this.results.trackTab = { ...resetObj }
 			this.results.albumTab = { ...resetObj }
 			this.results.artistTab = { ...resetObj }
 			this.results.playlistTab = { ...resetObj }
+
 			if (this.results.query == '') document.getElementById('search_all_tab').click()
+
 			this.results.query = result.QUERY
 			document.getElementById('search_tab_content').style.display = 'block'
 			document.getElementById('main_search_tablink').click()
 		},
 		handleSearch(result) {
+			const { next: nextResult, total, type, data } = result
+
+			let currentTab = type + 'Tab'
 			let next = 0
 
-			if (result.next) {
-				next = parseInt(result.next.match(/index=(\d*)/)[1])
+			if (nextResult) {
+				next = parseInt(nextResult.match(/index=(\d*)/)[1])
 			} else {
-				next = result.total
+				next = total
 			}
 
-			if (this.results[result.type + 'Tab'].total != result.total) {
-				this.results[result.type + 'Tab'].total = result.total
+			if (this.results[currentTab].total != total) {
+				this.results[currentTab].total = total
 			}
 
-			if (this.results[result.type + 'Tab'].next != next) {
-				this.results[result.type + 'Tab'].next = next
-				this.results[result.type + 'Tab'].data = this.results[result.type + 'Tab'].data.concat(result.data)
+			if (this.results[currentTab].next != next) {
+				this.results[currentTab].next = next
+				this.results[currentTab].data = this.results[currentTab].data.concat(data)
 			}
-			this.results[result.type + 'Tab'].loaded = true
+
+			this.results[currentTab].loaded = true
 		}
 	},
 	mounted() {

@@ -40,7 +40,7 @@ const SettingsTab = new Vue({
 
 			toast('ARL copied to clipboard', 'assignment')
 		},
-		updateMaxVolume(){
+		updateMaxVolume() {
 			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
 		},
 		saveSettings() {
@@ -72,17 +72,17 @@ const SettingsTab = new Vue({
 				socket.emit('login', arl, true, this.accountNum)
 			}
 		},
-		changeAccount(){
+		changeAccount() {
 			socket.emit('changeAccount', this.accountNum)
 		},
-		accountChanged(user, accountNum){
+		accountChanged(user, accountNum) {
 			this.$refs.username.innerText = user.name
 			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
 			this.accountNum = accountNum
 			localStorage.setItem('accountNum', this.accountNum)
 		},
-		initAccounts(accounts){
-			this.accounts = accounts;
+		initAccounts(accounts) {
+			this.accounts = accounts
 		},
 		logout() {
 			socket.emit('logout')
@@ -120,12 +120,11 @@ const SettingsTab = new Vue({
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
 
 		let volume = parseInt(localStorage.getItem('previewVolume'))
-		if (isNaN(volume)){
+		if (isNaN(volume)) {
 			volume = 80
 			localStorage.setItem('previewVolume', volume)
 		}
 		window.vol.preview_max_volume = volume
-
 
 		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)

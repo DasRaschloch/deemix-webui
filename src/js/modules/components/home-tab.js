@@ -3,8 +3,8 @@ import { socket } from '../socket.js'
 import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
-import TrackPreview from '../track-preview.js'
-import Utils from '../utils.js'
+// import TrackPreview from '../track-preview.js'
+// import Utils from '../utils.js'
 
 const HomeTab = new Vue({
 	data() {
@@ -21,15 +21,19 @@ const HomeTab = new Vue({
 			document.getElementById('main_settings_tablink').click()
 		},
 		addToQueue(e) {
-			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
 			QualityModal.open(e.currentTarget.dataset.link)
 		},
 		initHome(data) {
-			this.playlists = data.playlists.data
-			this.albums = data.albums.data
+			const {
+				playlists: { data: playlistData },
+				albums: { data: albumData }
+			} = data
+
+			this.playlists = playlistData
+			this.albums = albumData
 		}
 	},
 	mounted() {

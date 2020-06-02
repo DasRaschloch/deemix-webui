@@ -5,6 +5,7 @@ import { showView } from '../tabs.js'
 import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
+import Utils from '../utils.js'
 
 const TracklistTab = new Vue({
 	data: () => ({
@@ -16,7 +17,6 @@ const TracklistTab = new Vue({
 		image: '',
 		type: '',
 		link: '',
-		head: null,
 		body: []
 	}),
 	methods: {
@@ -31,11 +31,9 @@ const TracklistTab = new Vue({
 			this.release_date = ''
 			this.explicit = false
 			this.type = ''
-			this.head = []
 			this.body = []
 		},
 		addToQueue(e) {
-			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
@@ -58,83 +56,83 @@ const TracklistTab = new Vue({
 			}
 			return selected.join(';')
 		},
-		convertDuration(duration) {
-			//convert from seconds only to mm:ss format
-			let mm, ss
-			mm = Math.floor(duration / 60)
-			ss = duration - mm * 60
-			//add leading zero if ss < 0
-			if (ss < 10) {
-				ss = '0' + ss
-			}
-			return mm + ':' + ss
-		},
+		convertDuration: Utils.convertDuration,
 		showAlbum(data) {
-			this.type = 'Album'
-			this.link = `https://www.deezer.com/album/${data.id}`
-			this.title = data.title
-			this.explicit = data.explicit_lyrics
-			this.label = data.label
-			this.metadata = `${data.artist.name} • ${data.tracks.length} songs`
-			this.release_date = data.release_date.substring(0, 10)
-			this.image = data.cover_xl
-			this.head = [
-				{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-				{ title: '#' },
-				{ title: 'Song' },
-				{ title: 'Artist' },
-				{ title: '<i class="material-icons">timer</i>', width: '40px' }
-			]
+			const {
+				id: albumID,
+				title: albumTitle,
+				explicit_lyrics,
+				label: albumLabel,
+				artist: { name: artistName },
+				tracks: albumTracks,
+				tracks: { length: numberOfTracks },
+				release_date,
+				cover_xl
+			} = data
 
-			if (_.isEmpty(data.tracks)) {
+			this.type = 'Album'
+			this.link = `https://www.deezer.com/album/${albumID}`
+			this.title = albumTitle
+			this.explicit = explicit_lyrics
+			this.label = albumLabel
+			this.metadata = `${artistName} • ${numberOfTracks} songs`
+			this.release_date = release_date.substring(0, 10)
+			this.image = cover_xl
+
+			if (_.isEmpty(albumTracks)) {
 				this.body = null
 			} else {
-				this.body = data.tracks
+				this.body = albumTracks
 			}
 		},
 		showPlaylist(data) {
-			this.type = 'Playlist'
-			this.link = `https://www.deezer.com/playlist/${data.id}`
-			this.title = data.title
-			this.image = data.picture_xl
-			this.release_date = data.creation_date.substring(0, 10)
-			this.metadata = `by ${data.creator.name} • ${data.tracks.length} songs`
-			this.head = [
-				{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-				{ title: '#' },
-				{ title: 'Song' },
-				{ title: 'Artist' },
-				{ title: 'Album' },
-				{ title: '<i class="material-icons">timer</i>', width: '40px' }
-			]
+			const {
+				id: playlistID,
+				title: playlistTitle,
+				picture_xl: playlistCover,
+				creation_date,
+				creator: { name: creatorName },
+				tracks: playlistTracks,
+				tracks: { length: numberOfTracks }
+			} = data
 
-			if (_.isEmpty(data.tracks)) {
+			this.type = 'Playlist'
+			this.link = `https://www.deezer.com/playlist/${playlistID}`
+			this.title = playlistTitle
+			this.image = playlistCover
+			this.release_date = creation_date.substring(0, 10)
+			this.metadata = `by ${creatorName} • ${numberOfTracks} songs`
+
+			if (_.isEmpty(playlistTracks)) {
 				this.body = null
 			} else {
-				this.body = data.tracks
+				this.body = playlistTracks
 			}
 		},
 		showSpotifyPlaylist(data) {
+			const {
+				uri: playlistURI,
+				name: playlistName,
+				images,
+				images: { length: numberOfImages },
+				owner: { display_name: ownerName },
+				tracks: playlistTracks,
+				tracks: { length: numberOfTracks }
+			} = data
+
 			this.type = 'Spotify Playlist'
-			this.link = data.uri
-			this.title = data.name
-			this.image = data.images.length
-				? data.images[0].url
+			this.link = playlistURI
+			this.title = playlistName
+			this.image = numberOfImages
+				? images[0].url
 				: 'https://e-cdns-images.dzcdn.net/images/cover/d41d8cd98f00b204e9800998ecf8427e/1000x1000-000000-80-0-0.jpg'
 			this.release_date = ''
-			this.metadata = `by ${data.owner.display_name} • ${data.tracks.length} songs`
-			this.head = [
-				{ title: '<i class="material-icons">music_note</i>', width: '24px' },
-				{ title: '#' },
-				{ title: 'Song' },
-				{ title: 'Artist' },
-				{ title: 'Album' },
-				{ title: '<i class="material-icons">timer</i>', width: '40px' }
-			]
-			if (_.isEmpty(data.tracks)) {
+			this.metadata = `by ${ownerName} • ${numberOfTracks} songs`
+
+			if (_.isEmpty(playlistTracks)) {
 				this.body = null
 			} else {
-				this.body = data.tracks
+				this.body = playlistTracks
 			}
 		}
 	},

@@ -12,11 +12,11 @@ function isValidURL(text) {
 }
 
 function convertDuration(duration) {
-	// convert from seconds only to mm:ss format
+	// Convert from seconds only to mm:ss format
 	let mm, ss
 	mm = Math.floor(duration / 60)
 	ss = duration - mm * 60
-	//add leading zero if ss < 0
+	// Add leading zero if ss < 0
 	if (ss < 10) {
 		ss = '0' + ss
 	}

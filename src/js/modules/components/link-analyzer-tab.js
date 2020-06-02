@@ -29,26 +29,36 @@ const LinkAnalyzerTab = new Vue({
 			this.countries = []
 		},
 		showTrack(data) {
-			this.title =
-				data.title +
-				(data.title_version && data.title.indexOf(data.title_version) == -1 ? ' ' + data.title_version : '')
-			this.image = data.album.cover_xl
+			const {
+				title,
+				title_version,
+				album: { cover_xl },
+				link,
+				available_countries
+			} = data
+
+			this.title = title + (title_version && title.indexOf(title_version) == -1 ? ' ' + title_version : '')
+			this.image = cover_xl
 			this.type = 'track'
-			this.link = data.link
-			data.available_countries.forEach(cc => {
+			this.link = link
+
+			available_countries.forEach(cc => {
 				let temp = []
 				let chars = [...cc].map(c => c.charCodeAt() + 127397)
 				temp.push(String.fromCodePoint(...chars))
 				temp.push(Utils.COUNTRIES[cc])
 				this.countries.push(temp)
 			})
+
 			this.data = data
 		},
 		showAlbum(data) {
-			this.title = data.title
-			this.image = data.cover_xl
+			const { title, cover_xl, link } = data
+
+			this.title = title
+			this.image = cover_xl
 			this.type = 'album'
-			this.link = data.link
+			this.link = link
 			this.data = data
 		}
 	},

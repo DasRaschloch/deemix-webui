@@ -29,6 +29,25 @@
 	vertical-align: middle;
 }
 
+th.sortable {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+th.sort-asc:after {
+	content: '\25b2';
+	font-size: 0.7em;
+	padding-left: 3px;
+	line-height: 0.7em;
+}
+
+th.sort-desc:after {
+	content: '\25bc';
+	font-size: 0.7em;
+	padding-left: 3px;
+	line-height: 0.7em;
+}
+
 .table td {
 	padding: var(--vertical-separator) 10px;
 }

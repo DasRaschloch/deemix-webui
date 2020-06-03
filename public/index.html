@@ -130,10 +130,12 @@
 																		:src="'https://e-cdns-images.dzcdn.net/images/cover/'+track.ALB_PICTURE+'/32x32-000000-80-0-0.jpg'">
 																</td>
 																<td class="table__cell table__cell--large breakline">
-																	<i v-if="track.EXPLICIT_LYRICS == 1" class="material-icons explicit_icon">
-																		explicit
-																	</i>
-																	{{ track.SNG_TITLE + (track.VERSION ? ' ' + track.VERSION : '') }}
+																	<div class="table__cell-content table__cell-content--vertical-center">
+																		<i v-if="track.EXPLICIT_LYRICS == 1" class="material-icons explicit_icon">
+																			explicit
+																		</i>
+																		{{ track.SNG_TITLE + (track.VERSION ? ' ' + track.VERSION : '') }}
+																	</div>
 																</td>
 																<td class="table__cell table__cell--medium table__cell--center breakline">
 																	<span class="clickable" @click="artistView" :data-id="artist.ART_ID"
@@ -395,16 +397,16 @@
 									<!-- Ugly af -->
 									<template v-for="release in countries">
 										<div role="button" :aria-label="release.title" v-if="release.title === 'Worldwide'"
-											class="release clickable" @click="getTrackList" :data-title="release.title"
-											:data-id="release.id" :key="release.id">
+											class="release clickable" @click="getTrackList" :data-title="release.title" :data-id="release.id"
+											:key="release.id">
 											<img class="rounded coverart" :src="release.picture_medium">
 										</div>
 									</template>
 
 									<template v-for="release in countries">
 										<div role="button" :aria-label="release.title" v-if="release.title !== 'Worldwide'"
-											class="release clickable" @click="getTrackList" :data-title="release.title"
-											:data-id="release.id" :key="release.id">
+											class="release clickable" @click="getTrackList" :data-title="release.title" :data-id="release.id"
+											:key="release.id">
 											<img class="rounded coverart" :src="release.picture_medium">
 										</div>
 									</template>

@@ -1,3 +1,92 @@
+input[type='text'],
+input[type='password'],
+input[type='number'] {
+	width: calc(100% - 16px);
+	border: 0px solid black;
+	line-height: 36px;
+	padding: 0px 8px;
+	border-radius: 4px;
+	background-color: var(--secondary-background);
+	color: var(--primary-text);
+	margin-bottom: 8px;
+}
+
+input[type='checkbox'] {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: none;
+	border: 2px solid gray;
+	opacity: 0.5;
+	border-radius: 2px;
+	padding: 7px;
+	margin: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+input[type='checkbox']:checked {
+	opacity: 1;
+	background-color: var(--accent-color);
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18' viewBox='3 3 18 18' width='18'%3E%3Cpath fill='%23ffffff' d='M 10,17 5,12 6.41,10.59 10,14.17 17.59,6.58 19,8 Z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+	background-position: center center;
+	border: 0px solid var(--accent-color);
+	border-radius: 2px;
+	padding: 9px;
+	margin: 3px;
+	color: var(--accent-text);
+}
+
+select {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	border: 0px solid black;
+	line-height: 36px;
+	padding: 0px 40px 0px 8px;
+	border-radius: 4px;
+	background-color: var(--secondary-background);
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath style='fill%3A%23000000%3Bfill-opacity%3A0.25' d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-size: 24px;
+	background-position: calc(100% - 8px) center;
+	background-clip: border-box;
+	color: var(--primary-text);
+	margin-bottom: 8px;
+}
+
+p {
+	word-break: break-word;
+}
+
+button {
+	min-width: 64px;
+	color: var(--accent-text);
+	position: relative;
+	background-color: var(--accent-color);
+	border: 1px solid transparent;
+	/* border: none; */
+	border-radius: 4px;
+	font-family: inherit;
+	font-weight: 600;
+	font-size: 14px;
+	padding: 0px 8px;
+	margin-right: 8px;
+	height: 36px;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: transform 50ms ease-in-out, background-color 200ms ease;
+}
+
+button:active {
+	background-color: var(--accent-color);
+	transform: scale(0.95);
+}
+
+button:hover {
+	background: none;
+	border: 1px solid var(--accent-color);
+}
+
 #loading_overlay {
 	justify-content: center;
 	align-items: center;
@@ -98,10 +187,6 @@ span.tag {
 	padding: 3px 6px;
 }
 
-p {
-	word-break: break-word;
-}
-
 a:visited {
 	color: dodgerblue;
 }
@@ -125,22 +210,6 @@ a:visited {
 
 .inline-flex .right {
 	margin-left: auto;
-}
-
-button {
-	font-family: inherit;
-	font-weight: 600;
-	font-size: 14px;
-	padding: 0px 8px;
-	margin-right: 8px;
-	height: 36px;
-	background-color: var(--accent-color);
-	border: 0px solid black;
-	border-radius: 4px;
-	min-width: 64px;
-	text-transform: uppercase;
-	color: var(--accent-text);
-	cursor: pointer;
 }
 
 button[disabled] {
@@ -168,62 +237,6 @@ button.with_icon i {
 	margin-left: 8px;
 }
 
-input[type='text'],
-input[type='password'],
-input[type='number'] {
-	width: calc(100% - 16px);
-	border: 0px solid black;
-	line-height: 36px;
-	padding: 0px 8px;
-	border-radius: 4px;
-	background-color: var(--secondary-background);
-	color: var(--primary-text);
-	margin-bottom: 8px;
-}
-
-select {
-	-webkit-appearance: none;
-	appearance: none;
-	width: 100%;
-	border: 0px solid black;
-	line-height: 36px;
-	padding: 0px 40px 0px 8px;
-	border-radius: 4px;
-	background-color: var(--secondary-background);
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath style='fill%3A%23000000%3Bfill-opacity%3A0.25' d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
-	background-repeat: no-repeat;
-	background-size: 24px;
-	background-position: calc(100% - 8px) center;
-	background-clip: border-box;
-	color: var(--primary-text);
-	margin-bottom: 8px;
-}
-
-input[type='checkbox'] {
-	-webkit-appearance: none;
-	appearance: none;
-	background-color: none;
-	border: 2px solid gray;
-	opacity: 0.5;
-	border-radius: 2px;
-	padding: 7px;
-	margin: 3px;
-	display: inline-block;
-	position: relative;
-}
-
-input[type='checkbox']:checked {
-	opacity: 1;
-	background-color: var(--accent-color);
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18' viewBox='3 3 18 18' width='18'%3E%3Cpath fill='%23ffffff' d='M 10,17 5,12 6.41,10.59 10,14.17 17.59,6.58 19,8 Z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
-	background-position: center center;
-	border: 0px solid var(--accent-color);
-	border-radius: 2px;
-	padding: 9px;
-	margin: 3px;
-	color: var(--accent-text);
-}
-
 .right {
 	float: right;
 }
@@ -243,25 +256,6 @@ input[type='checkbox']:checked {
 
 .tab {
 	margin: 16px 0px;
-}
-
-th.sortable {
-	-webkit-user-select: none;
-	user-select: none;
-}
-
-th.sort-asc:after {
-	content: '\25b2';
-	font-size: 0.7em;
-	padding-left: 3px;
-	line-height: 0.7em;
-}
-
-th.sort-desc:after {
-	content: '\25bc';
-	font-size: 0.7em;
-	padding-left: 3px;
-	line-height: 0.7em;
 }
 
 .fab {

@@ -28,7 +28,7 @@ html[data-theme='light'] {
 	--main-text-inverted: #eeeeee;
 	--panels-background: #222324;
 	--panels-text: #ffffff;
-	--accent-text: #ffffff;
+	--accent-text: black;
 
 	--table-bg: #ffffff;
 	--table-zebra: #c9c9c9;

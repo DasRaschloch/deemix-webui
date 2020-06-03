@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { isEmpty } from 'lodash-es'
 import Vue from 'vue'
 import { socket } from '../socket.js'
 import { showView } from '../tabs.js'
@@ -79,7 +79,7 @@ const TracklistTab = new Vue({
 			this.release_date = release_date.substring(0, 10)
 			this.image = cover_xl
 
-			if (_.isEmpty(albumTracks)) {
+			if (isEmpty(albumTracks)) {
 				this.body = null
 			} else {
 				this.body = albumTracks
@@ -103,7 +103,7 @@ const TracklistTab = new Vue({
 			this.release_date = creation_date.substring(0, 10)
 			this.metadata = `by ${creatorName} • ${numberOfTracks} songs`
 
-			if (_.isEmpty(playlistTracks)) {
+			if (isEmpty(playlistTracks)) {
 				this.body = null
 			} else {
 				this.body = playlistTracks
@@ -129,7 +129,7 @@ const TracklistTab = new Vue({
 			this.release_date = ''
 			this.metadata = `by ${ownerName} • ${numberOfTracks} songs`
 
-			if (_.isEmpty(playlistTracks)) {
+			if (isEmpty(playlistTracks)) {
 				this.body = null
 			} else {
 				this.body = playlistTracks

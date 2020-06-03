@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { isEmpty, orderBy } from 'lodash-es'
 import Vue from 'vue'
 import { socket } from '../socket.js'
 import Downloads from '../downloads.js'
@@ -73,7 +73,7 @@ const ArtistTab = new Vue({
 				{ title: 'Release Date', sortKey: 'release_date' },
 				{ title: '', width: '32px' }
 			]
-			if (_.isEmpty(releases)) {
+			if (isEmpty(releases)) {
 				this.body = null
 			} else {
 				this.body = releases
@@ -82,7 +82,7 @@ const ArtistTab = new Vue({
 	},
 	computed: {
 		showTable() {
-			if (this.body) return _.orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
+			if (this.body) return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
 			else return []
 		}
 	},

@@ -577,6 +577,10 @@
 									download<br />This is usefull if you're trying to download some tracks that are not available in your
 									country and want to know where they are available</p>
 							</div>
+							<div v-else-if="link == 'error'">
+								<h2>This link is not supported</h2>
+								<p>Seems like this link is not yet supported, try analyzing another one.</p>
+							</div>
 							<div v-else>
 								<header class="inline-flex"
 									:style="{ 'background-image': 'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\''+image+'\')' }">
@@ -593,6 +597,10 @@
 									</div>
 								</header>
 								<table class="table">
+									<tr v-if="data.id">
+										<td>ID</td>
+										<td>{{ data.id }}</td>
+									</tr>
 									<tr v-if="data.isrc">
 										<td>ISRC</td>
 										<td>{{ data.isrc }}</td>
@@ -634,6 +642,9 @@
 										<td>{{ data.genres.data.map(x => x.name).join("; ") }}</td>
 									</tr>
 								</table>
+								<div v-if="type == 'album'">
+									<button @click="albumView" :data-id="id">Tracklist</button>
+								</div>
 								<div v-if="countries.length">
 									<p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
 								</div>

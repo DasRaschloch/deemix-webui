@@ -249,10 +249,12 @@
 														</a>
 													</td>
 													<td class="table__cell table__cell--large breakline">
-														<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
-															explicit
-														</i>
-														{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+														<div class="table__cell-content table__cell-content--vertical-center">
+															<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
+																explicit
+															</i>
+															{{ track.title + (track.title_version && track.title.indexOf(track.title_version) == -1 ? ' '+ track.title_version : '') }}
+														</div>
 													</td>
 													<td class="table__cell table__cell--medium table__cell--center breakline clickable"
 														@click="artistView" :data-id="track.artist.id">

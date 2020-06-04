@@ -11,12 +11,15 @@ in the WebUI:
 	- Better placeholer before search
 	- Better loading feadback fot the user (maybe with a loading circle)
 - Link Analyzer
-	- Better placeholer before analyzing
-	- Feedback when the link analysis did not work (e.g. with playlist)
+	- Better placeholer before analyzing and error feedback
 - Settings tab
 	- Maybe tabbing the section for easy navigation
-- About tab
-	- Write stuff about the app
+- Add Custom Context menu to objects
+  - Copy Link where possible
+  - Copy Image URL where possible
+  - Context menu for pywebview (Context menu is blocked in pywebview)
+    - Copy and paste functions
+- Block selection where it's not needed (keep only titles artists albums labels and usefull data)
 - Install sass dependency
 - ?
 

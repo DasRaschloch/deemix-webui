@@ -11417,6 +11417,7 @@ function addToQueue(queueItem, current = false) {
 			result_icon.text('warning');
 		}
 	}
+	if (!queueItem.init) toast(`${queueItem.title} added to queue`, 'playlist_add_check');
 }
 
 function initQueue(data) {
@@ -11424,15 +11425,18 @@ function initQueue(data) {
 
 	if (queueComplete.length) {
 		queueComplete.forEach(item => {
+			queueList[item].init = true;
 			addToQueue(queueList[item]);
 		});
 	}
 
 	if (currentItem) {
+		queueList[currentItem].init = true;
 		addToQueue(queueList[currentItem], true);
 	}
 
 	queue.forEach(item => {
+		queueList[item].init = true;
 		addToQueue(queueList[item]);
 	});
 }
@@ -28197,5 +28201,37 @@ socket.on('logged_out', function () {
 	jquery('#settings_username').text('Not Logged');
 	jquery('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`);
 	document.getElementById('home_not_logged_in').classList.remove('hide');
+});
+
+socket.on('cancellingCurrentItem', function (uuid) {
+	toast('Cancelling current item.', 'loading', false, 'cancelling_'+uuid);
+});
+
+socket.on('currentItemCancelled', function (uuid) {
+	toast('Current item cancelled.', 'done', true, 'cancelling_'+uuid);
+});
+
+socket.on('startAddingArtist', function (data) {
+	toast(`Adding ${data.name} albums to queue`, 'loading', false, 'artist_'+data.id);
+});
+
+socket.on('finishAddingArtist', function (data) {
+	toast(`Added ${data.name} albums to queue`, 'done', true, 'artist_'+data.id);
+});
+
+socket.on('startConvertingSpotifyPlaylist', function (id) {
+	toast("Converting spotify tracks to deezer tracks", 'loading', false, 'spotifyplaylist_'+id);
+});
+
+socket.on('finishConvertingSpotifyPlaylist', function (id) {
+	toast("Spotify playlist converted", 'done', true, 'spotifyplaylist_'+id);
+});
+
+socket.on('errorMessage', function (error) {
+	toast(error, 'error');
+});
+
+socket.on('alreadyInQueue', function (data) {
+	toast(`${data.title} is already in queue!`, 'playlist_add_check');
 });
 //# sourceMappingURL=bundle.js.map

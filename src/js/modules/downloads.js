@@ -158,6 +158,7 @@ function addToQueue(queueItem, current = false) {
 			result_icon.text('warning')
 		}
 	}
+	if (!queueItem.init) toast(`${queueItem.title} added to queue`, 'playlist_add_check')
 }
 
 function initQueue(data) {
@@ -165,15 +166,18 @@ function initQueue(data) {
 
 	if (queueComplete.length) {
 		queueComplete.forEach(item => {
+			queueList[item].init = true
 			addToQueue(queueList[item])
 		})
 	}
 
 	if (currentItem) {
+		queueList[currentItem].init = true
 		addToQueue(queueList[currentItem], true)
 	}
 
 	queue.forEach(item => {
+		queueList[item].init = true
 		addToQueue(queueList[item])
 	})
 }

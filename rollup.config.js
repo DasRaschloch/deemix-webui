@@ -15,7 +15,7 @@ export default {
 		{
 			file: 'public/js/bundle.js',
 			format: 'module',
-			sourcemap: true
+			sourcemap: !production
 		}
 	],
 	plugins: [

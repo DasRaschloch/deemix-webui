@@ -1,15 +1,16 @@
 # deemix-webui
+
 This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that
 
 ## What's left to do?
-in the WebUI:
+
 - Make the UI look coherent
+  - Style buttons
   - Style text inputs
   - Style checkboxes
-  - Style buttons
 - Search tab
 	- Better placeholer before search
-	- Better loading feadback fot the user (maybe with a loading circle)
+	- Better loading feedback fot the user (maybe with a loading circle)
 - Link Analyzer
 	- Better placeholer before analyzing and error feedback
 - Settings tab
@@ -19,11 +20,11 @@ in the WebUI:
   - Copy Image URL where possible
   - Context menu for pywebview (Context menu is blocked in pywebview)
     - Copy and paste functions
-- Block selection where it's not needed (keep only titles artists albums labels and usefull data)
-- Install sass dependency
+- Block selection where it's not needed (keep only titles artists albums labels and useful data)
 - ?
 
 # License
+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or

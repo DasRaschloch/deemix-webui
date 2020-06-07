@@ -15,8 +15,8 @@
 	left: 0;
 	bottom: 0;
 	background-color: var(--accent-color);
-	-webkit-transition: width .3s linear;
-	transition: width .3s linear;
+	-webkit-transition: width 0.3s linear;
+	transition: width 0.3s linear;
 }
 
 .progress .indeterminate {
@@ -32,7 +32,7 @@
 	bottom: 0;
 	will-change: left, right;
 	-webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-			animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+	animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
 }
 
 .progress .indeterminate:after {
@@ -44,9 +44,9 @@
 	bottom: 0;
 	will-change: left, right;
 	-webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-			animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+	animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
 	-webkit-animation-delay: 1.15s;
-			animation-delay: 1.15s;
+	animation-delay: 1.15s;
 }
 
 @-webkit-keyframes indeterminate {
@@ -109,7 +109,7 @@
 	}
 }
 
-.toast-icon{
+.toast-icon {
 	display: inline-block;
 	margin-right: 8px;
 }
@@ -125,17 +125,25 @@
 	animation: spin 1s linear infinite;
 }
 
-.toastify .circle-loader{
-	border-bottom-color: var(--toast-secondary)
+.toastify .circle-loader {
+	border-bottom-color: var(--toast-secondary);
 }
 
 /* Safari */
 @-webkit-keyframes spin {
-	0% { -webkit-transform: rotate(0deg); }
-	100% { -webkit-transform: rotate(360deg); }
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
 }
 
 @keyframes spin {
-	0% { transform: rotate(0deg); }
-	100% { transform: rotate(360deg); }
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }

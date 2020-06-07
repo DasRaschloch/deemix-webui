@@ -7,46 +7,46 @@
 	border-radius: 2px;
 	margin: 0.5rem 0 1rem 0;
 	overflow: hidden;
-}
 
-.progress .determinate {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	background-color: var(--accent-color);
-	-webkit-transition: width 0.3s linear;
-	transition: width 0.3s linear;
-}
+	.determinate {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		background-color: var(--accent-color);
+		-webkit-transition: width 0.3s linear;
+		transition: width 0.3s linear;
+	}
 
-.progress .indeterminate {
-	background-color: var(--accent-color);
-}
+	.indeterminate {
+		background-color: var(--accent-color);
 
-.progress .indeterminate:before {
-	content: '';
-	position: absolute;
-	background-color: inherit;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	will-change: left, right;
-	-webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-	animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-}
+		&::before {
+			content: '';
+			position: absolute;
+			background-color: inherit;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			will-change: left, right;
+			-webkit-animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+			animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+		}
 
-.progress .indeterminate:after {
-	content: '';
-	position: absolute;
-	background-color: inherit;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	will-change: left, right;
-	-webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-	animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-	-webkit-animation-delay: 1.15s;
-	animation-delay: 1.15s;
+		&::after {
+			content: '';
+			position: absolute;
+			background-color: inherit;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			will-change: left, right;
+			-webkit-animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+			animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+			-webkit-animation-delay: 1.15s;
+			animation-delay: 1.15s;
+		}
+	}
 }
 
 @-webkit-keyframes indeterminate {

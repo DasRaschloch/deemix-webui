@@ -64,7 +64,6 @@ button {
 	position: relative;
 	background-color: var(--accent-color);
 	border: 1px solid transparent;
-	/* border: none; */
 	border-radius: 4px;
 	font-family: inherit;
 	font-weight: 600;
@@ -187,7 +186,8 @@ span.tag {
 	padding: 3px 6px;
 }
 
-a, a:visited {
+a,
+a:visited {
 	color: dodgerblue;
 }
 

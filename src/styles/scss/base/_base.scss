@@ -29,32 +29,32 @@ html[data-theme='light'] {
 }
 
 html[data-theme='dark'] {
-	--main-background: #141414;
-	--secondary-background: #242424;
-	--main-text: #eeeeee;
-	--main-text-inverted: #333333;
-	--panels-background: #1a1a1a;
-	--panels-text: #ffffff;
-	--accent-text: #dfdfdf;
+	--main-background: hsl(0, 0%, 8%);
+	--secondary-background: hsl(0, 0%, 14%);
+	--main-text: hsl(0, 0%, 93%);
+	--main-text-inverted: hsl(0, 0%, 20%);
+	--panels-background: hsl(0, 0%, 10%);
+	--panels-text: hsl(0, 0%, 100%);
+	--accent-text: hsl(0, 0%, 87%);
 
-	--table-bg: #141414;
-	--table-zebra: #242424;
-	--table-highlight: #343434;
+	--table-bg: hsl(0, 0%, 8%);
+	--table-zebra: hsl(0, 0%, 14%);
+	--table-highlight: hsl(0, 0%, 20%);
 }
 
 html[data-theme='purple'] {
-	--main-background: #0c041b;
-	--secondary-background: #130a29;
-	--main-text: #eeeeee;
-	--accent-color: #460ead;
-	--main-text-inverted: #100822;
-	--panels-background: #100727;
-	--panels-text: #ffffff;
-	--accent-text: #dfdfdf;
+	--main-background: hsl(261, 74%, 6%);
+	--secondary-background: hsl(257, 61%, 10%);
+	--main-text: hsl(0, 0%, 93%);
+	--accent-color: hsl(261, 85%, 37%);
+	--main-text-inverted: hsl(258, 62%, 8%);
+	--panels-background: hsl(257, 70%, 9%);
+	--panels-text: hsl(0, 0%, 100%);
+	--accent-text: hsl(0, 0%, 87%);
 
-	--table-bg: #0c041b;
-	--table-zebra: #130a29;
-	--table-highlight: #321874;
+	--table-bg: hsl(261, 74%, 6%);
+	--table-zebra: hsl(257, 61%, 10%);
+	--table-highlight: hsl(257, 66%, 27%);
 }
 
 body {

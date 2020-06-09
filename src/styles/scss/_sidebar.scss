@@ -58,8 +58,9 @@
 		#theme_togglers {
 			position: relative;
 			opacity: 1;
-			visibility: visible;
+			transition-delay: 200ms;
 		}
+
 		.main_tablinks_text {
 			display: inline-block;
 			opacity: 1;
@@ -79,11 +80,10 @@
 #theme_togglers {
 	display: flex;
 	opacity: 0;
-	visibility: hidden;
 	width: 100%;
 	justify-content: space-evenly;
 	align-items: center;
-	transition: all 50ms ease-in-out 200ms;
+	transition: all 50ms ease 0s;
 }
 
 .theme_toggler {

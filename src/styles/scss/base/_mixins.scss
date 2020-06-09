@@ -1,0 +1,5 @@
+@mixin removeSelectionBackground {
+	&::selection {
+		background: none;
+	}
+}

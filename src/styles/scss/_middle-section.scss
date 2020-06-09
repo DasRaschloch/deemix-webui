@@ -7,15 +7,69 @@
 }
 
 /* Center section */
-#search > #searchbar {
-	width: calc(100% - 32px);
-	height: 32px;
-	padding: 0px 8px;
-	margin: 8px;
-	border: 0px;
-	border-radius: 6px;
+$icon-dimension: 2rem;
+
+#search {
 	background-color: var(--secondary-background);
-	color: var(--primary-text);
+	width: 100%;
+	padding: 0 1em;
+	margin-bottom: 20px;
+	margin-right: 32px;
+	display: flex;
+	align-items: center;
+	border: 1px solid transparent;
+	transition: border 200ms ease-in-out;
+
+	.search__icon {
+		width: $icon-dimension;
+		height: $icon-dimension;
+		// cursor: pointer;
+
+		i {
+			font-size: $icon-dimension;
+			transition: color 250ms ease-in-out;
+			color: var(--main-text);
+
+			@include removeSelectionBackground;
+		}
+
+		&:hover {
+			i {
+				// color: var(--accent-color);
+			}
+		}
+	}
+
+	&:focus-within {
+		border: 1px solid var(--main-text);
+	}
+
+	$searchbar-height: calc(2rem + 1em);
+
+	#searchbar {
+		height: $searchbar-height;
+		padding-left: 0.5em;
+		border: 0px;
+		border-radius: 0px;
+		background-color: var(--secondary-background);
+		color: var(--primary-text);
+		font-size: 2rem;
+		font-family: 'Open Sans';
+		font-weight: 300;
+
+		&:focus {
+			outline: none;
+		}
+
+		// Removing Chrome autofill color
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			-webkit-box-shadow: 0 0 0 $searchbar-height var(--secondary-background) inset !important;
+			box-shadow: 0 0 0 $searchbar-height var(--secondary-background) inset !important;
+		}
+	}
 }
 
 #content {

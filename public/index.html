@@ -472,7 +472,11 @@
 								<button class="favorites_tablinks" id="favorites_album_tab">Albums</button>
 								<button class="favorites_tablinks" id="favorites_artist_tab">Artists</button>
 								<button class="favorites_tablinks" id="favorites_track_tab">Tracks</button>
+								<div @click="reloadTabs" role="button" aria-label="reload" ref="reloadButton" class="right clickable reload-button">
+									<i class="material-icons">sync</i>
+								</div>
 							</div>
+
 							<div id="playlist_favorites" class="favorites_tabcontent">
 								<div v-if="playlists.length == 0">
 									<h1>No Playlists found</h1>

@@ -47,18 +47,27 @@ const FavoritesTab = new Vue({
 		updated_userTracks(data) {
 			this.tracks = data
 		},
-		initFavorites(data) {
+		reloadTabs(){
+			this.$refs.reloadButton.classList.add("spin")
+			socket.emit('update_userFavorites')
+			if (localStorage.getItem('spotifyUser')) socket.emit('update_userSpotifyPlaylists', localStorage.getItem('spotifyUser'))
+		},
+		updated_userFavorites(data){
 			const { tracks, albums, artists, playlists } = data
-
 			this.tracks = tracks
 			this.albums = albums
 			this.artists = artists
 			this.playlists = playlists
+			this.$refs.reloadButton.classList.remove("spin")
+		},
+		initFavorites(data) {
+			this.updated_userFavorites(data)
 			document.getElementById('favorites_playlist_tab').click()
 		}
 	},
 	mounted() {
 		socket.on('init_favorites', this.initFavorites)
+		socket.on('updated_userFavorites', this.updated_userFavorites)
 		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
 		socket.on('updated_userPlaylists', this.updated_userPlaylists)
 		socket.on('updated_userAlbums', this.updated_userAlbums)

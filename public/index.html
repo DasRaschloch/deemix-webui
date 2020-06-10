@@ -859,16 +859,22 @@
 									</div>
 									<div class="settings-container__third settings-container__third--only-checkbox">
 										<label class="with_checkbox">
-											<input type="checkbox" v-model="settings.createM3U8File">
-											<span class="checkbox_text">Create playlist file</span>
-										</label>
-
-										<label class="with_checkbox">
 											<input type="checkbox" v-model="settings.syncedLyrics">
 											<span class="checkbox_text">Create .lyr files (Sync Lyrics)</span>
 										</label>
+
+										<label class="with_checkbox">
+											<input type="checkbox" v-model="settings.createM3U8File">
+											<span class="checkbox_text">Create playlist file</span>
+										</label>
 									</div>
 								</div>
+
+								<div class="input_group" v-if="settings.createM3U8File">
+									<p class="input_group_text">Playlist filename template</p>
+									<input type="text" v-model="settings.playlistFilenameTemplate">
+								</div>
+
 								<label class="with_checkbox">
 									<input type="checkbox" v-model="settings.saveDownloadQueue">
 									<span class="checkbox_text">Save download queue when closing the app</span>
@@ -1063,8 +1069,18 @@
 								</div>
 
 								<label class="with_checkbox">
+									<input type="checkbox" v-model="settings.albumVariousArtists">
+									<span class="checkbox_text">Keep "Various Artists" in the Album Artists</span>
+								</label>
+
+								<label class="with_checkbox">
 									<input type="checkbox" v-model="settings.removeAlbumVersion">
-									<span class="checkbox_text">Remove album version from track title</span>
+									<span class="checkbox_text">Remove "album version" from track title</span>
+								</label>
+
+								<label class="with_checkbox">
+									<input type="checkbox" v-model="settings.removeDuplicateArtists">
+									<span class="checkbox_text">Remove combinations of artists</span>
 								</label>
 
 								<div class="input_group">

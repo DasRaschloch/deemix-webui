@@ -238,6 +238,7 @@ function showTab(type, id, back = false) {
 	if (windows_stack.length == 0) {
 		windows_stack.push({ tab: main_selected })
 	} else if (!back) {
+		if (currentStack.type === 'artist') currentStack.selected = ArtistTab.getCurrentTab()
 		windows_stack.push(currentStack)
 	}
 
@@ -258,10 +259,12 @@ function backTab() {
 		document.getElementById(`main_${main_selected}link`).click()
 	} else {
 		// Retrieving tab type and tab id
-		let { type, id } = windows_stack.pop()
+		let data = windows_stack.pop()
+		let { type, id } = data
 
 		if (type === 'artist') {
 			ArtistTab.reset()
+			if (data.selected) ArtistTab.changeTab(data.selected)
 		} else {
 			TracklistTab.reset()
 		}

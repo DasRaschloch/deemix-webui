@@ -50,6 +50,9 @@ const ArtistTab = new Vue({
 		changeTab(tab) {
 			this.currentTab = tab
 		},
+		getCurrentTab() {
+			return this.currentTab
+		},
 		checkNewRelease(date) {
 			let g1 = new Date()
 			let g2 = new Date(date)
@@ -65,7 +68,7 @@ const ArtistTab = new Vue({
 			this.image = picture_xl
 			this.type = 'Artist'
 			this.link = `https://www.deezer.com/artist/${id}`
-			this.currentTab = Object.keys(releases)[0]
+			if (this.currentTab === '') this.currentTab = Object.keys(releases)[0]
 			this.sortKey = 'release_date'
 			this.sortOrder = 'desc'
 			this.head = [

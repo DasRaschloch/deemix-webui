@@ -1322,7 +1322,7 @@
 													<div class="table__cell-content table__cell-content--vertical-center">
 														<i class="material-icons"
 															:class="{ 'preview_playlist_controls' : track.preview, disabled: !track.preview }"
-															v-on="{ click: track.preview ? playPausePreview : null }" :data-preview="track.preview">
+															v-on="{ click: track.preview ? playPausePreview : false }" :data-preview="track.preview">
 															play_arrow
 														</i>
 													</div>

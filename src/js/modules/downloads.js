@@ -1,6 +1,7 @@
 import $ from 'jquery'
 import { socket } from './socket.js'
 import { toast } from './toasts.js'
+import { showErrors } from './tabs.js'
 
 /* ===== Locals ===== */
 const tabMinWidth = 250
@@ -145,17 +146,24 @@ function addToQueue(queueItem, current = false) {
 	$('#bar_' + queueItem.uuid).css('width', queueItem.progress + '%')
 	if (queueItem.failed >= 1 && $('#download_' + queueItem.uuid + ' .queue_failed').length == 0) {
 		$('#download_' + queueItem.uuid + ' .download_info_status').append(
-			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
+			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed_button inline-flex"><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i></span><span class="download_slim_separator">)</span></span>`
 		)
 	}
 	if (queueItem.downloaded + queueItem.failed == queueItem.size) {
 		let result_icon = $('#download_' + queueItem.uuid).find('.queue_icon')
 		if (queueItem.failed == 0) {
 			result_icon.text('done')
-		} else if (queueItem.failed == queueItem.size) {
-			result_icon.text('error')
 		} else {
-			result_icon.text('warning')
+			let failed_button = $('#download_' + queueItem.uuid).find('.queue_failed_button')
+			result_icon.addClass('clickable')
+			failed_button.addClass('clickable')
+			result_icon.bind('click', {item:queueItem}, showErrors)
+			failed_button.bind('click', {item:queueItem}, showErrors)
+			if (queueItem.failed >= queueItem.size) {
+				result_icon.text('error')
+			} else {
+				result_icon.text('warning')
+			}
 		}
 	}
 	if (!queueItem.init) toast(`${queueItem.title} added to queue`, 'playlist_add_check')
@@ -247,11 +255,19 @@ function finishDownload(uuid) {
 		let result_icon = $('#download_' + uuid).find('.queue_icon')
 		if (queueList[uuid].failed == 0) {
 			result_icon.text('done')
-		} else if (queueList[uuid].failed >= queueList[uuid].size) {
-			result_icon.text('error')
 		} else {
-			result_icon.text('warning')
+			let failed_button = $('#download_' + uuid).find('.queue_failed_button')
+			result_icon.addClass('clickable')
+			failed_button.addClass('clickable')
+			result_icon.bind('click', {item:queueList[uuid]}, showErrors)
+			failed_button.bind('click', {item:queueList[uuid]}, showErrors)
+			if (queueList[uuid].failed >= queueList[uuid].size) {
+				result_icon.text('error')
+			} else {
+				result_icon.text('warning')
+			}
 		}
+
 		let index = queue.indexOf(uuid)
 		if (index > -1) {
 			queue.splice(index, 1)
@@ -307,11 +323,12 @@ function updateQueue(update) {
 			$('#download_' + uuid + ' .queue_downloaded').text(queueList[uuid].downloaded + queueList[uuid].failed)
 			if (queueList[uuid].failed == 1 && $('#download_' + uuid + ' .queue_failed').length == 0) {
 				$('#download_' + uuid + ' .download_info_status').append(
-					`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed">1</span> <i class="material-icons">error_outline</i><span class="download_slim_separator">)</span></span>`
+					`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed_button inline-flex"><span class="queue_failed">1</span> <i class="material-icons">error_outline</i></span><span class="download_slim_separator">)</span></span>`
 				)
 			} else {
 				$('#download_' + uuid + ' .queue_failed').text(queueList[uuid].failed)
 			}
+			queueList[uuid].errors.push({message: update.error, data: update.data})
 		}
 		if (progress) {
 			queueList[uuid].progress = progress

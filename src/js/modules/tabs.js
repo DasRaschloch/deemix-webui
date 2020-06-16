@@ -4,6 +4,7 @@ import LinkAnalyzerTab from './components/link-analyzer-tab.js'
 import HomeTab from './components/home-tab.js'
 import ChartsTab from './components/charts-tab.js'
 import FavoritesTab from './components/favorites-tab.js'
+import ErrorsTab from './components/errors-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './components/settings-tab.js'
 import MainSearch from './components/main-search.js'
@@ -43,6 +44,11 @@ export function showView(viewType, event) {
 
 	socket.emit('getTracklist', { type: viewType, id })
 	showTab(viewType, id)
+}
+
+export function showErrors(event){
+	ErrorsTab.showErrors(event.data.item)
+	changeTab(event.target, 'main', 'errors_tab')
 }
 
 function analyzeLink(link) {
@@ -286,5 +292,6 @@ export default {
 	init,
 	changeTab,
 	showView,
-	analyzeLink
+	analyzeLink,
+	showErrors
 }

@@ -1,38 +1,38 @@
 html {
 	height: 100vh;
 
-	--main-scroll: #555;
-	--panels-scroll: #2a2c2c;
-	--accent-color: #0a84ff;
-	--tag-background: #0062c4;
-	--tag-text: #ffffff;
-	--toast-background: #000000dd;
-	--toast-secondary: #ffffff22;
-	--toast-text: #ffffffde;
-	--separator: #8f8f8f;
+	--main-scroll: hsl(0, 0%, 33%);
+	--panels-scroll: hsl(180, 2%, 17%);
+	--accent-color: hsl(210, 100%, 52%);
+	--tag-background: hsl(210, 100%, 38%);
+	--tag-text: hsl(0, 0%, 100%);
+	--toast-background: hsla(0, 0%, 0%, 0.867);
+	--toast-secondary: hsla(0, 0%, 100%, 0.133);
+	--toast-text: hsla(0, 0%, 100%, 0.871);
+	--separator: hsl(0, 0%, 50%);
 
 	--explicit-separator: 0.3125em;
 }
 
 html[data-theme='light'] {
-	--main-background: #ffffff;
-	--secondary-background: #eeeeee;
-	--main-text: #333333;
-	--main-text-inverted: #eeeeee;
-	--panels-background: #222324;
-	--panels-text: #ffffff;
-	--accent-text: black;
+	--main-background: hsl(0, 0%, 100%);
+	--secondary-background: hsl(0, 0%, 93%);
+	--foreground: hsl(0, 0%, 20%);
+	--foreground-inverted: hsl(0, 0%, 93%);
+	--panels-background: hsl(210, 3%, 14%);
+	--panels-text: hsl(0, 0%, 100%);
+	--accent-text: hsl(0, 0%, 0%);
 
-	--table-bg: #ffffff;
-	--table-zebra: #c9c9c9;
-	--table-highlight: #8f8f8f;
+	--table-bg: hsl(0, 0%, 100%);
+	--table-zebra: hsl(0, 0%, 79%);
+	--table-highlight: hsl(0, 0%, 56%);
 }
 
 html[data-theme='dark'] {
 	--main-background: hsl(0, 0%, 8%);
 	--secondary-background: hsl(0, 0%, 14%);
-	--main-text: hsl(0, 0%, 93%);
-	--main-text-inverted: hsl(0, 0%, 20%);
+	--foreground: hsl(0, 0%, 93%);
+	--foreground-inverted: hsl(0, 0%, 20%);
 	--panels-background: hsl(0, 0%, 10%);
 	--panels-text: hsl(0, 0%, 100%);
 	--accent-text: hsl(0, 0%, 87%);
@@ -45,9 +45,9 @@ html[data-theme='dark'] {
 html[data-theme='purple'] {
 	--main-background: hsl(261, 74%, 6%);
 	--secondary-background: hsl(257, 61%, 10%);
-	--main-text: hsl(0, 0%, 93%);
+	--foreground: hsl(0, 0%, 93%);
+	--foreground-inverted: hsl(258, 62%, 8%);
 	--accent-color: hsl(261, 85%, 37%);
-	--main-text-inverted: hsl(258, 62%, 8%);
 	--panels-background: hsl(257, 70%, 9%);
 	--panels-text: hsl(0, 0%, 100%);
 	--accent-text: hsl(0, 0%, 87%);
@@ -64,5 +64,5 @@ body {
 	font-family: 'Open Sans';
 	overflow: hidden;
 	background: var(--main-background);
-	color: var(--main-text);
+	color: var(--foreground);
 }

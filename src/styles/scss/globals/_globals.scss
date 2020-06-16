@@ -214,13 +214,13 @@ a:visited {
 
 button[disabled] {
 	background-color: var(--secondary-background);
-	color: var(--main-text);
+	color: var(--foreground);
 	opacity: 0.75;
 }
 
 button.selective {
 	background-color: var(--main-background);
-	color: var(--main-text);
+	color: var(--foreground);
 }
 
 button.selective.active {

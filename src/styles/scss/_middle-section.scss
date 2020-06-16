@@ -28,7 +28,7 @@ $icon-dimension: 2rem;
 		i {
 			font-size: $icon-dimension;
 			transition: color 250ms ease-in-out;
-			color: var(--main-text);
+			color: var(--foreground);
 
 			@include removeSelectionBackground;
 		}
@@ -41,7 +41,7 @@ $icon-dimension: 2rem;
 	}
 
 	&:focus-within {
-		border: 1px solid var(--main-text);
+		border: 1px solid var(--foreground);
 	}
 
 	$searchbar-height: calc(2rem + 1em);

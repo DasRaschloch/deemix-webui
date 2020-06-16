@@ -88,14 +88,14 @@
 									Deezer link
 								</p>
 							</div>
-							<div :class="{'hide': results.query == ''}">
-								<div class="tab">
-									<button class="search_tablinks" id="search_all_tab">All</button>
-									<button class="search_tablinks" id="search_track_tab">Tracks</button>
-									<button class="search_tablinks" id="search_album_tab">Album</button>
-									<button class="search_tablinks" id="search_artist_tab">Artist</button>
-									<button class="search_tablinks" id="search_playlist_tab">Playlist</button>
-								</div>
+							<div v-show="results.query !== ''">
+								<ul class="section-tabs">
+									<li class="section-tabs__tab search_tablinks" id="search_all_tab">All</li>
+									<li class="section-tabs__tab search_tablinks" id="search_track_tab">Tracks</li>
+									<li class="section-tabs__tab search_tablinks" id="search_album_tab">Album</li>
+									<li class="section-tabs__tab search_tablinks" id="search_artist_tab">Artist</li>
+									<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">Playlist</li>
+								</ul>
 								<div id="search_tab_content">
 									<!-- ### Main Search Tab ### -->
 									<div id="main_search" class="search_tabcontent">
@@ -466,13 +466,14 @@
 						</div>
 
 						<div id="favorites_tab" class="main_tabcontent">
-							<h1>Favorites</h1>
-							<div class="tab">
-								<button class="favorites_tablinks" id="favorites_playlist_tab">Playlists</button>
-								<button class="favorites_tablinks" id="favorites_album_tab">Albums</button>
-								<button class="favorites_tablinks" id="favorites_artist_tab">Artists</button>
-								<button class="favorites_tablinks" id="favorites_track_tab">Tracks</button>
-								<div @click="reloadTabs" role="button" aria-label="reload" ref="reloadButton" class="right clickable reload-button">
+							<h2 class="page_heading">Favorites</h2>
+							<div class="section-tabs">
+								<div class="section-tabs__tab favorites_tablinks" id="favorites_playlist_tab">Playlists</div>
+								<div class="section-tabs__tab favorites_tablinks" id="favorites_album_tab">Albums</div>
+								<div class="section-tabs__tab favorites_tablinks" id="favorites_artist_tab">Artists</div>
+								<div class="section-tabs__tab favorites_tablinks" id="favorites_track_tab">Tracks</div>
+								<div @click="reloadTabs" class="right clickable reload-button" style="margin-left: auto;"
+									ref="reloadButton" role="button" aria-label="reload">
 									<i class="material-icons">sync</i>
 								</div>
 							</div>
@@ -1193,13 +1194,16 @@
 							<h1>Bug Reports</h1>
 							<p>
 								If you have questions or problems with the app, search for a solution in the
-								<a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first and then, if you don't find anything
+								<a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first and then, if you don't
+								find anything
 								you can make a post with your issue on the subreddit.
 							</p>
 							<p>
-								Before reporting a bug make sure you're running the latest version of the app and that the thing you want
+								Before reporting a bug make sure you're running the latest version of the app and that the thing you
+								want
 								to report is acatually a bug and not something that's wrong only on your end.<br />
-								Make sure the bug is reproducible on another machines and also <b>DO NOT</b> report a bug if it's been already reported.
+								Make sure the bug is reproducible on another machines and also <b>DO NOT</b> report a bug if it's been
+								already reported.
 							</p>
 							<p>
 								<b>DO NOT</b> open issues for asking questions, there is a subreddit for that.

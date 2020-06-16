@@ -46,7 +46,7 @@ export function showView(viewType, event) {
 	showTab(viewType, id)
 }
 
-export function showErrors(event){
+export function showErrors(event) {
 	ErrorsTab.showErrors(event.data.item)
 	changeTab(event.target, 'main', 'errors_tab')
 }
@@ -209,6 +209,7 @@ function changeTab(sidebarEl, section, tabName) {
 		tabcontent[i].style.display = 'none'
 	}
 	tablinks = document.getElementsByClassName(section + '_tablinks')
+	// tablinks = document.getElementsByClassName('section-tabs__tab')
 	for (i = 0; i < tablinks.length; i++) {
 		tablinks[i].classList.remove('active')
 	}
@@ -234,7 +235,7 @@ function changeTab(sidebarEl, section, tabName) {
 		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1 &&
 		MainSearch.results[search_selected.split('_')[0] + 'Tab'].data.length == 0
 	) {
-		console.log(search_selected.split('_')[0] + 'Tab')
+		// console.log(search_selected.split('_')[0] + 'Tab')
 
 		MainSearch.search(search_selected.split('_')[0])
 	}

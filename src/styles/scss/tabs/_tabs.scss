@@ -10,7 +10,7 @@
 
 .tab button {
 	background-color: var(--primary-background);
-	color: var(--main-text);
+	color: var(--foreground);
 }
 
 .tab button.active {
@@ -31,4 +31,25 @@
 .main_tablinks_text {
 	overflow: hidden;
 	white-space: nowrap;
+}
+
+.section-tabs {
+	list-style-type: none;
+	display: flex;
+	margin: 16px 0 24px 0;
+	cursor: pointer;
+
+	&__tab {
+		flex: 1;
+		font-size: 1.2rem;
+		// width: 10rem;
+		padding: 1em;
+		border-top: 3px solid var(--foreground);
+		text-align: center;
+
+		&.active {
+			color: var(--accent-color);
+			border-top: 3px solid var(--accent-color);
+		}
+	}
 }

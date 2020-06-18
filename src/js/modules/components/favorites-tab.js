@@ -61,13 +61,15 @@ const FavoritesTab = new Vue({
 			this.artists = artists
 			this.playlists = playlists
 
+			console.log('update ok')
+
 			// Removing animation class only when the animation has completed an iteration
 			// Prevents animation ugly stutter
 			this.$refs.reloadButton.addEventListener(
 				'animationiteration',
 				() => {
 					this.$refs.reloadButton.classList.remove('spin')
-					toast('Refresh completed!', 'done', true, 'favorites-refresh-toast')
+					toast('Refresh completed!', 'done', true)
 				},
 				{ once: true }
 			)

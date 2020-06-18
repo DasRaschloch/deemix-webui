@@ -9,7 +9,7 @@
 }
 
 .tab button {
-	background-color: var(--primary-background);
+	background-color: var(--main-background);
 	color: var(--foreground);
 }
 
@@ -42,8 +42,7 @@
 	&__tab {
 		flex: 1;
 		font-size: 1.2rem;
-		// width: 10rem;
-		padding: 1em;
+		padding: .8em;
 		border-top: 3px solid var(--foreground);
 		text-align: center;
 

@@ -60,11 +60,11 @@ socket.on('logging_in', function () {
 socket.on('init_autologin', function () {
 	let arl = localStorage.getItem('arl')
 	let accountNum = localStorage.getItem('accountNum')
-	if (arl){
+	if (arl) {
 		arl = arl.trim()
-		if (accountNum != 0){
+		if (accountNum != 0) {
 			socket.emit('login', arl, true, accountNum)
-		}else{
+		} else {
 			socket.emit('login', arl)
 		}
 	}
@@ -130,27 +130,27 @@ socket.on('logged_out', function () {
 })
 
 socket.on('cancellingCurrentItem', function (uuid) {
-	toast('Cancelling current item.', 'loading', false, 'cancelling_'+uuid)
+	toast('Cancelling current item.', 'loading', false, 'cancelling_' + uuid)
 })
 
 socket.on('currentItemCancelled', function (uuid) {
-	toast('Current item cancelled.', 'done', true, 'cancelling_'+uuid)
+	toast('Current item cancelled.', 'done', true, 'cancelling_' + uuid)
 })
 
 socket.on('startAddingArtist', function (data) {
-	toast(`Adding ${data.name} albums to queue`, 'loading', false, 'artist_'+data.id)
+	toast(`Adding ${data.name} albums to queue`, 'loading', false, 'artist_' + data.id)
 })
 
 socket.on('finishAddingArtist', function (data) {
-	toast(`Added ${data.name} albums to queue`, 'done', true, 'artist_'+data.id)
+	toast(`Added ${data.name} albums to queue`, 'done', true, 'artist_' + data.id)
 })
 
 socket.on('startConvertingSpotifyPlaylist', function (id) {
-	toast("Converting spotify tracks to deezer tracks", 'loading', false, 'spotifyplaylist_'+id)
+	toast('Converting spotify tracks to deezer tracks', 'loading', false, 'spotifyplaylist_' + id)
 })
 
 socket.on('finishConvertingSpotifyPlaylist', function (id) {
-	toast("Spotify playlist converted", 'done', true, 'spotifyplaylist_'+id)
+	toast('Spotify playlist converted', 'done', true, 'spotifyplaylist_' + id)
 })
 
 socket.on('errorMessage', function (error) {

@@ -5,6 +5,7 @@ import Downloads from '../downloads.js'
 import QualityModal from '../quality-modal.js'
 import TrackPreview from '../track-preview.js'
 import Utils from '../utils.js'
+import { toast } from '../toasts'
 
 const FavoritesTab = new Vue({
 	data() {
@@ -47,18 +48,29 @@ const FavoritesTab = new Vue({
 		updated_userTracks(data) {
 			this.tracks = data
 		},
-		reloadTabs(){
-			this.$refs.reloadButton.classList.add("spin")
+		reloadTabs() {
+			this.$refs.reloadButton.classList.add('spin')
 			socket.emit('update_userFavorites')
-			if (localStorage.getItem('spotifyUser')) socket.emit('update_userSpotifyPlaylists', localStorage.getItem('spotifyUser'))
+			if (localStorage.getItem('spotifyUser'))
+				socket.emit('update_userSpotifyPlaylists', localStorage.getItem('spotifyUser'))
 		},
-		updated_userFavorites(data){
+		updated_userFavorites(data) {
 			const { tracks, albums, artists, playlists } = data
 			this.tracks = tracks
 			this.albums = albums
 			this.artists = artists
 			this.playlists = playlists
-			this.$refs.reloadButton.classList.remove("spin")
+
+			// Removing animation class only when the animation has completed an iteration
+			// Prevents animation ugly stutter
+			this.$refs.reloadButton.addEventListener(
+				'animationiteration',
+				() => {
+					this.$refs.reloadButton.classList.remove('spin')
+					toast('Refresh completed!', 'done', true, 'favorites-refresh-toast')
+				},
+				{ once: true }
+			)
 		},
 		initFavorites(data) {
 			this.updated_userFavorites(data)

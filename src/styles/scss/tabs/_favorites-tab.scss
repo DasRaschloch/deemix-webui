@@ -2,26 +2,14 @@
 	color: var(--accent-text);
 }
 
-div.reload-button {
-	width: 36px;
-	height: 36px;
-}
-div.reload-button i{
-	padding: 6px;
-}
+.reload-button {
+	&.reload-button--inline {
+		display: inline-block;
+	}
 
-div.reload-button.spin {
-	animation-name: spin;
-  animation-duration: 0.5s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-out;
-}
-
-@keyframes spin {
-    from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
+	&.spin {
+		i {
+			animation: spin 500ms infinite ease-out reverse;
+		}
+	}
 }

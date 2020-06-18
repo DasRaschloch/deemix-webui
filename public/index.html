@@ -466,16 +466,19 @@
 						</div>
 
 						<div id="favorites_tab" class="main_tabcontent">
-							<h2 class="page_heading">Favorites</h2>
+							<h2 class="page_heading">
+								Favorites
+								<div @click="reloadTabs" class="clickable reload-button reload-button--inline" ref="reloadButton"
+									role="button" aria-label="reload">
+									<i class="material-icons">sync</i>
+								</div>
+							</h2>
 							<div class="section-tabs">
 								<div class="section-tabs__tab favorites_tablinks" id="favorites_playlist_tab">Playlists</div>
 								<div class="section-tabs__tab favorites_tablinks" id="favorites_album_tab">Albums</div>
 								<div class="section-tabs__tab favorites_tablinks" id="favorites_artist_tab">Artists</div>
 								<div class="section-tabs__tab favorites_tablinks" id="favorites_track_tab">Tracks</div>
-								<div @click="reloadTabs" class="right clickable reload-button" style="margin-left: auto;"
-									ref="reloadButton" role="button" aria-label="reload">
-									<i class="material-icons">sync</i>
-								</div>
+
 							</div>
 
 							<div id="playlist_favorites" class="favorites_tabcontent">

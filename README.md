@@ -10,7 +10,6 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
   - Style checkboxes
 - Search tab
 	- Better placeholer before search
-	- Better loading feedback fot the user (maybe with a loading circle)
 - Link Analyzer
 	- Better placeholer before analyzing and error feedback
 - Settings tab

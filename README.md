@@ -21,6 +21,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
   - Context menu for pywebview (Context menu is blocked in pywebview)
     - Copy and paste functions
 - Block selection where it's not needed (keep only titles artists albums labels and useful data)
+  - There's a SASS mixin for this. Need to use it in the proper classes
 - ?
 
 # License

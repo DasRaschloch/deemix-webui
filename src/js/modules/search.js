@@ -46,6 +46,10 @@ function handleSearchBarKeyup(e) {
 		if (term !== MainSearch.results.query || main_selected == 'search_tab') {
 			document.getElementById('search_tab_content').style.display = 'none'
 			socket.emit('mainSearch', { term })
+
+			// Showing loading placeholder
+			document.getElementById('content').style.display = 'none'
+			document.getElementById('search_placeholder').classList.toggle('loading_placeholder--hidden')
 		} else {
 			document.getElementById('search_tab_content').style.display = 'block'
 			document.getElementById('main_search_tablink').click()

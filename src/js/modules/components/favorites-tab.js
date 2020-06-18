@@ -61,8 +61,6 @@ const FavoritesTab = new Vue({
 			this.artists = artists
 			this.playlists = playlists
 
-			console.log('update ok')
-
 			// Removing animation class only when the animation has completed an iteration
 			// Prevents animation ugly stutter
 			this.$refs.reloadButton.addEventListener(

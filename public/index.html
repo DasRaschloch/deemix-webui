@@ -20,8 +20,8 @@
 	</head>
 
 	<body>
-		<div id="loading_overlay" class="active">
-			<span id="loading_text">Connecting to the server...</span>
+		<div id="start_app_placeholder" class="loading_placeholder">
+			<span class="loading_placeholder__text">Connecting to the server...</span>
 			<div class="lds-ring">
 				<div></div>
 				<div></div>
@@ -69,6 +69,7 @@
 				</div>
 			</span>
 		</aside>
+
 		<main id="main_content">
 			<div id="middle_section">
 				<header id="search">
@@ -223,8 +224,14 @@
 									</div>
 									<!-- ### Track Search Tab ### -->
 									<div id="track_search" class="search_tabcontent">
-										<div v-if="!results.trackTab.loaded">
-											<h1>Loading</h1>
+										<div v-if="!results.trackTab.loaded" class="loading_placeholder">
+											<span class="loading_placeholder__text">Loading...</span>
+											<div class="lds-ring">
+												<div></div>
+												<div></div>
+												<div></div>
+												<div></div>
+											</div>
 										</div>
 										<div v-else-if="results.trackTab.data.length == 0">
 											<h1>No Tracks found</h1>
@@ -287,8 +294,14 @@
 									</div>
 									<!-- ### Album Search Tab ### -->
 									<div id="album_search" class="search_tabcontent">
-										<div v-if="!results.albumTab.loaded">
-											<h1>Loading</h1>
+										<div v-if="!results.albumTab.loaded" class="loading_placeholder">
+											<span class="loading_placeholder__text">Loading...</span>
+											<div class="lds-ring">
+												<div></div>
+												<div></div>
+												<div></div>
+												<div></div>
+											</div>
 										</div>
 										<div v-else-if="results.albumTab.data.length == 0">
 											<h1>No Albums found</h1>
@@ -312,8 +325,14 @@
 									</div>
 									<!-- ### Artist Search Tab ### -->
 									<div id="artist_search" class="search_tabcontent">
-										<div v-if="!results.artistTab.loaded">
-											<h1>Loading</h1>
+										<div v-if="!results.artistTab.loaded" class="loading_placeholder">
+											<span class="loading_placeholder__text">Loading...</span>
+											<div class="lds-ring">
+												<div></div>
+												<div></div>
+												<div></div>
+												<div></div>
+											</div>
 										</div>
 										<div v-else-if="results.artistTab.data.length == 0">
 											<h1>No Artists found</h1>
@@ -334,8 +353,14 @@
 									</div>
 									<!-- ### Playlist Search Tab ### -->
 									<div id="playlist_search" class="search_tabcontent">
-										<div v-if="!results.playlistTab.loaded">
-											<h1>Loading</h1>
+										<div v-if="!results.playlistTab.loaded" class="loading_placeholder">
+											<span class="loading_placeholder__text">Loading...</span>
+											<div class="lds-ring">
+												<div></div>
+												<div></div>
+												<div></div>
+												<div></div>
+											</div>
 										</div>
 										<div v-else-if="results.playlistTab.data.length == 0">
 											<h1>No Playlists found</h1>
@@ -1442,6 +1467,15 @@
 
 					</div>
 				</section>
+				<div id="search_placeholder" class="loading_placeholder loading_placeholder--hidden">
+					<span class="loading_placeholder__text">Searching...</span>
+					<div class="lds-ring">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
 			</div>
 
 			<div id="download_tab_container" class="tab_hidden">

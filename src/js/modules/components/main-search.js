@@ -131,6 +131,10 @@ const MainSearch = new Vue({
 			}
 		},
 		handleMainSearch(result) {
+			// Hiding loading placeholder
+			document.getElementById('content').style.display = ''
+			document.getElementById('search_placeholder').classList.toggle('loading_placeholder--hidden')
+
 			let resetObj = { data: [], next: 0, total: 0, loaded: false }
 
 			this.results.allTab = result

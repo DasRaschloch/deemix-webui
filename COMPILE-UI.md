@@ -39,7 +39,7 @@ you will have 3 tasks running at the same time:
 - the [rollup](https://rollupjs.org/guide/en/) watcher pointing to the configured `.js` file and ready to re-bundle
 - the [SASS](https://sass-lang.com/) compiler watching for `.scss` files changes
 
-Note that in development mode 2 more files, `bundle.js.map` and `style.css.map`, will be created in the public folder. These files will be deleted when runnin the build command, so you don't need to worrt about them.
+Note that in development mode 2 more files, `bundle.js.map` and `style.css.map`, will be created in the public folder. These files will be deleted when running the build command, so you don't need to worry about them.
 
 **You can now go to http://127.0.0.1:6595 and see the app running.**
 

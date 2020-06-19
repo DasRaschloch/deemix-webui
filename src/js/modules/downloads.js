@@ -98,12 +98,7 @@ function handleDrag(event) {
 }
 
 function sendAddToQueue(url, bitrate = null) {
-	if (url.indexOf(';') !== -1) {
-		let urls = url.split(';')
-		urls.forEach(url => {
-			socket.emit('addToQueue', { url: url, bitrate: bitrate })
-		})
-	} else if (url != '') {
+	if (url != '') {
 		socket.emit('addToQueue', { url: url, bitrate: bitrate })
 	}
 }

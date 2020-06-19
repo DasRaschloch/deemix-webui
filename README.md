@@ -4,6 +4,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 
 ## What's left to do?
 
+- Completely remove jQuery dependency
 - Make the UI look coherent
   - Style buttons
   - Style text inputs

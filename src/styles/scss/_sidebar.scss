@@ -74,7 +74,7 @@ $sidebar-delay: 75ms;
 
 				// Fix for purple theme in which grayscale shows incoherent color
 				html[data-theme='purple'] & {
-					background: var(--sidebar-link-bg);
+					background: var(--sidebar-link-bg-20);
 					filter: grayscale(0);
 				}
 

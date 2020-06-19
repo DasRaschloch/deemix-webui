@@ -1,3 +1,17 @@
+// Global Vue components
+import './modules/components/LoadingPlaceholder.js'
+
+// Vue views components
+import './modules/components/artist-tab.js'
+import './modules/components/charts-tab.js'
+import './modules/components/errors-tab.js'
+import './modules/components/favorites-tab.js'
+import './modules/components/home-tab.js'
+import './modules/components/link-analyzer-tab.js'
+import './modules/components/main-search.js'
+import './modules/components/settings-tab.js'
+import './modules/components/tracklist-tab.js'
+
 import $ from 'jquery'
 import { socket } from './modules/socket.js'
 import { toast } from './modules/toasts.js'
@@ -10,8 +24,7 @@ import TrackPreview from './modules/track-preview.js'
 /* ===== App initialization ===== */
 
 function startApp() {
-	// Setting current theme
-	setUserTheme()
+	setCurrentUserTheme()
 
 	Downloads.init()
 	QualityModal.init()
@@ -33,9 +46,8 @@ window.addEventListener('pywebviewready', initClient)
 /**
  * Sets the current theme according to
  * the localStorage saved theme.
- * @since		0.1.6
  */
-function setUserTheme() {
+function setCurrentUserTheme() {
 	let selectedTheme = localStorage.getItem('selectedTheme')
 
 	if (selectedTheme) {

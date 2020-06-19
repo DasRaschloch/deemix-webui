@@ -1,9 +1,6 @@
 import ArtistTab from './components/artist-tab.js'
 import TracklistTab from './components/tracklist-tab.js'
 import LinkAnalyzerTab from './components/link-analyzer-tab.js'
-import HomeTab from './components/home-tab.js'
-import ChartsTab from './components/charts-tab.js'
-import FavoritesTab from './components/favorites-tab.js'
 import ErrorsTab from './components/errors-tab.js'
 import { socket } from './socket.js'
 import SettingsTab from './components/settings-tab.js'
@@ -73,7 +70,6 @@ function linkListeners() {
  * according to clicked icon.
  * Uses event delegation
  * @param		{Event}		event
- * @since		0.1.0
  */
 function handleSidebarClick(event) {
 	const { target } = event

@@ -224,15 +224,7 @@
 									</div>
 									<!-- ### Track Search Tab ### -->
 									<div id="track_search" class="search_tabcontent">
-										<div v-if="!results.trackTab.loaded" class="loading_placeholder">
-											<span class="loading_placeholder__text">Loading...</span>
-											<div class="lds-ring">
-												<div></div>
-												<div></div>
-												<div></div>
-												<div></div>
-											</div>
-										</div>
+										<loading-placeholder v-if="!results.trackTab.loaded"></loading-placeholder>
 										<div v-else-if="results.trackTab.data.length == 0">
 											<h1>No Tracks found</h1>
 										</div>
@@ -294,15 +286,7 @@
 									</div>
 									<!-- ### Album Search Tab ### -->
 									<div id="album_search" class="search_tabcontent">
-										<div v-if="!results.albumTab.loaded" class="loading_placeholder">
-											<span class="loading_placeholder__text">Loading...</span>
-											<div class="lds-ring">
-												<div></div>
-												<div></div>
-												<div></div>
-												<div></div>
-											</div>
-										</div>
+										<loading-placeholder v-if="!results.albumTab.loaded"></loading-placeholder>
 										<div v-else-if="results.albumTab.data.length == 0">
 											<h1>No Albums found</h1>
 										</div>
@@ -325,15 +309,7 @@
 									</div>
 									<!-- ### Artist Search Tab ### -->
 									<div id="artist_search" class="search_tabcontent">
-										<div v-if="!results.artistTab.loaded" class="loading_placeholder">
-											<span class="loading_placeholder__text">Loading...</span>
-											<div class="lds-ring">
-												<div></div>
-												<div></div>
-												<div></div>
-												<div></div>
-											</div>
-										</div>
+										<loading-placeholder v-if="!results.artistTab.loaded"></loading-placeholder>
 										<div v-else-if="results.artistTab.data.length == 0">
 											<h1>No Artists found</h1>
 										</div>
@@ -353,15 +329,7 @@
 									</div>
 									<!-- ### Playlist Search Tab ### -->
 									<div id="playlist_search" class="search_tabcontent">
-										<div v-if="!results.playlistTab.loaded" class="loading_placeholder">
-											<span class="loading_placeholder__text">Loading...</span>
-											<div class="lds-ring">
-												<div></div>
-												<div></div>
-												<div></div>
-												<div></div>
-											</div>
-										</div>
+										<loading-placeholder v-if="!results.playlistTab.loaded"></loading-placeholder>
 										<div v-else-if="results.playlistTab.data.length == 0">
 											<h1>No Playlists found</h1>
 										</div>
@@ -613,7 +581,7 @@
 						</div>
 
 						<div id="analyzer_tab" class="main_tabcontent image_header">
-							<h1>Link Analyzer</h1>
+							<h2 class="page_heading">Link Analyzer</h2>
 							<div v-if="link == ''">
 								<p>You can use this section to find out more information about the link you are trying to
 									download<br />This is usefull if you're trying to download some tracks that are not available in your

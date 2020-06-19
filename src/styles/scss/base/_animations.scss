@@ -49,3 +49,14 @@
 		transform: rotate(360deg);
 	}
 }
+
+// You can find a better name, I have no ideas
+@keyframes grayscalize {
+	from {
+		filter: grayscale(0);
+	}
+
+	to {
+		filter: grayscale(1);
+	}
+}

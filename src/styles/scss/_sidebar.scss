@@ -1,14 +1,17 @@
+$sidebar-timing: 125ms;
+$sidebar-delay: 75ms;
+
 #sidebar {
 	display: flex;
 	flex-direction: column;
-	width: 48px;
+	width: $sidebar-width;
 	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
 	background-color: var(--panels-background);
 	color: var(--panels-text);
-	transition: width 125ms ease-in-out 75ms;
+	transition: width $sidebar-timing ease-in-out $sidebar-delay;
 	z-index: 999;
 
 	&:hover {
@@ -16,97 +19,120 @@
 	}
 
 	.main_tablinks {
-		&.active .side_icon {
-			color: var(--accent-color);
+		transition: all 500ms;
+
+		&.active {
+			background-color: var(--accent-color);
 		}
 
 		&:not(#theme_selector) {
 			display: flex;
 			align-items: center;
-			margin-top: 5px;
+			height: 55px;
 			cursor: pointer;
 
 			&:hover {
-				background-color: #3e3e3e;
+				background-color: var(--sidebar-link-bg);
+
+				.side_icon {
+					color: var(--accent-color);
+				}
 			}
 		}
 	}
 
 	.main_tablinks_text {
-		display: none;
-		display: inline-block;
 		margin-left: 20px;
 		opacity: 0;
-		visibility: hidden;
+		overflow: hidden;
+		white-space: nowrap;
 		transition: all 50ms ease-in-out 200ms;
 	}
 
 	.side_icon {
 		font-size: 30px;
 		padding: 9px;
+		transition: all 500ms;
 
-		&.side_icon--theme {
+		&--theme {
 			cursor: default;
 		}
 
-		&::selection {
-			background: none;
-		}
+		@include removeSelectionBackground;
 	}
 
 	&:hover {
-		#theme_togglers {
-			position: relative;
-			opacity: 1;
-			transition-delay: 200ms;
+		.main_tablinks {
+			&:hover {
+				background: var(--sidebar-link-bg-20);
+				filter: grayscale(0) opacity(1);
+			}
+
+			&.active {
+				background: var(--sidebar-link-bg);
+				filter: grayscale(1);
+
+				// Fix for purple theme in which grayscale shows incoherent color
+				html[data-theme='purple'] & {
+					background: var(--sidebar-link-bg);
+					filter: grayscale(0);
+				}
+
+				&:hover {
+					background: var(--sidebar-link-bg-20);
+					filter: grayscale(0);
+				}
+			}
 		}
 
 		.main_tablinks_text {
-			display: inline-block;
 			opacity: 1;
-			visibility: visible;
+		}
+
+		#theme_togglers {
+			opacity: 1;
 		}
 	}
-}
 
-/* Theme selector */
-
-#theme_selector {
-	margin-top: 20px;
-	display: flex;
-	height: 50px;
-}
-
-#theme_togglers {
-	display: flex;
-	opacity: 0;
-	width: 100%;
-	justify-content: space-evenly;
-	align-items: center;
-	transition: all 50ms ease 0s;
-}
-
-.theme_toggler {
-	width: 25px;
-	height: 25px;
-	border-radius: 1000px;
-	border: 1px solid var(--separator);
-	cursor: pointer;
-	transition: border 200ms ease-in-out;
-
-	&--active {
-		border-width: 3px;
+	/* Theme selector */
+	#theme_selector {
+		margin-top: 20px;
+		display: flex;
+		height: 50px;
 	}
 
-	&[data-theme-variant='light'] {
-		background: white;
+	#theme_togglers {
+		position: relative;
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		width: 100%;
+		opacity: 0;
+		transition: all $sidebar-timing ease-in-out $sidebar-delay;
 	}
 
-	&[data-theme-variant='dark'] {
-		background: #141414;
-	}
+	.theme_toggler {
+		width: 25px;
+		height: 25px;
+		border-radius: 1000px;
+		border: 1px solid var(--separator);
+		cursor: pointer;
+		transition: border 200ms ease-in-out;
 
-	&[data-theme-variant='purple'] {
-		background: #460ead;
+		&--active {
+			border-width: 3px;
+		}
+
+		&[data-theme-variant='light'] {
+			background: white;
+		}
+
+		&[data-theme-variant='dark'] {
+			background: hsl(0, 0%, 8%);
+		}
+
+		&[data-theme-variant='purple'] {
+			background: hsl(261, 85%, 37%);
+		}
 	}
 }

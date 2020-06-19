@@ -3,7 +3,6 @@ html {
 
 	--main-scroll: hsl(0, 0%, 33%);
 	--panels-scroll: hsl(180, 2%, 17%);
-	--accent-color: hsl(210, 100%, 52%);
 	--tag-background: hsl(210, 100%, 38%);
 	--tag-text: hsl(0, 0%, 100%);
 	--toast-background: hsla(0, 0%, 0%, 0.867);
@@ -19,9 +18,13 @@ html[data-theme='light'] {
 	--secondary-background: hsl(0, 0%, 93%);
 	--foreground: hsl(0, 0%, 20%);
 	--foreground-inverted: hsl(0, 0%, 93%);
+	--accent-color: hsl(210, 100%, 52%);
 	--panels-background: hsl(210, 3%, 14%);
 	--panels-text: hsl(0, 0%, 100%);
 	--accent-text: hsl(0, 0%, 0%);
+
+	--sidebar-link-bg: hsl(0, 0%, 24%);
+	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
 
 	--table-bg: hsl(0, 0%, 100%);
 	--table-zebra: hsl(0, 0%, 79%);
@@ -33,9 +36,13 @@ html[data-theme='dark'] {
 	--secondary-background: hsl(0, 0%, 14%);
 	--foreground: hsl(0, 0%, 93%);
 	--foreground-inverted: hsl(0, 0%, 20%);
+	--accent-color: hsl(210, 100%, 52%);
 	--panels-background: hsl(0, 0%, 10%);
 	--panels-text: hsl(0, 0%, 100%);
 	--accent-text: hsl(0, 0%, 87%);
+
+	--sidebar-link-bg: hsl(0, 0%, 24%);
+	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
 
 	--table-bg: hsl(0, 0%, 8%);
 	--table-zebra: hsl(0, 0%, 14%);
@@ -51,6 +58,9 @@ html[data-theme='purple'] {
 	--panels-background: hsl(257, 70%, 9%);
 	--panels-text: hsl(0, 0%, 100%);
 	--accent-text: hsl(0, 0%, 87%);
+
+	--sidebar-link-bg: hsl(257, 70%, 17%);
+	--sidebar-link-bg-20: hsla(257, 70%, 17%, 0.2);
 
 	--table-bg: hsl(261, 74%, 6%);
 	--table-zebra: hsl(257, 61%, 10%);

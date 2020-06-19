@@ -84,21 +84,21 @@ button {
 	text-transform: uppercase;
 	cursor: pointer;
 	transition: transform 50ms ease-in-out, background-color 200ms ease;
-}
 
-button:active {
-	background-color: var(--accent-color);
-	transform: scale(0.95);
-}
+	&:active {
+		background-color: var(--accent-color);
+		transform: scale(0.95);
+	}
 
-button:hover {
-	background: none;
-	border: 1px solid var(--accent-color);
+	&:hover {
+		background: none;
+		border: 1px solid var(--accent-color);
+	}
 }
 
 #main_content {
-	margin-left: 48px;
-	width: calc(100% - 48px);
+	margin-left: $sidebar-width;
+	width: calc(100% - $sidebar-width);
 	height: 100%;
 	display: flex;
 }

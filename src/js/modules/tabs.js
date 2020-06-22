@@ -209,6 +209,7 @@ function changeTab(sidebarEl, section, tabName) {
 	for (i = 0; i < tablinks.length; i++) {
 		tablinks[i].classList.remove('active')
 	}
+
 	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
 		SettingsTab.settings = { ...SettingsTab.lastSettings }
 		SettingsTab.spotifyCredentials = { ...SettingsTab.lastCredentials }

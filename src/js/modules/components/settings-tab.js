@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import { toast } from '../toasts.js'
 import { socket } from '../socket.js'
+import TestComponent from './TestComponent.vue'
 
 const SettingsTab = new Vue({
+	components: {
+		TestComponent
+	},
 	data: () => ({
 		settings: { tags: {} },
 		lastSettings: {},

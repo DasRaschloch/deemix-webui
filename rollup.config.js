@@ -4,6 +4,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import replace from '@rollup/plugin-replace'
 import alias from '@rollup/plugin-alias'
 import analyze from 'rollup-plugin-analyzer'
+import vue from 'rollup-plugin-vue'
 
 // 'rollup -c' -> 'production' is false
 // 'rollup -c -w' -> 'production' is true
@@ -33,6 +34,7 @@ export default {
 		}),
 		resolve(), // Tells Rollup how to find imported modules in node_modules
 		commonjs(), // Converts imported modules to ES modules, if necessary
+		vue(),
 		production && terser(), // Minify, but only in production
 		production && analyze({ showExports: true, limit: 15 }) // Show useful information about bundles, only in production
 	]

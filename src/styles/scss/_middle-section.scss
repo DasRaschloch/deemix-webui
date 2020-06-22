@@ -8,6 +8,7 @@
 
 /* Center section */
 $icon-dimension: 2rem;
+$searchbar-height: calc(2rem + 1em);
 
 #search {
 	background-color: var(--secondary-background);
@@ -23,28 +24,18 @@ $icon-dimension: 2rem;
 	.search__icon {
 		width: $icon-dimension;
 		height: $icon-dimension;
-		// cursor: pointer;
 
 		i {
 			font-size: $icon-dimension;
-			transition: color 250ms ease-in-out;
 			color: var(--foreground);
 
-			@include removeSelectionBackground;
-		}
-
-		&:hover {
-			i {
-				// color: var(--accent-color);
-			}
+			@include remove-selection-background;
 		}
 	}
 
 	&:focus-within {
 		border: 1px solid var(--foreground);
 	}
-
-	$searchbar-height: calc(2rem + 1em);
 
 	#searchbar {
 		height: $searchbar-height;
@@ -74,11 +65,12 @@ $icon-dimension: 2rem;
 
 #content {
 	background-color: var(--main-background);
-	width: calc(100% - 10px);
+	// width: calc(100% - 10px);
+	width: 100%;
 	height: calc(100% - 93px);
 	overflow-y: scroll;
 	overflow-x: hidden;
-	padding-left: 10px;
+	// padding-left: 10px;
 
 	&::-webkit-scrollbar {
 		width: 10px;
@@ -97,59 +89,61 @@ $icon-dimension: 2rem;
 }
 
 #container {
+	--container-width: 95%;
+
+	@media only screen and (min-width: $small) {
+		--container-width: 85%;
+	}
+
+	@media only screen and (min-width: $medium) {
+		--container-width: 70%;
+	}
+}
+
+#container {
 	margin: 0 auto;
 	max-width: 1280px;
-	width: 90%;
+	width: var(--container-width);
 }
 
 /* The Modal (background) */
 .smallmodal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1250; /* Sit on top */
+	display: none;
+	position: fixed;
+	z-index: 1250;
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
 	animation-duration: 0.3s;
 }
 
 /* Modal Content */
 .smallmodal-content {
-	background-color: none;
+	--modal-content-width: 95%;
+
+	@media only screen and (min-width: $small) {
+		--modal-content-width: 85%;
+	}
+
+	@media only screen and (min-width: $medium) {
+		--modal-content-width: 70%;
+	}
+}
+
+.smallmodal-content {
+	background-color: transparent;
 	margin: auto;
-	width: 30%;
-	align-items: center;
+	width: var(--modal-content-width);
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
 
-	& button {
+	button {
 		width: 100%;
 		margin-bottom: 8px;
-	}
-}
-
-@media only screen and (min-width: 601px) {
-	#container,
-	.smallmodal-content {
-		width: 85%;
-	}
-}
-
-@media only screen and (min-width: 993px) {
-	#container,
-	.smallmodal-content {
-		width: 70%;
-	}
-}
-
-@media only screen and (max-width: 600px) {
-	#container,
-	.smallmodal-content {
-		width: 100%;
 	}
 }

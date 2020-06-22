@@ -4,28 +4,34 @@
 	display: none;
 }
 
-.main_tabcontent h1 {
-	margin-bottom: 12px;
+.main_tabcontent {
+	h1 {
+		margin-bottom: 12px;
+	}
 }
 
-.tab button {
-	background-color: var(--main-background);
-	color: var(--foreground);
-}
+.tab {
+	margin: 16px 0px;
 
-.tab button.active {
-	background-color: var(--accent-color);
+	button {
+		background-color: var(--main-background);
+		color: var(--foreground);
+
+		&.active {
+			background-color: var(--accent-color);
+		}
+	}
 }
 
 .release {
 	display: inline-block;
 	width: 156px;
-}
 
-.release .cover_container {
-	width: 156px;
-	height: 156px;
-	margin-bottom: 10px;
+	.cover_container {
+		width: 156px;
+		height: 156px;
+		margin-bottom: 10px;
+	}
 }
 
 .section-tabs {

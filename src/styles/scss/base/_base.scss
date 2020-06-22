@@ -1,6 +1,4 @@
 html {
-	height: 100vh;
-
 	--main-scroll: hsl(0, 0%, 33%);
 	--panels-scroll: hsl(180, 2%, 17%);
 	--tag-background: hsl(210, 100%, 38%);
@@ -9,8 +7,6 @@ html {
 	--toast-secondary: hsla(0, 0%, 100%, 0.133);
 	--toast-text: hsla(0, 0%, 100%, 0.871);
 	--separator: hsl(0, 0%, 50%);
-
-	--explicit-separator: 0.3125em;
 }
 
 html[data-theme='light'] {
@@ -65,6 +61,10 @@ html[data-theme='purple'] {
 	--table-bg: hsl(261, 74%, 6%);
 	--table-zebra: hsl(257, 61%, 10%);
 	--table-highlight: hsl(257, 66%, 27%);
+}
+
+html {
+	height: 100vh;
 }
 
 body {

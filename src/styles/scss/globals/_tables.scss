@@ -1,9 +1,10 @@
+$vertical-separator: 7px;
+$table-border-radius: 3px;
+
 .table {
 	width: 100%;
 	-webkit-border-horizontal-spacing: 0px;
 	-webkit-border-vertical-spacing: 0px;
-
-	--vertical-separator: 7px;
 
 	tbody {
 		tr:not(.table__row-no-highlight):hover {
@@ -55,18 +56,97 @@
 	}
 
 	td {
-		padding: var(--vertical-separator) 10px;
+		padding: $vertical-separator 10px;
 
 		&:first-child {
-			padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
+			padding: $vertical-separator 10px $vertical-separator 20px;
 		}
 
 		&:last-child {
-			padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
+			padding: $vertical-separator 20px $vertical-separator 10px;
 		}
 
 		img {
 			vertical-align: middle;
+		}
+	}
+
+	/* === Tracks Table === */
+	&--tracks {
+		border-collapse: collapse;
+
+		thead {
+			border-bottom: 2px solid var(--table-highlight);
+		}
+
+		th {
+			padding-bottom: 10px;
+			height: 45px;
+		}
+
+		td {
+			height: 35px;
+
+			&.breakline {
+				word-break: break-word;
+			}
+		}
+
+		tr {
+			&:first-child {
+				td {
+					&:first-child {
+						border-top-left-radius: $table-border-radius;
+					}
+
+					&:last-child {
+						border-top-right-radius: $table-border-radius;
+					}
+				}
+			}
+
+			&:last-child {
+				td {
+					&:first-child {
+						border-bottom-left-radius: $table-border-radius;
+					}
+
+					&:last-child {
+						border-bottom-right-radius: $table-border-radius;
+					}
+				}
+			}
+		}
+	}
+
+	/* === Tracklist Table === */
+	&--tracklist {
+		thead {
+			border-bottom: 2px solid var(--table-highlight);
+		}
+
+		th {
+			height: 45px;
+			padding: $vertical-separator 10px;
+
+			&:first-child {
+				padding: $vertical-separator 10px $vertical-separator 20px;
+			}
+
+			&:last-child {
+				padding: $vertical-separator 20px $vertical-separator 10px;
+			}
+		}
+
+		td {
+			height: 35px;
+		}
+	}
+
+	/* === Charts Table === */
+	&--charts {
+		td {
+			height: 35px;
 		}
 	}
 
@@ -134,95 +214,21 @@
 	}
 }
 
-.track_row > td > img {
-	width: 32px;
-	height: 32px;
+.track_row {
+	> td > img {
+		width: 32px;
+		height: 32px;
+	}
+
+	> td > a > img {
+		width: 56px;
+		height: 56px;
+	}
 }
 
-.track_row > td > a > img {
-	width: 56px;
-	height: 56px;
-}
-
+// @todo Remove
 .top-tracks-position {
 	padding: 12px;
 	text-align: center;
 	cursor: default;
-}
-
-/* === Tracks Table === */
-.table--tracks {
-	border-collapse: collapse;
-
-	--radius: 3px;
-}
-
-.table--tracks thead {
-	border-bottom: 2px solid var(--table-highlight);
-}
-
-.table--tracks th {
-	padding-bottom: 10px;
-	height: 45px;
-}
-
-.table--tracks td {
-	height: 35px;
-}
-
-.table--tracks td.breakline {
-	word-break: break-word;
-}
-
-.table--tracks tr:first-child td:first-child {
-	border-top-left-radius: var(--radius);
-}
-
-.table--tracks tr:first-child td:last-child {
-	border-top-right-radius: var(--radius);
-}
-
-.table--tracks tr:last-child td:first-child {
-	border-bottom-left-radius: var(--radius);
-}
-
-.table--tracks tr:last-child td:last-child {
-	border-bottom-right-radius: var(--radius);
-}
-
-/* === Tracklist Table === */
-
-/* .table--tracklist {} */
-
-.table--tracklist thead {
-	border-bottom: 2px solid var(--table-highlight);
-}
-
-.table--tracklist th {
-	height: 45px;
-	padding: var(--vertical-separator) 10px;
-}
-
-.table--tracklist th:first-child {
-	padding: var(--vertical-separator) 10px var(--vertical-separator) 20px;
-}
-
-.table--tracklist th:last-child {
-	padding: var(--vertical-separator) 20px var(--vertical-separator) 10px;
-}
-
-.table--tracklist td {
-	height: 35px;
-}
-
-.explicit_tracklist {
-	margin-left: var(--explicit-separator);
-}
-
-/* === Charts Table === */
-
-/* .table--charts {} */
-
-.table--charts td {
-	height: 35px;
 }

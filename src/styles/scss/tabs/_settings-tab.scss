@@ -30,13 +30,13 @@
 	width: 48px;
 	margin: 0px 0px 0px 8px;
 	padding: 0px 4px;
+
+	i {
+		padding: 6px 0px;
+	}
 }
 
-#settings_btn_copyArl i {
-	padding: 6px 0px;
-}
-
-#spotify-icon {
+#spotify_icon {
 	width: 24px;
 	height: 24px;
 	fill: #1db954;
@@ -51,61 +51,61 @@
 	border-top: 1px solid var(--separator); /* Need less opacity */
 	padding-top: 20px;
 	padding-bottom: 20px;
-}
 
-.settings-group > * {
-	margin-bottom: 15px;
+	> * {
+		margin-bottom: 15px;
+	}
 }
 
 /* Settings group header */
 .settings-group__header {
 	font-size: 1.5rem;
 	margin-bottom: 25px;
-}
 
-.settings-group__header--with-icon {
-	display: inline-flex;
-	align-items: center;
-}
+	&.settings-group__header--with-icon {
+		display: inline-flex;
+		align-items: center;
 
-.settings-group__header--with-icon i.material-icons {
-	margin-right: 15px;
+		i.material-icons {
+			margin-right: 15px;
+		}
+	}
 }
 
 /* Settings container */
 .settings-container {
 	display: flex;
-}
 
-.settings-container__half > *,
-.settings-container__third > * {
-	margin-bottom: 15px;
-}
+	&__half {
+		width: 50%;
+	}
 
-.settings-container__half {
-	width: 50%;
-}
+	&__third {
+		width: 33%;
 
-.settings-container__third {
-	width: 33%;
-}
+		&--only-checkbox {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: start;
+		}
+	}
 
-.settings-container__third--only-checkbox {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: start;
+	&__half > *,
+	&__third > * {
+		margin-bottom: 15px;
+	}
 }
 
 /* Input group */
 .input_group {
 	margin-bottom: 25px;
-}
 
-.input_group .input_group_text {
-	margin-bottom: 7px;
-}
+	.input_group_text {
+		margin-bottom: 7px;
+	}
 
-.with_checkbox + .input_group {
-	margin-top: 10px;
+	.with_checkbox + & {
+		margin-top: 10px;
+	}
 }

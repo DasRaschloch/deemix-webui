@@ -1,4 +1,4 @@
-@mixin removeSelectionBackground {
+@mixin remove-selection-background {
 	&::selection {
 		background: none;
 	}

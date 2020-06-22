@@ -58,7 +58,7 @@ $sidebar-delay: 75ms;
 			cursor: default;
 		}
 
-		@include removeSelectionBackground;
+		@include remove-selection-background;
 	}
 
 	&:hover {

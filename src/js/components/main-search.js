@@ -5,8 +5,12 @@ import Downloads from '@/js/downloads.js'
 import QualityModal from '@/js/quality-modal.js'
 import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
+import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
 
 const MainSearch = new Vue({
+	components: {
+		BaseLoadingPlaceholder
+	},
 	data: {
 		names: {
 			TOP_RESULT: 'Top Result',

@@ -1,11 +1,7 @@
-import ArtistTab from '@components/artist-tab.js'
-import TracklistTab from '@components/tracklist-tab.js'
-import LinkAnalyzerTab from '@components/link-analyzer-tab.js'
-import ErrorsTab from '@components/errors-tab.js'
-import SettingsTab from '@components/settings-tab.js'
+import TrackPreview from '@/js/track-preview.js'
 import MainSearch from '@components/main-search.js'
 import { socket } from '@/js/socket.js'
-import TrackPreview from '@/js/track-preview.js'
+import EventBus from '@/js/EventBus'
 
 /* ===== Globals ====== */
 window.search_selected = ''
@@ -27,12 +23,12 @@ export function showView(viewType, event) {
 
 	switch (viewType) {
 		case 'artist':
-			ArtistTab.reset()
+			EventBus.$emit('artistTab:reset')
 			break
 		case 'album':
 		case 'playlist':
 		case 'spotifyplaylist':
-			TracklistTab.reset()
+			EventBus.$emit('tracklistTab:reset')
 			break
 
 		default:
@@ -44,12 +40,18 @@ export function showView(viewType, event) {
 }
 
 export function showErrors(event) {
-	ErrorsTab.showErrors(event.data.item)
+	EventBus.$emit('showErrors', event.data.item)
 	changeTab(event.target, 'main', 'errors_tab')
 }
 
+export function updateSelected(newSelected) {
+	currentStack.selected = newSelected
+}
+
+window.test = showErrors
+
 function analyzeLink(link) {
-	LinkAnalyzerTab.reset()
+	EventBus.$emit('linkAnalyzerTab:reset')
 	socket.emit('analyzeLink', link)
 }
 
@@ -211,9 +213,8 @@ function changeTab(sidebarEl, section, tabName) {
 	}
 
 	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
-		SettingsTab.settings = { ...SettingsTab.lastSettings }
-		SettingsTab.spotifyCredentials = { ...SettingsTab.lastCredentials }
-		SettingsTab.spotifyUser = (' ' + SettingsTab.lastUser).slice(1)
+		EventBus.$emit('settingsTab:revertSettings')
+		EventBus.$emit('settingsTab:revertCredentials')
 	}
 
 	document.getElementById(tabName).style.display = 'block'
@@ -243,7 +244,7 @@ function showTab(type, id, back = false) {
 		windows_stack.push({ tab: main_selected })
 	} else if (!back) {
 		if (currentStack.type === 'artist') {
-			currentStack.selected = ArtistTab.getCurrentTab()
+			EventBus.$emit('artistTab:updateSelected')
 		}
 
 		windows_stack.push(currentStack)
@@ -271,11 +272,15 @@ function backTab() {
 		let { type, id } = data
 
 		if (type === 'artist') {
-			ArtistTab.reset()
-			if (data.selected) ArtistTab.changeTab(data.selected)
+			EventBus.$emit('artistTab:reset')
+
+			if (data.selected) {
+				EventBus.$emit('artistTab:changeTab', data.selected)
+			}
 		} else {
-			TracklistTab.reset()
+			EventBus.$emit('tracklistTab:reset')
 		}
+
 		socket.emit('getTracklist', { type, id })
 		showTab(type, id, true)
 	}

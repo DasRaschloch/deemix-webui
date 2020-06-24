@@ -1,18 +1,21 @@
-// Global Vue components
-import '@components/LoadingPlaceholder.js'
+import Vue from 'vue'
 
 // Vue views components
-import '@components/artist-tab.js'
-import '@components/charts-tab.js'
-import '@components/errors-tab.js'
-import '@components/favorites-tab.js'
-import '@components/home-tab.js'
-import '@components/link-analyzer-tab.js'
-import '@components/main-search.js'
-import '@components/settings-tab.js'
-import '@components/tracklist-tab.js'
+import TheSidebar from '@components/TheSidebar.vue'
+import ArtistTab from '@components/ArtistTab.vue'
+import TheChartsTab from '@components/TheChartsTab.vue'
+import TheFavoritesTab from '@components/TheFavoritesTab.vue'
+import TheErrorsTab from '@components/TheErrorsTab.vue'
+import TheHomeTab from '@components/TheHomeTab.vue'
+import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
+import TheAboutTab from '@components/TheAboutTab.vue'
 
-import '@components/TestComponent.vue'
+// Must be imported before settings tab at the moment
+import TrackPreview from '@/js/track-preview.js'
+import TheSettingsTab from '@components/TheSettingsTab.vue'
+
+import '@components/main-search.js'
+import TracklistTab from '@components/TracklistTab.vue'
 
 import $ from 'jquery'
 import { socket } from '@/js/socket.js'
@@ -21,11 +24,11 @@ import Downloads from '@/js/downloads.js'
 import QualityModal from '@/js/quality-modal.js'
 import Tabs from '@/js/tabs.js'
 import Search from '@/js/search.js'
-import TrackPreview from '@/js/track-preview.js'
 
 /* ===== App initialization ===== */
 
 function startApp() {
+	mountComponents()
 	setCurrentUserTheme()
 
 	Downloads.init()
@@ -33,6 +36,23 @@ function startApp() {
 	Tabs.init()
 	Search.linkListeners()
 	TrackPreview.init()
+}
+
+/**
+ * This funcion is temporary. It will be removed when all components will be as SFC and all their methods will be called
+ * by using the EventBus.
+ */
+function mountComponents() {
+	new Vue({ render: h => h(TheSidebar) }).$mount('#sidebar-placeholder')
+	new Vue({ render: h => h(ArtistTab) }).$mount('#artist-tab-placeholder')
+	new Vue({ render: h => h(TheChartsTab) }).$mount('#charts-tab-placeholder')
+	new Vue({ render: h => h(TheFavoritesTab) }).$mount('#favorites-tab-placeholder')
+	new Vue({ render: h => h(TheHomeTab) }).$mount('#home-tab-placeholder')
+	new Vue({ render: h => h(TheLinkAnalyzerTab) }).$mount('#link-analyzer-tab-placeholder')
+	new Vue({ render: h => h(TheSettingsTab) }).$mount('#settings-tab-placeholder')
+	new Vue({ render: h => h(TracklistTab) }).$mount('#tracklist-tab-placeholder')
+	new Vue({ render: h => h(TheAboutTab) }).$mount('#about-tab-placeholder')
+	new Vue({ render: h => h(TheErrorsTab) }).$mount('#errors-tab-placeholder')
 }
 
 function initClient() {

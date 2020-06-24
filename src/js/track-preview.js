@@ -15,14 +15,14 @@ function init() {
 	preview_track.volume = 1
 
 	// start playing when track loaded
-	preview_track.addEventListener('canplay', function () {
+	preview_track.addEventListener('canplay', function() {
 		preview_track.play()
 		preview_stopped = false
 		$(preview_track).animate({ volume: vol.preview_max_volume / 100 }, 500)
 	})
 
 	// auto fadeout when at the end of the song
-	preview_track.addEventListener('timeupdate', function () {
+	preview_track.addEventListener('timeupdate', function() {
 		if (preview_track.currentTime > preview_track.duration - 1) {
 			$(preview_track).animate({ volume: 0 }, 800)
 			preview_stopped = true
@@ -37,7 +37,7 @@ function init() {
 // on modal closing
 function stopStackedTabsPreview() {
 	if (
-		$('.preview_playlist_controls').filter(function () {
+		$('.preview_playlist_controls').filter(function() {
 			return $(this).attr('playing')
 		}).length > 0
 	) {
@@ -56,7 +56,15 @@ function previewMouseEnter(e) {
 function previewMouseLeave(event) {
 	const { currentTarget: obj } = event
 
-	if (($(obj).parent().attr('playing') && preview_stopped) || !$(obj).parent().attr('playing')) {
+	if (
+		($(obj)
+			.parent()
+			.attr('playing') &&
+			preview_stopped) ||
+		!$(obj)
+			.parent()
+			.attr('playing')
+	) {
 		$(obj).css({ opacity: 0 }, 200)
 	}
 }

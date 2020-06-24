@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import { socket } from '../socket.js'
-import { showView } from '../tabs.js'
-import Downloads from '../downloads.js'
-import QualityModal from '../quality-modal.js'
-import TrackPreview from '../track-preview.js'
-import Utils from '../utils.js'
+import { socket } from '@/js/socket.js'
+import { showView } from '@/js/tabs.js'
+import Downloads from '@/js/downloads.js'
+import QualityModal from '@/js/quality-modal.js'
+import TrackPreview from '@/js/track-preview.js'
+import Utils from '@/js/utils.js'
 
 const MainSearch = new Vue({
 	data: {

@@ -1,9 +1,9 @@
 import { isEmpty, orderBy } from 'lodash-es'
 import Vue from 'vue'
-import { socket } from '../socket.js'
-import Downloads from '../downloads.js'
-import QualityModal from '../quality-modal.js'
-import { showView } from '../tabs.js'
+import { socket } from '@/js/socket.js'
+import Downloads from '@/js/downloads.js'
+import QualityModal from '@/js/quality-modal.js'
+import { showView } from '@/js/tabs.js'
 
 const ArtistTab = new Vue({
 	data() {

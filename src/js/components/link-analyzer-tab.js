@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import { socket } from '../socket.js'
-import { showView } from '../tabs.js'
-import Utils from '../utils.js'
+import { socket } from '@/js/socket.js'
+import { showView } from '@/js/tabs.js'
+import Utils from '@/js/utils.js'
 
 const LinkAnalyzerTab = new Vue({
 	data() {
@@ -65,7 +65,7 @@ const LinkAnalyzerTab = new Vue({
 			this.data = data
 			this.id = id
 		},
-		notSupported(){
+		notSupported() {
 			this.link = 'error'
 		}
 	},

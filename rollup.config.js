@@ -25,6 +25,14 @@ export default {
 				{
 					find: 'vue',
 					replacement: 'vue/dist/vue.esm'
+				},
+				{
+					find: '@',
+					replacement: __dirname + '/src'
+				},
+				{
+					find: '@components',
+					replacement: __dirname + '/src/js/components'
 				}
 			]
 		}),

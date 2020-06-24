@@ -1,4 +1,4 @@
-import Downloads from './downloads.js'
+import Downloads from '@/js/downloads.js'
 
 const QualityModal = {
 	// Defaults

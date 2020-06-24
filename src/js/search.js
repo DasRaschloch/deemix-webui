@@ -1,9 +1,9 @@
-import MainSearch from './components/main-search.js'
-import Utils from './utils.js'
-import QualityModal from './quality-modal.js'
-import Downloads from './downloads.js'
-import { socket } from './socket.js'
-import Tabs from './tabs.js'
+import MainSearch from '@components/main-search.js'
+import Utils from '@/js/utils.js'
+import QualityModal from '@/js/quality-modal.js'
+import Downloads from '@/js/downloads.js'
+import { socket } from '@/js/socket.js'
+import Tabs from '@/js/tabs.js'
 
 function linkListeners() {
 	document.getElementById('content').addEventListener('scroll', Utils.debounce(handleContentScroll, 100))

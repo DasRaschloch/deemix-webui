@@ -3,6 +3,7 @@ __pycache__
 
 .DS_Store
 node_modules
+jsconfig.json
 
 # pyinstaller build dirs
 /dist

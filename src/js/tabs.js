@@ -1,11 +1,11 @@
-import ArtistTab from './components/artist-tab.js'
-import TracklistTab from './components/tracklist-tab.js'
-import LinkAnalyzerTab from './components/link-analyzer-tab.js'
-import ErrorsTab from './components/errors-tab.js'
-import { socket } from './socket.js'
-import SettingsTab from './components/settings-tab.js'
-import MainSearch from './components/main-search.js'
-import TrackPreview from './track-preview.js'
+import ArtistTab from '@components/artist-tab.js'
+import TracklistTab from '@components/tracklist-tab.js'
+import LinkAnalyzerTab from '@components/link-analyzer-tab.js'
+import ErrorsTab from '@components/errors-tab.js'
+import SettingsTab from '@components/settings-tab.js'
+import MainSearch from '@components/main-search.js'
+import { socket } from '@/js/socket.js'
+import TrackPreview from '@/js/track-preview.js'
 
 /* ===== Globals ====== */
 window.search_selected = ''
@@ -242,7 +242,10 @@ function showTab(type, id, back = false) {
 	if (windows_stack.length == 0) {
 		windows_stack.push({ tab: main_selected })
 	} else if (!back) {
-		if (currentStack.type === 'artist') currentStack.selected = ArtistTab.getCurrentTab()
+		if (currentStack.type === 'artist') {
+			currentStack.selected = ArtistTab.getCurrentTab()
+		}
+
 		windows_stack.push(currentStack)
 	}
 
@@ -254,6 +257,7 @@ function showTab(type, id, back = false) {
 	for (let i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = 'none'
 	}
+
 	document.getElementById(tab).style.display = 'block'
 	TrackPreview.stopStackedTabsPreview()
 }

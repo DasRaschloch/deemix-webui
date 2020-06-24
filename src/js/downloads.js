@@ -1,7 +1,7 @@
 import $ from 'jquery'
-import { socket } from './socket.js'
-import { toast } from './toasts.js'
-import { showErrors } from './tabs.js'
+import { socket } from '@/js/socket.js'
+import { toast } from '@/js/toasts.js'
+import { showErrors } from '@/js/tabs.js'
 
 /* ===== Locals ===== */
 const tabMinWidth = 250
@@ -141,7 +141,9 @@ function addToQueue(queueItem, current = false) {
 	$('#bar_' + queueItem.uuid).css('width', queueItem.progress + '%')
 	if (queueItem.failed >= 1 && $('#download_' + queueItem.uuid + ' .queue_failed').length == 0) {
 		$('#download_' + queueItem.uuid + ' .download_info_status').append(
-			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed_button inline-flex"><span class="queue_failed">${queueItem.failed}</span><i class="material-icons">error_outline</i></span><span class="download_slim_separator">)</span></span>`
+			`<span class="secondary-text inline-flex"><span class="download_slim_separator">(</span><span class="queue_failed_button inline-flex"><span class="queue_failed">${
+				queueItem.failed
+			}</span><i class="material-icons">error_outline</i></span><span class="download_slim_separator">)</span></span>`
 		)
 	}
 	if (queueItem.downloaded + queueItem.failed == queueItem.size) {
@@ -152,8 +154,8 @@ function addToQueue(queueItem, current = false) {
 			let failed_button = $('#download_' + queueItem.uuid).find('.queue_failed_button')
 			result_icon.addClass('clickable')
 			failed_button.addClass('clickable')
-			result_icon.bind('click', {item:queueItem}, showErrors)
-			failed_button.bind('click', {item:queueItem}, showErrors)
+			result_icon.bind('click', { item: queueItem }, showErrors)
+			failed_button.bind('click', { item: queueItem }, showErrors)
 			if (queueItem.failed >= queueItem.size) {
 				result_icon.text('error')
 			} else {
@@ -254,8 +256,8 @@ function finishDownload(uuid) {
 			let failed_button = $('#download_' + uuid).find('.queue_failed_button')
 			result_icon.addClass('clickable')
 			failed_button.addClass('clickable')
-			result_icon.bind('click', {item:queueList[uuid]}, showErrors)
-			failed_button.bind('click', {item:queueList[uuid]}, showErrors)
+			result_icon.bind('click', { item: queueList[uuid] }, showErrors)
+			failed_button.bind('click', { item: queueList[uuid] }, showErrors)
 			if (queueList[uuid].failed >= queueList[uuid].size) {
 				result_icon.text('error')
 			} else {
@@ -287,7 +289,7 @@ function removeAllDownloads(currentItem) {
 		let tempQueueItem = queueList[currentItem]
 		queueList = {}
 		queueList[currentItem] = tempQueueItem
-		$('.download_object').each(function (index) {
+		$('.download_object').each(function(index) {
 			if ($(this).attr('id') != 'download_' + currentItem) $(this).remove()
 		})
 	}
@@ -323,7 +325,7 @@ function updateQueue(update) {
 			} else {
 				$('#download_' + uuid + ' .queue_failed').text(queueList[uuid].failed)
 			}
-			queueList[uuid].errors.push({message: update.error, data: update.data})
+			queueList[uuid].errors.push({ message: update.error, data: update.data })
 		}
 		if (progress) {
 			queueList[uuid].progress = progress

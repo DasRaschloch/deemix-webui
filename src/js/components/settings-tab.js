@@ -1,7 +1,7 @@
 import Vue from 'vue'
-import { toast } from '../toasts.js'
-import { socket } from '../socket.js'
-import TestComponent from './TestComponent.vue'
+import { toast } from '@/js/toasts.js'
+import { socket } from '@/js/socket.js'
+import TestComponent from '@components/TestComponent.vue'
 
 const SettingsTab = new Vue({
 	components: {
@@ -81,7 +81,9 @@ const SettingsTab = new Vue({
 		},
 		accountChanged(user, accountNum) {
 			this.$refs.username.innerText = user.name
-			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
+			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${
+				user.picture
+			}/125x125-000000-80-0-0.jpg`
 			this.accountNum = accountNum
 			localStorage.setItem('accountNum', this.accountNum)
 		},

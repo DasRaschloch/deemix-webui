@@ -1,25 +1,27 @@
 // Global Vue components
-import './modules/components/LoadingPlaceholder.js'
+import '@components/LoadingPlaceholder.js'
 
 // Vue views components
-import './modules/components/artist-tab.js'
-import './modules/components/charts-tab.js'
-import './modules/components/errors-tab.js'
-import './modules/components/favorites-tab.js'
-import './modules/components/home-tab.js'
-import './modules/components/link-analyzer-tab.js'
-import './modules/components/main-search.js'
-import './modules/components/settings-tab.js'
-import './modules/components/tracklist-tab.js'
+import '@components/artist-tab.js'
+import '@components/charts-tab.js'
+import '@components/errors-tab.js'
+import '@components/favorites-tab.js'
+import '@components/home-tab.js'
+import '@components/link-analyzer-tab.js'
+import '@components/main-search.js'
+import '@components/settings-tab.js'
+import '@components/tracklist-tab.js'
+
+import '@components/TestComponent.vue'
 
 import $ from 'jquery'
-import { socket } from './modules/socket.js'
-import { toast } from './modules/toasts.js'
-import Downloads from './modules/downloads.js'
-import QualityModal from './modules/quality-modal.js'
-import Tabs from './modules/tabs.js'
-import Search from './modules/search.js'
-import TrackPreview from './modules/track-preview.js'
+import { socket } from '@/js/socket.js'
+import { toast } from '@/js/toasts.js'
+import Downloads from '@/js/downloads.js'
+import QualityModal from '@/js/quality-modal.js'
+import Tabs from '@/js/tabs.js'
+import Search from '@/js/search.js'
+import TrackPreview from '@/js/track-preview.js'
 
 /* ===== App initialization ===== */
 
@@ -61,15 +63,15 @@ function setCurrentUserTheme() {
 /* ===== Socketio listeners ===== */
 
 // Debug messages for socketio
-socket.on('message', function (msg) {
+socket.on('message', function(msg) {
 	console.log(msg)
 })
 
-socket.on('logging_in', function () {
+socket.on('logging_in', function() {
 	toast('Logging in', 'loading', false, 'login-toast')
 })
 
-socket.on('init_autologin', function () {
+socket.on('init_autologin', function() {
 	let arl = localStorage.getItem('arl')
 	let accountNum = localStorage.getItem('accountNum')
 	if (arl) {
@@ -82,7 +84,7 @@ socket.on('init_autologin', function () {
 	}
 })
 
-socket.on('logged_in', function (data) {
+socket.on('logged_in', function(data) {
 	switch (data.status) {
 		case 1:
 		case 3:
@@ -130,7 +132,7 @@ socket.on('logged_in', function (data) {
 	}
 })
 
-socket.on('logged_out', function () {
+socket.on('logged_out', function() {
 	toast('Logged out', 'done', true, 'login-toast')
 	localStorage.removeItem('arl')
 	$('#login_input_arl').val('')
@@ -141,34 +143,34 @@ socket.on('logged_out', function () {
 	document.getElementById('home_not_logged_in').classList.remove('hide')
 })
 
-socket.on('cancellingCurrentItem', function (uuid) {
+socket.on('cancellingCurrentItem', function(uuid) {
 	toast('Cancelling current item.', 'loading', false, 'cancelling_' + uuid)
 })
 
-socket.on('currentItemCancelled', function (uuid) {
+socket.on('currentItemCancelled', function(uuid) {
 	toast('Current item cancelled.', 'done', true, 'cancelling_' + uuid)
 })
 
-socket.on('startAddingArtist', function (data) {
+socket.on('startAddingArtist', function(data) {
 	toast(`Adding ${data.name} albums to queue`, 'loading', false, 'artist_' + data.id)
 })
 
-socket.on('finishAddingArtist', function (data) {
+socket.on('finishAddingArtist', function(data) {
 	toast(`Added ${data.name} albums to queue`, 'done', true, 'artist_' + data.id)
 })
 
-socket.on('startConvertingSpotifyPlaylist', function (id) {
+socket.on('startConvertingSpotifyPlaylist', function(id) {
 	toast('Converting spotify tracks to deezer tracks', 'loading', false, 'spotifyplaylist_' + id)
 })
 
-socket.on('finishConvertingSpotifyPlaylist', function (id) {
+socket.on('finishConvertingSpotifyPlaylist', function(id) {
 	toast('Spotify playlist converted', 'done', true, 'spotifyplaylist_' + id)
 })
 
-socket.on('errorMessage', function (error) {
+socket.on('errorMessage', function(error) {
 	toast(error, 'error')
 })
 
-socket.on('alreadyInQueue', function (data) {
+socket.on('alreadyInQueue', function(data) {
 	toast(`${data.title} is already in queue!`, 'playlist_add_check')
 })

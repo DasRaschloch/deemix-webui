@@ -1,23 +1,12 @@
 import Vue from 'vue'
 
-// Vue views components
-import TheSidebar from '@components/TheSidebar.vue'
-import ArtistTab from '@components/ArtistTab.vue'
-import TheChartsTab from '@components/TheChartsTab.vue'
-import TheFavoritesTab from '@components/TheFavoritesTab.vue'
-import TheErrorsTab from '@components/TheErrorsTab.vue'
-import TheHomeTab from '@components/TheHomeTab.vue'
-import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
-import TheAboutTab from '@components/TheAboutTab.vue'
+// Object is needed for vue proxy
+window.vol = {
+	preview_max_volume: 100
+}
 
-// Must be imported before settings tab at the moment
+import App from '@/js/App.vue'
 import TrackPreview from '@/js/track-preview.js'
-import TheSettingsTab from '@components/TheSettingsTab.vue'
-import TheContent from '@components/TheContent.vue'
-
-// import '@components/main-search.js'
-import TheMainSearch from '@components/TheMainSearch.vue'
-import TracklistTab from '@components/TracklistTab.vue'
 
 import $ from 'jquery'
 import { socket } from '@/js/socket.js'
@@ -30,7 +19,7 @@ import Search from '@/js/search.js'
 /* ===== App initialization ===== */
 
 function startApp() {
-	mountComponents()
+	mountApp()
 	setCurrentUserTheme()
 
 	Downloads.init()
@@ -40,12 +29,10 @@ function startApp() {
 	TrackPreview.init()
 }
 
-/**
- * This funcion is temporary. It will be removed when all components will be as SFC and all their methods will be called
- * by using the EventBus.
- */
-function mountComponents() {
-	new Vue({ render: h => h(TheContent) }).$mount('#content-placeholder')
+function mountApp() {
+	new Vue({
+		render: h => h(App)
+	}).$mount('#app')
 }
 
 function initClient() {

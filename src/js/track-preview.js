@@ -1,35 +1,23 @@
 import $ from 'jquery'
 
-/* ===== Globals ====== */
-// Object is needed for vue proxy
-window.vol = {
-	preview_max_volume: 100
-}
-
 /* ===== Locals ===== */
-let preview_track = document.getElementById('preview-track')
+let preview_track
 let preview_stopped = true
 
 // init stuff
 function init() {
+	preview_track = document.getElementById('preview-track')
 	preview_track.volume = 1
 
 	// start playing when track loaded
 	preview_track.addEventListener('canplay', function() {
-		preview_track.play()
 		preview_stopped = false
-		$(preview_track).animate({ volume: vol.preview_max_volume / 100 }, 500)
 	})
 
 	// auto fadeout when at the end of the song
 	preview_track.addEventListener('timeupdate', function() {
 		if (preview_track.currentTime > preview_track.duration - 1) {
-			$(preview_track).animate({ volume: 0 }, 800)
 			preview_stopped = true
-			$('a[playing] > .preview_controls').css({ opacity: 0 })
-			$('*').removeAttr('playing')
-			$('.preview_controls').text('play_arrow')
-			$('.preview_playlist_controls').text('play_arrow')
 		}
 	})
 }

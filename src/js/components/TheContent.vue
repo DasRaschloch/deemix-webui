@@ -1,7 +1,6 @@
 <template>
 	<section id="content">
 		<div id="container">
-			<TheSidebar />
 			<ArtistTab />
 			<TheChartsTab />
 			<TheFavoritesTab />
@@ -20,7 +19,6 @@
 import ArtistTab from '@components/ArtistTab.vue'
 import TracklistTab from '@components/TracklistTab.vue'
 
-import TheSidebar from '@components/TheSidebar.vue'
 import TheChartsTab from '@components/TheChartsTab.vue'
 import TheFavoritesTab from '@components/TheFavoritesTab.vue'
 import TheErrorsTab from '@components/TheErrorsTab.vue'
@@ -32,7 +30,6 @@ import TheMainSearch from '@components/TheMainSearch.vue'
 
 export default {
 	components: {
-		TheSidebar,
 		ArtistTab,
 		TheChartsTab,
 		TheFavoritesTab,
@@ -43,9 +40,6 @@ export default {
 		TheSettingsTab,
 		TheMainSearch,
 		TracklistTab
-	},
-	mounted() {
-		console.log('content montato!')
 	}
 }
 </script>

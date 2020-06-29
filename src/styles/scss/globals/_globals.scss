@@ -3,7 +3,7 @@ input[type='password'],
 input[type='number'],
 input[type='search'] {
 	-webkit-appearance: none;
-  appearance: none;
+	appearance: none;
 	width: calc(100% - 16px);
 	border: 0px solid black;
 	line-height: 36px;
@@ -301,7 +301,7 @@ a {
 
 #main_content {
 	margin-left: $sidebar-width;
-	width: calc(100% - $sidebar-width);
+	width: calc(100% - #{$sidebar-width});
 	height: 100%;
 	display: flex;
 }

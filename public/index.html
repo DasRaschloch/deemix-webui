@@ -20,67 +20,9 @@
 	</head>
 
 	<body>
-		<div id="start_app_placeholder" class="loading_placeholder">
-			<span class="loading_placeholder__text">Connecting to the server...</span>
-			<div class="lds-ring">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-		</div>
-
-		<div id="sidebar-placeholder"></div>
-
-		<main id="main_content">
-			<div id="middle_section">
-				<header id="search">
-					<div class="search__icon">
-						<i class="material-icons">search</i>
-					</div>
-					<input id="searchbar" autocomplete="off" type="search" name="searchbar" value=""
-						placeholder="Search something or paste a link..." autofocus>
-				</header>
-				<div id="content-placeholder"></div>
-				<div id="search_placeholder" class="loading_placeholder loading_placeholder--hidden">
-					<span class="loading_placeholder__text">Searching...</span>
-					<div class="lds-ring">
-						<div></div>
-						<div></div>
-						<div></div>
-						<div></div>
-					</div>
-				</div>
-			</div>
-
-			<div id="download_tab_container" class="tab_hidden">
-				<div id="download_tab_drag_handler"></div>
-				<i id="toggle_download_tab" class="material-icons download_bar_icon"></i>
-				<div id="queue_buttons">
-					<i id="open_downloads_folder" class="material-icons download_bar_icon hide">folder_open</i>
-					<i id="clean_queue" class="material-icons download_bar_icon">clear_all</i>
-					<i id="cancel_queue" class="material-icons download_bar_icon">delete_sweep</i>
-				</div>
-				<div id="download_list"></div>
-			</div>
-		</main>
-
-		<audio id="preview-track">
-			<source id="preview-track_source" src="" type="audio/mpeg">
-		</audio>
-
-		<div id="modal_quality" class="smallmodal">
-			<!-- Modal content -->
-			<div class="smallmodal-content">
-				<button class="quality-button" data-quality-value="9">Download FLAC</button><br>
-				<button class="quality-button" data-quality-value="3">Download MP3 320kbps</button><br>
-				<button class="quality-button" data-quality-value="1">Download MP3 128kbps</button><br>
-				<button class="quality-button" data-quality-value="15">Download 360 Reality Audio [HQ]</button><br>
-				<button class="quality-button" data-quality-value="14">Download 360 Reality Audio [MQ]</button><br>
-				<button class="quality-button" data-quality-value="13">Download 360 Reality Audio [LQ]</button><br>
-			</div>
-		</div>
+		<div id="app"></div>
 	</body>
+
 	<script type="text/javascript" src="/public/js/vendor/socket.io.js"></script>
 
 	<script src="/public/js/bundle.js"></script>

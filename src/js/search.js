@@ -1,9 +1,8 @@
-import MainSearch from '@components/main-search.js'
 import Utils from '@/js/utils.js'
 import QualityModal from '@/js/quality-modal.js'
 import Downloads from '@/js/downloads.js'
-import { socket } from '@/js/socket.js'
 import Tabs from '@/js/tabs.js'
+import EventBus from '@/js/EventBus.js'
 
 function linkListeners() {
 	document.getElementById('content').addEventListener('scroll', Utils.debounce(handleContentScroll, 100))
@@ -14,13 +13,13 @@ function linkListeners() {
 function handleContentScroll(event) {
 	let contentElement = event.target
 
-	if (contentElement.scrollTop + contentElement.clientHeight >= contentElement.scrollHeight) {
-		if (
-			main_selected === 'search_tab' &&
-			['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
-		) {
-			MainSearch.scrolledSearch(search_selected.split('_')[0])
-		}
+	if (contentElement.scrollTop + contentElement.clientHeight < contentElement.scrollHeight) return
+
+	if (
+		main_selected === 'search_tab' &&
+		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
+	) {
+		EventBus.$emit('mainSearch:scrolledSearch', search_selected.split('_')[0])
 	}
 }
 
@@ -43,17 +42,7 @@ function handleSearchBarKeyup(e) {
 	} else {
 		if (term === '') return
 
-		if (term !== MainSearch.results.query || main_selected == 'search_tab') {
-			document.getElementById('search_tab_content').style.display = 'none'
-			socket.emit('mainSearch', { term })
-
-			// Showing loading placeholder
-			document.getElementById('content').style.display = 'none'
-			document.getElementById('search_placeholder').classList.toggle('loading_placeholder--hidden')
-		} else {
-			document.getElementById('search_tab_content').style.display = 'block'
-			document.getElementById('main_search_tablink').click()
-		}
+		EventBus.$emit('mainSearch:showNewResults', term, main_selected)
 	}
 }
 

@@ -1,5 +1,4 @@
 import TrackPreview from '@/js/track-preview.js'
-import MainSearch from '@components/main-search.js'
 import { socket } from '@/js/socket.js'
 import EventBus from '@/js/EventBus'
 
@@ -230,12 +229,9 @@ function changeTab(sidebarEl, section, tabName) {
 	// Check if you need to load more content in the search tab
 	if (
 		main_selected == 'search_tab' &&
-		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1 &&
-		MainSearch.results[search_selected.split('_')[0] + 'Tab'].data.length == 0
+		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
 	) {
-		// console.log(search_selected.split('_')[0] + 'Tab')
-
-		MainSearch.search(search_selected.split('_')[0])
+		EventBus.$emit('mainSearch:checkLoadMoreContent', search_selected)
 	}
 }
 

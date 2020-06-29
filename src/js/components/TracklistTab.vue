@@ -174,7 +174,6 @@ export default {
 		albumView: showView.bind(null, 'album'),
 		playPausePreview: TrackPreview.playPausePreview,
 		reset() {
-			console.log('tracklist tab reset')
 			this.title = 'Loading...'
 			this.image = ''
 			this.metadata = ''

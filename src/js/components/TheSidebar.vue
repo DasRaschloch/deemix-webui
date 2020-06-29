@@ -39,6 +39,7 @@
 		<div id="network-status" :class="{ online: appOnline, offline: !appOnline }">
 			<i v-if="appOnline" class="material-icons">wifi</i>
 			<i v-else class="material-icons">
+				<!-- wifi_off icon not working, maybe need to include it? -->
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 					<path d="M24 .01c0-.01 0-.01 0 0L0 0v24h24V.01zM0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none" />
 					<path
@@ -72,7 +73,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #network-status {
 	display: flex;
 	justify-content: center;

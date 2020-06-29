@@ -13,8 +13,10 @@ import TheAboutTab from '@components/TheAboutTab.vue'
 // Must be imported before settings tab at the moment
 import TrackPreview from '@/js/track-preview.js'
 import TheSettingsTab from '@components/TheSettingsTab.vue'
+import TheContent from '@components/TheContent.vue'
 
-import '@components/main-search.js'
+// import '@components/main-search.js'
+import TheMainSearch from '@components/TheMainSearch.vue'
 import TracklistTab from '@components/TracklistTab.vue'
 
 import $ from 'jquery'
@@ -43,16 +45,7 @@ function startApp() {
  * by using the EventBus.
  */
 function mountComponents() {
-	new Vue({ render: h => h(TheSidebar) }).$mount('#sidebar-placeholder')
-	new Vue({ render: h => h(ArtistTab) }).$mount('#artist-tab-placeholder')
-	new Vue({ render: h => h(TheChartsTab) }).$mount('#charts-tab-placeholder')
-	new Vue({ render: h => h(TheFavoritesTab) }).$mount('#favorites-tab-placeholder')
-	new Vue({ render: h => h(TheHomeTab) }).$mount('#home-tab-placeholder')
-	new Vue({ render: h => h(TheLinkAnalyzerTab) }).$mount('#link-analyzer-tab-placeholder')
-	new Vue({ render: h => h(TheSettingsTab) }).$mount('#settings-tab-placeholder')
-	new Vue({ render: h => h(TracklistTab) }).$mount('#tracklist-tab-placeholder')
-	new Vue({ render: h => h(TheAboutTab) }).$mount('#about-tab-placeholder')
-	new Vue({ render: h => h(TheErrorsTab) }).$mount('#errors-tab-placeholder')
+	new Vue({ render: h => h(TheContent) }).$mount('#content-placeholder')
 }
 
 function initClient() {

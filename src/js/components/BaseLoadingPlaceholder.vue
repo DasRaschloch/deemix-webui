@@ -1,6 +1,6 @@
-<template>
-	<div class="loading_placeholder">
-		<span class="loading_placeholder__text">Loading...</span>
+<template functional>
+	<div :id="props.id" class="loading_placeholder">
+		<span class="loading_placeholder__text">{{ props.text }}</span>
 		<div class="lds-ring">
 			<div></div>
 			<div></div>
@@ -9,15 +9,18 @@
 		</div>
 	</div>
 </template>
-
 <script>
 export default {
-	name: 'base-loading-placeholder',
-	// Without this empty data rollup watcher throws an error
-	data() {
-		return {}
+	props: {
+		text: {
+			type: String,
+			required: false,
+			default: 'Loading...'
+		},
+		id: {
+			type: String,
+			required: false
+		}
 	}
 }
 </script>
-<style>
-</style>

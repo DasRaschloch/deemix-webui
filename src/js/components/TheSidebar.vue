@@ -31,9 +31,21 @@
 		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
 			<i class="material-icons side_icon side_icon--theme">palette</i>
 			<div id="theme_togglers">
-				<div class="theme_toggler" data-theme-variant="purple"></div>
-				<div class="theme_toggler" data-theme-variant="dark"></div>
-				<div class="theme_toggler theme_toggler--active" data-theme-variant="light"></div>
+				<div
+					class="theme_toggler theme_toggler--purple"
+					:class="{ 'theme_toggler--active': activeTheme === 'purple' }"
+					@click="changeTheme('purple')"
+				/>
+				<div
+					class="theme_toggler theme_toggler--dark"
+					:class="{ 'theme_toggler--active': activeTheme === 'dark' }"
+					@click="changeTheme('dark')"
+				/>
+				<div
+					class="theme_toggler theme_toggler--light"
+					:class="{ 'theme_toggler--active': activeTheme === 'light' }"
+					@click="changeTheme('light')"
+				/>
 			</div>
 		</span>
 		<div id="network-status" :class="{ online: appOnline, offline: !appOnline }">
@@ -56,10 +68,12 @@ export default {
 	name: 'the-sidebar',
 	data() {
 		return {
-			appOnline: null
+			appOnline: null,
+			activeTheme: 'light'
 		}
 	},
 	mounted() {
+		/* === Online status handling === */
 		this.appOnline = navigator.onLine
 
 		window.addEventListener('online', () => {
@@ -69,6 +83,31 @@ export default {
 		window.addEventListener('offline', () => {
 			this.appOnline = false
 		})
+
+		/* === Current theme handling === */
+		this.activeTheme = localStorage.getItem('selectedTheme') || 'light'
+	},
+	methods: {
+		changeTheme(newTheme) {
+			if (newTheme === this.activeTheme) return
+
+			this.activeTheme = newTheme
+			document.documentElement.setAttribute('data-theme', newTheme)
+			localStorage.setItem('selectedTheme', newTheme)
+
+			// Animating everything to have a smoother theme switch
+			document.querySelectorAll('*').forEach(el => {
+				el.style.transition = 'all 200ms ease-in-out'
+			})
+
+			document.documentElement.addEventListener('transitionend', function transitionHandler() {
+				document.querySelectorAll('*').forEach(el => {
+					el.style.transition = ''
+				})
+
+				document.documentElement.removeEventListener('transitionend', transitionHandler)
+			})
+		}
 	}
 }
 </script>

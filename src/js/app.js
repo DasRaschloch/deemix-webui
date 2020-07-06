@@ -20,7 +20,6 @@ import Search from '@/js/search.js'
 
 function startApp() {
 	mountApp()
-	setCurrentUserTheme()
 
 	Downloads.init()
 	QualityModal.init()
@@ -42,23 +41,6 @@ function initClient() {
 
 document.addEventListener('DOMContentLoaded', startApp)
 window.addEventListener('pywebviewready', initClient)
-
-/* ===== General functions ===== */
-
-/**
- * Sets the current theme according to
- * the localStorage saved theme.
- */
-function setCurrentUserTheme() {
-	let selectedTheme = localStorage.getItem('selectedTheme')
-
-	if (selectedTheme) {
-		let activeClass = 'theme_toggler--active'
-
-		document.querySelector(`.${activeClass}`).classList.remove(activeClass)
-		document.querySelector(`.theme_toggler[data-theme-variant="${selectedTheme}"]`).classList.add(activeClass)
-	}
-}
 
 /* ===== Socketio listeners ===== */
 

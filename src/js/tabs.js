@@ -76,20 +76,11 @@ function handleSidebarClick(event) {
 	const { target } = event
 
 	const wantToChangeTab = target.matches('.main_tablinks') || target.parentElement.matches('.main_tablinks')
-	const wantToChangeTheme = target.matches('.theme_toggler')
 
-	if (!(wantToChangeTab || wantToChangeTheme)) return
+	if (!wantToChangeTab) return
 
-	let sidebarEl
-	let targetID
-
-	if (wantToChangeTab) {
-		sidebarEl = target.matches('.main_tablinks') ? target : target.parentElement
-		targetID = sidebarEl.id
-	} else {
-		sidebarEl = target
-		targetID = 'theme_toggler'
-	}
+	let sidebarEl = target.matches('.main_tablinks') ? target : target.parentElement
+	let targetID = sidebarEl.id
 
 	switch (targetID) {
 		case 'main_search_tablink':
@@ -112,31 +103,6 @@ function handleSidebarClick(event) {
 			break
 		case 'main_about_tablink':
 			changeTab(sidebarEl, 'main', 'about_tab')
-			break
-		case 'theme_toggler':
-			document.querySelector('.theme_toggler--active').classList.remove('theme_toggler--active')
-			sidebarEl.classList.add('theme_toggler--active')
-
-			const {
-				dataset: { themeVariant }
-			} = sidebarEl
-
-			document.documentElement.setAttribute('data-theme', themeVariant)
-
-			localStorage.setItem('selectedTheme', themeVariant)
-
-			document.querySelectorAll('*').forEach(el => {
-				el.style.transition = 'all 200ms ease-in-out'
-			})
-
-			document.documentElement.addEventListener('transitionend', function transitionHandler() {
-				document.querySelectorAll('*').forEach(el => {
-					el.style.transition = ''
-				})
-
-				document.documentElement.removeEventListener('transitionend', transitionHandler)
-			})
-
 			break
 
 		default:

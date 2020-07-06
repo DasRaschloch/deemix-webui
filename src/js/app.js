@@ -12,7 +12,6 @@ import $ from 'jquery'
 import { socket } from '@/js/socket.js'
 import { toast } from '@/js/toasts.js'
 import Downloads from '@/js/downloads.js'
-import QualityModal from '@/js/quality-modal.js'
 import Tabs from '@/js/tabs.js'
 import Search from '@/js/search.js'
 
@@ -22,14 +21,14 @@ function startApp() {
 	mountApp()
 
 	Downloads.init()
-	QualityModal.init()
 	Tabs.init()
 	Search.linkListeners()
 	TrackPreview.init()
 }
 
 function mountApp() {
-	new Vue({
+	// TODO Remove the App instance from the window when deemix will be a complete Vue App
+	window.App = new Vue({
 		render: h => h(App)
 	}).$mount('#app')
 }

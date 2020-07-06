@@ -1,5 +1,4 @@
 import Utils from '@/js/utils.js'
-import QualityModal from '@/js/quality-modal.js'
 import Downloads from '@/js/downloads.js'
 import Tabs from '@/js/tabs.js'
 import EventBus from '@/js/EventBus.js'
@@ -31,7 +30,8 @@ function handleSearchBarKeyup(e) {
 
 	if (Utils.isValidURL(term)) {
 		if (e.ctrlKey) {
-			QualityModal.open(term)
+			// ! Temporary
+			App.$root.$emit('QualityModal:open', term)
 		} else {
 			if (window.main_selected == 'analyzer_tab') {
 				Tabs.analyzeLink(term)

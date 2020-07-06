@@ -151,7 +151,6 @@ import { isEmpty } from 'lodash-es'
 import { socket } from '@/js/socket.js'
 import { showView } from '@/js/tabs.js'
 import Downloads from '@/js/downloads.js'
-import QualityModal from '@/js/quality-modal.js'
 import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
 import EventBus from '@/js/EventBus'
@@ -187,7 +186,7 @@ export default {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
-			QualityModal.open(e.currentTarget.dataset.link)
+			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		toggleAll(e) {
 			this.body.forEach(item => {

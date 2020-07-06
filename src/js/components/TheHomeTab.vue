@@ -56,7 +56,6 @@
 import { socket } from '@/js/socket.js'
 import { showView } from '@/js/tabs.js'
 import Downloads from '@/js/downloads.js'
-import QualityModal from '@/js/quality-modal.js'
 
 export default {
 	name: 'the-home-tab',
@@ -77,7 +76,7 @@ export default {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
-			QualityModal.open(e.currentTarget.dataset.link)
+			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		initHome(data) {
 			const {

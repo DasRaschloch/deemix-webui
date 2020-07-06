@@ -91,7 +91,6 @@
 import { isEmpty, orderBy } from 'lodash-es'
 import { socket } from '@/js/socket.js'
 import Downloads from '@/js/downloads.js'
-import QualityModal from '@/js/quality-modal.js'
 import { showView, updateSelected } from '@/js/tabs.js'
 import EventBus from '@/js/EventBus'
 
@@ -128,7 +127,7 @@ export default {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		openQualityModal(e) {
-			QualityModal.open(e.currentTarget.dataset.link)
+			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		sortBy(key) {
 			if (key == this.sortKey) {

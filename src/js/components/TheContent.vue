@@ -1,5 +1,5 @@
 <template>
-	<section id="content">
+	<section id="content" @scroll="handleContentScroll" ref="content">
 		<div id="container">
 			<ArtistTab />
 			<TheChartsTab />
@@ -9,7 +9,7 @@
 			<TheLinkAnalyzerTab />
 			<TheAboutTab />
 			<TheSettingsTab />
-			<TheMainSearch />
+			<TheMainSearch :scrolled-search-type="newScrolled" />
 			<TracklistTab />
 		</div>
 	</section>
@@ -28,6 +28,9 @@ import TheAboutTab from '@components/TheAboutTab.vue'
 import TheSettingsTab from '@components/TheSettingsTab.vue'
 import TheMainSearch from '@components/TheMainSearch.vue'
 
+import { debounce } from '@/js/utils.js'
+import EventBus from '@/js/EventBus.js'
+
 export default {
 	components: {
 		ArtistTab,
@@ -40,6 +43,27 @@ export default {
 		TheSettingsTab,
 		TheMainSearch,
 		TracklistTab
+	},
+	data: () => ({
+		newScrolled: null
+	}),
+	methods: {
+		handleContentScroll: debounce(async function() {
+			if (this.$refs.content.scrollTop + this.$refs.content.clientHeight < this.$refs.content.scrollHeight) return
+
+			if (
+				main_selected !== 'search_tab' ||
+				['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) === -1
+			) {
+				return
+			}
+
+			this.newScrolled = search_selected.split('_')[0]
+
+			await this.$nextTick()
+
+			this.newScrolled = null
+		}, 100)
 	}
 }
 </script>

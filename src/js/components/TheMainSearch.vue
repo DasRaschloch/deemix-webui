@@ -496,6 +496,19 @@ export default {
 			}
 		}
 	},
+	props: {
+		scrolledSearchType: {
+			type: String,
+			required: false
+		}
+	},
+	mounted() {
+		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
+
+		this.$root.$on('mainSearch:showNewResults', this.showNewResults)
+		socket.on('mainSearch', this.handleMainSearch)
+		socket.on('search', this.handleSearch)
+	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
@@ -636,13 +649,12 @@ export default {
 			this.results[currentTab].loaded = true
 		}
 	},
-	mounted() {
-		EventBus.$on('mainSearch:scrolledSearch', this.scrolledSearch)
-		EventBus.$on('mainSearch:showNewResults', this.showNewResults)
-		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
+	watch: {
+		scrolledSearchType(newType) {
+			if (!newType) return
 
-		socket.on('mainSearch', this.handleMainSearch)
-		socket.on('search', this.handleSearch)
+			this.scrolledSearch(newType)
+		}
 	}
 }
 </script>

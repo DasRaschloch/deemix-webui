@@ -1,4 +1,4 @@
-function isValidURL(text) {
+export function isValidURL(text) {
 	let lowerCaseText = text.toLowerCase()
 
 	if (lowerCaseText.startsWith('http')) {
@@ -11,7 +11,7 @@ function isValidURL(text) {
 	return false
 }
 
-function convertDuration(duration) {
+export function convertDuration(duration) {
 	// Convert from seconds only to mm:ss format
 	let mm, ss
 	mm = Math.floor(duration / 60)
@@ -23,7 +23,7 @@ function convertDuration(duration) {
 	return mm + ':' + ss
 }
 
-function convertDurationSeparated(duration) {
+export function convertDurationSeparated(duration) {
 	let hh, mm, ss
 	mm = Math.floor(duration / 60)
 	hh = Math.floor(mm / 60)
@@ -32,18 +32,18 @@ function convertDurationSeparated(duration) {
 	return [hh, mm, ss]
 }
 
-function numberWithDots(x) {
+export function numberWithDots(x) {
 	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 }
 
 // On scroll event, returns currentTarget = null
 // Probably on other events too
-function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
 	var timeout
-	return function () {
+	return function() {
 		var context = this
 		var args = arguments
-		var later = function () {
+		var later = function() {
 			timeout = null
 			if (!immediate) func.apply(context, args)
 		}
@@ -54,7 +54,7 @@ function debounce(func, wait, immediate) {
 	}
 }
 
-const COUNTRIES = {
+export const COUNTRIES = {
 	AF: 'Afghanistan',
 	AX: '\u00c5land Islands',
 	AL: 'Albania',

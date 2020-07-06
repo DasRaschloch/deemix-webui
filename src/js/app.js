@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-// Object is needed for vue proxy
+// Object is needed for vue proxy (what does this mean?)
 window.vol = {
 	preview_max_volume: 100
 }
@@ -13,7 +13,6 @@ import { socket } from '@/js/socket.js'
 import { toast } from '@/js/toasts.js'
 import Downloads from '@/js/downloads.js'
 import Tabs from '@/js/tabs.js'
-import Search from '@/js/search.js'
 
 /* ===== App initialization ===== */
 
@@ -22,7 +21,6 @@ function startApp() {
 
 	Downloads.init()
 	Tabs.init()
-	Search.linkListeners()
 	TrackPreview.init()
 }
 

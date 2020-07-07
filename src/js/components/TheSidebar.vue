@@ -1,5 +1,5 @@
 <template>
-	<aside id="sidebar" role="navigation">
+	<aside id="sidebar" role="navigation" @click="handleSidebarClick">
 		<span id="main_home_tablink" class="main_tablinks" role="link" aria-label="home">
 			<i class="material-icons side_icon">home</i>
 			<span class="main_tablinks_text">Home</span>
@@ -63,7 +63,30 @@
 	</aside>
 </template>
 
+<style scoped>
+#network-status {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-top: auto;
+	bottom: 0;
+}
+
+#network-status.online i.material-icons {
+	color: hsl(151, 100%, 31%);
+}
+
+#network-status.offline i.material-icons svg {
+	fill: red;
+	width: 1em;
+	height: 1em;
+}
+</style>
+
 <script>
+import { changeTab } from '@/js/tabs.js'
+
 export default {
 	name: 'the-sidebar',
 	data() {
@@ -107,28 +130,56 @@ export default {
 
 				document.documentElement.removeEventListener('transitionend', transitionHandler)
 			})
+		},
+		/**
+		 * Handles click Event on the sidebar and changes tab
+		 * according to clicked icon.
+		 * Uses event delegation
+		 * @param		{Event}		event
+		 */
+		handleSidebarClick(event) {
+			const { target } = event
+
+			const wantToChangeTab = target.matches('.main_tablinks') || target.parentElement.matches('.main_tablinks')
+
+			if (!wantToChangeTab) return
+
+			let sidebarEl = target.matches('.main_tablinks') ? target : target.parentElement
+			let targetID = sidebarEl.id
+			let selectedTab = null
+
+			switch (targetID) {
+				case 'main_search_tablink':
+					selectedTab = 'search_tab'
+					break
+				case 'main_home_tablink':
+					selectedTab = 'home_tab'
+					break
+				case 'main_charts_tablink':
+					selectedTab = 'charts_tab'
+					break
+				case 'main_favorites_tablink':
+					selectedTab = 'favorites_tab'
+					break
+				case 'main_analyzer_tablink':
+					selectedTab = 'analyzer_tab'
+					break
+				case 'main_settings_tablink':
+					selectedTab = 'settings_tab'
+					break
+				case 'main_about_tablink':
+					selectedTab = 'about_tab'
+					break
+
+				default:
+					break
+			}
+
+			if (!selectedTab) return
+
+			changeTab(sidebarEl, 'main', selectedTab)
 		}
 	}
 }
 </script>
 
-<style scoped>
-#network-status {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	margin-top: auto;
-	bottom: 0;
-}
-
-#network-status.online i.material-icons {
-	color: hsl(151, 100%, 31%);
-}
-
-#network-status.offline i.material-icons svg {
-	fill: red;
-	width: 1em;
-	height: 1em;
-}
-</style>

@@ -1,5 +1,5 @@
 <template>
-	<div id="search_tab" class="main_tabcontent">
+	<div id="search_tab" class="main_tabcontent" @click="handleSearchTabClick">
 		<div :class="{ hide: results.query != '' }">
 			<h2>Start searching!</h2>
 			<p>
@@ -443,6 +443,8 @@ import Downloads from '@/js/downloads.js'
 import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
 import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+
+import { changeTab } from '@/js/tabs.js'
 import EventBus from '@/js/EventBus.js'
 
 export default {
@@ -516,6 +518,38 @@ export default {
 		playPausePreview: TrackPreview.playPausePreview,
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
+		handleSearchTabClick(event) {
+			const {
+				target,
+				target: { id }
+			} = event
+			let selectedTab = null
+
+			switch (id) {
+				case 'search_all_tab':
+					selectedTab = 'main_search'
+					break
+				case 'search_track_tab':
+					selectedTab = 'track_search'
+					break
+				case 'search_album_tab':
+					selectedTab = 'album_search'
+					break
+				case 'search_artist_tab':
+					selectedTab = 'artist_search'
+					break
+				case 'search_playlist_tab':
+					selectedTab = 'playlist_search'
+					break
+
+				default:
+					break
+			}
+
+			if (!selectedTab) return
+
+			changeTab(target, 'search', selectedTab)
+		},
 		handleClickTopResult(event) {
 			let topResultType = this.results.allTab.TOP_RESULT[0].type
 

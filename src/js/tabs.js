@@ -14,6 +14,7 @@ let currentStack = {}
 // because it's used in components that are needed
 // in this file too
 export function showView(viewType, event) {
+	// console.error('SHOW VIEW')
 	const {
 		currentTarget: {
 			dataset: { id }
@@ -47,144 +48,41 @@ export function updateSelected(newSelected) {
 	currentStack.selected = newSelected
 }
 
-window.test = showErrors
-
 function analyzeLink(link) {
 	EventBus.$emit('linkAnalyzerTab:reset')
 	socket.emit('analyzeLink', link)
 }
 
-function linkListeners() {
-	document.getElementById('search_tab').addEventListener('click', handleSearchTabClick)
-	document.getElementById('favorites_tab').addEventListener('click', handleFavoritesTabClick)
-	document.getElementById('sidebar').addEventListener('click', handleSidebarClick)
-
-	const backButtons = Array.from(document.getElementsByClassName('back-button'))
-
-	backButtons.forEach(button => {
-		button.addEventListener('click', backTab)
-	})
-}
-
-/**
- * Handles click Event on the sidebar and changes tab
- * according to clicked icon.
- * Uses event delegation
- * @param		{Event}		event
- */
-function handleSidebarClick(event) {
-	const { target } = event
-
-	const wantToChangeTab = target.matches('.main_tablinks') || target.parentElement.matches('.main_tablinks')
-
-	if (!wantToChangeTab) return
-
-	let sidebarEl = target.matches('.main_tablinks') ? target : target.parentElement
-	let targetID = sidebarEl.id
-
-	switch (targetID) {
-		case 'main_search_tablink':
-			changeTab(sidebarEl, 'main', 'search_tab')
-			break
-		case 'main_home_tablink':
-			changeTab(sidebarEl, 'main', 'home_tab')
-			break
-		case 'main_charts_tablink':
-			changeTab(sidebarEl, 'main', 'charts_tab')
-			break
-		case 'main_favorites_tablink':
-			changeTab(sidebarEl, 'main', 'favorites_tab')
-			break
-		case 'main_analyzer_tablink':
-			changeTab(sidebarEl, 'main', 'analyzer_tab')
-			break
-		case 'main_settings_tablink':
-			changeTab(sidebarEl, 'main', 'settings_tab')
-			break
-		case 'main_about_tablink':
-			changeTab(sidebarEl, 'main', 'about_tab')
-			break
-
-		default:
-			break
-	}
-}
-
-function handleSearchTabClick(event) {
-	const {
-		target,
-		target: { id }
-	} = event
-
-	switch (id) {
-		case 'search_all_tab':
-			changeTab(target, 'search', 'main_search')
-			break
-		case 'search_track_tab':
-			changeTab(target, 'search', 'track_search')
-			break
-		case 'search_album_tab':
-			changeTab(target, 'search', 'album_search')
-			break
-		case 'search_artist_tab':
-			changeTab(target, 'search', 'artist_search')
-			break
-		case 'search_playlist_tab':
-			changeTab(target, 'search', 'playlist_search')
-			break
-
-		default:
-			break
-	}
-}
-
-function handleFavoritesTabClick(event) {
-	const {
-		target,
-		target: { id }
-	} = event
-
-	switch (id) {
-		case 'favorites_playlist_tab':
-			changeTab(target, 'favorites', 'playlist_favorites')
-			break
-		case 'favorites_album_tab':
-			changeTab(target, 'favorites', 'album_favorites')
-			break
-		case 'favorites_artist_tab':
-			changeTab(target, 'favorites', 'artist_favorites')
-			break
-		case 'favorites_track_tab':
-			changeTab(target, 'favorites', 'track_favorites')
-			break
-
-		default:
-			break
-	}
-}
-
-function changeTab(sidebarEl, section, tabName) {
+export function changeTab(sidebarEl, section, tabName) {
+	// console.error('CHANGE TAB')
+	// console.log(Array.from(arguments))
 	windows_stack = []
 	currentStack = {}
-	var i, tabcontent, tablinks
-	tabcontent = document.getElementsByClassName(section + '_tabcontent')
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = 'none'
-	}
-	tablinks = document.getElementsByClassName(section + '_tablinks')
-	// tablinks = document.getElementsByClassName('section-tabs__tab')
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].classList.remove('active')
+
+	// * The visualized content of the tab
+	// ! Can be more than one per tab, happens in MainSearch and Favorites tab
+	// ! because they have more tablinks (see below)
+	const tabContent = document.getElementsByClassName(`${section}_tabcontent`)
+
+	for (let i = 0; i < tabContent.length; i++) {
+		tabContent[i].style.display = 'none'
 	}
 
-	if (tabName == 'settings_tab' && main_selected != 'settings_tab') {
+	// * Tabs inside the actual tab (like albums, tracks, playlists...)
+	const tabLinks = document.getElementsByClassName(`${section}_tablinks`)
+
+	for (let i = 0; i < tabLinks.length; i++) {
+		tabLinks[i].classList.remove('active')
+	}
+
+	if (tabName === 'settings_tab' && main_selected !== 'settings_tab') {
 		EventBus.$emit('settingsTab:revertSettings')
 		EventBus.$emit('settingsTab:revertCredentials')
 	}
 
 	document.getElementById(tabName).style.display = 'block'
 
-	if ('main' === section) {
+	if (section === 'main') {
 		main_selected = tabName
 	} else if ('search' === section) {
 		search_selected = tabName
@@ -194,14 +92,15 @@ function changeTab(sidebarEl, section, tabName) {
 
 	// Check if you need to load more content in the search tab
 	if (
-		main_selected == 'search_tab' &&
-		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) != -1
+		main_selected === 'search_tab' &&
+		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) !== -1
 	) {
 		EventBus.$emit('mainSearch:checkLoadMoreContent', search_selected)
 	}
 }
 
 function showTab(type, id, back = false) {
+	// console.error('SHOW TAB')
 	if (windows_stack.length == 0) {
 		windows_stack.push({ tab: main_selected })
 	} else if (!back) {
@@ -226,6 +125,7 @@ function showTab(type, id, back = false) {
 }
 
 function backTab() {
+	// console.error('BACL TAB')
 	if (windows_stack.length == 1) {
 		document.getElementById(`main_${main_selected}link`).click()
 	} else {
@@ -248,6 +148,14 @@ function backTab() {
 	}
 
 	TrackPreview.stopStackedTabsPreview()
+}
+
+function linkListeners() {
+	const backButtons = Array.from(document.getElementsByClassName('back-button'))
+
+	backButtons.forEach(button => {
+		button.addEventListener('click', backTab)
+	})
 }
 
 function init() {

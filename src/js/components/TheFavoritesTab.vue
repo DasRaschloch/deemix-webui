@@ -1,5 +1,5 @@
 <template>
-	<div id="favorites_tab" class="main_tabcontent">
+	<div id="favorites_tab" class="main_tabcontent" @click="handleFavoritesTabClick">
 		<h2 class="page_heading">
 			Favorites
 			<div
@@ -183,7 +183,7 @@
 
 <script>
 import { socket } from '@/js/socket.js'
-import { showView } from '@/js/tabs.js'
+import { showView, changeTab } from '@/js/tabs.js'
 import Downloads from '@/js/downloads.js'
 import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
@@ -209,6 +209,36 @@ export default {
 		previewMouseEnter: TrackPreview.previewMouseEnter,
 		previewMouseLeave: TrackPreview.previewMouseLeave,
 		convertDuration: Utils.convertDuration,
+		handleFavoritesTabClick(event) {
+			const {
+				target,
+				target: { id }
+			} = event
+			let selectedTab = null
+			console.log(id)
+
+			switch (id) {
+				case 'favorites_playlist_tab':
+					selectedTab = 'playlist_favorites'
+					break
+				case 'favorites_album_tab':
+					selectedTab = 'album_favorites'
+					break
+				case 'favorites_artist_tab':
+					selectedTab = 'artist_favorites'
+					break
+				case 'favorites_track_tab':
+					selectedTab = 'track_favorites'
+					break
+
+				default:
+					break
+			}
+
+			if (!selectedTab) return
+
+			changeTab(target, 'favorites', selectedTab)
+		},
 		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)

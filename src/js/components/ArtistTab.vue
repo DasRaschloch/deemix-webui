@@ -91,7 +91,7 @@
 import { isEmpty, orderBy } from 'lodash-es'
 import { socket } from '@/js/socket.js'
 import Downloads from '@/js/downloads.js'
-import { showView, updateSelected } from '@/js/tabs.js'
+import { showView } from '@/js/tabs.js'
 import EventBus from '@/js/EventBus'
 
 export default {
@@ -144,7 +144,7 @@ export default {
 			return this.currentTab
 		},
 		updateSelected() {
-			updateSelected(this.currentTab)
+			window.currentStack.selected = this.currentTab
 		},
 		checkNewRelease(date) {
 			let g1 = new Date()

@@ -6,9 +6,7 @@ import EventBus from '@/js/EventBus'
 window.search_selected = ''
 window.main_selected = ''
 window.windows_stack = []
-
-/* ===== Locals ===== */
-let currentStack = {}
+window.currentStack = {}
 
 // Exporting this function out of the default export
 // because it's used in components that are needed
@@ -39,25 +37,17 @@ export function showView(viewType, event) {
 	showTab(viewType, id)
 }
 
-export function showErrors(event) {
-	EventBus.$emit('showErrors', event.data.item)
-	changeTab(event.target, 'main', 'errors_tab')
-}
-
-export function updateSelected(newSelected) {
-	currentStack.selected = newSelected
-}
-
-function analyzeLink(link) {
-	EventBus.$emit('linkAnalyzerTab:reset')
-	socket.emit('analyzeLink', link)
-}
-
+/**
+ * Changes the tab to the wanted one
+ * Need to understand the difference from showTab
+ *
+ * Needs EventBus
+ */
 export function changeTab(sidebarEl, section, tabName) {
 	// console.error('CHANGE TAB')
 	// console.log(Array.from(arguments))
-	windows_stack = []
-	currentStack = {}
+	window.windows_stack = []
+	window.currentStack = {}
 
 	// * The visualized content of the tab
 	// ! Can be more than one per tab, happens in MainSearch and Favorites tab
@@ -75,7 +65,7 @@ export function changeTab(sidebarEl, section, tabName) {
 		tabLinks[i].classList.remove('active')
 	}
 
-	if (tabName === 'settings_tab' && main_selected !== 'settings_tab') {
+	if (tabName === 'settings_tab' && window.main_selected !== 'settings_tab') {
 		EventBus.$emit('settingsTab:revertSettings')
 		EventBus.$emit('settingsTab:revertCredentials')
 	}
@@ -83,61 +73,70 @@ export function changeTab(sidebarEl, section, tabName) {
 	document.getElementById(tabName).style.display = 'block'
 
 	if (section === 'main') {
-		main_selected = tabName
+		window.main_selected = tabName
 	} else if ('search' === section) {
-		search_selected = tabName
+		window.search_selected = tabName
 	}
 
 	sidebarEl.classList.add('active')
 
 	// Check if you need to load more content in the search tab
 	if (
-		main_selected === 'search_tab' &&
-		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) !== -1
+		window.main_selected === 'search_tab' &&
+		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(window.search_selected) !== -1
 	) {
-		EventBus.$emit('mainSearch:checkLoadMoreContent', search_selected)
+		EventBus.$emit('mainSearch:checkLoadMoreContent', window.search_selected)
 	}
 }
 
+/**
+ * Shows the passed tab, keeping track of the one that the user is coming from.
+ *
+ * Needs TrackPreview and EventBus
+ */
 function showTab(type, id, back = false) {
-	// console.error('SHOW TAB')
-	if (windows_stack.length == 0) {
-		windows_stack.push({ tab: main_selected })
+	if (window.windows_stack.length === 0) {
+		window.windows_stack.push({ tab: window.main_selected })
 	} else if (!back) {
-		if (currentStack.type === 'artist') {
+		if (window.currentStack.type === 'artist') {
 			EventBus.$emit('artistTab:updateSelected')
 		}
 
-		windows_stack.push(currentStack)
+		window.windows_stack.push(window.currentStack)
 	}
 
-	window.tab = type == 'artist' ? 'artist_tab' : 'tracklist_tab'
+	window.tab = type === 'artist' ? 'artist_tab' : 'tracklist_tab'
 
-	currentStack = { type, id }
+	window.currentStack = { type, id }
 	let tabcontent = document.getElementsByClassName('main_tabcontent')
 
 	for (let i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = 'none'
 	}
 
-	document.getElementById(tab).style.display = 'block'
+	document.getElementById(window.tab).style.display = 'block'
+
 	TrackPreview.stopStackedTabsPreview()
 }
 
+/**
+ * Goes back to the previous tab according to the global window stack.
+ *
+ * Needs TrackPreview, EventBus and socket
+ */
 function backTab() {
-	// console.error('BACL TAB')
-	if (windows_stack.length == 1) {
-		document.getElementById(`main_${main_selected}link`).click()
+	if (window.windows_stack.length == 1) {
+		document.getElementById(`main_${window.main_selected}link`).click()
 	} else {
 		// Retrieving tab type and tab id
-		let data = windows_stack.pop()
-		let { type, id } = data
+		let data = window.windows_stack.pop()
+		let { type, id, selected } = data
 
 		if (type === 'artist') {
 			EventBus.$emit('artistTab:reset')
 
-			if (data.selected) {
-				EventBus.$emit('artistTab:changeTab', data.selected)
+			if (selected) {
+				EventBus.$emit('artistTab:changeTab', selected)
 			}
 		} else {
 			EventBus.$emit('tracklistTab:reset')
@@ -150,25 +149,17 @@ function backTab() {
 	TrackPreview.stopStackedTabsPreview()
 }
 
-function linkListeners() {
-	const backButtons = Array.from(document.getElementsByClassName('back-button'))
+function _linkListeners() {
+	const backButtons = Array.prototype.slice.call(document.getElementsByClassName('back-button'))
 
 	backButtons.forEach(button => {
 		button.addEventListener('click', backTab)
 	})
 }
 
-function init() {
+export function init() {
 	// Open default tab
 	changeTab(document.getElementById('main_home_tablink'), 'main', 'home_tab')
 
-	linkListeners()
-}
-
-export default {
-	init,
-	changeTab,
-	showView,
-	analyzeLink,
-	showErrors
+	_linkListeners()
 }

@@ -53,12 +53,12 @@ export default {
 
 			if (
 				main_selected !== 'search_tab' ||
-				['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(search_selected) === -1
+				['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(window.search_selected) === -1
 			) {
 				return
 			}
 
-			this.newScrolled = search_selected.split('_')[0]
+			this.newScrolled = window.search_selected.split('_')[0]
 
 			await this.$nextTick()
 

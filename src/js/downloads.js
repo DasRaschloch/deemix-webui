@@ -1,100 +1,18 @@
 import $ from 'jquery'
 import { socket } from '@/js/socket.js'
 import { toast } from '@/js/toasts.js'
-import { showErrors } from '@/js/tabs.js'
+import EventBus from '@/js/EventBus'
 
 /* ===== Locals ===== */
-const tabMinWidth = 250
-const tabMaxWidth = 500
 
-let cachedTabWidth = parseInt(localStorage.getItem('downloadTabWidth')) || 300
 let queueList = {}
 let queue = []
 let queueComplete = []
-let tabContainerEl
 let listEl
-let dragHandlerEl
 
 function init() {
 	// Find download DOM elements
-	tabContainerEl = document.getElementById('download_tab_container')
 	listEl = document.getElementById('download_list')
-	dragHandlerEl = document.getElementById('download_tab_drag_handler')
-
-	// Check if download tab has slim entries
-	if ('true' === localStorage.getItem('slimDownloads')) {
-		listEl.classList.add('slim')
-	}
-
-	// Check if download tab should be open
-	if ('true' === localStorage.getItem('downloadTabOpen')) {
-		tabContainerEl.classList.remove('tab_hidden')
-
-		setTabWidth(cachedTabWidth)
-	}
-
-	linkListeners()
-}
-
-function linkListeners() {
-	listEl.addEventListener('click', handleListClick)
-	document.getElementById('toggle_download_tab').addEventListener('click', toggleDownloadTab)
-
-	// Queue buttons
-	document.getElementById('clean_queue').addEventListener('click', () => {
-		socket.emit('removeFinishedDownloads')
-	})
-
-	document.getElementById('cancel_queue').addEventListener('click', () => {
-		socket.emit('cancelAllDownloads')
-	})
-
-	document.getElementById('open_downloads_folder').addEventListener('click', () => {
-		if (window.clientMode) socket.emit('openDownloadsFolder')
-	})
-
-	// Downloads tab drag handling
-	dragHandlerEl.addEventListener('mousedown', event => {
-		event.preventDefault()
-
-		document.addEventListener('mousemove', handleDrag)
-	})
-
-	document.addEventListener('mouseup', () => {
-		document.removeEventListener('mousemove', handleDrag)
-	})
-
-	tabContainerEl.addEventListener('transitionend', () => {
-		tabContainerEl.style.transition = ''
-	})
-
-	window.addEventListener('beforeunload', () => {
-		localStorage.setItem('downloadTabWidth', cachedTabWidth)
-	})
-}
-
-function setTabWidth(newWidth) {
-	if (undefined === newWidth) {
-		tabContainerEl.style.width = ''
-		listEl.style.width = ''
-	} else {
-		tabContainerEl.style.width = newWidth + 'px'
-		listEl.style.width = newWidth + 'px'
-	}
-}
-
-function handleDrag(event) {
-	let newWidth = window.innerWidth - event.pageX + 2
-
-	if (newWidth < tabMinWidth) {
-		newWidth = tabMinWidth
-	} else if (newWidth > tabMaxWidth) {
-		newWidth = tabMaxWidth
-	}
-
-	cachedTabWidth = newWidth
-
-	setTabWidth(newWidth)
 }
 
 function sendAddToQueue(url, bitrate = null) {
@@ -103,7 +21,7 @@ function sendAddToQueue(url, bitrate = null) {
 	}
 }
 
-function addToQueue(queueItem, current = false) {
+function _addToQueue(queueItem, current = false) {
 	queueList[queueItem.uuid] = queueItem
 	if (queueItem.downloaded + queueItem.failed == queueItem.size) {
 		if (queueComplete.indexOf(queueItem.uuid) == -1) queueComplete.push(queueItem.uuid)
@@ -154,8 +72,8 @@ function addToQueue(queueItem, current = false) {
 			let failed_button = $('#download_' + queueItem.uuid).find('.queue_failed_button')
 			result_icon.addClass('clickable')
 			failed_button.addClass('clickable')
-			result_icon.bind('click', { item: queueItem }, showErrors)
-			failed_button.bind('click', { item: queueItem }, showErrors)
+			result_icon.bind('click', { item: queueItem }, showErrorsTab)
+			failed_button.bind('click', { item: queueItem }, showErrorsTab)
 			if (queueItem.failed >= queueItem.size) {
 				result_icon.text('error')
 			} else {
@@ -166,75 +84,44 @@ function addToQueue(queueItem, current = false) {
 	if (!queueItem.init) toast(`${queueItem.title} added to queue`, 'playlist_add_check')
 }
 
-function initQueue(data) {
+// ? Temporary?
+function showErrorsTab(clickEvent) {
+	EventBus.$emit('showTabErrors', clickEvent.data.item, clickEvent.target)
+}
+
+function _initQueue(data) {
 	const { queue, queueComplete, currentItem, queueList } = data
 
 	if (queueComplete.length) {
 		queueComplete.forEach(item => {
 			queueList[item].init = true
-			addToQueue(queueList[item])
+			_addToQueue(queueList[item])
 		})
 	}
 
 	if (currentItem) {
 		queueList[currentItem].init = true
-		addToQueue(queueList[currentItem], true)
+		_addToQueue(queueList[currentItem], true)
 	}
 
 	queue.forEach(item => {
 		queueList[item].init = true
-		addToQueue(queueList[item])
+		_addToQueue(queueList[item])
 	})
 }
 
-function startDownload(uuid) {
+function _startDownload(uuid) {
 	$('#bar_' + uuid)
 		.removeClass('indeterminate')
 		.addClass('determinate')
 }
 
-socket.on('startDownload', startDownload)
+socket.on('startDownload', _startDownload)
 
-function handleListClick(event) {
-	const { target } = event
+socket.on('init_downloadQueue', _initQueue)
+socket.on('addedToQueue', _addToQueue)
 
-	if (!target.matches('.queue_icon[data-uuid]')) {
-		return
-	}
-
-	let icon = target.innerText
-	let uuid = $(target).data('uuid')
-
-	switch (icon) {
-		case 'remove':
-			socket.emit('removeFromQueue', uuid)
-			break
-		default:
-	}
-}
-
-// Show/Hide Download Tab
-function toggleDownloadTab(clickEvent) {
-	clickEvent.preventDefault()
-
-	setTabWidth()
-
-	tabContainerEl.style.transition = 'all 250ms ease-in-out'
-
-	// Toggle returns a Boolean based on the action it performed
-	let isHidden = tabContainerEl.classList.toggle('tab_hidden')
-
-	if (!isHidden) {
-		setTabWidth(cachedTabWidth)
-	}
-
-	localStorage.setItem('downloadTabOpen', !isHidden)
-}
-
-socket.on('init_downloadQueue', initQueue)
-socket.on('addedToQueue', addToQueue)
-
-function removeFromQueue(uuid) {
+function _removeFromQueue(uuid) {
 	let index = queue.indexOf(uuid)
 	if (index > -1) {
 		queue.splice(index, 1)
@@ -243,9 +130,9 @@ function removeFromQueue(uuid) {
 	}
 }
 
-socket.on('removedFromQueue', removeFromQueue)
+socket.on('removedFromQueue', _removeFromQueue)
 
-function finishDownload(uuid) {
+function _finishDownload(uuid) {
 	if (queue.indexOf(uuid) > -1) {
 		toast(`${queueList[uuid].title} finished downloading.`, 'done')
 		$('#bar_' + uuid).css('width', '100%')
@@ -256,8 +143,8 @@ function finishDownload(uuid) {
 			let failed_button = $('#download_' + uuid).find('.queue_failed_button')
 			result_icon.addClass('clickable')
 			failed_button.addClass('clickable')
-			result_icon.bind('click', { item: queueList[uuid] }, showErrors)
-			failed_button.bind('click', { item: queueList[uuid] }, showErrors)
+			result_icon.bind('click', { item: queueList[uuid] }, showErrorsTab)
+			failed_button.bind('click', { item: queueList[uuid] }, showErrorsTab)
 			if (queueList[uuid].failed >= queueList[uuid].size) {
 				result_icon.text('error')
 			} else {
@@ -276,9 +163,9 @@ function finishDownload(uuid) {
 	}
 }
 
-socket.on('finishDownload', finishDownload)
+socket.on('finishDownload', _finishDownload)
 
-function removeAllDownloads(currentItem) {
+function _removeAllDownloads(currentItem) {
 	queueComplete = []
 	if (currentItem == '') {
 		queue = []
@@ -295,18 +182,18 @@ function removeAllDownloads(currentItem) {
 	}
 }
 
-socket.on('removedAllDownloads', removeAllDownloads)
+socket.on('removedAllDownloads', _removeAllDownloads)
 
-function removedFinishedDownloads() {
+function _removedFinishedDownloads() {
 	queueComplete.forEach(item => {
 		$('#download_' + item).remove()
 	})
 	queueComplete = []
 }
 
-socket.on('removedFinishedDownloads', removedFinishedDownloads)
+socket.on('removedFinishedDownloads', _removedFinishedDownloads)
 
-function updateQueue(update) {
+function _updateQueue(update) {
 	// downloaded and failed default to false?
 	const { uuid, downloaded, failed, progress } = update
 
@@ -334,10 +221,9 @@ function updateQueue(update) {
 	}
 }
 
-socket.on('updateQueue', updateQueue)
+socket.on('updateQueue', _updateQueue)
 
 export default {
 	init,
-	sendAddToQueue,
-	addToQueue
+	sendAddToQueue
 }

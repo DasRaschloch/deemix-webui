@@ -12,7 +12,7 @@ import $ from 'jquery'
 import { socket } from '@/js/socket.js'
 import { toast } from '@/js/toasts.js'
 import Downloads from '@/js/downloads.js'
-import Tabs from '@/js/tabs.js'
+import { init as initTabs } from '@/js/tabs.js'
 
 /* ===== App initialization ===== */
 
@@ -20,7 +20,7 @@ function startApp() {
 	mountApp()
 
 	Downloads.init()
-	Tabs.init()
+	initTabs()
 	TrackPreview.init()
 }
 

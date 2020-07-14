@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import { changeTab } from '@/js/tabs.js'
+
 import EventBus from '@/js/EventBus'
 
 export default {
@@ -32,13 +34,15 @@ export default {
 			this.title = ''
 			this.errors = []
 		},
-		showErrors(data) {
+		showErrors(data, eventTarget) {
 			this.title = data.artist + ' - ' + data.title
 			this.errors = data.errors
+
+			changeTab(eventTarget, 'main', 'errors_tab')
 		}
 	},
 	mounted() {
-		EventBus.$on('showErrors', this.showErrors)
+		EventBus.$on('showTabErrors', this.showErrors)
 	}
 }
 </script>

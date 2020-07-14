@@ -20,8 +20,9 @@
 <script>
 import { isValidURL } from '@/js/utils.js'
 import Downloads from '@/js/downloads.js'
-import Tabs from '@/js/tabs.js'
+
 import EventBus from '@/js/EventBus.js'
+import { socket } from '@/js/socket.js'
 
 export default {
 	methods: {
@@ -36,7 +37,8 @@ export default {
 					this.$root.$emit('QualityModal:open', term)
 				} else {
 					if (main_selected === 'analyzer_tab') {
-						Tabs.analyzeLink(term)
+						EventBus.$emit('linkAnalyzerTab:reset')
+						socket.emit('analyzeLink', term)
 					} else {
 						Downloads.sendAddToQueue(term)
 					}

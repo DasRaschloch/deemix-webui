@@ -215,7 +215,6 @@ export default {
 				target: { id }
 			} = event
 			let selectedTab = null
-			console.log(id)
 
 			switch (id) {
 				case 'favorites_playlist_tab':

@@ -43,6 +43,7 @@ export default {
 	},
 	mounted() {
 		EventBus.$on('showTabErrors', this.showErrors)
+		this.$root.$on('showTabErrors', this.showErrors)
 	}
 }
 </script>

@@ -45,7 +45,6 @@ export function showView(viewType, event) {
  */
 export function changeTab(sidebarEl, section, tabName) {
 	// console.error('CHANGE TAB')
-	// console.log(Array.from(arguments))
 	window.windows_stack = []
 	window.currentStack = {}
 

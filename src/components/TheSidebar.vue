@@ -85,7 +85,7 @@
 </style>
 
 <script>
-import { changeTab } from '@/js/tabs.js'
+import { changeTab } from '@js/tabs.js'
 
 export default {
 	name: 'the-sidebar',

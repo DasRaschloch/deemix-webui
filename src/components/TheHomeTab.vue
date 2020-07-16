@@ -1,6 +1,6 @@
 <template>
 	<div id="home_tab" class="main_tabcontent">
-		<h2 class="page_heading">Welcome to deemix</h2>
+		<h2 class="page_heading">{{ $t('welcome') }}</h2>
 		<section id="home_not_logged_in" class="home_section" ref="notLogged">
 			<p id="home_not_logged_text">You need to log into your deezer account before you can start downloading.</p>
 			<button type="button" name="button" @click="openSettings">Open Settings</button>
@@ -53,9 +53,9 @@
 </template>
 
 <script>
-import { socket } from '@/js/socket.js'
-import { showView } from '@/js/tabs.js'
-import Downloads from '@/js/downloads.js'
+import { socket } from '@/utils/socket'
+import { showView } from '@js/tabs.js'
+import Downloads from '@/utils/downloads'
 
 export default {
 	name: 'the-home-tab',

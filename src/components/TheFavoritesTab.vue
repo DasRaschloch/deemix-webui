@@ -182,11 +182,11 @@
 </template>
 
 <script>
-import { socket } from '@/js/socket.js'
-import { showView, changeTab } from '@/js/tabs.js'
-import Downloads from '@/js/downloads.js'
-import Utils from '@/js/utils.js'
-import { toast } from '@/js/toasts'
+import { socket } from '@/utils/socket'
+import { showView, changeTab } from '@js/tabs.js'
+import Downloads from '@/utils/downloads'
+import Utils from '@/utils/utils'
+import { toast } from '@/utils/toasts'
 
 export default {
 	name: 'the-favorites-tab',

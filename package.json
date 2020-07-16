@@ -20,7 +20,8 @@
 		"jquery": "^3.5.1",
 		"lodash-es": "^4.17.15",
 		"toastify-js": "^1.8.0",
-		"vue": "^2.6.11"
+		"vue": "^2.6.11",
+		"vue-i18n": "^8.18.2"
 	},
 	"devDependencies": {
 		"@rollup/plugin-alias": "^3.1.0",

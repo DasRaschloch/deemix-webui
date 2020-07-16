@@ -1,11 +1,11 @@
 import Toastify from 'toastify-js'
 import $ from 'jquery'
 
-import { socket } from './socket.js'
+import { socket } from '@/utils/socket'
 
 let toastsWithId = {}
 
-export const toast = function (msg, icon = null, dismiss = true, id = null) {
+export const toast = function(msg, icon = null, dismiss = true, id = null) {
 	if (toastsWithId[id]) {
 		let toastObj = toastsWithId[id]
 		let toastDOM = $(`div.toastify[toast_id=${id}]`)
@@ -18,7 +18,7 @@ export const toast = function (msg, icon = null, dismiss = true, id = null) {
 			toastDOM.find('.toast-icon').html(icon)
 		}
 		if (dismiss !== null && dismiss) {
-			setTimeout(function () {
+			setTimeout(function() {
 				toastObj.hideToast()
 				delete toastsWithId[id]
 			}, 3000)

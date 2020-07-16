@@ -1,5 +1,5 @@
-import { socket } from '@/js/socket.js'
-import EventBus from '@/js/EventBus'
+import { socket } from '@/utils/socket'
+import EventBus from '@/utils/EventBus'
 
 /* ===== Globals ====== */
 window.search_selected = ''

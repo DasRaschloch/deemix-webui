@@ -437,14 +437,14 @@
 </template>
 
 <script>
-import { socket } from '@/js/socket.js'
-import { showView } from '@/js/tabs.js'
-import Downloads from '@/js/downloads.js'
-import Utils from '@/js/utils.js'
+import { socket } from '@/utils/socket'
+import { showView } from '@js/tabs.js'
+import Downloads from '@/utils/downloads'
+import Utils from '@/utils/utils'
 import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
 
-import { changeTab } from '@/js/tabs.js'
-import EventBus from '@/js/EventBus.js'
+import { changeTab } from '@js/tabs.js'
+import EventBus from '@/utils/EventBus.js'
 
 export default {
 	name: 'the-main-search-tab',

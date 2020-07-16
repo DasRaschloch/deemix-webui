@@ -1,6 +1,6 @@
 <template>
 	<div id="settings_tab" class="main_tabcontent fixed_footer">
-		<h2 class="page_heading">Settings</h2>
+		<h2 class="page_heading">{{ $t('settings.title') }}</h2>
 
 		<div id="logged_in_info" ref="loggedInInfo">
 			<img id="settings_picture" src="" alt="Profile Picture" ref="userpicture" class="circle" />
@@ -22,9 +22,26 @@
 				</button>
 			</div>
 			<a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">
-				How do I get my own ARL?
+				{{ $t('settings.login.arl.question') }}
 			</a>
-			<button id="settings_btn_updateArl" @click="login" style="width:100%;">Update ARL</button>
+			<button id="settings_btn_updateArl" @click="login" style="width:100%;">
+				{{ $t('settings.login.arl.update') }}
+			</button>
+		</div>
+
+		<div class="settings-group">
+			<h3 class="settings-group__header settings-group__header--with-icon">
+				<i class="material-icons">language</i>{{ $t('settings.languages') }}
+			</h3>
+			<span
+				v-for="locale in locales"
+				:key="locale"
+				style="width: 50px; height: 50px; cursor:pointer; border: 1px solid var(--foreground); flex: 1 50px; display: flex; justify-content: center; align-items: center;"
+				:data-locale="locale"
+				@click="$i18n.locale = locale"
+			>
+				{{ locale.toUpperCase() }}
+			</span>
 		</div>
 
 		<div class="settings-group">
@@ -514,13 +531,14 @@
 </template>
 
 <script>
-import { toast } from '@/js/toasts.js'
-import { socket } from '@/js/socket.js'
-import EventBus from '@/js/EventBus'
+import { toast } from '@/utils/toasts'
+import { socket } from '@/utils/socket'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	name: 'the-settings-tab',
 	data: () => ({
+		locales: [],
 		settings: { tags: {} },
 		lastSettings: {},
 		spotifyFeatures: {},
@@ -624,6 +642,8 @@ export default {
 		}
 	},
 	mounted() {
+		this.locales = this.$i18n.availableLocales
+
 		EventBus.$on('settingsTab:revertSettings', this.revertSettings)
 		EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
 

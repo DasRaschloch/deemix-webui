@@ -112,10 +112,10 @@
 </template>
 
 <script>
-import { socket } from '@/js/socket.js'
-import { showView } from '@/js/tabs.js'
-import Downloads from '@/js/downloads.js'
-import Utils from '@/js/utils.js'
+import { socket } from '@/utils/socket'
+import { showView } from '@js/tabs.js'
+import Downloads from '@/utils/downloads'
+import Utils from '@/utils/utils'
 
 export default {
 	name: 'the-charts-tab',

@@ -100,10 +100,10 @@
 </template>
 
 <script>
-import { socket } from '@/js/socket.js'
-import { showView } from '@/js/tabs.js'
-import Utils from '@/js/utils.js'
-import EventBus from '@/js/EventBus'
+import { socket } from '@/utils/socket'
+import { showView } from '@js/tabs.js'
+import Utils from '@/utils/utils'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	name: 'the-link-analyzer-tab',

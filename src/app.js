@@ -5,12 +5,13 @@ window.vol = {
 	preview_max_volume: 100
 }
 
-import App from '@/js/App.vue'
+import App from '@components/App.vue'
+import i18n from '@/plugins/i18n'
 
 import $ from 'jquery'
-import { socket } from '@/js/socket.js'
-import { toast } from '@/js/toasts.js'
-import { init as initTabs } from '@/js/tabs.js'
+import { socket } from '@/utils/socket'
+import { toast } from '@/utils/toasts'
+import { init as initTabs } from '@js/tabs.js'
 
 /* ===== App initialization ===== */
 
@@ -21,7 +22,8 @@ function startApp() {
 
 function mountApp() {
 	// TODO Remove the App instance from the window when deemix will be a complete Vue App
-	window.App = new Vue({
+	new Vue({
+		i18n,
 		render: h => h(App)
 	}).$mount('#app')
 }

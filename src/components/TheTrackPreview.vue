@@ -6,7 +6,7 @@
 
 <script>
 import $ from 'jquery'
-import EventBus from '@/js/EventBus'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	data: () => ({

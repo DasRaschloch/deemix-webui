@@ -38,7 +38,7 @@
 }
 </style>
 <script>
-import Downloads from '@/js/downloads.js'
+import Downloads from '@/utils/downloads'
 
 export default {
 	data: () => ({

@@ -1,4 +1,4 @@
-import { socket } from '@/js/socket.js'
+import { socket } from '@/utils/socket'
 
 function sendAddToQueue(url, bitrate = null) {
 	if (url != '') {

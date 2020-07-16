@@ -25,8 +25,8 @@
 
 <script>
 import $ from 'jquery'
-import { socket } from '@/js/socket.js'
-import { toast } from '@/js/toasts.js'
+import { socket } from '@/utils/socket'
+import { toast } from '@/utils/toasts'
 
 const tabMinWidth = 250
 const tabMaxWidth = 500

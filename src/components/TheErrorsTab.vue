@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import { changeTab } from '@/js/tabs.js'
+import { changeTab } from '@js/tabs.js'
 
-import EventBus from '@/js/EventBus'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	name: 'the-errors-tab',

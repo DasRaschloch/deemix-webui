@@ -7,6 +7,8 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 - Use Vue as much as possible
   - First step: rewrite the app in Single File Components way ✅
   - Second step: Remove jQuery
+- Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
+  - Use ES2020 async imports
 - Make the UI look coherent
   - Style buttons
   - Style text inputs

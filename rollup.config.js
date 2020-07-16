@@ -11,7 +11,7 @@ import vue from 'rollup-plugin-vue'
 const production = !process.env.ROLLUP_WATCH
 
 export default {
-	input: 'src/js/app.js',
+	input: 'src/app.js',
 	output: [
 		{
 			file: 'public/js/bundle.js',
@@ -31,8 +31,12 @@ export default {
 					replacement: __dirname + '/src'
 				},
 				{
+					find: '@js',
+					replacement: __dirname + '/src/js'
+				},
+				{
 					find: '@components',
-					replacement: __dirname + '/src/js/components'
+					replacement: __dirname + '/src/components'
 				}
 			]
 		}),

@@ -89,10 +89,10 @@
 
 <script>
 import { isEmpty, orderBy } from 'lodash-es'
-import { socket } from '@/js/socket.js'
-import Downloads from '@/js/downloads.js'
-import { showView } from '@/js/tabs.js'
-import EventBus from '@/js/EventBus'
+import { socket } from '@/utils/socket'
+import Downloads from '@/utils/downloads'
+import { showView } from '@js/tabs'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	name: 'artist-tab',

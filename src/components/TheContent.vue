@@ -28,8 +28,8 @@ import TheAboutTab from '@components/TheAboutTab.vue'
 import TheSettingsTab from '@components/TheSettingsTab.vue'
 import TheMainSearch from '@components/TheMainSearch.vue'
 
-import { debounce } from '@/js/utils.js'
-import EventBus from '@/js/EventBus.js'
+import { debounce } from '@/utils/utils'
+import EventBus from '@/utils/EventBus.js'
 
 export default {
 	components: {

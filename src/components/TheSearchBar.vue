@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import { isValidURL } from '@/js/utils.js'
-import Downloads from '@/js/downloads.js'
+import { isValidURL } from '@/utils/utils'
+import Downloads from '@/utils/downloads'
 
-import EventBus from '@/js/EventBus.js'
-import { socket } from '@/js/socket.js'
+import EventBus from '@/utils/EventBus.js'
+import { socket } from '@/utils/socket'
 
 export default {
 	methods: {

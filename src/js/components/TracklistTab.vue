@@ -151,7 +151,6 @@ import { isEmpty } from 'lodash-es'
 import { socket } from '@/js/socket.js'
 import { showView } from '@/js/tabs.js'
 import Downloads from '@/js/downloads.js'
-import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
 import EventBus from '@/js/EventBus'
 
@@ -171,7 +170,9 @@ export default {
 	methods: {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
-		playPausePreview: TrackPreview.playPausePreview,
+		playPausePreview(e) {
+			EventBus.$emit('trackPreview:playPausePreview', e)
+		},
 		reset() {
 			this.title = 'Loading...'
 			this.image = ''

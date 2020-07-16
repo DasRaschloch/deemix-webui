@@ -1,4 +1,3 @@
-import TrackPreview from '@/js/track-preview.js'
 import { socket } from '@/js/socket.js'
 import EventBus from '@/js/EventBus'
 
@@ -91,7 +90,7 @@ export function changeTab(sidebarEl, section, tabName) {
 /**
  * Shows the passed tab, keeping track of the one that the user is coming from.
  *
- * Needs TrackPreview and EventBus
+ * Needs EventBus
  */
 function showTab(type, id, back = false) {
 	if (window.windows_stack.length === 0) {
@@ -115,13 +114,13 @@ function showTab(type, id, back = false) {
 
 	document.getElementById(window.tab).style.display = 'block'
 
-	TrackPreview.stopStackedTabsPreview()
+	EventBus.$emit('trackPreview:stopStackedTabsPreview')
 }
 
 /**
  * Goes back to the previous tab according to the global window stack.
  *
- * Needs TrackPreview, EventBus and socket
+ * Needs EventBus and socket
  */
 function backTab() {
 	if (window.windows_stack.length == 1) {
@@ -145,7 +144,7 @@ function backTab() {
 		showTab(type, id, true)
 	}
 
-	TrackPreview.stopStackedTabsPreview()
+	EventBus.$emit('trackPreview:stopStackedTabsPreview')
 }
 
 function _linkListeners() {

@@ -6,7 +6,6 @@ window.vol = {
 }
 
 import App from '@/js/App.vue'
-import TrackPreview from '@/js/track-preview.js'
 
 import $ from 'jquery'
 import { socket } from '@/js/socket.js'
@@ -17,9 +16,7 @@ import { init as initTabs } from '@/js/tabs.js'
 
 function startApp() {
 	mountApp()
-
 	initTabs()
-	TrackPreview.init()
 }
 
 function mountApp() {

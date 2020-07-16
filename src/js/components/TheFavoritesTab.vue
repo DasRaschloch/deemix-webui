@@ -185,7 +185,6 @@
 import { socket } from '@/js/socket.js'
 import { showView, changeTab } from '@/js/tabs.js'
 import Downloads from '@/js/downloads.js'
-import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
 import { toast } from '@/js/toasts'
 
@@ -205,9 +204,15 @@ export default {
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
 		spotifyPlaylistView: showView.bind(null, 'spotifyplaylist'),
-		playPausePreview: TrackPreview.playPausePreview,
-		previewMouseEnter: TrackPreview.previewMouseEnter,
-		previewMouseLeave: TrackPreview.previewMouseLeave,
+		playPausePreview(e) {
+			EventBus.$emit('trackPreview:playPausePreview', e)
+		},
+		previewMouseEnter(e) {
+			EventBus.$emit('trackPreview:previewMouseEnter', e)
+		},
+		previewMouseLeave(e) {
+			EventBus.$emit('trackPreview:previewMouseLeave', e)
+		},
 		convertDuration: Utils.convertDuration,
 		handleFavoritesTabClick(event) {
 			const {

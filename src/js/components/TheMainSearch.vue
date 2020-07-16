@@ -440,7 +440,6 @@
 import { socket } from '@/js/socket.js'
 import { showView } from '@/js/tabs.js'
 import Downloads from '@/js/downloads.js'
-import TrackPreview from '@/js/track-preview.js'
 import Utils from '@/js/utils.js'
 import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
 
@@ -515,9 +514,15 @@ export default {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
-		playPausePreview: TrackPreview.playPausePreview,
-		previewMouseEnter: TrackPreview.previewMouseEnter,
-		previewMouseLeave: TrackPreview.previewMouseLeave,
+		playPausePreview(e) {
+			EventBus.$emit('trackPreview:playPausePreview', e)
+		},
+		previewMouseEnter(e) {
+			EventBus.$emit('trackPreview:previewMouseEnter', e)
+		},
+		previewMouseLeave(e) {
+			EventBus.$emit('trackPreview:previewMouseLeave', e)
+		},
 		handleSearchTabClick(event) {
 			const {
 				target,

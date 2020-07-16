@@ -5,8 +5,8 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 ## What's left to do?
 
 - Use Vue as much as possible
-  - First step: Single File Components
-- Completely remove jQuery dependency
+  - First step: rewrite the app in Single File Components way ✅
+  - Second step: Remove jQuery
 - Make the UI look coherent
   - Style buttons
   - Style text inputs

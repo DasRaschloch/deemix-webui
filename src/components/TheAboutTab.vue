@@ -9,8 +9,7 @@
 		</p>
 		<p>
 			Thanks to rtonno, uhwot and lollilol for helping me with this project.<br>
-			Also thanks to BasCurtiz and <a href="http://linktr.ee/scarvimane" target="_blank">scarvimane</a> for
-			making the icon.
+			Also thanks to BasCurtiz and scarvimane for making the icon.
 		</p>
 		<p>
 			Stay up to date with the updates by following the <a href="https://t.me/RemixDevNews"

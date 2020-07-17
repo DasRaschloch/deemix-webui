@@ -4,10 +4,19 @@ const it = {
 		title: 'Impostazioni',
 		languages: 'Lingue',
 		login: {
+			title: 'Login',
+			loggedIn: 'Sei loggato come',
 			arl: {
 				question: 'Come ottengo il mio ARL?',
 				update: 'Aggiorna ARL'
 			}
+		},
+		appearance: {
+			title: 'Aspetto',
+			slimDownloadTab: 'Tab dei download slim'
+		},
+		downloadPath: {
+			title: 'Cartella di download'
 		}
 	}
 }

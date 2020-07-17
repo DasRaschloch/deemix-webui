@@ -27,6 +27,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 - Block selection where it's not needed (keep only titles artists albums labels and useful data)
   - There's a SASS mixin for this. Need to use it in the proper classes
 - Better feedback for socket.io possible errors
+- Remove images size limit and add warning if > 1200
 - ?
 
 # License

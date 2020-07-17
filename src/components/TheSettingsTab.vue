@@ -4,7 +4,7 @@
 
 		<div id="logged_in_info" ref="loggedInInfo">
 			<img id="settings_picture" src="" alt="Profile Picture" ref="userpicture" class="circle" />
-			<p>You are logged in as <strong id="settings_username" ref="username"></strong></p>
+			<p>{{ $t('settings.login.loggedIn') }} <strong id="settings_username" ref="username"></strong></p>
 			<button id="settings_btn_logout" @click="logout">Logout</button>
 			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
 				<option v-for="(account, i) in accounts" :value="i.toString()">{{ account.BLOG_NAME }}</option>
@@ -13,7 +13,7 @@
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">person</i>Login
+				<i class="material-icons">person</i>{{ $t('settings.login.title') }}
 			</h3>
 			<div class="inline-flex">
 				<input autocomplete="off" type="password" id="login_input_arl" ref="loginInput" placeholder="ARL" />
@@ -46,17 +46,17 @@
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">web</i>Appearance
+				<i class="material-icons">web</i>{{ $t('settings.appearance.title') }}
 			</h3>
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="changeSlimDownloads" />
-				<span class="checkbox_text">Slim download tab</span>
+				<span class="checkbox_text">{{ $t('settings.appearance.slimDownloadTab') }}</span>
 			</label>
 		</div>
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">folder</i>Download Path
+				<i class="material-icons">folder</i>{{ $t('settings.downloadPath.title') }}
 			</h3>
 			<input type="text" v-model="settings.downloadLocation" />
 		</div>
@@ -146,7 +146,7 @@
 				<div class="settings-container__third">
 					<div class="input_group">
 						<p class="input_group_text">Overwrite padding size</p>
-						<input type="number" v-model="settings.paddingSize" />
+						<input max="10" type="number" v-model="settings.paddingSize" />
 					</div>
 				</div>
 				<div class="settings-container__third">

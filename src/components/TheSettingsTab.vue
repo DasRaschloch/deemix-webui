@@ -5,7 +5,7 @@
 		<div id="logged_in_info" ref="loggedInInfo">
 			<img id="settings_picture" src="" alt="Profile Picture" ref="userpicture" class="circle" />
 			<p>{{ $t('settings.login.loggedIn') }} <strong id="settings_username" ref="username"></strong></p>
-			<button id="settings_btn_logout" @click="logout">Logout</button>
+			<button id="settings_btn_logout" @click="logout">{{ $t('settings.login.logout') }}</button>
 			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
 				<option v-for="(account, i) in accounts" :value="i.toString()">{{ account.BLOG_NAME }}</option>
 			</select>
@@ -63,53 +63,53 @@
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">font_download</i>Templates
+				<i class="material-icons">font_download</i>{{ $t('settings.templates.title') }}
 			</h3>
 
-			<p>Trackname template</p>
+			<p>{{ $t('settings.templates.tracknameTemplate') }}/p>
 			<input type="text" v-model="settings.tracknameTemplate" />
 
-			<p>Album track template</p>
+			<p>{{ $t('settings.templates.albumTracknameTemplate') }}</p>
 			<input type="text" v-model="settings.albumTracknameTemplate" />
 
-			<p>Playlist track template</p>
+			<p>{{ $t('settings.templates.playlistTracknameTemplate') }}</p>
 			<input type="text" v-model="settings.playlistTracknameTemplate" />
 		</div>
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">create_new_folder</i>Folders
+				<i class="material-icons">create_new_folder</i>{{ $t('settings.folders.title') }}
 			</h3>
 			<div class="settings-container">
 				<div class="settings-container__third">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.createPlaylistFolder" />
-						<span class="checkbox_text">Create folder for playlist</span>
+						<span class="checkbox_text">{{ $t('settings.folders.createPlaylistFolder') }}</span>
 					</label>
 					<div class="input_group" v-if="settings.createPlaylistFolder">
-						<p class="input_group_text">Playlist folder template</p>
+						<p class="input_group_text">{{ $t('settings.folders.playlistNameTemplate') }}</p>
 						<input type="text" v-model="settings.playlistNameTemplate" />
 					</div>
 				</div>
 				<div class="settings-container__third">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.createArtistFolder" />
-						<span class="checkbox_text">Create folder for artist</span>
+						<span class="checkbox_text">{{ $t('settings.folders.createArtistFolder') }}</span>
 					</label>
 
 					<div class="input_group" v-if="settings.createArtistFolder">
-						<p class="input_group_text">Artist folder template</p>
+						<p class="input_group_text">{{ $t('settings.folders.artistNameTemplate') }}</p>
 						<input type="text" v-model="settings.artistNameTemplate" />
 					</div>
 				</div>
 				<div class="settings-container__third">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.createAlbumFolder" />
-						<span class="checkbox_text">Create folder for album</span>
+						<span class="checkbox_text">{{ $t('settings.folders.createAlbumFolder') }}</span>
 					</label>
 
 					<div class="input_group" v-if="settings.createAlbumFolder">
-						<p class="input_group_text">Album folder template</p>
+						<p class="input_group_text">{{ $t('settings.folders.albumNameTemplate') }}</p>
 						<input type="text" v-model="settings.albumNameTemplate" />
 					</div>
 				</div>
@@ -117,41 +117,41 @@
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.createCDFolder" />
-				<span class="checkbox_text">Create folder for CDs</span>
+				<span class="checkbox_text">{{ $t('settings.folders.createCDFolder') }}</span>
 			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.createStructurePlaylist" />
-				<span class="checkbox_text">Create folder structure for playlists</span>
+				<span class="checkbox_text">{{ $t('settings.folders.createStructurePlaylist') }}</span>
 			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.createSingleFolder" />
-				<span class="checkbox_text">Create folder structure for singles</span>
+				<span class="checkbox_text">{{ $t('settings.folders.createSingleFolder') }}</span>
 			</label>
 		</div>
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">title</i>Track titles
+				<i class="material-icons">title</i>{{ $t('settings.trackTitles.title') }}
 			</h3>
 
 			<div class="settings-container">
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.padTracks" />
-						<span class="checkbox_text">Pad tracks</span>
+						<span class="checkbox_text">{{ $t('settings.trackTitles.padTracks') }}</span>
 					</label>
 				</div>
 				<div class="settings-container__third">
 					<div class="input_group">
-						<p class="input_group_text">Overwrite padding size</p>
+						<p class="input_group_text">{{ $t('settings.trackTitles.paddingSize') }}</p>
 						<input max="10" type="number" v-model="settings.paddingSize" />
 					</div>
 				</div>
 				<div class="settings-container__third">
 					<div class="input_group">
-						<p class="input_group_text">Illegal Character replacer</p>
+						<p class="input_group_text">{{ $t('settings.trackTitles.illegalCharacterReplacer') }}</p>
 						<input type="text" v-model="settings.illegalCharacterReplacer" />
 					</div>
 				</div>
@@ -160,29 +160,29 @@
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">get_app</i>Downloads
+				<i class="material-icons">get_app</i>{{ $t('settings.downloads.title') }}
 			</h3>
 
 			<div class="input_group">
-				<p class="input_group_text">Concurrent Downloads</p>
+				<p class="input_group_text">{{ $t('settings.downloads.queueConcurrency') }}</p>
 				<input type="number" v-model.number="settings.queueConcurrency" />
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Preferred Bitrate</p>
+				<p class="input_group_text">{{ $t('settings.downloads.maxBitrate.title') }}</p>
 				<select v-model="settings.maxBitrate">
-					<option value="9">FLAC 1411kbps</option>
-					<option value="3">MP3 320kbps</option>
-					<option value="1">MP3 128kbps</option>
+					<option value="9">{{ $t('settings.downloads.maxBitrate.9') }}</option>
+					<option value="3">{{ $t('settings.downloads.maxBitrate.3') }}</option>
+					<option value="1">{{ $t('settings.downloads.maxBitrate.1') }}</option>
 				</select>
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Should I overwrite the files?</p>
+				<p class="input_group_text">{{ $t('settings.downloads.overwriteFile.title') }}</p>
 				<select v-model="settings.overwriteFile">
-					<option value="y">Yes, overwrite the file</option>
-					<option value="n">No, don't overwrite the file</option>
-					<option value="t">Overwrite only the tags</option>
+					<option value="y">{{ $t('settings.downloads.overwriteFile.y') }}</option>
+					<option value="n">{{ $t('settings.downloads.overwriteFile.n') }}</option>
+					<option value="t">{{ $t('settings.downloads.overwriteFile.t') }}</option>
 				</select>
 			</div>
 
@@ -190,294 +190,294 @@
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.fallbackBitrate" />
-						<span class="checkbox_text">Bitrate fallback</span>
+						<span class="checkbox_text">{{ $t('settings.downloads.fallbackBitrate') }}</span>
 					</label>
 
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.fallbackSearch" />
-						<span class="checkbox_text">Search fallback</span>
+						<span class="checkbox_text">{{ $t('settings.downloads.fallbackSearch') }}</span>
 					</label>
 				</div>
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.logErrors" />
-						<span class="checkbox_text">Create log file for errors</span>
+						<span class="checkbox_text">{{ $t('settings.downloads.logErrors') }}</span>
 					</label>
 
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.logSearched" />
-						<span class="checkbox_text">Create log file for searched tracks</span>
+						<span class="checkbox_text">{{ $t('settings.downloads.logSearched') }}</span>
 					</label>
 				</div>
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.syncedLyrics" />
-						<span class="checkbox_text">Create .lyr files (Sync Lyrics)</span>
+						<span class="checkbox_text">{{ $t('settings.downloads.syncedLyrics') }}</span>
 					</label>
 
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.createM3U8File" />
-						<span class="checkbox_text">Create playlist file</span>
+						<span class="checkbox_text">{{ $t('settings.downloads.createM3U8File') }}</span>
 					</label>
 				</div>
 			</div>
 
 			<div class="input_group" v-if="settings.createM3U8File">
-				<p class="input_group_text">Playlist filename template</p>
+				<p class="input_group_text">{{ $t('settings.downloads.playlistFilenameTemplate') }}</p>
 				<input type="text" v-model="settings.playlistFilenameTemplate" />
 			</div>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.saveDownloadQueue" />
-				<span class="checkbox_text">Save download queue when closing the app</span>
+				<span class="checkbox_text">{{ $t('settings.downloads.saveDownloadQueue') }}</span>
 			</label>
 		</div>
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">album</i>Album covers
+				<i class="material-icons">album</i>{{ $t('settings.covers.title') }}
 			</h3>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.saveArtwork" />
-				<span class="checkbox_text">Save covers</span>
+				<span class="checkbox_text">{{ $t('settings.covers.saveArtwork') }}</span>
 			</label>
 
 			<div class="input_group" v-if="settings.saveArtwork">
-				<p class="input_group_text">Cover name template</p>
+				<p class="input_group_text">{{ $t('settings.covers.coverImageTemplate') }}</p>
 				<input type="text" v-model="settings.coverImageTemplate" />
 			</div>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.saveArtworkArtist" />
-				<span class="checkbox_text">Save artist image</span>
+				<span class="checkbox_text">{{ $t('settings.covers.saveArtworkArtist') }}</span>
 			</label>
 
 			<div class="input_group" v-if="settings.saveArtworkArtist">
-				<p class="input_group_text">Artist image name template</p>
+				<p class="input_group_text">{{ $t('settings.covers.artistImageTemplate') }}</p>
 				<input type="text" v-model="settings.artistImageTemplate" />
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Local artwork size</p>
+				<p class="input_group_text">{{ $t('settings.covers.localArtworkSize') }}</p>
 				<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize" />
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Embedded artwork size</p>
+				<p class="input_group_text">{{ $t('settings.covers.embeddedArtworkSize') }}</p>
 				<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize" />
 			</div>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.PNGcovers" />
-				<span class="checkbox_text">Save images as png</span>
+				<span class="checkbox_text">{{ $t('settings.covers.PNGcovers') }}</span>
 			</label>
 
 			<div class="input_group">
-				<p class="input_group_text">JPEG image quality</p>
+				<p class="input_group_text">{{ $t('settings.covers.jpegImageQuality') }}</p>
 				<input type="number" min="1" max="100" v-model.number="settings.jpegImageQuality" />
 			</div>
 		</div>
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons" style="width: 1em; height: 1em;">bookmarks</i>Which tags to save
+				<i class="material-icons" style="width: 1em; height: 1em;">bookmarks</i>{{ $t('settings.tags.head') }}
 			</h3>
 
 			<div class="settings-container">
 				<div class="settings-container__half">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.title" />
-						<span class="checkbox_text">Title</span>
+						<span class="checkbox_text">{{ $t('settings.tags.title') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.artist" />
-						<span class="checkbox_text">Artists</span>
+						<span class="checkbox_text">{{ $t('settings.tags.artist') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.album" />
-						<span class="checkbox_text">Album</span>
+						<span class="checkbox_text">{{ $t('settings.tags.album') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.cover" />
-						<span class="checkbox_text">Cover</span>
+						<span class="checkbox_text">{{ $t('settings.tags.cover') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.trackNumber" />
-						<span class="checkbox_text">Track Number</span>
+						<span class="checkbox_text">{{ $t('settings.tags.trackNumber') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.trackTotal" />
-						<span class="checkbox_text">Track Total</span>
+						<span class="checkbox_text">{{ $t('settings.tags.trackTotal') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.discNumber" />
-						<span class="checkbox_text">Disc Number</span>
+						<span class="checkbox_text">{{ $t('settings.tags.discNumber') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.discTotal" />
-						<span class="checkbox_text">Disc Total</span>
+						<span class="checkbox_text">{{ $t('settings.tags.discTotal') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.albumArtist" />
-						<span class="checkbox_text">Album Artist</span>
+						<span class="checkbox_text">{{ $t('settings.tags.albumArtist') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.genre" />
-						<span class="checkbox_text">Genre</span>
+						<span class="checkbox_text">{{ $t('settings.tags.genre') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.year" />
-						<span class="checkbox_text">Year</span>
+						<span class="checkbox_text">{{ $t('settings.tags.year') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.date" />
-						<span class="checkbox_text">Date</span>
+						<span class="checkbox_text">{{ $t('settings.tags.date') }}</span>
 					</label>
 				</div>
 
 				<div class="settings-container__half">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.explicit" />
-						<span class="checkbox_text">Explicit Lyrics</span>
+						<span class="checkbox_text">{{ $t('settings.tags.explicit') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.isrc" />
-						<span class="checkbox_text">ISRC</span>
+						<span class="checkbox_text">{{ $t('settings.tags.isrc') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.length" />
-						<span class="checkbox_text">Track Length</span>
+						<span class="checkbox_text">{{ $t('settings.tags.length') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.barcode" />
-						<span class="checkbox_text">Album Barcode (UPC)</span>
+						<span class="checkbox_text">{{ $t('settings.tags.barcode') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.bpm" />
-						<span class="checkbox_text">BPM</span>
+						<span class="checkbox_text">{{ $t('settings.tags.bpm') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.replayGain" />
-						<span class="checkbox_text">Replay Gain</span>
+						<span class="checkbox_text">{{ $t('settings.tags.replayGain') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.label" />
-						<span class="checkbox_text">Album Label</span>
+						<span class="checkbox_text">{{ $t('settings.tags.label') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.lyrics" />
-						<span class="checkbox_text">Unsynchronized Lyrics</span>
+						<span class="checkbox_text">{{ $t('settings.tags.lyrics') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.copyright" />
-						<span class="checkbox_text">Copyright</span>
+						<span class="checkbox_text">{{ $t('settings.tags.copyright') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.composer" />
-						<span class="checkbox_text">Composer</span>
+						<span class="checkbox_text">{{ $t('settings.tags.composer') }}</span>
 					</label>
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.involvedPeople" />
-						<span class="checkbox_text">Involved People</span>
+						<span class="checkbox_text">{{ $t('settings.tags.involvedPeople') }}</span>
 					</label>
 				</div>
 			</div>
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon"><i class="material-icons">list</i>Other</h3>
+			<h3 class="settings-group__header settings-group__header--with-icon"><i class="material-icons">list</i>{{ $t('settings.other.title') }}</h3>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation" />
-				<span class="checkbox_text">Save playlists as compilation</span>
+				<span class="checkbox_text">{{ $t('settings.other.savePlaylistAsCompilation') }}</span>
 			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.tags.useNullSeparator" />
-				<span class="checkbox_text">Use null separator</span>
+				<span class="checkbox_text">{{ $t('settings.other.useNullSeparator') }}</span>
 			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.tags.saveID3v1" />
-				<span class="checkbox_text">Save ID3v1 as well</span>
+				<span class="checkbox_text">{{ $t('settings.other.saveID3v1') }}</span>
 			</label>
 
 			<div class="input_group">
-				<p class="input_group_text">How would you like to separate your artists?</p>
+				<p class="input_group_text">{{ $t('settings.other.multitagSeparator.title') }}</p>
 				<select v-model="settings.tags.multitagSeparator">
-					<option value="default">Using standard specification</option>
-					<option value="andFeat">Using & and feat.</option>
-					<option value=" & ">Using " & "</option>
-					<option value=",">Using ","</option>
-					<option value=", ">Using ", "</option>
-					<option value="/">Using "/"</option>
-					<option value=" / ">Using "/ "</option>
-					<option value=";">Using ";"</option>
-					<option value="; ">Using "; "</option>
+					<option value="default">{{ $t('settings.other.multitagSeparator.default') }}</option>
+					<option value="andFeat">{{ $t('settings.other.multitagSeparator.andFeat') }}</option>
+					<option value=" & ">{{ $t('settings.other.multitagSeparator.using', [" & "]) }}</option>
+					<option value=",">{{ $t('settings.other.multitagSeparator.using', [","]) }}</option>
+					<option value=", ">{{ $t('settings.other.multitagSeparator.using', [", "]) }}</option>
+					<option value="/">{{ $t('settings.other.multitagSeparator.using', ["/"]) }}</option>
+					<option value=" / ">{{ $t('settings.other.multitagSeparator.using', [" / "]) }}</option>
+					<option value=";">{{ $t('settings.other.multitagSeparator.using', [";"]) }}</option>
+					<option value="; ">{{ $t('settings.other.multitagSeparator.using', ["; "]) }}</option>
 				</select>
 			</div>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.albumVariousArtists" />
-				<span class="checkbox_text">Keep "Various Artists" in the Album Artists</span>
+				<span class="checkbox_text">{{ $t('settings.other.albumVariousArtists') }}</span>
 			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.removeAlbumVersion" />
-				<span class="checkbox_text">Remove "album version" from track title</span>
+				<span class="checkbox_text">{{ $t('settings.other.removeAlbumVersion') }}</span>
 			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.removeDuplicateArtists" />
-				<span class="checkbox_text">Remove combinations of artists</span>
+				<span class="checkbox_text">{{ $t('settings.other.removeDuplicateArtists') }}</span>
 			</label>
 
 			<div class="input_group">
-				<p class="input_group_text">Date format for FLAC files</p>
+				<p class="input_group_text">{{ $t('settings.other.dateFormat.title') }}</p>
 				<select v-model="settings.dateFormat">
-					<option value="Y-M-D">YYYY-MM-DD</option>
-					<option value="Y-D-M">YYYY-DD-MM</option>
-					<option value="D-M-Y">DD-MM-YYYY</option>
-					<option value="M-D-Y">MM-DD-YYYY</option>
-					<option value="Y">YYYY</option>
+					<option value="Y-M-D">{{ `${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}` }}</option>
+					<option value="Y-D-M">{{ `${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}` }}</option>
+					<option value="D-M-Y">{{ `${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.year')}` }}</option>
+					<option value="M-D-Y">{{ `${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.year')}` }}</option>
+					<option value="Y">{{ $t('settings.other.dateFormat.year') }}</option>
 				</select>
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">What should I do with featured artists?</p>
+				<p class="input_group_text">{{ $t('settings.other.featuredToTitle.title') }}</p>
 				<select v-model="settings.featuredToTitle">
-					<option value="0">Nothing</option>
-					<option value="1">Remove it from the title</option>
-					<option value="3">Remove it from the title and the album title</option>
-					<option value="2">Move it to the title</option>
+					<option value="0">{{ $t('settings.other.featuredToTitle.0') }}</option>
+					<option value="1">{{ $t('settings.other.featuredToTitle.1') }}</option>
+					<option value="3">{{ $t('settings.other.featuredToTitle.3') }}</option>
+					<option value="2">{{ $t('settings.other.featuredToTitle.2') }}</option>
 				</select>
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Title casing</p>
+				<p class="input_group_text">{{ $t('settings.other.titleCasing') }}</p>
 				<select v-model="settings.titleCasing">
-					<option value="nothing">Keep unchanged</option>
-					<option value="lower">lowercase</option>
-					<option value="upper">UPPERCASE</option>
-					<option value="start">Start Of Each Word</option>
-					<option value="sentence">Like a sentence</option>
+					<option value="nothing">{{ $t('settings.other.casing.nothing') }}</option>
+					<option value="lower">{{ $t('settings.other.casing.lower') }}</option>
+					<option value="upper">{{ $t('settings.other.casing.upper') }}</option>
+					<option value="start">{{ $t('settings.other.casing.start') }}</option>
+					<option value="sentence">{{ $t('settings.other.casing.sentence') }}</option>
 				</select>
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Artist casing</p>
+				<p class="input_group_text">{{ $t('settings.other.artistCasing') }}</p>
 				<select v-model="settings.artistCasing">
-					<option value="nothing">Keep unchanged</option>
-					<option value="lower">lowercase</option>
-					<option value="upper">UPPERCASE</option>
-					<option value="start">Start Of Each Word</option>
-					<option value="sentence">Like a sentence</option>
+					<option value="nothing">{{ $t('settings.other.casing.nothing') }}</option>
+					<option value="lower">{{ $t('settings.other.casing.lower') }}</option>
+					<option value="upper">{{ $t('settings.other.casing.upper') }}</option>
+					<option value="start">{{ $t('settings.other.casing.start') }}</option>
+					<option value="sentence">{{ $t('settings.other.casing.sentence') }}</option>
 				</select>
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Preview Volume</p>
+				<p class="input_group_text">{{ $t('settings.other.previewVolume') }}</p>
 				<input
 					type="range"
 					@change="updateMaxVolume"
@@ -491,8 +491,8 @@
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Command to execute after download</p>
-				<p class="secondary-text">Leave blank for no action</p>
+				<p class="input_group_text">{{ $t('settings.other.executeCommand.title') }}</p>
+				<p class="secondary-text">{{ $t('settings.other.executeCommand.description') }}</p>
 				<input type="text" v-model="settings.executeCommand" />
 			</div>
 		</div>
@@ -504,28 +504,28 @@
 						d="m12 24c6.624 0 12-5.376 12-12s-5.376-12-12-12-12 5.376-12 12 5.376 12 12 12zm4.872-6.344v.001c-.807 0-3.356-2.828-10.52-1.36-.189.049-.436.126-.576.126-.915 0-1.09-1.369-.106-1.578 3.963-.875 8.013-.798 11.467 1.268.824.526.474 1.543-.265 1.543zm1.303-3.173c-.113-.03-.08.069-.597-.203-3.025-1.79-7.533-2.512-11.545-1.423-.232.063-.358.126-.576.126-1.071 0-1.355-1.611-.188-1.94 4.716-1.325 9.775-.552 13.297 1.543.392.232.547.533.547.953-.005.522-.411.944-.938.944zm-13.627-7.485c4.523-1.324 11.368-.906 15.624 1.578 1.091.629.662 2.22-.498 2.22l-.001-.001c-.252 0-.407-.063-.625-.189-3.443-2.056-9.604-2.549-13.59-1.436-.175.048-.393.125-.625.125-.639 0-1.127-.499-1.127-1.142 0-.657.407-1.029.842-1.155z"
 					/>
 				</svg>
-				Spotify Features
+				{{ $t('settings.spotify.title') }}
 			</h3>
 
 			<div class="input_group">
-				<p class="input_group_text">Spotify clientID</p>
+				<p class="input_group_text">{{ $t('settings.spotify.clientID') }}</p>
 				<input type="text" v-model="spotifyFeatures.clientId" />
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Spotify Client Secret</p>
+				<p class="input_group_text">{{ $t('settings.spotify.clientSecret') }}</p>
 				<input type="password" v-model="spotifyFeatures.clientSecret" />
 			</div>
 
 			<div class="input_group">
-				<p class="input_group_text">Spotify username</p>
+				<p class="input_group_text">{{ $t('settings.spotify.username') }}</p>
 				<input type="text" v-model="spotifyUser" />
 			</div>
 		</div>
 
 		<footer>
-			<button @click="resetSettings">Reset to Default</button>
-			<button @click="saveSettings">Save</button>
+			<button @click="resetSettings">{{ $t('settings.reset') }}</button>
+			<button @click="saveSettings">{{ $t('settings.save') }}</button>
 		</footer>
 	</div>
 </template>
@@ -580,7 +580,7 @@ export default {
 			document.execCommand('copy')
 			copyText.setAttribute('type', 'password')
 
-			toast('ARL copied to clipboard', 'assignment')
+			toast(this.$t('settings.toasts.ARLcopied'), 'assignment')
 		},
 		updateMaxVolume() {
 			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
@@ -631,11 +631,11 @@ export default {
 		},
 		initSettings(settings, credentials, defaults) {
 			this.loadSettings(settings, credentials, defaults)
-			toast('Settings loaded!', 'settings')
+			toast(this.$t('settings.toasts.init'), 'settings')
 		},
 		updateSettings(settings, credentials) {
 			this.loadSettings(settings, credentials)
-			toast('Settings updated!', 'settings')
+			toast(this.$t('settings.toasts.update'), 'settings')
 		},
 		resetSettings() {
 			this.settings = { ...this.defaultSettings }

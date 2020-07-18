@@ -1,14 +1,20 @@
 <template>
 	<div id="home_tab" class="main_tabcontent">
-		<h2 class="page_heading">{{ $t('welcome') }}</h2>
+		<h2 class="page_heading">{{ $t('globals.welcome') }}</h2>
 		<section id="home_not_logged_in" class="home_section" ref="notLogged">
-			<p id="home_not_logged_text">You need to log into your deezer account before you can start downloading.</p>
-			<button type="button" name="button" @click="openSettings">Open Settings</button>
+			<p id="home_not_logged_text">{{ $t('home.needTologin') }}</p>
+			<button type="button" name="button" @click="openSettings">{{ $t('home.openSettings') }}</button>
 		</section>
 		<section v-if="playlists.length" class="home_section">
-			<h3 class="section_heading">Popular playlists</h3>
+			<h3 class="section_heading">{{ $t('home.sections.popularPlaylists') }}</h3>
 			<div class="release_grid">
-				<div v-for="release in playlists" class="release clickable" @click="playlistView" :data-id="release.id">
+				<div
+					v-for="release in playlists"
+					:key="release.id"
+					class="release clickable"
+					@click="playlistView"
+					:data-id="release.id"
+				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
 						<div
@@ -23,14 +29,22 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ 'by ' + release.user.name + ' - ' + release.nb_tracks + ' tracks' }}</p>
+					<p class="secondary-text">
+						{{ `${$t('globals.by')} ${release.user.name} - ${release.nb_tracks} ${$tc('globals.listTabs.track', 2)}` }}
+					</p>
 				</div>
 			</div>
 		</section>
 		<section v-if="albums.length" class="home_section">
-			<h3 class="section_heading">Most streamed albums</h3>
+			<h3 class="section_heading">{{ $t('home.sections.popularAlbums') }}</h3>
 			<div class="release_grid">
-				<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
+				<div
+					v-for="release in albums"
+					:key="release.id"
+					class="release clickable"
+					@click="albumView"
+					:data-id="release.id"
+				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
 						<div
@@ -45,7 +59,7 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ 'by ' + release.artist.name }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by')} ${release.artist.name}` }}</p>
 				</div>
 			</div>
 		</section>

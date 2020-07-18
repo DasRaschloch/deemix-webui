@@ -1,5 +1,5 @@
 <template functional>
-	<div :id="props.id" class="loading_placeholder">
+	<div :id="props.id" class="loading_placeholder" :class="{ 'loading_placeholder--hidden': props.hidden }">
 		<span class="loading_placeholder__text">{{ props.text }}</span>
 		<div class="lds-ring">
 			<div></div>
@@ -20,6 +20,11 @@ export default {
 		id: {
 			type: String,
 			required: false
+		},
+		hidden: {
+			type: Boolean,
+			required: false,
+			default: false
 		}
 	}
 }

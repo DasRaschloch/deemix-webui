@@ -66,7 +66,7 @@
 				<i class="material-icons">font_download</i>{{ $t('settings.templates.title') }}
 			</h3>
 
-			<p>{{ $t('settings.templates.tracknameTemplate') }}/p>
+			<p>{{ $t('settings.templates.tracknameTemplate') }}</p>
 			<input type="text" v-model="settings.tracknameTemplate" />
 
 			<p>{{ $t('settings.templates.albumTracknameTemplate') }}</p>
@@ -386,7 +386,9 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon"><i class="material-icons">list</i>{{ $t('settings.other.title') }}</h3>
+			<h3 class="settings-group__header settings-group__header--with-icon">
+				<i class="material-icons">list</i>{{ $t('settings.other.title') }}
+			</h3>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation" />
@@ -408,13 +410,13 @@
 				<select v-model="settings.tags.multitagSeparator">
 					<option value="default">{{ $t('settings.other.multitagSeparator.default') }}</option>
 					<option value="andFeat">{{ $t('settings.other.multitagSeparator.andFeat') }}</option>
-					<option value=" & ">{{ $t('settings.other.multitagSeparator.using', [" & "]) }}</option>
-					<option value=",">{{ $t('settings.other.multitagSeparator.using', [","]) }}</option>
-					<option value=", ">{{ $t('settings.other.multitagSeparator.using', [", "]) }}</option>
-					<option value="/">{{ $t('settings.other.multitagSeparator.using', ["/"]) }}</option>
-					<option value=" / ">{{ $t('settings.other.multitagSeparator.using', [" / "]) }}</option>
-					<option value=";">{{ $t('settings.other.multitagSeparator.using', [";"]) }}</option>
-					<option value="; ">{{ $t('settings.other.multitagSeparator.using', ["; "]) }}</option>
+					<option value=" & ">{{ $t('settings.other.multitagSeparator.using', [' & ']) }}</option>
+					<option value=",">{{ $t('settings.other.multitagSeparator.using', [',']) }}</option>
+					<option value=", ">{{ $t('settings.other.multitagSeparator.using', [', ']) }}</option>
+					<option value="/">{{ $t('settings.other.multitagSeparator.using', ['/']) }}</option>
+					<option value=" / ">{{ $t('settings.other.multitagSeparator.using', [' / ']) }}</option>
+					<option value=";">{{ $t('settings.other.multitagSeparator.using', [';']) }}</option>
+					<option value="; ">{{ $t('settings.other.multitagSeparator.using', ['; ']) }}</option>
 				</select>
 			</div>
 
@@ -436,10 +438,26 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.other.dateFormat.title') }}</p>
 				<select v-model="settings.dateFormat">
-					<option value="Y-M-D">{{ `${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}` }}</option>
-					<option value="Y-D-M">{{ `${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}` }}</option>
-					<option value="D-M-Y">{{ `${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.year')}` }}</option>
-					<option value="M-D-Y">{{ `${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.year')}` }}</option>
+					<option value="Y-M-D">{{
+						`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t(
+							'settings.other.dateFormat.day'
+						)}`
+					}}</option>
+					<option value="Y-D-M">{{
+						`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t(
+							'settings.other.dateFormat.month'
+						)}`
+					}}</option>
+					<option value="D-M-Y">{{
+						`${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t(
+							'settings.other.dateFormat.year'
+						)}`
+					}}</option>
+					<option value="M-D-Y">{{
+						`${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t(
+							'settings.other.dateFormat.year'
+						)}`
+					}}</option>
 					<option value="Y">{{ $t('settings.other.dateFormat.year') }}</option>
 				</select>
 			</div>

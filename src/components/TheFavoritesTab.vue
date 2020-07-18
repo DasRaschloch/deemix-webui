@@ -1,7 +1,7 @@
 <template>
 	<div id="favorites_tab" class="main_tabcontent" @click="handleFavoritesTabClick">
 		<h2 class="page_heading">
-			Favorites
+			{{ $t('favorites.title') }}
 			<div
 				@click="reloadTabs"
 				class="clickable reload-button reload-button--inline"
@@ -13,15 +13,23 @@
 			</div>
 		</h2>
 		<div class="section-tabs">
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_playlist_tab">Playlists</div>
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_album_tab">Albums</div>
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_artist_tab">Artists</div>
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_track_tab">Tracks</div>
+			<div class="section-tabs__tab favorites_tablinks" id="favorites_playlist_tab">
+				{{ $tc('globals.listTabs.playlist', 2) }}
+			</div>
+			<div class="section-tabs__tab favorites_tablinks" id="favorites_album_tab">
+				{{ $tc('globals.listTabs.album', 2) }}
+			</div>
+			<div class="section-tabs__tab favorites_tablinks" id="favorites_artist_tab">
+				{{ $tc('globals.listTabs.artist', 2) }}
+			</div>
+			<div class="section-tabs__tab favorites_tablinks" id="favorites_track_tab">
+				{{ $tc('globals.listTabs.track', 2) }}
+			</div>
 		</div>
 
 		<div id="playlist_favorites" class="favorites_tabcontent">
 			<div v-if="playlists.length == 0">
-				<h1>No Playlists found</h1>
+				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
 			<div class="release_grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
 				<div v-for="release in playlists" class="release clickable" @click="playlistView" :data-id="release.id">
@@ -39,7 +47,11 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ 'by ' + release.creator.name + ' - ' + release.nb_tracks + ' tracks' }}</p>
+					<p class="secondary-text">
+						{{
+							`${$t('globals.by')} ${release.creator.name} - ${release.nb_tracks} ${$tc('globals.listTabs.track', 2)}`
+						}}
+					</p>
 				</div>
 				<div
 					v-for="release in spotifyPlaylists"
@@ -61,13 +73,20 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ 'by ' + release.creator.name + ' - ' + release.nb_tracks + ' tracks' }}</p>
+					<p class="secondary-text">
+						{{
+							`${$t('globals.by')} ${release.creator.name} - ${release.nb_tracks.name} ${$tc(
+								'globals.listTabs.track',
+								2
+							)}`
+						}}
+					</p>
 				</div>
 			</div>
 		</div>
 		<div id="album_favorites" class="favorites_tabcontent">
 			<div v-if="albums.length == 0">
-				<h1>No Favorite Albums found</h1>
+				<h1>{{ $t('favorites.noAlbums') }}</h1>
 			</div>
 			<div class="release_grid" v-if="albums.length > 0">
 				<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
@@ -85,13 +104,13 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ 'by ' + release.artist.name }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by')} ${release.artist.name}` }}</p>
 				</div>
 			</div>
 		</div>
 		<div id="artist_favorites" class="favorites_tabcontent">
 			<div v-if="artists.length == 0">
-				<h1>No Favorite Artist found</h1>
+				<h1>{{ $t('favorites.noArtists') }}</h1>
 			</div>
 			<div class="release_grid" v-if="artists.length > 0">
 				<div v-for="release in artists" class="release clickable" @click="artistView" :data-id="release.id">
@@ -114,7 +133,7 @@
 		</div>
 		<div id="track_favorites" class="favorites_tabcontent">
 			<div v-if="tracks.length == 0">
-				<h1>No Favorite Tracks found</h1>
+				<h1>{{ $t('favorites.noTracks') }}</h1>
 			</div>
 			<table v-if="tracks.length > 0" class="table">
 				<tr v-for="track in tracks" class="track_row">

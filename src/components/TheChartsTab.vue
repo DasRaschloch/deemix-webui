@@ -1,9 +1,8 @@
 <template>
 	<div id="charts_tab" class="main_tabcontent">
-		<h2 class="page_heading">Charts</h2>
+		<h2 class="page_heading">{{ $t('charts.title') }}</h2>
 		<div v-if="country === ''" id="charts_selection">
 			<div class="release_grid charts_grid">
-				<!-- Ugly af -->
 				<template v-for="release in countries">
 					<div
 						role="button"
@@ -36,13 +35,13 @@
 			</div>
 		</div>
 		<div v-else id="charts_table">
-			<button @click="changeCountry">Change Country</button>
+			<button @click="changeCountry">{{ $t('charts.changeCountry') }}</button>
 			<button
 				@contextmenu.prevent="openQualityModal"
 				@click.stop="addToQueue"
 				:data-link="'https://www.deezer.com/playlist/' + id"
 			>
-				Download Chart
+				{{ $t('charts.download') }}
 			</button>
 			<table class="table table--charts">
 				<tbody>
@@ -116,6 +115,8 @@ import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
+
+import EventBus from '@/utils/EventBus'
 
 export default {
 	name: 'the-charts-tab',

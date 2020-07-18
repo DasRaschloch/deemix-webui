@@ -1,14 +1,14 @@
 <template>
 	<div id="errors_tab" class="main_tabcontent">
-		<h1>Errors for {{ title }}</h1>
+		<h1>{{ $t('errors.title') }} {{ title }}</h1>
 		<table>
 			<tr>
 				<th>ID</th>
-				<th>Artist</th>
-				<th>Title</th>
-				<th>Error</th>
+				<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
+				<th>{{ $tc('globals.listTabs.title', 1) }}</th>
+				<th>{{ $tc('globals.listTabs.error', 1) }}</th>
 			</tr>
-			<tr v-for="error in errors">
+			<tr v-for="error in errors" :key="error.data.id">
 				<td>{{ error.data.id }}</td>
 				<td>{{ error.data.artist }}</td>
 				<td>{{ error.data.title }}</td>

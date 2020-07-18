@@ -4,7 +4,7 @@
 		<div v-if="link == ''">
 			<p>
 				You can use this section to find out more information about the link you are trying to download<br />This is
-				usefull if you're trying to download some tracks that are not available in your country and want to know where
+				useful if you're trying to download some tracks that are not available in your country and want to know where
 				they are available
 			</p>
 		</div>

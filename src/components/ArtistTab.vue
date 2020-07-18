@@ -21,15 +21,16 @@
 		</header>
 
 		<div class="tab">
-			<template v-for="(item, name, index) in body">
-				<button
-					:class="'selective' + (name == currentTab ? ' active' : '')"
-					:href="'#artist_' + name"
-					@click="changeTab(name)"
-				>
-					{{ name }}
-				</button>
-			</template>
+			<button
+				v-for="(item, name) in body"
+				:key="name"
+				class="selective"
+				:class="{ active: name === currentTab }"
+				:href="'#artist_' + name"
+				@click="changeTab(name)"
+			>
+				{{ $t(`globals.listTabs.${name}`) }}
+			</button>
 		</div>
 
 		<table class="table">
@@ -46,12 +47,13 @@
 							clickable: data.sortKey
 						}"
 					>
+						<!-- Need to change this behaviour for translations -->
 						{{ data.title }}
 					</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="release in showTable">
+				<tr v-for="release in showTable" :key="release.id">
 					<td class="inline-flex clickable" @click="albumView" :data-id="release.id">
 						<img
 							class="rounded coverart"
@@ -82,7 +84,7 @@
 		</table>
 
 		<footer>
-			<button class="back-button">Back</button>
+			<button class="back-button">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>

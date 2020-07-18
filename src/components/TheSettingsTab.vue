@@ -33,15 +33,17 @@
 			<h3 class="settings-group__header settings-group__header--with-icon">
 				<i class="material-icons">language</i>{{ $t('settings.languages') }}
 			</h3>
-			<span
-				v-for="locale in locales"
-				:key="locale"
-				style="width: 50px; height: 50px; cursor:pointer; border: 1px solid var(--foreground); flex: 1 50px; display: flex; justify-content: center; align-items: center;"
-				:data-locale="locale"
-				@click="$i18n.locale = locale"
-			>
-				{{ locale.toUpperCase() }}
-			</span>
+			<div>
+				<span
+					v-for="locale in locales"
+					:key="locale"
+					class="locale-flag"
+					:class="{ 'locale-flag--current': currentLocale === locale }"
+					@click="changeLocale(locale)"
+					v-html="flags[locale]"
+				>
+				</span>
+			</div>
 		</div>
 
 		<div class="settings-group">
@@ -557,15 +559,43 @@
 		</footer>
 	</div>
 </template>
+<style lang="scss">
+.locale-flag {
+	width: 60px;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+
+	&:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	&.locale-flag--current {
+		svg {
+			filter: brightness(1);
+		}
+	}
+
+	svg {
+		width: 40px;
+		height: 40px;
+		filter: brightness(0.5);
+	}
+}
+</style>
 
 <script>
 import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
+import flags from '@/utils/flags'
 
 export default {
 	name: 'the-settings-tab',
 	data: () => ({
+		flags,
+		currentLocale: 'en',
 		locales: [],
 		settings: { tags: {} },
 		lastSettings: {},
@@ -609,6 +639,11 @@ export default {
 			copyText.setAttribute('type', 'password')
 
 			toast(this.$t('settings.toasts.ARLcopied'), 'assignment')
+		},
+		changeLocale(newLocale) {
+			this.$i18n.locale = newLocale
+			this.currentLocale = newLocale
+			localStorage.setItem('locale', newLocale)
 		},
 		updateMaxVolume() {
 			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
@@ -677,11 +712,23 @@ export default {
 
 		this.$refs.loggedInInfo.classList.add('hide')
 
-		if (localStorage.getItem('arl')) {
-			this.$refs.loginInput.value = localStorage.getItem('arl').trim()
+		let storedLocale = localStorage.getItem('locale')
+
+		if (storedLocale) {
+			this.$i18n.locale = storedLocale
+			this.currentLocale = storedLocale
 		}
-		if (localStorage.getItem('accountNum')) {
-			this.accountNum = localStorage.getItem('accountNum')
+
+		let storedArl = localStorage.getItem('arl')
+
+		if (storedArl) {
+			this.$refs.loginInput.value = storedArl.trim()
+		}
+
+		let storedAccountNum = localStorage.getItem('accountNum')
+
+		if (storedAccountNum) {
+			this.accountNum = storedAccountNum
 		}
 
 		let spotifyUser = localStorage.getItem('spotifyUser')
@@ -709,5 +756,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+

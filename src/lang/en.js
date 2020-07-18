@@ -6,6 +6,7 @@ const en = {
 		download: 'Download',
 		by: 'by',
 		listTabs: {
+			empty: '',
 			all: 'all',
 			album: 'album | albums',
 			artist: 'artist | artists',
@@ -13,6 +14,7 @@ const en = {
 			title: 'title | titles',
 			track: 'track | tracks',
 			playlist: 'playlist | playlists',
+			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
 			error: 'error'
 		}
@@ -40,6 +42,7 @@ const en = {
 			popularAlbums: 'Most streamed albums'
 		}
 	},
+	searchbar: 'Search anything you want (or just paste a link)',
 	settings: {
 		title: 'Settings',
 		languages: 'Languages',
@@ -117,9 +120,9 @@ const en = {
 			embeddedArtworkSize: 'Embedded artwork size',
 			localArtworkFormat: {
 				title: 'What format do you want the local artwork to be?',
-				jpg: "A jpeg image",
-				png: "A png image",
-				both: "Both a jpeg and a png"
+				jpg: 'A jpeg image',
+				png: 'A png image',
+				both: 'Both a jpeg and a png'
 			},
 			jpegImageQuality: 'JPEG image quality'
 		},
@@ -206,6 +209,18 @@ const en = {
 			update: 'Settings updated!',
 			ARLcopied: 'ARL copied to clipboard'
 		}
+	},
+	sidebar: {
+		home: 'home',
+		search: 'search',
+		charts: 'charts',
+		favorites: 'favorites',
+		linkAnalyzer: 'link analyzer',
+		settings: 'settings',
+		about: 'about'
+	},
+	tracklist: {
+		downloadSelection: 'Download selection'
 	}
 }
 

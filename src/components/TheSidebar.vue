@@ -2,50 +2,42 @@
 	<aside id="sidebar" role="navigation" @click="handleSidebarClick">
 		<span id="main_home_tablink" class="main_tablinks" role="link" aria-label="home">
 			<i class="material-icons side_icon">home</i>
-			<span class="main_tablinks_text">Home</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.home') }}</span>
 		</span>
 		<span id="main_search_tablink" class="main_tablinks" role="link" aria-label="search">
 			<i class="material-icons side_icon">search</i>
-			<span class="main_tablinks_text">Search</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.search') }}</span>
 		</span>
 		<span id="main_charts_tablink" class="main_tablinks" role="link" aria-label="charts">
 			<i class="material-icons side_icon">bubble_chart</i>
-			<span class="main_tablinks_text">Charts</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.charts') }}</span>
 		</span>
 		<span id="main_favorites_tablink" class="main_tablinks" role="link" aria-label="favorites">
 			<i class="material-icons side_icon">album</i>
-			<span class="main_tablinks_text">Favorites</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.favorites') }}</span>
 		</span>
 		<span id="main_analyzer_tablink" class="main_tablinks" role="link" aria-label="link analyzer">
 			<i class="material-icons side_icon">link</i>
-			<span class="main_tablinks_text">Link Analyzer</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.linkAnalyzer') }}</span>
 		</span>
 		<span id="main_settings_tablink" class="main_tablinks" role="link" aria-label="settings">
 			<i class="material-icons side_icon">settings</i>
-			<span class="main_tablinks_text">Settings</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.settings') }}</span>
 		</span>
 		<span id="main_about_tablink" class="main_tablinks" role="link" aria-label="info">
 			<i class="material-icons side_icon">info</i>
-			<span class="main_tablinks_text">About</span>
+			<span class="main_tablinks_text">{{ $t('sidebar.about') }}</span>
 		</span>
 		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
 			<i class="material-icons side_icon side_icon--theme">palette</i>
 			<div id="theme_togglers">
 				<div
-					class="theme_toggler theme_toggler--purple"
-					:class="{ 'theme_toggler--active': activeTheme === 'purple' }"
-					@click="changeTheme('purple')"
-				/>
-				<div
-					class="theme_toggler theme_toggler--dark"
-					:class="{ 'theme_toggler--active': activeTheme === 'dark' }"
-					@click="changeTheme('dark')"
-				/>
-				<div
-					class="theme_toggler theme_toggler--light"
-					:class="{ 'theme_toggler--active': activeTheme === 'light' }"
-					@click="changeTheme('light')"
-				/>
+					v-for="theme of themes"
+					:key="theme"
+					class="theme_toggler "
+					:class="[{ 'theme_toggler--active': activeTheme === theme }, `theme_toggler--${theme}`]"
+					@click="changeTheme(theme)"
+				></div>
 			</div>
 		</span>
 		<div id="network-status" :class="{ online: appOnline, offline: !appOnline }">
@@ -89,12 +81,11 @@ import { changeTab } from '@js/tabs.js'
 
 export default {
 	name: 'the-sidebar',
-	data() {
-		return {
-			appOnline: null,
-			activeTheme: 'light'
-		}
-	},
+	data: () => ({
+		appOnline: null,
+		activeTheme: 'light',
+		themes: ['purple', 'dark', 'light']
+	}),
 	mounted() {
 		/* === Online status handling === */
 		this.appOnline = navigator.onLine

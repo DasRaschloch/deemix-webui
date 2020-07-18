@@ -9,7 +9,7 @@
 			type="search"
 			name="searchbar"
 			value=""
-			placeholder="Search what you want (or just paste a link)"
+			:placeholder="$t('searchbar')"
 			autofocus
 			ref="searchbar"
 			@keyup="handleSearchBarKeyup($event)"

@@ -13,8 +13,10 @@ const it = {
 			title: 'titolo | titoli',
 			track: 'traccia | tracce',
 			playlist: 'playlist',
+			spotifyPlaylist: 'playlist spotify',
 			releaseDate: 'data di rilascio',
-			error: 'errore'
+			error: 'errore',
+			empty: ''
 		}
 	},
 	charts: {
@@ -40,6 +42,7 @@ const it = {
 			popularAlbums: 'Album più riprodotti'
 		}
 	},
+	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',
 	settings: {
 		title: 'Impostazioni',
 		languages: 'Lingue',
@@ -156,12 +159,12 @@ const it = {
 			saveID3v1: 'Salva anche il ID3v1',
 			multiArtistSeparator: {
 				title: 'Come vuoi separare gli artisti?',
-				nothing: 'Salva solo l\'artista principale',
+				nothing: "Salva solo l'artista principale",
 				default: 'Usando la specificazione standard',
 				andFeat: 'Usando & e feat.',
 				using: 'Usando "{0}"'
 			},
-			singleAlbumArtist: 'Salva solo l\'artista dell\'album principale',
+			singleAlbumArtist: "Salva solo l'artista dell'album principale",
 			albumVariousArtists: 'Lascia "Artisti Vari" negli artisti dell\'album',
 			removeAlbumVersion: 'Rimuovi "Album Version" dal titolo del brano',
 			removeDuplicateArtists: 'Rimuovi le combinazioni di artisti',
@@ -206,6 +209,18 @@ const it = {
 			update: 'Impostazioni aggiornate!',
 			ARLcopied: 'ARL copiato negli appunti'
 		}
+	},
+	sidebar: {
+		home: 'home',
+		search: 'ricerca',
+		charts: 'classifiche',
+		favorites: 'preferiti',
+		linkAnalyzer: 'analizza link',
+		settings: 'impostazioni',
+		about: 'info'
+	},
+	tracklist: {
+		downloadSelection: 'Scarica selezionati'
 	}
 }
 

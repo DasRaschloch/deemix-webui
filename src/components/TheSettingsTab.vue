@@ -66,7 +66,7 @@
 				<i class="material-icons">font_download</i>{{ $t('settings.templates.title') }}
 			</h3>
 
-			<p>{{ $t('settings.templates.tracknameTemplate') }}/p>
+			<p>{{ $t('settings.templates.tracknameTemplate') }}</p>
 			<input type="text" v-model="settings.tracknameTemplate" />
 
 			<p>{{ $t('settings.templates.albumTracknameTemplate') }}</p>

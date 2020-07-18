@@ -268,10 +268,14 @@
 				<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize" />
 			</div>
 
-			<label class="with_checkbox">
-				<input type="checkbox" v-model="settings.PNGcovers" />
-				<span class="checkbox_text">{{ $t('settings.covers.PNGcovers') }}</span>
-			</label>
+			<div class="input_group">
+				<p class="input_group_text">{{ $t('settings.covers.localArtworkFormat.title') }}</p>
+				<select v-model="settings.localArtworkFormat">
+					<option value="jpg">{{ $t('settings.covers.localArtworkFormat.jpg') }}</option>
+					<option value="png">{{ $t('settings.covers.localArtworkFormat.png') }}</option>
+					<option value="jpg,png">{{ $t('settings.covers.localArtworkFormat.both') }}</option>
+				</select>
+			</div>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.jpegImageQuality') }}</p>
@@ -406,19 +410,25 @@
 			</label>
 
 			<div class="input_group">
-				<p class="input_group_text">{{ $t('settings.other.multitagSeparator.title') }}</p>
-				<select v-model="settings.tags.multitagSeparator">
-					<option value="default">{{ $t('settings.other.multitagSeparator.default') }}</option>
-					<option value="andFeat">{{ $t('settings.other.multitagSeparator.andFeat') }}</option>
-					<option value=" & ">{{ $t('settings.other.multitagSeparator.using', [' & ']) }}</option>
-					<option value=",">{{ $t('settings.other.multitagSeparator.using', [',']) }}</option>
-					<option value=", ">{{ $t('settings.other.multitagSeparator.using', [', ']) }}</option>
-					<option value="/">{{ $t('settings.other.multitagSeparator.using', ['/']) }}</option>
-					<option value=" / ">{{ $t('settings.other.multitagSeparator.using', [' / ']) }}</option>
-					<option value=";">{{ $t('settings.other.multitagSeparator.using', [';']) }}</option>
-					<option value="; ">{{ $t('settings.other.multitagSeparator.using', ['; ']) }}</option>
+				<p class="input_group_text">{{ $t('settings.other.multiArtistSeparator.title') }}</p>
+				<select v-model="settings.tags.multiArtistSeparator">
+					<option value="nothing">{{ $t('settings.other.multiArtistSeparator.nothing') }}</option>
+					<option value="default">{{ $t('settings.other.multiArtistSeparator.default') }}</option>
+					<option value="andFeat">{{ $t('settings.other.multiArtistSeparator.andFeat') }}</option>
+					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', [' & ']) }}</option>
+					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', [',']) }}</option>
+					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', [', ']) }}</option>
+					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', ['/']) }}</option>
+					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', [' / ']) }}</option>
+					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', [';']) }}</option>
+					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', ['; ']) }}</option>
 				</select>
 			</div>
+
+			<label class="with_checkbox">
+				<input type="checkbox" v-model="settings.singleAlbumArtist" />
+				<span class="checkbox_text">{{ $t('settings.other.singleAlbumArtist') }}</span>
+			</label>
 
 			<label class="with_checkbox">
 				<input type="checkbox" v-model="settings.albumVariousArtists" />

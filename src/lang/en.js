@@ -115,7 +115,12 @@ const en = {
 			artistImageTemplate: 'Artist image template',
 			localArtworkSize: 'Local artwork size',
 			embeddedArtworkSize: 'Embedded artwork size',
-			PNGcovers: 'Save images as png',
+			localArtworkFormat: {
+				title: 'What format do you want the local artwork to be?',
+				jpg: "A jpeg image",
+				png: "A png image",
+				both: "Both a jpeg and a png"
+			},
 			jpegImageQuality: 'JPEG image quality'
 		},
 		tags: {
@@ -149,12 +154,14 @@ const en = {
 			savePlaylistAsCompilation: 'Save playlists as compilation',
 			useNullSeparator: 'Use null separator',
 			saveID3v1: 'Save ID3v1 as well',
-			multitagSeparator: {
+			multiArtistSeparator: {
 				title: 'How would you like to separate your artists?',
+				nothing: 'Save only the main artist',
 				default: 'Using standard specification',
 				andFeat: 'Using & and feat.',
 				using: 'Using "{0}"'
 			},
+			singleAlbumArtist: 'Save only the main album artist',
 			albumVariousArtists: 'Keep "Various Artists" in the Album Artists',
 			removeAlbumVersion: 'Remove "Album Version" from track title',
 			removeDuplicateArtists: 'Remove combinations of artists',

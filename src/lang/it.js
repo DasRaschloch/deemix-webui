@@ -115,7 +115,12 @@ const it = {
 			artistImageTemplate: 'Template nome copertina artista',
 			localArtworkSize: 'Dimensioni copertine locali',
 			embeddedArtworkSize: 'Dimensioni copertine incorporate',
-			PNGcovers: 'Salva immagini come PNG',
+			localArtworkFormat: {
+				title: 'Come vuoi salvare le copertine locali?',
+				jpg: 'In jpeg',
+				png: 'In png',
+				both: 'Sia in jpeg che in png'
+			},
 			jpegImageQuality: 'Qualità immagine JPEG'
 		},
 		tags: {
@@ -149,12 +154,14 @@ const it = {
 			savePlaylistAsCompilation: 'Salva le playlist come Compilation',
 			useNullSeparator: 'Usa il carattere NULL come separatore',
 			saveID3v1: 'Salva anche il ID3v1',
-			multitagSeparator: {
+			multiArtistSeparator: {
 				title: 'Come vuoi separare gli artisti?',
+				nothing: 'Salva solo l\'artista principale',
 				default: 'Usando la specificazione standard',
 				andFeat: 'Usando & e feat.',
 				using: 'Usando "{0}"'
 			},
+			singleAlbumArtist: 'Salva solo l\'artista dell\'album principale',
 			albumVariousArtists: 'Lascia "Artisti Vari" negli artisti dell\'album',
 			removeAlbumVersion: 'Rimuovi "Album Version" dal titolo del brano',
 			removeDuplicateArtists: 'Rimuovi le combinazioni di artisti',

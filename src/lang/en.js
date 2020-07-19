@@ -14,6 +14,8 @@ const en = {
 			title: 'title | titles',
 			track: 'track | tracks',
 			playlist: 'playlist | playlists',
+			compile: 'compilations',
+			ep: 'eps',
 			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
 			error: 'error'

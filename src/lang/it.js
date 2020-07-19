@@ -13,6 +13,8 @@ const it = {
 			title: 'titolo | titoli',
 			track: 'traccia | tracce',
 			playlist: 'playlist',
+			compile: 'compilation',
+			ep: 'ep',
 			spotifyPlaylist: 'playlist spotify',
 			releaseDate: 'data di rilascio',
 			error: 'errore',

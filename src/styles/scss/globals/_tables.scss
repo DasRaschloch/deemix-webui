@@ -123,6 +123,7 @@ $table-border-radius: 3px;
 	&--tracklist {
 		thead {
 			border-bottom: 2px solid var(--table-highlight);
+			text-transform: capitalize;
 		}
 
 		th {

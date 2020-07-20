@@ -29,7 +29,7 @@
 				:href="'#artist_' + name"
 				@click="changeTab(name)"
 			>
-				{{ $t(`globals.listTabs.${name}`) }}
+				{{ $tc(`globals.listTabs.${name}`, 2) }}
 			</button>
 		</div>
 

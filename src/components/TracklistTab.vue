@@ -132,7 +132,6 @@
 		<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 		<footer>
 			<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="link">
-				<!-- vue-i18n throws a warning beacuse of the reset -->
 				{{ `${$t('globals.download')} ${$tc(`globals.listTabs.${type}`, 1)}` }}
 			</button>
 			<button

@@ -1,16 +1,17 @@
 <template>
 	<div id="analyzer_tab" class="main_tabcontent image_header">
-		<h2 class="page_heading">Link Analyzer</h2>
+		<h2 class="page_heading page_heading--capitalize">{{ $t('sidebar.linkAnalyzer') }}</h2>
 		<div v-if="link == ''">
 			<p>
-				You can use this section to find out more information about the link you are trying to download<br />This is
-				useful if you're trying to download some tracks that are not available in your country and want to know where
-				they are available
+				{{ $t('linkAnalyzer.info') }}
+			</p>
+			<p>
+				{{ $t('linkAnalyzer.useful') }}
 			</p>
 		</div>
 		<div v-else-if="link == 'error'">
-			<h2>This link is not supported</h2>
-			<p>Seems like this link is not yet supported, try analyzing another one.</p>
+			<h2>{{ $t('linkAnalyzer.linkNotSupported') }}</h2>
+			<p>{{ $t('linkAnalyzer.linkNotSupportedYet') }}</p>
 		</div>
 		<div v-else>
 			<header
@@ -23,12 +24,15 @@
 				<div>
 					<h1>{{ title }}</h1>
 					<h2 v-if="type == 'track'">
-						by <span class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span> • in
+						{{ $t('globals.by') }}
+						<span class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+						{{ ` • ${$t('globals.in')}` }}
 						<span class="clickable" @click="albumView" :data-id="data.album.id">{{ data.album.title }}</span>
 					</h2>
 					<h2 v-else-if="type == 'album'">
-						by <span class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span> •
-						{{ data.nb_tracks }} tracks
+						{{ $t('globals.by') }}
+						<span class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+						{{ ` • ${data.nb_tracks}  ${$tc('globals.listTabs.track', 2)}` }}
 					</h2>
 				</div>
 				<div
@@ -44,53 +48,53 @@
 			</header>
 			<table class="table">
 				<tr v-if="data.id">
-					<td>ID</td>
+					<td>{{ $t('linkAnalyzer.table.id') }}</td>
 					<td>{{ data.id }}</td>
 				</tr>
 				<tr v-if="data.isrc">
-					<td>ISRC</td>
+					<td>{{ $t('linkAnalyzer.table.isrc') }}</td>
 					<td>{{ data.isrc }}</td>
 				</tr>
 				<tr v-if="data.upc">
-					<td>UPC</td>
+					<td>{{ $t('linkAnalyzer.table.upc') }}</td>
 					<td>{{ data.upc }}</td>
 				</tr>
 				<tr v-if="data.duration">
-					<td>Duration</td>
+					<td>{{ $t('linkAnalyzer.table.duration') }}</td>
 					<td>{{ convertDuration(data.duration) }}</td>
 				</tr>
 				<tr v-if="data.disk_number">
-					<td>Disk Number</td>
+					<td>{{ $t('linkAnalyzer.table.diskNumber') }}</td>
 					<td>{{ data.disk_number }}</td>
 				</tr>
 				<tr v-if="data.track_position">
-					<td>Track Number</td>
+					<td>{{ $t('linkAnalyzer.table.trackNumber') }}</td>
 					<td>{{ data.track_position }}</td>
 				</tr>
 				<tr v-if="data.release_date">
-					<td>Release Date</td>
+					<td>{{ $t('linkAnalyzer.table.releaseDate') }}</td>
 					<td>{{ data.release_date }}</td>
 				</tr>
 				<tr v-if="data.bpm">
-					<td>BPM</td>
+					<td>{{ $t('linkAnalyzer.table.bpm') }}</td>
 					<td>{{ data.bpm }}</td>
 				</tr>
 				<tr v-if="data.label">
-					<td>Label</td>
+					<td>{{ $t('linkAnalyzer.table.label') }}</td>
 					<td>{{ data.label }}</td>
 				</tr>
 				<tr v-if="data.record_type">
-					<td>Record Type</td>
-					<td>{{ data.record_type }}</td>
+					<td>{{ $t('linkAnalyzer.table.recordType') }}</td>
+					<td>{{ $tc(`globals.listTabs.${data.record_type}`, 1) }}</td>
 				</tr>
 				<tr v-if="data.genres && data.genres.data.length">
-					<td>Genres</td>
+					<td>{{ $t('linkAnalyzer.table.genres') }}</td>
 					<td>{{ data.genres.data.map(x => x.name).join('; ') }}</td>
 				</tr>
 			</table>
 
 			<div v-if="type == 'album'">
-				<button @click="albumView" :data-id="id">Tracklist</button>
+				<button @click="albumView" :data-id="id">{{ $t('linkAnalyzer.table.tracklist') }}</button>
 			</div>
 			<div v-if="countries.length">
 				<p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>

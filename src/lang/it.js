@@ -5,6 +5,7 @@ const it = {
 		loading: 'caricamento',
 		download: 'Scarica',
 		by: 'di',
+		in: 'in',
 		listTabs: {
 			all: 'tutto',
 			album: 'album',
@@ -42,6 +43,28 @@ const it = {
 		sections: {
 			popularPlaylists: 'Playlyst Popolari',
 			popularAlbums: 'Album più riprodotti'
+		}
+	},
+	linkAnalyzer: {
+		info:
+			'Puoi utilizzare questa sezione per avere più informazioni riguardanti il link che stai cercando di scaricare.',
+		useful:
+			'Ciò può esserti utile se stai cercando di scaricare tracce che non sono disponibili nel tuo Paese e vuoi sapere in quale Paese sono invece disponibili, per esempio.',
+		linkNotSupported: 'Questo link non è ancora supportato',
+		linkNotSupportedYet: 'Sembra che questo link non sia ancora supportato, prova ad analizzarne un altro.',
+		table: {
+			id: 'ID',
+			isrc: 'ISRC',
+			upc: 'UPC',
+			duration: 'Durata',
+			diskNumber: 'Numero Disco',
+			trackNumber: 'Numero Traccia',
+			releaseDate: 'Data di rilascio',
+			bpm: 'BPM',
+			label: 'Etichetta',
+			recordType: 'Tipologia di registrazione',
+			genres: 'Generi',
+			tracklist: 'Lista tracce'
 		}
 	},
 	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',

@@ -5,6 +5,7 @@ const en = {
 		loading: 'loading',
 		download: 'Download',
 		by: 'by',
+		in: 'in',
 		listTabs: {
 			empty: '',
 			all: 'all',
@@ -43,6 +44,32 @@ const en = {
 			popularPlaylists: 'Popular playlists',
 			popularAlbums: 'Most streamed albums'
 		}
+	},
+	linkAnalyzer: {
+		info: 'You can use this section to find out more information about the link you are trying to download.',
+		useful:
+			"This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
+		linkNotSupported: 'This link is not yet supported',
+		linkNotSupportedYet: 'Seems like this link is not yet supported, try analyzing another one.',
+		table: {
+			id: 'ID',
+			isrc: 'ISRC',
+			upc: 'UPC',
+			duration: 'Duration',
+			diskNumber: 'Disk Number',
+			trackNumber: 'Track Number',
+			releaseDate: 'Release Date',
+			bpm: 'BPM',
+			label: 'Label',
+			recordType: 'Record Type',
+			genres: 'Genres',
+			tracklist: 'Tracklist'
+		}
+	},
+	search: {
+		startSearching: 'Start searching!',
+		description:
+			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link'
 	},
 	searchbar: 'Search anything you want (or just paste a link)',
 	settings: {

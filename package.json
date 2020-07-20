@@ -1,10 +1,10 @@
 {
 	"name": "deemix",
 	"version": "1.0.16",
-	"homepage": "https://notabug.org/RemixDev/deemix-webui/src/master/README.md",
+	"homepage": "https://codeberg.org/RemixDev/deemix-webui/src/master/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://notabug.org/RemixDev/deemix-webui"
+		"url": "https://codeberg.org/RemixDev/deemix-webui"
 	},
 	"scripts": {
 		"clean": "rimraf public/css/style.css public/css/style.css.map public/js/bundle.js public/js/bundle.js.map",

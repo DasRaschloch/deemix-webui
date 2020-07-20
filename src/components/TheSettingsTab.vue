@@ -21,7 +21,7 @@
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
-			<a href="https://notabug.org/RemixDevs/DeezloaderRemix/wiki/Login+via+userToken" target="_blank">
+			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
 			<button id="settings_btn_updateArl" @click="login" style="width:100%;">

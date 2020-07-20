@@ -4,7 +4,7 @@
 		<p>
 			This app uses the <a href="https://deemix.app" target="_blank">deemix</a> library, you can use this
 			library to make your own UI for deemix.</br>
-			Here's the <a href="https://notabug.org/RemixDev/deemix" target="_blank">official repo</a> for the
+			Here's the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">official repo</a> for the
 			library.
 		</p>
 		<p>
@@ -38,7 +38,7 @@
 		<h3>You want to contribute to this project? You can do that <b>in different ways!</b></h3>
 		<p>
 			If you're fluent in python you could try to make a new UI for the app using the base library, or fix
-			bugs in the library with a pull request on the <a href="https://notabug.org/RemixDev/deemix"
+			bugs in the library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix"
 				target="_blank">repo</a>.<br>
 			I accept features as well, but no complex things, as they can be implementend directly in the app and
 			not the library.</p>
@@ -47,7 +47,7 @@
 			languages!<br>
 			You need help understanding the code? Just hit RemixDev up on Telegram or Reddit.</p>
 		<p>If you know JavaScript, HTML or CSS you could contribute to the <a
-				href="https://notabug.org/RemixDev/deemix-webui" target="_blank">webui</a>.</p>
+				href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">webui</a>.</p>
 		<p>
 			If you find some bugs you can report them in the repo, just make sure your bug isn't something that
 			only
@@ -78,4 +78,3 @@
 		</p>
 	</div>
 </template>
-

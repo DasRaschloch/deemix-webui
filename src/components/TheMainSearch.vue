@@ -429,7 +429,7 @@
 							<p class="primary-text">{{ release.title }}</p>
 							<p class="secondary-text">
 								{{
-									`${$t('globals.by')} ${release.user.name} - ${release.nb_tracks} ${$tc('globals.listTabs.track', 2)}`
+									`${$t('globals.by', [release.user.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}`
 								}}
 							</p>
 						</div>

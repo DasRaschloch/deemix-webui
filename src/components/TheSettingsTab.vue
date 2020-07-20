@@ -4,7 +4,9 @@
 
 		<div id="logged_in_info" ref="loggedInInfo">
 			<img id="settings_picture" src="" alt="Profile Picture" ref="userpicture" class="circle" />
-			<p>{{ $t('settings.login.loggedIn') }} <strong id="settings_username" ref="username"></strong></p>
+			<i18n path="settings.login.loggedIn" tag="p">
+				<strong place="username" id="settings_username" ref="username"></strong>
+			</i18n>
 			<button id="settings_btn_logout" @click="logout">{{ $t('settings.login.logout') }}</button>
 			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
 				<option v-for="(account, i) in accounts" :value="i.toString()">{{ account.BLOG_NAME }}</option>

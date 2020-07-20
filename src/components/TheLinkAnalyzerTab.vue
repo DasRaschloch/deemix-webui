@@ -24,15 +24,19 @@
 				<div>
 					<h1>{{ title }}</h1>
 					<h2 v-if="type == 'track'">
-						{{ $t('globals.by') }}
-						<span class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
-						{{ ` • ${$t('globals.in')}` }}
-						<span class="clickable" @click="albumView" :data-id="data.album.id">{{ data.album.title }}</span>
+						<i18n path="globals.by" tag="span">
+							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+						</i18n>
+						 •
+						<i18n path="globals.in" tag="span">
+							<span place="0" class="clickable" @click="albumView" :data-id="data.album.id">{{ data.album.title }}</span>
+						</i18n>
 					</h2>
 					<h2 v-else-if="type == 'album'">
-						{{ $t('globals.by') }}
-						<span class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
-						{{ ` • ${data.nb_tracks}  ${$tc('globals.listTabs.track', 2)}` }}
+						<i18n path="globals.by" tag="span">
+							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+						</i18n>
+						{{ ` • ${$tc('globals.listTabs.trackN', data.nb_tracks)}` }}
 					</h2>
 				</div>
 				<div

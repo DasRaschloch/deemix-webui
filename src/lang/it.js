@@ -3,9 +3,9 @@ const it = {
 		welcome: 'Benvenuto su deemix',
 		back: 'indietro',
 		loading: 'caricamento',
-		download: 'Scarica',
-		by: 'di',
-		in: 'in',
+		download: 'Scarica {0}',
+		by: 'di {0}',
+		in: 'in {0}',
 		listTabs: {
 			all: 'tutto',
 			album: 'album',
@@ -13,6 +13,7 @@ const it = {
 			single: 'singolo | singoli',
 			title: 'titolo | titoli',
 			track: 'traccia | tracce',
+			trackN: '0 tracce | {n} traccia | {n} tracce',
 			playlist: 'playlist',
 			compile: 'compilation',
 			ep: 'ep',
@@ -73,7 +74,7 @@ const it = {
 		languages: 'Lingue',
 		login: {
 			title: 'Login',
-			loggedIn: 'Sei loggato come',
+			loggedIn: 'Sei loggato come {username}',
 			arl: {
 				question: 'Come ottengo il mio ARL?',
 				update: 'Aggiorna ARL'

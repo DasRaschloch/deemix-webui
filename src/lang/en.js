@@ -3,9 +3,9 @@ const en = {
 		welcome: 'Welcome to deemix',
 		back: 'back',
 		loading: 'loading',
-		download: 'Download',
-		by: 'by',
-		in: 'in',
+		download: 'Download {0}',
+		by: 'by {0}',
+		in: 'in {0}',
 		listTabs: {
 			empty: '',
 			all: 'all',
@@ -14,9 +14,10 @@ const en = {
 			single: 'single | singles',
 			title: 'title | titles',
 			track: 'track | tracks',
+			trackN: '0 tracks | {n} track | {n} tracks',
 			playlist: 'playlist | playlists',
-			compile: 'compilations',
-			ep: 'eps',
+			compile: 'compilation | compilations',
+			ep: 'ep | eps',
 			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
 			error: 'error'
@@ -77,7 +78,7 @@ const en = {
 		languages: 'Languages',
 		login: {
 			title: 'Login',
-			loggedIn: 'You are logged in as',
+			loggedIn: 'You are logged in as {username}',
 			arl: {
 				question: 'How do I get my own ARL?',
 				update: 'Update ARL'

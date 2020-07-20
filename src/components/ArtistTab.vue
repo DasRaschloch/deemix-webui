@@ -167,8 +167,8 @@ export default {
 			this.sortKey = 'release_date'
 			this.sortOrder = 'desc'
 			this.head = [
-				{ title: 'Title', sortKey: 'title' },
-				{ title: 'Release Date', sortKey: 'release_date' },
+				{ title: this.$tc('globals.listTabs.title',1), sortKey: 'title' },
+				{ title: this.$t('globals.listTabs.releaseDate'), sortKey: 'release_date' },
 				{ title: '', width: '32px' }
 			]
 			if (isEmpty(releases)) {

@@ -24,7 +24,7 @@
 					<th>#</th>
 					<th>{{ $tc('globals.listTabs.track', 1) }}</th>
 					<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
-					<th v-if="type === 'Playlist'">{{ $tc('globals.listTabs.album', 1) }}</th>
+					<th v-if="type === 'playlist'">{{ $tc('globals.listTabs.album', 1) }}</th>
 					<th>
 						<i class="material-icons">timer</i>
 					</th>
@@ -34,7 +34,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<template v-if="type !== 'Spotify Playlist'">
+				<template v-if="type !== 'spotifyPlaylist'">
 					<template v-for="track in body">
 						<tr v-if="track.type == 'track'">
 							<td class="table__cell--x-small table__cell--center">
@@ -50,7 +50,7 @@
 								</div>
 							</td>
 							<td class="table__cell--small table__cell--center track_position">
-								{{ type === 'Album' ? track.track_position : body.indexOf(track) + 1 }}
+								{{ type === 'album' ? track.track_position : body.indexOf(track) + 1 }}
 							</td>
 							<td class="table__cell--large table__cell--with-icon">
 								<div class="table__cell-content table__cell-content--vertical-center">
@@ -73,7 +73,7 @@
 								{{ track.artist.name }}
 							</td>
 							<td
-								v-if="type == 'Playlist'"
+								v-if="type == 'playlist'"
 								class="table__cell--medium table__cell--center clickable"
 								@click="albumView"
 								:data-id="track.album.id"
@@ -82,7 +82,7 @@
 							</td>
 							<td
 								class="table__cell--center"
-								:class="{ 'table__cell--small': type === 'Album', 'table__cell--x-small': type === 'Playlist' }"
+								:class="{ 'table__cell--small': type === 'album', 'table__cell--x-small': type === 'playlist' }"
 							>
 								{{ convertDuration(track.duration) }}
 							</td>
@@ -132,7 +132,7 @@
 		<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
 		<footer>
 			<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="link">
-				{{ `${$t('globals.download')} ${$tc(`globals.listTabs.${type}`, 1)}` }}
+				{{ `${$t('globals.download', [$tc(`globals.listTabs.${type}`, 1)])}` }}
 			</button>
 			<button
 				class="with_icon"
@@ -202,7 +202,7 @@ export default {
 			if (this.body) {
 				this.body.forEach(item => {
 					if (item.type == 'track' && item.selected)
-						selected.push(this.type == 'Spotify Playlist' ? item.uri : item.link)
+						selected.push(this.type == 'spotifyPlaylist' ? item.uri : item.link)
 				})
 			}
 			return selected.join(';')
@@ -221,12 +221,12 @@ export default {
 				cover_xl
 			} = data
 
-			this.type = `${this.$tc('globals.listTabs.album', 1)}`
+			this.type = 'album'
 			this.link = `https://www.deezer.com/album/${albumID}`
 			this.title = albumTitle
 			this.explicit = explicit_lyrics
 			this.label = albumLabel
-			this.metadata = `${artistName} • ${numberOfTracks} ${this.$tc('globals.listTabs.track', 2)}`
+			this.metadata = `${artistName} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
 			this.release_date = release_date.substring(0, 10)
 			this.image = cover_xl
 
@@ -247,15 +247,12 @@ export default {
 				tracks: { length: numberOfTracks }
 			} = data
 
-			this.type = `${this.$tc('globals.listTabs.playlist', 1)}`
+			this.type = 'playlist'
 			this.link = `https://www.deezer.com/playlist/${playlistID}`
 			this.title = playlistTitle
 			this.image = playlistCover
 			this.release_date = creation_date.substring(0, 10)
-			this.metadata = `${this.$t('globals.by')} ${creatorName} • ${numberOfTracks} ${this.$tc(
-				'globals.listTabs.track',
-				2
-			)}`
+			this.metadata = `${this.$t('globals.by', [creatorName])} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null
@@ -274,17 +271,14 @@ export default {
 				tracks: { length: numberOfTracks }
 			} = data
 
-			this.type = `${this.$tc('globals.listTabs.spotifyPlaylist', 1)}`
+			this.type = 'spotifyPlaylist'
 			this.link = playlistURI
 			this.title = playlistName
 			this.image = numberOfImages
 				? images[0].url
 				: 'https://e-cdns-images.dzcdn.net/images/cover/d41d8cd98f00b204e9800998ecf8427e/1000x1000-000000-80-0-0.jpg'
 			this.release_date = ''
-			this.metadata = `${this.$t('globals.by')} ${ownerName} • ${numberOfTracks} ${this.$tc(
-				'globals.listTabs.track',
-				2
-			)}`
+			this.metadata = `${this.$t('globals.by', [ownerName])} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null

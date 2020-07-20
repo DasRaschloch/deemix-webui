@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-// Object is needed for vue proxy (what does this mean?)
+// Object is needed for vue change detection
 window.vol = {
 	preview_max_volume: 100
 }

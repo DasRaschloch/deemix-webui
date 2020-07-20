@@ -428,7 +428,7 @@
 			</div>
 
 			<label class="with_checkbox">
-				<input type="checkbox" v-model="settings.singleAlbumArtist" />
+				<input type="checkbox" v-model="settings.tags.singleAlbumArtist" />
 				<span class="checkbox_text">{{ $t('settings.other.singleAlbumArtist') }}</span>
 			</label>
 
@@ -755,5 +755,3 @@ export default {
 	}
 }
 </script>
-
-

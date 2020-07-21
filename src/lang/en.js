@@ -73,6 +73,25 @@ const en = {
 			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link'
 	},
 	searchbar: 'Search anything you want (or just paste a link)',
+	downloads: 'downloads',
+	toasts: {
+		addedToQueue: '{0} added to queue',
+		alreadyInQueue: '{0} is already in queue!',
+		finishDownload: '{0} finished downloading.',
+		allDownloaded: 'All downloads completed!',
+		refreshFavs: 'Refresh completed!',
+		loggingIn: 'Logging in',
+		loggedIn: 'Logged in',
+		alreadyLogged: 'Already logged in',
+		loginFailed: 'Couldn\'t log in',
+		loggedOut: 'Logged out',
+		cancellingCurrentItem: 'Cancelling current item.',
+		currentItemCancelled: 'Current item cancelled.',
+		startAddingArtist: 'Adding {0} albums to queue',
+		finishAddingArtist: 'Added {0} albums to queue',
+		startConvertingSpotifyPlaylist: 'Converting spotify tracks to deezer tracks',
+		finishConvertingSpotifyPlaylist: 'Spotify playlist converted'
+	},
 	settings: {
 		title: 'Settings',
 		languages: 'Languages',

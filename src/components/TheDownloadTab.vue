@@ -4,6 +4,7 @@
 		class="tab_hidden"
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
+		:data-label="$t('downloads')"
 	>
 		<div id="download_tab_drag_handler" @mousedown.prevent="startDrag" ref="dragHandler"></div>
 		<i
@@ -187,7 +188,7 @@ export default {
 			}
 
 			if (!queueItem.init) {
-				toast(`${queueItem.title} added to queue`, 'playlist_add_check')
+				toast(this.$t('toasts.addedToQueue', [queueItem.title]), 'playlist_add_check')
 			}
 		},
 		updateQueue(update) {
@@ -280,7 +281,7 @@ export default {
 		},
 		finishDownload(uuid) {
 			if (this.queue.indexOf(uuid) > -1) {
-				toast(`${this.queueList[uuid].title} finished downloading.`, 'done')
+				toast(this.$t('toasts.finishDownload', [this.queueList[uuid].title]), 'done')
 
 				$('#bar_' + uuid).css('width', '100%')
 
@@ -311,7 +312,7 @@ export default {
 				}
 
 				if (this.queue.length <= 0) {
-					toast('All downloads completed!', 'done_all')
+					toast(this.$t('toasts.allDownloaded'), 'done_all')
 				}
 			}
 		},

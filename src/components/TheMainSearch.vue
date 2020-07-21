@@ -1,10 +1,8 @@
 <template>
 	<div id="search_tab" class="main_tabcontent" @click="handleSearchTabClick">
 		<div :class="{ hide: results.query != '' }">
-			<h2>Start searching!</h2>
-			<p>
-				You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link
-			</p>
+			<h2>{{ $t('search.startSearching') }}</h2>
+			<p>{{ $t('search.description') }}</p>
 		</div>
 		<div v-show="results.query !== ''">
 			<ul class="section-tabs">

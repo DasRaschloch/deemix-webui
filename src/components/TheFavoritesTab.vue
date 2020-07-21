@@ -303,7 +303,7 @@ export default {
 				'animationiteration',
 				() => {
 					this.$refs.reloadButton.classList.remove('spin')
-					toast('Refresh completed!', 'done', true)
+					toast(this.$t('toasts.refreshFavs'), 'done', true)
 				},
 				{ once: true }
 			)

@@ -44,7 +44,7 @@ socket.on('message', function(msg) {
 })
 
 socket.on('logging_in', function() {
-	toast('Logging in', 'loading', false, 'login-toast')
+	toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
 })
 
 socket.on('init_autologin', function() {
@@ -64,7 +64,7 @@ socket.on('logged_in', function(data) {
 	switch (data.status) {
 		case 1:
 		case 3:
-			toast('Logged in', 'done', true, 'login-toast')
+			toast(i18n.t('toasts.loggedIn'), 'done', true, 'login-toast')
 			if (data.arl) {
 				localStorage.setItem('arl', data.arl)
 				$('#login_input_arl').val(data.arl)
@@ -82,7 +82,7 @@ socket.on('logged_in', function(data) {
 			document.getElementById('home_not_logged_in').classList.add('hide')
 			break
 		case 2:
-			toast('Already logged in', 'done', true, 'login-toast')
+			toast(i18n.t('toasts.alreadyLogged'), 'done', true, 'login-toast')
 			if (data.user) {
 				$('#settings_username').text(data.user.name)
 				$('#settings_picture').attr(
@@ -95,7 +95,7 @@ socket.on('logged_in', function(data) {
 			document.getElementById('home_not_logged_in').classList.add('hide')
 			break
 		case 0:
-			toast("Couldn't log in", 'close', true, 'login-toast')
+			toast(i18n.t('toasts.loginFailed'), 'close', true, 'login-toast')
 			localStorage.removeItem('arl')
 			$('#login_input_arl').val('')
 			$('#open_login_prompt').show()
@@ -109,7 +109,7 @@ socket.on('logged_in', function(data) {
 })
 
 socket.on('logged_out', function() {
-	toast('Logged out', 'done', true, 'login-toast')
+	toast(i18n.t('toasts.loggedOut'), 'done', true, 'login-toast')
 	localStorage.removeItem('arl')
 	$('#login_input_arl').val('')
 	$('#open_login_prompt').show()
@@ -120,27 +120,27 @@ socket.on('logged_out', function() {
 })
 
 socket.on('cancellingCurrentItem', function(uuid) {
-	toast('Cancelling current item.', 'loading', false, 'cancelling_' + uuid)
+	toast(i18n.t('toasts.cancellingCurrentItem'), 'loading', false, 'cancelling_' + uuid)
 })
 
 socket.on('currentItemCancelled', function(uuid) {
-	toast('Current item cancelled.', 'done', true, 'cancelling_' + uuid)
+	toast(i18n.t('toasts.currentItemCancelled'), 'done', true, 'cancelling_' + uuid)
 })
 
 socket.on('startAddingArtist', function(data) {
-	toast(`Adding ${data.name} albums to queue`, 'loading', false, 'artist_' + data.id)
+	toast(i18n.t('toasts.startAddingArtist', [data.name]), 'loading', false, 'artist_' + data.id)
 })
 
 socket.on('finishAddingArtist', function(data) {
-	toast(`Added ${data.name} albums to queue`, 'done', true, 'artist_' + data.id)
+	toast(i18n.t('toasts.finishAddingArtist', [data.name]), 'done', true, 'artist_' + data.id)
 })
 
 socket.on('startConvertingSpotifyPlaylist', function(id) {
-	toast('Converting spotify tracks to deezer tracks', 'loading', false, 'spotifyplaylist_' + id)
+	toast(i18n.t('toasts.startConvertingSpotifyPlaylist'), 'loading', false, 'spotifyplaylist_' + id)
 })
 
 socket.on('finishConvertingSpotifyPlaylist', function(id) {
-	toast('Spotify playlist converted', 'done', true, 'spotifyplaylist_' + id)
+	toast(i18n.t('toasts.finishConvertingSpotifyPlaylist'), 'done', true, 'spotifyplaylist_' + id)
 })
 
 socket.on('errorMessage', function(error) {
@@ -148,5 +148,5 @@ socket.on('errorMessage', function(error) {
 })
 
 socket.on('alreadyInQueue', function(data) {
-	toast(`${data.title} is already in queue!`, 'playlist_add_check')
+	toast(i18n.t('toasts.alreadyInQueue', [data.title]), 'playlist_add_check')
 })

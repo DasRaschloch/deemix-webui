@@ -68,7 +68,30 @@ const it = {
 			tracklist: 'Lista tracce'
 		}
 	},
+	search: {
+		startSearching: 'Inizia a cercare!',
+		description:
+			'Puoi cercare una traccia, un intero album, un artista, una playlist.... quello che vuoi! Puoi anche incollare un link di Deezer'
+	},
 	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',
+	downloads: 'download',
+	toasts: {
+		addedToQueue: '{0} aggiunto alla coda',
+		finishDownload: '{0} ha finito di scaricarsi.',
+		allDownloaded: 'Tutti i download completati!',
+		refreshFavs: 'Preferiti ricaricati!',
+		loggingIn: 'Effettuando il login',
+		loggedIn: 'Login effettuato',
+		alreadyLogged: 'Sei già loggato',
+		loginFailed: 'Impossibile loggarsi',
+		loggedOut: 'Disconnesso',
+		cancellingCurrentItem: 'Cancellando download corrente.',
+		currentItemCancelled: 'Download corrente cancellato.',
+		startAddingArtist: 'Aggiungendo gli album di {0} alla coda',
+		finishAddingArtist: 'Aggiunto gli album di {0} alla coda',
+		startConvertingSpotifyPlaylist: 'Convertendo le tracce da spotify a deezer',
+		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita'
+	},
 	settings: {
 		title: 'Impostazioni',
 		languages: 'Lingue',
@@ -104,7 +127,7 @@ const it = {
 			albumNameTemplate: 'Template nome della cartella Album',
 			createCDFolder: 'Crea cartelle per i CD',
 			createStructurePlaylist: 'Crea la struttura di cartelle per le Playlist',
-			createSingleFolder: 'Crea la struttura di cartelle per le traccie singole'
+			createSingleFolder: 'Crea la struttura di cartelle per le tracce singole'
 		},
 		trackTitles: {
 			title: 'Titoli tracce',
@@ -159,7 +182,7 @@ const it = {
 			album: 'Album',
 			cover: 'Copertina',
 			trackNumber: 'Numero Traccia',
-			trackTotal: 'Traccie Totali',
+			trackTotal: 'Tracce Totali',
 			discNumber: 'Numero Disco',
 			discTotal: 'Dischi Totali',
 			albumArtist: "Artista dell'album",

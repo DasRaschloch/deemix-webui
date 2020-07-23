@@ -31,7 +31,14 @@ const en = {
 	errors: {
 		title: 'Errors for {0}',
 		ids: {
-			notOnDeezer: 'This track is not available on Deezer!',
+			invalidURL: 'URL not recognized',
+			unsupportedURL: 'URL not supported yet',
+			ISRCnotOnDeezer: 'Track ISRC is not available on deezer',
+			notYourPrivatePlaylist: 'You can\'t download others private playlists.',
+			spotifyDisabled: 'Spotify Features is not setted up correctly.',
+			trackNotOnDeezer: 'Track not found on deezer!',
+			albumNotOnDeezer: 'Album not found on deezer!',
+			notOnDeezer: 'Track not available on Deezer!',
 			notEncoded: 'Track not yet encoded!',
 			notEncodedNoAlternative: 'Track not yet encoded and no alternative found!',
 			wrongBitrate: 'Track not found at desired bitrate.',

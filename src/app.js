@@ -147,6 +147,13 @@ socket.on('errorMessage', function(error) {
 	toast(error, 'error')
 })
 
+socket.on('queueError', function(queueItem) {
+	if (queueItem.errid)
+		toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
+	else
+		toast(queueItem.error, 'error')
+})
+
 socket.on('alreadyInQueue', function(data) {
 	toast(i18n.t('toasts.alreadyInQueue', [data.title]), 'playlist_add_check')
 })

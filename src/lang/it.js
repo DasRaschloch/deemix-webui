@@ -31,7 +31,14 @@ const it = {
 	errors: {
 		title: 'Errori riguardanti {0}',
 		ids: {
-			notOnDeezer: 'Questa traccia non è disponibile su Deezer!',
+			invalidURL: 'URL non riconosciuto',
+			unsupportedURL: 'URL non ancora supportato',
+			ISRCnotOnDeezer: 'Questo ISRC non è disponibile su Deezer',
+			notYourPrivatePlaylist: 'Non puoi scaricare le playlist private degli altri.',
+			spotifyDisabled: 'Spotify Features non è impostato correttamente.',
+			trackNotOnDeezer: 'Traccia non trovata su Deezer!',
+			albumNotOnDeezer: 'Album non trovato su Deezer!',
+			notOnDeezer: 'Traccia non disponibile su Deezer!',
 			notEncoded: 'Traccia non ancora codificata!',
 			notEncodedNoAlternative: 'Traccia non ancora codificata e nessuna alternativa trovata!',
 			wrongBitrate: 'Traccia non trovata con il bitrate specificato.',

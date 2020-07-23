@@ -1,7 +1,7 @@
 <template>
 	<div id="errors_tab" class="main_tabcontent">
-		<h1>{{ $t('errors.title') }} {{ title }}</h1>
-		<table>
+		<h1>{{ $t('errors.title', [title]) }}</h1>
+		<table class="table table--tracklist">
 			<tr>
 				<th>ID</th>
 				<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
@@ -12,7 +12,7 @@
 				<td>{{ error.data.id }}</td>
 				<td>{{ error.data.artist }}</td>
 				<td>{{ error.data.title }}</td>
-				<td>{{ error.message }}</td>
+				<td>{{ error.errid ? $t(`errors.ids.${error.errid}`) : error.message }}</td>
 			</tr>
 		</table>
 	</div>

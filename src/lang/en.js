@@ -29,7 +29,17 @@ const en = {
 		download: 'Download Chart'
 	},
 	errors: {
-		title: 'Errors for'
+		title: 'Errors for {0}',
+		ids: {
+			notOnDeezer: 'This track is not available on Deezer!',
+			notEncoded: 'Track not yet encoded!',
+			notEncodedNoAlternative: 'Track not yet encoded and no alternative found!',
+			wrongBitrate: 'Track not found at desired bitrate.',
+			wrongBitrateNoAlternative: 'Track not found at desired bitrate and no alternative found!',
+			no360RA: 'Track is not available in Reality Audio 360.',
+			notAvailable: 'Track not available on deezer\'s servers!',
+			notAvailableNoAlternative: 'Track not available on deezer\'s servers and no alternative found!'
+		}
 	},
 	favorites: {
 		title: 'Favorites',

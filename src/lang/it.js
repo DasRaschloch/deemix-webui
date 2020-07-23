@@ -29,7 +29,17 @@ const it = {
 		download: 'Scarica Classifica'
 	},
 	errors: {
-		title: 'Errori riguardanti'
+		title: 'Errori riguardanti {0}',
+		ids: {
+			notOnDeezer: 'Questa traccia non è disponibile su Deezer!',
+			notEncoded: 'Traccia non ancora codificata!',
+			notEncodedNoAlternative: 'Traccia non ancora codificata e nessuna alternativa trovata!',
+			wrongBitrate: 'Traccia non trovata con il bitrate specificato.',
+			wrongBitrateNoAlternative: 'Traccia non trovata con il bitrate specificato e nessuna alternativa trovata!',
+			no360RA: 'Traccia non disponibile in Reality Audio 360.',
+			notAvailable: 'Traccia non presente sui server di Deezer!',
+			notAvailableNoAlternative: 'Traccia non presente sui server di Deezer e nessuna alternativa trovata!'
+		}
 	},
 	favorites: {
 		title: 'Preferiti',
@@ -77,6 +87,7 @@ const it = {
 	downloads: 'download',
 	toasts: {
 		addedToQueue: '{0} aggiunto alla coda',
+		alreadyInQueue: '{0} è già nella coda!',
 		finishDownload: '{0} ha finito di scaricarsi.',
 		allDownloaded: 'Tutti i download completati!',
 		refreshFavs: 'Preferiti ricaricati!',

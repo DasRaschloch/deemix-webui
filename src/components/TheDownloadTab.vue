@@ -193,7 +193,7 @@ export default {
 		},
 		updateQueue(update) {
 			// downloaded and failed default to false?
-			const { uuid, downloaded, failed, progress, error, data } = update
+			const { uuid, downloaded, failed, progress, error, data, errid } = update
 
 			if (uuid && this.queue.indexOf(uuid) > -1) {
 				if (downloaded) {
@@ -216,7 +216,7 @@ export default {
 						$('#download_' + uuid + ' .queue_failed').text(this.queueList[uuid].failed)
 					}
 
-					this.queueList[uuid].errors.push({ message: error, data: data })
+					this.queueList[uuid].errors.push({ message: error, data: data, errid: errid })
 				}
 
 				if (progress) {

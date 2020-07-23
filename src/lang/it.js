@@ -8,19 +8,19 @@ const it = {
 		in: 'in {0}',
 		listTabs: {
 			all: 'tutto',
-			top_result: 'risultato migliore',
+			top_result: 'miglior risultato',
 			album: 'album',
 			artist: 'artista | artisti',
 			single: 'singolo | singoli',
 			title: 'titolo | titoli',
-			track: 'traccia | tracce',
-			trackN: '0 tracce | {n} traccia | {n} tracce',
+			track: 'brano | brani',
+			trackN: '0 brani | {n} brano | {n} brani',
 			releaseN: '0 dischi | {n} disco | {n} dischi',
 			playlist: 'playlist',
 			compile: 'compilation',
 			ep: 'ep',
 			spotifyPlaylist: 'playlist spotify',
-			releaseDate: 'data di rilascio',
+			releaseDate: 'data di uscita',
 			error: 'errore',
 			empty: ''
 		}
@@ -38,16 +38,16 @@ const it = {
 			ISRCnotOnDeezer: 'Questo ISRC non è disponibile su Deezer',
 			notYourPrivatePlaylist: 'Non puoi scaricare le playlist private degli altri.',
 			spotifyDisabled: 'Spotify Features non è impostato correttamente.',
-			trackNotOnDeezer: 'Traccia non trovata su Deezer!',
+			trackNotOnDeezer: 'Brano non trovato su Deezer!',
 			albumNotOnDeezer: 'Album non trovato su Deezer!',
-			notOnDeezer: 'Traccia non disponibile su Deezer!',
-			notEncoded: 'Traccia non ancora codificata!',
-			notEncodedNoAlternative: 'Traccia non ancora codificata e nessuna alternativa trovata!',
-			wrongBitrate: 'Traccia non trovata con il bitrate specificato.',
-			wrongBitrateNoAlternative: 'Traccia non trovata con il bitrate specificato e nessuna alternativa trovata!',
-			no360RA: 'Traccia non disponibile in Reality Audio 360.',
-			notAvailable: 'Traccia non presente sui server di Deezer!',
-			notAvailableNoAlternative: 'Traccia non presente sui server di Deezer e nessuna alternativa trovata!'
+			notOnDeezer: 'Brano non disponibile su Deezer!',
+			notEncoded: 'Brano non ancora codificato!',
+			notEncodedNoAlternative: 'Brano non ancora codificato e nessuna alternativa trovata!',
+			wrongBitrate: 'Brano non trovato con il bitrate specificato.',
+			wrongBitrateNoAlternative: 'Brano non trovato con il bitrate specificato e nessuna alternativa trovata!',
+			no360RA: 'Brano non disponibile in Reality Audio 360.',
+			notAvailable: 'Brano non presente sui server di Deezer!',
+			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!'
 		}
 	},
 	favorites: {
@@ -55,7 +55,7 @@ const it = {
 		noPlaylists: 'Nessuna Playlist preferita trovata',
 		noAlbums: 'Nessun Album preferito trovato',
 		noArtists: 'Nessun Artista preferito trovato',
-		noTracks: 'Nessuna Traccia preferito trovata'
+		noTracks: 'Nessun Brano preferito trovato'
 	},
 	home: {
 		needTologin: 'Devi accedere al tuo account Deezer, fino a quel momento non potrai scaricare nulla.',
@@ -69,7 +69,7 @@ const it = {
 		info:
 			'Puoi utilizzare questa sezione per avere più informazioni riguardanti il link che stai cercando di scaricare.',
 		useful:
-			'Ciò può esserti utile se stai cercando di scaricare tracce che non sono disponibili nel tuo Paese e vuoi sapere in quale Paese sono invece disponibili, per esempio.',
+			'Ciò può esserti utile se stai cercando di scaricare brani che non sono disponibili nel tuo Paese e vuoi sapere in quale Paese sono invece disponibili, per esempio.',
 		linkNotSupported: 'Questo link non è ancora supportato',
 		linkNotSupportedYet: 'Sembra che questo link non sia ancora supportato, prova ad analizzarne un altro.',
 		table: {
@@ -79,7 +79,7 @@ const it = {
 			duration: 'Durata',
 			diskNumber: 'Numero Disco',
 			trackNumber: 'Numero Traccia',
-			releaseDate: 'Data di rilascio',
+			releaseDate: 'Data di uscita',
 			bpm: 'BPM',
 			label: 'Etichetta',
 			recordType: 'Tipologia di registrazione',
@@ -90,10 +90,10 @@ const it = {
 	search: {
 		startSearching: 'Inizia a cercare!',
 		description:
-			'Puoi cercare una traccia, un intero album, un artista, una playlist.... quello che vuoi! Puoi anche incollare un link di Deezer',
+			'Puoi cercare un brano, un intero album, un artista, una playlist.... quello che vuoi! Puoi anche incollare un link di Deezer',
 		fans: '{0} fan',
 		noResults: 'Nessun risultato',
-		noResultsTrack: 'Nessuna traccia trovata',
+		noResultsTrack: 'Nessun brano trovato',
 		noResultsAlbum: 'Nessun album trovato',
 		noResultsArtist: 'Nessun artista trovato',
 		noResultsPlaylist: 'Nessuna playlist trovata'
@@ -115,7 +115,7 @@ const it = {
 		currentItemCancelled: 'Download corrente cancellato.',
 		startAddingArtist: 'Aggiungendo gli album di {0} alla coda',
 		finishAddingArtist: 'Aggiunto gli album di {0} alla coda',
-		startConvertingSpotifyPlaylist: 'Convertendo le tracce da spotify a deezer',
+		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita'
 	},
 	settings: {
@@ -139,9 +139,9 @@ const it = {
 		},
 		templates: {
 			title: 'Template',
-			tracknameTemplate: 'Template nome traccia',
-			albumTracknameTemplate: 'Template nome traccia negli Album',
-			playlistTracknameTemplate: 'Template nome traccia nelle Playlist'
+			tracknameTemplate: 'Template nome brano',
+			albumTracknameTemplate: 'Template nome brano negli Album',
+			playlistTracknameTemplate: 'Template nome brano nelle Playlist'
 		},
 		folders: {
 			title: 'Cartelle',
@@ -153,17 +153,17 @@ const it = {
 			albumNameTemplate: 'Template nome della cartella Album',
 			createCDFolder: 'Crea cartelle per i CD',
 			createStructurePlaylist: 'Crea la struttura di cartelle per le Playlist',
-			createSingleFolder: 'Crea la struttura di cartelle per le tracce singole'
+			createSingleFolder: 'Crea la struttura di cartelle per i brani singoli'
 		},
 		trackTitles: {
-			title: 'Titoli tracce',
+			title: 'Titoli brani',
 			padTracks: 'Aggiungi zeri ai numeri di traccia',
 			paddingSize: 'Sovrascrivi il numero di zeri da aggiungere',
 			illegalCharacterReplacer: 'Rimpiazza caratteri illegali con'
 		},
 		downloads: {
 			title: 'Download',
-			queueConcurrency: 'Download Concorrenti',
+			queueConcurrency: 'Download simultanei',
 			maxBitrate: {
 				title: 'Bitrate preferito',
 				9: 'FLAC 1411kbps',
@@ -176,19 +176,19 @@ const it = {
 				n: 'No, non sovrascrivere i file',
 				t: 'Sovrascrivi solo i tag'
 			},
-			fallbackBitrate: 'Ripiega a bitrate più bassi',
-			fallbackSearch: 'Ripiega alla ricerca',
+			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
+			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',
 			logErrors: 'Crea file di log per gli errori',
-			logSearched: 'Crea file di log per le alternative',
-			syncedLyrics: 'Crea il file .lyr (Testi Sincronizzati)',
-			createM3U8File: 'Crea il file playlist',
+			logSearched: 'Crea file di log per le alternative cercate',
+			syncedLyrics: 'Crea i file .lyr (Testi Sincronizzati)',
+			createM3U8File: 'Crea i file playlist',
 			playlistFilenameTemplate: 'Template nome del file playlist',
 			saveDownloadQueue: "Salva la coda di download quando chiudi l'app"
 		},
 		covers: {
 			title: 'Copertine',
 			saveArtwork: 'Salva copertina album',
-			coverImageTemplate: 'Template nome copertina Album',
+			coverImageTemplate: 'Template nome copertina album',
 			saveArtworkArtist: 'Salva copertina artista',
 			artistImageTemplate: 'Template nome copertina artista',
 			localArtworkSize: 'Dimensioni copertine locali',
@@ -220,7 +220,7 @@ const it = {
 			length: 'Durata Traccia',
 			barcode: "Barcode dell'album (UPC)",
 			bpm: 'BPM',
-			replayGain: 'Guadagno Brano',
+			replayGain: 'Replay gain',
 			label: 'Casa Discografica',
 			lyrics: 'Testo non Sincronizzato',
 			copyright: 'Copyright',
@@ -231,7 +231,7 @@ const it = {
 			title: 'Altro',
 			savePlaylistAsCompilation: 'Salva le playlist come Compilation',
 			useNullSeparator: 'Usa il carattere NULL come separatore',
-			saveID3v1: 'Salva anche il ID3v1',
+			saveID3v1: 'Salva anche l\'ID3v1',
 			multiArtistSeparator: {
 				title: 'Come vuoi separare gli artisti?',
 				nothing: "Salva solo l'artista principale",
@@ -256,8 +256,8 @@ const it = {
 				3: "Rimuovili dal titolo e dal nome dell'album",
 				2: 'Spostali sul titolo'
 			},
-			titleCasing: 'Capitalizzazione Titoli',
-			artistCasing: 'Capitalizzazione Artisti',
+			titleCasing: 'Formato testo dei titoli',
+			artistCasing: 'Formato testo degli artisti',
 			casing: {
 				nothing: 'Non cambiare',
 				lower: 'TUTTO MAIUSCOLO',

@@ -6,11 +6,11 @@
 		</div>
 		<div v-show="results.query !== ''">
 			<ul class="section-tabs">
-				<li class="section-tabs__tab search_tablinks" id="search_all_tab">All</li>
-				<li class="section-tabs__tab search_tablinks" id="search_track_tab">Tracks</li>
-				<li class="section-tabs__tab search_tablinks" id="search_album_tab">Album</li>
-				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">Artist</li>
-				<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">Playlist</li>
+				<li class="section-tabs__tab search_tablinks" id="search_all_tab">{{ $t('globals.listTabs.all') }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_track_tab">{{ $tc('globals.listTabs.track', 2) }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_album_tab">{{ $tc('globals.listTabs.album', 2) }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">{{ $tc('globals.listTabs.artist', 2) }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">{{ $tc('globals.listTabs.playlist', 2) }}</li>
 			</ul>
 			<div id="search_tab_content">
 				<!-- ### Main Search Tab ### -->
@@ -28,7 +28,7 @@
 								class="search_header"
 								:class="{ top_result_header: section === 'TOP_RESULT' }"
 							>
-								{{ names[section] }}
+								{{ $tc(`globals.listTabs.${section.toLowerCase()}`, 2) }}
 							</h2>
 							<!-- Top result -->
 							<div
@@ -59,17 +59,14 @@
 									<p class="secondary-text">
 										{{
 											results.allTab.TOP_RESULT[0].type == 'artist'
-												? numberWithDots(results.allTab.TOP_RESULT[0].nb_fan) + ' fans'
-												: 'by ' +
-												  results.allTab.TOP_RESULT[0].artist +
+												? $t('search.fans', [$n(results.allTab.TOP_RESULT[0].nb_fan)])
+												: $t('globals.by', [results.allTab.TOP_RESULT[0].artist]) +
 												  ' - ' +
-												  results.allTab.TOP_RESULT[0].nb_song +
-												  ' tracks'
+												  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
 										}}
 									</p>
 									<span class="tag">{{
-										results.allTab.TOP_RESULT[0].type.charAt(0).toUpperCase() +
-											results.allTab.TOP_RESULT[0].type.substring(1)
+										$tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1)
 									}}</span>
 								</div>
 							</div>
@@ -159,7 +156,7 @@
 										</div>
 									</div>
 									<p class="primary-text">{{ release.ART_NAME }}</p>
-									<p class="secondary-text">{{ numberWithDots(release.NB_FAN) + ' fans' }}</p>
+									<p class="secondary-text">{{ $t('search.fans', [$n(release.NB_FAN)]) }}</p>
 								</div>
 							</div>
 							<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
@@ -198,7 +195,7 @@
 										>
 										{{ release.ALB_TITLE }}
 									</p>
-									<p class="secondary-text">{{ release.ART_NAME + ' - ' + release.NUMBER_TRACK + ' tracks' }}</p>
+									<p class="secondary-text">{{ release.ART_NAME + ' - ' + $tc('globals.listTabs.trackN', release.NUMBER_TRACK) }}</p>
 								</div>
 							</div>
 							<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
@@ -232,7 +229,7 @@
 										</div>
 									</div>
 									<p class="primary-text">{{ release.TITLE }}</p>
-									<p class="secondary-text">{{ release.NB_SONG + ' tracks' }}</p>
+									<p class="secondary-text">{{ $tc('globals.listTabs.trackN', release.NB_SONG) }}</p>
 								</div>
 							</div>
 						</section>
@@ -244,21 +241,21 @@
 							)
 						"
 					>
-						<h1>No results</h1>
+						<h1>{{ $t('search.noResults') }}</h1>
 					</div>
 				</div>
 				<!-- ### Track Search Tab ### -->
 				<div id="track_search" class="search_tabcontent">
 					<base-loading-placeholder v-if="!results.trackTab.loaded"></base-loading-placeholder>
 					<div v-else-if="results.trackTab.data.length == 0">
-						<h1>No Tracks found</h1>
+						<h1>{{ $t('search.noResultsTrack') }}</h1>
 					</div>
 					<table class="table table--tracks" v-if="results.trackTab.data.length > 0">
 						<thead>
 							<tr>
-								<th colspan="2">Title</th>
-								<th>Artists</th>
-								<th>Album</th>
+								<th colspan="2">{{ $tc('globals.listTabs.title', 1) }}</th>
+								<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
+								<th>{{ $tc('globals.listTabs.album', 1) }}</th>
 								<th>
 									<i class="material-icons">
 										timer
@@ -337,7 +334,7 @@
 				<div id="album_search" class="search_tabcontent">
 					<base-loading-placeholder v-if="!results.albumTab.loaded"></base-loading-placeholder>
 					<div v-else-if="results.albumTab.data.length == 0">
-						<h1>No Albums found</h1>
+						<h1>{{ $t('search.noResultsAlbum') }}</h1>
 					</div>
 					<div class="release_grid" v-if="results.albumTab.data.length > 0">
 						<div
@@ -363,7 +360,7 @@
 								<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
 								{{ release.title }}
 							</p>
-							<p class="secondary-text">{{ 'by ' + release.artist.name + ' - ' + release.nb_tracks + ' tracks' }}</p>
+							<p class="secondary-text">{{ $t('globals.by', [release.artist.name]) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks) }}</p>
 						</div>
 					</div>
 				</div>
@@ -371,7 +368,7 @@
 				<div id="artist_search" class="search_tabcontent">
 					<base-loading-placeholder v-if="!results.artistTab.loaded"></base-loading-placeholder>
 					<div v-else-if="results.artistTab.data.length == 0">
-						<h1>No Artists found</h1>
+						<h1>{{ $t('search.noResultsArtist') }}</h1>
 					</div>
 					<div class="release_grid" v-if="results.artistTab.data.length > 0">
 						<div
@@ -394,7 +391,7 @@
 								</div>
 							</div>
 							<p class="primary-text">{{ release.name }}</p>
-							<p class="secondary-text">{{ release.nb_album + ' releases' }}</p>
+							<p class="secondary-text">{{ $tc('globals.listTabs.releaseN', release.nb_album) }}</p>
 						</div>
 					</div>
 				</div>
@@ -402,7 +399,7 @@
 				<div id="playlist_search" class="search_tabcontent">
 					<base-loading-placeholder v-if="!results.playlistTab.loaded"></base-loading-placeholder>
 					<div v-else-if="results.playlistTab.data.length == 0">
-						<h1>No Playlists found</h1>
+						<h1>{{ $t('search.noResultsPlaylist') }}</h1>
 					</div>
 					<div class="release_grid" v-if="results.playlistTab.data.length > 0">
 						<div
@@ -455,13 +452,6 @@ export default {
 	},
 	data() {
 		return {
-			names: {
-				TOP_RESULT: 'Top Result',
-				TRACK: 'Tracks',
-				ARTIST: 'Artists',
-				ALBUM: 'Albums',
-				PLAYLIST: 'Playlists'
-			},
 			results: {
 				query: '',
 				allTab: {

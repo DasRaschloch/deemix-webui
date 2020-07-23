@@ -8,12 +8,14 @@ const it = {
 		in: 'in {0}',
 		listTabs: {
 			all: 'tutto',
+			top_result: 'risultato migliore',
 			album: 'album',
 			artist: 'artista | artisti',
 			single: 'singolo | singoli',
 			title: 'titolo | titoli',
 			track: 'traccia | tracce',
 			trackN: '0 tracce | {n} traccia | {n} tracce',
+			releaseN: '0 dischi | {n} disco | {n} dischi',
 			playlist: 'playlist',
 			compile: 'compilation',
 			ep: 'ep',
@@ -88,7 +90,13 @@ const it = {
 	search: {
 		startSearching: 'Inizia a cercare!',
 		description:
-			'Puoi cercare una traccia, un intero album, un artista, una playlist.... quello che vuoi! Puoi anche incollare un link di Deezer'
+			'Puoi cercare una traccia, un intero album, un artista, una playlist.... quello che vuoi! Puoi anche incollare un link di Deezer',
+		fans: '{0} fan',
+		noResults: 'Nessun risultato',
+		noResultsTrack: 'Nessuna traccia trovata',
+		noResultsAlbum: 'Nessun album trovato',
+		noResultsArtist: 'Nessun artista trovato',
+		noResultsPlaylist: 'Nessuna playlist trovata'
 	},
 	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',
 	downloads: 'download',

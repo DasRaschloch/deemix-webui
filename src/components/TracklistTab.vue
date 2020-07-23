@@ -22,7 +22,7 @@
 						<i class="material-icons">music_note</i>
 					</th>
 					<th>#</th>
-					<th>{{ $tc('globals.listTabs.track', 1) }}</th>
+					<th>{{ $tc('globals.listTabs.title', 1) }}</th>
 					<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
 					<th v-if="type === 'playlist'">{{ $tc('globals.listTabs.album', 1) }}</th>
 					<th>

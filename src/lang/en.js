@@ -9,12 +9,14 @@ const en = {
 		listTabs: {
 			empty: '',
 			all: 'all',
+			top_result: 'top result',
 			album: 'album | albums',
 			artist: 'artist | artists',
 			single: 'single | singles',
 			title: 'title | titles',
 			track: 'track | tracks',
 			trackN: '0 tracks | {n} track | {n} tracks',
+			releaseN: '0 releases | {n} release | {n} releases',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
@@ -87,7 +89,13 @@ const en = {
 	search: {
 		startSearching: 'Start searching!',
 		description:
-			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link'
+			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
+		fans: '{0} fans',
+		noResults: 'No results',
+		noResultsTrack: 'No Tracks found',
+		noResultsAlbum: 'No Albums found',
+		noResultsArtist: 'No Artists found',
+		noResultsPlaylist: 'No Playlists found'
 	},
 	searchbar: 'Search anything you want (or just paste a link)',
 	downloads: 'downloads',

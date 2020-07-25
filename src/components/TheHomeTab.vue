@@ -25,7 +25,7 @@
 							:data-link="release.link"
 							class="download_overlay"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
@@ -55,7 +55,7 @@
 							:data-link="release.link"
 							class="download_overlay"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>

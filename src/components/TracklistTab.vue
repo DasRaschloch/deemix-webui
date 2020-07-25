@@ -44,6 +44,7 @@
 										:class="{ preview_playlist_controls: track.preview, disabled: !track.preview }"
 										v-on="{ click: track.preview ? playPausePreview : false }"
 										:data-preview="track.preview"
+										:title="$t('globals.play_hint')"
 									>
 										play_arrow
 									</i>
@@ -111,6 +112,7 @@
 								@click="playPausePreview"
 								:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
 								:data-preview="track.preview_url"
+								:title="$t('globals.play_hint')"
 							>
 								play_arrow
 							</i>

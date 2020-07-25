@@ -16,7 +16,7 @@
 				:data-link="link"
 				class="fab right"
 			>
-				<i class="material-icons">get_app</i>
+				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 			</div>
 		</header>
 
@@ -75,7 +75,7 @@
 						:data-link="release.link"
 						class="clickable"
 					>
-						<i class="material-icons">
+						<i class="material-icons" :title="$t('globals.download_hint')">
 							file_download
 						</i>
 					</td>

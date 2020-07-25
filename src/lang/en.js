@@ -6,6 +6,11 @@ const en = {
 		download: 'Download {0}',
 		by: 'by {0}',
 		in: 'in {0}',
+		download_hint: 'Download',
+		play_hint: 'Play',
+		toggle_download_tab_hint: 'Expand/Collapse',
+		clean_queue_hint: 'Clear Finished',
+		cancel_queue_hint: 'Cancel All',
 		listTabs: {
 			empty: '',
 			all: 'all',

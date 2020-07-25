@@ -51,7 +51,7 @@
 										:data-link="results.allTab.TOP_RESULT[0].link"
 										class="download_overlay"
 									>
-										<i class="material-icons">get_app</i>
+										<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 									</div>
 								</div>
 								<div class="info_box">
@@ -61,8 +61,8 @@
 											results.allTab.TOP_RESULT[0].type == 'artist'
 												? $t('search.fans', [$n(results.allTab.TOP_RESULT[0].nb_fan)])
 												: $t('globals.by', [results.allTab.TOP_RESULT[0].artist]) +
-												  ' - ' +
-												  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
+													' - ' +
+													$tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
 										}}
 									</p>
 									<span class="tag">{{
@@ -119,7 +119,7 @@
 												role="button"
 												aria-label="download"
 											>
-												<i class="material-icons">
+												<i class="material-icons" :title="$t('globals.download_hint')">
 													get_app
 												</i>
 											</td>
@@ -152,7 +152,7 @@
 											:data-link="'https://deezer.com/artist/' + release.ART_ID"
 											class="download_overlay"
 										>
-											<i class="material-icons">get_app</i>
+											<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 										</div>
 									</div>
 									<p class="primary-text">{{ release.ART_NAME }}</p>
@@ -184,7 +184,7 @@
 											:data-link="'https://deezer.com/album/' + release.ALB_ID"
 											class="download_overlay"
 										>
-											<i class="material-icons">get_app</i>
+											<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 										</div>
 									</div>
 									<p class="primary-text inline-flex">
@@ -225,7 +225,7 @@
 											:data-link="'https://deezer.com/playlist/' + release.PLAYLIST_ID"
 											class="download_overlay"
 										>
-											<i class="material-icons">get_app</i>
+											<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 										</div>
 									</div>
 									<p class="primary-text">{{ release.TITLE }}</p>
@@ -278,6 +278,7 @@
 											@mouseleave="previewMouseLeave"
 											v-if="track.preview"
 											class="material-icons preview_controls"
+											:title="$t('globals.play_hint')"
 										>
 											play_arrow
 										</i>
@@ -322,7 +323,7 @@
 									role="button"
 									aria-label="download"
 								>
-									<i class="material-icons">
+									<i class="material-icons" :title="$t('globals.download_hint')">
 										get_app
 									</i>
 								</td>
@@ -353,7 +354,7 @@
 									:data-link="release.link"
 									class="download_overlay"
 								>
-									<i class="material-icons">get_app</i>
+									<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 								</div>
 							</div>
 							<p class="primary-text inline-flex">
@@ -387,7 +388,7 @@
 									:data-link="release.link"
 									class="download_overlay"
 								>
-									<i class="material-icons">get_app</i>
+									<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 								</div>
 							</div>
 							<p class="primary-text">{{ release.name }}</p>
@@ -418,7 +419,7 @@
 									:data-link="release.link"
 									class="download_overlay"
 								>
-									<i class="material-icons">get_app</i>
+									<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 								</div>
 							</div>
 							<p class="primary-text">{{ release.title }}</p>

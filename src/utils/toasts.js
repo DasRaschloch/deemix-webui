@@ -31,7 +31,12 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
 			duration: dismiss ? 3000 : 0,
 			gravity: 'bottom',
-			position: 'left'
+			position: 'left',
+			onClick: function(){
+				if (toastObj) {
+					toastObj.hideToast()
+				}
+			}
 		}).showToast()
 		if (id) {
 			toastsWithId[id] = toastObj

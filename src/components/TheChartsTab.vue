@@ -62,6 +62,7 @@
 									@mouseleave="previewMouseLeave"
 									v-if="track.preview"
 									class="material-icons preview_controls"
+									:title="$t('globals.play_hint')"
 								>
 									play_arrow
 								</i>
@@ -101,7 +102,7 @@
 							role="button"
 							aria-label="download"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</td>
 					</tr>
 				</tbody>

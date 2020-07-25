@@ -6,6 +6,11 @@ const it = {
 		download: 'Scarica {0}',
 		by: 'di {0}',
 		in: 'in {0}',
+		download_hint: 'Scarica',
+		play_hint: 'Play',
+		toggle_download_tab_hint: 'Expand/Collapse',
+		clean_queue_hint: 'Clear Finished',
+		cancel_queue_hint: 'Cancel All',
 		listTabs: {
 			all: 'tutto',
 			top_result: 'miglior risultato',

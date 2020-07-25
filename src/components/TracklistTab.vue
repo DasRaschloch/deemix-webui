@@ -35,8 +35,8 @@
 			</thead>
 			<tbody>
 				<template v-if="type !== 'spotifyPlaylist'">
-					<template v-for="track in body">
-						<tr v-if="track.type == 'track'">
+					<template v-for="(track, index) in body">
+						<tr v-if="track.type == 'track'" @click="selectRow(index, track)">
 							<td class="table__cell--x-small table__cell--center">
 								<div class="table__cell-content table__cell-content--vertical-center">
 									<i
@@ -44,6 +44,7 @@
 										:class="{ preview_playlist_controls: track.preview, disabled: !track.preview }"
 										v-on="{ click: track.preview ? playPausePreview : false }"
 										:data-preview="track.preview"
+										:title="$t('globals.play_hint')"
 									>
 										play_arrow
 									</i>
@@ -111,6 +112,7 @@
 								@click="playPausePreview"
 								:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
 								:data-preview="track.preview_url"
+								:title="$t('globals.play_hint')"
 							>
 								play_arrow
 							</i>
@@ -285,10 +287,14 @@ export default {
 			} else {
 				this.body = playlistTracks
 			}
+		},
+		selectRow(index, track) {
+			track.selected = !track.selected;
 		}
 	},
 	mounted() {
 		EventBus.$on('tracklistTab:reset', this.reset)
+		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)

@@ -12,13 +12,14 @@
 			class="material-icons download_bar_icon"
 			@click.prevent="toggleDownloadTab"
 			ref="toggler"
+			:title="$t('globals.toggle_download_tab_hint')"
 		></i>
 		<div id="queue_buttons">
 			<i id="open_downloads_folder" class="material-icons download_bar_icon hide" @click="openDownloadsFolder">
 				folder_open
 			</i>
-			<i id="clean_queue" class="material-icons download_bar_icon" @click="cleanQueue">clear_all</i>
-			<i id="cancel_queue" class="material-icons download_bar_icon" @click="cancelQueue">delete_sweep</i>
+			<i id="clean_queue" class="material-icons download_bar_icon" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">clear_all</i>
+			<i id="cancel_queue" class="material-icons download_bar_icon" @click="cancelQueue" :title="$t('globals.cancel_queue_hint')">delete_sweep</i>
 		</div>
 		<div id="download_list" @click="handleListClick" ref="list"></div>
 	</div>

@@ -9,6 +9,7 @@ $table-border-radius: 3px;
 	tbody {
 		tr:not(.table__row-no-highlight):hover {
 			background: var(--table-highlight);
+			cursor: default;
 		}
 	}
 
@@ -199,7 +200,7 @@ $table-border-radius: 3px;
 
 			&:hover {
 				i.material-icons {
-					color: var(--table-bg);
+					color: var(--icon-hover);
 				}
 			}
 		}

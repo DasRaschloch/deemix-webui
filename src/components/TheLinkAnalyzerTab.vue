@@ -47,7 +47,7 @@
 					:data-link="link"
 					class="fab right"
 				>
-					<i class="material-icons">get_app</i>
+					<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 				</div>
 			</header>
 			<table class="table">

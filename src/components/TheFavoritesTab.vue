@@ -43,7 +43,7 @@
 							:data-link="release.link"
 							class="download_overlay"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
@@ -69,7 +69,7 @@
 							:data-link="release.link"
 							class="download_overlay"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
@@ -100,7 +100,7 @@
 							:data-link="release.link"
 							class="download_overlay"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
@@ -124,7 +124,7 @@
 							:data-link="release.link"
 							class="download_overlay"
 						>
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</div>
 					<p class="primary-text">{{ release.name }}</p>
@@ -153,6 +153,7 @@
 								@mouseleave="previewMouseLeave"
 								v-if="track.preview"
 								class="material-icons preview_controls"
+								:title="$t('globals.play_hint')"
 							>
 								play_arrow
 							</i>
@@ -191,7 +192,7 @@
 						aria-label="download"
 					>
 						<div class="table__cell-content table__cell-content--vertical-center">
-							<i class="material-icons">get_app</i>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
 					</td>
 				</tr>

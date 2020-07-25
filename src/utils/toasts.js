@@ -18,6 +18,7 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 			toastDOM.find('.toast-icon').html(icon)
 		}
 		if (dismiss !== null && dismiss) {
+			toastDOM.addClass('dismissable')
 			setTimeout(function() {
 				toastObj.hideToast()
 				delete toastsWithId[id]
@@ -32,8 +33,16 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 			duration: dismiss ? 3000 : 0,
 			gravity: 'bottom',
 			position: 'left',
+			className: dismiss ? 'dismissable' : '',
 			onClick: function(){
-				if (toastObj) {
+				let dismissable = true
+				if (id){
+					let toastClasses = document.querySelector(`div.toastify[toast_id=${id}]`).classList
+					if (toastClasses){
+						dismissable = toastClasses.indexOf('dismissable') != -1
+					}
+				}
+				if (toastObj && dismissable) {
 					toastObj.hideToast()
 				}
 			}

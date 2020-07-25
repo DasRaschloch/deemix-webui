@@ -21,10 +21,12 @@ html[data-theme='light'] {
 
 	--sidebar-link-bg: hsl(0, 0%, 24%);
 	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
+	
+	--icon-hover: var(--accent-color);
 
 	--table-bg: hsl(0, 0%, 100%);
-	--table-zebra: hsl(0, 0%, 79%);
-	--table-highlight: hsl(0, 0%, 56%);
+	--table-zebra: hsl(0, 0%, 90%);
+	--table-highlight: hsl(0, 0%, 84%);
 }
 
 html[data-theme='dark'] {
@@ -39,6 +41,8 @@ html[data-theme='dark'] {
 
 	--sidebar-link-bg: hsl(0, 0%, 24%);
 	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
+
+	--icon-hover: var(--accent-color);
 
 	--table-bg: hsl(0, 0%, 8%);
 	--table-zebra: hsl(0, 0%, 14%);
@@ -57,6 +61,8 @@ html[data-theme='purple'] {
 
 	--sidebar-link-bg: hsl(257, 70%, 17%);
 	--sidebar-link-bg-20: hsla(257, 70%, 17%, 0.2);
+
+	--icon-hover: hsl(186, 44%, 54%);
 
 	--table-bg: hsl(261, 74%, 6%);
 	--table-zebra: hsl(257, 61%, 10%);

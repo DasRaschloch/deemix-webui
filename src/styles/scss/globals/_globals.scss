@@ -142,7 +142,7 @@ i {
 	&.explicit_icon {
 		color: hsl(3, 100%, 59%);
 		margin-right: $explicit-separator;
-    margin-left: -3px;
+		margin-left: -3px;
 
 		&.explicit_icon--right {
 			margin-left: $explicit-separator;
@@ -179,6 +179,10 @@ a {
 
 .clickable {
 	cursor: pointer !important;
+}
+.table--tracklist .clickable:hover,
+.table--charts .clickable:hover {
+	text-decoration: underline;
 }
 
 .fixed_footer footer {

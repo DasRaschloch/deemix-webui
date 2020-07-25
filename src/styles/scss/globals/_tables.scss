@@ -9,7 +9,7 @@ $table-border-radius: 3px;
 	tbody {
 		tr:not(.table__row-no-highlight):hover {
 			background: var(--table-highlight);
-      cursor: default;
+			cursor: default;
 		}
 	}
 

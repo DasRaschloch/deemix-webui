@@ -21,6 +21,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 - Settings tab
 	- Maybe tabbing the section for easy navigation
 	- Could use a carousel, but it's not worth adding a new dep
+  - Variable selector near template inputs
 - Add Custom Context menu to objects
   - Copy Link where possible
   - Copy Image URL where possible

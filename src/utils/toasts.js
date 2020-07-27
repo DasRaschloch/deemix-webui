@@ -39,7 +39,7 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 				if (id){
 					let toastClasses = document.querySelector(`div.toastify[toast_id=${id}]`).classList
 					if (toastClasses){
-						dismissable = toastClasses.indexOf('dismissable') != -1
+						dismissable = Array.from(toastClasses).indexOf('dismissable') != -1
 					}
 				}
 				if (toastObj && dismissable) {

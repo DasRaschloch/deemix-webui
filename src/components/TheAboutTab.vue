@@ -2,112 +2,78 @@
 	<div id="about_tab" class="main_tabcontent">
 		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
 		<ul>
-			<li>This app uses the <strong>deemix</strong> library, which you can use to make your own UI for deemix.</li>
-			<!-- <li>
-				Here's the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">official repo</a> for the library.
-			</li> -->
-			<li>
-				Thanks to <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> for helping me with this
-				project and to <strong>BasCurtiz</strong> and <strong>scarvimane</strong> for making the icon.
-			</li>
-			<li>
-				Stay up to date with the updates by following the
-				<a href="https://t.me/RemixDevNews" target="_blank">news channel</a> on Telegram.
-			</li>
+			<li v-html="$t('about.usesLibrary')"></li>
+			<li v-html="$t('about.thanks')"></li>
+			<li v-html="$t('about.upToDate')"></li>
 		</ul>
 
-		<h2>Useful Links</h2>
+		<h2>{{ $t('about.titles.usefulLinks') }}</h2>
 		<ul class="no-dots">
 			<li>
-				<a href="https://deemix.app" target="_blank">🌍 Official Website</a>
+				<a href="https://deemix.app" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li>
 			<li>
-				<a href="https://codeberg.org/RemixDev/deemix" target="_blank">🚀 Official Library Repository</a>
+				<a href="https://codeberg.org/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>
 			<li>
-				<a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">💻 Official WebUI Repository</a>
+				<a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">💻 {{ $t('about.officialWebuiRepo') }}</a>
 			</li>
 			<li>
-				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 Official Subreddit</a>
+				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>
 			</li>
 			<li>
-				<a href="https://t.me/RemixDevNews" target="_blank">📰 News Channel</a>
-			</li>
-		</ul>
-
-		<h2>
-			Bug Reports
-			<span class="subheading">
-				Is there something that isn't working in deemix? Tell us!
-			</span>
-		</h2>
-		<ul>
-			<li>
-				If you have questions or problems with the app, search for a solution in the
-				<a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first and then, if you don't find
-				anything you can make a post with your issue on the subreddit.
-			</li>
-			<li>
-				Before reporting a bug make sure you're running the latest version of the app and that the thing you want to
-				report is actually a bug and not something that's wrong only on your end.
-			</li>
-			<li>
-				Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been
-				already reported.
-			</li>
-			<li><strong>DO NOT</strong> open issues for asking questions, there is a subreddit for that.</li>
-		</ul>
-
-		<h2>
-			Contributing
-			<span class="subheading">
-				You want to contribute to this project? You can do it in different ways!
-			</span>
-		</h2>
-		<ul>
-			<li>
-				If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the
-				library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.
-			</li>
-			<li>
-				I accept features as well, but no complex things, as they can be implementend directly in the app and not the
-				library.
-			</li>
-			<li>
-				If you're fluent in another programming language you could try to port deemix into other programming languages!
-			</li>
-			<li>
-				You need help understanding the code? Just hit RemixDev up on Telegram or Reddit.
-			</li>
-			<li>
-				If you know Vue.js (JavaScript), HTML or CSS you could contribute to the
-				<a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">webui</a>.
-			</li>
-			<li>
-				If you find some bugs you can report them in the repo, just make sure your bug isn't something that only affects
-				you and it can be reproducible by other users as well.
-			</li>
-			<li>
-				Duplicate bug reports will be closed, so keep an eye out on that.
+				<a href="https://t.me/RemixDevNews" target="_blank">📰 {{ $t('about.newsChannel') }}</a>
 			</li>
 		</ul>
 
 		<h2>
-			Donations
+			{{ $t('about.titles.bugReports') }}
 			<span class="subheading">
-				You want to contribute monetarily? You could make a donation!
+				{{ $t('about.subtitles.bugReports') }}
 			</span>
 		</h2>
 		<ul>
+			<li v-html="$t('about.questions')"></li>
 			<li>
-				If you can donate you can do it with this links.
+				{{ $t('about.beforeReporting') }}
+			</li>
+			<li v-html="$t('about.beSure')"></li>
+			<li>
+				{{ $t('about.duplicateReports') }}
+			</li>
+			<li v-html="$t('about.dontOpenIssues')"></li>
+		</ul>
+
+		<h2>
+			{{ $t('about.titles.contributing') }}
+			<span class="subheading">
+				{{ $t('about.subtitles.contributing') }}
+			</span>
+		</h2>
+		<ul>
+			<li v-html="$t('about.newUI')"></li>
+			<li>
+				{{ $t('about.acceptFeatures') }}
+			</li>
+			<li v-html="$t('about.contributeWebUI')"></li>
+			<li>
+				{{ $t('about.otherLanguages') }}
 			</li>
 			<li>
-				You shoud remember that <strong>this is a free project</strong> and
-				<strong>you should support the artists you love</strong> before supporting the developers.
+				{{ $t('about.understandingCode') }}
 			</li>
+		</ul>
+
+		<h2>
+			{{ $t('about.titles.donations') }}
+			<span class="subheading">
+				{{ $t('about.subtitles.donations') }}
+			</span>
+		</h2>
+		<ul>
+			<li v-html="$t('about.itsFree')"></li>
 			<li>
-				Don't feel obligated to donate, I appreciate you anyway!
+				{{ $t('about.notObligated') }}
 			</li>
 		</ul>
 		<ul>
@@ -117,7 +83,7 @@
 				<a href="https://paypal.me/RemixDev" target="_blank">PayPal.me/RemixDev</a>
 			</li>
 			<li>
-				<i v-html="bitcoin" />
+				<i class="bitcoin" v-html="bitcoin" />
 				<strong>Bitcoin:</strong> 1sdNymSJrMBWyHM4u2m9uco5nv6uV4Qs1
 			</li>
 			<li>
@@ -126,7 +92,7 @@
 			</li>
 		</ul>
 
-		<h2>License</h2>
+		<h2>{{ $t('about.titles.license') }}</h2>
 		<p>
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
 				<img
@@ -136,12 +102,7 @@
 				/>
 			</a>
 		</p>
-		<p>
-			This work is licensed under a
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.
-		</p>
+		<p v-html="$t('about.lincensedUnder')"></p>
 	</div>
 </template>
 <style lang="scss" scoped>
@@ -160,7 +121,10 @@ i {
 i /deep/ svg {
 	fill: white;
 	width: 20px;
-	// height: 20px;
+}
+
+.bitcoin /deep/ svg {
+	fill: #ff9900;
 }
 
 :link {

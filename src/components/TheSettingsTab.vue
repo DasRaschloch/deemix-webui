@@ -26,7 +26,7 @@
 			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
-			<button id="settings_btn_updateArl" @click="login" style="width:100%;">
+			<button id="settings_btn_updateArl" @click="login" style="width: 100%;">
 				{{ $t('settings.login.arl.update') }}
 			</button>
 		</div>

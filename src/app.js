@@ -7,6 +7,7 @@ window.vol = {
 
 import App from '@components/App.vue'
 import i18n from '@/plugins/i18n'
+// import router from '@/plugins/router'
 
 import $ from 'jquery'
 import { socket } from '@/utils/socket'
@@ -21,8 +22,8 @@ function startApp() {
 }
 
 function mountApp() {
-	// TODO Remove the App instance from the window when deemix will be a complete Vue App
 	new Vue({
+		// router,
 		i18n,
 		render: h => h(App)
 	}).$mount('#app')
@@ -148,10 +149,8 @@ socket.on('errorMessage', function(error) {
 })
 
 socket.on('queueError', function(queueItem) {
-	if (queueItem.errid)
-		toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
-	else
-		toast(queueItem.error, 'error')
+	if (queueItem.errid) toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
+	else toast(queueItem.error, 'error')
 })
 
 socket.on('alreadyInQueue', function(data) {

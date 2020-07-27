@@ -106,7 +106,7 @@ const it = {
 		needTologin: 'Devi accedere al tuo account Deezer, fino a quel momento non potrai scaricare nulla.',
 		openSettings: 'Apri le impostazioni',
 		sections: {
-			popularPlaylists: 'Playlyst Popolari',
+			popularPlaylists: 'Playlist Popolari',
 			popularAlbums: 'Album più riprodotti'
 		}
 	},

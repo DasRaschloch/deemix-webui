@@ -6,9 +6,10 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 
 - Use Vue as much as possible
   - First step: rewrite the app in Single File Components way ✅
-  - Second step: Remove jQuery
+  - Second step: Implement routing for the whole app using Vue Router
+  - Third step: Remove jQuery
 - Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
-  - Use ES2020 async imports
+  - Use ES2020 async imports, if possible
 - Make the UI look coherent
   - Style buttons
   - Style text inputs
@@ -19,6 +20,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 	- Better placeholer before analyzing and error feedback
 - Settings tab
 	- Maybe tabbing the section for easy navigation
+	- Could use a carousel, but it's not worth adding a new dep
 - Add Custom Context menu to objects
   - Copy Link where possible
   - Copy Image URL where possible

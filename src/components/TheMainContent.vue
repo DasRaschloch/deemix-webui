@@ -1,5 +1,7 @@
 <template>
 	<main id="main_content">
+		<!-- <router-link to="/tracklist/132">Go to Foo</router-link> -->
+		<!-- <router-view></router-view> -->
 		<TheMiddleSection />
 		<TheDownloadTab />
 	</main>
@@ -13,6 +15,9 @@ export default {
 	components: {
 		TheMiddleSection,
 		TheDownloadTab
+	},
+	mounted() {
+		console.log(this.$route)
 	}
 }
 </script>

@@ -60,9 +60,9 @@
 									</i>
 									{{
 										track.title +
-											(track.title_version && track.title.indexOf(track.title_version) == -1
-												? ' ' + track.title_version
-												: '')
+										(track.title_version && track.title.indexOf(track.title_version) == -1
+											? ' ' + track.title_version
+											: '')
 									}}
 								</div>
 							</td>
@@ -131,7 +131,7 @@
 				</template>
 			</tbody>
 		</table>
-		<span v-if="label" style="opacity: 0.40;margin-top: 8px;display: inline-block;font-size: 13px;">{{ label }}</span>
+		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px;">{{ label }}</span>
 		<footer>
 			<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="link">
 				{{ `${$t('globals.download', [$tc(`globals.listTabs.${type}`, 1)])}` }}
@@ -289,10 +289,11 @@ export default {
 			}
 		},
 		selectRow(index, track) {
-			track.selected = !track.selected;
+			track.selected = !track.selected
 		}
 	},
 	mounted() {
+		console.log('tracklist mounted')
 		EventBus.$on('tracklistTab:reset', this.reset)
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 

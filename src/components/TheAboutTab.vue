@@ -1,5 +1,5 @@
 <template>
-	<div id="about_tab" class="main_tabcontent">
+	<div id="about_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
 		<ul>
 			<li v-html="$t('about.usesLibrary')"></li>
@@ -208,6 +208,14 @@ export default {
 		paypal,
 		ethereum,
 		bitcoin
-	})
+	}),
+	mounted() {
+		console.log('about mounted')
+		this.$refs.root.style.display = 'block'
+	},
+	beforeDestroy() {
+		console.log('about bef dest')
+		this.$refs.root.style.display = 'none'
+	}
 }
 </script>

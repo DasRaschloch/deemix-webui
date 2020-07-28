@@ -3,9 +3,17 @@ import VueRouter from 'vue-router'
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
 
-import TheHomeTab from '@components/TheHomeTab.vue'
-import TracklistTab from '@components/TracklistTab.vue'
 import ArtistTab from '@components/ArtistTab.vue'
+import TracklistTab from '@components/TracklistTab.vue'
+
+import TheHomeTab from '@components/TheHomeTab.vue'
+import TheChartsTab from '@components/TheChartsTab.vue'
+import TheFavoritesTab from '@components/TheFavoritesTab.vue'
+import TheErrorsTab from '@components/TheErrorsTab.vue'
+import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
+import TheAboutTab from '@components/TheAboutTab.vue'
+import TheSettingsTab from '@components/TheSettingsTab.vue'
+import TheMainSearch from '@components/TheMainSearch.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +32,41 @@ const routes = [
 		name: 'Artist',
 		component: ArtistTab
 	},
+	{
+		path: '/charts',
+		name: 'Charts',
+		component: TheChartsTab
+	},
+	{
+		path: '/favorites',
+		name: 'Favorites',
+		component: TheFavoritesTab
+	},
+	{
+		path: '/errors',
+		name: 'Errors',
+		component: TheErrorsTab
+	},
+	{
+		path: '/link-analyzer',
+		name: 'Link Analyzer',
+		component: TheLinkAnalyzerTab
+	},
+	{
+		path: '/about',
+		name: 'About',
+		component: TheAboutTab
+	},
+	{
+		path: '/settings',
+		name: 'Settings',
+		component: TheSettingsTab
+	},
+	// {
+	// 	path: '/search',
+	//  name: 'Search',
+	// 	component: TheMainSearch
+	// },
 	// 404 client side
 	{
 		path: '*',

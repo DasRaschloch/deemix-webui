@@ -34,7 +34,7 @@
 				<div
 					v-for="theme of themes"
 					:key="theme"
-					class="theme_toggler "
+					class="theme_toggler"
 					:class="[{ 'theme_toggler--active': activeTheme === theme }, `theme_toggler--${theme}`]"
 					@click="changeTheme(theme)"
 				></div>
@@ -142,24 +142,45 @@ export default {
 			switch (targetID) {
 				case 'main_search_tablink':
 					selectedTab = 'search_tab'
+					this.$router.push({
+						name: 'Search'
+					})
 					break
 				case 'main_home_tablink':
 					selectedTab = 'home_tab'
+					this.$router.push({
+						name: 'Home'
+					})
 					break
 				case 'main_charts_tablink':
 					selectedTab = 'charts_tab'
+					this.$router.push({
+						name: 'Charts'
+					})
 					break
 				case 'main_favorites_tablink':
 					selectedTab = 'favorites_tab'
+					this.$router.push({
+						name: 'Favorites'
+					})
 					break
 				case 'main_analyzer_tablink':
 					selectedTab = 'analyzer_tab'
+					this.$router.push({
+						name: 'Link Analyzer'
+					})
 					break
 				case 'main_settings_tablink':
 					selectedTab = 'settings_tab'
+					this.$router.push({
+						name: 'Settings'
+					})
 					break
 				case 'main_about_tablink':
 					selectedTab = 'about_tab'
+					this.$router.push({
+						name: 'About'
+					})
 					break
 
 				default:

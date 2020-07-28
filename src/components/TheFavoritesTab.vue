@@ -1,5 +1,5 @@
 <template>
-	<div id="favorites_tab" class="main_tabcontent" @click="handleFavoritesTabClick">
+	<div id="favorites_tab" class="main_tabcontent" @click="handleFavoritesTabClick" ref="root">
 		<h2 class="page_heading">
 			{{ $t('favorites.title') }}
 			<div
@@ -48,9 +48,7 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{
-							`${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}`
-						}}
+						{{ `${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 					</p>
 				</div>
 				<div
@@ -74,12 +72,7 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{
-							`${$t('globals.by', [release.creator.name])} - ${$tc(
-								'globals.listTabs.trackN',
-								release.nb_tracks
-							)}`
-						}}
+						{{ `${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 					</p>
 				</div>
 			</div>
@@ -163,7 +156,7 @@
 					<td class="table__cell--large breakline">
 						{{
 							track.title +
-								(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
+							(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
 						}}
 					</td>
 					<td
@@ -315,6 +308,8 @@ export default {
 		}
 	},
 	mounted() {
+		console.log('favorites mounted')
+		this.$refs.root.style.display = 'block'
 		socket.on('init_favorites', this.initFavorites)
 		socket.on('updated_userFavorites', this.updated_userFavorites)
 		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
@@ -322,6 +317,10 @@ export default {
 		socket.on('updated_userAlbums', this.updated_userAlbums)
 		socket.on('updated_userArtist', this.updated_userArtist)
 		socket.on('updated_userTracks', this.updated_userTracks)
+	},
+	beforeDestroy() {
+		console.log('favorites bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

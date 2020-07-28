@@ -1,5 +1,5 @@
 <template>
-	<div id="search_tab" class="main_tabcontent" @click="handleSearchTabClick">
+	<div id="search_tab" class="main_tabcontent" @click="handleSearchTabClick" ref="root">
 		<div :class="{ hide: results.query != '' }">
 			<h2>{{ $t('search.startSearching') }}</h2>
 			<p>{{ $t('search.description') }}</p>
@@ -9,8 +9,12 @@
 				<li class="section-tabs__tab search_tablinks" id="search_all_tab">{{ $t('globals.listTabs.all') }}</li>
 				<li class="section-tabs__tab search_tablinks" id="search_track_tab">{{ $tc('globals.listTabs.track', 2) }}</li>
 				<li class="section-tabs__tab search_tablinks" id="search_album_tab">{{ $tc('globals.listTabs.album', 2) }}</li>
-				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">{{ $tc('globals.listTabs.artist', 2) }}</li>
-				<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">{{ $tc('globals.listTabs.playlist', 2) }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">
+					{{ $tc('globals.listTabs.artist', 2) }}
+				</li>
+				<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">
+					{{ $tc('globals.listTabs.playlist', 2) }}
+				</li>
 			</ul>
 			<div id="search_tab_content">
 				<!-- ### Main Search Tab ### -->
@@ -19,7 +23,7 @@
 						<section
 							v-if="
 								(section != 'TOP_RESULT' && results.allTab[section].data.length > 0) ||
-									results.allTab[section].length > 0
+								results.allTab[section].length > 0
 							"
 							class="search_section"
 						>
@@ -61,13 +65,11 @@
 											results.allTab.TOP_RESULT[0].type == 'artist'
 												? $t('search.fans', [$n(results.allTab.TOP_RESULT[0].nb_fan)])
 												: $t('globals.by', [results.allTab.TOP_RESULT[0].artist]) +
-													' - ' +
-													$tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
+												  ' - ' +
+												  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
 										}}
 									</p>
-									<span class="tag">{{
-										$tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1)
-									}}</span>
+									<span class="tag">{{ $tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1) }}</span>
 								</div>
 							</div>
 							<div v-else-if="section == 'TRACK'">
@@ -79,8 +81,8 @@
 													class="rounded coverart"
 													:src="
 														'https://e-cdns-images.dzcdn.net/images/cover/' +
-															track.ALB_PICTURE +
-															'/32x32-000000-80-0-0.jpg'
+														track.ALB_PICTURE +
+														'/32x32-000000-80-0-0.jpg'
 													"
 												/>
 											</td>
@@ -140,8 +142,8 @@
 											class="circle coverart"
 											:src="
 												'https://e-cdns-images.dzcdn.net/images/artist/' +
-													release.ART_PICTURE +
-													'/156x156-000000-80-0-0.jpg'
+												release.ART_PICTURE +
+												'/156x156-000000-80-0-0.jpg'
 											"
 										/>
 										<div
@@ -172,8 +174,8 @@
 											class="rounded coverart"
 											:src="
 												'https://e-cdns-images.dzcdn.net/images/cover/' +
-													release.ALB_PICTURE +
-													'/156x156-000000-80-0-0.jpg'
+												release.ALB_PICTURE +
+												'/156x156-000000-80-0-0.jpg'
 											"
 										/>
 										<div
@@ -195,7 +197,9 @@
 										>
 										{{ release.ALB_TITLE }}
 									</p>
-									<p class="secondary-text">{{ release.ART_NAME + ' - ' + $tc('globals.listTabs.trackN', release.NUMBER_TRACK) }}</p>
+									<p class="secondary-text">
+										{{ release.ART_NAME + ' - ' + $tc('globals.listTabs.trackN', release.NUMBER_TRACK) }}
+									</p>
 								</div>
 							</div>
 							<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
@@ -211,10 +215,10 @@
 											class="rounded coverart"
 											:src="
 												'https://e-cdns-images.dzcdn.net/images/' +
-													release.PICTURE_TYPE +
-													'/' +
-													release.PLAYLIST_PICTURE +
-													'/156x156-000000-80-0-0.jpg'
+												release.PICTURE_TYPE +
+												'/' +
+												release.PLAYLIST_PICTURE +
+												'/156x156-000000-80-0-0.jpg'
 											"
 										/>
 										<div
@@ -292,9 +296,9 @@
 										</i>
 										{{
 											track.title +
-												(track.title_version && track.title.indexOf(track.title_version) == -1
-													? ' ' + track.title_version
-													: '')
+											(track.title_version && track.title.indexOf(track.title_version) == -1
+												? ' ' + track.title_version
+												: '')
 										}}
 									</div>
 								</td>
@@ -361,7 +365,11 @@
 								<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
 								{{ release.title }}
 							</p>
-							<p class="secondary-text">{{ $t('globals.by', [release.artist.name]) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks) }}</p>
+							<p class="secondary-text">
+								{{
+									$t('globals.by', [release.artist.name]) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks)
+								}}
+							</p>
 						</div>
 					</div>
 				</div>
@@ -424,9 +432,7 @@
 							</div>
 							<p class="primary-text">{{ release.title }}</p>
 							<p class="secondary-text">
-								{{
-									`${$t('globals.by', [release.user.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}`
-								}}
+								{{ `${$t('globals.by', [release.user.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 							</p>
 						</div>
 					</div>
@@ -497,11 +503,17 @@ export default {
 		}
 	},
 	mounted() {
+		// console.log('main search mounted')
+		// this.$refs.root.style.display = 'block'
 		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
 
 		this.$root.$on('mainSearch:showNewResults', this.showNewResults)
 		socket.on('mainSearch', this.handleMainSearch)
 		socket.on('search', this.handleSearch)
+	},
+	beforeDestroy() {
+		// console.log('main search bef dest')
+		// this.$refs.root.style.display = 'none'
 	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),

@@ -244,6 +244,7 @@ export default {
 		},
 		showPlaylist(data) {
 			this.reset()
+			console.log(data)
 
 			const {
 				id: playlistID,

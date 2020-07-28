@@ -6,12 +6,12 @@
 			<!-- <ArtistTab /> -->
 			<!-- <TracklistTab /> -->
 			<!-- <TheHomeTab /> -->
-			<TheChartsTab />
+			<!-- <TheChartsTab />
 			<TheFavoritesTab />
 			<TheErrorsTab />
 			<TheLinkAnalyzerTab />
 			<TheAboutTab />
-			<TheSettingsTab />
+			<TheSettingsTab /> -->
 			<TheMainSearch :scrolled-search-type="newScrolled" />
 		</div>
 	</section>
@@ -21,13 +21,13 @@
 // import ArtistTab from '@components/ArtistTab.vue'
 // import TracklistTab from '@components/TracklistTab.vue'
 
-import TheChartsTab from '@components/TheChartsTab.vue'
-import TheFavoritesTab from '@components/TheFavoritesTab.vue'
-import TheErrorsTab from '@components/TheErrorsTab.vue'
+// import TheChartsTab from '@components/TheChartsTab.vue'
+// import TheFavoritesTab from '@components/TheFavoritesTab.vue'
+// import TheErrorsTab from '@components/TheErrorsTab.vue'
 // import TheHomeTab from '@components/TheHomeTab.vue'
-import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
-import TheAboutTab from '@components/TheAboutTab.vue'
-import TheSettingsTab from '@components/TheSettingsTab.vue'
+// import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
+// import TheAboutTab from '@components/TheAboutTab.vue'
+// import TheSettingsTab from '@components/TheSettingsTab.vue'
 import TheMainSearch from '@components/TheMainSearch.vue'
 
 import { debounce } from '@/utils/utils'
@@ -37,13 +37,13 @@ export default {
 	components: {
 		// ArtistTab,
 		// TracklistTab
-		TheChartsTab,
-		TheFavoritesTab,
-		TheErrorsTab,
+		// TheChartsTab,
+		// TheFavoritesTab,
+		// TheErrorsTab,
 		// TheHomeTab,
-		TheLinkAnalyzerTab,
-		TheAboutTab,
-		TheSettingsTab,
+		// TheLinkAnalyzerTab,
+		// TheAboutTab,
+		// TheSettingsTab,
 		TheMainSearch
 	},
 	data: () => ({

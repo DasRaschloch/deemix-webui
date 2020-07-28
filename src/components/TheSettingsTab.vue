@@ -1,5 +1,5 @@
 <template>
-	<div id="settings_tab" class="main_tabcontent fixed_footer">
+	<div id="settings_tab" class="main_tabcontent fixed_footer" ref="root">
 		<h2 class="page_heading">{{ $t('settings.title') }}</h2>
 
 		<div id="logged_in_info" ref="loggedInInfo">
@@ -611,7 +611,13 @@ export default {
 		accountNum: 0,
 		accounts: []
 	}),
+	beforeDestroy() {
+		console.log('settings bef dest')
+		this.$refs.root.style.display = 'none'
+	},
 	mounted() {
+		console.log('settings mounted')
+		this.$refs.root.style.display = 'block'
 		this.locales = this.$i18n.availableLocales
 
 		EventBus.$on('settingsTab:revertSettings', this.revertSettings)

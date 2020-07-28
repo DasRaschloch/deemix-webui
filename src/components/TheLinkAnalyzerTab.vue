@@ -1,5 +1,5 @@
 <template>
-	<div id="analyzer_tab" class="main_tabcontent image_header">
+	<div id="analyzer_tab" class="main_tabcontent image_header" ref="root">
 		<h2 class="page_heading page_heading--capitalize">{{ $t('sidebar.linkAnalyzer') }}</h2>
 		<div v-if="link == ''">
 			<p>
@@ -25,16 +25,22 @@
 					<h1>{{ title }}</h1>
 					<h2 v-if="type == 'track'">
 						<i18n path="globals.by" tag="span">
-							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{
+								data.artist.name
+							}}</span>
 						</i18n>
-						 •
+						•
 						<i18n path="globals.in" tag="span">
-							<span place="0" class="clickable" @click="albumView" :data-id="data.album.id">{{ data.album.title }}</span>
+							<span place="0" class="clickable" @click="albumView" :data-id="data.album.id">{{
+								data.album.title
+							}}</span>
 						</i18n>
 					</h2>
 					<h2 v-else-if="type == 'album'">
 						<i18n path="globals.by" tag="span">
-							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{
+								data.artist.name
+							}}</span>
 						</i18n>
 						{{ ` • ${$tc('globals.listTabs.trackN', data.nb_tracks)}` }}
 					</h2>
@@ -181,11 +187,17 @@ export default {
 		}
 	},
 	mounted() {
+		console.log('link analyzer mounted')
+		this.$refs.root.style.display = 'block'
 		EventBus.$on('linkAnalyzerTab:reset', this.reset)
 
 		socket.on('analyze_track', this.showTrack)
 		socket.on('analyze_album', this.showAlbum)
 		socket.on('analyze_notSupported', this.notSupported)
+	},
+	beforeDestroy() {
+		console.log('link analyzer bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

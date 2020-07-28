@@ -25,6 +25,8 @@ export function changeTab(sidebarEl, section, tabName) {
 	const tabContent = document.getElementsByClassName(`${section}_tabcontent`)
 
 	for (let i = 0; i < tabContent.length; i++) {
+		if (!tabContent[i]) continue
+
 		tabContent[i].style.display = 'none'
 	}
 
@@ -40,17 +42,21 @@ export function changeTab(sidebarEl, section, tabName) {
 		EventBus.$emit('settingsTab:revertCredentials')
 	}
 
-	document.getElementById(tabName).style.display = 'block'
+	// * The tab we want to show
+	if (document.getElementById(tabName)) {
+		document.getElementById(tabName).style.display = 'block'
+	}
 
 	if (section === 'main') {
 		window.main_selected = tabName
-	} else if ('search' === section) {
+	} else if (section === 'search') {
 		window.search_selected = tabName
 	}
 
 	sidebarEl.classList.add('active')
 
-	// Check if you need to load more content in the search tab
+	// * Check if you need to load more content in the search tab
+	// * Happens when the user changes the tab in the main search
 	if (
 		window.main_selected === 'search_tab' &&
 		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(window.search_selected) !== -1

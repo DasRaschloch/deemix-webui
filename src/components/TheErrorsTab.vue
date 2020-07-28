@@ -1,5 +1,5 @@
 <template>
-	<div id="errors_tab" class="main_tabcontent">
+	<div id="errors_tab" class="main_tabcontent" ref="root">
 		<h1>{{ $t('errors.title', [title]) }}</h1>
 		<table class="table table--tracklist">
 			<tr>
@@ -42,8 +42,14 @@ export default {
 		}
 	},
 	mounted() {
+		console.log('errors mounted')
+		this.$refs.root.style.display = 'block'
 		EventBus.$on('showTabErrors', this.showErrors)
 		this.$root.$on('showTabErrors', this.showErrors)
+	},
+	beforeDestroy() {
+		console.log('errors bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

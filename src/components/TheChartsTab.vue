@@ -1,5 +1,5 @@
 <template>
-	<div id="charts_tab" class="main_tabcontent">
+	<div id="charts_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('charts.title') }}</h2>
 		<div v-if="country === ''" id="charts_selection">
 			<div class="release_grid charts_grid">
@@ -72,9 +72,7 @@
 						<td class="table__cell--large breakline">
 							{{
 								track.title +
-									(track.title_version && track.title.indexOf(track.title_version) == -1
-										? ' ' + track.title_version
-										: '')
+								(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
 							}}
 						</td>
 						<td
@@ -194,8 +192,14 @@ export default {
 		}
 	},
 	mounted() {
+		console.log('charts mounted')
+		this.$refs.root.style.display = 'block'
 		socket.on('init_charts', this.initCharts)
 		socket.on('setChartTracks', this.setTracklist)
+	},
+	beforeDestroy() {
+		console.log('charts bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

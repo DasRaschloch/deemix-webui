@@ -43,6 +43,7 @@ export default {
 		},
 		playPausePreview(e) {
 			e.preventDefault()
+			e.stopPropagation()
 
 			const { currentTarget: obj } = event
 

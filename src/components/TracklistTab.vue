@@ -1,5 +1,5 @@
 <template>
-	<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
+	<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header" ref="root">
 		<header
 			:style="{
 				'background-image':
@@ -144,7 +144,7 @@
 			>
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
 			</button>
-			<button class="back-button">{{ $t('globals.back') }}</button>
+			<button class="back-button" @click="backTab">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>
@@ -152,7 +152,7 @@
 <script>
 import { isEmpty } from 'lodash-es'
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
+import { showView, backTab } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
@@ -171,12 +171,14 @@ export default {
 		body: []
 	}),
 	methods: {
+		backTab,
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},
 		reset() {
+			console.log('resetto')
 			this.title = 'Loading...'
 			this.image = ''
 			this.metadata = ''
@@ -211,6 +213,8 @@ export default {
 		},
 		convertDuration: Utils.convertDuration,
 		showAlbum(data) {
+			this.reset()
+
 			const {
 				id: albumID,
 				title: albumTitle,
@@ -239,6 +243,8 @@ export default {
 			}
 		},
 		showPlaylist(data) {
+			this.reset()
+
 			const {
 				id: playlistID,
 				title: playlistTitle,
@@ -263,6 +269,8 @@ export default {
 			}
 		},
 		showSpotifyPlaylist(data) {
+			this.reset()
+
 			const {
 				uri: playlistURI,
 				name: playlistName,
@@ -294,12 +302,16 @@ export default {
 	},
 	mounted() {
 		console.log('tracklist mounted')
-		EventBus.$on('tracklistTab:reset', this.reset)
+		this.$refs.root.style.display = 'block'
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)
 		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
+	},
+	beforeDestroy() {
+		console.log('tracklist bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

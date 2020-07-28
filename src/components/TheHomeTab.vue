@@ -1,5 +1,5 @@
 <template>
-	<div id="home_tab" class="main_tabcontent">
+	<div id="home_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('globals.welcome') }}</h2>
 		<section id="home_not_logged_in" class="home_section" ref="notLogged">
 			<p id="home_not_logged_text">{{ $t('home.needTologin') }}</p>
@@ -103,11 +103,19 @@ export default {
 		}
 	},
 	mounted() {
+		console.log('home mounted')
+		this.$refs.root.style.display = 'block'
+
 		if (localStorage.getItem('arl')) {
 			this.$refs.notLogged.classList.add('hide')
 		}
 
+		// ! Need to init home everytime, atm this is called only on connect
 		socket.on('init_home', this.initHome)
+	},
+	beforeDestroy() {
+		console.log('home bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

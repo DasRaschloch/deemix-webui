@@ -1,5 +1,5 @@
 <template>
-	<div id="artist_tab" class="main_tabcontent fixed_footer image_header">
+	<div id="artist_tab" class="main_tabcontent fixed_footer image_header" ref="root">
 		<header
 			class="inline-flex"
 			:style="{
@@ -64,7 +64,7 @@
 							explicit
 						</i>
 						{{ release.title }}
-						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color:#FF7300;">
+						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color: #ff7300;">
 							fiber_new
 						</i>
 					</td>
@@ -84,7 +84,7 @@
 		</table>
 
 		<footer>
-			<button class="back-button">{{ $t('globals.back') }}</button>
+			<button class="back-button" @click="backTab">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>
@@ -93,7 +93,7 @@
 import { isEmpty, orderBy } from 'lodash-es'
 import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
-import { showView } from '@js/tabs'
+import { showView, backTab } from '@js/tabs'
 import EventBus from '@/utils/EventBus'
 
 export default {
@@ -112,6 +112,7 @@ export default {
 		}
 	},
 	methods: {
+		backTab,
 		albumView: showView.bind(null, 'album'),
 		reset() {
 			this.title = 'Loading...'
@@ -157,6 +158,8 @@ export default {
 			return g1.getTime() <= g2.getTime()
 		},
 		showArtist(data) {
+			this.reset()
+
 			const { name, picture_xl, id, releases } = data
 
 			this.title = name
@@ -167,7 +170,7 @@ export default {
 			this.sortKey = 'release_date'
 			this.sortOrder = 'desc'
 			this.head = [
-				{ title: this.$tc('globals.listTabs.title',1), sortKey: 'title' },
+				{ title: this.$tc('globals.listTabs.title', 1), sortKey: 'title' },
 				{ title: this.$t('globals.listTabs.releaseDate'), sortKey: 'release_date' },
 				{ title: '', width: '32px' }
 			]
@@ -185,11 +188,17 @@ export default {
 		}
 	},
 	mounted() {
+		this.$refs.root.style.display = 'block'
+		console.log('artist mounted')
+
 		socket.on('show_artist', this.showArtist)
 
-		EventBus.$on('artistTab:reset', this.reset)
 		EventBus.$on('artistTab:updateSelected', this.updateSelected)
 		EventBus.$on('artistTab:changeTab', this.changeTab)
+	},
+	beforeDestroy() {
+		console.log('artist bef dest')
+		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

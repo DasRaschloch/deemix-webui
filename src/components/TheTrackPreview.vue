@@ -88,7 +88,7 @@ export default {
 		},
 		stopStackedTabsPreview() {
 			if (
-				$('.preview_playlist_controls').filter(function() {
+				$('.preview_playlist_controls').filter(function () {
 					return $(this).attr('playing')
 				}).length > 0
 			) {
@@ -104,15 +104,7 @@ export default {
 		previewMouseLeave(event) {
 			const { currentTarget: obj } = event
 
-			if (
-				($(obj)
-					.parent()
-					.attr('playing') &&
-					this.previewStopped) ||
-				!$(obj)
-					.parent()
-					.attr('playing')
-			) {
+			if (($(obj).parent().attr('playing') && this.previewStopped) || !$(obj).parent().attr('playing')) {
 				$(obj).css({ opacity: 0 }, 200)
 			}
 		}

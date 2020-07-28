@@ -1,40 +1,12 @@
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
+import router from '@/plugins/router'
 
 /* ===== Globals ====== */
 window.search_selected = ''
 window.main_selected = ''
 window.windows_stack = []
 window.currentStack = {}
-
-// Exporting this function out of the default export
-// because it's used in components that are needed
-// in this file too
-export function showView(viewType, event) {
-	// console.error('SHOW VIEW')
-	const {
-		currentTarget: {
-			dataset: { id }
-		}
-	} = event
-
-	switch (viewType) {
-		case 'artist':
-			EventBus.$emit('artistTab:reset')
-			break
-		case 'album':
-		case 'playlist':
-		case 'spotifyplaylist':
-			EventBus.$emit('tracklistTab:reset')
-			break
-
-		default:
-			break
-	}
-
-	socket.emit('getTracklist', { type: viewType, id })
-	showTab(viewType, id)
-}
 
 /**
  * Changes the tab to the wanted one
@@ -87,14 +59,41 @@ export function changeTab(sidebarEl, section, tabName) {
 	}
 }
 
+export function showView(viewType, event) {
+	const {
+		currentTarget: {
+			dataset: { id }
+		}
+	} = event
+	const isArtist = viewType === 'artist'
+	const name = isArtist ? 'Artist' : 'Tracklist'
+	const params = isArtist ? { id } : { type: viewType, id }
+
+	router.push({
+		name,
+		params
+	})
+
+	// showTab(viewType, id)
+}
+
 /**
  * Shows the passed tab, keeping track of the one that the user is coming from.
  *
  * Needs EventBus
  */
 function showTab(type, id, back = false) {
+	return
+	updateStack(type, id, back)
+	window.tab = type === 'artist' ? 'artist_tab' : 'tracklist_tab'
+	displayTabs()
+}
+
+function updateStack(type, id, back) {
 	if (window.windows_stack.length === 0) {
-		window.windows_stack.push({ tab: window.main_selected })
+		window.windows_stack.push({
+			tab: window.main_selected
+		})
 	} else if (!back) {
 		if (window.currentStack.type === 'artist') {
 			EventBus.$emit('artistTab:updateSelected')
@@ -103,18 +102,21 @@ function showTab(type, id, back = false) {
 		window.windows_stack.push(window.currentStack)
 	}
 
-	window.tab = type === 'artist' ? 'artist_tab' : 'tracklist_tab'
-
 	window.currentStack = { type, id }
+}
+
+function displayTabs() {
 	let tabcontent = document.getElementsByClassName('main_tabcontent')
 
 	for (let i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = 'none'
 	}
 
-	document.getElementById(window.tab).style.display = 'block'
+	let newTab = document.getElementById(window.tab)
 
-	EventBus.$emit('trackPreview:stopStackedTabsPreview')
+	if (newTab) {
+		newTab.style.display = 'block'
+	}
 }
 
 /**
@@ -122,42 +124,31 @@ function showTab(type, id, back = false) {
  *
  * Needs EventBus and socket
  */
-function backTab() {
+export function backTab() {
+	router.back()
+
+	// ! Need to implement the memory of the opened artist tab
+	return
+
 	if (window.windows_stack.length == 1) {
-		document.getElementById(`main_${window.main_selected}link`).click()
+		console.log(window.main_selected)
+		if (document.getElementById(`main_${window.main_selected}link`)) {
+			// document.getElementById(`main_${window.main_selected}link`).click()
+		}
 	} else {
 		// Retrieving tab type and tab id
 		let data = window.windows_stack.pop()
 		let { type, id, selected } = data
 
-		if (type === 'artist') {
-			EventBus.$emit('artistTab:reset')
-
-			if (selected) {
-				EventBus.$emit('artistTab:changeTab', selected)
-			}
-		} else {
-			EventBus.$emit('tracklistTab:reset')
+		if (type === 'artist' && selected) {
+			EventBus.$emit('artistTab:changeTab', selected)
 		}
 
-		socket.emit('getTracklist', { type, id })
-		showTab(type, id, true)
+		// showTab(type, id, true)
 	}
-
-	EventBus.$emit('trackPreview:stopStackedTabsPreview')
-}
-
-function _linkListeners() {
-	const backButtons = Array.prototype.slice.call(document.getElementsByClassName('back-button'))
-
-	backButtons.forEach(button => {
-		button.addEventListener('click', backTab)
-	})
 }
 
 export function init() {
 	// Open default tab
 	changeTab(document.getElementById('main_home_tablink'), 'main', 'home_tab')
-
-	_linkListeners()
 }

@@ -87,7 +87,7 @@
 				<strong>Bitcoin:</strong> 1sdNymSJrMBWyHM4u2m9uco5nv6uV4Qs1
 			</li>
 			<li>
-				<i v-html="ethereum" />
+				<i class="ethereum" v-html="ethereum" />
 				<strong>Ethereum:</strong> 0x1d2aa67e671485CD4062289772B662e0A6Ff976c
 			</li>
 		</ul>
@@ -125,6 +125,10 @@ i /deep/ svg {
 
 .bitcoin /deep/ svg {
 	fill: #ff9900;
+}
+
+.ethereum /deep/ svg {
+	fill: var(--foreground);
 }
 
 :link {

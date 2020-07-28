@@ -19,39 +19,39 @@ const en = {
 			artist: 'artista | artistas',
 			single: 'sencillo | sencillos',
 			title: 'título | títulos',
-			track: 'track | tracks',
-			trackN: '0 tracks | {n} track | {n} tracks',
-			releaseN: '0 releases | {n} release | {n} releases',
-			playlist: 'playlist | playlists',
-			compile: 'compilation | compilations',
+			track: 'canción | canciones',
+			trackN: '0 canciones | {n} canción | {n} canciones',
+			releaseN: '0 entregas | {n} entrega | {n} entregas',
+			playlist: 'lista de reproducción | listas de reproducción',
+			compile: 'compilación | compilaciones',
 			ep: 'ep | eps',
-			spotifyPlaylist: 'spotify playlist | spotify playlists',
-			releaseDate: 'release date',
+			spotifyPlaylist: 'lista de reproducción spotify | listas de reproducción spotify',
+			releaseDate: 'fecha de publicación',
 			error: 'error'
 		}
 	},
 	about: {
 		titles: {
-			usefulLinks: 'Useful Links',
-			bugReports: 'Bug Reports',
-			contributing: 'Contributing',
-			donations: 'Donations',
-			license: 'License'
+			usefulLinks: 'Enlaces útiles',
+			bugReports: 'Reportar fallos',
+			contributing: 'Contribuye',
+			donations: 'Donaciones',
+			license: 'Licencia'
 		},
 		subtitles: {
-			bugReports: "Is there something that isn't working in deemix? Tell us!",
-			contributing: 'You want to contribute to this project? You can do it in different ways!',
-			donations: 'You want to contribute monetarily? You could make a donation!'
+			bugReports: "¿Hay algo que no funcione en Deemix? ¡Díganoslo!",
+			contributing: '¿Quieres contribuir a este proyecto? ¡Puedes hacerlo de diferentes maneras!',
+			donations: '¿Quiere contribuir monetariamente? ¡Podrías hacer una donación!'
 		},
-		usesLibrary: 'This app uses the <strong>deemix</strong> library, which you can use to make your own UI for deemix.',
-		thanks: `Thanks to <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> for helping me with this project and to <strong>BasCurtiz</strong> and <strong>scarvimane</strong> for making the icon.`,
-		upToDate: `Stay up to date with the updates by following the <a href="https://t.me/RemixDevNews" target="_blank">news channel</a> on Telegram.`,
-		officialWebsite: 'Official Website',
-		officialRepo: 'Official Library Repository',
-		officialWebuiRepo: 'Official WebUI Repository',
-		officialSubreddit: 'Official Subreddit',
-		newsChannel: 'News Channel',
-		questions: `If you have questions or problems with the app, search for a solution in the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
+		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
+		thanks: `Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.`,
+		upToDate: `Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.`,
+		officialWebsite: 'Página web oficial',
+		officialRepo: 'Repositorio de la biblioteca oficial',
+		officialWebuiRepo: 'Repositorio oficial de WebUI',
+		officialSubreddit: 'Subreddit oficial',
+		newsChannel: 'Canal de noticias',
+		questions: `Si tienes preguntas o problemas con la aplicación, busca una solución en el <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> primero. Luego, si no encuentras nada puedes hacer un post con tu problema en el subreddit.`,
 		beforeReporting: `Before reporting a bug make sure you're running the latest version of the app and that what you want to report is actually a bug and not something that's wrong only on your end.`,
 		beSure: `Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been	already reported.`,
 		duplicateReports: 'Duplicate bug reports will be closed, so keep an eye out on that.',
@@ -307,38 +307,38 @@ const en = {
 				start: 'Start Of Each Word',
 				sentence: 'Like a sentence'
 			},
-			previewVolume: 'Preview Volume',
+			previewVolume: 'Volumen de previsualización',
 			executeCommand: {
-				title: 'Command to execute after download',
-				description: 'Leave blank for no action'
+				title: 'Comando a ejecutar después de la descarga',
+				description: 'Deje en blanco para no hacer nada'
 			}
 		},
 		spotify: {
-			title: 'Spotify Features',
-			clientID: 'Spotify clientID',
-			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			title: 'Funciones de Spotify',
+			clientID: 'ID del cliente de Spotify',
+			clientSecret: 'Cliente secreto de Spotify',
+			username: 'Nombre de usuario de Spotify'
 		},
-		reset: 'Reset to Default',
-		save: 'Save',
+		reset: 'Restablecer el valor por defecto',
+		save: 'Guardar',
 		toasts: {
-			init: 'Settings loaded!',
-			update: 'Settings updated!',
-			ARLcopied: 'ARL copied to clipboard'
+			init: '¡Configuraciones cargadas!',
+			update: '¡Ajustes actualizados!',
+			ARLcopied: 'ARL copiado al portapapeles'
 		}
 	},
 	sidebar: {
-		home: 'home',
-		search: 'search',
+		home: 'inicio',
+		search: 'buscar',
 		charts: 'charts',
-		favorites: 'favorites',
-		linkAnalyzer: 'link analyzer',
-		settings: 'settings',
-		about: 'about'
+		favorites: 'favoritos',
+		linkAnalyzer: 'analizar links',
+		settings: 'ajustes',
+		about: 'acerca de'
 	},
 	tracklist: {
-		downloadSelection: 'Download selection'
+		downloadSelection: 'Descargar selección'
 	}
 }
 
-export default en
+export default es

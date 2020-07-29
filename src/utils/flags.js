@@ -4,6 +4,7 @@ import es from 'svg-country-flags/svg/es.svg'
 import de from 'svg-country-flags/svg/de.svg'
 import fr from 'svg-country-flags/svg/fr.svg'
 import id from 'svg-country-flags/svg/id.svg'
+import pt from 'svg-country-flags/svg/pt.svg'
 
 export default {
 	it,
@@ -11,5 +12,6 @@ export default {
 	es,
 	de,
 	fr,
-	id
+	id,
+	pt
 }

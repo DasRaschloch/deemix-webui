@@ -39,7 +39,7 @@ const de = {
 			license: 'Lizenz'
 		},
 		subtitles: {
-			bugReports: "Funktioniert etwas in Deemix nicht? Sag uns bescheid!",
+			bugReports: 'Funktioniert etwas in Deemix nicht? Sag uns bescheid!',
 			contributing: 'Du möchtest bei dem Projekt helfen? Das kannst du auf verschiedene Arten machen!',
 			donations: 'Du möchtest deemix finanziell unterstützen? Dann lasse eine kleine Spende da!'
 		},

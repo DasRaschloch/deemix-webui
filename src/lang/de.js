@@ -40,8 +40,8 @@ const de = {
 		},
 		subtitles: {
 			bugReports: "Funktioniert etwas in Deemix nicht? Sag uns bescheid!",
-			contributing: 'Du möchtest bei dem Projekt helfen? Das kannst du auf verschiedene Arten!',
-			donations: 'Du möchtest deemix finanziell unterstützen? Dann mach eine Spende!'
+			contributing: 'Du möchtest bei dem Projekt helfen? Das kannst du auf verschiedene Arten machen!',
+			donations: 'Du möchtest deemix finanziell unterstützen? Dann lasse eine kleine Spende da!'
 		},
 		usesLibrary: 'Dieses Programm nutzt die <strong>deemix</strong> Bibliothek, die du dazu nutzen kannst deine eigene deemix UI zu erstellen.',
 		thanks: `Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> and <strong>scarvimane</strong> für die Erstellung des Logos.`,
@@ -140,7 +140,7 @@ const de = {
 		noResultsArtist: 'Keinen Künstler gefunden',
 		noResultsPlaylist: 'Keine Playlist gefunden'
 	},
-	searchbar: 'Suche alles, was du willst (oder füge einfach einen Link ein)',
+	searchbar: 'Suche nach allem, was dir gefällt (oder füge einfach einen Link ein)',
 	downloads: 'Downloads',
 	toasts: {
 		addedToQueue: '{0} zur Warteschlange hinzugefügt',
@@ -157,8 +157,8 @@ const de = {
 		currentItemCancelled: 'Aktuelle Auswahl wurde abgebrochen',
 		startAddingArtist: '{0} Alben werden hinzugefügt',
 		finishAddingArtist: '{0} Alben wurden hinzugefügt',
-		startConvertingSpotifyPlaylist: 'Converting spotify tracks to deezer tracks',
-		finishConvertingSpotifyPlaylist: 'Spotify playlist converted'
+		startConvertingSpotifyPlaylist: 'Konvertierern von Spotify-Tracks zu Deezer-Tracks',
+		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert'
 	},
 	settings: {
 		title: 'Einstellungen',
@@ -180,28 +180,28 @@ const de = {
 			title: 'Download Pfad'
 		},
 		templates: {
-			title: 'Templates',
-			tracknameTemplate: 'Trackname Vorlage',
-			albumTracknameTemplate: 'Album Track Vorlage',
-			playlistTracknameTemplate: 'Playlist Track Vorlage'
+			title: 'Vorlagen',
+			tracknameTemplate: 'Vorlage für den Tracknamen',
+			albumTracknameTemplate: 'Vorlage für Tracks in einem Album',
+			playlistTracknameTemplate: 'Vorlage für Tracks in einer Playlist'
 		},
 		folders: {
 			title: 'Folders',
 			createPlaylistFolder: 'Ordner für Playlist erstellen',
-			playlistNameTemplate: 'Playlist Ordner Vorlage',
+			playlistNameTemplate: 'Vorlage für Playlist-Ordner',
 			createArtistFolder: 'Ordner für Künstler erstellen',
-			artistNameTemplate: 'Künstler Ordner Vorlage',
+			artistNameTemplate: 'Vorlage für Künstler-Ordner',
 			createAlbumFolder: 'Ordner für Album erstellen',
-			albumNameTemplate: 'Album Ordner Vorlage',
+			albumNameTemplate: 'Vorlage für Album-Ordner',
 			createCDFolder: 'Ordner für CDs erstellen',
-			createStructurePlaylist: 'Erstellen von Künstler-, Alben- und CD-Ordnern auch für Wiedergabelisten',
+			createStructurePlaylist: 'Erstellen von Künstler-, Alben- und CD-Ordnern auch für Playlists',
 			createSingleFolder: 'Ordner für einzelne Titel erstellen'
 		},
 		trackTitles: {
-			title: 'Track Titel',
-			padTracks: 'einheitliche Länge der Titelnummern (voranstehende Nullen werden ergänzt)',
-			paddingSize: 'Paddinggröße überschreiben',
-			illegalCharacterReplacer: 'unzulässige Zeichen ersetzen'
+			title: 'Songtitel',
+			padTracks: 'Einheitliche Länge der Titelnummern (voranstehende Nullen werden ergänzt)',
+			paddingSize: 'Innenabstand überschreiben',
+			illegalCharacterReplacer: 'Unzulässige Zeichen ersetzen'
 		},
 		downloads: {
 			title: 'Downloads',
@@ -221,27 +221,27 @@ const de = {
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
 			fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',
 			logErrors: 'Protokolldatei für Fehler im Download-Ordner erstellen',
-			logSearched: 'Protokolldatei für gesuchte Tracks erstellen',
+			logSearched: 'Protokolldatei für gesuchte Titel erstellen',
 			createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
-			syncedLyrics: 'Erstelle synchrone Lyric-Datei (.lyr)',
-			playlistFilenameTemplate: 'Dateinamenvorlage für Playlist',
+			syncedLyrics: 'Erstelle synchrone Lyrics-Datei (.lyr)',
+			playlistFilenameTemplate: 'Vorlage für den Namen der Playlist',
 			saveDownloadQueue: 'Download-Warteschlange beim Schließen der App speichern'
 		},
 		covers: {
 			title: 'Album Cover',
 			saveArtwork: 'Cover speichern',
-			coverImageTemplate: 'Cover Name Vorlage',
+			coverImageTemplate: 'Vorlage für den Covernamen',
 			saveArtworkArtist: 'Speichere das Künstlerbild',
-			artistImageTemplate: 'Künstlerbild Vorlage',
+			artistImageTemplate: 'Vorlage des Künstlerbildes',
 			localArtworkSize: 'Lokale Grafikgröße',
 			embeddedArtworkSize: 'Eingebettete Grafikgröße',
 			localArtworkFormat: {
 				title: 'Welches Datei-Format soll das Cover haben?',
-				jpg: 'jpg',
-				png: 'png',
-				both: 'Beides (jpg + png'
+				jpg: 'Ein jpg Bild',
+				png: 'Ein png Bild',
+				both: 'Beides (jpg + png)'
 			},
-			jpegImageQuality: 'JPEG Bilder Qualität'
+			jpegImageQuality: 'JPEG Qualität'
 		},
 		tags: {
 			head: 'Welche Tags sollen gespeichert werden?',
@@ -249,17 +249,17 @@ const de = {
 			artist: 'Künstler',
 			album: 'Album',
 			cover: 'Cover',
-			trackNumber: 'Track Nummer',
-			trackTotal: 'Titel insgesamt',
-			discNumber: 'Disk Nummer',
-			discTotal: 'Disk insgesamt',
+			trackNumber: 'Titelnummer',
+			trackTotal: 'Titelanzahl',
+			discNumber: 'CD Nummer',
+			discTotal: 'CDs insgesamt',
 			albumArtist: 'Album Künstler',
 			genre: 'Genre',
 			year: 'Jahr',
 			date: 'Datum',
 			explicit: 'Explizite Lyrics',
 			isrc: 'ISRC',
-			length: 'Track Länge',
+			length: 'Titel Länge',
 			barcode: 'Album Barcode (UPC)',
 			bpm: 'BPM',
 			replayGain: 'Wiedergabe Lautstärke',
@@ -267,21 +267,21 @@ const de = {
 			lyrics: 'Nicht synchronisierte Texte',
 			copyright: 'Copyright',
 			composer: 'Komponist',
-			involvedPeople: 'Involvierte Leute'
+			involvedPeople: 'Mitwirkende Personen'
 		},
 		other: {
-			title: 'Andere',
-			savePlaylistAsCompilation: 'Speichere Wiedergabelisten als Zusammenstellung',
+			title: 'Sonsitge',
+			savePlaylistAsCompilation: 'Speichere Playlist als Zusammenstellung',
 			useNullSeparator: 'Verwende Nulltrennzeichen',
 			saveID3v1: 'Speichere ID3v1 ebenfalls',
 			multiArtistSeparator: {
 				title: 'Wie möchtest du die Künstler trennen?',
-				nothing: 'Speichere  nur den Hauptkünstler',
-				default: 'Nutze Standard Spezifikationen',
-				andFeat: 'Nutze & und feat.',
-				using: 'Nutze "{0}"'
+				nothing: 'Speichere nur den Hauptkünstler',
+				default: 'Verwende Standard Spezifikationen',
+				andFeat: 'Verwende & und feat.',
+				using: 'Verwende "{0}"'
 			},
-			singleAlbumArtist: 'Nur den Hauptinterpret speichern',
+			singleAlbumArtist: 'Nur den Hauptkünstler speichern',
 			albumVariousArtists: 'Verschiedene Künstler" im Album Künstler Tag behalten',
 			removeAlbumVersion: 'Entferne die "Album Version" vom Songtitel',
 			removeDuplicateArtists: 'Kombinationen von Künstlern entfernen',
@@ -292,7 +292,7 @@ const de = {
 				day: 'TT'
 			},
 			featuredToTitle: {
-				title: 'Was soll ich mit Feature Künstlern machen?',
+				title: 'Was soll ich mit featured Artists machen?',
 				0: 'Nichts',
 				1: 'Vom Titel entfernen',
 				3: 'Vom Titel und Albumtitel entfernen',
@@ -323,7 +323,7 @@ const de = {
 		save: 'Speichern',
 		toasts: {
 			init: 'Einstellungen geladen!',
-			update: 'EInstellungen aktualisiert!',
+			update: 'Einstellungen aktualisiert!',
 			ARLcopied: 'ARL wurde in die Zwischenablage kopiert'
 		}
 	},

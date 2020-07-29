@@ -3,10 +3,10 @@ const ru = {
 		welcome: 'Добро пожаловать в deemix',
 		back: 'назад',
 		loading: 'загрузка',
-		download: 'Загрузить {0}',
+		download: 'Скачать {0}',
 		by: '{0}',
 		in: 'из {0}',
-		download_hint: 'Загрузить',
+		download_hint: 'Скачать',
 		play_hint: 'Прослушать',
 		toggle_download_tab_hint: 'Показать/Свернуть',
 		clean_queue_hint: 'Очистить завершённые',
@@ -40,10 +40,10 @@ const ru = {
 		},
 		subtitles: {
 			bugReports: "Что-то не работает? Сообщите нам!",
-			contributing: 'Хотите внести свой вклад в развитие этого проекта? Это можно сделать разными способами!',
+			contributing: 'Хотите внести вклад в развитие этого проекта? Это можно сделать разными способами!',
 			donations: 'Хотите поддержать материально? Можно сделать пожертвование!'
 		},
-		usesLibrary: 'Приложение использует библиотеку <strong>deemix</strong>, с помощью которой вы можете разработать собственный UI deemix.',
+		usesLibrary: 'Приложение использует библиотеку <strong>deemix</strong>, с помощью которой вы можете разработать собственный UI для deemix.',
 		thanks: `Спасибо <strong>rtonno</strong>, <strong>uhwot</strong> и <strong>lollilol</strong> за помощь с этим проектом, а также <strong>BasCurtiz</strong> и <strong>scarvimane</strong> за иконку.`,
 		upToDate: `Следите за последними обновлениями на <a href="https://t.me/RemixDevNews" target="_blank">канале</a> в Telegram.`,
 		officialWebsite: 'Официальный сайт',
@@ -57,37 +57,37 @@ const ru = {
 		duplicateReports: 'Повторные сообщения об ошибках рассматриваться не будут.',
 		dontOpenIssues: `<strong>НЕ</strong> используйте репозиторий для вопросов автору, для этого есть сабреддит.`,
 		newUI: `Если вы хорошо знаете python, то можете сделать новый UI для приложения с использованием базовой библиотеки или пофиксить в ней баги и сделать pull request в <a href="https://codeberg.org/RemixDev/deemix" target="_blank">репозитории</a>.`,
-		acceptFeatures: `Можете предлагать новые функции, но не слишком сложные, так как они будут добавлены в приложение, а не в саму библиотеку.`,
+		acceptFeatures: `Можете предложить новые функции, но не слишком сложные, так как они будут добавлены в приложение, а не в саму библиотеку.`,
 		otherLanguages: `Если вы хорошо знаете другой язык программирования, можете портировать на нём deemix!`,
-		understandingCode: `Не можете понять код? Свяжитесь с RemixDev в Telegram или на Reddit.`,
+		understandingCode: `Не можете разобраться в коде? Свяжитесь с RemixDev в Telegram или на Reddit.`,
 		contributeWebUI: `Если вы знаете Vue.js (JavaScript), HTML или CSS, можете внести вклад в развитие <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует прежде <strong>поддержать понравившихся исполнителей</strong>, а затем уже поддержать разработчиков.`,
+		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует прежде <strong>поддержать понравившихся исполнителей</strong> прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
-		lincensedUnder: `Проект выпускается под лицензией
+		lincensedUnder: `Проект распространяется под лицензией
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
 				>GNU General Public License 3.0</a
 			>.`
 	},
 	charts: {
 		title: 'Чарты',
-		changeCountry: 'Изменить страну',
-		download: 'Загрузить чарт'
+		changeCountry: 'Сменить страну',
+		download: 'Скачать чарт'
 	},
 	errors: {
 		title: 'Ошибки {0}',
 		ids: {
 			invalidURL: 'URL не распознан',
 			unsupportedURL: 'URL не поддерживается',
-			ISRCnotOnDeezer: 'ISRC данного трека не доступен на Deezer',
-			notYourPrivatePlaylist: "Вы не можете загружать чужие приватные плейлисты.",
+			ISRCnotOnDeezer: 'ISRC данного трека недоступен на Deezer',
+			notYourPrivatePlaylist: "Вы не можете скачивать чужие приватные плейлисты.",
 			spotifyDisabled: 'Неправильно настроены параметры Spotify.',
 			trackNotOnDeezer: 'Трек не найден на Deezer!',
 			albumNotOnDeezer: 'Альбом не найден на Deezer!',
-			notOnDeezer: 'Трек не доступен на Deezer!',
+			notOnDeezer: 'Трек недоступен на Deezer!',
 			notEncoded: 'Трек ещё не перекодирован!',
 			notEncodedNoAlternative: 'Трек не перекодирован, альтернатив не найдено!',
-			wrongBitrate: 'Для данного трека нет нужного битрейта.',
-			wrongBitrateNoAlternative: 'Для данного трека нет нужного битрейта. Альтернатив не найдено!',
+			wrongBitrate: 'Данного трека нет в нужном битрейте.',
+			wrongBitrateNoAlternative: 'Данного трека нет в нужном битрейте. Альтернатив не найдено!',
 			no360RA: 'Трек недоступен в формате Reality Audio 360.',
 			notAvailable: "Трек недоступен на серверах Deezer!",
 			notAvailableNoAlternative: "Трек недоступен на серверах Deezer. Альтернатив не найдено!"
@@ -101,7 +101,7 @@ const ru = {
 		noTracks: 'Избранные треки не найдены'
 	},
 	home: {
-		needTologin: 'Вам необходимо войти под своей учетной записью Deezer, прежде чем вы сможете начать скачивание.',
+		needTologin: 'Вам необходимо войти под своей учетной записью Deezer, прежде чем вы сможете скачивать.',
 		openSettings: 'Открыть настройки',
 		sections: {
 			popularPlaylists: 'Популярные плейлисты',
@@ -109,7 +109,7 @@ const ru = {
 		}
 	},
 	linkAnalyzer: {
-		info: 'Используйте этот раздел, чтобы узнать информацию о ссылке, которую необходимо загрузить.',
+		info: 'Используйте этот раздел, чтобы узнать информацию о ссылке, которую требуется скачать.',
 		useful:
 			"Этот раздел нужен, если вы хотите загрузить треки, недоступные в вашей стране, а также посмотреть, где они доступны.",
 		linkNotSupported: 'Ссылка не поддерживается',
@@ -153,7 +153,7 @@ const ru = {
 		alreadyLogged: 'Вход уже выполнен',
 		loginFailed: "Вход не выполнен",
 		loggedOut: 'Вы вышли из аккаунта',
-		cancellingCurrentItem: 'Отменена текущая загрузка.',
+		cancellingCurrentItem: 'Отмена текущей загрузки.',
 		currentItemCancelled: 'Отменено.',
 		startAddingArtist: 'Добавление альбомов {0} в очередь',
 		finishAddingArtist: 'Альбомы {0} добавлены в очередь',
@@ -181,26 +181,26 @@ const ru = {
 		},
 		templates: {
 			title: 'Шаблоны',
-			tracknameTemplate: 'Шаблон названия синглов',
+			tracknameTemplate: 'Шаблон названия трека',
 			albumTracknameTemplate: 'Шаблон названия трека альбома',
 			playlistTracknameTemplate: 'Шаблон названия трека плейлиста'
 		},
 		folders: {
 			title: 'Папки',
-			createPlaylistFolder: 'Создать папки для плейлистов',
+			createPlaylistFolder: 'Создавать папки для плейлистов',
 			playlistNameTemplate: 'Название папки плейлиста',
-			createArtistFolder: 'Создать папки для исполнителя',
+			createArtistFolder: 'Создавать папки для исполнителя',
 			artistNameTemplate: 'Название папки исполнителя',
-			createAlbumFolder: 'Создать папки для альбома',
+			createAlbumFolder: 'Создавать папки для альбома',
 			albumNameTemplate: 'Название папки альбома',
-			createCDFolder: 'Создать папки для CD',
-			createStructurePlaylist: 'Создать структуру папок для плейлистов',
-			createSingleFolder: 'Создать структуру папок для синглов'
+			createCDFolder: 'Создавать папки для CD',
+			createStructurePlaylist: 'Создавать структуру папок для плейлистов',
+			createSingleFolder: 'Создавать структуру папок для синглов'
 		},
 		trackTitles: {
 			title: 'Названия треков',
 			padTracks: 'Добавить ноль к номерам треков (01, 02, ...)',
-			paddingSize: 'Кол-во добавленных нолей',
+			paddingSize: 'Количество цифр',
 			illegalCharacterReplacer: 'Замена для запрещённых в имени символов'
 		},
 		downloads: {
@@ -220,20 +220,20 @@ const ru = {
 			},
 			fallbackBitrate: 'Загружать с битрейтом ниже, если текущий недоступен',
 			fallbackSearch: 'Искать похожий трек, если запрашиваемый недоступен',
-			logErrors: 'Создать логи для ошибок',
-			logSearched: 'Создать лог поиска',
-			createM3U8File: 'Создать файлы плейлистов',
-			syncedLyrics: 'Создать .lyr файлы (Синхронизированный текст)',
-			playlistFilenameTemplate: 'Шаблон названия плейлистов',
+			logErrors: 'Сохранять логи ошибок',
+			logSearched: 'Сохранять лог истории поиска',
+			createM3U8File: 'Создавать файлы плейлистов',
+			syncedLyrics: 'Создать .lyr файлы (синхронизированная лирика)',
+			playlistFilenameTemplate: 'Шаблон названия плейлиста',
 			saveDownloadQueue: 'Сохранять текущую очередь загрузок при закрытии приложения'
 		},
 		covers: {
 			title: 'Обложки',
-			saveArtwork: 'Сохранять обложки файлом',
-			coverImageTemplate: 'Шаблон названия изображения',
-			saveArtworkArtist: 'Сохранять изображение исполнителя файлом',
+			saveArtwork: 'Сохранять файл обложки',
+			coverImageTemplate: 'Шаблон названия обложки',
+			saveArtworkArtist: 'Сохранять файл изображения исполнителя',
 			artistImageTemplate: 'Шаблон названия изображения',
-			localArtworkSize: 'Размер сохраненной обложки файлом',
+			localArtworkSize: 'Размер сохраненной обложки',
 			embeddedArtworkSize: 'Размер встроенной в теги обложки',
 			localArtworkFormat: {
 				title: 'В каком формате сохранять обложки?',
@@ -257,23 +257,23 @@ const ru = {
 			genre: 'Жанр',
 			year: 'Год',
 			date: 'Дата',
-			explicit: 'Пометка о нецензурной лексике',
-			isrc: 'Идентиф. код трека (ISRC)',
+			explicit: 'Метка о нецензурной лексике',
+			isrc: 'Номер записи (ISRC)',
 			length: 'Продолжительность',
-			barcode: 'Идентиф. код альбома (UPC)',
+			barcode: 'Уникальный код альбома (UPC)',
 			bpm: 'BPM',
 			replayGain: 'Replay Gain',
 			label: 'Издатель',
 			lyrics: 'Текст песни',
-			copyright: 'Автор. права',
+			copyright: 'Права (копирайт)',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди'
 		},
 		other: {
 			title: 'Разное',
-			savePlaylistAsCompilation: 'Сохранить плейлисты как сборники',
-			useNullSeparator: 'Использовать нулевой символ в качестве разделителя',
-			saveID3v1: 'Дополнительно сохранять ID3v1',
+			savePlaylistAsCompilation: 'Сохранять плейлисты как сборники',
+			useNullSeparator: 'Использовать null в качестве разделителя',
+			saveID3v1: 'Сохранять ID3v1',
 			multiArtistSeparator: {
 				title: 'Как разделять несколько исполнителей?',
 				nothing: 'Сохранить только основного',
@@ -292,7 +292,7 @@ const ru = {
 				day: 'ДД'
 			},
 			featuredToTitle: {
-				title: 'Что делать с "feat."?',
+				title: 'Что делать с приглашёнными исполнителями?',
 				0: 'Ничего',
 				1: 'Удалить из названия трека',
 				3: 'Удалить из названия трека и альбома',
@@ -314,7 +314,7 @@ const ru = {
 			}
 		},
 		spotify: {
-			title: 'Функции Spotify',
+			title: 'Настройки Spotify',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
 			username: 'Spotify username'
@@ -337,7 +337,7 @@ const ru = {
 		about: 'о проекте'
 	},
 	tracklist: {
-		downloadSelection: 'Загрузить выбранные'
+		downloadSelection: 'Скачать выбранные'
 	}
 }
 

@@ -679,6 +679,55 @@ export default {
 			}
 		}
 	},
+	mounted() {
+		this.locales = this.$i18n.availableLocales
+
+		EventBus.$on('settingsTab:revertSettings', this.revertSettings)
+		EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
+
+		this.$refs.loggedInInfo.classList.add('hide')
+
+		let storedLocale = localStorage.getItem('locale')
+
+		if (storedLocale) {
+			this.$i18n.locale = storedLocale
+			this.currentLocale = storedLocale
+		}
+
+		let storedArl = localStorage.getItem('arl')
+
+		if (storedArl) {
+			this.$refs.loginInput.value = storedArl.trim()
+		}
+
+		let storedAccountNum = localStorage.getItem('accountNum')
+
+		if (storedAccountNum) {
+			this.accountNum = storedAccountNum
+		}
+
+		let spotifyUser = localStorage.getItem('spotifyUser')
+
+		if (spotifyUser) {
+			this.lastUser = spotifyUser
+			this.spotifyUser = spotifyUser
+			socket.emit('update_userSpotifyPlaylists', spotifyUser)
+		}
+
+		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
+
+		let volume = parseInt(localStorage.getItem('previewVolume'))
+		if (isNaN(volume)) {
+			volume = 80
+			localStorage.setItem('previewVolume', volume)
+		}
+		window.vol.preview_max_volume = volume
+
+		socket.on('init_settings', this.initSettings)
+		socket.on('updateSettings', this.updateSettings)
+		socket.on('accountChanged', this.accountChanged)
+		socket.on('familyAccounts', this.initAccounts)
+	},
 	methods: {
 		revertSettings() {
 			this.settings = { ...this.lastSettings }

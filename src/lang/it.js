@@ -46,7 +46,6 @@ const it = {
 		usesLibrary:
 			'Questa app utilizza la libreria <strong>deemix</strong>, che puoi utilizzare per creare la tua Interfaccia Utente per deemix.',
 		thanks: `Un ringraziamento a <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> per l'aiuto che mi stanno dando in questo progetto e a <strong>BasCurtiz</strong> e <strong>scarvimane</strong> per aver creato l'icona.`,
-		upToDate: `Stay up to date with the updates by following the <a href="https://t.me/RemixDevNews" target="_blank">news channel</a> on Telegram.`,
 		upToDate: `Rimani al passo con gli ultimi aggiornamenti seguendo il <a href="https://t.me/RemixDevNews" target="_blank">canale delle news</a> su Telegram.`,
 		officialWebsite: 'Sito Ufficiale',
 		officialRepo: 'Repository Ufficiale della Libreria',

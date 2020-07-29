@@ -174,7 +174,7 @@ const ru = {
 		},
 		appearance: {
 			title: 'Внешний вид',
-			slimDownloadTab: 'Обрезать вкладку с загрузками'
+			slimDownloadTab: 'Компактная вкладка с загрузками'
 		},
 		downloadPath: {
 			title: 'Путь сохранения'
@@ -187,15 +187,15 @@ const ru = {
 		},
 		folders: {
 			title: 'Папки',
-			createPlaylistFolder: 'Создать папки для плейлистов',
+			createPlaylistFolder: 'Создавать папки для плейлистов',
 			playlistNameTemplate: 'Название папки плейлиста',
-			createArtistFolder: 'Создать папки для исполнителя',
+			createArtistFolder: 'Создавать папки для исполнителя',
 			artistNameTemplate: 'Название папки исполнителя',
-			createAlbumFolder: 'Создать папки для альбома',
+			createAlbumFolder: 'Создавать папки для альбома',
 			albumNameTemplate: 'Название папки альбома',
-			createCDFolder: 'Создать папки для CD',
-			createStructurePlaylist: 'Создать структуру папок для плейлистов',
-			createSingleFolder: 'Создать структуру папок для синглов'
+			createCDFolder: 'Создавать папки для CD',
+			createStructurePlaylist: 'Создавать структуру папок для плейлистов',
+			createSingleFolder: 'Создавать структуру папок для синглов'
 		},
 		trackTitles: {
 			title: 'Названия треков',
@@ -220,10 +220,10 @@ const ru = {
 			},
 			fallbackBitrate: 'Скачивать с низким битрейтом, если текущий недоступен',
 			fallbackSearch: 'Искать другой трек, если нужный недоступен',
-			logErrors: 'Создать логи для ошибок',
-			logSearched: 'Создать лог поиска',
-			createM3U8File: 'Создать файлы плейлистов',
-			syncedLyrics: 'Создать .lyr файлы (Синхронизированный текст)',
+			logErrors: 'Сохранять логи ошибок',
+			logSearched: 'Сохранять лог истории поиска',
+			createM3U8File: 'Создавать файлы плейлистов',
+			syncedLyrics: 'Создавать .lyr файлы (Синхронизированный текст)',
 			playlistFilenameTemplate: 'Шаблон названия плейлиста',
 			saveDownloadQueue: 'Сохранять текущий список загрузок при закрытии приложения'
 		},
@@ -271,7 +271,7 @@ const ru = {
 		},
 		other: {
 			title: 'Разное',
-			savePlaylistAsCompilation: 'Сохранить плейлисты как сборники',
+			savePlaylistAsCompilation: 'Сохранять плейлисты как сборники',
 			useNullSeparator: 'Использовать нулевой символ в качестве разделителя',
 			saveID3v1: 'Дополнительно сохранять ID3v1',
 			multiArtistSeparator: {
@@ -281,10 +281,10 @@ const ru = {
 				andFeat: 'Используя & и feat.',
 				using: 'Используя "{0}"'
 			},
-			singleAlbumArtist: 'Сохранить только основного исполнителя альбома',
-			albumVariousArtists: 'Оставить "Various Artists" в Исполнителях льбома',
-			removeAlbumVersion: 'Удалить "Album Version" из названия трека',
-			removeDuplicateArtists: 'Удалить повторяющихся исполнителей',
+			singleAlbumArtist: 'Сохранять только основного исполнителя альбома',
+			albumVariousArtists: 'Оставлять "Various Artists" в Исполнителях альбома',
+			removeAlbumVersion: 'Удалять "Album Version" из названия трека',
+			removeDuplicateArtists: 'Удалять повторяющихся исполнителей',
 			dateFormat: {
 				title: 'Формат даты для FLAC файлов',
 				year: 'YYYY',
@@ -309,8 +309,8 @@ const ru = {
 			},
 			previewVolume: 'Громкость прослушивания',
 			executeCommand: {
-				title: 'Выполнить команды по окончании загрузок',
-				description: 'Оставьте пустым, если ничего не требуется'
+				title: 'Выполнять команды по окончании загрузок',
+				description: 'Оставьте поле пустым, если ничего не требуется'
 			}
 		},
 		spotify: {
@@ -332,7 +332,7 @@ const ru = {
 		search: 'поиск',
 		charts: 'чарты',
 		favorites: 'избранное',
-		linkAnalyzer: 'просмотр ссылок',
+		linkAnalyzer: 'анализ ссылки',
 		settings: 'настройки',
 		about: 'о проекте'
 	},

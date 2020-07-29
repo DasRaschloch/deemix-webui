@@ -158,7 +158,8 @@ const en = {
 		startAddingArtist: 'Adding {0} albums to queue',
 		finishAddingArtist: 'Added {0} albums to queue',
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to deezer tracks',
-		finishConvertingSpotifyPlaylist: 'Spotify playlist converted'
+		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
+		loginNeededToDownload: 'You need to log in to download tracks!'
 	},
 	settings: {
 		title: 'Settings',

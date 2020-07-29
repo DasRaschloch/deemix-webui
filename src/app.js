@@ -156,3 +156,7 @@ socket.on('queueError', function(queueItem) {
 socket.on('alreadyInQueue', function(data) {
 	toast(i18n.t('toasts.alreadyInQueue', [data.title]), 'playlist_add_check')
 })
+
+socket.on('loginNeededToDownload', function(data) {
+	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
+})

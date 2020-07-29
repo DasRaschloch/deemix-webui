@@ -40,28 +40,28 @@ const de = {
 		},
 		subtitles: {
 			bugReports: "Gibt es etwas, das im Deemix nicht funktioniert? Teil es uns mit!",
-			contributing: 'du möchtest zu diesem Projekt beitragen? Das kannst du auf verschiedene Weise tun!',
-			donations: 'du möchtest einen monetären Beitrag leisten? Gib uns eine Spende!'
+			contributing: 'Du möchtest zu diesem Projekt beitragen? Das kannst du auf verschiedene Arten tun!',
+			donations: 'Du möchtest deemix finanziell unterstützen? Dann mach eine Spende'
 		},
 		usesLibrary: 'Diese App verwendet die <strong>deemix</strong> Bibliothek, die du verwenden kannst, um Deine eigene UI für Deemix zu erstellen.',
 		thanks: `Danke an <strong>rtonno</strong>, <strong>uhwot</strong> und <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> und <strong>scarvimane</strong> für das Design der Icons.`,
-		upToDate: `Bleibe mit den Aktualisierungen auf dem Laufenden, indem du dem <a href="https://t.me/RemixDevNews" target="_blank">Nachrichtenkanal</a> auf Telegram folgst.`,
+		upToDate: `Bleib auf dem Laufenden mit den Updates indem du dem <a href="https://t.me/RemixDevNews" target="_blank">News Channel</a> auf Telegram folgst.`,
 		officialWebsite: 'Offizielle Webseite',
 		officialRepo: 'Offizielle Library Repository',
 		officialWebuiRepo: 'Offizielle WebUI Repository',
 		officialSubreddit: 'Offizieller Subreddit',
 		newsChannel: 'News Kanal',
-		questions: `Wenn du Fragen oder Probleme mit der App hast, suche zuerst nach einer Lösung im <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Wenn du dann nichts findest, kannst du einen Beitrag mit Deinem Thema auf dem subreddit verfassen.`,
-		beforeReporting: `Bevor du einen Fehler meldest, stelle sicher, dass du die neueste Version der App benutzt und dass das, was du melden möchtest, tatsächlich ein Fehler ist und nicht etwas, das nur auf deiner Seite falsch ist.`,
-		beSure: `Vergewissere dich, dass der Fehler auf einem anderen Rechner reproduzierbar ist und auch <stark>DO NOT</stark> melde einen Fehler, wenn er bereits gemeldet wurde.`,
+		questions: `Wenn du Fragen oder Probleme mit der App hast, suche zuerst nach einer Lösung im <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Wenn du dann nichts findest, kannst du einen Beitrag mit Deinem Thema auf dem Subreddit verfassen.`,
+		beforeReporting: `Bevor du einen Fehler meldest, stelle sicher, dass du die neueste Version der App benutzt und dass das, was du melden möchtest, tatsächlich ein Bug ist und nicht etwas, das nur bei dir falsch ist.`,
+		beSure: `Vergewissere dich, dass der Bug auf einem anderen Rechner vorhanden ist und melde <stark>NICHT</stark> einen Bug, wenn er bereits gemeldet wurde.`,
 		duplicateReports: 'Doppelte Fehlerberichte werden geschlossen, also behalte das im Auge.',
-		dontOpenIssues: `Erstelle <strong>KEINE</strong> Einträge, um Fragen zu stellen, dafür gibt es einen Unterpunkt.`,
-		newUI: `Wenn du dich mit Python auskennst, könntest du versuchen, ein neues UI für die Anwendung zu erstellen, indem du die Basisbibliothek benutzt, oder Fehler in der Bibliothek mit einer Pull-Anfrage auf der <a href="https://codeberg.org/RemixDev/deemix" target="_blank">Repo</a> behebst.`,
+		dontOpenIssues: `Erstelle <strong>KEINE</strong> Fehlerberichte, um Fragen zu stellen, dafür gibt es einen Subreddit.`,
+		newUI: `Wenn du dich mit Python auskennst, könntest du versuchen, mit hilfe der base library eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der library mit einem Pull-Request in der <a href="https://codeberg.org/RemixDev/deemix" target="_blank">deemix Repo</a> zu beheben.`,
 		acceptFeatures: `Ich akzeptiere auch Features, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.`,
 		otherLanguages: `Wenn du eine andere Programmiersprache fließend beherrschst, könntest du versuchen, deemix in andere Programmiersprachen zu portieren!`,
-		understandingCode: `Sie benötigen Hilfe beim Verständnis des Codes? Drücken Sie einfach RemixDev auf Telegram oder Reddit.`,
-		contributeWebUI: `Wenn du Vue.js (JavaScript), HTML oder CSS kennst, könntest du zum <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a> beitragen.`,
-		itsFree: `Du solltest daran denken, dass dies ist ein <strong>freies Projekt</strong> ist und <strong>Du solltest die Künstler, die du liebst, unterstützen<strong>, bevor du die Entwickler unterstützt.`,
+		understandingCode: `Du benötigst Hilfe beim verstehen des Codes? Frag einfach RemixDev auf Telegram oder Reddit.`,
+		contributeWebUI: `Wenn du Vue.js (JavaScript) oder HTML und CSS kennst, könntest du etwas zum <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a> beitragen.`,
+		itsFree: `Du solltest daran denken, dass dies ist ein <strong>kostenloses Projekt</strong> ist und <strong>Du solltest die Künstler, die du magst, unterstützen<strong>, bevor du die Entwickler unterstützt.`,
 		notObligated: `Fühle dich nicht verpflichtet zu spenden, wir schätzen deinen Beitrag trotzdem!`,
 		lincensedunder: `Diese Arbeit ist lizensiert unter einer
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
@@ -76,21 +76,21 @@ const de = {
 	errors: {
 		title: 'Fehler für {0}',
 		ids: {
-			invaliduRL: 'URL nicht erkannt',
-			unsupporteduRL: 'URL noch nicht unterstützt',
-			ISRCnotOnDeezer: 'Titel ISRC ist auf deezer nicht verfügbar',
-			notYourPrivatePlaylist: "Du kannst keine privaten Playlisten anderer herunterladen.",
-			spotifyDisabled: 'Spotify Features sind nicht korrekt eingerichtet.',
-			trackNotOnDeezer: 'Titel auf der Deezer nicht gefunden!',
-			albumNotOnDeezer: 'Album auf der Deezer nicht gefunden!',
-			notOnDeezer: 'Titel bei Deezer nicht verfügbar!',
-			notEncoded: 'Titel noch nicht kodiert!',
-			notEncodedNoAlternative: 'Titel noch nicht kodiert und keine Alternative gefunden!',
-			wrongBitrate: 'Titel mit der gewünschten Bitrate nicht gefunden.',
-			wrongBitrateNoAlternative: 'Titel mit der gewünschten Bitrate nicht gefunden und keine Alternative gefunden!',
-			no360RA: 'Der Titel ist im Reality Audio 360 Format nicht verfügbar.',
-			notAvailable: "Titel auf den Servern von deezer nicht verfügbar!",
-			notAvailableNoAlternative: "Titel auf den Servern von deezer nicht verfügbar und keine Alternative gefunden!"
+										invalidURL: 'URL nicht erkannt',
+										unsupportedURL: 'URL noch nicht unterstützt',
+										ISRCnotOnDeezer: 'Track ISRC ist auf deezer nicht verfügbar',
+										notYourPrivatePlaylist: "Du kannst keine privaten Playlisten anderer herunterladen.",
+										spotifyDisabled: 'Spotify-Funktionen sind nicht richtig eingerichtet',
+										trackNotOnDeezer: 'Track ist nicht verfügbar auf Deezer!',
+										albumNotOnDeezer: 'Album auf Deezer nicht gefunden!',
+										notOnDeezer: 'Track auf Deezer nicht verfügbar!',
+										notEncoded: 'Track noch nicht codiert!',
+										notEncodedNoAlternative: 'Track noch nicht codiert und keine Alternative gefunden!',
+										wrongBitrate: 'Spur mit gewünschter Bitrate nicht gefunden.',
+										wrongBitrateNoAlternative: 'Track mit gewünschter Bitrate nicht gefunden und keine Alternative gefunden!',
+										no360RA: 'Track ist nicht verfügbar in Reality Audio 360.',
+										notAvailable: "Track ist noch nicht verfügbar auf den Servern von Deezer!",
+										notAvailableNoAlternative: "Track ist noch nicht verfügbar auf den Servern von Deezer und keine Alternativen gefunden!!"
 		}
 	},
 	favorites: {
@@ -141,7 +141,7 @@ const de = {
 		noResultsPlaylist: 'Keine Playlisten gefunden'
 	},
 	searchbar: 'Suche alles, was du willst (oder füge einfach einen Link ein)',
-	downloads: 'downloads',
+	downloads: 'Downloads',
 	toasts: {
 		addedToQueue: '{0} zur Warteschlange hinzugefügt',
 		alreadyInQueue: '{0} ist bereits in der Warteschlange!',
@@ -153,15 +153,15 @@ const de = {
 		alreadyLogged: 'Bereits eingeloggt',
 		loginFailed: "Einloggen nicht möglich",
 		loggedOut: 'Ausgeloggt',
-		cancellingCurrentItem: 'Aktuellen Eintrag abbrechen.',
-		currentItemCancelled: 'Aktueller Eintrag abgebrochen.',
+		cancellingCurrentItem: 'Aktuelle Auswahl abbrechen.',
+		currentItemCancelled: 'Aktuelle Auswahl abgebrochen.',
 		startAddingArtist: '{0} Alben zur Warteschlange hinzufügen',
 		finishAddingArtist: '{0} Alben zur Warteschlange hinzugefügt',
 		startConvertingSpotifyPlaylist: 'Umwandlung von Spotify-Titel in Deezer-Titel',
 		finishConvertingSpotifyPlaylist: 'Spotify Playlist konvertiert'
 	},
 	settings: {
-		title: 'Eisntellungen',
+		title: 'Einstellungen',
 		languages: 'Sprachen',
 		login: {
 			title: 'Login',
@@ -187,21 +187,21 @@ const de = {
 		},
 		folders: {
 			title: 'Ordner',
-			createPlaylistFolder: 'Ordner für Playlists erstellen',
-			playlistNameTemplate: 'Vorlage für Playlist-Ordner',
-			createArtistFolder: 'Ordner für Künstler erstellen',
-			artistNameTemplate: 'Vorlage für Künstler-Ordner',
-			createAlbumFolder: 'Ordner für Album erstellen',
-			albumNameTemplate: 'Vorlage für Album-Ordner',
-			createCDFolder: 'Ordner für CDs erstellen',
-			createStructurePlaylist: 'Ordnerstruktur für Wiedergabelisten erstellen',
-			createSingleFolder: 'Ordnerstruktur für Singles erstellen'
+										createPlaylistFolder: 'Ordner für Playlist erstellen',
+										playlistNameTemplate: 'Playlist Ordner Vorlage',
+										createArtistFolder: 'Ordner für Künstler erstellen',
+										artistNameTemplate: 'Künstler Ordner Vorlage',
+										createAlbumFolder: 'Ordner für Album erstellen',
+										albumNameTemplate: 'Album Ordner Vorlage',
+										createCDFolder: 'Ordner für CDs erstellen',
+										createStructurePlaylist: 'Erstellen von Künstler-, Alben- und CD-Ordnern auch für Playlisten',
+										createSingleFolder: 'Ordner für einzelne Titel erstellen'
 		},
-		trackTitles: {
-			title: 'Tracktitel',
-			padTracks: 'Pad tracks',
-			paddingSize: 'Overwrite padding size',
-			illegalCharacterReplacer: 'Unzulässiger Zeichen-Ersetzer'
+						trackTitles: {
+										title: 'Track Titel',
+										padTracks: 'einheitliche Länge der Titelnummern (voranstehende Nullen werden ergänzt)',
+										paddingSize: 'Paddinggröße überschreiben',
+										illegalCharacterReplacer: 'unzulässige Zeichen ersetzen'
 		},
 		downloads: {
 			title: 'Downloads',
@@ -218,14 +218,14 @@ const de = {
 				n: "Nein, Datei nicht überschreiben",
 				t: 'Nur Tags überschreiben'
 			},
-			fallbackBitrate: 'Fallback Bitrate',
-			fallbackSearch: 'Fallback suchen',
-			logErrors: 'Protokolldateien für Fehler erstellen',
-			logSearched: 'Protokolldateien für gesuchte Titel erstellen',
-			createM3U8File: 'Playlist-Datei erstellen (M3U8)',
-			syncedLyrics: '.lyr-Dateien erstellen (Liedtexte synchronisieren)',
-			playlistFilenameTemplate: 'Vorlage für Playlist-Dateinamen',
-			saveDownloadQueue: 'Speichern der Download-Warteschlange beim Schließen der Anwendung'
+										fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
+										fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',
+										logErrors: 'Protokolldatei für Fehler im Download-Ordner erstellen',
+										logSearched: 'Protokolldatei für gesuchte Tracks erstellen',
+										createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
+										syncedLyrics: 'Erstelle synchrone Lyric-Datei (.lyr)',
+										playlistFilenameTemplate: 'Dateinamenvorlage für Playlist',
+										saveDownloadQueue: 'Download-Warteschlange beim Schließen der App speichern'
 		},
 		covers: {
 			title: 'Album-Cover',
@@ -271,7 +271,7 @@ const de = {
 		},
 		other: {
 			title: 'Andere',
-			savePlaylistAsCompilation: 'Wiedergabelisten als Compilation speichern',
+			savePlaylistAsCompilation: 'Wiedergabelisten als Zussammenstellung speichern',
 			useNullSeparator: 'Null-Trennzeichen verwenden',
 			saveID3v1: 'ID3v1 ebenfalls speichern',
 			multiArtistSeparator: {
@@ -279,7 +279,7 @@ const de = {
 				nothing: 'Nur den Hauptkünstler speichern',
 				default: 'Verwendung der Standardspezifikation',
 				andFeat: 'Verwendung von & und feat.',
-				using: 'Verwendet "{0}"'
+				using: 'Verwende "{0}"'
 			},
 			singleAlbumArtist: 'Nur den Interpreten des Hauptalbums speichern',
 			albumVariousArtists: '"Verschiedene Künstler" im Album Künstler Tag behalten',
@@ -305,7 +305,7 @@ const de = {
 				lower: 'kleinbuchstaben',
 				upper: 'GROSSBUCHSTABEN',
 				start: 'Anfang Jedes Wortes',
-				sentence: 'Wie einen Satz'
+				sentence: 'Wie einen satz'
 			},
 			previewVolume: 'Vorschau Lautstärke',
 			executeCommand: {

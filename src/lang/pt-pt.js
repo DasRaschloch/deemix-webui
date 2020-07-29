@@ -39,7 +39,7 @@ const pt = {
             license: 'Licenças'
         },
         subtitles: {
-            bugReports: "Existe alguma coisa que não funciona no deemix? Informa-nos!",
+            bugReports: 'Existe alguma coisa que não funciona no deemix? Informa-nos!',
             contributing: 'Queres contribuir para o projecto? Podes fazê-lo de diferentes formas!',
             donations: 'Desejas contribuir monetariamente? Faz uma doação!'
         },
@@ -63,9 +63,9 @@ const pt = {
         contributeWebUI: `Caso saibas Vue.js (JavaScript), HTML ou CSS podes contribuir para o <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
         itsFree: `Deves ter em conta que <strong>que este projecto é gratuito</strong> e <strong>deverás apoiar os artistas que aprecias</strong> antes de apoiares os programadores.`,
         notObligated: `Não te sintas obrigado a doar, agradeço-te na mesma!`,
-        lincensedUnder: `This work is licensed under a
+        lincensedUnder: `Este trabalho esta licenciado sobre a 
             <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-                >GNU General Public License 3.0</a
+                >GNU Licença publica geral  3.0</a
             >.`
     },
     charts: {
@@ -78,8 +78,8 @@ const pt = {
         ids: {
             invalidURL: 'URL não reconhecido',
             unsupportedURL: 'URL ainda não suportado',
-            ISRCnotOnDeezer: 'Track ISRC não disponível no deezer',
-            notYourPrivatePlaylist: "You can't download others private playlists.",
+            ISRCnotOnDeezer: 'Faixa ISRC não disponível no deezer',
+            notYourPrivatePlaylist: "Nao podes baixar listas de reprodução privado dos outros.",
             spotifyDisabled: 'Funcionalidades do Spotify não estão definidas corretamente.',
             trackNotOnDeezer: 'Faixa não encontrada no deezer!',
             albumNotOnDeezer: 'Álbum não encontrado no deezer!',
@@ -89,8 +89,8 @@ const pt = {
             wrongBitrate: 'Faixa não encontrada no bitrate desejado.',
             wrongBitrateNoAlternative: 'Faixa não encontrada no bitrate desejado e não foi encontrada alternativa!',
             no360RA: 'Faixa não disponível em Reality Audio 360.',
-            notAvailable: "Faixa não disponível nos servidores do deezer!",
-            notAvailableNoAlternative: "Faixa não disponível nos servidores do deezer e não foi encontrada alternativa!"
+            notAvailable: 'Faixa não disponível nos servidores do deezer!',
+            notAvailableNoAlternative: 'Faixa não disponível nos servidores do deezer e não foi encontrada alternativa!'
         }
     },
     favorites: {
@@ -110,8 +110,7 @@ const pt = {
     },
     linkAnalyzer: {
         info: 'Podes usar esta secção para obteres mais informação sobre o link que estás a tentar transferir.',
-        useful:
-            "Isto é útil caso estejas a tentar transferir faixas que não estão disponíveis no teu país e queres saber onde estão disponíveis, por exemplo.",
+        useful: 'Isto é útil caso estejas a tentar transferir faixas que não estão disponíveis no teu país e queres saber onde estão disponíveis, por exemplo.',
         linkNotSupported: 'Este link ainda não é suportado',
         linkNotSupportedYet: 'Parece que este link ainda não é suportado, tenta analisar outro.',
         table: {
@@ -124,15 +123,14 @@ const pt = {
             releaseDate: 'Data de lançamento',
             bpm: 'BPM',
             label: 'Editora',
-            recordType: 'Record Type',
+            recordType: 'Tipo de Recorde',
             genres: 'Géneros',
             tracklist: 'Lista de faixas'
         }
     },
     search: {
         startSearching: 'Começa a pesquisar!',
-        description:
-            'Podes perquisar uma música, um álbum inteiro, um artista, uma lista de reprodução... tudo! Também podes colar um link do Deezer',
+        description: 'Podes perquisar uma música, um álbum inteiro, um artista, uma lista de reprodução... tudo! Também podes colar um link do Deezer',
         fans: '{0} fãs',
         noResults: 'Sem resultados',
         noResultsTrack: 'Faixa não encontrada',
@@ -151,8 +149,8 @@ const pt = {
         loggingIn: 'A autenticar',
         loggedIn: 'Autenticado',
         alreadyLogged: 'Já estás autenticado',
-        loginFailed: "Couldn't log in",
-        loggedOut: 'Logged out',
+        loginFailed: "Nao foi possivel iniciar sessão",
+        loggedOut: 'Desconectado',
         cancellingCurrentItem: 'A cancelar item actual.',
         currentItemCancelled: 'Item actual cancelado.',
         startAddingArtist: 'A adicionar {0} álbuns à fila',
@@ -164,7 +162,7 @@ const pt = {
         title: 'Definições',
         languages: 'Idioma',
         login: {
-            title: 'Login',
+            title: 'Inicio de Sessão',
             loggedIn: 'Estás autenticado como {username}',
             arl: {
                 question: 'Como obter o meu ARL?',
@@ -199,8 +197,8 @@ const pt = {
         },
         trackTitles: {
             title: 'Título',
-            padTracks: 'Pad tracks',
-            paddingSize: 'Overwrite padding size',
+            padTracks: 'Bloco de Faixas',
+            paddingSize: 'Substituir tamanho do preenchimento',
             illegalCharacterReplacer: 'Substituir caractere inválidos'
         },
         downloads: {
@@ -215,31 +213,31 @@ const pt = {
             overwriteFile: {
                 title: 'Ficheiros existentes. Substituir?',
                 y: 'Sim, substituir o ficheiro',
-                n: "Não substituir o ficheiro",
-                t: 'Sobrescrever apenas as etiquetas'
+                n: 'Não substituir o ficheiro',
+                t: 'Subescrever apenas as etiquetas'
             },
-            fallbackBitrate: 'Bitrate fallback',
-            fallbackSearch: 'Fallback de pesquisa',
-            logErrors: 'Criar logs para erros',
-            logSearched: 'Criar logs para faixas pesquisadas',
+            fallbackBitrate: 'Reserva de taxa de bits',
+            fallbackSearch: 'reserva de pesquisa',
+            logErrors: 'Criar histórico para erros',
+            logSearched: 'Criar histórico para faixas pesquisadas',
             createM3U8File: 'Criar ficheiro de lista de reprodução',
             syncedLyrics: 'Criar ficheiro .lyr (Letras Sincronizadas)',
-            playlistFilenameTemplate: 'Formato do nome de ficheiro playlists',
+            playlistFilenameTemplate: 'Formato do nome de ficheiro da lista de reprodução',
             saveDownloadQueue: 'Guardar fila de transferências ao fechar a aplicação'
         },
         covers: {
             title: 'Capas do Álbum',
             saveArtwork: 'Guardar capas',
-            coverImageTemplate: 'Cover name template',
-            saveArtworkArtist: 'Save artist image',
-            artistImageTemplate: 'Artist image template',
-            localArtworkSize: 'Local artwork size',
-            embeddedArtworkSize: 'Embedded artwork size',
+            coverImageTemplate: 'Modelo do nome da capa',
+            saveArtworkArtist: 'Salvar imagem do artista',
+            artistImageTemplate: 'Modelo de imagem do artista',
+            localArtworkSize: 'Tamanho do trabalho artístico local',
+            embeddedArtworkSize: 'Tamanho do trabalho artístico incorporado',
             localArtworkFormat: {
-                title: 'What format do you want the local artwork to be?',
-                jpg: 'A jpeg image',
-                png: 'A png image',
-                both: 'Both a jpeg and a png'
+                title: 'Que formato você deseja que o trabalho artístico local seja?',
+                jpg: 'Uma imagem jpeg',
+                png: 'Uma imagem png',
+                both: 'Os dois um jpeg e um png'
             },
             jpegImageQuality: 'Qualidade de imagem JPEG'
         },
@@ -262,17 +260,17 @@ const pt = {
             length: 'Duração da faixa',
             barcode: 'Código de barras do álbum (UPC)',
             bpm: 'BPM',
-            replayGain: 'Replay Gain',
+            replayGain: 'Ganho de Repeticao',
             label: 'Editora do álbum',
-            lyrics: 'Unsynchronized Lyrics',
-            copyright: 'Copyright',
+            lyrics: 'Letra da música não sincronizado',
+            copyright: 'Direito Autoral',
             composer: 'Compositor',
             involvedPeople: 'Pessoas envolvidas'
         },
         other: {
             title: 'Outros',
-            savePlaylistAsCompilation: 'Save playlists as compilation',
-            useNullSeparator: 'Usar separador null',
+            savePlaylistAsCompilation: 'Guardar a lista de reproducao como uma compilacao',
+            useNullSeparator: 'Usar separador nulo',
             saveID3v1: 'Também guardar ID3v1',
             multiArtistSeparator: {
                 title: 'Como queres separarar os artistas?',
@@ -292,22 +290,22 @@ const pt = {
                 day: 'DD'
             },
             featuredToTitle: {
-                title: 'What should I do with featured artists?',
+                title: 'O que devo fazer com os artistas em destaque?',
                 0: 'Nada',
                 1: 'Remover do título',
                 3: 'Remover do título de do título do album',
                 2: 'Movê-lo para o título'
             },
-            titleCasing: 'Title casing',
-            artistCasing: 'Artist casing',
+            titleCasing: 'Caixa do Título',
+            artistCasing: 'Caixa do Artista',
             casing: {
                 nothing: 'Manter inalterado',
                 lower: 'minusculas',
                 upper: 'MAIÙSCULAS',
                 start: 'Ínicio De Cada Palavra',
-                sentence: 'Like a sentence'
+                sentence: 'Como uma frase'
             },
-            previewVolume: 'Preview Volume',
+            previewVolume: 'Pre visualizacao do volume',
             executeCommand: {
                 title: 'Comando a executar após transferir',
                 description: 'Deixar em branco para nenhuma acção'
@@ -319,12 +317,12 @@ const pt = {
             clientSecret: 'Spotify Client Secret',
             username: 'nome de utilizador Spotify'
         },
-        reset: 'Reset to Default',
-        save: 'Save',
+        reset: 'Restaurar para o padrao',
+        save: 'Guardar',
         toasts: {
             init: 'Configurações carregadas!',
             update: 'Configurações actualizadas',
-            ARLcopied: 'ARL copied to clipboard'
+            ARLcopied: 'ARL copiado para area de transferencia'
         }
     },
     sidebar: {
@@ -332,7 +330,7 @@ const pt = {
         search: 'pesquisa',
         charts: 'tabelas',
         favorites: 'favoritos',
-        linkAnalyzer: 'link analyzer',
+        linkAnalyzer: 'Analizador de Links',
         settings: 'definições',
         about: 'sobre'
     },

@@ -5,6 +5,9 @@ import de from 'svg-country-flags/svg/de.svg'
 import fr from 'svg-country-flags/svg/fr.svg'
 import id from 'svg-country-flags/svg/id.svg'
 import pt from 'svg-country-flags/svg/pt.svg'
+import br from 'svg-country-flags/svg/br.svg'
+import ru from 'svg-country-flags/svg/ru.svg'
+import tr from 'svg-country-flags/svg/tr.svg'
 
 export default {
 	it,
@@ -13,5 +16,8 @@ export default {
 	de,
 	fr,
 	id,
-	pt
+	pt,
+	ptBr: br,
+	ru,
+	tr
 }

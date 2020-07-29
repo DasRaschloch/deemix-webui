@@ -39,11 +39,12 @@ const es = {
 			license: 'Licencia'
 		},
 		subtitles: {
-			bugReports: "¿Hay algo que no funcione en Deemix? ¡Díganoslo!",
+			bugReports: '¿Hay algo que no funcione en Deemix? ¡Díganoslo!',
 			contributing: '¿Quieres contribuir a este proyecto? ¡Puedes hacerlo de diferentes maneras!',
 			donations: '¿Quiere contribuir monetariamente? ¡Podrías hacer una donación!'
 		},
-		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
+		usesLibrary:
+			'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
 		thanks: `Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.`,
 		upToDate: `Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.`,
 		officialWebsite: 'Página web oficial',
@@ -78,7 +79,7 @@ const es = {
 			invalidURL: 'No se reconoce la URL',
 			unsupportedURL: 'La URL no está soportada aún',
 			ISRCnotOnDeezer: 'Pista ISRC no está disponible en Deezer',
-			notYourPrivatePlaylist: "No puedes descargar otras listas de reproducción privadas.",
+			notYourPrivatePlaylist: 'No puedes descargar otras listas de reproducción privadas.',
 			spotifyDisabled: 'Funciones de Spotify no está configurado correctamente.',
 			trackNotOnDeezer: '¡No se encontró la pista en Deezer!',
 			albumNotOnDeezer: '¡El álbum no se encuentra en Deezer!',
@@ -86,10 +87,12 @@ const es = {
 			notEncoded: '¡Pista aún no codificada!',
 			notEncodedNoAlternative: '¡Pista aún no codificada y no se ha encontrado ninguna alternativa!',
 			wrongBitrate: 'La pista no se encuentra a la velocidad de bitrate deseada.',
-			wrongBitrateNoAlternative: '¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
+			wrongBitrateNoAlternative:
+				'¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
 			no360RA: 'La pista no está disponible en Reality Audio 360.',
-			notAvailable: "¡La pista no está disponible en los servidores de Deezer!",
-			notAvailableNoAlternative: "¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!"
+			notAvailable: '¡La pista no está disponible en los servidores de Deezer!',
+			notAvailableNoAlternative:
+				'¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!'
 		}
 	},
 	favorites: {
@@ -109,7 +112,8 @@ const es = {
 	},
 	linkAnalyzer: {
 		info: 'Puedes usar esta sección para encontrar más información sobre el enlace que estás tratando de descargar.',
-		useful: "Esto es útil si está tratando de descargar algunas pistas que no están disponibles en su país y quiere saber dónde están disponibles, por ejemplo.",
+		useful:
+			'Esto es útil si está tratando de descargar algunas pistas que no están disponibles en su país y quiere saber dónde están disponibles, por ejemplo.',
 		linkNotSupported: 'Este enlace aún no está soportado',
 		linkNotSupportedYet: 'Parece que este enlace aún no está soportado, intenta analizar otro.',
 		table: {
@@ -129,7 +133,8 @@ const es = {
 	},
 	search: {
 		startSearching: '¡Comienza a buscar!',
-		description: 'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
+		description:
+			'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
 		fans: '{0} fanáticos',
 		noResults: 'No hay resultados',
 		noResultsTrack: 'No se encontraron pistas',
@@ -148,7 +153,7 @@ const es = {
 		loggingIn: 'Conectando...',
 		loggedIn: 'Conectado',
 		alreadyLogged: 'Ya está conectado',
-		loginFailed: "No se puede conectar",
+		loginFailed: 'No se puede conectar',
 		loggedOut: 'Desconectado',
 		cancellingCurrentItem: 'Cancelando el elemento actual.',
 		currentItemCancelled: 'El elemento actual se ha cancelado.',
@@ -212,7 +217,7 @@ const es = {
 			overwriteFile: {
 				title: '¿Desea que sobreescriba los archivos?',
 				y: 'Sí, sobrescribir el archivo',
-				n: "No, no sobrescribir el archivo",
+				n: 'No, no sobrescribir el archivo',
 				t: 'Sobrescribir sólo las etiquetas'
 			},
 			fallbackBitrate: 'La solución alternativa de bitrate',

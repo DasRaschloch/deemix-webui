@@ -7,6 +7,7 @@ import en from '@/lang/en'
 import es from '@/lang/es'
 import de from '@/lang/de'
 import fr from '@/lang/fr'
+import id from '@/lang/id'
 
 Vue.use(VueI18n)
 
@@ -19,7 +20,8 @@ const locales = {
 	en,
 	es,
 	de,
-	fr
+	fr,
+	id
 }
 
 const i18n = new VueI18n({

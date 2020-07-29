@@ -4,6 +4,7 @@ import VueI18n from 'vue-i18n'
 // Languages
 import it from '@/lang/it'
 import en from '@/lang/en'
+import es from '@/lang/es'
 
 Vue.use(VueI18n)
 
@@ -13,7 +14,8 @@ document.querySelector('html').setAttribute('lang', DEFAULT_LANG)
 
 const locales = {
 	it,
-	en
+	en,
+	es
 }
 
 const i18n = new VueI18n({

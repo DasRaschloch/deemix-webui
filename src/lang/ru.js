@@ -33,7 +33,7 @@ const ru = {
 	about: {
 		titles: {
 			usefulLinks: 'Полезные ссылки',
-			bugReports: 'Баг репорты',
+			bugReports: 'Отчёты об ошибках',
 			contributing: 'Помощь проекту',
 			donations: 'Пожертвования',
 			license: 'Лицензия'
@@ -59,11 +59,11 @@ const ru = {
 		newUI: `Если вы хорошо знаете python, то можете сделать новый UI для приложения с использованием базовой библиотеки или пофиксить в ней баги и сделать pull request в <a href="https://codeberg.org/RemixDev/deemix" target="_blank">репозитории</a>.`,
 		acceptFeatures: `Новые фичи также приветствуются, но не слишком сложные, так как они будут добавлены в приложение, а не в саму библиотеку.`,
 		otherLanguages: `Если вы хорошо знаете другой язык программирования, можете портировать на нём deemix!`,
-		understandingCode: `Не можете понять код? Напишите RemixDev up в Telegram или на Reddit.`,
+		understandingCode: `Не можете разобраться в коде? Напишите RemixDev в Telegram или на Reddit.`,
 		contributeWebUI: `Если вы знаете Vue.js (JavaScript), HTML или CSS, можете внести вклад в <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
 		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует <strong>поддерживать исполнителей</strong>, которые вам нравятся прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
-		lincensedUnder: `Проект находится под лицензией
+		lincensedUnder: `Проект распространяется на условиях лицензии
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
 				>GNU General Public License 3.0</a
 			>.`
@@ -74,9 +74,9 @@ const ru = {
 		download: 'Скачать чарт'
 	},
 	errors: {
-		title: 'Errors for {0}',
+		title: 'Ошибки {0}',
 		ids: {
-			invalidURL: 'URL не распознана',
+			invalidURL: 'URL не распознан',
 			unsupportedURL: 'URL не поддерживается',
 			ISRCnotOnDeezer: 'ISRC трека недоступен на deezer',
 			notYourPrivatePlaylist: "Нельзя скачивать чужие плейлисты.",
@@ -101,7 +101,7 @@ const ru = {
 		noTracks: 'Избранные треки не найдены'
 	},
 	home: {
-		needTologin: 'Вам нужно зайти под своим Deezer аккаунтом прежде, чем скачивать.',
+		needTologin: 'Вам нужно зайти под своим аккаунтом Deezer прежде, чем скачивать.',
 		openSettings: 'Открыть настройки',
 		sections: {
 			popularPlaylists: 'Популярные плейлисты',
@@ -152,7 +152,7 @@ const ru = {
 		loggedIn: 'Вход выполнен',
 		alreadyLogged: 'Вход уже выполнен',
 		loginFailed: "Вход не выполнен",
-		loggedOut: 'Logged out',
+		loggedOut: 'Вы вышли из аккаунта',
 		cancellingCurrentItem: 'Отмена закачки.',
 		currentItemCancelled: 'Отменено.',
 		startAddingArtist: 'Добавление {0} альбомов в очередь',
@@ -207,7 +207,7 @@ const ru = {
 			title: 'Загрузки',
 			queueConcurrency: 'Количество одновременных закачек',
 			maxBitrate: {
-				title: 'Битрейт',
+				title: 'Предпочитаемый битрейт',
 				9: 'FLAC 1411kbps',
 				3: 'MP3 320kbps',
 				1: 'MP3 128kbps'
@@ -219,11 +219,11 @@ const ru = {
 				t: 'Обновить только теги'
 			},
 			fallbackBitrate: 'Скачивать с низким битрейтом, если текущий недоступен',
-			fallbackSearch: 'Искать другой трек, если нужный недоступен',
+			fallbackSearch: 'Искать похожий трек, если нужный недоступен',
 			logErrors: 'Сохранять логи ошибок',
 			logSearched: 'Сохранять лог истории поиска',
 			createM3U8File: 'Создавать файлы плейлистов',
-			syncedLyrics: 'Создавать .lyr файлы (Синхронизированный текст)',
+			syncedLyrics: 'Создавать .lyr файлы (синхронизированная лирика)',
 			playlistFilenameTemplate: 'Шаблон названия плейлиста',
 			saveDownloadQueue: 'Сохранять текущий список загрузок при закрытии приложения'
 		},
@@ -264,7 +264,7 @@ const ru = {
 			bpm: 'BPM',
 			replayGain: 'Replay Gain',
 			label: 'Издатель',
-			lyrics: 'Несинхронизированный текст',
+			lyrics: 'Несинхронизированная лирика',
 			copyright: 'Права',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди'
@@ -272,8 +272,8 @@ const ru = {
 		other: {
 			title: 'Разное',
 			savePlaylistAsCompilation: 'Сохранять плейлисты как сборники',
-			useNullSeparator: 'Использовать нулевой символ в качестве разделителя',
-			saveID3v1: 'Дополнительно сохранять ID3v1',
+			useNullSeparator: 'Использовать null в качестве разделителя',
+			saveID3v1: 'Сохранять ID3v1',
 			multiArtistSeparator: {
 				title: 'Как разделять несколько исполнителей?',
 				nothing: 'Сохранить только основного',
@@ -328,11 +328,11 @@ const ru = {
 		}
 	},
 	sidebar: {
-		home: 'домой',
+		home: 'главная',
 		search: 'поиск',
 		charts: 'чарты',
 		favorites: 'избранное',
-		linkAnalyzer: 'анализ ссылки',
+		linkAnalyzer: 'анализ ссылок',
 		settings: 'настройки',
 		about: 'о проекте'
 	},

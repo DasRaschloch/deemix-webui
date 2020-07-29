@@ -39,11 +39,12 @@ const fr = {
 			license: 'Licence'
 		},
 		subtitles: {
-			bugReports: "Y a-t-il quelque chose qui ne fonctionne pas avec deemix ? Dites-le nous !",
+			bugReports: 'Y a-t-il quelque chose qui ne fonctionne pas avec deemix ? Dites-le nous !',
 			contributing: 'Vous souhaitez contribuer à ce projet ? Vous pouvez le faire de différentes manières !',
 			donations: 'Vous souhaitez contribuer financièrement ? Vous pourriez faire un don !'
 		},
-		usesLibrary: 'Cette application utilise la librairie <strong>deemix</strong>, que vous pouvez utiliser afin de créer votre propre interface utilisateur pour deemix.',
+		usesLibrary:
+			'Cette application utilise la librairie <strong>deemix</strong>, que vous pouvez utiliser afin de créer votre propre interface utilisateur pour deemix.',
 		thanks: `Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> pour m'avoir aidé avec ce projet et à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour avoir réalisé l'icône.`,
 		upToDate: `Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal d'information</a> sur Telegram.`,
 		officialWebsite: 'Site Officiel',
@@ -85,19 +86,19 @@ const fr = {
 			albumNotOnDeezer: 'Album introuvable sur deezer !',
 			notOnDeezer: 'Piste non disponible sur Deezer !',
 			notEncoded: 'Piste pas encore encodée !',
-			notEncodedNoAlternative: "Piste pas encore encodée et aucune alternative trouvée !",
+			notEncodedNoAlternative: 'Piste pas encore encodée et aucune alternative trouvée !',
 			wrongBitrate: 'Piste introuvable au débit souhaité.',
 			wrongBitrateNoAlternative: 'Piste introuvable au débit souhaité et aucune alternative trouvée !',
 			no360RA: "La piste n'est pas disponible avec Reality Audio 360.",
-			notAvailable: "Piste non disponible sur les serveurs de deezer !",
-			notAvailableNoAlternative: "Piste non disponible sur les serveurs de deezer et aucune alternative trouvée !"
+			notAvailable: 'Piste non disponible sur les serveurs de deezer !',
+			notAvailableNoAlternative: 'Piste non disponible sur les serveurs de deezer et aucune alternative trouvée !'
 		}
 	},
 	favorites: {
 		title: 'Favoris',
 		noPlaylists: 'Aucune Playlist trouvée',
-		noAlbums: "Aucuns Album Favori trouvé",
-		noArtists: "Aucun Artiste Favori trouvé",
+		noAlbums: 'Aucuns Album Favori trouvé',
+		noArtists: 'Aucun Artiste Favori trouvé',
 		noTracks: 'Aucune Piste Favorite trouvée'
 	},
 	home: {
@@ -109,7 +110,8 @@ const fr = {
 		}
 	},
 	linkAnalyzer: {
-		info: "Vous pouvez utiliser cette section afin de trouver plus d'informations sur le lien que vous essayer de télcharger.",
+		info:
+			"Vous pouvez utiliser cette section afin de trouver plus d'informations sur le lien que vous essayer de télcharger.",
 		useful:
 			"C'est utile si vous essayer de télécharger des pistes qui ne sont pas disponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles, par exemple.",
 		linkNotSupported: "Ce lien n'est pas encore supporté",
@@ -151,7 +153,7 @@ const fr = {
 		loggingIn: 'Connexion',
 		loggedIn: 'Connecté',
 		alreadyLogged: 'Déjà connecté',
-		loginFailed: "Connexion impossible",
+		loginFailed: 'Connexion impossible',
 		loggedOut: 'Déconnecté',
 		cancellingCurrentItem: "Annulation de l'élément actuel.",
 		currentItemCancelled: 'Élément actuel annulé.',
@@ -262,7 +264,7 @@ const fr = {
 			length: 'Durée de Piste',
 			barcode: "Code-barres de l'album (UPC)",
 			bpm: 'BPM',
-			replayGain: "Gain du Replay",
+			replayGain: 'Gain du Replay',
 			label: "Label de l'Album",
 			lyrics: 'Paroles non synchronisées',
 			copyright: "Droits d'auteur (copyright)",
@@ -277,7 +279,7 @@ const fr = {
 			multiArtistSeparator: {
 				title: 'Comment aimeriez-vous séparer vos artistes ?',
 				nothing: "Enregistrer uniquement l'artiste principal",
-				default: "En utilisant la spécification standard",
+				default: 'En utilisant la spécification standard',
 				andFeat: 'En utilisant & et feat.',
 				using: 'En utilisant "{0}"'
 			},

@@ -1,57 +1,57 @@
 const en = {
 	globals: {
-		welcome: 'Bienvenido a deemix',
-		back: 'atrás',
-		loading: 'cargando',
-		download: 'Descarga {0}',
-		by: 'por {0}',
-		in: 'en {0}',
-		download_hint: 'Descargar',
-		play_hint: 'Reproducir',
-		toggle_download_tab_hint: 'Expandir/Colapsar',
-		clean_queue_hint: 'Limpiar terminados',
-		cancel_queue_hint: 'Cancelar todos',
+		welcome: 'Welcome to deemix',
+		back: 'back',
+		loading: 'loading',
+		download: 'Download {0}',
+		by: 'by {0}',
+		in: 'in {0}',
+		download_hint: 'Download',
+		play_hint: 'Play',
+		toggle_download_tab_hint: 'Expand/Collapse',
+		clean_queue_hint: 'Clear Finished',
+		cancel_queue_hint: 'Cancel All',
 		listTabs: {
 			empty: '',
-			all: 'todos',
-			top_result: 'mejores resultados',
-			album: 'álbum | álbumes',
-			artist: 'artista | artistas',
-			single: 'sencillo | sencillos',
-			title: 'título | títulos',
-			track: 'canción | canciones',
-			trackN: '0 canciones | {n} canción | {n} canciones',
-			releaseN: '0 entregas | {n} entrega | {n} entregas',
-			playlist: 'lista de reproducción | listas de reproducción',
-			compile: 'compilación | compilaciones',
+			all: 'all',
+			top_result: 'top result',
+			album: 'album | albums',
+			artist: 'artist | artists',
+			single: 'single | singles',
+			title: 'title | titles',
+			track: 'track | tracks',
+			trackN: '0 tracks | {n} track | {n} tracks',
+			releaseN: '0 releases | {n} release | {n} releases',
+			playlist: 'playlist | playlists',
+			compile: 'compilation | compilations',
 			ep: 'ep | eps',
-			spotifyPlaylist: 'lista de reproducción spotify | listas de reproducción spotify',
-			releaseDate: 'fecha de publicación',
+			spotifyPlaylist: 'spotify playlist | spotify playlists',
+			releaseDate: 'release date',
 			error: 'error'
 		}
 	},
 	about: {
 		titles: {
-			usefulLinks: 'Enlaces útiles',
-			bugReports: 'Reportar fallos',
-			contributing: 'Contribuye',
-			donations: 'Donaciones',
-			license: 'Licencia'
+			usefulLinks: 'Useful Links',
+			bugReports: 'Bug Reports',
+			contributing: 'Contributing',
+			donations: 'Donations',
+			license: 'License'
 		},
 		subtitles: {
-			bugReports: "¿Hay algo que no funcione en Deemix? ¡Díganoslo!",
-			contributing: '¿Quieres contribuir a este proyecto? ¡Puedes hacerlo de diferentes maneras!',
-			donations: '¿Quiere contribuir monetariamente? ¡Podrías hacer una donación!'
+			bugReports: "Is there something that isn't working in deemix? Tell us!",
+			contributing: 'You want to contribute to this project? You can do it in different ways!',
+			donations: 'You want to contribute monetarily? You could make a donation!'
 		},
-		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
-		thanks: `Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.`,
-		upToDate: `Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.`,
-		officialWebsite: 'Página web oficial',
-		officialRepo: 'Repositorio de la biblioteca oficial',
-		officialWebuiRepo: 'Repositorio oficial de WebUI',
-		officialSubreddit: 'Subreddit oficial',
-		newsChannel: 'Canal de noticias',
-		questions: `Si tienes preguntas o problemas con la aplicación, busca una solución en el <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> primero. Luego, si no encuentras nada puedes hacer un post con tu problema en el subreddit.`,
+		usesLibrary: 'This app uses the <strong>deemix</strong> library, which you can use to make your own UI for deemix.',
+		thanks: `Thanks to <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> for helping me with this project and to <strong>BasCurtiz</strong> and <strong>scarvimane</strong> for making the icon.`,
+		upToDate: `Stay up to date with the updates by following the <a href="https://t.me/RemixDevNews" target="_blank">news channel</a> on Telegram.`,
+		officialWebsite: 'Official Website',
+		officialRepo: 'Official Library Repository',
+		officialWebuiRepo: 'Official WebUI Repository',
+		officialSubreddit: 'Official Subreddit',
+		newsChannel: 'News Channel',
+		questions: `If you have questions or problems with the app, search for a solution in the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
 		beforeReporting: `Before reporting a bug make sure you're running the latest version of the app and that what you want to report is actually a bug and not something that's wrong only on your end.`,
 		beSure: `Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been	already reported.`,
 		duplicateReports: 'Duplicate bug reports will be closed, so keep an eye out on that.',
@@ -307,38 +307,38 @@ const en = {
 				start: 'Start Of Each Word',
 				sentence: 'Like a sentence'
 			},
-			previewVolume: 'Volumen de previsualización',
+			previewVolume: 'Preview Volume',
 			executeCommand: {
-				title: 'Comando a ejecutar después de la descarga',
-				description: 'Deje en blanco para no hacer nada'
+				title: 'Command to execute after download',
+				description: 'Leave blank for no action'
 			}
 		},
 		spotify: {
-			title: 'Funciones de Spotify',
-			clientID: 'ID del cliente de Spotify',
-			clientSecret: 'Cliente secreto de Spotify',
-			username: 'Nombre de usuario de Spotify'
+			title: 'Spotify Features',
+			clientID: 'Spotify clientID',
+			clientSecret: 'Spotify Client Secret',
+			username: 'Spotify username'
 		},
-		reset: 'Restablecer el valor por defecto',
-		save: 'Guardar',
+		reset: 'Reset to Default',
+		save: 'Save',
 		toasts: {
-			init: '¡Configuraciones cargadas!',
-			update: '¡Ajustes actualizados!',
-			ARLcopied: 'ARL copiado al portapapeles'
+			init: 'Settings loaded!',
+			update: 'Settings updated!',
+			ARLcopied: 'ARL copied to clipboard'
 		}
 	},
 	sidebar: {
-		home: 'inicio',
-		search: 'buscar',
+		home: 'home',
+		search: 'search',
 		charts: 'charts',
-		favorites: 'favoritos',
-		linkAnalyzer: 'analizar links',
-		settings: 'ajustes',
-		about: 'acerca de'
+		favorites: 'favorites',
+		linkAnalyzer: 'link analyzer',
+		settings: 'settings',
+		about: 'about'
 	},
 	tracklist: {
-		downloadSelection: 'Descargar selección'
+		downloadSelection: 'Download selection'
 	}
 }
 
-export default es
+export default en

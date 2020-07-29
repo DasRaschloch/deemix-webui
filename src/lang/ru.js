@@ -15,17 +15,17 @@ const ru = {
 			empty: '',
 			all: 'все',
 			top_result: 'лучший результат',
-			album: 'альбом | альбомы',
-			artist: 'исполнитель | исполнители',
-			single: 'сингл | синглы',
-			title: 'название | названия',
-			track: 'трек | треки',
-			trackN: '0 треков | {n} трек | {n} трека | {n} треков',
-			releaseN: '0 релизов | {n} релиз | {n} релиза | {n} релизов',
-			playlist: 'плейлист | плейлисты',
-			compile: 'сборник | сборники',
-			ep: 'ep | eps',
-			spotifyPlaylist: 'плейлисты spotify | плейлисты spotify',
+			album: 'альбом | альбомы | альбомы',
+			artist: 'исполнитель | исполнители | исполнители',
+			single: 'сингл | синглы | синглы',
+			title: 'название | название | название',
+			track: 'трек | треки | треки',
+			trackN: '{n} трек | {n} трека | {n} треков',
+			releaseN: '{n} релиз | {n} релиза | {n} релизов',
+			playlist: 'плейлист | плейлисты | плейлисты',
+			compile: 'сборник | сборники | сборники',
+			ep: 'ep | ep | ep',
+			spotifyPlaylist: 'плейлист spotify | плейлисты spotify | плейлисты spotify',
 			releaseDate: 'Дата выхода',
 			error: 'ошибка'
 		}
@@ -33,7 +33,7 @@ const ru = {
 	about: {
 		titles: {
 			usefulLinks: 'Полезные ссылки',
-			bugReports: 'Баг репорты',
+			bugReports: 'Отчёты об ошибках',
 			contributing: 'Помощь проекту',
 			donations: 'Пожертвования',
 			license: 'Лицензия'
@@ -59,11 +59,11 @@ const ru = {
 		newUI: `Если вы хорошо знаете python, то можете сделать новый UI для приложения с использованием базовой библиотеки или пофиксить в ней баги и сделать pull request в <a href="https://codeberg.org/RemixDev/deemix" target="_blank">репозитории</a>.`,
 		acceptFeatures: `Новые фичи также приветствуются, но не слишком сложные, так как они будут добавлены в приложение, а не в саму библиотеку.`,
 		otherLanguages: `Если вы хорошо знаете другой язык программирования, можете портировать на нём deemix!`,
-		understandingCode: `Не можете понять код? Напишите RemixDev up в Telegram или на Reddit.`,
+		understandingCode: `Не можете разобраться в коде? Напишите RemixDev в Telegram или на Reddit.`,
 		contributeWebUI: `Если вы знаете Vue.js (JavaScript), HTML или CSS, можете внести вклад в <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
 		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует <strong>поддерживать исполнителей</strong>, которые вам нравятся прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
-		lincensedUnder: `Проект находится под лицензией
+		lincensedUnder: `Проект распространяется на условиях лицензии
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
 				>GNU General Public License 3.0</a
 			>.`
@@ -74,9 +74,9 @@ const ru = {
 		download: 'Скачать чарт'
 	},
 	errors: {
-		title: 'Errors for {0}',
+		title: 'Ошибки {0}',
 		ids: {
-			invalidURL: 'URL не распознана',
+			invalidURL: 'URL не распознан',
 			unsupportedURL: 'URL не поддерживается',
 			ISRCnotOnDeezer: 'ISRC трека недоступен на deezer',
 			notYourPrivatePlaylist: "Нельзя скачивать чужие плейлисты.",
@@ -101,7 +101,7 @@ const ru = {
 		noTracks: 'Избранные треки не найдены'
 	},
 	home: {
-		needTologin: 'Вам нужно зайти под своим Deezer аккаунтом прежде, чем скачивать.',
+		needTologin: 'Вам нужно зайти под своим аккаунтом Deezer прежде, чем скачивать.',
 		openSettings: 'Открыть настройки',
 		sections: {
 			popularPlaylists: 'Популярные плейлисты',
@@ -152,7 +152,7 @@ const ru = {
 		loggedIn: 'Вход выполнен',
 		alreadyLogged: 'Вход уже выполнен',
 		loginFailed: "Вход не выполнен",
-		loggedOut: 'Logged out',
+		loggedOut: 'Вы вышли из аккаунта',
 		cancellingCurrentItem: 'Отмена закачки.',
 		currentItemCancelled: 'Отменено.',
 		startAddingArtist: 'Добавление {0} альбомов в очередь',
@@ -174,7 +174,7 @@ const ru = {
 		},
 		appearance: {
 			title: 'Внешний вид',
-			slimDownloadTab: 'Обрезать вкладку с загрузками'
+			slimDownloadTab: 'Компактная вкладка с загрузками'
 		},
 		downloadPath: {
 			title: 'Путь сохранения'
@@ -187,15 +187,15 @@ const ru = {
 		},
 		folders: {
 			title: 'Папки',
-			createPlaylistFolder: 'Создать папки для плейлистов',
+			createPlaylistFolder: 'Создавать папки для плейлистов',
 			playlistNameTemplate: 'Название папки плейлиста',
-			createArtistFolder: 'Создать папки для исполнителя',
+			createArtistFolder: 'Создавать папки для исполнителя',
 			artistNameTemplate: 'Название папки исполнителя',
-			createAlbumFolder: 'Создать папки для альбома',
+			createAlbumFolder: 'Создавать папки для альбома',
 			albumNameTemplate: 'Название папки альбома',
-			createCDFolder: 'Создать папки для CD',
-			createStructurePlaylist: 'Создать структуру папок для плейлистов',
-			createSingleFolder: 'Создать структуру папок для синглов'
+			createCDFolder: 'Создавать папки для CD',
+			createStructurePlaylist: 'Создавать структуру папок для плейлистов',
+			createSingleFolder: 'Создавать структуру папок для синглов'
 		},
 		trackTitles: {
 			title: 'Названия треков',
@@ -207,7 +207,7 @@ const ru = {
 			title: 'Загрузки',
 			queueConcurrency: 'Количество одновременных закачек',
 			maxBitrate: {
-				title: 'Битрейт',
+				title: 'Предпочитаемый битрейт',
 				9: 'FLAC 1411kbps',
 				3: 'MP3 320kbps',
 				1: 'MP3 128kbps'
@@ -219,11 +219,11 @@ const ru = {
 				t: 'Обновить только теги'
 			},
 			fallbackBitrate: 'Скачивать с низким битрейтом, если текущий недоступен',
-			fallbackSearch: 'Искать другой трек, если нужный недоступен',
-			logErrors: 'Создать логи для ошибок',
-			logSearched: 'Создать лог поиска',
-			createM3U8File: 'Создать файлы плейлистов',
-			syncedLyrics: 'Создать .lyr файлы (Синхронизированный текст)',
+			fallbackSearch: 'Искать похожий трек, если нужный недоступен',
+			logErrors: 'Сохранять логи ошибок',
+			logSearched: 'Сохранять лог истории поиска',
+			createM3U8File: 'Создавать файлы плейлистов',
+			syncedLyrics: 'Создавать .lyr файлы (синхронизированная лирика)',
 			playlistFilenameTemplate: 'Шаблон названия плейлиста',
 			saveDownloadQueue: 'Сохранять текущий список загрузок при закрытии приложения'
 		},
@@ -264,16 +264,16 @@ const ru = {
 			bpm: 'BPM',
 			replayGain: 'Replay Gain',
 			label: 'Издатель',
-			lyrics: 'Несинхронизированный текст',
+			lyrics: 'Несинхронизированная лирика',
 			copyright: 'Права',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди'
 		},
 		other: {
 			title: 'Разное',
-			savePlaylistAsCompilation: 'Сохранить плейлисты как сборники',
-			useNullSeparator: 'Использовать нулевой символ в качестве разделителя',
-			saveID3v1: 'Дополнительно сохранять ID3v1',
+			savePlaylistAsCompilation: 'Сохранять плейлисты как сборники',
+			useNullSeparator: 'Использовать null в качестве разделителя',
+			saveID3v1: 'Сохранять ID3v1',
 			multiArtistSeparator: {
 				title: 'Как разделять несколько исполнителей?',
 				nothing: 'Сохранить только основного',
@@ -281,10 +281,10 @@ const ru = {
 				andFeat: 'Используя & и feat.',
 				using: 'Используя "{0}"'
 			},
-			singleAlbumArtist: 'Сохранить только основного исполнителя альбома',
-			albumVariousArtists: 'Оставить "Various Artists" в Исполнителях льбома',
-			removeAlbumVersion: 'Удалить "Album Version" из названия трека',
-			removeDuplicateArtists: 'Удалить повторяющихся исполнителей',
+			singleAlbumArtist: 'Сохранять только основного исполнителя альбома',
+			albumVariousArtists: 'Оставлять "Various Artists" в Исполнителях альбома',
+			removeAlbumVersion: 'Удалять "Album Version" из названия трека',
+			removeDuplicateArtists: 'Удалять повторяющихся исполнителей',
 			dateFormat: {
 				title: 'Формат даты для FLAC файлов',
 				year: 'YYYY',
@@ -309,8 +309,8 @@ const ru = {
 			},
 			previewVolume: 'Громкость прослушивания',
 			executeCommand: {
-				title: 'Выполнить команды по окончании загрузок',
-				description: 'Оставьте пустым, если ничего не требуется'
+				title: 'Выполнять команды по окончании загрузок',
+				description: 'Оставьте поле пустым, если ничего не требуется'
 			}
 		},
 		spotify: {
@@ -328,11 +328,11 @@ const ru = {
 		}
 	},
 	sidebar: {
-		home: 'домой',
+		home: 'главная',
 		search: 'поиск',
 		charts: 'чарты',
 		favorites: 'избранное',
-		linkAnalyzer: 'просмотр ссылок',
+		linkAnalyzer: 'анализ ссылок',
 		settings: 'настройки',
 		about: 'о проекте'
 	},

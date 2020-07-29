@@ -53,7 +53,7 @@ const en = {
 		newsChannel: 'News Channel',
 		questions: `If you have questions or problems with the app, search for a solution in the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
 		beforeReporting: `Before reporting a bug make sure you're running the latest version of the app and that what you want to report is actually a bug and not something that's wrong only on your end.`,
-		beSure: `Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been	already reported.`,
+		beSure: `Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been already reported.`,
 		duplicateReports: 'Duplicate bug reports will be closed, so keep an eye out on that.',
 		dontOpenIssues: `<strong>DO NOT</strong> open issues for asking questions, there is a subreddit for that.`,
 		newUI: `If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
@@ -61,7 +61,7 @@ const en = {
 		otherLanguages: `If you're fluent in another programming language you could try to port deemix into other programming languages!`,
 		understandingCode: `You need help understanding the code? Just hit RemixDev up on Telegram or Reddit.`,
 		contributeWebUI: `If you know Vue.js (JavaScript), HTML or CSS you could contribute to the <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: `You shoud remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
+		itsFree: `You should remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
 		notObligated: `Don't feel obligated to donate, I appreciate you anyway!`,
 		lincensedUnder: `This work is licensed under a
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
@@ -158,7 +158,8 @@ const en = {
 		startAddingArtist: 'Adding {0} albums to queue',
 		finishAddingArtist: 'Added {0} albums to queue',
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to deezer tracks',
-		finishConvertingSpotifyPlaylist: 'Spotify playlist converted'
+		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
+		loginNeededToDownload: 'You need to log in to download tracks!'
 	},
 	settings: {
 		title: 'Settings',

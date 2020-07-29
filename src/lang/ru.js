@@ -158,7 +158,8 @@ const ru = {
 		startAddingArtist: 'Добавление альбомов {0} в очередь',
 		finishAddingArtist: 'Альбомы {0} добавлены в очередь',
 		startConvertingSpotifyPlaylist: 'Добавление плейлиста Spotify в очередь',
-		finishConvertingSpotifyPlaylist: 'Spotify плейлист добавлен в очередь'
+		finishConvertingSpotifyPlaylist: 'Spotify плейлист добавлен в очередь',
+		loginNeededToDownload: 'Войдите в аккаунт, чтобы скачивать треки!'
 	},
 	settings: {
 		title: 'Настройки',

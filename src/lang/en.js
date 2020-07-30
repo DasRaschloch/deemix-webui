@@ -51,9 +51,9 @@ const en = {
 		officialWebuiRepo: 'Official WebUI Repository',
 		officialSubreddit: 'Official Subreddit',
 		newsChannel: 'News Channel',
-		questions: `If you have questions or problems with the app, search for a solution in the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
+		questions: `If you have questions or problems with the app, search for a solution on the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
 		beforeReporting: `Before reporting a bug make sure you're running the latest version of the app and that what you want to report is actually a bug and not something that's wrong only on your end.`,
-		beSure: `Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been already reported.`,
+		beSure: `Make sure the bug is reproducible on other machines and also <strong>DO NOT</strong> report a bug if it's already b reported.`,
 		duplicateReports: 'Duplicate bug reports will be closed, so keep an eye out on that.',
 		dontOpenIssues: `<strong>DO NOT</strong> open issues for asking questions, there is a subreddit for that.`,
 		newUI: `If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
@@ -63,7 +63,7 @@ const en = {
 		contributeWebUI: `If you know Vue.js (JavaScript), HTML or CSS you could contribute to the <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
 		itsFree: `You should remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
 		notObligated: `Don't feel obligated to donate, I appreciate you anyway!`,
-		lincensedUnder: `This work is licensed under a
+		lincensedUnder: `This work is licensed under the
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
 				>GNU General Public License 3.0</a
 			>.`
@@ -109,7 +109,7 @@ const en = {
 		}
 	},
 	linkAnalyzer: {
-		info: 'You can use this section to find out more information about the link you are trying to download.',
+		info: 'You can use this section to find more information about the link you are trying to download.',
 		useful:
 			"This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
 		linkNotSupported: 'This link is not yet supported',

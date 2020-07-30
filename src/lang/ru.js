@@ -61,7 +61,7 @@ const ru = {
 		otherLanguages: `Если вы хорошо знаете другой язык программирования, можете портировать на нём deemix!`,
 		understandingCode: `Не можете разобраться в коде? Свяжитесь с RemixDev в Telegram или на Reddit.`,
 		contributeWebUI: `Если вы знаете Vue.js (JavaScript), HTML или CSS, можете внести вклад в развитие <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует прежде <strong>поддержать понравившихся исполнителей</strong> прежде, чем поддерживать разработчиков.`,
+		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует <strong>поддерживать понравившихся исполнителей</strong> прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
 		lincensedUnder: `Проект распространяется под лицензией
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
@@ -293,7 +293,7 @@ const ru = {
 				day: 'ДД'
 			},
 			featuredToTitle: {
-				title: 'Что делать с приглашёнными исполнителями?',
+				title: 'Что делать с приглашёнными исполнителями (feat.)?',
 				0: 'Ничего',
 				1: 'Удалить из названия трека',
 				3: 'Удалить из названия трека и альбома',

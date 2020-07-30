@@ -200,8 +200,8 @@ const ru = {
 		},
 		trackTitles: {
 			title: 'Названия треков',
-			padTracks: 'Добавить ноль к номерам треков (01, 02, ...)',
-			paddingSize: 'Количество цифр',
+			padTracks: 'Добавлять ноль к номерам треков (01, 02, ...)',
+			paddingSize: 'Кол-во цифр в номере',
 			illegalCharacterReplacer: 'Замена для запрещённых в имени символов'
 		},
 		downloads: {

@@ -62,7 +62,7 @@ const de = {
 		understandingCode: `Du benötigst Hilfe beim verstehen des Codes? Frag einfach RemixDev auf Telegram oder Reddit.`,
 		contributeWebUI: `Wenn du Vue.js (JavaScript) oder HTML und CSS kennst, könntest du etwas zum <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a> beitragen.`,
 		itsFree: `Du solltest im Kopf behalten das <strong>dies ein kostenloses Projekt ist</strong> und <strong>Du solltest die Künstler unterstützen, die du magst </strong> bevor du die Entwickler unterstützt.`,
-		notObligated: `Fühle dich nicht gezwungen zu spenden, ich schätze trotzdem, dass du deemix verwendest!`,
+		notObligated: `Fühle dich nicht gezwungen zu spenden, danke, dass du deemix verwendest!`,
 		lincensedUnder: `Diese Arbeit ist lizensiert unter der
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
 				>GNU General Public License 3.0</a

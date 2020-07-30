@@ -1,4 +1,4 @@
-const en = {
+const vn = {
 	globals: {
 		welcome: 'Chào mừng đến với deemix',
 		back: 'trở lại',

@@ -78,19 +78,19 @@ const en = {
 		ids: {
 			invalidURL: 'URL not recognized',
 			unsupportedURL: 'URL not supported yet',
-			ISRCnotOnDeezer: 'Track ISRC is not available on deezer',
+			ISRCnotOnDeezer: 'Track ISRC is not available on Deezer',
 			notYourPrivatePlaylist: "You can't download others private playlists.",
 			spotifyDisabled: 'Spotify Features is not setted up correctly.',
-			trackNotOnDeezer: 'Track not found on deezer!',
-			albumNotOnDeezer: 'Album not found on deezer!',
+			trackNotOnDeezer: 'Track not found on Deezer!',
+			albumNotOnDeezer: 'Album not found on Deezer!',
 			notOnDeezer: 'Track not available on Deezer!',
 			notEncoded: 'Track not yet encoded!',
 			notEncodedNoAlternative: 'Track not yet encoded and no alternative found!',
 			wrongBitrate: 'Track not found at desired bitrate.',
 			wrongBitrateNoAlternative: 'Track not found at desired bitrate and no alternative found!',
 			no360RA: 'Track is not available in Reality Audio 360.',
-			notAvailable: "Track not available on deezer's servers!",
-			notAvailableNoAlternative: "Track not available on deezer's servers and no alternative found!"
+			notAvailable: "Track not available on Deezer's servers!",
+			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!"
 		}
 	},
 	favorites: {
@@ -157,7 +157,7 @@ const en = {
 		currentItemCancelled: 'Current item cancelled.',
 		startAddingArtist: 'Adding {0} albums to queue',
 		finishAddingArtist: 'Added {0} albums to queue',
-		startConvertingSpotifyPlaylist: 'Converting spotify tracks to deezer tracks',
+		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
 		loginNeededToDownload: 'You need to log in to download tracks!'
 	},
@@ -316,9 +316,9 @@ const en = {
 		},
 		spotify: {
 			title: 'Spotify Features',
-			clientID: 'Spotify clientID',
+			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify Username'
 		},
 		reset: 'Reset to Default',
 		save: 'Save',

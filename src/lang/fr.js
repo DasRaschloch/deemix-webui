@@ -200,7 +200,7 @@ const fr = {
 		},
 		trackTitles: {
 			title: 'Titres de pistes',
-			padTracks: "Ajouter automatiquement des zéros devant le numéro initial de la piste (01 puis 001, etc.)",
+			padTracks: "Longueur uniforme des numéros de piste (ajoute automatiquement des zéros devant le numéro initial de la piste)",
 			paddingSize: 'Nombre de zéros à ajouter en permanance devant le numéro initial de la piste',
 			illegalCharacterReplacer: 'Remplacement de caractère inapproprié'
 		},

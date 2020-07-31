@@ -148,7 +148,7 @@ const en = {
 		finishDownload: '{0} finished downloading.',
 		allDownloaded: 'All downloads completed!',
 		refreshFavs: 'Refresh completed!',
-		loggingIn: 'Logging in',
+		loggingIn: 'Logging in...',
 		loggedIn: 'Logged in',
 		alreadyLogged: 'Already logged in',
 		loginFailed: "Couldn't log in",
@@ -217,7 +217,8 @@ const en = {
 				title: 'Should I overwrite the files?',
 				y: 'Yes, overwrite the file',
 				n: "No, don't overwrite the file",
-				t: 'Overwrite only the tags'
+				t: 'Overwrite only the tags',
+				b: 'No, keep both files and add a number to the duplicate'
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Search fallback',

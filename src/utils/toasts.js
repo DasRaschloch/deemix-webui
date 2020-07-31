@@ -44,6 +44,7 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 				}
 				if (toastObj && dismissable) {
 					toastObj.hideToast()
+					if (id) delete toastsWithId[id]
 				}
 			}
 		}).showToast()

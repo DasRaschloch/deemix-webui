@@ -217,7 +217,7 @@ const fr = {
 				title: 'Dois-je écraser les fichiers ?',
 				y: 'Oui, écraser le fichier',
 				n: 'Non, ne pas écraser le fichier',
-				t: 'Écraser uniquement les métadonnées,
+				t: 'Écraser uniquement les métadonnées',
 				b: 'Non, conserver les deux fichiers et ajouter un numéro au doublon'
 			},
 			fallbackBitrate: 'Recours aux débits plus faibles',

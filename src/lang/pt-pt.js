@@ -6,7 +6,7 @@ const pt = {
         download: 'Transferir {0}',
         by: 'por {0}',
         in: 'em {0}',
-        download_hint: 'Descarregar',
+        download_hint: 'Transferir',
         play_hint: 'Tocar',
         toggle_download_tab_hint: 'Expandir/Recolher',
         clean_queue_hint: 'Limpar Finalizados',
@@ -71,7 +71,7 @@ const pt = {
     charts: {
         title: 'Tabelas',
         changeCountry: 'Alterar país',
-        download: 'Descarregar tabela'
+        download: 'Transferir tabela'
     },
     errors: {
         title: 'Erros para {0}',
@@ -79,7 +79,7 @@ const pt = {
             invalidURL: 'URL não reconhecido',
             unsupportedURL: 'URL ainda não suportado',
             ISRCnotOnDeezer: 'Faixa ISRC não disponível no deezer',
-            notYourPrivatePlaylist: "Nao podes baixar listas de reprodução privado dos outros.",
+            notYourPrivatePlaylist: "Nao podes baixar listas de reprodução privadas de outros.",
             spotifyDisabled: 'Funcionalidades do Spotify não estão definidas corretamente.',
             trackNotOnDeezer: 'Faixa não encontrada no deezer!',
             albumNotOnDeezer: 'Álbum não encontrado no deezer!',
@@ -123,7 +123,7 @@ const pt = {
             releaseDate: 'Data de lançamento',
             bpm: 'BPM',
             label: 'Editora',
-            recordType: 'Tipo de Recorde',
+            recordType: 'Tipo de Disco',
             genres: 'Géneros',
             tracklist: 'Lista de faixas'
         }
@@ -166,7 +166,7 @@ const pt = {
             loggedIn: 'Estás autenticado como {username}',
             arl: {
                 question: 'Como obter o meu ARL?',
-                update: 'Atualizar ARL'
+                update: 'Actualizar ARL'
             },
             logout: 'Sair'
         },
@@ -175,7 +175,7 @@ const pt = {
             slimDownloadTab: 'Aba de transferências estreita'
         },
         downloadPath: {
-            title: 'Caminho de transferências'
+            title: 'Caminho das transferências'
         },
         templates: {
             title: 'Formatos',
@@ -199,7 +199,7 @@ const pt = {
             title: 'Título',
             padTracks: 'Bloco de Faixas',
             paddingSize: 'Substituir tamanho do preenchimento',
-            illegalCharacterReplacer: 'Substituir caractere inválidos'
+            illegalCharacterReplacer: 'Substituir caractere inválido'
         },
         downloads: {
             title: 'Transferências',
@@ -216,12 +216,12 @@ const pt = {
                 n: 'Não substituir o ficheiro',
                 t: 'Subescrever apenas as etiquetas'
             },
-            fallbackBitrate: 'Reserva de taxa de bits',
-            fallbackSearch: 'reserva de pesquisa',
+            fallbackBitrate: 'Bitrate fallback',
+            fallbackSearch: 'Fallback de pesquisa',
             logErrors: 'Criar histórico para erros',
             logSearched: 'Criar histórico para faixas pesquisadas',
             createM3U8File: 'Criar ficheiro de lista de reprodução',
-            syncedLyrics: 'Criar ficheiro .lyr (Letras Sincronizadas)',
+            syncedLyrics: 'Criar ficheiro .lyr (Letra Sincronizada)',
             playlistFilenameTemplate: 'Formato do nome de ficheiro da lista de reprodução',
             saveDownloadQueue: 'Guardar fila de transferências ao fechar a aplicação'
         },
@@ -234,10 +234,10 @@ const pt = {
             localArtworkSize: 'Tamanho do trabalho artístico local',
             embeddedArtworkSize: 'Tamanho do trabalho artístico incorporado',
             localArtworkFormat: {
-                title: 'Que formato você deseja que o trabalho artístico local seja?',
-                jpg: 'Uma imagem jpeg',
-                png: 'Uma imagem png',
-                both: 'Os dois um jpeg e um png'
+                title: 'Em que formato desejas o trabalho artístico local?',
+                jpg: 'Em imagem jpeg',
+                png: 'Em imagem png',
+                both: 'Em jpeg e em png'
             },
             jpegImageQuality: 'Qualidade de imagem JPEG'
         },
@@ -260,16 +260,16 @@ const pt = {
             length: 'Duração da faixa',
             barcode: 'Código de barras do álbum (UPC)',
             bpm: 'BPM',
-            replayGain: 'Ganho de Repeticao',
+            replayGain: 'ReplayGain',
             label: 'Editora do álbum',
-            lyrics: 'Letra da música não sincronizado',
-            copyright: 'Direito Autoral',
+            lyrics: 'Letra da música não sincronizada',
+            copyright: 'Direitos de Autor',
             composer: 'Compositor',
             involvedPeople: 'Pessoas envolvidas'
         },
         other: {
             title: 'Outros',
-            savePlaylistAsCompilation: 'Guardar a lista de reproducao como uma compilacao',
+            savePlaylistAsCompilation: 'Guardar listas de reprodução como compilação',
             useNullSeparator: 'Usar separador nulo',
             saveID3v1: 'Também guardar ID3v1',
             multiArtistSeparator: {
@@ -284,16 +284,16 @@ const pt = {
             removeAlbumVersion: 'Remover "Album Version" do título da faixa',
             removeDuplicateArtists: 'Remover combinação de artistas',
             dateFormat: {
-                title: 'Formtado de data nos ficheiros FLAC',
+                title: 'Formato de data nos ficheiros FLAC',
                 year: 'AAAA',
                 month: 'MM',
                 day: 'DD'
             },
             featuredToTitle: {
-                title: 'O que devo fazer com os artistas em destaque?',
+                title: 'O que devo fazer com artistas convidados/participações?',
                 0: 'Nada',
                 1: 'Remover do título',
-                3: 'Remover do título de do título do album',
+                3: 'Remover do título e do título do album',
                 2: 'Movê-lo para o título'
             },
             titleCasing: 'Caixa do Título',
@@ -301,11 +301,11 @@ const pt = {
             casing: {
                 nothing: 'Manter inalterado',
                 lower: 'minusculas',
-                upper: 'MAIÙSCULAS',
-                start: 'Ínicio De Cada Palavra',
+                upper: 'MAIÚSCULAS',
+                start: 'Início De Cada Palavra',
                 sentence: 'Como uma frase'
             },
-            previewVolume: 'Pre visualizacao do volume',
+            previewVolume: 'Volume de Pré-visualização',
             executeCommand: {
                 title: 'Comando a executar após transferir',
                 description: 'Deixar em branco para nenhuma acção'
@@ -317,7 +317,7 @@ const pt = {
             clientSecret: 'Spotify Client Secret',
             username: 'nome de utilizador Spotify'
         },
-        reset: 'Restaurar para o padrao',
+        reset: 'Repor configurações padrão',
         save: 'Guardar',
         toasts: {
             init: 'Configurações carregadas!',
@@ -330,12 +330,12 @@ const pt = {
         search: 'pesquisa',
         charts: 'tabelas',
         favorites: 'favoritos',
-        linkAnalyzer: 'Analizador de Links',
+        linkAnalyzer: 'analizador de links',
         settings: 'definições',
         about: 'sobre'
     },
     tracklist: {
-        downloadSelection: 'Descarregar seleccionados'
+        downloadSelection: 'Transferir seleccionados'
     }
 }
 

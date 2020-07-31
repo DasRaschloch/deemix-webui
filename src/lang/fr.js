@@ -149,7 +149,7 @@ const fr = {
 		finishDownload: '{0} a été téléchargé.',
 		allDownloaded: 'Tous les téléchargements sont terminés !',
 		refreshFavs: 'Actualisation terminée !',
-		loggingIn: 'Connexion',
+		loggingIn: 'Connexion...',
 		loggedIn: 'Connecté',
 		alreadyLogged: 'Déjà connecté',
 		loginFailed: 'Connexion impossible',
@@ -217,7 +217,8 @@ const fr = {
 				title: 'Dois-je écraser les fichiers ?',
 				y: 'Oui, écraser le fichier',
 				n: 'Non, ne pas écraser le fichier',
-				t: 'Écraser uniquement les métadonnées'
+				t: 'Écraser uniquement les métadonnées,
+				b: 'Non, conserver les deux fichiers et ajouter un numéro au doublon'
 			},
 			fallbackBitrate: 'Recours aux débits plus faibles',
 			fallbackSearch: 'Rechercher un débit plus faible',

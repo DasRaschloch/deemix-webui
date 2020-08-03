@@ -6,7 +6,9 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 
 - Use Vue as much as possible
   - First step: rewrite the app in Single File Components way ✅
-  - Second step: Implement custom contextmenu
+  - Second step: Implement custom contextmenu ⚒
+    - Implemented a first version
+		- Need heavy testing and more features
   - Third step: Implement routing for the whole app using Vue Router
   - Fourth step: Remove jQuery
 - Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)

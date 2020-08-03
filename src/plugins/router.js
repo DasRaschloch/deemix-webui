@@ -3,8 +3,6 @@ import VueRouter from 'vue-router'
 
 import TracklistTab from '@components/TracklistTab.vue'
 
-console.log(TracklistTab)
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,7 +27,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	console.log({ from, to })
 	next()
 })
 

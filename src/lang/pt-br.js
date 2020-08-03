@@ -68,7 +68,7 @@
 				>GNU General Public License 3.0</a
 			>.`
 	},
-	charts: { 
+	charts: {
 		title: 'Charts',
 		changeCountry: 'Mudar País',
 		download: 'Download Chart'

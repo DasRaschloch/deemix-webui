@@ -19,7 +19,7 @@ export default {
 	fr,
 	id,
 	pt,
-	ptBr: br,
+	pt_br: br,
 	ru,
 	tr,
 	vn,

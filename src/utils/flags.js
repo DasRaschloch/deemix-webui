@@ -8,6 +8,8 @@ import pt from 'svg-country-flags/svg/pt.svg'
 import br from 'svg-country-flags/svg/br.svg'
 import ru from 'svg-country-flags/svg/ru.svg'
 import tr from 'svg-country-flags/svg/tr.svg'
+import vn from 'svg-country-flags/svg/vn.svg'
+import hr from 'svg-country-flags/svg/hr.svg'
 
 export default {
 	it,
@@ -19,5 +21,7 @@ export default {
 	pt,
 	ptBr: br,
 	ru,
-	tr
+	tr,
+	vn,
+	hr
 }

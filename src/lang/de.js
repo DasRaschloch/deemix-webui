@@ -44,7 +44,7 @@ const de = {
 			donations: 'Du möchtest deemix finanziell unterstützen? Dann lasse eine kleine Spende da!'
 		},
 		usesLibrary: 'Dieses Programm nutzt die <strong>deemix</strong> Bibliothek, die du dazu nutzen kannst deine eigene deemix UI zu erstellen.',
-		thanks: `Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> and <strong>scarvimane</strong> für die Erstellung des Logos.`,
+		thanks: 'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> and <strong>scarvimane</strong> für die Erstellung des Logos.',
 		upToDate: `Bleib auf dem Laufenden mit den Updates indem du dem <a href="https://t.me/RemixDevNews" target="_blank">News Channel</a> auf Telegram folgst.`,
 		officialWebsite: 'Offizielle Website',
 		officialRepo: 'Offizielle Library Repository',

@@ -24,6 +24,8 @@ const it = {
 			playlist: 'playlist',
 			compile: 'compilation',
 			ep: 'ep',
+			more: 'Altri album',
+			featured: 'Compare in',
 			spotifyPlaylist: 'playlist spotify',
 			releaseDate: 'data di uscita',
 			error: 'errore',

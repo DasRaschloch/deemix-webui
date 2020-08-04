@@ -69,6 +69,7 @@
 						</i>
 					</td>
 					<td>{{ release.release_date }}</td>
+					<td>{{ release.nb_song }}</td>
 					<td
 						@click.stop="addToQueue"
 						@contextmenu.prevent="openQualityModal"
@@ -169,6 +170,7 @@ export default {
 			this.head = [
 				{ title: this.$tc('globals.listTabs.title',1), sortKey: 'title' },
 				{ title: this.$t('globals.listTabs.releaseDate'), sortKey: 'release_date' },
+				{ title: this.$tc('globals.listTabs.track', 2), sortKey: 'nb_song' },
 				{ title: '', width: '32px' }
 			]
 			if (isEmpty(releases)) {
@@ -180,7 +182,12 @@ export default {
 	},
 	computed: {
 		showTable() {
-			if (this.body) return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
+			if (this.body){
+				if (this.sortKey=='nb_song')
+					return orderBy(this.body[this.currentTab], function (o) { return new Number(o.nb_song); }, this.sortOrder)
+				else
+					return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
+			}
 			else return []
 		}
 	},

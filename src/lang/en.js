@@ -25,6 +25,8 @@ const en = {
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
+			more: 'More albums',
+			featured: 'Featured in',
 			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
 			error: 'error'

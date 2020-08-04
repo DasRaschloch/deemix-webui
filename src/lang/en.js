@@ -25,6 +25,8 @@ const en = {
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
+			more: 'More albums',
+			featured: 'Featured in',
 			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
 			error: 'error'
@@ -51,9 +53,9 @@ const en = {
 		officialWebuiRepo: 'Official WebUI Repository',
 		officialSubreddit: 'Official Subreddit',
 		newsChannel: 'News Channel',
-		questions: `If you have questions or problems with the app, search for a solution in the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
+		questions: `If you have questions or problems with the app, search for a solution on the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
 		beforeReporting: `Before reporting a bug make sure you're running the latest version of the app and that what you want to report is actually a bug and not something that's wrong only on your end.`,
-		beSure: `Make sure the bug is reproducible on another machines and also <strong>DO NOT</strong> report a bug if it's been already reported.`,
+		beSure: `Make sure the bug is reproducible on other machines and also <strong>DO NOT</strong> report a bug if it's already been reported.`,
 		duplicateReports: 'Duplicate bug reports will be closed, so keep an eye out on that.',
 		dontOpenIssues: `<strong>DO NOT</strong> open issues for asking questions, there is a subreddit for that.`,
 		newUI: `If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
@@ -63,7 +65,7 @@ const en = {
 		contributeWebUI: `If you know Vue.js (JavaScript), HTML or CSS you could contribute to the <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
 		itsFree: `You should remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
 		notObligated: `Don't feel obligated to donate, I appreciate you anyway!`,
-		lincensedUnder: `This work is licensed under a
+		lincensedUnder: `This work is licensed under the
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
 				>GNU General Public License 3.0</a
 			>.`
@@ -78,19 +80,19 @@ const en = {
 		ids: {
 			invalidURL: 'URL not recognized',
 			unsupportedURL: 'URL not supported yet',
-			ISRCnotOnDeezer: 'Track ISRC is not available on deezer',
+			ISRCnotOnDeezer: 'Track ISRC is not available on Deezer',
 			notYourPrivatePlaylist: "You can't download others private playlists.",
 			spotifyDisabled: 'Spotify Features is not setted up correctly.',
-			trackNotOnDeezer: 'Track not found on deezer!',
-			albumNotOnDeezer: 'Album not found on deezer!',
+			trackNotOnDeezer: 'Track not found on Deezer!',
+			albumNotOnDeezer: 'Album not found on Deezer!',
 			notOnDeezer: 'Track not available on Deezer!',
 			notEncoded: 'Track not yet encoded!',
 			notEncodedNoAlternative: 'Track not yet encoded and no alternative found!',
 			wrongBitrate: 'Track not found at desired bitrate.',
 			wrongBitrateNoAlternative: 'Track not found at desired bitrate and no alternative found!',
 			no360RA: 'Track is not available in Reality Audio 360.',
-			notAvailable: "Track not available on deezer's servers!",
-			notAvailableNoAlternative: "Track not available on deezer's servers and no alternative found!"
+			notAvailable: "Track not available on Deezer's servers!",
+			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!"
 		}
 	},
 	favorites: {
@@ -109,7 +111,7 @@ const en = {
 		}
 	},
 	linkAnalyzer: {
-		info: 'You can use this section to find out more information about the link you are trying to download.',
+		info: 'You can use this section to find more information about the link you are trying to download.',
 		useful:
 			"This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
 		linkNotSupported: 'This link is not yet supported',
@@ -148,7 +150,7 @@ const en = {
 		finishDownload: '{0} finished downloading.',
 		allDownloaded: 'All downloads completed!',
 		refreshFavs: 'Refresh completed!',
-		loggingIn: 'Logging in',
+		loggingIn: 'Logging in...',
 		loggedIn: 'Logged in',
 		alreadyLogged: 'Already logged in',
 		loginFailed: "Couldn't log in",
@@ -157,7 +159,7 @@ const en = {
 		currentItemCancelled: 'Current item cancelled.',
 		startAddingArtist: 'Adding {0} albums to queue',
 		finishAddingArtist: 'Added {0} albums to queue',
-		startConvertingSpotifyPlaylist: 'Converting spotify tracks to deezer tracks',
+		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
 		loginNeededToDownload: 'You need to log in to download tracks!'
 	},
@@ -217,7 +219,8 @@ const en = {
 				title: 'Should I overwrite the files?',
 				y: 'Yes, overwrite the file',
 				n: "No, don't overwrite the file",
-				t: 'Overwrite only the tags'
+				t: 'Overwrite only the tags',
+				b: 'No, keep both files and add a number to the duplicate'
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Search fallback',
@@ -316,9 +319,9 @@ const en = {
 		},
 		spotify: {
 			title: 'Spotify Features',
-			clientID: 'Spotify clientID',
+			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify Username'
 		},
 		reset: 'Reset to Default',
 		save: 'Save',

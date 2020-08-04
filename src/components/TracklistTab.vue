@@ -293,7 +293,6 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('tracklist mounted')
 		EventBus.$on('tracklistTab:reset', this.reset)
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 

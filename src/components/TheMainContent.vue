@@ -15,9 +15,6 @@ export default {
 	components: {
 		TheMiddleSection,
 		TheDownloadTab
-	},
-	mounted() {
-		console.log(this.$route)
 	}
 }
 </script>

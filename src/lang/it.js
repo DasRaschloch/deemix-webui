@@ -24,6 +24,8 @@ const it = {
 			playlist: 'playlist',
 			compile: 'compilation',
 			ep: 'ep',
+			more: 'Altri album',
+			featured: 'Compare in',
 			spotifyPlaylist: 'playlist spotify',
 			releaseDate: 'data di uscita',
 			error: 'errore',
@@ -150,7 +152,7 @@ const it = {
 		finishDownload: '{0} ha finito di scaricarsi.',
 		allDownloaded: 'Tutti i download completati!',
 		refreshFavs: 'Preferiti ricaricati!',
-		loggingIn: 'Effettuando il login',
+		loggingIn: 'Effettuando il login...',
 		loggedIn: 'Login effettuato',
 		alreadyLogged: 'Sei già loggato',
 		loginFailed: 'Impossibile loggarsi',
@@ -219,7 +221,8 @@ const it = {
 				title: 'Dovrei sovrascrivere i file già scaricati?',
 				y: 'Si, sovrascrivi i file',
 				n: 'No, non sovrascrivere i file',
-				t: 'Sovrascrivi solo i tag'
+				t: 'Sovrascrivi solo i tag',
+				b: 'No, mantieni entrambi i file e aggiungi un numero al duplicato'
 			},
 			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
 			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',

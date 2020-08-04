@@ -186,6 +186,7 @@
 				<select v-model="settings.overwriteFile">
 					<option value="y">{{ $t('settings.downloads.overwriteFile.y') }}</option>
 					<option value="n">{{ $t('settings.downloads.overwriteFile.n') }}</option>
+					<option value="b">{{ $t('settings.downloads.overwriteFile.b') }}</option>
 					<option value="t">{{ $t('settings.downloads.overwriteFile.t') }}</option>
 				</select>
 			</div>

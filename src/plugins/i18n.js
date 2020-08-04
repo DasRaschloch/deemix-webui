@@ -9,9 +9,11 @@ import de from '@/lang/de'
 import fr from '@/lang/fr'
 import id from '@/lang/id'
 import pt from '@/lang/pt-pt'
-import ptBr from '@/lang/pt-br'
+import pt_br from '@/lang/pt-br'
 import ru from '@/lang/ru'
 import tr from '@/lang/tr'
+import vn from '@/lang/vn'
+import hr from '@/lang/hr'
 
 Vue.use(VueI18n)
 
@@ -27,9 +29,11 @@ const locales = {
 	fr,
 	id,
 	pt,
-	ptBr,
+	pt_br,
 	ru,
-	tr
+	tr,
+	vn,
+	hr
 }
 
 const i18n = new VueI18n({

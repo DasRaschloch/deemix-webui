@@ -32,6 +32,7 @@ function mountApp() {
 function initClient() {
 	window.clientMode = true
 	document.querySelector(`#open_downloads_folder`).classList.remove('hide')
+	document.querySelector(`#select_downloads_folder`).classList.remove('hide')
 }
 
 document.addEventListener('DOMContentLoaded', startApp)

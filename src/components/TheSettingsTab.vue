@@ -19,7 +19,7 @@
 			</h3>
 			<div class="inline-flex">
 				<input autocomplete="off" type="password" id="login_input_arl" ref="loginInput" placeholder="ARL" />
-				<button id="settings_btn_copyArl" @click="copyARLtoClipboard">
+				<button id="settings_btn_copyArl" class="only_icon" @click="copyARLtoClipboard">
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
@@ -62,7 +62,12 @@
 			<h3 class="settings-group__header settings-group__header--with-icon">
 				<i class="material-icons">folder</i>{{ $t('settings.downloadPath.title') }}
 			</h3>
-			<input type="text" v-model="settings.downloadLocation" />
+			<div class="inline-flex">
+				<input autocomplete="off" type="text" v-model="settings.downloadLocation" />
+				<button id="select_downloads_folder" class="only_icon hide" @click="selectDownloadFolder">
+					<i class="material-icons">folder</i>
+				</button>
+			</div>
 		</div>
 
 		<div class="settings-group">
@@ -672,6 +677,7 @@ export default {
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
+		socket.on('downloadFolderSelected', this.downloadFolderSelected)
 	},
 	methods: {
 		revertSettings() {
@@ -712,6 +718,13 @@ export default {
 			}
 
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
+		},
+		selectDownloadFolder() {
+			if (window.clientMode) socket.emit('selectDownloadFolder')
+		},
+		downloadFolderSelected(folder){
+			console.log(folder)
+			this.settings.downloadLocation = folder
 		},
 		loadSettings(settings, spotifyCredentials, defaults = null) {
 			if (defaults) {

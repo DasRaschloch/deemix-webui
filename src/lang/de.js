@@ -53,20 +53,17 @@ const de = {
 		newsChannel: 'News Channel',
 		questions: 'Bei Fragen oder Problemen mit der App, suche als erstes nach einer Lösung im <a href="https://www.reddit.com/r/deemix" target="_blank">Subreddit</a>. Wenn du da nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 		beforeReporting: 'Bevor du einen Bug meldest, stelle sicher, dass du die neueste Version der App hast und dass das, was du melden möchtest, tatsächlich ein Bug ist und nicht nur bei dir falsch ist.',
-		beSure: `Stelle sicher, dass der Bug auf anderen Computern auch vorhanden ist <strong>MELDEN NICHT</strong> einen Bug, wenn er schon gemeldet worden ist.`,
+		beSure: 'Stelle sicher, dass der Bug auf anderen Computern auch vorhanden ist <strong>MELDEN NICHT</strong> einen Bug, wenn er schon gemeldet worden ist.',
 		duplicateReports: 'Doppelte Fehlerberichte werden geschlossen, achte darauf.',
-		dontOpenIssues: `<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es gibt einen Subreddit dafür.`,
-		newUI: `Wenn du Python fließend beherrschst, kannst du versuchen, mit hilfe der base library eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der <a href="https://codeberg.org/RemixDev/deemix" target="_blank">deemix Repo</a> zu beheben.`,
-		acceptFeatures: `Ich akzeptiere auch Funktionen, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.`,
-		otherLanguages: `Wenn du eine andere Programmiersprache fließend beherrschst, kannst du versuchen, deemix in andere Programmiersprachen zu portieren!`,
-		understandingCode: `Du benötigst Hilfe beim verstehen des Codes? Frag einfach RemixDev auf Telegram oder Reddit.`,
-		contributeWebUI: `Wenn du Vue.js (JavaScript) oder HTML und CSS kennst, könntest du etwas zum <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a> beitragen.`,
-		itsFree: `Du solltest im Kopf behalten das <strong>dies ein kostenloses Projekt ist</strong> und <strong>Du solltest die Künstler unterstützen, die du magst </strong> bevor du die Entwickler unterstützt.`,
-		notObligated: `Fühle dich nicht gezwungen zu spenden, danke, dass du deemix verwendest!`,
-		lincensedUnder: `Diese Arbeit ist lizensiert unter der
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+		dontOpenIssues: '<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es gibt einen Subreddit dafür.',
+		newUI: 'Wenn du Python fließend beherrschst, kannst du versuchen, mit hilfe der base library eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der <a href="https://codeberg.org/RemixDev/deemix" target="_blank">deemix Repo</a> zu beheben.',
+		acceptFeatures: 'Ich akzeptiere auch Funktionen, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.',
+		otherLanguages: 'Wenn du eine andere Programmiersprache fließend beherrschst, kannst du versuchen, deemix in andere Programmiersprachen zu portieren!',
+		understandingCode: 'Du benötigst Hilfe beim verstehen des Codes? Frag einfach RemixDev auf Telegram oder Reddit.',
+		contributeWebUI: 'Wenn du Vue.js (JavaScript) oder HTML und CSS kennst, könntest du etwas zum <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a> beitragen.',
+		itsFree: 'Du solltest im Kopf behalten das <strong>dies ein kostenloses Projekt ist</strong> und <strong>Du solltest die Künstler unterstützen, die du magst </strong> bevor du die Entwickler unterstützt.',
+		notObligated: 'Fühle dich nicht gezwungen zu spenden, danke, dass du deemix verwendest!',
+		lincensedUnder: 'Diese Arbeit ist lizensiert unter der <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.'
 	},
 	charts: {
 		title: 'Charts',
@@ -110,8 +107,7 @@ const de = {
 	},
 	linkAnalyzer: {
 		info: 'Diesen Abschnitt kannst du nutzen, um weitere Informationen über den gewünschten Link zu erhalten, den du herunterladen möchtest.',
-		useful:
-			"Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.",
+		useful: "Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.",
 		linkNotSupported: 'Dieser Link wird noch nicht unterstützt',
 		linkNotSupportedYet: 'Es scheint so, als ob dieser Link noch nicht unterstützt wird. Versuche einen anderen Link zu analysieren.',
 		table: {
@@ -131,8 +127,7 @@ const de = {
 	},
 	search: {
 		startSearching: 'Suche starten!',
-		description:
-			'Du kannst einen Titel, ein ganzes Album, einen Künstler, eine Playlist suchen ... alles! Du kannst auch einen Deezer-Link einfügen',
+		description: 'Du kannst einen Titel, ein ganzes Album, einen Künstler, eine Playlist suchen ... alles! Du kannst auch einen Deezer-Link einfügen',
 		fans: '{0} Fans',
 		noResults: 'Keine Ergebnisse',
 		noResultsTrack: 'Keine Tracks gefunden',
@@ -215,7 +210,7 @@ const de = {
 			overwriteFile: {
 				title: 'Soll ich die Dateien überchreiben?',
 				y: 'Ja überschreibe die Dateien',
-				n: "Nein überschreibe die Dateien nicht",
+				n: 'Nein überschreibe die Dateien nicht',
 				t: 'Überschreibe nur die Tags'
 			},
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
@@ -342,4 +337,3 @@ const de = {
 }
 
 export default de
-

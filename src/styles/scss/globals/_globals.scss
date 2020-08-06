@@ -112,6 +112,17 @@ button {
 		}
 	}
 
+	&.only_icon {
+		min-width: 24px;
+		width: 48px;
+		margin: 0px 0px 0px 8px;
+		padding: 0px 4px;
+
+		i {
+			padding: 6px 0px;
+		}
+	}
+
 	&:active {
 		background-color: var(--accent-color);
 		transform: scale(0.98);

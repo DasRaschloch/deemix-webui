@@ -2,7 +2,7 @@
 	<div class="context-menu" v-show="menuOpen" ref="contextMenu" :style="{ top: yPos, left: xPos }">
 		<button
 			class="menu-option"
-			v-for="option of options"
+			v-for="option of sortedOptions"
 			:key="option.label"
 			v-show="option.show"
 			@click.prevent="option.action"
@@ -23,7 +23,8 @@ export default {
 			xPos: 0,
 			yPos: 0,
 			deezerHref: '',
-			generalHref: ''
+			generalHref: '',
+			imgSrc: ''
 		}
 	},
 	computed: {
@@ -31,63 +32,85 @@ export default {
 			// In the action property:
 			// Use arrow functions to keep the Vue instance in 'this'
 			// Use normal functions to keep the object instance in 'this'
-
-			const options = [
-				{
+			const options = {
+				cut: {
 					label: this.$t('globals.cut'),
 					show: true,
+					position: 1,
 					action: () => {
 						document.execCommand('Cut')
 					}
 				},
-				{
+				copy: {
 					label: this.$t('globals.copy'),
 					show: true,
+					position: 2,
 					action: () => {
 						document.execCommand('Copy')
 					}
 				},
-				{
+				copyLink: {
 					label: this.$t('globals.copyLink'),
 					show: false,
+					position: 3,
 					action: () => {
 						navigator.clipboard.writeText(this.generalHref).catch(err => {
 							console.error('Link copying failed', err)
 						})
 					}
 				},
-				{
-					label: this.$t('globals.copyDeezerLink'),
+				copyImageLink: {
+					label: this.$t('globals.copyImageLink'),
 					show: false,
+					position: 4,
 					action: () => {
-						navigator.clipboard.writeText(this.deezerHref).catch(err => {
-							console.error('Download link copying failed', err)
+						navigator.clipboard.writeText(this.imgSrc).catch(err => {
+							console.error('Image copying failed', err)
 						})
 					}
 				},
-				{
+				copyDeezerLink: {
+					label: this.$t('globals.copyDeezerLink'),
+					show: false,
+					position: 5,
+					action: () => {
+						navigator.clipboard.writeText(this.generalHref).catch(err => {
+							console.error('Deezer link copying failed', err)
+						})
+					}
+				},
+				paste: {
 					label: this.$t('globals.paste'),
 					show: true,
+					position: 6,
 					action: () => {
 						navigator.clipboard.readText().then(text => {
 							document.execCommand('insertText', undefined, text)
 						})
 					}
 				}
-			]
+			}
 
-			downloadQualities.forEach(quality => {
-				options.push({
+			let nextValuePosition = Object.values(options).length + 1
+
+			downloadQualities.forEach((quality, index) => {
+				options[quality.objName] = {
 					label: `${this.$t('globals.download', [quality.label])}`,
 					show: false,
+					position: nextValuePosition + index,
 					action: this.tryToDownloadTrack.bind(null, quality.value)
-				})
+				}
 			})
 
 			return options
 		},
-		qualities() {
-			return downloadQualities
+		// This computed property is used for rendering the options in the wanted order
+		// while keeping the options computed property an Object to make the properties
+		// accessible via property name (es this.options.copy)
+		sortedOptions() {
+			return Object.values(this.options).sort((first, second) => {
+				return first.position < second.position ? -1 : 1
+			})
 		}
 	},
 	mounted() {
@@ -110,24 +133,30 @@ export default {
 			// Show 'Copy Link' option
 			if (elementClicked.matches('a')) {
 				this.generalHref = elementClicked.href
-				this.showCopyLinkOption()
+				this.options.copyLink.show = true
 			}
 
-			let link = null
+			// Show 'Copy Image Link' option
+			if (elementClicked.matches('img')) {
+				this.imgSrc = elementClicked.src
+				this.options.copyImageLink.show = true
+			}
+
+			let deezerLink = null
 
 			for (let i = 0; i < path.length; i++) {
 				if (path[i] == document) break
 
 				if (path[i].matches('[data-link]')) {
-					link = path[i].dataset.link
+					deezerLink = path[i].dataset.link
 					break
 				}
 			}
 
 			// Show 'Copy Deezer Link' option
-			if (link) {
-				this.deezerHref = link
-				this.showDeezerOptions(link)
+			if (deezerLink) {
+				this.deezerHref = deezerLink
+				this.showDeezerOptions()
 			}
 
 			this.menuOpen = true
@@ -136,30 +165,32 @@ export default {
 			if (!this.menuOpen) return
 
 			// Finish all operations before closing (may be not necessary)
-			this.$nextTick().then(() => {
-				this.menuOpen = false
+			this.$nextTick()
+				.then(() => {
+					this.menuOpen = false
 
-				this.options[2].show = false
-				this.options[3].show = false
+					this.options.copyLink.show = false
+					this.options.copyDeezerLink.show = false
+					this.options.copyImageLink.show = false
 
-				for (i = 5; i <= 10; i++) {
-					this.options[i].show = false
-				}
-			})
+					downloadQualities.forEach(quality => {
+						this.options[quality.objName].show = false
+					})
+				})
+				.catch(err => {
+					console.error(err)
+				})
 		},
 		positionMenu(newX, newY) {
 			this.xPos = `${newX}px`
 			this.yPos = `${newY}px`
 		},
-		showCopyLinkOption() {
-			this.options[2].show = true
-		},
 		showDeezerOptions() {
-			this.options[3].show = true
+			this.options.copyDeezerLink.show = true
 
-			for (i = 5; i <= 10; i++) {
-				this.options[i].show = true
-			}
+			downloadQualities.forEach(quality => {
+				this.options[quality.objName].show = true
+			})
 		},
 		tryToDownloadTrack(qualityValue) {
 			Downloads.sendAddToQueue(this.deezerHref, qualityValue)

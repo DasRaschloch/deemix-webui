@@ -4,33 +4,34 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 
 ## What's left to do?
 
-- Use Vue as much as possible
+- [ ] Use Vue app-wide
   - First step: rewrite the app in Single File Components way ✅
-  - Second step: Implement custom contextmenu ⚒
-    - Copy and paste functions ✅
-    - Copy Link where possible ✅
-    - Copy Image URL where possible
-      - Define cases
-  - Third step: Implement routing for the whole app using Vue Router
-  - Fourth step: Remove jQuery
-- Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
+  - Second step: Implement routing for the whole app using Vue Router ⚒
+  - Third step: Remove jQuery
+- [ ] Implement custom contextmenu ⚒
+  - Copy and paste functions ✅
+  - Copy Link where possible ✅
+  - Download Quality ✅
+  - Copy Image URL where possible ✅
+  - Resolve problem when positioning out of window (e.g. clicking on the bottom of the window)
+- [ ] Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
   - Use ES2020 async imports, if possible
-- Make the UI look coherent
+- [ ] Make the UI look coherent
   - Style buttons
   - Style text inputs
   - Style checkboxes
-- Search tab
+- [ ] Search tab
 	- Better placeholer before search
-- Link Analyzer
+- [ ] Link Analyzer
 	- Better placeholer before analyzing and error feedback
-- Settings tab
+- [ ] Settings tab
 	- Maybe tabbing the section for easy navigation
 	- Could use a carousel, but it's not worth adding a new dep
   - Variable selector near template inputs
-- Block selection where it's not needed (keep only titles artists albums labels and useful data)
+- [ ] Block selection where it's not needed (keep only titles artists albums labels and useful data)
   - There's a SASS mixin for this. Need to use it in the proper classes
-- Better feedback for socket.io possible errors
-- Remove images size limit and add warning if > 1200
+- [ ] Better feedback for socket.io possible errors
+- [ ] Remove images size limit and add warning if > 1200
 - ?
 
 # License

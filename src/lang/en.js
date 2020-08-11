@@ -14,6 +14,7 @@ const en = {
 		cut: 'cut',
 		copy: 'copy',
 		copyLink: 'copy link',
+		copyImageLink: 'copy image link',
 		copyDeezerLink: 'copy deezer link',
 		paste: 'paste',
 		listTabs: {

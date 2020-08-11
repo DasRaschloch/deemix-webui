@@ -14,6 +14,7 @@ const it = {
 		cut: 'taglia',
 		copy: 'copia',
 		copyLink: 'copia link',
+		copyImageLink: 'copia link immagine',
 		copyDeezerLink: 'copia link deezer',
 		paste: 'incolla',
 		listTabs: {

@@ -53,7 +53,6 @@ export default {
 	}),
 	mounted() {
 		this.$root.$on('QualityModal:open', this.openModal)
-
 		this.$refs.modal.addEventListener('webkitAnimationEnd', this.handleAnimationEnd)
 	},
 	methods: {

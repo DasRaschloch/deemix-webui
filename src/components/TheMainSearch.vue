@@ -9,8 +9,12 @@
 				<li class="section-tabs__tab search_tablinks" id="search_all_tab">{{ $t('globals.listTabs.all') }}</li>
 				<li class="section-tabs__tab search_tablinks" id="search_track_tab">{{ $tc('globals.listTabs.track', 2) }}</li>
 				<li class="section-tabs__tab search_tablinks" id="search_album_tab">{{ $tc('globals.listTabs.album', 2) }}</li>
-				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">{{ $tc('globals.listTabs.artist', 2) }}</li>
-				<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">{{ $tc('globals.listTabs.playlist', 2) }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">
+					{{ $tc('globals.listTabs.artist', 2) }}
+				</li>
+				<li class="section-tabs__tab search_tablinks" id="search_playlist_tab">
+					{{ $tc('globals.listTabs.playlist', 2) }}
+				</li>
 			</ul>
 			<div id="search_tab_content">
 				<!-- ### Main Search Tab ### -->
@@ -19,7 +23,7 @@
 						<section
 							v-if="
 								(section != 'TOP_RESULT' && results.allTab[section].data.length > 0) ||
-									results.allTab[section].length > 0
+								results.allTab[section].length > 0
 							"
 							class="search_section"
 						>
@@ -46,7 +50,6 @@
 									<div
 										role="button"
 										aria-label="download"
-										@contextmenu.prevent="openQualityModal"
 										@click.stop="addToQueue"
 										:data-link="results.allTab.TOP_RESULT[0].link"
 										class="download_overlay"
@@ -61,13 +64,11 @@
 											results.allTab.TOP_RESULT[0].type == 'artist'
 												? $t('search.fans', [$n(results.allTab.TOP_RESULT[0].nb_fan)])
 												: $t('globals.by', [results.allTab.TOP_RESULT[0].artist]) +
-													' - ' +
-													$tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
+												  ' - ' +
+												  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
 										}}
 									</p>
-									<span class="tag">{{
-										$tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1)
-									}}</span>
+									<span class="tag">{{ $tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1) }}</span>
 								</div>
 							</div>
 							<div v-else-if="section == 'TRACK'">
@@ -79,8 +80,8 @@
 													class="rounded coverart"
 													:src="
 														'https://e-cdns-images.dzcdn.net/images/cover/' +
-															track.ALB_PICTURE +
-															'/32x32-000000-80-0-0.jpg'
+														track.ALB_PICTURE +
+														'/32x32-000000-80-0-0.jpg'
 													"
 												/>
 											</td>
@@ -113,7 +114,6 @@
 											</td>
 											<td
 												class="table__cell--download table__cell--center clickable"
-												@contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue"
 												:data-link="'https://www.deezer.com/track/' + track.SNG_ID"
 												role="button"
@@ -140,14 +140,13 @@
 											class="circle coverart"
 											:src="
 												'https://e-cdns-images.dzcdn.net/images/artist/' +
-													release.ART_PICTURE +
-													'/156x156-000000-80-0-0.jpg'
+												release.ART_PICTURE +
+												'/156x156-000000-80-0-0.jpg'
 											"
 										/>
 										<div
 											role="button"
 											aria-label="download"
-											@contextmenu.prevent="openQualityModal"
 											@click.stop="addToQueue"
 											:data-link="'https://deezer.com/artist/' + release.ART_ID"
 											class="download_overlay"
@@ -172,14 +171,13 @@
 											class="rounded coverart"
 											:src="
 												'https://e-cdns-images.dzcdn.net/images/cover/' +
-													release.ALB_PICTURE +
-													'/156x156-000000-80-0-0.jpg'
+												release.ALB_PICTURE +
+												'/156x156-000000-80-0-0.jpg'
 											"
 										/>
 										<div
 											role="button"
 											aria-label="download"
-											@contextmenu.prevent="openQualityModal"
 											@click.stop="addToQueue"
 											:data-link="'https://deezer.com/album/' + release.ALB_ID"
 											class="download_overlay"
@@ -195,7 +193,9 @@
 										>
 										{{ release.ALB_TITLE }}
 									</p>
-									<p class="secondary-text">{{ release.ART_NAME + ' - ' + $tc('globals.listTabs.trackN', release.NUMBER_TRACK) }}</p>
+									<p class="secondary-text">
+										{{ release.ART_NAME + ' - ' + $tc('globals.listTabs.trackN', release.NUMBER_TRACK) }}
+									</p>
 								</div>
 							</div>
 							<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
@@ -211,16 +211,15 @@
 											class="rounded coverart"
 											:src="
 												'https://e-cdns-images.dzcdn.net/images/' +
-													release.PICTURE_TYPE +
-													'/' +
-													release.PLAYLIST_PICTURE +
-													'/156x156-000000-80-0-0.jpg'
+												release.PICTURE_TYPE +
+												'/' +
+												release.PLAYLIST_PICTURE +
+												'/156x156-000000-80-0-0.jpg'
 											"
 										/>
 										<div
 											role="button"
 											aria-label="download"
-											@contextmenu.prevent="openQualityModal"
 											@click.stop="addToQueue"
 											:data-link="'https://deezer.com/playlist/' + release.PLAYLIST_ID"
 											class="download_overlay"
@@ -292,9 +291,9 @@
 										</i>
 										{{
 											track.title +
-												(track.title_version && track.title.indexOf(track.title_version) == -1
-													? ' ' + track.title_version
-													: '')
+											(track.title_version && track.title.indexOf(track.title_version) == -1
+												? ' ' + track.title_version
+												: '')
 										}}
 									</div>
 								</td>
@@ -317,7 +316,6 @@
 								</td>
 								<td
 									class="table__cell--download table__cell--center clickable"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="track.link"
 									role="button"
@@ -349,7 +347,6 @@
 								<div
 									role="button"
 									aria-label="download"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="release.link"
 									class="download_overlay"
@@ -361,7 +358,11 @@
 								<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">explicit</i>
 								{{ release.title }}
 							</p>
-							<p class="secondary-text">{{ $t('globals.by', [release.artist.name]) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks) }}</p>
+							<p class="secondary-text">
+								{{
+									$t('globals.by', [release.artist.name]) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks)
+								}}
+							</p>
 						</div>
 					</div>
 				</div>
@@ -383,7 +384,6 @@
 								<div
 									role="button"
 									aria-label="download"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="release.link"
 									class="download_overlay"
@@ -414,7 +414,6 @@
 								<div
 									role="button"
 									aria-label="download"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="release.link"
 									class="download_overlay"
@@ -424,9 +423,7 @@
 							</div>
 							<p class="primary-text">{{ release.title }}</p>
 							<p class="secondary-text">
-								{{
-									`${$t('globals.by', [release.user.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}`
-								}}
+								{{ `${$t('globals.by', [release.user.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 							</p>
 						</div>
 					</div>
@@ -612,9 +609,6 @@ export default {
 		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		numberWithDots: Utils.numberWithDots,
 		convertDuration: Utils.convertDuration,

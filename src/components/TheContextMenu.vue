@@ -13,62 +13,86 @@
 </template>
 
 <script>
+import Downloads from '@/utils/downloads'
+import downloadQualities from '@js/qualities'
+
 export default {
-	data: () => ({
-		menuOpen: false,
-		xPos: 0,
-		yPos: 0,
-		currentHref: '',
-		options: [
-			{
-				label: 'Cut',
-				show: true,
-				// Use arrow functions to keep the Vue instance in 'this'
-				// Use normal functions to keep the object instance in 'this'
-				action: () => {
-					document.execCommand('Cut')
+	data() {
+		return {
+			menuOpen: false,
+			xPos: 0,
+			yPos: 0,
+			deezerHref: '',
+			generalHref: ''
+		}
+	},
+	computed: {
+		options() {
+			// In the action property:
+			// Use arrow functions to keep the Vue instance in 'this'
+			// Use normal functions to keep the object instance in 'this'
+
+			const options = [
+				{
+					label: this.$t('globals.cut'),
+					show: true,
+					action: () => {
+						document.execCommand('Cut')
+					}
+				},
+				{
+					label: this.$t('globals.copy'),
+					show: true,
+					action: () => {
+						document.execCommand('Copy')
+					}
+				},
+				{
+					label: this.$t('globals.copyLink'),
+					show: false,
+					action: () => {
+						navigator.clipboard.writeText(this.generalHref).catch(err => {
+							console.error('Link copying failed', err)
+						})
+					}
+				},
+				{
+					label: this.$t('globals.copyDeezerLink'),
+					show: false,
+					action: () => {
+						navigator.clipboard.writeText(this.deezerHref).catch(err => {
+							console.error('Download link copying failed', err)
+						})
+					}
+				},
+				{
+					label: this.$t('globals.paste'),
+					show: true,
+					action: () => {
+						navigator.clipboard.readText().then(text => {
+							document.execCommand('insertText', undefined, text)
+						})
+					}
 				}
-			},
-			{
-				label: 'Copy',
-				show: true,
-				action: () => {
-					document.execCommand('Copy')
-				}
-			},
-			{
-				label: 'Copy Link',
-				show: false,
-				action: null
-			},
-			{
-				label: 'Copy Deezer Link',
-				show: false,
-				action: null
-			},
-			{
-				label: 'Paste',
-				show: true,
-				action: () => {
-					navigator.clipboard.readText().then(text => {
-						document.execCommand('insertText', undefined, text)
-					})
-				}
-			}
-		]
-	}),
+			]
+
+			downloadQualities.forEach(quality => {
+				options.push({
+					label: `${this.$t('globals.download', [quality.label])}`,
+					show: false,
+					action: this.tryToDownloadTrack.bind(null, quality.value)
+				})
+			})
+
+			return options
+		},
+		qualities() {
+			return downloadQualities
+		}
+	},
 	mounted() {
 		document.body.addEventListener('contextmenu', this.showMenu)
-
-		document.body.addEventListener('click', () => {
-			// Finish all operations before closing (may be not necessary)
-			this.$nextTick().then(() => {
-				this.menuOpen = false
-
-				this.options[2].show = false
-				this.options[3].show = false
-			})
-		})
+		document.body.addEventListener('click', this.hideMenu)
 	},
 	methods: {
 		showMenu(contextMenuEvent) {
@@ -85,7 +109,8 @@ export default {
 
 			// Show 'Copy Link' option
 			if (elementClicked.matches('a')) {
-				this.showCopyLink(elementClicked.href)
+				this.generalHref = elementClicked.href
+				this.showCopyLinkOption()
 			}
 
 			let link = null
@@ -101,30 +126,43 @@ export default {
 
 			// Show 'Copy Deezer Link' option
 			if (link) {
-				this.showCopyDeezerLink(link)
+				this.deezerHref = link
+				this.showDeezerOptions(link)
 			}
 
 			this.menuOpen = true
+		},
+		hideMenu() {
+			if (!this.menuOpen) return
+
+			// Finish all operations before closing (may be not necessary)
+			this.$nextTick().then(() => {
+				this.menuOpen = false
+
+				this.options[2].show = false
+				this.options[3].show = false
+
+				for (i = 5; i <= 10; i++) {
+					this.options[i].show = false
+				}
+			})
 		},
 		positionMenu(newX, newY) {
 			this.xPos = `${newX}px`
 			this.yPos = `${newY}px`
 		},
-		showCopyLink(href) {
+		showCopyLinkOption() {
 			this.options[2].show = true
-			this.options[2].action = () => {
-				navigator.clipboard.writeText(href).catch(err => {
-					console.error('Link copying failed', err)
-				})
+		},
+		showDeezerOptions() {
+			this.options[3].show = true
+
+			for (i = 5; i <= 10; i++) {
+				this.options[i].show = true
 			}
 		},
-		showCopyDeezerLink(link) {
-			this.options[3].show = true
-			this.options[3].action = () => {
-				navigator.clipboard.writeText(link).catch(err => {
-					console.error('Download link copying failed', err)
-				})
-			}
+		tryToDownloadTrack(qualityValue) {
+			Downloads.sendAddToQueue(this.deezerHref, qualityValue)
 		}
 	}
 }
@@ -163,6 +201,10 @@ export default {
 	&:hover {
 		background: var(--table-highlight);
 		filter: brightness(150%);
+	}
+
+	&__text {
+		text-transform: capitalize;
 	}
 }
 

@@ -36,11 +36,7 @@
 		</div>
 		<div v-else id="charts_table">
 			<button @click="changeCountry">{{ $t('charts.changeCountry') }}</button>
-			<button
-				@contextmenu.prevent="openQualityModal"
-				@click.stop="addToQueue"
-				:data-link="'https://www.deezer.com/playlist/' + id"
-			>
+			<button @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
 				{{ $t('charts.download') }}
 			</button>
 			<table class="table table--charts">
@@ -72,9 +68,7 @@
 						<td class="table__cell--large breakline">
 							{{
 								track.title +
-									(track.title_version && track.title.indexOf(track.title_version) == -1
-										? ' ' + track.title_version
-										: '')
+								(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
 							}}
 						</td>
 						<td
@@ -96,7 +90,6 @@
 						</td>
 						<td
 							class="table__cell--download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="track.link"
 							role="button"
@@ -145,9 +138,6 @@ export default {
 		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		getTrackList(event) {
 			document.getElementById('content').scrollTo(0, 0)

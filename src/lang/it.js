@@ -11,6 +11,11 @@ const it = {
 		toggle_download_tab_hint: 'Espandi/Riduci',
 		clean_queue_hint: 'Pulisci Lista',
 		cancel_queue_hint: 'Cancella tutti i download',
+		cut: 'taglia',
+		copy: 'copia',
+		copyLink: 'copia link',
+		copyDeezerLink: 'copia link deezer',
+		paste: 'incolla',
 		listTabs: {
 			all: 'tutto',
 			top_result: 'miglior risultato',

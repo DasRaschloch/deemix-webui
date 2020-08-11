@@ -7,8 +7,10 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 - Use Vue as much as possible
   - First step: rewrite the app in Single File Components way ✅
   - Second step: Implement custom contextmenu ⚒
-    - Implemented a first version
-		- Need heavy testing and more features
+    - Copy and paste functions ✅
+    - Copy Link where possible ✅
+    - Copy Image URL where possible
+      - Define cases
   - Third step: Implement routing for the whole app using Vue Router
   - Fourth step: Remove jQuery
 - Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
@@ -25,11 +27,6 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 	- Maybe tabbing the section for easy navigation
 	- Could use a carousel, but it's not worth adding a new dep
   - Variable selector near template inputs
-- Add Custom Context menu to objects
-  - Copy Link where possible
-  - Copy Image URL where possible
-  - Context menu for pywebview (Context menu is blocked in pywebview)
-    - Copy and paste functions
 - Block selection where it's not needed (keep only titles artists albums labels and useful data)
   - There's a SASS mixin for this. Need to use it in the proper classes
 - Better feedback for socket.io possible errors

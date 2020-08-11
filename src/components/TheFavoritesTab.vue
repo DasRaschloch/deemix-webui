@@ -38,7 +38,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -48,9 +47,7 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{
-							`${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}`
-						}}
+						{{ `${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 					</p>
 				</div>
 				<div
@@ -64,7 +61,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -74,12 +70,7 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{
-							`${$t('globals.by', [release.creator.name])} - ${$tc(
-								'globals.listTabs.trackN',
-								release.nb_tracks
-							)}`
-						}}
+						{{ `${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 					</p>
 				</div>
 			</div>
@@ -95,7 +86,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -119,7 +109,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -163,7 +152,7 @@
 					<td class="table__cell--large breakline">
 						{{
 							track.title +
-								(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
+							(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
 						}}
 					</td>
 					<td
@@ -185,7 +174,6 @@
 					</td>
 					<td
 						class="table__cell--download clickable"
-						@contextmenu.prevent="openQualityModal"
 						@click.stop="addToQueue"
 						:data-link="track.link"
 						role="button"
@@ -266,9 +254,6 @@ export default {
 		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		updated_userSpotifyPlaylists(data) {
 			this.spotifyPlaylists = data

@@ -26,6 +26,9 @@
 			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
+			<a id="settings_btn_applogin" class="hide" href="#" @click="applogin">
+				Automated login
+			</a>
 			<button id="settings_btn_updateArl" @click="login" style="width: 100%;">
 				{{ $t('settings.login.arl.update') }}
 			</button>
@@ -678,6 +681,7 @@ export default {
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
 		socket.on('downloadFolderSelected', this.downloadFolderSelected)
+		socket.on('applogin_arl', this.setArl)
 	},
 	methods: {
 		revertSettings() {
@@ -741,6 +745,14 @@ export default {
 			if (arl != '' && arl != localStorage.getItem('arl')) {
 				socket.emit('login', arl, true, this.accountNum)
 			}
+		},
+		applogin(e) {
+			e.preventDefault()
+			if (window.clientMode) socket.emit('applogin')
+		},
+		setArl(arl) {
+			this.$refs.loginInput.value = arl
+			this.login()
 		},
 		changeAccount() {
 			socket.emit('changeAccount', this.accountNum)

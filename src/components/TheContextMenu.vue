@@ -5,6 +5,7 @@
 			v-for="option of sortedOptions"
 			:key="option.label"
 			v-show="option.show"
+			:class="{ 'menu-option--visible': option.show }"
 			@click.prevent="option.action"
 		>
 			<span class="menu-option__text">{{ option.label }}</span>
@@ -182,6 +183,22 @@ export default {
 		positionMenu(newX, newY) {
 			this.xPos = `${newX}px`
 			this.yPos = `${newY}px`
+
+			this.$nextTick().then(() => {
+				const { innerHeight, innerWidth } = window
+				const menuXOffest = newX + this.$refs.contextMenu.getBoundingClientRect().width
+				const menuYOffest = newY + this.$refs.contextMenu.getBoundingClientRect().height
+
+				if (menuXOffest > innerWidth) {
+					const difference = menuXOffest - innerWidth + 15
+					this.xPos = `${newX - difference}px`
+				}
+
+				if (menuYOffest > innerHeight) {
+					const difference = menuYOffest - innerHeight + 15
+					this.yPos = `${newY - difference}px`
+				}
+			})
 		},
 		showDeezerOptions() {
 			this.options.copyDeezerLink.show = true
@@ -203,9 +220,10 @@ export default {
 	top: 0;
 	left: 0;
 	min-width: 100px;
-	background: var(--foreground-inverted);
 	border-radius: 7px;
+	background: var(--foreground-inverted);
 	box-shadow: 4px 10px 18px 0px hsla(0, 0%, 0%, 0.15);
+	overflow: hidden;
 	z-index: 10000;
 }
 
@@ -218,14 +236,6 @@ export default {
 	padding-right: 10px;
 	color: var(--foreground);
 	cursor: pointer;
-
-	&:first-child {
-		border-radius: 7px 7px 0 0;
-	}
-
-	&:last-child {
-		border-radius: 0 0 7px 7px;
-	}
 
 	&:hover {
 		background: var(--table-highlight);

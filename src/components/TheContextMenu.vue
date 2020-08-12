@@ -15,6 +15,7 @@
 <script>
 import Downloads from '@/utils/downloads'
 import downloadQualities from '@js/qualities'
+import { generatePath } from '@/utils/utils'
 
 export default {
 	data() {
@@ -106,7 +107,7 @@ export default {
 		},
 		// This computed property is used for rendering the options in the wanted order
 		// while keeping the options computed property an Object to make the properties
-		// accessible via property name (es this.options.copy)
+		// accessible via property name (es this.options.copyLink)
 		sortedOptions() {
 			return Object.values(this.options).sort((first, second) => {
 				return first.position < second.position ? -1 : 1
@@ -121,12 +122,9 @@ export default {
 		showMenu(contextMenuEvent) {
 			contextMenuEvent.preventDefault()
 
-			const {
-				pageX,
-				pageY,
-				path,
-				path: [elementClicked]
-			} = contextMenuEvent
+			const { pageX, pageY, target: elementClicked } = contextMenuEvent
+
+			const path = generatePath(elementClicked)
 
 			this.positionMenu(pageX, pageY)
 

@@ -11,6 +11,12 @@ const fr = {
 		toggle_download_tab_hint: 'Développer/Réduire',
 		clean_queue_hint: 'Retirer Les Tâches Terminées',
 		cancel_queue_hint: 'Tout Annuler',
+		cut: 'couper',
+		copy: 'copier',
+		copyLink: 'copier le lien',
+		copyImageLink: "copier le lien de l'image",
+		copyDeezerLink: 'copier le lien deezer',
+		paste: 'coller',
 		listTabs: {
 			empty: '',
 			all: 'tout',

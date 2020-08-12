@@ -13,7 +13,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
   - Copy Link where possible ✅
   - Download Quality ✅
   - Copy Image URL where possible ✅
-  - Resolve problem when positioning out of window (e.g. clicking on the bottom of the window)
+  - Resolve cut/copy/paste compatibility issues
 - [ ] Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
   - Use ES2020 async imports, if possible
 - [ ] Make the UI look coherent

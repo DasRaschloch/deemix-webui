@@ -5,7 +5,6 @@
 			v-for="option of sortedOptions"
 			:key="option.label"
 			v-show="option.show"
-			:class="{ 'menu-option--visible': option.show }"
 			@click.prevent="option.action"
 		>
 			<span class="menu-option__text">{{ option.label }}</span>

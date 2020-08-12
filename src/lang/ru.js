@@ -11,6 +11,12 @@ const ru = {
 		toggle_download_tab_hint: 'Показать/Скрыть',
 		clean_queue_hint: 'Очистить завершённые',
 		cancel_queue_hint: 'Очистить всё',
+		cut: 'вырезать',
+		copy: 'копировать',
+		copyLink: 'копировать ссылку',
+		copyImageLink: 'копировать URL картинки',
+		copyDeezerLink: 'копировать ссылку deezer',
+		paste: 'вставить',
 		listTabs: {
 			empty: '',
 			all: 'все',

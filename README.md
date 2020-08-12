@@ -14,6 +14,7 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
   - Download Quality ✅
   - Copy Image URL where possible ✅
   - Resolve problem when positioning out of window (e.g. clicking on the bottom of the window)
+  - Resolve problem when right clicking on element and then right clicking in another side (menu does not update)
 - [ ] Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
   - Use ES2020 async imports, if possible
 - [ ] Make the UI look coherent

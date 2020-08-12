@@ -15,7 +15,9 @@
 <script>
 import Downloads from '@/utils/downloads'
 import downloadQualities from '@js/qualities'
-import { generatePath } from '@/utils/utils'
+import { generatePath, isChromium } from '@/utils/utils'
+
+import * as clipboard from 'clipboard-polyfill/text'
 
 export default {
 	data() {
@@ -55,9 +57,15 @@ export default {
 					show: false,
 					position: 3,
 					action: () => {
-						navigator.clipboard.writeText(this.generalHref).catch(err => {
-							console.error('Link copying failed', err)
-						})
+						if (isChromium) {
+							navigator.clipboard.writeText(this.generalHref).catch(err => {
+								console.error('Link copying failed', err)
+							})
+						} else {
+							clipboard.writeText(this.generalHref).catch(err => {
+								console.error('Link copying failed', err)
+							})
+						}
 					}
 				},
 				copyImageLink: {
@@ -65,9 +73,15 @@ export default {
 					show: false,
 					position: 4,
 					action: () => {
-						navigator.clipboard.writeText(this.imgSrc).catch(err => {
-							console.error('Image copying failed', err)
-						})
+						if (isChromium) {
+							navigator.clipboard.writeText(this.imgSrc).catch(err => {
+								console.error('Image copying failed', err)
+							})
+						} else {
+							clipboard.writeText(this.imgSrc).catch(err => {
+								console.error('Image copying failed', err)
+							})
+						}
 					}
 				},
 				copyDeezerLink: {
@@ -75,9 +89,15 @@ export default {
 					show: false,
 					position: 5,
 					action: () => {
-						navigator.clipboard.writeText(this.generalHref).catch(err => {
-							console.error('Deezer link copying failed', err)
-						})
+						if (isChromium) {
+							navigator.clipboard.writeText(this.generalHref).catch(err => {
+								console.error('Deezer link copying failed', err)
+							})
+						} else {
+							clipboard.writeText(this.generalHref).catch(err => {
+								console.error('Deezer link copying failed', err)
+							})
+						}
 					}
 				},
 				paste: {
@@ -85,9 +105,15 @@ export default {
 					show: true,
 					position: 6,
 					action: () => {
-						navigator.clipboard.readText().then(text => {
-							document.execCommand('insertText', undefined, text)
-						})
+						if (isChromium) {
+							navigator.clipboard.readText().then(text => {
+								document.execCommand('insertText', undefined, text)
+							})
+						} else {
+							clipboard.readText().then(text => {
+								document.execCommand('insertText', undefined, text)
+							})
+						}
 					}
 				}
 			}
@@ -123,7 +149,6 @@ export default {
 			contextMenuEvent.preventDefault()
 
 			const { pageX, pageY, target: elementClicked } = contextMenuEvent
-
 			const path = generatePath(elementClicked)
 
 			this.positionMenu(pageX, pageY)

@@ -17,6 +17,8 @@ export function generatePath(el) {
 	return path
 }
 
+export const isChromium = !!window.chrome
+
 export function isValidURL(text) {
 	let lowerCaseText = text.toLowerCase()
 

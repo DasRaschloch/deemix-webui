@@ -211,7 +211,9 @@ const de = {
 				title: 'Soll ich die Dateien überchreiben?',
 				y: 'Ja überschreibe die Dateien',
 				n: 'Nein überschreibe die Dateien nicht',
-				t: 'Überschreibe nur die Tags'
+				t: 'Überschreibe nur die Tags',
+				b: 'Nein, behalte beide Dateien und füge der Kopie eine Nummer hinzu'
+
 			},
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
 			fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',

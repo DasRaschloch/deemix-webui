@@ -1,3 +1,22 @@
+/**
+ * Climbs the DOM until the root is reached, storing every node passed.
+ * @param 	{HTMLElement} el
+ * @return	{Array}				Contains all the nodes between el and the root
+ */
+export function generatePath(el) {
+	if (!el) {
+		throw new Error('No element passed to the generatePath function!')
+	}
+
+	let path = [el]
+
+	while ((el = el.parentNode) && el !== document) {
+		path.push(el)
+	}
+
+	return path
+}
+
 export function isValidURL(text) {
 	let lowerCaseText = text.toLowerCase()
 

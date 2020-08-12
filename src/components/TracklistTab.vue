@@ -133,15 +133,10 @@
 		</table>
 		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px;">{{ label }}</span>
 		<footer>
-			<button @contextmenu.prevent="openQualityModal" @click.stop="addToQueue" :data-link="link">
+			<button @click.stop="addToQueue" :data-link="link">
 				{{ `${$t('globals.download', [$tc(`globals.listTabs.${type}`, 1)])}` }}
 			</button>
-			<button
-				class="with_icon"
-				@contextmenu.prevent="openQualityModal"
-				@click.stop="addToQueue"
-				:data-link="selectedLinks()"
-			>
+			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
 			</button>
 			<button class="back-button">{{ $t('globals.back') }}</button>
@@ -188,9 +183,6 @@ export default {
 		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		toggleAll(e) {
 			this.body.forEach(item => {

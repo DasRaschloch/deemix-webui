@@ -273,12 +273,14 @@
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.localArtworkSize') }}</p>
-				<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize" />
+				<input type="number" min="100" max="10000" step="100" v-model.number="settings.localArtworkSize" />
+				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
 			</div>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.embeddedArtworkSize') }}</p>
-				<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize" />
+				<input type="number" min="100" max="10000" step="100" v-model.number="settings.embeddedArtworkSize" />
+				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
 			</div>
 
 			<div class="input_group">

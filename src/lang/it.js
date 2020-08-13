@@ -11,6 +11,7 @@ const it = {
 		toggle_download_tab_hint: 'Espandi/Riduci',
 		clean_queue_hint: 'Pulisci Lista',
 		cancel_queue_hint: 'Cancella tutti i download',
+		open_downloads_folder: 'Apri la cartella di download',
 		cut: 'taglia',
 		copy: 'copia',
 		copyLink: 'copia link',
@@ -253,7 +254,8 @@ const it = {
 				png: 'In png',
 				both: 'Sia in jpeg che in png'
 			},
-			jpegImageQuality: 'Qualità immagine JPEG'
+			jpegImageQuality: 'Qualità immagine JPEG',
+			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi'
 		},
 		tags: {
 			head: 'Quali tag salvare',

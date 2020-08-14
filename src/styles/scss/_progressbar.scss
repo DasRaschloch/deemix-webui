@@ -14,8 +14,12 @@
 		left: 0;
 		bottom: 0;
 		background-color: var(--accent-color);
-		-webkit-transition: width 0.3s linear;
-		transition: width 0.3s linear;
+		-webkit-transition: width 0.1s linear;
+		transition: width 0.1s linear;
+	}
+
+	.converting {
+		background-color: var(--secondary-color)
 	}
 
 	.indeterminate {

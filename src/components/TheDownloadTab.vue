@@ -40,6 +40,7 @@ export default {
 	}),
 	mounted() {
 		socket.on('startDownload', this.startDownload)
+		socket.on('startConversion', this.startConversion)
 		socket.on('init_downloadQueue', this.initQueue)
 		socket.on('addedToQueue', this.addToQueue)
 		socket.on('updateQueue', this.updateQueue)
@@ -192,7 +193,7 @@ export default {
 		},
 		updateQueue(update) {
 			// downloaded and failed default to false?
-			const { uuid, downloaded, failed, progress, error, data, errid } = update
+			const { uuid, downloaded, failed, progress, conversion, error, data, errid } = update
 
 			if (uuid && this.queue.indexOf(uuid) > -1) {
 				if (downloaded) {
@@ -221,6 +222,11 @@ export default {
 				if (progress) {
 					this.queueList[uuid].progress = progress
 					$('#bar_' + uuid).css('width', progress + '%')
+				}
+
+				if (conversion) {
+					console.log(100-conversion)
+					$('#bar_' + uuid).css('width', (100-conversion) + '%')
 				}
 			}
 		},
@@ -337,6 +343,13 @@ export default {
 		},
 		startDownload(uuid) {
 			$('#bar_' + uuid)
+				.removeClass('converting')
+				.removeClass('indeterminate')
+				.addClass('determinate')
+		},
+		startConversion(uuid) {
+			$('#bar_' + uuid)
+				.addClass('converting')
 				.removeClass('indeterminate')
 				.addClass('determinate')
 		},

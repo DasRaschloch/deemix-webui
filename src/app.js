@@ -122,6 +122,10 @@ socket.on('logged_out', function() {
 	document.getElementById('home_not_logged_in').classList.remove('hide')
 })
 
+socket.on('restoringQueue', function() {
+	toast(i18n.t('toasts.restoringQueue'), 'loading', false, 'restoring_queue')
+})
+
 socket.on('cancellingCurrentItem', function(uuid) {
 	toast(i18n.t('toasts.cancellingCurrentItem'), 'loading', false, 'cancelling_' + uuid)
 })

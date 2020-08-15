@@ -96,7 +96,7 @@ export default {
 			}
 		},
 		initQueue(data) {
-			const { queue: initQueue, queueComplete: initQueueComplete, currentItem, queueList: initQueueList } = data
+			const { queue: initQueue, queueComplete: initQueueComplete, currentItem, queueList: initQueueList, restored } = data
 
 			if (initQueueComplete.length) {
 				initQueueComplete.forEach(item => {
@@ -114,6 +114,8 @@ export default {
 				initQueueList[item].init = true
 				this.addToQueue(initQueueList[item])
 			})
+
+			if (restored) toast(this.$t('toasts.queueRestored'), 'done', true, 'restoring_queue')
 		},
 		addToQueue(queueItem, current = false) {
 			this.queueList[queueItem.uuid] = queueItem

@@ -152,6 +152,8 @@ const en = {
 	searchbar: 'Search anything you want (or just paste a link)',
 	downloads: 'downloads',
 	toasts: {
+		restoringQueue: 'Restoring download queue...',
+		queueRestored: 'Download queue restored!',
 		addedToQueue: '{0} added to queue',
 		alreadyInQueue: '{0} is already in queue!',
 		finishDownload: '{0} finished downloading.',

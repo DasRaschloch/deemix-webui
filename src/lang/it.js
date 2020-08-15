@@ -154,6 +154,8 @@ const it = {
 	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',
 	downloads: 'download',
 	toasts: {
+		restoringQueue: 'Ripristinando la coda di download...',
+		queueRestored: 'Coda di download ripristinata!',
 		addedToQueue: '{0} aggiunto alla coda',
 		alreadyInQueue: '{0} è già nella coda!',
 		finishDownload: '{0} ha finito di scaricarsi.',

@@ -19,7 +19,9 @@
 	}
 
 	.converting {
-		background-color: var(--secondary-color)
+		background-color: var(--secondary-color);
+		-webkit-transition: none !important;
+		transition: none !important;
 	}
 
 	.indeterminate {

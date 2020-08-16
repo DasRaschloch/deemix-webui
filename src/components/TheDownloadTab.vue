@@ -115,7 +115,10 @@ export default {
 				this.addToQueue(initQueueList[item])
 			})
 
-			if (restored) toast(this.$t('toasts.queueRestored'), 'done', true, 'restoring_queue')
+			if (restored){
+				toast(this.$t('toasts.queueRestored'), 'done', true, 'restoring_queue')
+				socket.emit('queueRestored')
+			}
 		},
 		addToQueue(queueItem, current = false) {
 			this.queueList[queueItem.uuid] = queueItem
@@ -227,7 +230,6 @@ export default {
 				}
 
 				if (conversion) {
-					console.log(100-conversion)
 					$('#bar_' + uuid).css('width', (100-conversion) + '%')
 				}
 			}

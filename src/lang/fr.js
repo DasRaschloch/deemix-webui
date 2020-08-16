@@ -11,6 +11,7 @@ const fr = {
 		toggle_download_tab_hint: 'Développer/Réduire',
 		clean_queue_hint: 'Retirer Les Tâches Terminées',
 		cancel_queue_hint: 'Tout Annuler',
+		open_downloads_folder: 'Ouvrir Le Dossier De Téléchargements',
 		cut: 'couper',
 		copy: 'copier',
 		copyLink: 'copier le lien',
@@ -152,6 +153,8 @@ const fr = {
 	searchbar: 'Recherchez tout ce que vous voulez (ou copiez-collez simplement un lien)',
 	downloads: 'téléchargements',
 	toasts: {
+		restoringQueue: "Restauration de la file d'attente de téléchargement...",
+		queueRestored: "La file d'attente de téléchargement a été restaurée !",
 		addedToQueue: "{0} ajouté à la file d'attente",
 		alreadyInQueue: "{0} est déjà en file d'attente !",
 		finishDownload: '{0} a été téléchargé.',
@@ -251,7 +254,8 @@ const fr = {
 				png: 'Une image png',
 				both: 'À la fois jpeg et png'
 			},
-			jpegImageQuality: "Qualité d'image JPEG"
+			jpegImageQuality: "Qualité de l'image JPEG",
+			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement utilisée par Deezer, vous pourriez donc rencontrer des problèmes"
 		},
 		tags: {
 			head: 'Métadonnées à sauvegarder',

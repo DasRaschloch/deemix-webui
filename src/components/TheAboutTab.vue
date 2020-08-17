@@ -119,10 +119,6 @@ i /deep/ svg {
 	width: 20px;
 }
 
-.bitcoin /deep/ svg {
-	fill: #ff9900;
-}
-
 .ethereum /deep/ svg {
 	fill: var(--foreground);
 }
@@ -196,14 +192,12 @@ ul {
 </style>
 <script>
 import paypal from '@/assets/paypal.svg'
-import bitcoin from '@/assets/bitcoin.svg'
 import ethereum from '@/assets/ethereum.svg'
 
 export default {
 	data: () => ({
 		paypal,
-		ethereum,
-		bitcoin
+		ethereum
 	})
 }
 </script>

@@ -157,6 +157,7 @@ const it = {
 		restoringQueue: 'Ripristinando la coda di download...',
 		queueRestored: 'Coda di download ripristinata!',
 		addedToQueue: '{0} aggiunto alla coda',
+		addedMoreToQueue: '{0} oggetti aggiunti alla coda',
 		alreadyInQueue: '{0} è già nella coda!',
 		finishDownload: '{0} ha finito di scaricarsi.',
 		allDownloaded: 'Tutti i download completati!',

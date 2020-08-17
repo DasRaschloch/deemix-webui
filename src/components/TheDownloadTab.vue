@@ -100,18 +100,18 @@ export default {
 
 			if (initQueueComplete.length) {
 				initQueueComplete.forEach(item => {
-					initQueueList[item].init = true
+					initQueueList[item].silent = true
 					this.addToQueue(initQueueList[item])
 				})
 			}
 
 			if (currentItem) {
-				initQueueList[currentItem].init = true
+				initQueueList[currentItem].silent = true
 				this.addToQueue(initQueueList[currentItem], true)
 			}
 
 			initQueue.forEach(item => {
-				initQueueList[item].init = true
+				initQueueList[item].silent = true
 				this.addToQueue(initQueueList[item])
 			})
 
@@ -121,6 +121,18 @@ export default {
 			}
 		},
 		addToQueue(queueItem, current = false) {
+			if (Array.isArray(queueItem)){
+				if (queueItem.length > 1){
+					queueItem.forEach((item, i) => {
+						item.silent = true
+						this.addToQueue(item)
+					});
+					toast(this.$t('toasts.addedMoreToQueue', [queueItem.length]), 'playlist_add_check')
+					return
+				}else{
+					queueItem = queueItem[0]
+				}
+			}
 			this.queueList[queueItem.uuid] = queueItem
 
 			if (queueItem.downloaded + queueItem.failed == queueItem.size) {
@@ -192,7 +204,7 @@ export default {
 				}
 			}
 
-			if (!queueItem.init) {
+			if (!queueItem.silent) {
 				toast(this.$t('toasts.addedToQueue', [queueItem.title]), 'playlist_add_check')
 			}
 		},

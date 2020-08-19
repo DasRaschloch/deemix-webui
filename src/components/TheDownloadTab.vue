@@ -368,6 +368,7 @@ export default {
 				.addClass('converting')
 				.removeClass('indeterminate')
 				.addClass('determinate')
+				.css('width', '100%')
 		},
 		showErrorsTab(clickEvent) {
 			this.$root.$emit('showTabErrors', clickEvent.data.item, clickEvent.target)

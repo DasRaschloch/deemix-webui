@@ -15,7 +15,7 @@
 <script>
 import Downloads from '@/utils/downloads'
 import downloadQualities from '@js/qualities'
-import { generatePath } from '@/utils/utils'
+import { generatePath, copyToClipboard } from '@/utils/utils'
 
 export default {
 	data() {
@@ -55,9 +55,10 @@ export default {
 					show: false,
 					position: 3,
 					action: () => {
-						navigator.clipboard.writeText(this.generalHref).catch(err => {
-							console.error('Link copying failed', err)
-						})
+						// navigator.clipboard.writeText(this.generalHref).catch(err => {
+						// 	console.error('Link copying failed', err)
+						// })
+						copyToClipboard(this.generalHref)
 					}
 				},
 				copyImageLink: {
@@ -65,9 +66,10 @@ export default {
 					show: false,
 					position: 4,
 					action: () => {
-						navigator.clipboard.writeText(this.imgSrc).catch(err => {
-							console.error('Image copying failed', err)
-						})
+						// navigator.clipboard.writeText(this.imgSrc).catch(err => {
+						// 	console.error('Image copying failed', err)
+						// })
+						copyToClipboard(this.imgSrc)
 					}
 				},
 				copyDeezerLink: {
@@ -75,14 +77,15 @@ export default {
 					show: false,
 					position: 5,
 					action: () => {
-						navigator.clipboard.writeText(this.generalHref).catch(err => {
-							console.error('Deezer link copying failed', err)
-						})
+						// navigator.clipboard.writeText(this.deezerHref).catch(err => {
+						// 	console.error('Deezer link copying failed', err)
+						// })
+						copyToClipboard(this.deezerHref)
 					}
 				},
 				paste: {
 					label: this.$t('globals.paste'),
-					show: true,
+					show: !window.clientMode,
 					position: 6,
 					action: () => {
 						navigator.clipboard.readText().then(text => {

@@ -156,6 +156,7 @@ const fr = {
 		restoringQueue: "Restauration de la file d'attente de téléchargement...",
 		queueRestored: "La file d'attente de téléchargement a été restaurée !",
 		addedToQueue: "{0} ajouté à la file d'attente",
+		addedMoreToQueue: "{0} éléments ajoutés à la file d'attente",
 		alreadyInQueue: "{0} est déjà en file d'attente !",
 		finishDownload: '{0} a été téléchargé.',
 		allDownloaded: 'Tous les téléchargements sont terminés !',

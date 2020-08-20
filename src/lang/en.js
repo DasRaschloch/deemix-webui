@@ -73,9 +73,7 @@ const en = {
 		itsFree: `You should remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
 		notObligated: `Don't feel obligated to donate, I appreciate you anyway!`,
 		lincensedUnder: `This work is licensed under the
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
 	},
 	charts: {
 		title: 'Charts',
@@ -119,8 +117,7 @@ const en = {
 	},
 	linkAnalyzer: {
 		info: 'You can use this section to find more information about the link you are trying to download.',
-		useful:
-			"This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
+		useful: "This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
 		linkNotSupported: 'This link is not yet supported',
 		linkNotSupportedYet: 'Seems like this link is not yet supported, try analyzing another one.',
 		table: {
@@ -140,8 +137,7 @@ const en = {
 	},
 	search: {
 		startSearching: 'Start searching!',
-		description:
-			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
+		description: 'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
 		fans: '{0} fans',
 		noResults: 'No results',
 		noResultsTrack: 'No Tracks found',

@@ -52,8 +52,7 @@ const fr = {
 			contributing: 'Vous souhaitez contribuer à ce projet ? Vous pouvez le faire de différentes manières !',
 			donations: 'Vous souhaitez contribuer financièrement ? Vous pouvez faire un don !'
 		},
-		usesLibrary:
-			'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
+		usesLibrary: 'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
 		thanks: "Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour avoir réalisé l'icône.",
 		upToDate: 'Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal de nouveautés</a> sur Telegram.',
 		officialWebsite: 'Site Officiel',
@@ -74,8 +73,7 @@ const fr = {
 		itsFree: "N'oubliez pas que <strong>ceci est un projet gratuit</strong> et que <strong>vous devez soutenir les artistes que vous appréciez</strong> avant de supporter les développeurs.",
 		notObligated: "Ne vous sentez pas obligé de faire un don, je vous apprécie quand même !",
 		lincensedUnder: `Ce projet est autorisé dans le cadre d'une
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">
-				Licence publique générale GNU 3.0</a>.`
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">Licence publique générale GNU 3.0</a>.`
 	},
 	charts: {
 		title: 'Hit-Parade',
@@ -118,10 +116,8 @@ const fr = {
 		}
 	},
 	linkAnalyzer: {
-		info:
-			"Vous pouvez utiliser cette section pour obtenir plus d'informations sur le lien que vous essayez de télécharger.",
-		useful:
-			"C'est utile si vous essayer de télécharger des pistes qui ne sont pas disponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles, par exemple.",
+		info: "Vous pouvez utiliser cette section pour obtenir plus d'informations sur le lien que vous essayez de télécharger.",
+		useful: "C'est utile si vous essayer de télécharger des pistes qui ne sont pas disponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles, par exemple.",
 		linkNotSupported: "Ce lien n'est pas encore pris en charge",
 		linkNotSupportedYet: "Il semble que ce lien ne soit pas encore pris en charge, essayez d'en analyser un autre.",
 		table: {
@@ -141,8 +137,7 @@ const fr = {
 	},
 	search: {
 		startSearching: 'Commencer une recherche !',
-		description:
-			'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ! Vous pouvez également copier-coller un lien Deezer',
+		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ! Vous pouvez également copier-coller un lien Deezer',
 		fans: '{0} fans',
 		noResults: 'Aucun résultat',
 		noResultsTrack: "Aucune piste n'a été trouvée",

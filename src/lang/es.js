@@ -17,7 +17,7 @@ const es = {
 		copyLink: 'copiar link',
 		copyImageLink: 'copiar link de la imagen',
 		copyDeezerLink: 'copiar link de Deezer',
-		paste: 'pegar',										 
+		paste: 'pegar',
 		listTabs: {
 			empty: '',
 			all: 'todos',
@@ -152,7 +152,7 @@ const es = {
 		restoringQueue: 'Restaurando cola de descarga...',
 		queueRestored: '¡Cola de descarga restaurada!',
 		addedToQueue: '{0} añadidos a la cola',
-		addedMoreToQueue: '{0} elementos añadidos a la cola',									   
+		addedMoreToQueue: '{0} elementos añadidos a la cola',
 		alreadyInQueue: '¡{0} ya está en la cola!',
 		finishDownload: '{0} terminado de descargar.',
 		allDownloaded: '¡Todas las descargas se han completado!',
@@ -167,8 +167,8 @@ const es = {
 		startAddingArtist: 'Añadiendo {0} álbumes a la cola',
 		finishAddingArtist: 'Añadido {0} álbumes a la cola',
 		startConvertingSpotifyPlaylist: 'Convertir las pistas de Spotify en pistas de Deezer',
-		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida'
-		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!'														 
+		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida',
+		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!'
 	},
 	settings: {
 		title: 'Configuración',
@@ -226,7 +226,7 @@ const es = {
 				title: '¿Desea que sobreescriba los archivos?',
 				y: 'Sí, sobrescribir el archivo',
 				n: 'No, no sobrescribir el archivo',
-				t: 'Sobrescribir sólo las etiquetas'
+				t: 'Sobrescribir sólo las etiquetas',
 				b: 'No, mantener los dos archivos y agrega un número al archivo duplicado'
 			},
 			fallbackBitrate: 'La solución alternativa de bitrate',
@@ -252,7 +252,7 @@ const es = {
 				png: 'Una imagen png',
 				both: 'Ambos, jpeg y png'
 			},
-			jpegImageQuality: 'Calidad de la imagen JPEG'
+			jpegImageQuality: 'Calidad de la imagen JPEG',
 			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes'
 		},
 		tags: {

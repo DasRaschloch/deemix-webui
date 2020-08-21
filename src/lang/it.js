@@ -232,7 +232,8 @@ const it = {
 				y: 'Si, sovrascrivi i file',
 				n: 'No, non sovrascrivere i file',
 				t: 'Sovrascrivi solo i tag',
-				b: 'No, mantieni entrambi i file e aggiungi un numero al duplicato'
+				b: 'No, mantieni entrambi i file e aggiungi un numero al duplicato',
+				e: "No, e non tener conto della estensione del file"
 			},
 			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
 			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',
@@ -258,6 +259,8 @@ const it = {
 				both: 'Sia in jpeg che in png'
 			},
 			jpegImageQuality: 'Qualità immagine JPEG',
+			embeddedArtworkPNG: 'Salva copertina incorporata come PNG',
+			embeddedPNGWarning: 'Le immagini PNG non sono usate ufficialmente da Deezer e potrebbero dare problemi',
 			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi'
 		},
 		tags: {

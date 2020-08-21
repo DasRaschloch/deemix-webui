@@ -226,7 +226,8 @@ const en = {
 				y: 'Yes, overwrite the file',
 				n: "No, don't overwrite the file",
 				t: 'Overwrite only the tags',
-				b: 'No, keep both files and add a number to the duplicate'
+				b: 'No, keep both files and add a number to the duplicate',
+				e: "No, and don't look at the extensions"
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Search fallback',
@@ -252,6 +253,8 @@ const en = {
 				both: 'Both a jpeg and a png'
 			},
 			jpegImageQuality: 'JPEG image quality',
+			embeddedArtworkPNG: 'Save embedded artwork as PNG',
+			embeddedPNGWarning: 'PNGs are not officialy supported by Deezer and can be buggy',
 			imageSizeWarning: 'Anything above x1200 is not officialy used by Deezer, you may encounter issues'
 		},
 		tags: {

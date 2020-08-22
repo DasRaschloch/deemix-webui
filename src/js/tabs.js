@@ -1,6 +1,6 @@
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
-import router from '@/plugins/router'
+import router from '@/router'
 
 /* ===== Globals ====== */
 window.search_selected = ''

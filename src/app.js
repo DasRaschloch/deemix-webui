@@ -7,7 +7,8 @@ window.vol = {
 
 import App from '@components/App.vue'
 import i18n from '@/plugins/i18n'
-import router from '@/plugins/router'
+import router from '@/router'
+import store from '@/store'
 
 import $ from 'jquery'
 import { socket } from '@/utils/socket'
@@ -23,6 +24,7 @@ function startApp() {
 
 function mountApp() {
 	new Vue({
+		store,
 		router,
 		i18n,
 		render: h => h(App)

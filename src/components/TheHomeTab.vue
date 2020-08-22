@@ -65,8 +65,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
+import { showView } from '@js/tabs'
 import Downloads from '@/utils/downloads'
 
 export default {
@@ -75,6 +76,12 @@ export default {
 		return {
 			playlists: [],
 			albums: []
+		}
+	},
+	computed: {
+		...mapGetters(['getHomeData']),
+		needToWait() {
+			return this.getHomeData.albums.data.length === 0 && this.getHomeData.playlists.data.length === 0
 		}
 	},
 	methods: {
@@ -88,6 +95,7 @@ export default {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		initHome(data) {
+			console.log('init home')
 			const {
 				playlists: { data: playlistData },
 				albums: { data: albumData }
@@ -95,6 +103,22 @@ export default {
 
 			this.playlists = playlistData
 			this.albums = albumData
+		},
+		checkIfWaitData(data) {
+			if (this.needToWait) {
+				// This case verifies only at the first load, beacuse the data retrieving is not completed yet
+				// ! Define this functionality as a Vue Mixin
+				let unsub = this.$store.subscribeAction({
+					after: (action, state) => {
+						if (action.type === 'cacheHomeData') {
+							this.initHome(this.getHomeData)
+							unsub()
+						}
+					}
+				})
+			} else {
+				this.initHome(this.getHomeData)
+			}
 		}
 	},
 	mounted() {
@@ -106,7 +130,8 @@ export default {
 		}
 
 		// ! Need to init home everytime, atm this is called only on connect
-		socket.on('init_home', this.initHome)
+		this.checkIfWaitData(this.getHomeData)
+		// socket.on('init_home', this.initHome)
 	},
 	beforeDestroy() {
 		console.log('home bef dest')

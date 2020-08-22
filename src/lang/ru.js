@@ -11,6 +11,7 @@ const ru = {
 		toggle_download_tab_hint: 'Показать/Скрыть',
 		clean_queue_hint: 'Очистить завершённые',
 		cancel_queue_hint: 'Очистить всё',
+		open_downloads_folder: 'Открыть папку с загрузками',
 		cut: 'вырезать',
 		copy: 'копировать',
 		copyLink: 'копировать ссылку',
@@ -72,9 +73,7 @@ const ru = {
 		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует <strong>поддерживать понравившихся исполнителей</strong> прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
 		lincensedUnder: `Проект распространяется под лицензией
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
 	},
 	charts: {
 		title: 'Чарты',
@@ -118,8 +117,7 @@ const ru = {
 	},
 	linkAnalyzer: {
 		info: 'Используйте этот раздел, чтобы узнать информацию о ссылке, которую требуется скачать.',
-		useful:
-			"Этот раздел нужен, если вы хотите загрузить треки, недоступные в вашей стране, а также посмотреть, где они доступны.",
+		useful: "Этот раздел нужен, если вы хотите загрузить треки, недоступные в вашей стране, а также посмотреть, где они доступны.",
 		linkNotSupported: 'Ссылка не поддерживается',
 		linkNotSupportedYet: 'Эта ссылка не поддерживается, попробуйте вставить другую.',
 		table: {
@@ -131,7 +129,7 @@ const ru = {
 			trackNumber: 'Номер трека',
 			releaseDate: 'Дата выхода',
 			bpm: 'BPM',
-			label: 'Издатедь',
+			label: 'Издатель',
 			recordType: 'Тип',
 			genres: 'Жанр',
 			tracklist: 'Треклист'
@@ -139,8 +137,7 @@ const ru = {
 	},
 	search: {
 		startSearching: 'Начните искать!',
-		description:
-			'Здесь можно найти трек, альбом, исполнителя, плейлист... всё! Можно также вставить ссылку Deezer',
+		description: 'Здесь можно найти трек, альбом, исполнителя, плейлист... всё! Можно также вставить ссылку Deezer',
 		fans: '{0} поклонников',
 		noResults: 'Нет результатов',
 		noResultsTrack: 'Треков не найдено',
@@ -151,12 +148,15 @@ const ru = {
 	searchbar: 'Ищите, что хотите (или вставьте ссылку)',
 	downloads: 'загрузки',
 	toasts: {
+		restoringQueue: 'Восстановление очереди загрузок...',
+		queueRestored: 'Очередь восстановлена!',
 		addedToQueue: '{0} добавлено в очередь',
+		addedMoreToQueue: '{0} загрузок добавлены в очередь',
 		alreadyInQueue: '{0} уже присутствует в очереди!',
 		finishDownload: 'Загрузка {0} завершена.',
 		allDownloaded: 'Все загрузки завершены!',
 		refreshFavs: 'Обновление завершено!',
-		loggingIn: 'Вход',
+		loggingIn: 'Вход...',
 		loggedIn: 'Вход выполнен',
 		alreadyLogged: 'Вход уже выполнен',
 		loginFailed: "Вход не выполнен",
@@ -226,7 +226,8 @@ const ru = {
 				y: 'Да, перезаписать файл',
 				n: "Нет, не перезаписывать",
 				t: 'Обновить только теги',
-				b: 'Нет, оставить оба файла и добавить номер к дубликату'
+				b: 'Нет, оставить оба файла и добавить номер к дубликату',
+				e: "Нет, вне зависимости от расширения"
 			},
 			fallbackBitrate: 'Загружать с битрейтом ниже, если текущий недоступен',
 			fallbackSearch: 'Искать похожий трек, если запрашиваемый недоступен',
@@ -251,7 +252,10 @@ const ru = {
 				png: 'png',
 				both: 'jpeg и png'
 			},
-			jpegImageQuality: 'Качество JPEG'
+			jpegImageQuality: 'Качество JPEG',
+			embeddedArtworkPNG: 'Сохранять вложенную обложку в PNG',
+			embeddedPNGWarning: 'PNG официально не поддерживается в Deezer. Могут быть баги',
+			imageSizeWarning: 'Обложки с разрешением выше x1200 не поддерживаются в Deezer. Могут быть проблемы'
 		},
 		tags: {
 			head: 'Какие теги сохранять',

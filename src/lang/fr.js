@@ -166,7 +166,8 @@ const fr = {
 		startAddingArtist: "Ajout de {0} albums en file d'attente",
 		finishAddingArtist: "{0} albums ajoutés en file d'attente",
 		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en pistes Deezer',
-		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie'
+		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
+		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !'
 	},
 	settings: {
 		title: 'Paramètres',

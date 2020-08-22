@@ -25,16 +25,22 @@
 					<h1>{{ title }}</h1>
 					<h2 v-if="type == 'track'">
 						<i18n path="globals.by" tag="span">
-							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{
+								data.artist.name
+							}}</span>
 						</i18n>
-						 •
+						•
 						<i18n path="globals.in" tag="span">
-							<span place="0" class="clickable" @click="albumView" :data-id="data.album.id">{{ data.album.title }}</span>
+							<span place="0" class="clickable" @click="albumView" :data-id="data.album.id">{{
+								data.album.title
+							}}</span>
 						</i18n>
 					</h2>
 					<h2 v-else-if="type == 'album'">
 						<i18n path="globals.by" tag="span">
-							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{ data.artist.name }}</span>
+							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{
+								data.artist.name
+							}}</span>
 						</i18n>
 						{{ ` • ${$tc('globals.listTabs.trackN', data.nb_tracks)}` }}
 					</h2>
@@ -112,6 +118,7 @@ import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
+import Downloads from '@/utils/downloads'
 
 export default {
 	name: 'the-link-analyzer-tab',
@@ -178,6 +185,9 @@ export default {
 		},
 		notSupported() {
 			this.link = 'error'
+		},
+		addToQueue(e) {
+			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		}
 	},
 	mounted() {

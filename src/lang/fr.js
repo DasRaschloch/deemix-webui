@@ -225,10 +225,11 @@ const fr = {
 				y: 'Oui, écraser le fichier',
 				n: 'Non, ne pas écraser le fichier',
 				t: 'Écraser uniquement les métadonnées',
-				b: 'Non, conserver les deux fichiers et ajouter un numéro au doublon'
+				b: 'Non, conserver les deux fichiers et ajouter un numéro au doublon',
+				e: "Non, et ne pas tenir compte de l'extension du fichier"
 			},
-			fallbackBitrate: 'Recours aux débits plus faibles',
-			fallbackSearch: 'Rechercher un débit plus faible',
+			fallbackBitrate: "Recourir à des débits plus faibles si le débit préféré n'est pas disponible",
+			fallbackSearch: "Rechercher la piste si le lien original n'est pas disponible",
 			logErrors: "Créer un fichier journal d'erreurs",
 			logSearched: 'Créer un fichier journal des pistes recherchées',
 			createM3U8File: 'Créer un fichier de playlist',
@@ -251,6 +252,8 @@ const fr = {
 				both: 'À la fois jpeg et png'
 			},
 			jpegImageQuality: "Qualité de l'image JPEG",
+			embeddedArtworkPNG: "Enregistrer l'illustration incorporée en tant qu'image PNG",
+			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes',
 			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement utilisée par Deezer, vous pourriez donc rencontrer des problèmes"
 		},
 		tags: {

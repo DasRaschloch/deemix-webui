@@ -54,27 +54,26 @@ const es = {
 		},
 		usesLibrary:
 			'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
-		thanks: `Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.`,
-		upToDate: `Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.`,
+		thanks: 'Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.',
+		upToDate: 'Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.',
 		officialWebsite: 'Página web oficial',
 		officialRepo: 'Repositorio de la biblioteca oficial',
 		officialWebuiRepo: 'Repositorio oficial de WebUI',
 		officialSubreddit: 'Subreddit oficial',
 		newsChannel: 'Canal de noticias',
-		questions: `Si tienes preguntas o problemas con la aplicación, busca una solución en el <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> primero. Luego, si no encuentras nada puedes hacer un post con tu problema en el subreddit.`,
-		beforeReporting: `Antes de informar de un error asegúrese de que está ejecutando la última versión de la aplicación y que lo que quiere informar es en realidad un error y no algo que está mal sólo en su extremo.`,
-		beSure: `Asegúrate de que el fallo es reproducible en otras máquinas y también <strong>NO</strong> reporte un fallo si ya ha sido reportado.`,
+		questions: 'Si tienes preguntas o problemas con la aplicación, busca una solución en el <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> primero. Luego, si no encuentras nada puedes hacer un post con tu problema en el subreddit.',
+		beforeReporting: 'Antes de informar de un error asegúrese de que está ejecutando la última versión de la aplicación y que lo que quiere informar es en realidad un error y no algo que está mal sólo en su extremo.',
+		beSure: 'Asegúrate de que el fallo es reproducible en otras máquinas y también <strong>NO</strong> reporte un fallo si ya ha sido reportado.',
 		duplicateReports: 'Los informes de errores duplicados se cerrarán, así que manténgase al tanto de eso.',
-		dontOpenIssues: `<strong>NO</strong> abra problemas para hacer preguntas, hay un subreddit para eso.`,
-		newUI: `Si tienes fluidez en Python podrías intentar hacer una nueva interfaz de usuario para la aplicación usando la biblioteca base, o arreglar los errores de la biblioteca con una petición pull en el <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
-		acceptFeatures: `También acepto características, pero no cosas complejas, ya que se pueden implementar directamente en la aplicación y no en la biblioteca.`,
-		otherLanguages: `¡Si dominas otro lenguaje de programación podrías intentar portar Deemix a otros lenguajes de programación!`,
-		understandingCode: `¿Necesitas ayuda para entender el código? Sólo tienes que poner RemixDev en Telegram o Reddit.`,
-		contributeWebUI: `Si conoces Vue.js (JavaScript), HTML o CSS podrías contribuir a la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: `Debes recordar que <strong>este es un proyecto libre</fuerte> y <strong>debes apoyar a los artistas que amas</fuerte> antes de apoyar a los desarrolladores.`,
-		notObligated: `No te sientas obligado a donar, ¡te aprecio de todas formas!`,
-		lincensedUnder: `Esta obra está autorizada bajo una
-			<a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU Licencia Pública General 3.0</a>.`
+		dontOpenIssues: '<strong>NO</strong> abra problemas para hacer preguntas, hay un subreddit para eso.',
+		newUI: 'Si tienes fluidez en Python podrías intentar hacer una nueva interfaz de usuario para la aplicación usando la biblioteca base, o arreglar los errores de la biblioteca con una petición pull en el <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.',
+		acceptFeatures: 'También acepto características, pero no cosas complejas, ya que se pueden implementar directamente en la aplicación y no en la biblioteca.',
+		otherLanguages: '¡Si dominas otro lenguaje de programación podrías intentar portar Deemix a otros lenguajes de programación!',
+		understandingCode: '¿Necesitas ayuda para entender el código? Sólo tienes que poner RemixDev en Telegram o Reddit.',
+		contributeWebUI: 'Si conoces Vue.js (JavaScript), HTML o CSS podrías contribuir a la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.',
+		itsFree: 'Debes recordar que <strong>este es un proyecto libre</fuerte> y <strong>debes apoyar a los artistas que amas</fuerte> antes de apoyar a los desarrolladores.',
+		notObligated: 'No te sientas obligado a donar, ¡te aprecio de todas formas!',
+		lincensedUnder: 'Esta obra está autorizada bajo una <a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU Licencia Pública General 3.0</a>.'
 	},
 	charts: {
 		title: 'Tablas',
@@ -253,6 +252,8 @@ const es = {
 				both: 'Ambos, jpeg y png'
 			},
 			jpegImageQuality: 'Calidad de la imagen JPEG',
+			embeddedArtworkPNG: 'Guardar las imágenes incrustadas como PNG',
+			embeddedPNGWarning: 'Las PNG no están oficialmente soportadas por Deezer y puede encontrar errores.',
 			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes'
 		},
 		tags: {

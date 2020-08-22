@@ -5,9 +5,11 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 ## What's left to do?
 
 - [ ] Use Vue app-wide
-  - [X] First step: rewrite the app in Single File Components way
-  - [ ] Second step: Implement routing for the whole app using Vue Router ⚒
-  - [ ] Third step: Remove jQuery
+  - [X] Rewrite the app in Single File Components way
+  - [ ] Implement routing for the whole app using Vue Router ⚒
+  - [ ] Implement Vuex store for FE caching
+  - [ ] Remove jQuery
+- [ ] Improve artist/tracklist tabs displaying
 - [ ] Implement custom contextmenu ⚒
   - [X] Copy and paste functions
   - [X] Copy Link where possible

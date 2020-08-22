@@ -494,7 +494,7 @@ export default {
 		}
 	},
 	mounted() {
-		// console.log('main search mounted')
+		console.log('main search mounted')
 		// this.$refs.root.style.display = 'block'
 		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
 
@@ -503,7 +503,7 @@ export default {
 		socket.on('search', this.handleSearch)
 	},
 	beforeDestroy() {
-		// console.log('main search bef dest')
+		console.log('main search bef dest')
 		// this.$refs.root.style.display = 'none'
 	},
 	methods: {

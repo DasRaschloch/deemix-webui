@@ -275,13 +275,17 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.localArtworkSize') }}</p>
 				<input type="number" min="100" max="10000" step="100" v-model.number="settings.localArtworkSize" />
-				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
+				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">
+					⚠️ {{ $t('settings.covers.imageSizeWarning') }}
+				</p>
 			</div>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.embeddedArtworkSize') }}</p>
 				<input type="number" min="100" max="10000" step="100" v-model.number="settings.embeddedArtworkSize" />
-				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
+				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">
+					⚠️ {{ $t('settings.covers.imageSizeWarning') }}
+				</p>
 			</div>
 
 			<div class="input_group">
@@ -297,7 +301,9 @@
 				<input type="checkbox" v-model="settings.embeddedArtworkPNG" />
 				<span class="checkbox_text">{{ $t('settings.covers.embeddedArtworkPNG') }}</span>
 			</label>
-			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}</p>
+			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22;">
+				⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}
+			</p>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.jpegImageQuality') }}</p>
@@ -617,7 +623,9 @@ export default {
 		flags,
 		currentLocale: 'en',
 		locales: [],
-		settings: { tags: {} },
+		settings: {
+			tags: {}
+		},
 		lastSettings: {},
 		spotifyFeatures: {},
 		lastCredentials: {},
@@ -697,57 +705,57 @@ export default {
 			}
 		}
 	},
-	mounted() {
-		this.locales = this.$i18n.availableLocales
+	// mounted() {
+	// 	this.locales = this.$i18n.availableLocales
 
-		EventBus.$on('settingsTab:revertSettings', this.revertSettings)
-		EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
+	// 	EventBus.$on('settingsTab:revertSettings', this.revertSettings)
+	// 	EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
 
-		this.$refs.loggedInInfo.classList.add('hide')
+	// 	this.$refs.loggedInInfo.classList.add('hide')
 
-		let storedLocale = localStorage.getItem('locale')
+	// 	let storedLocale = localStorage.getItem('locale')
 
-		if (storedLocale) {
-			this.$i18n.locale = storedLocale
-			this.currentLocale = storedLocale
-		}
+	// 	if (storedLocale) {
+	// 		this.$i18n.locale = storedLocale
+	// 		this.currentLocale = storedLocale
+	// 	}
 
-		let storedArl = localStorage.getItem('arl')
+	// 	let storedArl = localStorage.getItem('arl')
 
-		if (storedArl) {
-			this.$refs.loginInput.value = storedArl.trim()
-		}
+	// 	if (storedArl) {
+	// 		this.$refs.loginInput.value = storedArl.trim()
+	// 	}
 
-		let storedAccountNum = localStorage.getItem('accountNum')
+	// 	let storedAccountNum = localStorage.getItem('accountNum')
 
-		if (storedAccountNum) {
-			this.accountNum = storedAccountNum
-		}
+	// 	if (storedAccountNum) {
+	// 		this.accountNum = storedAccountNum
+	// 	}
 
-		let spotifyUser = localStorage.getItem('spotifyUser')
+	// 	let spotifyUser = localStorage.getItem('spotifyUser')
 
-		if (spotifyUser) {
-			this.lastUser = spotifyUser
-			this.spotifyUser = spotifyUser
-			socket.emit('update_userSpotifyPlaylists', spotifyUser)
-		}
+	// 	if (spotifyUser) {
+	// 		this.lastUser = spotifyUser
+	// 		this.spotifyUser = spotifyUser
+	// 		socket.emit('update_userSpotifyPlaylists', spotifyUser)
+	// 	}
 
-		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
+	// 	this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
 
-		let volume = parseInt(localStorage.getItem('previewVolume'))
-		if (isNaN(volume)) {
-			volume = 80
-			localStorage.setItem('previewVolume', volume)
-		}
-		window.vol.preview_max_volume = volume
+	// 	let volume = parseInt(localStorage.getItem('previewVolume'))
+	// 	if (isNaN(volume)) {
+	// 		volume = 80
+	// 		localStorage.setItem('previewVolume', volume)
+	// 	}
+	// 	window.vol.preview_max_volume = volume
 
-		socket.on('init_settings', this.initSettings)
-		socket.on('updateSettings', this.updateSettings)
-		socket.on('accountChanged', this.accountChanged)
-		socket.on('familyAccounts', this.initAccounts)
-		socket.on('downloadFolderSelected', this.downloadFolderSelected)
-		socket.on('applogin_arl', this.setArl)
-	},
+	// 	socket.on('init_settings', this.initSettings)
+	// 	socket.on('updateSettings', this.updateSettings)
+	// 	socket.on('accountChanged', this.accountChanged)
+	// 	socket.on('familyAccounts', this.initAccounts)
+	// 	socket.on('downloadFolderSelected', this.downloadFolderSelected)
+	// 	socket.on('applogin_arl', this.setArl)
+	// },
 	methods: {
 		revertSettings() {
 			this.settings = { ...this.lastSettings }
@@ -791,7 +799,7 @@ export default {
 		selectDownloadFolder() {
 			if (window.clientMode) socket.emit('selectDownloadFolder')
 		},
-		downloadFolderSelected(folder){
+		downloadFolderSelected(folder) {
 			console.log(folder)
 			this.settings.downloadLocation = folder
 		},

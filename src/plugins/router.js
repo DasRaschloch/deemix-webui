@@ -20,6 +20,7 @@ Vue.use(VueRouter)
 const routes = [
 	{
 		path: '/',
+		name: 'Home',
 		component: TheHomeTab
 	},
 	{
@@ -70,7 +71,7 @@ const routes = [
 	// 404 client side
 	{
 		path: '*',
-		component: TracklistTab
+		component: TheHomeTab
 	}
 ]
 
@@ -85,23 +86,34 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
 	console.log('before route change', to)
+	let getTracklistParams = null
 
 	switch (to.name) {
 		case 'Artist':
-			socket.emit('getTracklist', {
+			getTracklistParams = {
 				type: 'artist',
 				id: to.params.id
-			})
+			}
 			break
 		case 'Tracklist':
-			socket.emit('getTracklist', {
+			getTracklistParams = {
 				type: to.params.type,
 				id: to.params.id
-			})
+			}
+			break
+		case 'Home':
+			socket.emit('get_home_data')
+			break
+		case 'Charts':
+			socket.emit('get_charts_data')
 			break
 
 		default:
 			break
+	}
+
+	if (getTracklistParams) {
+		socket.emit('getTracklist', getTracklistParams)
 	}
 
 	EventBus.$emit('trackPreview:stopStackedTabsPreview')

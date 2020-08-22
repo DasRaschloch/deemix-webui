@@ -1,8 +1,10 @@
 <template>
 	<section id="content" @scroll="handleContentScroll" ref="content">
 		<div id="container">
+			<!-- HomeTab and MainSearchTab -->
 			<router-view></router-view>
 
+			<TheMainSearch :scrolled-search-type="newScrolled" />
 			<!-- <ArtistTab /> -->
 			<!-- <TracklistTab /> -->
 			<!-- <TheHomeTab /> -->
@@ -12,7 +14,6 @@
 			<TheLinkAnalyzerTab />
 			<TheAboutTab />
 			<TheSettingsTab /> -->
-			<TheMainSearch :scrolled-search-type="newScrolled" />
 		</div>
 	</section>
 </template>

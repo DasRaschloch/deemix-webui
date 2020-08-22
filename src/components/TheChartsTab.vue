@@ -157,6 +157,7 @@ export default {
 			socket.emit('getChartTracks', this.id)
 		},
 		setTracklist(data) {
+			console.log('settracklist')
 			this.chart = data
 		},
 		changeCountry() {
@@ -164,6 +165,7 @@ export default {
 			this.id = 0
 		},
 		initCharts(data) {
+			console.log('init charts')
 			this.countries = data
 			this.country = localStorage.getItem('chart') || ''
 

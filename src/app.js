@@ -68,24 +68,33 @@ socket.on('logged_in', function(data) {
 		case 1:
 		case 3:
 			toast(i18n.t('toasts.loggedIn'), 'done', true, 'login-toast')
+
+			// Idea: set this whole object in the localStorage to read it in the future
+			// Other idea would be using vuex
+
 			if (data.arl) {
 				localStorage.setItem('arl', data.arl)
-				$('#login_input_arl').val(data.arl)
+				// $('#login_input_arl').val(data.arl)
 			}
+
+			// ? What's this?
 			$('#open_login_prompt').hide()
+
 			if (data.user) {
 				$('#settings_username').text(data.user.name)
 				$('#settings_picture').attr(
 					'src',
 					`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`
 				)
-				// $('#logged_in_info').show()
-				document.getElementById('logged_in_info').classList.remove('hide')
+				$('#logged_in_info').removeClass('hide')
+				// document.getElementById('logged_in_info').classList.remove('hide')
 			}
+			// $('#home_not_logged_in').addClass('hide')
 			document.getElementById('home_not_logged_in').classList.add('hide')
 			break
 		case 2:
 			toast(i18n.t('toasts.alreadyLogged'), 'done', true, 'login-toast')
+
 			if (data.user) {
 				$('#settings_username').text(data.user.name)
 				$('#settings_picture').attr(
@@ -93,7 +102,8 @@ socket.on('logged_in', function(data) {
 					`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`
 				)
 				// $('#logged_in_info').show()
-				document.getElementById('logged_in_info').classList.remove('hide')
+				// document.getElementById('logged_in_info').classList.remove('hide')
+				$('#logged_in_info').removeClass('hide')
 			}
 			document.getElementById('home_not_logged_in').classList.add('hide')
 			break
@@ -102,8 +112,8 @@ socket.on('logged_in', function(data) {
 			localStorage.removeItem('arl')
 			$('#login_input_arl').val('')
 			$('#open_login_prompt').show()
-			document.getElementById('logged_in_info').classList.add('hide')
-			// $('#logged_in_info').hide()
+			$('#logged_in_info').addClass('hide')
+			// document.getElementById('logged_in_info').classList.add('hide')
 			$('#settings_username').text('Not Logged')
 			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 			document.getElementById('home_not_logged_in').classList.remove('hide')

@@ -237,6 +237,7 @@ export default {
 		showPlaylist(data) {
 			this.reset()
 			console.log(data)
+			console.log('mandi')
 
 			const {
 				id: playlistID,

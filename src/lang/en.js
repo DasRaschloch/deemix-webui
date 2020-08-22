@@ -11,6 +11,7 @@ const en = {
 		toggle_download_tab_hint: 'Expand/Collapse',
 		clean_queue_hint: 'Clear Finished',
 		cancel_queue_hint: 'Cancel All',
+		open_downloads_folder: 'Open Downloads Folder',
 		cut: 'cut',
 		copy: 'copy',
 		copyLink: 'copy link',
@@ -72,9 +73,7 @@ const en = {
 		itsFree: `You should remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
 		notObligated: `Don't feel obligated to donate, I appreciate you anyway!`,
 		lincensedUnder: `This work is licensed under the
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
 	},
 	charts: {
 		title: 'Charts',
@@ -118,8 +117,7 @@ const en = {
 	},
 	linkAnalyzer: {
 		info: 'You can use this section to find more information about the link you are trying to download.',
-		useful:
-			"This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
+		useful: "This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
 		linkNotSupported: 'This link is not yet supported',
 		linkNotSupportedYet: 'Seems like this link is not yet supported, try analyzing another one.',
 		table: {
@@ -139,8 +137,7 @@ const en = {
 	},
 	search: {
 		startSearching: 'Start searching!',
-		description:
-			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
+		description: 'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
 		fans: '{0} fans',
 		noResults: 'No results',
 		noResultsTrack: 'No Tracks found',
@@ -151,7 +148,10 @@ const en = {
 	searchbar: 'Search anything you want (or just paste a link)',
 	downloads: 'downloads',
 	toasts: {
+		restoringQueue: 'Restoring download queue...',
+		queueRestored: 'Download queue restored!',
 		addedToQueue: '{0} added to queue',
+		addedMoreToQueue: '{0} items added to queue',
 		alreadyInQueue: '{0} is already in queue!',
 		finishDownload: '{0} finished downloading.',
 		allDownloaded: 'All downloads completed!',
@@ -226,7 +226,8 @@ const en = {
 				y: 'Yes, overwrite the file',
 				n: "No, don't overwrite the file",
 				t: 'Overwrite only the tags',
-				b: 'No, keep both files and add a number to the duplicate'
+				b: 'No, keep both files and add a number to the duplicate',
+				e: "No, and don't look at the extensions"
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Search fallback',
@@ -251,7 +252,10 @@ const en = {
 				png: 'A png image',
 				both: 'Both a jpeg and a png'
 			},
-			jpegImageQuality: 'JPEG image quality'
+			jpegImageQuality: 'JPEG image quality',
+			embeddedArtworkPNG: 'Save embedded artwork as PNG',
+			embeddedPNGWarning: 'PNGs are not officialy supported by Deezer and can be buggy',
+			imageSizeWarning: 'Anything above x1200 is not officialy used by Deezer, you may encounter issues'
 		},
 		tags: {
 			head: 'Which tags to save',

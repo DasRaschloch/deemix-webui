@@ -73,6 +73,24 @@ export function debounce(func, wait, immediate) {
 	}
 }
 
+/**
+ * Workaround to copy to the clipboard cross-OS by generating a
+ * ghost input and copying the passed String
+ *
+ * @param {string}	text Text to copy
+ */
+export function copyToClipboard(text) {
+	const ghostInput = document.createElement('input')
+
+	document.body.appendChild(ghostInput)
+	ghostInput.setAttribute('type', 'text')
+	ghostInput.setAttribute('value', text)
+	ghostInput.select()
+	ghostInput.setSelectionRange(0, 99999)
+	document.execCommand('copy')
+	ghostInput.remove()
+}
+
 export const COUNTRIES = {
 	AF: 'Afghanistan',
 	AX: '\u00c5land Islands',

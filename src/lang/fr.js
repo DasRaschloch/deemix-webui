@@ -11,6 +11,13 @@ const fr = {
 		toggle_download_tab_hint: 'Développer/Réduire',
 		clean_queue_hint: 'Retirer Les Tâches Terminées',
 		cancel_queue_hint: 'Tout Annuler',
+		open_downloads_folder: 'Ouvrir Le Dossier De Téléchargements',
+		cut: 'couper',
+		copy: 'copier',
+		copyLink: 'copier le lien',
+		copyImageLink: "copier le lien de l'image",
+		copyDeezerLink: 'copier le lien deezer',
+		paste: 'coller',
 		listTabs: {
 			empty: '',
 			all: 'tout',
@@ -45,8 +52,7 @@ const fr = {
 			contributing: 'Vous souhaitez contribuer à ce projet ? Vous pouvez le faire de différentes manières !',
 			donations: 'Vous souhaitez contribuer financièrement ? Vous pouvez faire un don !'
 		},
-		usesLibrary:
-			'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
+		usesLibrary: 'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
 		thanks: "Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour avoir réalisé l'icône.",
 		upToDate: 'Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal de nouveautés</a> sur Telegram.',
 		officialWebsite: 'Site Officiel',
@@ -67,8 +73,7 @@ const fr = {
 		itsFree: "N'oubliez pas que <strong>ceci est un projet gratuit</strong> et que <strong>vous devez soutenir les artistes que vous appréciez</strong> avant de supporter les développeurs.",
 		notObligated: "Ne vous sentez pas obligé de faire un don, je vous apprécie quand même !",
 		lincensedUnder: `Ce projet est autorisé dans le cadre d'une
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">
-				Licence publique générale GNU 3.0</a>.`
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">Licence publique générale GNU 3.0</a>.`
 	},
 	charts: {
 		title: 'Hit-Parade',
@@ -111,10 +116,8 @@ const fr = {
 		}
 	},
 	linkAnalyzer: {
-		info:
-			"Vous pouvez utiliser cette section pour obtenir plus d'informations sur le lien que vous essayez de télécharger.",
-		useful:
-			"C'est utile si vous essayer de télécharger des pistes qui ne sont pas disponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles, par exemple.",
+		info: "Vous pouvez utiliser cette section pour obtenir plus d'informations sur le lien que vous essayez de télécharger.",
+		useful: "C'est utile si vous essayer de télécharger des pistes qui ne sont pas disponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles, par exemple.",
 		linkNotSupported: "Ce lien n'est pas encore pris en charge",
 		linkNotSupportedYet: "Il semble que ce lien ne soit pas encore pris en charge, essayez d'en analyser un autre.",
 		table: {
@@ -134,8 +137,7 @@ const fr = {
 	},
 	search: {
 		startSearching: 'Commencer une recherche !',
-		description:
-			'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ! Vous pouvez également copier-coller un lien Deezer',
+		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ! Vous pouvez également copier-coller un lien Deezer',
 		fans: '{0} fans',
 		noResults: 'Aucun résultat',
 		noResultsTrack: "Aucune piste n'a été trouvée",
@@ -146,7 +148,10 @@ const fr = {
 	searchbar: 'Recherchez tout ce que vous voulez (ou copiez-collez simplement un lien)',
 	downloads: 'téléchargements',
 	toasts: {
+		restoringQueue: "Restauration de la file d'attente de téléchargement...",
+		queueRestored: "La file d'attente de téléchargement a été restaurée !",
 		addedToQueue: "{0} ajouté à la file d'attente",
+		addedMoreToQueue: "{0} éléments ajoutés à la file d'attente",
 		alreadyInQueue: "{0} est déjà en file d'attente !",
 		finishDownload: '{0} a été téléchargé.',
 		allDownloaded: 'Tous les téléchargements sont terminés !',
@@ -245,7 +250,8 @@ const fr = {
 				png: 'Une image png',
 				both: 'À la fois jpeg et png'
 			},
-			jpegImageQuality: "Qualité d'image JPEG"
+			jpegImageQuality: "Qualité de l'image JPEG",
+			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement utilisée par Deezer, vous pourriez donc rencontrer des problèmes"
 		},
 		tags: {
 			head: 'Métadonnées à sauvegarder',

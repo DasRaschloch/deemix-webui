@@ -15,7 +15,7 @@
 <script>
 import Downloads from '@/utils/downloads'
 import downloadQualities from '@js/qualities'
-import { generatePath } from '@/utils/utils'
+import { generatePath, copyToClipboard } from '@/utils/utils'
 
 export default {
 	data() {
@@ -36,7 +36,7 @@ export default {
 			const options = {
 				cut: {
 					label: this.$t('globals.cut'),
-					show: true,
+					show: false,
 					position: 1,
 					action: () => {
 						document.execCommand('Cut')
@@ -44,7 +44,7 @@ export default {
 				},
 				copy: {
 					label: this.$t('globals.copy'),
-					show: true,
+					show: false,
 					position: 2,
 					action: () => {
 						document.execCommand('Copy')
@@ -55,9 +55,7 @@ export default {
 					show: false,
 					position: 3,
 					action: () => {
-						navigator.clipboard.writeText(this.generalHref).catch(err => {
-							console.error('Link copying failed', err)
-						})
+						copyToClipboard(this.generalHref)
 					}
 				},
 				copyImageLink: {
@@ -65,9 +63,7 @@ export default {
 					show: false,
 					position: 4,
 					action: () => {
-						navigator.clipboard.writeText(this.imgSrc).catch(err => {
-							console.error('Image copying failed', err)
-						})
+						copyToClipboard(this.imgSrc)
 					}
 				},
 				copyDeezerLink: {
@@ -75,19 +71,22 @@ export default {
 					show: false,
 					position: 5,
 					action: () => {
-						navigator.clipboard.writeText(this.generalHref).catch(err => {
-							console.error('Deezer link copying failed', err)
-						})
+						copyToClipboard(this.deezerHref)
 					}
 				},
 				paste: {
 					label: this.$t('globals.paste'),
-					show: true,
+					show: false,
 					position: 6,
 					action: () => {
-						navigator.clipboard.readText().then(text => {
-							document.execCommand('insertText', undefined, text)
-						})
+						// Paste does not always work
+						if (clipboard in navigator) {
+							navigator.clipboard.readText().then(text => {
+								document.execCommand('insertText', undefined, text)
+							})
+						} else {
+							document.execCommand('paste')
+						}
 					}
 				}
 			}
@@ -105,9 +104,13 @@ export default {
 
 			return options
 		},
-		// This computed property is used for rendering the options in the wanted order
-		// while keeping the options computed property an Object to make the properties
-		// accessible via property name (es this.options.copyLink)
+		/**
+		 * This computed property is used for rendering the options in the wanted order
+		 * while keeping the options computed property an Object to make the properties
+		 * accessible via property name (es this.options.copyLink)
+		 *
+		 * @return	{object[]}	Options in order according to position property
+		 */
 		sortedOptions() {
 			return Object.values(this.options).sort((first, second) => {
 				return first.position < second.position ? -1 : 1
@@ -120,28 +123,13 @@ export default {
 	},
 	methods: {
 		showMenu(contextMenuEvent) {
-			contextMenuEvent.preventDefault()
-
+			// contextMenuEvent.preventDefault()
 			const { pageX, pageY, target: elementClicked } = contextMenuEvent
-
 			const path = generatePath(elementClicked)
-
-			this.positionMenu(pageX, pageY)
-
-			// Show 'Copy Link' option
-			if (elementClicked.matches('a')) {
-				this.generalHref = elementClicked.href
-				this.options.copyLink.show = true
-			}
-
-			// Show 'Copy Image Link' option
-			if (elementClicked.matches('img')) {
-				this.imgSrc = elementClicked.src
-				this.options.copyImageLink.show = true
-			}
-
 			let deezerLink = null
 
+			// Searching for the first element with a data-link attribute
+			// let deezerLink = this.searchForDataLink(...)
 			for (let i = 0; i < path.length; i++) {
 				if (path[i] == document) break
 
@@ -151,13 +139,33 @@ export default {
 				}
 			}
 
-			// Show 'Copy Deezer Link' option
+			const isLink = elementClicked.matches('a')
+			const isImage = elementClicked.matches('img')
+			const hasDeezerLink = !!deezerLink
+
+			if (!isLink && !isImage && !hasDeezerLink) return
+
+			contextMenuEvent.preventDefault()
+			this.menuOpen = true
+			this.positionMenu(pageX, pageY)
+
+			if (isLink) {
+				// Show 'Copy Link' option
+				this.generalHref = elementClicked.href
+				this.options.copyLink.show = true
+			}
+
+			if (isImage) {
+				// Show 'Copy Image Link' option
+				this.imgSrc = elementClicked.src
+				this.options.copyImageLink.show = true
+			}
+
 			if (deezerLink) {
+				// Show 'Copy Deezer Link' option
 				this.deezerHref = deezerLink
 				this.showDeezerOptions()
 			}
-
-			this.menuOpen = true
 		},
 		hideMenu() {
 			if (!this.menuOpen) return
@@ -182,6 +190,22 @@ export default {
 		positionMenu(newX, newY) {
 			this.xPos = `${newX}px`
 			this.yPos = `${newY}px`
+
+			this.$nextTick().then(() => {
+				const { innerHeight, innerWidth } = window
+				const menuXOffest = newX + this.$refs.contextMenu.getBoundingClientRect().width
+				const menuYOffest = newY + this.$refs.contextMenu.getBoundingClientRect().height
+
+				if (menuXOffest > innerWidth) {
+					const difference = menuXOffest - innerWidth + 15
+					this.xPos = `${newX - difference}px`
+				}
+
+				if (menuYOffest > innerHeight) {
+					const difference = menuYOffest - innerHeight + 15
+					this.yPos = `${newY - difference}px`
+				}
+			})
 		},
 		showDeezerOptions() {
 			this.options.copyDeezerLink.show = true
@@ -203,9 +227,10 @@ export default {
 	top: 0;
 	left: 0;
 	min-width: 100px;
-	background: var(--foreground-inverted);
 	border-radius: 7px;
+	background: var(--foreground-inverted);
 	box-shadow: 4px 10px 18px 0px hsla(0, 0%, 0%, 0.15);
+	overflow: hidden;
 	z-index: 10000;
 }
 
@@ -218,14 +243,6 @@ export default {
 	padding-right: 10px;
 	color: var(--foreground);
 	cursor: pointer;
-
-	&:first-child {
-		border-radius: 7px 7px 0 0;
-	}
-
-	&:last-child {
-		border-radius: 0 0 7px 7px;
-	}
 
 	&:hover {
 		background: var(--table-highlight);

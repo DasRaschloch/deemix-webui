@@ -15,9 +15,7 @@
 			:title="$t('globals.toggle_download_tab_hint')"
 		></i>
 		<div id="queue_buttons">
-			<i id="open_downloads_folder" class="material-icons download_bar_icon hide" @click="openDownloadsFolder">
-				folder_open
-			</i>
+			<i id="open_downloads_folder" class="material-icons download_bar_icon hide" :title="$t('globals.open_downloads_folder')" @click="openDownloadsFolder">folder_open</i>
 			<i id="clean_queue" class="material-icons download_bar_icon" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">clear_all</i>
 			<i id="cancel_queue" class="material-icons download_bar_icon" @click="cancelQueue" :title="$t('globals.cancel_queue_hint')">delete_sweep</i>
 		</div>
@@ -42,6 +40,7 @@ export default {
 	}),
 	mounted() {
 		socket.on('startDownload', this.startDownload)
+		socket.on('startConversion', this.startConversion)
 		socket.on('init_downloadQueue', this.initQueue)
 		socket.on('addedToQueue', this.addToQueue)
 		socket.on('updateQueue', this.updateQueue)
@@ -97,26 +96,43 @@ export default {
 			}
 		},
 		initQueue(data) {
-			const { queue: initQueue, queueComplete: initQueueComplete, currentItem, queueList: initQueueList } = data
+			const { queue: initQueue, queueComplete: initQueueComplete, currentItem, queueList: initQueueList, restored } = data
 
 			if (initQueueComplete.length) {
 				initQueueComplete.forEach(item => {
-					initQueueList[item].init = true
+					initQueueList[item].silent = true
 					this.addToQueue(initQueueList[item])
 				})
 			}
 
 			if (currentItem) {
-				initQueueList[currentItem].init = true
+				initQueueList[currentItem].silent = true
 				this.addToQueue(initQueueList[currentItem], true)
 			}
 
 			initQueue.forEach(item => {
-				initQueueList[item].init = true
+				initQueueList[item].silent = true
 				this.addToQueue(initQueueList[item])
 			})
+
+			if (restored){
+				toast(this.$t('toasts.queueRestored'), 'done', true, 'restoring_queue')
+				socket.emit('queueRestored')
+			}
 		},
 		addToQueue(queueItem, current = false) {
+			if (Array.isArray(queueItem)){
+				if (queueItem.length > 1){
+					queueItem.forEach((item, i) => {
+						item.silent = true
+						this.addToQueue(item)
+					});
+					toast(this.$t('toasts.addedMoreToQueue', [queueItem.length]), 'playlist_add_check')
+					return
+				}else{
+					queueItem = queueItem[0]
+				}
+			}
 			this.queueList[queueItem.uuid] = queueItem
 
 			if (queueItem.downloaded + queueItem.failed == queueItem.size) {
@@ -188,13 +204,13 @@ export default {
 				}
 			}
 
-			if (!queueItem.init) {
+			if (!queueItem.silent) {
 				toast(this.$t('toasts.addedToQueue', [queueItem.title]), 'playlist_add_check')
 			}
 		},
 		updateQueue(update) {
 			// downloaded and failed default to false?
-			const { uuid, downloaded, failed, progress, error, data, errid } = update
+			const { uuid, downloaded, failed, progress, conversion, error, data, errid } = update
 
 			if (uuid && this.queue.indexOf(uuid) > -1) {
 				if (downloaded) {
@@ -223,6 +239,10 @@ export default {
 				if (progress) {
 					this.queueList[uuid].progress = progress
 					$('#bar_' + uuid).css('width', progress + '%')
+				}
+
+				if (conversion) {
+					$('#bar_' + uuid).css('width', (100-conversion) + '%')
 				}
 			}
 		},
@@ -339,8 +359,16 @@ export default {
 		},
 		startDownload(uuid) {
 			$('#bar_' + uuid)
+				.removeClass('converting')
 				.removeClass('indeterminate')
 				.addClass('determinate')
+		},
+		startConversion(uuid) {
+			$('#bar_' + uuid)
+				.addClass('converting')
+				.removeClass('indeterminate')
+				.addClass('determinate')
+				.css('width', '100%')
 		},
 		showErrorsTab(clickEvent) {
 			this.$root.$emit('showTabErrors', clickEvent.data.item, clickEvent.target)

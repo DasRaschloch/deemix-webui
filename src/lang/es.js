@@ -11,6 +11,13 @@ const es = {
 		toggle_download_tab_hint: 'Expandir/Colapsar',
 		clean_queue_hint: 'Limpiar terminados',
 		cancel_queue_hint: 'Cancelar todos',
+		open_downloads_folder: 'Abrir carpeta de descargas',
+		cut: 'cortar',
+		copy: 'copiar',
+		copyLink: 'copiar link',
+		copyImageLink: 'copiar link de la imagen',
+		copyDeezerLink: 'copiar link de Deezer',
+		paste: 'pegar',
 		listTabs: {
 			empty: '',
 			all: 'todos',
@@ -25,6 +32,8 @@ const es = {
 			playlist: 'lista de reproducción | listas de reproducción',
 			compile: 'compilación | compilaciones',
 			ep: 'ep | eps',
+			more: 'Más álbumes',
+			featured: 'Apareció en',
 			spotifyPlaylist: 'lista de reproducción spotify | listas de reproducción spotify',
 			releaseDate: 'fecha de publicación',
 			error: 'error'
@@ -65,8 +74,7 @@ const es = {
 		itsFree: `Debes recordar que <strong>este es un proyecto libre</fuerte> y <strong>debes apoyar a los artistas que amas</fuerte> antes de apoyar a los desarrolladores.`,
 		notObligated: `No te sientas obligado a donar, ¡te aprecio de todas formas!`,
 		lincensedUnder: `Esta obra está autorizada bajo una
-			<a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU Licencia Pública General 3.0</a>.`
+			<a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU Licencia Pública General 3.0</a>.`
 	},
 	charts: {
 		title: 'Tablas',
@@ -87,12 +95,10 @@ const es = {
 			notEncoded: '¡Pista aún no codificada!',
 			notEncodedNoAlternative: '¡Pista aún no codificada y no se ha encontrado ninguna alternativa!',
 			wrongBitrate: 'La pista no se encuentra a la velocidad de bitrate deseada.',
-			wrongBitrateNoAlternative:
-				'¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
+			wrongBitrateNoAlternative: '¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
 			no360RA: 'La pista no está disponible en Reality Audio 360.',
 			notAvailable: '¡La pista no está disponible en los servidores de Deezer!',
-			notAvailableNoAlternative:
-				'¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!'
+			notAvailableNoAlternative: '¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!'
 		}
 	},
 	favorites: {
@@ -112,8 +118,7 @@ const es = {
 	},
 	linkAnalyzer: {
 		info: 'Puedes usar esta sección para encontrar más información sobre el enlace que estás tratando de descargar.',
-		useful:
-			'Esto es útil si está tratando de descargar algunas pistas que no están disponibles en su país y quiere saber dónde están disponibles, por ejemplo.',
+		useful: 'Esto es útil si está tratando de descargar algunas pistas que no están disponibles en su país y quiere saber dónde están disponibles, por ejemplo.',
 		linkNotSupported: 'Este enlace aún no está soportado',
 		linkNotSupportedYet: 'Parece que este enlace aún no está soportado, intenta analizar otro.',
 		table: {
@@ -133,8 +138,7 @@ const es = {
 	},
 	search: {
 		startSearching: '¡Comienza a buscar!',
-		description:
-			'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
+		description: 'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
 		fans: '{0} fanáticos',
 		noResults: 'No hay resultados',
 		noResultsTrack: 'No se encontraron pistas',
@@ -145,7 +149,10 @@ const es = {
 	searchbar: 'Busca lo que quieras (o simplemente pega un enlace)',
 	downloads: 'descargas',
 	toasts: {
+		restoringQueue: 'Restaurando cola de descarga...',
+		queueRestored: '¡Cola de descarga restaurada!',
 		addedToQueue: '{0} añadidos a la cola',
+		addedMoreToQueue: '{0} elementos añadidos a la cola',
 		alreadyInQueue: '¡{0} ya está en la cola!',
 		finishDownload: '{0} terminado de descargar.',
 		allDownloaded: '¡Todas las descargas se han completado!',
@@ -160,7 +167,8 @@ const es = {
 		startAddingArtist: 'Añadiendo {0} álbumes a la cola',
 		finishAddingArtist: 'Añadido {0} álbumes a la cola',
 		startConvertingSpotifyPlaylist: 'Convertir las pistas de Spotify en pistas de Deezer',
-		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida'
+		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida',
+		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!'
 	},
 	settings: {
 		title: 'Configuración',
@@ -170,7 +178,7 @@ const es = {
 			loggedIn: 'Usted está conectado como {nombre de usuario}',
 			arl: {
 				question: '¿Cómo consigo mi propio ARL?',
-				update: 'Actualizar la ARL'
+				update: 'Actualiza la ARL'
 			},
 			logout: 'Cerrar sesión'
 		},
@@ -218,7 +226,8 @@ const es = {
 				title: '¿Desea que sobreescriba los archivos?',
 				y: 'Sí, sobrescribir el archivo',
 				n: 'No, no sobrescribir el archivo',
-				t: 'Sobrescribir sólo las etiquetas'
+				t: 'Sobrescribir sólo las etiquetas',
+				b: 'No, mantener los dos archivos y agrega un número al archivo duplicado'
 			},
 			fallbackBitrate: 'La solución alternativa de bitrate',
 			fallbackSearch: 'Búsqueda de la segunda opción',
@@ -243,7 +252,8 @@ const es = {
 				png: 'Una imagen png',
 				both: 'Ambos, jpeg y png'
 			},
-			jpegImageQuality: 'Calidad de la imagen JPEG'
+			jpegImageQuality: 'Calidad de la imagen JPEG',
+			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes'
 		},
 		tags: {
 			head: '¿Qué etiquetas guardar?',

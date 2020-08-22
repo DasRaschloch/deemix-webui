@@ -194,6 +194,7 @@
 				<select v-model="settings.overwriteFile">
 					<option value="y">{{ $t('settings.downloads.overwriteFile.y') }}</option>
 					<option value="n">{{ $t('settings.downloads.overwriteFile.n') }}</option>
+					<option value="e">{{ $t('settings.downloads.overwriteFile.e') }}</option>
 					<option value="b">{{ $t('settings.downloads.overwriteFile.b') }}</option>
 					<option value="t">{{ $t('settings.downloads.overwriteFile.t') }}</option>
 				</select>
@@ -273,12 +274,14 @@
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.localArtworkSize') }}</p>
-				<input type="number" min="100" max="1800" step="100" v-model.number="settings.localArtworkSize" />
+				<input type="number" min="100" max="10000" step="100" v-model.number="settings.localArtworkSize" />
+				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
 			</div>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.embeddedArtworkSize') }}</p>
-				<input type="number" min="100" max="1800" step="100" v-model.number="settings.embeddedArtworkSize" />
+				<input type="number" min="100" max="10000" step="100" v-model.number="settings.embeddedArtworkSize" />
+				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
 			</div>
 
 			<div class="input_group">
@@ -289,6 +292,12 @@
 					<option value="jpg,png">{{ $t('settings.covers.localArtworkFormat.both') }}</option>
 				</select>
 			</div>
+
+			<label class="with_checkbox">
+				<input type="checkbox" v-model="settings.embeddedArtworkPNG" />
+				<span class="checkbox_text">{{ $t('settings.covers.embeddedArtworkPNG') }}</span>
+			</label>
+			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}</p>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.jpegImageQuality') }}</p>

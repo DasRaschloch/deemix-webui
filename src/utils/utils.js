@@ -1,3 +1,22 @@
+/**
+ * Climbs the DOM until the root is reached, storing every node passed.
+ * @param 	{HTMLElement} el
+ * @return	{Array}				Contains all the nodes between el and the root
+ */
+export function generatePath(el) {
+	if (!el) {
+		throw new Error('No element passed to the generatePath function!')
+	}
+
+	let path = [el]
+
+	while ((el = el.parentNode) && el !== document) {
+		path.push(el)
+	}
+
+	return path
+}
+
 export function isValidURL(text) {
 	let lowerCaseText = text.toLowerCase()
 
@@ -52,6 +71,24 @@ export function debounce(func, wait, immediate) {
 		timeout = setTimeout(later, wait)
 		if (callNow) func.apply(context, args)
 	}
+}
+
+/**
+ * Workaround to copy to the clipboard cross-OS by generating a
+ * ghost input and copying the passed String
+ *
+ * @param {string}	text Text to copy
+ */
+export function copyToClipboard(text) {
+	const ghostInput = document.createElement('input')
+
+	document.body.appendChild(ghostInput)
+	ghostInput.setAttribute('type', 'text')
+	ghostInput.setAttribute('value', text)
+	ghostInput.select()
+	ghostInput.setSelectionRange(0, 99999)
+	document.execCommand('copy')
+	ghostInput.remove()
 }
 
 export const COUNTRIES = {

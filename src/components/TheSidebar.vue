@@ -9,11 +9,11 @@
 			<span class="main_tablinks_text">{{ $t('sidebar.search') }}</span>
 		</span>
 		<span id="main_charts_tablink" class="main_tablinks" role="link" aria-label="charts">
-			<i class="material-icons side_icon">bubble_chart</i>
+			<i class="material-icons side_icon">show_chart</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.charts') }}</span>
 		</span>
 		<span id="main_favorites_tablink" class="main_tablinks" role="link" aria-label="favorites">
-			<i class="material-icons side_icon">album</i>
+			<i class="material-icons side_icon">star</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.favorites') }}</span>
 		</span>
 		<span id="main_analyzer_tablink" class="main_tablinks" role="link" aria-label="link analyzer">
@@ -194,4 +194,3 @@ export default {
 	}
 }
 </script>
-

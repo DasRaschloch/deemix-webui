@@ -7,6 +7,8 @@
 
 		<TheTrackPreview />
 		<TheQualityModal />
+
+		<TheContextMenu />
 	</div>
 </template>
 
@@ -16,6 +18,7 @@ import TheMainContent from '@components/TheMainContent.vue'
 import TheTrackPreview from '@components/TheTrackPreview.vue'
 import TheQualityModal from '@components/TheQualityModal.vue'
 import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import TheContextMenu from '@components/TheContextMenu.vue'
 
 export default {
 	components: {
@@ -23,10 +26,8 @@ export default {
 		TheMainContent,
 		TheTrackPreview,
 		TheQualityModal,
-		BaseLoadingPlaceholder
+		BaseLoadingPlaceholder,
+		TheContextMenu
 	}
 }
 </script>
-
-<style>
-</style>

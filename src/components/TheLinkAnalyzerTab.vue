@@ -118,6 +118,7 @@ import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
+import Downloads from '@/utils/downloads'
 
 export default {
 	name: 'the-link-analyzer-tab',
@@ -184,6 +185,9 @@ export default {
 		},
 		notSupported() {
 			this.link = 'error'
+		},
+		addToQueue(e) {
+			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		}
 	},
 	mounted() {

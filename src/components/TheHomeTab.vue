@@ -20,7 +20,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -50,7 +49,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -88,9 +86,6 @@ export default {
 		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		initHome(data) {
 			const {

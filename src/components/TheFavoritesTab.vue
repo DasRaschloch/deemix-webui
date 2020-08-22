@@ -38,7 +38,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -62,7 +61,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -88,7 +86,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -112,7 +109,6 @@
 						<div
 							role="button"
 							aria-label="download"
-							@contextmenu.prevent="openQualityModal"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
@@ -178,7 +174,6 @@
 					</td>
 					<td
 						class="table__cell--download clickable"
-						@contextmenu.prevent="openQualityModal"
 						@click.stop="addToQueue"
 						:data-link="track.link"
 						role="button"
@@ -259,9 +254,6 @@ export default {
 		addToQueue(e) {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		updated_userSpotifyPlaylists(data) {
 			this.spotifyPlaylists = data

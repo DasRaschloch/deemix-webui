@@ -9,9 +9,12 @@ import de from '@/lang/de'
 import fr from '@/lang/fr'
 import id from '@/lang/id'
 import pt from '@/lang/pt-pt'
-import ptBr from '@/lang/pt-br'
+import pt_br from '@/lang/pt-br'
 import ru from '@/lang/ru'
 import tr from '@/lang/tr'
+import vn from '@/lang/vn'
+import hr from '@/lang/hr'
+import ar from '@/lang/ar'
 
 Vue.use(VueI18n)
 
@@ -27,9 +30,12 @@ const locales = {
 	fr,
 	id,
 	pt,
-	ptBr,
+	pt_br,
 	ru,
-	tr
+	tr,
+	vn,
+	hr,
+	ar
 }
 
 const i18n = new VueI18n({
@@ -43,25 +49,22 @@ const i18n = new VueI18n({
 		 * @returns a final choice index to select plural word by
 		 */
 		ru: function(choice, choicesLength) {
-			if (choice === 0) {
-				return 0
-			}
 			var n = Math.abs(choice) % 100
 			var n1 = n % 10
 
 			if (n > 10 && n < 20) {
-				return 3
-			}
-
-			if (n1 > 1 && n1 < 5) {
 				return 2
 			}
 
-			if (n1 == 1) {
+			if (n1 > 1 && n1 < 5) {
 				return 1
 			}
 
-			return 3
+			if (n1 == 1) {
+				return 0
+			}
+
+			return 2
 		}
 	}
 })

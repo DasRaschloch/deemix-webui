@@ -8,14 +8,7 @@
 			}"
 		>
 			<h1>{{ title }}</h1>
-			<div
-				role="button"
-				aria-label="download"
-				@contextmenu.prevent="openQualityModal"
-				@click.stop="addToQueue"
-				:data-link="link"
-				class="fab right"
-			>
+			<div role="button" aria-label="download" @click.stop="addToQueue" :data-link="link" class="fab right">
 				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 			</div>
 		</header>
@@ -69,12 +62,8 @@
 						</i>
 					</td>
 					<td>{{ release.release_date }}</td>
-					<td
-						@click.stop="addToQueue"
-						@contextmenu.prevent="openQualityModal"
-						:data-link="release.link"
-						class="clickable"
-					>
+					<td>{{ release.nb_song }}</td>
+					<td @click.stop="addToQueue" :data-link="release.link" class="clickable">
 						<i class="material-icons" :title="$t('globals.download_hint')">
 							file_download
 						</i>
@@ -129,9 +118,6 @@ export default {
 			e.stopPropagation()
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
-		},
 		sortBy(key) {
 			if (key == this.sortKey) {
 				this.sortOrder = this.sortOrder == 'asc' ? 'desc' : 'asc'
@@ -172,6 +158,7 @@ export default {
 			this.head = [
 				{ title: this.$tc('globals.listTabs.title', 1), sortKey: 'title' },
 				{ title: this.$t('globals.listTabs.releaseDate'), sortKey: 'release_date' },
+				{ title: this.$tc('globals.listTabs.track', 2), sortKey: 'nb_song' },
 				{ title: '', width: '32px' }
 			]
 			if (isEmpty(releases)) {
@@ -183,8 +170,17 @@ export default {
 	},
 	computed: {
 		showTable() {
-			if (this.body) return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
-			else return []
+			if (this.body) {
+				if (this.sortKey == 'nb_song')
+					return orderBy(
+						this.body[this.currentTab],
+						function (o) {
+							return new Number(o.nb_song)
+						},
+						this.sortOrder
+					)
+				else return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
+			} else return []
 		}
 	},
 	mounted() {

@@ -50,7 +50,6 @@
 									<div
 										role="button"
 										aria-label="download"
-										@contextmenu.prevent="openQualityModal"
 										@click.stop="addToQueue"
 										:data-link="results.allTab.TOP_RESULT[0].link"
 										class="download_overlay"
@@ -115,7 +114,6 @@
 											</td>
 											<td
 												class="table__cell--download table__cell--center clickable"
-												@contextmenu.prevent="openQualityModal"
 												@click.stop="addToQueue"
 												:data-link="'https://www.deezer.com/track/' + track.SNG_ID"
 												role="button"
@@ -149,7 +147,6 @@
 										<div
 											role="button"
 											aria-label="download"
-											@contextmenu.prevent="openQualityModal"
 											@click.stop="addToQueue"
 											:data-link="'https://deezer.com/artist/' + release.ART_ID"
 											class="download_overlay"
@@ -181,7 +178,6 @@
 										<div
 											role="button"
 											aria-label="download"
-											@contextmenu.prevent="openQualityModal"
 											@click.stop="addToQueue"
 											:data-link="'https://deezer.com/album/' + release.ALB_ID"
 											class="download_overlay"
@@ -224,7 +220,6 @@
 										<div
 											role="button"
 											aria-label="download"
-											@contextmenu.prevent="openQualityModal"
 											@click.stop="addToQueue"
 											:data-link="'https://deezer.com/playlist/' + release.PLAYLIST_ID"
 											class="download_overlay"
@@ -321,7 +316,6 @@
 								</td>
 								<td
 									class="table__cell--download table__cell--center clickable"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="track.link"
 									role="button"
@@ -353,7 +347,6 @@
 								<div
 									role="button"
 									aria-label="download"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="release.link"
 									class="download_overlay"
@@ -391,7 +384,6 @@
 								<div
 									role="button"
 									aria-label="download"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="release.link"
 									class="download_overlay"
@@ -422,7 +414,6 @@
 								<div
 									role="button"
 									aria-label="download"
-									@contextmenu.prevent="openQualityModal"
 									@click.stop="addToQueue"
 									:data-link="release.link"
 									class="download_overlay"
@@ -624,9 +615,6 @@ export default {
 		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		openQualityModal(e) {
-			this.$root.$emit('QualityModal:open', e.currentTarget.dataset.link)
 		},
 		numberWithDots: Utils.numberWithDots,
 		convertDuration: Utils.convertDuration,

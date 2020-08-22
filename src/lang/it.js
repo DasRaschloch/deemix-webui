@@ -11,6 +11,13 @@ const it = {
 		toggle_download_tab_hint: 'Espandi/Riduci',
 		clean_queue_hint: 'Pulisci Lista',
 		cancel_queue_hint: 'Cancella tutti i download',
+		open_downloads_folder: 'Apri la cartella di download',
+		cut: 'taglia',
+		copy: 'copia',
+		copyLink: 'copia link',
+		copyImageLink: 'copia link immagine',
+		copyDeezerLink: 'copia link deezer',
+		paste: 'incolla',
 		listTabs: {
 			all: 'tutto',
 			top_result: 'miglior risultato',
@@ -24,6 +31,8 @@ const it = {
 			playlist: 'playlist',
 			compile: 'compilation',
 			ep: 'ep',
+			more: 'Altri album',
+			featured: 'Compare in',
 			spotifyPlaylist: 'playlist spotify',
 			releaseDate: 'data di uscita',
 			error: 'errore',
@@ -145,12 +154,15 @@ const it = {
 	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',
 	downloads: 'download',
 	toasts: {
+		restoringQueue: 'Ripristinando la coda di download...',
+		queueRestored: 'Coda di download ripristinata!',
 		addedToQueue: '{0} aggiunto alla coda',
+		addedMoreToQueue: '{0} oggetti aggiunti alla coda',
 		alreadyInQueue: '{0} è già nella coda!',
 		finishDownload: '{0} ha finito di scaricarsi.',
 		allDownloaded: 'Tutti i download completati!',
 		refreshFavs: 'Preferiti ricaricati!',
-		loggingIn: 'Effettuando il login',
+		loggingIn: 'Effettuando il login...',
 		loggedIn: 'Login effettuato',
 		alreadyLogged: 'Sei già loggato',
 		loginFailed: 'Impossibile loggarsi',
@@ -160,7 +172,8 @@ const it = {
 		startAddingArtist: 'Aggiungendo gli album di {0} alla coda',
 		finishAddingArtist: 'Aggiunto gli album di {0} alla coda',
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
-		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita'
+		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
+		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!'
 	},
 	settings: {
 		title: 'Impostazioni',
@@ -218,7 +231,9 @@ const it = {
 				title: 'Dovrei sovrascrivere i file già scaricati?',
 				y: 'Si, sovrascrivi i file',
 				n: 'No, non sovrascrivere i file',
-				t: 'Sovrascrivi solo i tag'
+				t: 'Sovrascrivi solo i tag',
+				b: 'No, mantieni entrambi i file e aggiungi un numero al duplicato',
+				e: "No, e non tener conto della estensione del file"
 			},
 			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
 			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',
@@ -243,7 +258,10 @@ const it = {
 				png: 'In png',
 				both: 'Sia in jpeg che in png'
 			},
-			jpegImageQuality: 'Qualità immagine JPEG'
+			jpegImageQuality: 'Qualità immagine JPEG',
+			embeddedArtworkPNG: 'Salva copertina incorporata come PNG',
+			embeddedPNGWarning: 'Le immagini PNG non sono usate ufficialmente da Deezer e potrebbero dare problemi',
+			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi'
 		},
 		tags: {
 			head: 'Quali tag salvare',

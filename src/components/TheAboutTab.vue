@@ -83,10 +83,6 @@
 				<a href="https://paypal.me/RemixDev" target="_blank">PayPal.me/RemixDev</a>
 			</li>
 			<li>
-				<i class="bitcoin" v-html="bitcoin" />
-				<strong>Bitcoin:</strong> 1sdNymSJrMBWyHM4u2m9uco5nv6uV4Qs1
-			</li>
-			<li>
 				<i class="ethereum" v-html="ethereum" />
 				<strong>Ethereum:</strong> 0x1d2aa67e671485CD4062289772B662e0A6Ff976c
 			</li>
@@ -121,10 +117,6 @@ i {
 i /deep/ svg {
 	fill: white;
 	width: 20px;
-}
-
-.bitcoin /deep/ svg {
-	fill: #ff9900;
 }
 
 .ethereum /deep/ svg {
@@ -200,14 +192,12 @@ ul {
 </style>
 <script>
 import paypal from '@/assets/paypal.svg'
-import bitcoin from '@/assets/bitcoin.svg'
 import ethereum from '@/assets/ethereum.svg'
 
 export default {
 	data: () => ({
 		paypal,
-		ethereum,
-		bitcoin
+		ethereum
 	}),
 	mounted() {
 		console.log('about mounted')

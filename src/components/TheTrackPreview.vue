@@ -30,7 +30,10 @@ export default {
 		onTimeUpdate() {
 			// Prevents first time entering in this function
 			if (isNaN(this.$refs.preview.duration)) return
-			if (this.$refs.preview.currentTime <= this.$refs.preview.duration - 1) return
+			let duration = this.$refs.preview.duration
+			if (!isFinite(duration)) duration = 30
+			if (duration - this.$refs.preview.currentTime >= 1) return
+			if (this.previewStopped) return
 
 			$(this.$refs.preview).animate({ volume: 0 }, 800)
 

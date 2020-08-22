@@ -18,6 +18,12 @@
 		transition: width 0.3s linear;
 	}
 
+	.converting {
+		background-color: var(--secondary-color);
+		-webkit-transition: none !important;
+		transition: none !important;
+	}
+
 	.indeterminate {
 		background-color: var(--accent-color);
 

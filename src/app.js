@@ -32,6 +32,8 @@ function mountApp() {
 function initClient() {
 	window.clientMode = true
 	document.querySelector(`#open_downloads_folder`).classList.remove('hide')
+	document.querySelector(`#select_downloads_folder`).classList.remove('hide')
+	document.querySelector(`#settings_btn_applogin`).classList.remove('hide')
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
@@ -120,6 +122,10 @@ socket.on('logged_out', function() {
 	document.getElementById('home_not_logged_in').classList.remove('hide')
 })
 
+socket.on('restoringQueue', function() {
+	toast(i18n.t('toasts.restoringQueue'), 'loading', false, 'restoring_queue')
+})
+
 socket.on('cancellingCurrentItem', function(uuid) {
 	toast(i18n.t('toasts.cancellingCurrentItem'), 'loading', false, 'cancelling_' + uuid)
 })
@@ -155,4 +161,8 @@ socket.on('queueError', function(queueItem) {
 
 socket.on('alreadyInQueue', function(data) {
 	toast(i18n.t('toasts.alreadyInQueue', [data.title]), 'playlist_add_check')
+})
+
+socket.on('loginNeededToDownload', function(data) {
+	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
 })

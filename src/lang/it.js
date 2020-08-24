@@ -322,8 +322,8 @@ const it = {
 			artistCasing: 'Formato testo degli artisti',
 			casing: {
 				nothing: 'Non cambiare',
-				lower: 'TUTTO MAIUSCOLO',
-				upper: 'tutto minuscolo',
+				upper: 'TUTTO MAIUSCOLO',
+				lower: 'tutto minuscolo',
 				start: 'Prima Lettera Maiuscola',
 				sentence: 'Come una frase'
 			},

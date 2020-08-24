@@ -1,25 +1,25 @@
+import Vue from 'vue'
+
 const state = {
-	homeData: {
-		albums: {
-			data: [],
-			total: 0
-		},
-		artists: {
-			data: [],
-			total: 0
-		},
-		playlists: {
-			data: [],
-			total: 0
-		},
-		podcasts: {
-			data: [],
-			total: 0
-		},
-		tracks: {
-			data: [],
-			total: 0
-		}
+	albums: {
+		data: [],
+		total: 0
+	},
+	artists: {
+		data: [],
+		total: 0
+	},
+	playlists: {
+		data: [],
+		total: 0
+	},
+	podcasts: {
+		data: [],
+		total: 0
+	},
+	tracks: {
+		data: [],
+		total: 0
 	}
 }
 
@@ -27,50 +27,52 @@ let homeDataCached = false
 
 const actions = {
 	cacheHomeData({ commit }, payload) {
-		if (!homeDataCached) {
-			commit('SET_HOME_ALBUMS', payload.albums)
-			commit('SET_HOME_ARTISTS', payload.artists)
-			commit('SET_HOME_PLAYLISTS', payload.playlists)
-			commit('SET_HOME_PODCASTS', payload.podcasts)
-			commit('SET_HOME_TRACKS', payload.tracks)
+		if (homeDataCached) return
 
-			homeDataCached = true
-		}
+		commit('SET_HOME_ALBUMS', payload.albums)
+		commit('SET_HOME_ARTISTS', payload.artists)
+		commit('SET_HOME_PLAYLISTS', payload.playlists)
+		commit('SET_HOME_PODCASTS', payload.podcasts)
+		commit('SET_HOME_TRACKS', payload.tracks)
+
+		homeDataCached = true
 	}
 }
 
 const getters = {
-	getHomeData: store => store.homeData,
-	getHomeAlbums: store => store.homeData.albums,
-	getHomeArtists: store => store.homeData.artists,
-	getHomePlaylists: store => store.homeData.playlists,
-	getHomePodcasts: store => store.homeData.podcasts,
-	getHomeTracks: store => store.homeData.tracks
+	getHomeData: state => state,
+	getHomeAlbums: state => state.albums,
+	getHomeArtists: state => state.artists,
+	getHomePlaylists: state => state.playlists,
+	getHomePodcasts: state => state.podcasts,
+	getHomeTracks: state => state.tracks
 }
 
 const mutations = {
-	SET_HOME_DATA: (state, payload) => {
-		state.homeData = payload
-	},
 	SET_HOME_ALBUMS: (state, payload) => {
-		state.homeData.albums.data = payload.data
-		state.homeData.albums.total = payload.total
+		Vue.set(state.albums, 'data', payload.data)
+		// state.albums.data = payload.data
+		state.albums.total = payload.total
 	},
 	SET_HOME_ARTISTS: (state, payload) => {
-		state.homeData.artists.data = payload.data
-		state.homeData.artists.total = payload.total
+		Vue.set(state.artists, 'data', payload.data)
+		// state.artists.data = payload.data
+		state.artists.total = payload.total
 	},
 	SET_HOME_PLAYLISTS: (state, payload) => {
-		state.homeData.playlists.data = payload.data
-		state.homeData.playlists.total = payload.total
+		Vue.set(state.playlists, 'data', payload.data)
+		// state.playlists.data = payload.data
+		state.playlists.total = payload.total
 	},
 	SET_HOME_PODCASTS: (state, payload) => {
-		state.homeData.podcasts.data = payload.data
-		state.homeData.podcasts.total = payload.total
+		Vue.set(state.podcasts, 'data', payload.data)
+		// state.podcasts.data = payload.data
+		state.podcasts.total = payload.total
 	},
 	SET_HOME_TRACKS: (state, payload) => {
-		state.homeData.tracks.data = payload.data
-		state.homeData.tracks.total = payload.total
+		Vue.set(state.tracks, 'data', payload.data)
+		// state.tracks.data = payload.data
+		state.tracks.total = payload.total
 	}
 }
 

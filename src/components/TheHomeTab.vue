@@ -104,10 +104,10 @@ export default {
 			this.playlists = playlistData
 			this.albums = albumData
 		},
+		// ! Define this functionality as a Vue Mixin
 		checkIfWaitData(data) {
 			if (this.needToWait) {
 				// This case verifies only at the first load, beacuse the data retrieving is not completed yet
-				// ! Define this functionality as a Vue Mixin
 				let unsub = this.$store.subscribeAction({
 					after: (action, state) => {
 						if (action.type === 'cacheHomeData') {

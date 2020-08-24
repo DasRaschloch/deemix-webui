@@ -10,6 +10,11 @@ socket.on('connect', () => {
 // 	console.log(data)
 // })
 
+socket.on('init_settings', (settings, credentials, defaults) => {
+	console.log(settings, credentials, defaults)
+	store.dispatch('setSettings', settings)
+})
+
 socket.on('init_home', data => {
 	store.dispatch('cacheHomeData', data)
 })

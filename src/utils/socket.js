@@ -11,8 +11,10 @@ socket.on('connect', () => {
 // })
 
 socket.on('init_settings', (settings, credentials, defaults) => {
-	console.log(settings, credentials, defaults)
+	console.log(credentials)
 	store.dispatch('setSettings', settings)
+	store.dispatch('setDefaultSettings', defaults)
+	store.dispatch('setCredentials', credentials)
 })
 
 socket.on('init_home', data => {

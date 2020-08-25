@@ -26,7 +26,7 @@
 			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
-			<a id="settings_btn_applogin" class="hide" href="#" @click="applogin">
+			<a id="settings_btn_applogin" class="hide" href="#" @click.prevent="applogin">
 				Automated login
 			</a>
 			<button id="settings_btn_updateArl" @click="login" style="width: 100%;">
@@ -612,6 +612,8 @@
 </style>
 
 <script>
+import Vue from 'vue'
+import { mapGetters } from 'vuex'
 import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
@@ -629,7 +631,7 @@ export default {
 		lastSettings: {},
 		spotifyFeatures: {},
 		lastCredentials: {},
-		defaultSettings: {},
+		// defaultSettings: {},
 		lastUser: '',
 		spotifyUser: '',
 		slimDownloads: false,
@@ -644,6 +646,7 @@ export default {
 	mounted() {
 		console.log('settings mounted')
 		this.$refs.root.style.display = 'block'
+
 		this.locales = this.$i18n.availableLocales
 
 		EventBus.$on('settingsTab:revertSettings', this.revertSettings)
@@ -688,12 +691,19 @@ export default {
 
 		window.vol.preview_max_volume = volume
 
-		socket.on('init_settings', this.initSettings)
+		// socket.on('init_settings', this.initSettings)
+		this.waitSettings()
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
+		socket.on('downloadFolderSelected', this.downloadFolderSelected)
+		socket.on('applogin_arl', this.setArl)
 	},
 	computed: {
+		...mapGetters(['getSettings', 'getCredentials', 'getDefaultSettings']),
+		needToWait() {
+			return Object.keys(this.getSettings).length === 0
+		},
 		changeSlimDownloads: {
 			get() {
 				return this.slimDownloads
@@ -705,58 +715,22 @@ export default {
 			}
 		}
 	},
-	// mounted() {
-	// 	this.locales = this.$i18n.availableLocales
-
-	// 	EventBus.$on('settingsTab:revertSettings', this.revertSettings)
-	// 	EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
-
-	// 	this.$refs.loggedInInfo.classList.add('hide')
-
-	// 	let storedLocale = localStorage.getItem('locale')
-
-	// 	if (storedLocale) {
-	// 		this.$i18n.locale = storedLocale
-	// 		this.currentLocale = storedLocale
-	// 	}
-
-	// 	let storedArl = localStorage.getItem('arl')
-
-	// 	if (storedArl) {
-	// 		this.$refs.loginInput.value = storedArl.trim()
-	// 	}
-
-	// 	let storedAccountNum = localStorage.getItem('accountNum')
-
-	// 	if (storedAccountNum) {
-	// 		this.accountNum = storedAccountNum
-	// 	}
-
-	// 	let spotifyUser = localStorage.getItem('spotifyUser')
-
-	// 	if (spotifyUser) {
-	// 		this.lastUser = spotifyUser
-	// 		this.spotifyUser = spotifyUser
-	// 		socket.emit('update_userSpotifyPlaylists', spotifyUser)
-	// 	}
-
-	// 	this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
-
-	// 	let volume = parseInt(localStorage.getItem('previewVolume'))
-	// 	if (isNaN(volume)) {
-	// 		volume = 80
-	// 		localStorage.setItem('previewVolume', volume)
-	// 	}
-	// 	window.vol.preview_max_volume = volume
-
-	// 	socket.on('init_settings', this.initSettings)
-	// 	socket.on('updateSettings', this.updateSettings)
-	// 	socket.on('accountChanged', this.accountChanged)
-	// 	socket.on('familyAccounts', this.initAccounts)
-	// 	socket.on('downloadFolderSelected', this.downloadFolderSelected)
-	// 	socket.on('applogin_arl', this.setArl)
-	// },
 	methods: {
+		waitSettings() {
+			if (this.needToWait) {
+				// Checking if the saving of the settings is completed
+				let unsub = this.$store.subscribeAction({
+					after: (action, state) => {
+						if (action.type === 'setSettings') {
+							this.initSettings()
+							unsub()
+						}
+					}
+				})
+			} else {
+				this.initSettings()
+			}
+		},
 		revertSettings() {
 			this.settings = { ...this.lastSettings }
 		},
@@ -801,17 +775,17 @@ export default {
 		},
 		downloadFolderSelected(folder) {
 			console.log(folder)
-			this.settings.downloadLocation = folder
+			this.$set(this.settings, 'downloadLocation', folder)
 		},
-		loadSettings(settings, spotifyCredentials, defaults = null) {
-			if (defaults) {
-				this.defaultSettings = { ...defaults }
-			}
+		// loadDefaultSettings() {
+		// 	this.defaultSettings = { ...this.getDefaultSettings }
+		// },
+		loadSettings() {
+			this.lastSettings = { ...this.getSettings }
+			this.lastCredentials = { ...this.getCredentials }
 
-			this.lastSettings = { ...settings }
-			this.lastCredentials = { ...spotifyCredentials }
-			this.settings = settings
-			this.spotifyFeatures = spotifyCredentials
+			this.settings = { ...this.getSettings }
+			this.spotifyFeatures = { ...this.getCredentials }
 		},
 		login() {
 			let arl = this.$refs.loginInput.value.trim()
@@ -820,8 +794,9 @@ export default {
 			}
 		},
 		applogin(e) {
-			e.preventDefault()
-			if (window.clientMode) socket.emit('applogin')
+			if (window.clientMode) {
+				socket.emit('applogin')
+			}
 		},
 		setArl(arl) {
 			this.$refs.loginInput.value = arl
@@ -842,16 +817,19 @@ export default {
 		logout() {
 			socket.emit('logout')
 		},
-		initSettings(settings, credentials, defaults) {
-			this.loadSettings(settings, credentials, defaults)
+		initSettings() {
+			// this.loadDefaultSettings()
+			this.loadSettings()
+
 			toast(this.$t('settings.toasts.init'), 'settings')
 		},
-		updateSettings(settings, credentials) {
-			this.loadSettings(settings, credentials)
+		updateSettings() {
+			this.loadSettings()
+
 			toast(this.$t('settings.toasts.update'), 'settings')
 		},
 		resetSettings() {
-			this.settings = { ...this.defaultSettings }
+			this.settings = { ...this.getDefaultSettings }
 		}
 	}
 }

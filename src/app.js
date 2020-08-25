@@ -14,6 +14,10 @@ import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
 import { init as initTabs } from '@js/tabs.js'
 
+import { isValidURL } from '@/utils/utils'
+import Downloads from '@/utils/downloads'
+import EventBus from '@/utils/EventBus.js'
+
 /* ===== App initialization ===== */
 
 function startApp() {
@@ -38,6 +42,28 @@ function initClient() {
 
 document.addEventListener('DOMContentLoaded', startApp)
 window.addEventListener('pywebviewready', initClient)
+
+/* ===== Global shortcuts ===== */
+
+document.addEventListener('keyup', keyEvent => {
+	if (keyEvent.key == "Backspace" && keyEvent.ctrlKey){
+		let searchbar = document.querySelector('#searchbar')
+		searchbar.value = ""
+		searchbar.focus()
+	}
+})
+
+document.addEventListener('paste', pasteEvent => {
+	pasteText = pasteEvent.clipboardData.getData('Text')
+	if (pasteEvent.target.localName != "input" && isValidURL(pasteText)){
+		if (main_selected === 'analyzer_tab') {
+			EventBus.$emit('linkAnalyzerTab:reset')
+			socket.emit('analyzeLink', pasteText)
+		} else {
+			Downloads.sendAddToQueue(pasteText)
+		}
+	}
+})
 
 /* ===== Socketio listeners ===== */
 

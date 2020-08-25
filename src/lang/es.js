@@ -53,7 +53,7 @@ const es = {
 			donations: '¿Quiere contribuir monetariamente? ¡Podrías hacer una donación!'
 		},
 		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
-		thanks: `Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.`,
+		thanks: `Gracias a <strong>rtonno</strong>, <strong>uhwot</strong> y <strong>lollilol</strong> por ayudarme con este proyecto, a <strong>BasCurtiz</strong> y <strong>scarvimane</strong> por hacer el icono.`,
 		upToDate: `Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.`,
 		officialWebsite: 'Página web oficial',
 		officialRepo: 'Repositorio de la biblioteca oficial',

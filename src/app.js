@@ -55,12 +55,17 @@ document.addEventListener('keyup', keyEvent => {
 
 document.addEventListener('paste', pasteEvent => {
 	pasteText = pasteEvent.clipboardData.getData('Text')
-	if (pasteEvent.target.localName != "input" && isValidURL(pasteText)){
-		if (main_selected === 'analyzer_tab') {
-			EventBus.$emit('linkAnalyzerTab:reset')
-			socket.emit('analyzeLink', pasteText)
-		} else {
-			Downloads.sendAddToQueue(pasteText)
+	if (pasteEvent.target.localName != "input"){
+		if (isValidURL(pasteText)){
+			if (main_selected === 'analyzer_tab') {
+				EventBus.$emit('linkAnalyzerTab:reset')
+				socket.emit('analyzeLink', pasteText)
+			} else {
+				Downloads.sendAddToQueue(pasteText)
+			}
+		}else{
+			let searchbar = document.querySelector('#searchbar')
+			searchbar.focus()
 		}
 	}
 })

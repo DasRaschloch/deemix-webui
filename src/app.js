@@ -65,7 +65,8 @@ document.addEventListener('paste', pasteEvent => {
 			}
 		}else{
 			let searchbar = document.querySelector('#searchbar')
-			searchbar.focus()
+			searchbar.select()
+			searchbar.setSelectionRange(0, 99999)
 		}
 	}
 })

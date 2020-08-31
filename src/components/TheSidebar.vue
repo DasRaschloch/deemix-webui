@@ -1,75 +1,96 @@
 <template>
 	<aside id="sidebar" role="navigation" @click="handleSidebarClick">
-		<span
+		<router-link
+			tag="span"
 			id="main_home_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'home' }"
 			role="link"
 			aria-label="home"
+			:to="{ name: 'Home' }"
+			@click.native="activeTablink = 'home'"
 		>
 			<i class="material-icons side_icon">home</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.home') }}</span>
-		</span>
-		<span
+		</router-link>
+		<router-link
+			tag="span"
 			id="main_search_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'search' }"
 			role="link"
 			aria-label="search"
+			:to="{ name: 'Search' }"
+			@click.native="activeTablink = 'search'"
 		>
 			<i class="material-icons side_icon">search</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.search') }}</span>
-		</span>
-		<span
+		</router-link>
+		<router-link
+			tag="span"
 			id="main_charts_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'charts' }"
 			role="link"
 			aria-label="charts"
+			:to="{ name: 'Charts' }"
+			@click.native="activeTablink = 'charts'"
 		>
 			<i class="material-icons side_icon">show_chart</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.charts') }}</span>
-		</span>
-		<span
+		</router-link>
+		<router-link
+			tag="span"
 			id="main_favorites_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'favorites' }"
 			role="link"
 			aria-label="favorites"
+			:to="{ name: 'Favorites' }"
+			@click.native="activeTablink = 'favorites'"
 		>
 			<i class="material-icons side_icon">star</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.favorites') }}</span>
-		</span>
-		<span
+		</router-link>
+		<router-link
+			tag="span"
 			id="main_analyzer_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'analyzer' }"
 			role="link"
 			aria-label="link analyzer"
+			:to="{ name: 'Link Analyzer' }"
+			@click.native="activeTablink = 'analyzer'"
 		>
 			<i class="material-icons side_icon">link</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.linkAnalyzer') }}</span>
-		</span>
-		<span
+		</router-link>
+		<router-link
+			tag="span"
 			id="main_settings_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'settings' }"
 			role="link"
 			aria-label="settings"
+			:to="{ name: 'Settings' }"
+			@click.native="activeTablink = 'settings'"
 		>
 			<i class="material-icons side_icon">settings</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.settings') }}</span>
-		</span>
-		<span
+		</router-link>
+		<router-link
+			tag="span"
 			id="main_about_tablink"
 			class="main_tablinks"
 			:class="{ active: activeTablink === 'about' }"
 			role="link"
 			aria-label="info"
+			:to="{ name: 'About' }"
+			@click.native="activeTablink = 'about'"
 		>
 			<i class="material-icons side_icon">info</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.about') }}</span>
-		</span>
+		</router-link>
 		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
 			<i class="material-icons side_icon side_icon--theme">palette</i>
 			<div id="theme_togglers">
@@ -164,80 +185,6 @@ export default {
 
 				document.documentElement.removeEventListener('transitionend', transitionHandler)
 			})
-		},
-		/**
-		 * Handles click Event on the sidebar and changes tab
-		 * according to clicked icon.
-		 * Uses event delegation
-		 * @param		{Event}		event
-		 */
-		handleSidebarClick(event) {
-			const { target } = event
-
-			const wantToChangeTab = target.matches('.main_tablinks') || target.parentElement.matches('.main_tablinks')
-
-			if (!wantToChangeTab) return
-
-			let sidebarEl = target.matches('.main_tablinks') ? target : target.parentElement
-			let targetID = sidebarEl.id
-			let selectedTab = null
-
-			this.activeTablink = targetID.match(/main_(\w+)_tablink/)[1]
-
-			switch (targetID) {
-				case 'main_search_tablink':
-					selectedTab = 'search_tab'
-					this.$router.push({
-						name: 'Search'
-					})
-					break
-				case 'main_home_tablink':
-					selectedTab = 'home_tab'
-					this.$router.push({
-						name: 'Home'
-					})
-					break
-				case 'main_charts_tablink':
-					selectedTab = 'charts_tab'
-					this.$router.push({
-						name: 'Charts'
-					})
-					break
-				case 'main_favorites_tablink':
-					selectedTab = 'favorites_tab'
-					this.$router.push({
-						name: 'Favorites'
-						// query: {
-						// 	tab: 'playlist'
-						// }
-					})
-					break
-				case 'main_analyzer_tablink':
-					selectedTab = 'analyzer_tab'
-					this.$router.push({
-						name: 'Link Analyzer'
-					})
-					break
-				case 'main_settings_tablink':
-					selectedTab = 'settings_tab'
-					this.$router.push({
-						name: 'Settings'
-					})
-					break
-				case 'main_about_tablink':
-					selectedTab = 'about_tab'
-					this.$router.push({
-						name: 'About'
-					})
-					break
-
-				default:
-					break
-			}
-
-			if (!selectedTab) return
-
-			changeTab(sidebarEl, 'main', selectedTab)
 		}
 	}
 }

@@ -201,11 +201,11 @@ export default {
 	}),
 	mounted() {
 		console.log('about mounted')
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 	},
 	beforeDestroy() {
 		console.log('about bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

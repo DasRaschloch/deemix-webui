@@ -296,7 +296,7 @@ export default {
 	},
 	mounted() {
 		console.log('tracklist mounted')
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 
 		socket.on('show_album', this.showAlbum)
@@ -305,7 +305,7 @@ export default {
 	},
 	beforeDestroy() {
 		console.log('tracklist bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

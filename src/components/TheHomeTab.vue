@@ -123,7 +123,7 @@ export default {
 	},
 	mounted() {
 		console.log('home mounted')
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 
 		if (localStorage.getItem('arl')) {
 			this.$refs.notLogged.classList.add('hide')
@@ -135,7 +135,7 @@ export default {
 	},
 	beforeDestroy() {
 		console.log('home bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

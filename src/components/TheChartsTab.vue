@@ -105,6 +105,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
@@ -122,9 +123,41 @@ export default {
 			chart: []
 		}
 	},
+	computed: {
+		...mapGetters(['getCharts']),
+		needToWait() {
+			return this.getCharts.length === 0
+		}
+	},
+	mounted() {
+		console.log('charts mounted')
+		// this.$refs.root.style.display = 'block'
+		this.waitCharts()
+		// socket.on('init_charts', this.initCharts)
+		socket.on('setChartTracks', this.setTracklist)
+	},
+	beforeDestroy() {
+		console.log('charts bef dest')
+		// this.$refs.root.style.display = 'none'
+	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
+		waitCharts() {
+			if (this.needToWait) {
+				// Checking if the saving of the settings is completed
+				let unsub = this.$store.subscribeAction({
+					after: (action, state) => {
+						if (action.type === 'cacheCharts') {
+							this.initCharts()
+							unsub()
+						}
+					}
+				})
+			} else {
+				this.initCharts()
+			}
+		},
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},
@@ -164,9 +197,9 @@ export default {
 			this.country = ''
 			this.id = 0
 		},
-		initCharts(data) {
+		initCharts() {
 			console.log('init charts')
-			this.countries = data
+			this.countries = this.getCharts
 			this.country = localStorage.getItem('chart') || ''
 
 			if (!this.country) return
@@ -184,16 +217,6 @@ export default {
 				localStorage.setItem('chart', this.country)
 			}
 		}
-	},
-	mounted() {
-		console.log('charts mounted')
-		this.$refs.root.style.display = 'block'
-		socket.on('init_charts', this.initCharts)
-		socket.on('setChartTracks', this.setTracklist)
-	},
-	beforeDestroy() {
-		console.log('charts bef dest')
-		this.$refs.root.style.display = 'none'
 	}
 }
 </script>

@@ -1,30 +1,72 @@
 <template>
 	<aside id="sidebar" role="navigation" @click="handleSidebarClick">
-		<span id="main_home_tablink" class="main_tablinks" role="link" aria-label="home">
+		<span
+			id="main_home_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'home' }"
+			role="link"
+			aria-label="home"
+		>
 			<i class="material-icons side_icon">home</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.home') }}</span>
 		</span>
-		<span id="main_search_tablink" class="main_tablinks" role="link" aria-label="search">
+		<span
+			id="main_search_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'search' }"
+			role="link"
+			aria-label="search"
+		>
 			<i class="material-icons side_icon">search</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.search') }}</span>
 		</span>
-		<span id="main_charts_tablink" class="main_tablinks" role="link" aria-label="charts">
+		<span
+			id="main_charts_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'charts' }"
+			role="link"
+			aria-label="charts"
+		>
 			<i class="material-icons side_icon">show_chart</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.charts') }}</span>
 		</span>
-		<span id="main_favorites_tablink" class="main_tablinks" role="link" aria-label="favorites">
+		<span
+			id="main_favorites_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'favorites' }"
+			role="link"
+			aria-label="favorites"
+		>
 			<i class="material-icons side_icon">star</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.favorites') }}</span>
 		</span>
-		<span id="main_analyzer_tablink" class="main_tablinks" role="link" aria-label="link analyzer">
+		<span
+			id="main_analyzer_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'analyzer' }"
+			role="link"
+			aria-label="link analyzer"
+		>
 			<i class="material-icons side_icon">link</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.linkAnalyzer') }}</span>
 		</span>
-		<span id="main_settings_tablink" class="main_tablinks" role="link" aria-label="settings">
+		<span
+			id="main_settings_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'settings' }"
+			role="link"
+			aria-label="settings"
+		>
 			<i class="material-icons side_icon">settings</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.settings') }}</span>
 		</span>
-		<span id="main_about_tablink" class="main_tablinks" role="link" aria-label="info">
+		<span
+			id="main_about_tablink"
+			class="main_tablinks"
+			:class="{ active: activeTablink === 'about' }"
+			role="link"
+			aria-label="info"
+		>
 			<i class="material-icons side_icon">info</i>
 			<span class="main_tablinks_text">{{ $t('sidebar.about') }}</span>
 		</span>
@@ -84,7 +126,8 @@ export default {
 	data: () => ({
 		appOnline: null,
 		activeTheme: 'light',
-		themes: ['purple', 'dark', 'light']
+		themes: ['purple', 'dark', 'light'],
+		activeTablink: 'home'
 	}),
 	mounted() {
 		/* === Online status handling === */
@@ -139,6 +182,8 @@ export default {
 			let targetID = sidebarEl.id
 			let selectedTab = null
 
+			this.activeTablink = targetID.match(/main_(\w+)_tablink/)[1]
+
 			switch (targetID) {
 				case 'main_search_tablink':
 					selectedTab = 'search_tab'
@@ -162,6 +207,9 @@ export default {
 					selectedTab = 'favorites_tab'
 					this.$router.push({
 						name: 'Favorites'
+						// query: {
+						// 	tab: 'playlist'
+						// }
 					})
 					break
 				case 'main_analyzer_tablink':

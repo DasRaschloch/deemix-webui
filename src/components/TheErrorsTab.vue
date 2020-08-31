@@ -43,13 +43,13 @@ export default {
 	},
 	mounted() {
 		console.log('errors mounted')
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 		EventBus.$on('showTabErrors', this.showErrors)
 		this.$root.$on('showTabErrors', this.showErrors)
 	},
 	beforeDestroy() {
 		console.log('errors bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

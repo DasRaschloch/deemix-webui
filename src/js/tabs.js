@@ -15,46 +15,36 @@ window.currentStack = {}
  * Needs EventBus
  */
 export function changeTab(sidebarEl, section, tabName) {
-	// console.error('CHANGE TAB')
 	window.windows_stack = []
 	window.currentStack = {}
 
-	// * The visualized content of the tab
-	// ! Can be more than one per tab, happens in MainSearch and Favorites tab
-	// ! because they have more tablinks (see below)
-	const tabContent = document.getElementsByClassName(`${section}_tabcontent`)
+	// hideTabContent(section)
+	// * Only in section search
+	updateTabLink(section)
 
-	for (let i = 0; i < tabContent.length; i++) {
-		if (!tabContent[i]) continue
+	// * Only when clicking the settings icon in the sidebar
+	resetSettings(tabName)
 
-		tabContent[i].style.display = 'none'
-	}
+	// showSelectedTab(tabName)
 
-	// * Tabs inside the actual tab (like albums, tracks, playlists...)
-	const tabLinks = document.getElementsByClassName(`${section}_tablinks`)
+	// * Only in section main & search
+	setSelectedTab(section, tabName)
 
-	for (let i = 0; i < tabLinks.length; i++) {
-		tabLinks[i].classList.remove('active')
-	}
+	// setSidebarElementActive(sidebarEl)
 
-	if (tabName === 'settings_tab' && window.main_selected !== 'settings_tab') {
-		EventBus.$emit('settingsTab:revertSettings')
-		EventBus.$emit('settingsTab:revertCredentials')
-	}
+	// * Only if window.main_selected === 'search_tab'
+	checkNeedToLoadMoreContent()
+}
 
-	// * The tab we want to show
-	if (document.getElementById(tabName)) {
-		document.getElementById(tabName).style.display = 'block'
-	}
-
+function setSelectedTab(section, tabName) {
 	if (section === 'main') {
 		window.main_selected = tabName
 	} else if (section === 'search') {
 		window.search_selected = tabName
 	}
+}
 
-	sidebarEl.classList.add('active')
-
+function checkNeedToLoadMoreContent() {
 	// * Check if you need to load more content in the search tab
 	// * Happens when the user changes the tab in the main search
 	if (
@@ -62,6 +52,53 @@ export function changeTab(sidebarEl, section, tabName) {
 		['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(window.search_selected) !== -1
 	) {
 		EventBus.$emit('mainSearch:checkLoadMoreContent', window.search_selected)
+	}
+}
+
+function setSidebarElementActive(sidebarEl) {
+	sidebarEl.classList.add('active')
+}
+
+function showSelectedTab(tabName) {
+	// * The tab we want to show
+	console.log('Tabs who get display block')
+	if (document.getElementById(tabName)) {
+		document.getElementById(tabName).style.display = 'block'
+	}
+}
+
+function resetSettings(tabName) {
+	if (tabName === 'settings_tab' && window.main_selected !== 'settings_tab') {
+		EventBus.$emit('settingsTab:revertSettings')
+		EventBus.$emit('settingsTab:revertCredentials')
+	}
+}
+
+function hideTabContent(section) {
+	// * The visualized content of the tab
+	// ! Can be more than one per tab, happens in MainSearch and Favorites tab
+	// ! because they have more tablinks (see below)
+
+	const tabContent = document.getElementsByClassName(`${section}_tabcontent`)
+
+	for (let i = 0; i < tabContent.length; i++) {
+		if (!tabContent[i] || tabContent[i].matches('.main_tabcontent')) continue
+
+		tabContent[i].style.display = 'none'
+	}
+}
+
+function updateTabLink(section) {
+	// * Tabs inside the actual tab (like albums, tracks, playlists...)
+	// * or sidebar links
+	if (section == 'main') return
+
+	const tabLinks = document.getElementsByClassName(`${section}_tablinks`)
+	// console.log(tabLinks)
+	// console.trace()
+
+	for (let i = 0; i < tabLinks.length; i++) {
+		tabLinks[i].classList.remove('active')
 	}
 }
 
@@ -90,9 +127,9 @@ export function showView(viewType, event) {
  */
 function showTab(type, id, back = false) {
 	return
-	updateStack(type, id, back)
+	// updateStack(type, id, back)
 	window.tab = type === 'artist' ? 'artist_tab' : 'tracklist_tab'
-	displayTabs()
+	// displayTabs()
 }
 
 function updateStack(type, id, back) {

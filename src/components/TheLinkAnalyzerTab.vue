@@ -192,7 +192,7 @@ export default {
 	},
 	mounted() {
 		console.log('link analyzer mounted')
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 		EventBus.$on('linkAnalyzerTab:reset', this.reset)
 
 		socket.on('analyze_track', this.showTrack)
@@ -201,7 +201,7 @@ export default {
 	},
 	beforeDestroy() {
 		console.log('link analyzer bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

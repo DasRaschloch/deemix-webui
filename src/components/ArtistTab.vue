@@ -184,7 +184,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 		console.log('artist mounted')
 
 		socket.on('show_artist', this.showArtist)
@@ -194,7 +194,7 @@ export default {
 	},
 	beforeDestroy() {
 		console.log('artist bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

@@ -641,11 +641,11 @@ export default {
 	}),
 	beforeDestroy() {
 		console.log('settings bef dest')
-		this.$refs.root.style.display = 'none'
+		// this.$refs.root.style.display = 'none'
 	},
 	mounted() {
 		console.log('settings mounted')
-		this.$refs.root.style.display = 'block'
+		// this.$refs.root.style.display = 'block'
 
 		this.locales = this.$i18n.availableLocales
 

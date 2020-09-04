@@ -1,4 +1,4 @@
-const en = {
+const ko = {
 	globals: {
 		welcome: '잘왔다, deemix에',
 		back: '뒤로',

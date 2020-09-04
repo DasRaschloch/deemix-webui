@@ -336,7 +336,7 @@ const ko = {
 		reset: '기본 설정으로 초기화',
 		save: '저장',
 		toasts: {
-			init: '설정이 불러와졌습니다!',
+			init: '설정을 불러왔습니다!',
 			update: '새로운 설정으로 갱신되었습니다!',
 			ARLcopied: 'ARL가 클립보드에 복사되었습니다'
 		}

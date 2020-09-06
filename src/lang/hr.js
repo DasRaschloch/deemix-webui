@@ -3,9 +3,9 @@ const hr = {
 		welcome: 'Dobrodošli u deemix',
 		back: 'nazad',
 		loading: 'učitavanje',
-		download: 'Preuzmi {0}',
-		by: 'by {0}',
-		in: 'u {0}',
+		download: 'Preuzmi {thing}',
+		by: 'by {artist}',
+		in: 'u {album}',
 		download_hint: 'Preuzmi',
 		play_hint: 'Play',
 		toggle_download_tab_hint: 'Proširi/Smanji',
@@ -74,7 +74,7 @@ const hr = {
 		download: 'Preuzmi ljestvicu'
 	},
 	errors: {
-		title: 'Greške za {0}',
+		title: 'Greške za {name}',
 		ids: {
 			invalidURL: 'URL nije prepoznat',
 			unsupportedURL: 'URL još nije podržan',
@@ -133,7 +133,7 @@ const hr = {
 		startSearching: 'Počni pretraživati!',
 		description:
 			'Možete pretražiti pjesmu, cijeli album, izvođača, playlistu... sve! Također, možete i zalijepiti Deezer link',
-		fans: '{0} obožavatelja',
+		fans: '{n} obožavatelja',
 		noResults: 'Nema rezultata',
 		noResultsTrack: 'Pjesme nisu pronađene',
 		noResultsAlbum: 'Albumi nisu pronađeni',
@@ -143,9 +143,9 @@ const hr = {
 	searchbar: 'Pretraži bilo što (ili samo zalijepi link)',
 	downloads: 'preuzimanja',
 	toasts: {
-		addedToQueue: '{0} dodan u red',
-		alreadyInQueue: '{0} je već u redu!',
-		finishDownload: '{0} završeno preuzimanje.',
+		addedToQueue: '{item} dodan u red',
+		alreadyInQueue: '{item} je već u redu!',
+		finishDownload: '{item} završeno preuzimanje.',
 		allDownloaded: 'Sva preuzimanja završena!',
 		refreshFavs: 'Osvježavanje završeno!',
 		loggingIn: 'Prijavljivanje...',
@@ -155,8 +155,8 @@ const hr = {
 		loggedOut: 'Odjavljeni',
 		cancellingCurrentItem: 'Otkazujem trenutnu stavku.',
 		currentItemCancelled: 'Trenutna stavka otkazana.',
-		startAddingArtist: 'Dodajem {0} album u red',
-		finishAddingArtist: 'Dodan {0} album u red',
+		startAddingArtist: 'Dodajem {artist} album u red',
+		finishAddingArtist: 'Dodan {artist} album u red',
 		startConvertingSpotifyPlaylist: 'Pretvaram Spotify pjesme u Deezer pjesme',
 		finishConvertingSpotifyPlaylist: 'Spotify playlista pretvorena',
 		loginNeededToDownload: 'Trebate se prijaviti kako bi preuzeli pjesme!'
@@ -281,7 +281,7 @@ const hr = {
 				nothing: 'Spremi samo glavnog izvođača',
 				default: 'Koristeći standardnu specifikaciju',
 				andFeat: 'Koristeći & i feat.',
-				using: 'Koristeći "{0}"'
+				using: 'Koristeći "{separator}"'
 			},
 			singleAlbumArtist: 'Spremi samo izvođača glavnog albuma',
 			albumVariousArtists: 'Zadrži "Various Artists" u Izvođačima albuma',

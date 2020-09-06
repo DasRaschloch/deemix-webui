@@ -437,13 +437,13 @@
 					<option value="nothing">{{ $t('settings.other.multiArtistSeparator.nothing') }}</option>
 					<option value="default">{{ $t('settings.other.multiArtistSeparator.default') }}</option>
 					<option value="andFeat">{{ $t('settings.other.multiArtistSeparator.andFeat') }}</option>
-					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', [' & ']) }}</option>
-					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', [',']) }}</option>
-					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', [', ']) }}</option>
-					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', ['/']) }}</option>
-					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', [' / ']) }}</option>
-					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', [';']) }}</option>
-					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', ['; ']) }}</option>
+					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', {separator: ' & '}) }}</option>
+					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', {separator: ','}) }}</option>
+					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', {separator: ', '}) }}</option>
+					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', {separator: '/'}) }}</option>
+					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', {separator: ' / '}) }}</option>
+					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', {separator: ';'}) }}</option>
+					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', {separator: '; '}) }}</option>
 				</select>
 			</div>
 

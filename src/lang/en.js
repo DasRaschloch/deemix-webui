@@ -3,9 +3,9 @@ const en = {
 		welcome: 'Welcome to deemix',
 		back: 'back',
 		loading: 'loading',
-		download: 'Download {0}',
-		by: 'by {0}',
-		in: 'in {0}',
+		download: 'Download {thing}',
+		by: 'by {artist}',
+		in: 'in {album}',
 		download_hint: 'Download',
 		play_hint: 'Play',
 		toggle_download_tab_hint: 'Expand/Collapse',
@@ -81,7 +81,7 @@ const en = {
 		download: 'Download Chart'
 	},
 	errors: {
-		title: 'Errors for {0}',
+		title: 'Errors for {name}',
 		ids: {
 			invalidURL: 'URL not recognized',
 			unsupportedURL: 'URL not supported yet',
@@ -138,7 +138,7 @@ const en = {
 	search: {
 		startSearching: 'Start searching!',
 		description: 'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
-		fans: '{0} fans',
+		fans: '{n} fans',
 		noResults: 'No results',
 		noResultsTrack: 'No Tracks found',
 		noResultsAlbum: 'No Albums found',
@@ -150,10 +150,10 @@ const en = {
 	toasts: {
 		restoringQueue: 'Restoring download queue...',
 		queueRestored: 'Download queue restored!',
-		addedToQueue: '{0} added to queue',
-		addedMoreToQueue: '{0} items added to queue',
-		alreadyInQueue: '{0} is already in queue!',
-		finishDownload: '{0} finished downloading.',
+		addedToQueue: '{item} added to queue',
+		addedMoreToQueue: '{n} items added to queue',
+		alreadyInQueue: '{item} is already in queue!',
+		finishDownload: '{item} finished downloading.',
 		allDownloaded: 'All downloads completed!',
 		refreshFavs: 'Refresh completed!',
 		loggingIn: 'Logging in...',
@@ -163,8 +163,8 @@ const en = {
 		loggedOut: 'Logged out',
 		cancellingCurrentItem: 'Cancelling current item.',
 		currentItemCancelled: 'Current item cancelled.',
-		startAddingArtist: 'Adding {0} albums to queue',
-		finishAddingArtist: 'Added {0} albums to queue',
+		startAddingArtist: 'Adding {artist} albums to queue',
+		finishAddingArtist: 'Added {artist} albums to queue',
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
 		loginNeededToDownload: 'You need to log in to download tracks!'
@@ -293,7 +293,7 @@ const en = {
 				nothing: 'Save only the main artist',
 				default: 'Using standard specification',
 				andFeat: 'Using & and feat.',
-				using: 'Using "{0}"'
+				using: 'Using "{separator}"'
 			},
 			singleAlbumArtist: 'Save only the main album artist',
 			albumVariousArtists: 'Keep "Various Artists" in the Album Artists',

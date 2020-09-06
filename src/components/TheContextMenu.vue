@@ -95,7 +95,7 @@ export default {
 
 			downloadQualities.forEach((quality, index) => {
 				options[quality.objName] = {
-					label: `${this.$t('globals.download', [quality.label])}`,
+					label: `${this.$t('globals.download', {thing: quality.label})}`,
 					show: false,
 					position: nextValuePosition + index,
 					action: this.tryToDownloadTrack.bind(null, quality.value)

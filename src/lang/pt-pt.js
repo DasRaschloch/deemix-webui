@@ -3,9 +3,9 @@ const pt = {
         welcome: 'Bem-vindo ao deemix',
         back: 'voltar',
         loading: 'A carregar',
-        download: 'Transferir {0}',
-        by: 'por {0}',
-        in: 'em {0}',
+        download: 'Transferir {thing}',
+        by: 'por {artist}',
+        in: 'em {album}',
         download_hint: 'Transferir',
         play_hint: 'Tocar',
         toggle_download_tab_hint: 'Expandir/Recolher',
@@ -63,7 +63,7 @@ const pt = {
         contributeWebUI: `Caso saibas Vue.js (JavaScript), HTML ou CSS podes contribuir para o <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
         itsFree: `Deves ter em conta que <strong>que este projecto é gratuito</strong> e <strong>deverás apoiar os artistas que aprecias</strong> antes de apoiares os programadores.`,
         notObligated: `Não te sintas obrigado a doar, agradeço-te na mesma!`,
-        lincensedUnder: `Este trabalho esta licenciado sobre a 
+        lincensedUnder: `Este trabalho esta licenciado sobre a
             <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
                 >GNU Licença publica geral  3.0</a
             >.`
@@ -74,7 +74,7 @@ const pt = {
         download: 'Transferir tabela'
     },
     errors: {
-        title: 'Erros para {0}',
+        title: 'Erros para {name}',
         ids: {
             invalidURL: 'URL não reconhecido',
             unsupportedURL: 'URL ainda não suportado',
@@ -131,7 +131,7 @@ const pt = {
     search: {
         startSearching: 'Começa a pesquisar!',
         description: 'Podes perquisar uma música, um álbum inteiro, um artista, uma lista de reprodução... tudo! Também podes colar um link do Deezer',
-        fans: '{0} fãs',
+        fans: '{n} fãs',
         noResults: 'Sem resultados',
         noResultsTrack: 'Faixa não encontrada',
         noResultsAlbum: 'Álbum não encontrado',
@@ -141,9 +141,9 @@ const pt = {
     searchbar: 'Pesquisa o que quiseres (ou cola um link)',
     downloads: 'transferências',
     toasts: {
-        addedToQueue: '{0} adicionados à fila',
-        alreadyInQueue: '{0} já está na fila!',
-        finishDownload: '{0} foi transferido.',
+        addedToQueue: '{item} adicionados à fila',
+        alreadyInQueue: '{item} já está na fila!',
+        finishDownload: '{item} foi transferido.',
         allDownloaded: 'Todas as transferências terminadas!',
         refreshFavs: 'Actualizar terminados!',
         loggingIn: 'A autenticar',
@@ -153,8 +153,8 @@ const pt = {
         loggedOut: 'Desconectado',
         cancellingCurrentItem: 'A cancelar item actual.',
         currentItemCancelled: 'Item actual cancelado.',
-        startAddingArtist: 'A adicionar {0} álbuns à fila',
-        finishAddingArtist: 'Adicionados {0} álbuns à fila',
+        startAddingArtist: 'A adicionar {artist} álbuns à fila',
+        finishAddingArtist: 'Adicionados {artist} álbuns à fila',
         startConvertingSpotifyPlaylist: 'A converter faixas do spotify em faixas do deezer',
         finishConvertingSpotifyPlaylist: 'Lista de reprodução do Spotify convertida.'
     },
@@ -277,7 +277,7 @@ const pt = {
                 nothing: 'Guardar apenas o artista principal',
                 default: 'Usar especificação padrão',
                 andFeat: 'Usar & e feat.',
-                using: 'Usar "{0}"'
+                using: 'Usar "{separator}"'
             },
             singleAlbumArtist: 'Guardar apenas o artista principal do álbum',
             albumVariousArtists: 'Manter "Various Artists" nos Artistas do Álbum',

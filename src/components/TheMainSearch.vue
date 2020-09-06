@@ -62,8 +62,8 @@
 									<p class="secondary-text">
 										{{
 											results.allTab.TOP_RESULT[0].type == 'artist'
-												? $t('search.fans', [$n(results.allTab.TOP_RESULT[0].nb_fan)])
-												: $t('globals.by', [results.allTab.TOP_RESULT[0].artist]) +
+												? $t('search.fans', {n: $n(results.allTab.TOP_RESULT[0].nb_fan)})
+												: $t('globals.by', {artist: results.allTab.TOP_RESULT[0].artist}) +
 												  ' - ' +
 												  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
 										}}
@@ -155,7 +155,7 @@
 										</div>
 									</div>
 									<p class="primary-text">{{ release.ART_NAME }}</p>
-									<p class="secondary-text">{{ $t('search.fans', [$n(release.NB_FAN)]) }}</p>
+									<p class="secondary-text">{{ $t('search.fans', {n: $n(release.NB_FAN)}) }}</p>
 								</div>
 							</div>
 							<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
@@ -360,7 +360,7 @@
 							</p>
 							<p class="secondary-text">
 								{{
-									$t('globals.by', [release.artist.name]) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks)
+									$t('globals.by', {artist: release.artist.name}) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks)
 								}}
 							</p>
 						</div>
@@ -423,7 +423,7 @@
 							</div>
 							<p class="primary-text">{{ release.title }}</p>
 							<p class="secondary-text">
-								{{ `${$t('globals.by', [release.user.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+								{{ `${$t('globals.by', {artist: release.user.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 							</p>
 						</div>
 					</div>

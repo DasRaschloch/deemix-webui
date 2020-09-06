@@ -3,9 +3,9 @@ const tr = {
 		welcome: `Deemix'e hoş geldin.`,
 		back: `geri`,
 		loading: `yükleniyor`,
-		download: 'İndir {0}',
-		by: '{0} tarafından',
-		in: '{0} içinde',
+		download: 'İndir {thing}',
+		by: '{artist} tarafından',
+		in: '{album} içinde',
 		download_hint: 'İndir',
 		play_hint: 'Oynat',
 		toggle_download_tab_hint: 'Genişlet/Daralt',
@@ -75,7 +75,7 @@ const tr = {
 		download: 'Grafiği İndir'
 	},
 	errors: {
-		title: '{0} Hatalı bulundu',
+		title: '{name} Hatalı bulundu',
 		ids: {
 			invalidURL: 'URL geçersiz.',
 			unsupportedURL: 'URL şimdilik desteklenmiyor',
@@ -133,7 +133,7 @@ const tr = {
 		startSearching: 'Aramayı Başlat!',
 		description:
 			'Bir parçayı, tüm albümü, bir sanatçıyı, bir oynatma listesini... kısaca her şeyi aratabilirsin! Ayrıca Deezer Linki de yapıştırabilirsin!',
-		fans: '{0} Hayranlar',
+		fans: '{n} Hayranlar',
 		noResults: 'Sonuç Bulunamadı',
 		noResultsTrack: 'Parça bulunamadı',
 		noResultsAlbum: 'Albüm bulunamadı',
@@ -143,9 +143,9 @@ const tr = {
 	searchbar: 'İstediğin bir şeyi arat (ya da bir link yapıştır.)',
 	downloads: 'İndirilenler',
 	toasts: {
-		addedToQueue: '{0} kuyruğa eklendi',
-		alreadyInQueue: '{0} çoktan kuyrukta!',
-		finishDownload: '{0} indirmesi tamamlandı.',
+		addedToQueue: '{item} kuyruğa eklendi',
+		alreadyInQueue: '{item} çoktan kuyrukta!',
+		finishDownload: '{item} indirmesi tamamlandı.',
 		allDownloaded: 'Tüm indirmeler tamamlandı!',
 		refreshFavs: 'Yenileme tamamlandı.!',
 		loggingIn: 'Giriş yapılıyor',
@@ -155,8 +155,8 @@ const tr = {
 		loggedOut: 'Oturum kapatıldı.',
 		cancellingCurrentItem: 'Geçerli öğe iptal ediliyor.',
 		currentItemCancelled: 'Geçerli öğe iptal edildi.',
-		startAddingArtist: '{0} albüm kuyruğa ekleniyor',
-		finishAddingArtist: '{0} albüm kuyruğa eklendi.',
+		startAddingArtist: '{artist} albüm kuyruğa ekleniyor',
+		finishAddingArtist: '{artist} albüm kuyruğa eklendi.',
 		startConvertingSpotifyPlaylist: 'Spotify parçaları deezer parçalarına dönüştürülüyor.',
 		finishConvertingSpotifyPlaylist: 'Spotify oynatma listesi dönüştürüldü.'
 	},
@@ -279,7 +279,7 @@ const tr = {
 				nothing: 'Sadece ana sanatçıyı kaydet',
 				default: 'Genel prosedür uygulansın',
 				andFeat: 'Kullanılanlar & ve Feat.',
-				using: 'Kullanılan "{0}"'
+				using: 'Kullanılan "{separator}"'
 			},
 			singleAlbumArtist: 'Sadece ana albüm sanatçısını kaydet',
 			albumVariousArtists: '"Çeşitli sanatçılar"ı sanatçı albümlerinde tut',

@@ -3,9 +3,9 @@ const it = {
 		welcome: 'Benvenuto su deemix',
 		back: 'indietro',
 		loading: 'caricamento',
-		download: 'Scarica {0}',
-		by: 'di {0}',
-		in: 'in {0}',
+		download: 'Scarica {thing}',
+		by: 'di {artist}',
+		in: 'in {album}',
 		download_hint: 'Scarica',
 		play_hint: 'Riproduci',
 		toggle_download_tab_hint: 'Espandi/Riduci',
@@ -84,7 +84,7 @@ const it = {
 		download: 'Scarica Classifica'
 	},
 	errors: {
-		title: 'Errori riguardanti {0}',
+		title: 'Errori riguardanti {name}',
 		ids: {
 			invalidURL: 'URL non riconosciuto',
 			unsupportedURL: 'URL non ancora supportato',
@@ -144,7 +144,7 @@ const it = {
 		startSearching: 'Inizia a cercare!',
 		description:
 			'Puoi cercare un brano, un intero album, un artista, una playlist.... quello che vuoi! Puoi anche incollare un link di Deezer',
-		fans: '{0} fan',
+		fans: '{n} fan',
 		noResults: 'Nessun risultato',
 		noResultsTrack: 'Nessun brano trovato',
 		noResultsAlbum: 'Nessun album trovato',
@@ -156,10 +156,10 @@ const it = {
 	toasts: {
 		restoringQueue: 'Ripristinando la coda di download...',
 		queueRestored: 'Coda di download ripristinata!',
-		addedToQueue: '{0} aggiunto alla coda',
-		addedMoreToQueue: '{0} oggetti aggiunti alla coda',
-		alreadyInQueue: '{0} è già nella coda!',
-		finishDownload: '{0} ha finito di scaricarsi.',
+		addedToQueue: '{item} aggiunto alla coda',
+		addedMoreToQueue: '{n} oggetti aggiunti alla coda',
+		alreadyInQueue: '{item} è già nella coda!',
+		finishDownload: '{item} ha finito di scaricarsi.',
 		allDownloaded: 'Tutti i download completati!',
 		refreshFavs: 'Preferiti ricaricati!',
 		loggingIn: 'Effettuando il login...',
@@ -169,8 +169,8 @@ const it = {
 		loggedOut: 'Disconnesso',
 		cancellingCurrentItem: 'Cancellando download corrente.',
 		currentItemCancelled: 'Download corrente cancellato.',
-		startAddingArtist: 'Aggiungendo gli album di {0} alla coda',
-		finishAddingArtist: 'Aggiunto gli album di {0} alla coda',
+		startAddingArtist: 'Aggiungendo gli album di {artist} alla coda',
+		finishAddingArtist: 'Aggiunto gli album di {artist} alla coda',
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
 		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!'
@@ -299,7 +299,7 @@ const it = {
 				nothing: "Salva solo l'artista principale",
 				default: 'Usando la specificazione standard',
 				andFeat: 'Usando & e feat.',
-				using: 'Usando "{0}"'
+				using: 'Usando "{separator}"'
 			},
 			singleAlbumArtist: "Salva solo l'artista dell'album principale",
 			albumVariousArtists: 'Lascia "Artisti Vari" negli artisti dell\'album',

@@ -3,9 +3,9 @@ const es = {
 		welcome: 'Bienvenido a deemix',
 		back: 'atrás',
 		loading: 'cargando',
-		download: 'Descarga {0}',
-		by: 'por {0}',
-		in: 'en {0}',
+		download: 'Descarga {thing}',
+		by: 'por {artist}',
+		in: 'en {album}',
 		download_hint: 'Descargar',
 		play_hint: 'Reproducir',
 		toggle_download_tab_hint: 'Expandir/Colapsar',
@@ -80,7 +80,7 @@ const es = {
 		download: 'Descargar la tabla'
 	},
 	errors: {
-		title: 'Errores para {0}',
+		title: 'Errores para {name}',
 		ids: {
 			invalidURL: 'No se reconoce la URL',
 			unsupportedURL: 'La URL no está soportada aún',
@@ -137,7 +137,7 @@ const es = {
 	search: {
 		startSearching: '¡Comienza a buscar!',
 		description: 'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
-		fans: '{0} fanáticos',
+		fans: '{n} fanáticos',
 		noResults: 'No hay resultados',
 		noResultsTrack: 'No se encontraron pistas',
 		noResultsAlbum: 'No se encontraron álbumes',
@@ -149,10 +149,10 @@ const es = {
 	toasts: {
 		restoringQueue: 'Restaurando cola de descarga...',
 		queueRestored: '¡Cola de descarga restaurada!',
-		addedToQueue: '{0} añadidos a la cola',
-		addedMoreToQueue: '{0} elementos añadidos a la cola',
-		alreadyInQueue: '¡{0} ya está en la cola!',
-		finishDownload: '{0} terminado de descargar.',
+		addedToQueue: '{item} añadidos a la cola',
+		addedMoreToQueue: '{n} elementos añadidos a la cola',
+		alreadyInQueue: '¡{item} ya está en la cola!',
+		finishDownload: '{item} terminado de descargar.',
 		allDownloaded: '¡Todas las descargas se han completado!',
 		refreshFavs: '¡Actualización completada!',
 		loggingIn: 'Conectando...',
@@ -162,8 +162,8 @@ const es = {
 		loggedOut: 'Desconectado',
 		cancellingCurrentItem: 'Cancelando el elemento actual.',
 		currentItemCancelled: 'El elemento actual se ha cancelado.',
-		startAddingArtist: 'Añadiendo {0} álbumes a la cola',
-		finishAddingArtist: 'Añadido {0} álbumes a la cola',
+		startAddingArtist: 'Añadiendo {artist} álbumes a la cola',
+		finishAddingArtist: 'Añadido {artist} álbumes a la cola',
 		startConvertingSpotifyPlaylist: 'Convertir las pistas de Spotify en pistas de Deezer',
 		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida',
 		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!'
@@ -291,7 +291,7 @@ const es = {
 				nothing: 'Guardar sólo el artista principal',
 				default: 'Usar la especificación estándar',
 				andFeat: 'Usar & y feat.',
-				using: 'Usar "{0}"'
+				using: 'Usar "{separator}"'
 			},
 			singleAlbumArtist: 'Guardar sólo el artista principal del álbum',
 			albumVariousArtists: 'Mantén "Various Artists" en los artistas del álbum',

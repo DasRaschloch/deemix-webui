@@ -3,9 +3,9 @@
 		welcome: 'bem vindo ao deemix',
 		back: 'voltar',
 		loading: 'carregando',
-		download: 'Baixar {0}',
-		by: 'por {0}',
-		in: 'em {0}',
+		download: 'Baixar {thing}',
+		by: 'por {artist}',
+		in: 'em {album}',
 		download_hint: 'Baixar',
 		play_hint: 'Reproduzir',
 		toggle_download_tab_hint: 'Expandir/Diminuir',
@@ -74,7 +74,7 @@
 		download: 'Download Chart'
 	},
 	errors: {
-		title: 'Erros para {0}',
+		title: 'Erros para {name}',
 		ids: {
 			invalidURL: 'URL inválida',
 			unsupportedURL: 'URL não suportada ainda',
@@ -133,7 +133,7 @@
 		startSearching: 'Comece pesquisando!',
 		description:
 			'Você pode pesquisar uma música, um álbum, um artista, uma playlist.... tudo! Você também pode colar um link do Deezer',
-		fans: '{0} fãs',
+		fans: '{n} fãs',
 		noResults: 'Sem resultados',
 		noResultsTrack: 'Nenhuma Faixa encontrada',
 		noResultsAlbum: 'Nenhum Álbum encontrado',
@@ -143,9 +143,9 @@
 	searchbar: 'Pesquise algo (ou apenas cole um link)',
 	downloads: 'downloads',
 	toasts: {
-		addedToQueue: '{0} adicionado à fila',
-		alreadyInQueue: '{0} já está na fila!',
-		finishDownload: '{0} download terminado.',
+		addedToQueue: '{item} adicionado à fila',
+		alreadyInQueue: '{item} já está na fila!',
+		finishDownload: '{item} download terminado.',
 		allDownloaded: 'Todos os downloads foram feitos!',
 		refreshFavs: 'Atualização completa!',
 		loggingIn: 'Logando',
@@ -155,8 +155,8 @@
 		loggedOut: 'Desconectando',
 		cancellingCurrentItem: 'Cancelando item atual.',
 		currentItemCancelled: 'Item atual cancelado.',
-		startAddingArtist: 'Adicionando {0} álbuns à fila',
-		finishAddingArtist: '{0} álbuns adicionados a fila',
+		startAddingArtist: 'Adicionando {artist} álbuns à fila',
+		finishAddingArtist: '{artist} álbuns adicionados a fila',
 		startConvertingSpotifyPlaylist: 'Convertendo faixas do spotify para faixas do deezer',
 		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas'
 	},
@@ -279,7 +279,7 @@
 				nothing: 'Salvar apenas o artista principal',
 				default: 'Usar a especificação padrão',
 				andFeat: 'Usar & e feat.',
-				using: 'Usar "{0}"'
+				using: 'Usar "{separator}"'
 			},
 			singleAlbumArtist: 'Salvar apenas o artista principal',
 			albumVariousArtists: 'Manter "Various Artists" nos Artistas do Álbum',

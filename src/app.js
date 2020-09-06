@@ -167,11 +167,11 @@ socket.on('currentItemCancelled', function(uuid) {
 })
 
 socket.on('startAddingArtist', function(data) {
-	toast(i18n.t('toasts.startAddingArtist', [data.name]), 'loading', false, 'artist_' + data.id)
+	toast(i18n.t('toasts.startAddingArtist', {artist: data.name}), 'loading', false, 'artist_' + data.id)
 })
 
 socket.on('finishAddingArtist', function(data) {
-	toast(i18n.t('toasts.finishAddingArtist', [data.name]), 'done', true, 'artist_' + data.id)
+	toast(i18n.t('toasts.finishAddingArtist', {artist: data.name}), 'done', true, 'artist_' + data.id)
 })
 
 socket.on('startConvertingSpotifyPlaylist', function(id) {
@@ -192,7 +192,7 @@ socket.on('queueError', function(queueItem) {
 })
 
 socket.on('alreadyInQueue', function(data) {
-	toast(i18n.t('toasts.alreadyInQueue', [data.title]), 'playlist_add_check')
+	toast(i18n.t('toasts.alreadyInQueue', {item: data.title}), 'playlist_add_check')
 })
 
 socket.on('loginNeededToDownload', function(data) {

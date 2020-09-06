@@ -30,6 +30,7 @@ const it = {
 			releaseN: '0 dischi | {n} disco | {n} dischi',
 			playlist: 'playlist',
 			compile: 'compilation',
+			bundle: 'bundle',
 			ep: 'ep',
 			more: 'Altri album',
 			featured: 'Compare in',

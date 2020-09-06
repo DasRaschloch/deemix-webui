@@ -32,6 +32,7 @@ const en = {
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
+			bundle: 'bundle | bundles',
 			more: 'More albums',
 			featured: 'Featured in',
 			spotifyPlaylist: 'spotify playlist | spotify playlists',

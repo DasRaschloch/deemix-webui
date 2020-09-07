@@ -2,6 +2,11 @@
 	<div id="about_tab" class="main_tabcontent">
 		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
 		<ul>
+			<li>{{ $t('about.updates.currentVersion') }}: <span v-if="current">{{ current }}</span><span v-else>{{ $t('about.updates.versionNotAvailable') }}</span></li>
+			<li v-if="updateAvailable && latest">{{ $t('about.updates.updateAvailable', {version: latest}) }}</li>
+		</ul>
+
+		<ul>
 			<li v-html="$t('about.usesLibrary')"></li>
 			<li v-html="$t('about.thanks')"></li>
 			<li v-html="$t('about.upToDate')"></li>
@@ -191,13 +196,28 @@ ul {
 }
 </style>
 <script>
+import { socket } from '@/utils/socket'
 import paypal from '@/assets/paypal.svg'
 import ethereum from '@/assets/ethereum.svg'
 
 export default {
 	data: () => ({
 		paypal,
-		ethereum
-	})
+		ethereum,
+		current: null,
+		latest: null,
+		updateAvailable: false
+	}),
+	methods: {
+		initUpdate(data){
+			const { currentCommit, latestCommit, updateAvailable } = data
+			this.current = currentCommit
+			this.latest = latestCommit
+			this.updateAvailable = updateAvailable
+		}
+	},
+	mounted() {
+		socket.on('init_update', this.initUpdate)
+	}
 }
 </script>

@@ -41,6 +41,11 @@ const it = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Versione corrente',
+			versionNotAvailable: 'N/A',
+			updateAvailable: `Non stai usando l'ultima versione disponibile: {version}`
+		},
 		titles: {
 			usefulLinks: 'Link Utili',
 			bugReports: 'Segnalazione di bug',

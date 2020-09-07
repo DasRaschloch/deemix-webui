@@ -11,6 +11,7 @@ import tr from 'svg-country-flags/svg/tr.svg'
 import vn from 'svg-country-flags/svg/vn.svg'
 import hr from 'svg-country-flags/svg/hr.svg'
 import ar from '@/assets/ar.svg'
+import ko from 'svg-country-flags/svg/kr.svg'
 
 export default {
 	it,
@@ -25,5 +26,6 @@ export default {
 	tr,
 	vn,
 	hr,
-	ar
+	ar,
+	ko
 }

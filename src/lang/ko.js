@@ -32,7 +32,7 @@ const ko = {
 			playlist: '재생목록 | 재생목록',
 			compile: '편집 | 편집',
 			ep: 'ep | eps',
-			more: 'More albums',
+			more: '더 많은 앨범',
 			featured: '특집',
 			spotifyPlaylist: '스포티파이 재생목록 | 스포티파이 재생목록',
 			releaseDate: '발매일자',

@@ -3,9 +3,9 @@ const ko = {
 		welcome: '잘왔다, deemix에',
 		back: '뒤로',
 		loading: '불러오는 중',
-		download: '다운로드 {0}',
-		by: 'by {0}',
-		in: 'in {0}',
+		download: '다운로드 {thing}',
+		by: 'by {artist}',
+		in: 'in {album}',
 		download_hint: '다운로드',
 		play_hint: '재생',
 		toggle_download_tab_hint: '펼치기/접기',
@@ -81,7 +81,7 @@ const ko = {
 		download: '차트 다운로드'
 	},
 	errors: {
-		title: '오류 발생: {0}',
+		title: '오류 발생: {name}',
 		ids: {
 			unsupportedURL: 'URL 지원 누락',
 			invalidURL: 'URL 인식 실패',
@@ -138,7 +138,7 @@ const ko = {
 	search: {
 		startSearching: '검색 중입니다!',
 		description: '트랙, 아티스트, 재생목록, Deezer 링크 등으로 검색할 수 있습니다!',
-		fans: '{0}명의 팬들',
+		fans: '{n}명의 팬들',
 		noResults: '결과 없음',
 		noResultsTrack: '발견된 트랙 없음',
 		noResultsAlbum: '발견된 앨범 없음',
@@ -150,10 +150,10 @@ const ko = {
 	toasts: {
 		restoringQueue: '다운로드 대기 열 복원중...',
 		queueRestored: '다운로드 대기 열이 복원되었습니다!',
-		addedToQueue: '대기열에 {0}(이)가 추가되었습니다',
-		addedMoreToQueue: '대기열에 {0} 항목이 추가되었습니다',
-		alreadyInQueue: '{0}(이)가 이미 대기열에 존재합니다!',
-		finishDownload: '{0} 항목이 다운로드 완료되었습니다.',
+		addedToQueue: '대기열에 {item}(이)가 추가되었습니다',
+		addedMoreToQueue: '대기열에 {n} 항목이 추가되었습니다',
+		alreadyInQueue: '{item}(이)가 이미 대기열에 존재합니다!',
+		finishDownload: '{item} 항목이 다운로드 완료되었습니다.',
 		allDownloaded: '모든 다운로드가 완료되었습니다!',
 		refreshFavs: '새로고침이 완료되었습니다!',
 		loggingIn: '로그인 하는 중...',
@@ -163,8 +163,8 @@ const ko = {
 		loggedOut: '로그아웃 하였습니다',
 		cancellingCurrentItem: '현재 항목을 취소 중입니다.',
 		currentItemCancelled: '항목이 취소되었습니다.',
-		startAddingArtist: '{0} 앨범을 대기열에 추가 중입니다',
-		finishAddingArtist: '{0} 앨범이 대기열에 추가되었습니다',
+		startAddingArtist: '{artist} 앨범을 대기열에 추가 중입니다',
+		finishAddingArtist: '{artist} 앨범이 대기열에 추가되었습니다',
 		startConvertingSpotifyPlaylist: '스포티파이 트랙을 Deezer 트랙으로 전환 중입니다',
 		finishConvertingSpotifyPlaylist: '스프토파이 재생 목록이 전환되었습니다',
 		loginNeededToDownload: '트랙을 다운로드하려면 로그인이 필요합니다!'
@@ -293,7 +293,7 @@ const ko = {
 				nothing: '주요 아티스트만 저장',
 				default: '표준 스펙을 사용',
 				andFeat: '& 기호와 feat 사용.',
-				using: '"{0}" 사용'
+				using: '"{separator}" 사용'
 			},
 			singleAlbumArtist: '주요 앨범 아티스트만 저장',
 			albumVariousArtists: '앨범 아티스트에 "Various Artists"(다양한 아티스트들) 유지',

@@ -15,6 +15,7 @@ import tr from '@/lang/tr'
 import vn from '@/lang/vn'
 import hr from '@/lang/hr'
 import ar from '@/lang/ar'
+import ko from '@/lang/ko'
 
 Vue.use(VueI18n)
 
@@ -35,7 +36,8 @@ const locales = {
 	tr,
 	vn,
 	hr,
-	ar
+	ar,
+	ko
 }
 
 const i18n = new VueI18n({

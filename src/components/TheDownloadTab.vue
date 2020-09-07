@@ -127,7 +127,7 @@ export default {
 						item.silent = true
 						this.addToQueue(item)
 					});
-					toast(this.$t('toasts.addedMoreToQueue', [queueItem.length]), 'playlist_add_check')
+					toast(this.$t('toasts.addedMoreToQueue', {n: queueItem.length}), 'playlist_add_check')
 					return
 				}else{
 					queueItem = queueItem[0]
@@ -205,7 +205,7 @@ export default {
 			}
 
 			if (!queueItem.silent) {
-				toast(this.$t('toasts.addedToQueue', [queueItem.title]), 'playlist_add_check')
+				toast(this.$t('toasts.addedToQueue', {item: queueItem.title}), 'playlist_add_check')
 			}
 		},
 		updateQueue(update) {
@@ -302,7 +302,7 @@ export default {
 		},
 		finishDownload(uuid) {
 			if (this.queue.indexOf(uuid) > -1) {
-				toast(this.$t('toasts.finishDownload', [this.queueList[uuid].title]), 'done')
+				toast(this.$t('toasts.finishDownload', {item: this.queueList[uuid].title}), 'done')
 
 				$('#bar_' + uuid).css('width', '100%')
 

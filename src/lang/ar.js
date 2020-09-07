@@ -3,9 +3,9 @@ const ar = {
 		welcome: 'مرحبأ بك في ديمكس',
 		back: 'رجوع',
 		loading: 'جار التحميل',
-		download: 'تحميل {0}',
-		by: 'بواسطة {0}',
-		in: 'في {0}',
+		download: 'تحميل {thing}',
+		by: 'بواسطة {artist}',
+		in: 'في {album}',
 		download_hint: 'تحميل',
 		play_hint: 'تشغيل',
 		toggle_download_tab_hint: 'عرض/اخفاء',
@@ -74,7 +74,7 @@ const ar = {
 		download: 'تحميل قائمة الجدول'
 	},
 	errors: {
-		title: 'خطأ في {0}',
+		title: 'خطأ في {name}',
 		ids: {
 			invalidURL: 'الرابط غير صحيح',
 			unsupportedURL: 'الرابط غير متاح حتى الانً',
@@ -133,7 +133,7 @@ const ar = {
 		startSearching: 'ابدأ البحث!',
 		description:
 			'يمكنك البحث عن مقطع ، ألبوم كامل ، فنان ، قائمة تشغيل .... كل شيء! يمكنك أيضًا لصق رابط ديزر',
-		fans: '{0} متابعون',
+		fans: '{n} متابعون',
 		noResults: 'لا يوجد نتائج',
 		noResultsTrack: 'لم يتم العثور على مقاطع',
 		noResultsAlbum: 'لم يتم العثور على البومات',
@@ -143,9 +143,9 @@ const ar = {
 	searchbar: 'ابحث عن أي شيء تريده (أو الصق رابط)',
 	downloads: 'التحميلات',
 	toasts: {
-		addedToQueue: '{0} تمت إلأضافة إلى قائمة الانتظار',
-		alreadyInQueue: '{0} حالياً  في قائمة الانتظار!',
-		finishDownload: '{0} انتهى تحميل.',
+		addedToQueue: '{item} تمت إلأضافة إلى قائمة الانتظار',
+		alreadyInQueue: '{item} حالياً  في قائمة الانتظار!',
+		finishDownload: '{item} انتهى تحميل.',
 		allDownloaded: 'اكتملت جميع التنزيلات!',
 		refreshFavs: 'اكتمل التحديث!',
 		loggingIn: 'جار تسجيل الدخول...',
@@ -155,8 +155,8 @@ const ar = {
 		loggedOut: 'تم تسجيل الخروج',
 		cancellingCurrentItem: 'جار الغاء العنصر الحالي.',
 		currentItemCancelled: 'تم الغاء العنصر الحالي.',
-		startAddingArtist: 'جار اضافة {0} البوم الى قائمة الانتضار',
-		finishAddingArtist: 'تم اضافة {0} البوم الى قائمة الانتضار',
+		startAddingArtist: 'جار اضافة {artist} البوم الى قائمة الانتضار',
+		finishAddingArtist: 'تم اضافة {artist} البوم الى قائمة الانتضار',
 		startConvertingSpotifyPlaylist: 'جار تحويل مقاطع سبوتفاي الى مقاطع ديزر',
 		finishConvertingSpotifyPlaylist: 'تم تحويل قائمة تشغيل سبوتفاي',
 		loginNeededToDownload: 'يجب عليك تسجيل الدخول لتحميل المقاطع!'
@@ -281,7 +281,7 @@ const ar = {
 				nothing: 'احفظ الفنان الرئيسي فقط',
 				default: 'استخدام المواصفات القياسية',
 				andFeat: 'استخدام& و feat.',
-				using: 'استخدام "{0}"'
+				using: 'استخدام "{separator}"'
 			},
 			singleAlbumArtist: 'احفظ فقط فنان الألبوم الرئيسي',
 			albumVariousArtists: 'احتفظ بـ "فنانين متنوعين" في ألبوم الفنانين',

@@ -3,9 +3,9 @@ const ru = {
 		welcome: 'Добро пожаловать в deemix',
 		back: 'назад',
 		loading: 'загрузка',
-		download: 'Скачать {0}',
-		by: '{0}',
-		in: 'из {0}',
+		download: 'Скачать {thing}',
+		by: '{artist}',
+		in: 'из {album}',
 		download_hint: 'Скачать',
 		play_hint: 'Прослушать',
 		toggle_download_tab_hint: 'Показать/Скрыть',
@@ -81,7 +81,7 @@ const ru = {
 		download: 'Скачать чарт'
 	},
 	errors: {
-		title: 'Ошибки {0}',
+		title: 'Ошибки {name}',
 		ids: {
 			invalidURL: 'URL не распознан',
 			unsupportedURL: 'URL не поддерживается',
@@ -138,7 +138,7 @@ const ru = {
 	search: {
 		startSearching: 'Начните искать!',
 		description: 'Здесь можно найти трек, альбом, исполнителя, плейлист... всё! Можно также вставить ссылку Deezer',
-		fans: '{0} поклонников',
+		fans: '{n} поклонников',
 		noResults: 'Нет результатов',
 		noResultsTrack: 'Треков не найдено',
 		noResultsAlbum: 'Альбомов не найдено',
@@ -150,10 +150,10 @@ const ru = {
 	toasts: {
 		restoringQueue: 'Восстановление очереди загрузок...',
 		queueRestored: 'Очередь восстановлена!',
-		addedToQueue: '{0} добавлено в очередь',
-		addedMoreToQueue: '{0} загрузок добавлены в очередь',
-		alreadyInQueue: '{0} уже присутствует в очереди!',
-		finishDownload: 'Загрузка {0} завершена.',
+		addedToQueue: '{item} добавлено в очередь',
+		addedMoreToQueue: '{n} загрузок добавлены в очередь',
+		alreadyInQueue: '{item} уже присутствует в очереди!',
+		finishDownload: 'Загрузка {item} завершена.',
 		allDownloaded: 'Все загрузки завершены!',
 		refreshFavs: 'Обновление завершено!',
 		loggingIn: 'Вход...',
@@ -163,8 +163,8 @@ const ru = {
 		loggedOut: 'Вы вышли из аккаунта',
 		cancellingCurrentItem: 'Отмена текущей загрузки.',
 		currentItemCancelled: 'Отменено.',
-		startAddingArtist: 'Добавление альбомов {0} в очередь',
-		finishAddingArtist: 'Альбомы {0} добавлены в очередь',
+		startAddingArtist: 'Добавление альбомов {artist} в очередь',
+		finishAddingArtist: 'Альбомы {artist} добавлены в очередь',
 		startConvertingSpotifyPlaylist: 'Добавление плейлиста Spotify в очередь',
 		finishConvertingSpotifyPlaylist: 'Spotify плейлист добавлен в очередь',
 		loginNeededToDownload: 'Войдите в аккаунт, чтобы скачивать треки!'
@@ -293,7 +293,7 @@ const ru = {
 				nothing: 'Сохранить только основного',
 				default: 'Используя стандартную спецификацию',
 				andFeat: 'Используя & и feat.',
-				using: 'Используя "{0}"'
+				using: 'Используя "{separator}"'
 			},
 			singleAlbumArtist: 'Сохранить только основного исполнителя альбома',
 			albumVariousArtists: 'Оставить "Various Artists" в исполнителях альбома',

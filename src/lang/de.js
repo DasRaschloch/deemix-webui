@@ -3,9 +3,9 @@ const de = {
 		welcome: 'Willkommen bei deemix',
 		back: 'zurück',
 		loading: 'lädt',
-		download: 'Download {0}',
-		by: 'von {0}',
-		in: 'in {0}',
+		download: 'Download {thing}',
+		by: 'von {artist}',
+		in: 'in {album}',
 		download_hint: 'Download',
 		play_hint: 'Play',
 		toggle_download_tab_hint: 'Erweitern/Minimieren',
@@ -71,7 +71,7 @@ const de = {
 		download: 'Download Chart'
 	},
 	errors: {
-		title: 'Errors für {0}',
+		title: 'Errors für {name}',
 		ids: {
 			invalidURL: 'URL nicht erkannt',
 			unsupportedURL: 'URL noch nicht unterstützt',
@@ -128,7 +128,7 @@ const de = {
 	search: {
 		startSearching: 'Suche starten!',
 		description: 'Du kannst einen Titel, ein ganzes Album, einen Künstler, eine Playlist suchen ... alles! Du kannst auch einen Deezer-Link einfügen',
-		fans: '{0} Fans',
+		fans: '{n} Fans',
 		noResults: 'Keine Ergebnisse',
 		noResultsTrack: 'Keine Tracks gefunden',
 		noResultsAlbum: 'Keine Alben gefunden',
@@ -138,9 +138,9 @@ const de = {
 	searchbar: 'Suche nach allem, was dir gefällt (oder füge einfach einen Link ein)',
 	downloads: 'Downloads',
 	toasts: {
-		addedToQueue: '{0} zur Warteschlange hinzugefügt',
-		alreadyInQueue: '{0} ist bereits in der Warteschlange!',
-		finishDownload: '{0} vollständig heruntergeladen.',
+		addedToQueue: '{item} zur Warteschlange hinzugefügt',
+		alreadyInQueue: '{item} ist bereits in der Warteschlange!',
+		finishDownload: '{item} vollständig heruntergeladen.',
 		allDownloaded: 'Alle Downloads abgeschlossen!',
 		refreshFavs: 'Abgeschlossene Downloads neu laden!',
 		loggingIn: 'Einloggen',
@@ -150,8 +150,8 @@ const de = {
 		loggedOut: 'Ausgeloggt',
 		cancellingCurrentItem: 'Aktuelle Auswahl abbrechen.',
 		currentItemCancelled: 'Aktuelle Auswahl wurde abgebrochen',
-		startAddingArtist: '{0} Alben werden hinzugefügt',
-		finishAddingArtist: '{0} Alben wurden hinzugefügt',
+		startAddingArtist: '{artist} Alben werden hinzugefügt',
+		finishAddingArtist: '{artist} Alben wurden hinzugefügt',
 		startConvertingSpotifyPlaylist: 'Konvertierern von Spotify-Tracks zu Deezer-Tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert'
 	},
@@ -276,7 +276,7 @@ const de = {
 				nothing: 'Speichere nur den Hauptkünstler',
 				default: 'Verwende Standard Spezifikationen',
 				andFeat: 'Verwende & und feat.',
-				using: 'Verwende "{0}"'
+				using: 'Verwende "{separator}"'
 			},
 			singleAlbumArtist: 'Nur den Hauptkünstler speichern',
 			albumVariousArtists: 'Verschiedene Künstler" im Album Künstler Tag behalten',

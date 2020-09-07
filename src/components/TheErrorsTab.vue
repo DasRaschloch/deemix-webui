@@ -1,6 +1,6 @@
 <template>
 	<div id="errors_tab" class="main_tabcontent">
-		<h1>{{ $t('errors.title', [title]) }}</h1>
+		<h1>{{ $t('errors.title', {name: title}) }}</h1>
 		<table class="table table--tracklist">
 			<tr>
 				<th>ID</th>

@@ -3,9 +3,9 @@ const fr = {
 		welcome: 'Bienvenue dans deemix',
 		back: 'retour',
 		loading: 'chargement en cours',
-		download: 'Télécharger {0}',
-		by: 'par {0}',
-		in: 'dans {0}',
+		download: 'Télécharger {thing}',
+		by: 'par {artist}',
+		in: 'dans {album}',
 		download_hint: 'Télécharger',
 		play_hint: 'Lire',
 		toggle_download_tab_hint: 'Développer/Réduire',
@@ -81,7 +81,7 @@ const fr = {
 		download: 'Télécharger Le Classement'
 	},
 	errors: {
-		title: 'Erreurs pour {0}',
+		title: 'Erreurs pour {name}',
 		ids: {
 			invalidURL: "Cette URL n'est pas reconnue",
 			unsupportedURL: "Cette URL n'est actuellement pas supportée",
@@ -138,7 +138,7 @@ const fr = {
 	search: {
 		startSearching: 'Démarrer la recherche !',
 		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ce que vous voulez ! Vous pouvez également copier-coller un lien Deezer',
-		fans: '{0} fans',
+		fans: '{n} fans',
 		noResults: 'Aucun résultat',
 		noResultsTrack: "Aucune piste n'a été trouvée",
 		noResultsAlbum: "Aucun album n'a été trouvé",
@@ -150,10 +150,10 @@ const fr = {
 	toasts: {
 		restoringQueue: "Restauration de la file d'attente de téléchargement...",
 		queueRestored: "La file d'attente de téléchargement a été restaurée !",
-		addedToQueue: "{0} ajouté à la file d'attente",
-		addedMoreToQueue: "{0} éléments ajoutés à la file d'attente",
-		alreadyInQueue: "{0} est déjà dans la file d'attente !",
-		finishDownload: '{0} a été téléchargé.',
+		addedToQueue: "{item} ajouté à la file d'attente",
+		addedMoreToQueue: "{n} éléments ajoutés à la file d'attente",
+		alreadyInQueue: "{item} est déjà dans la file d'attente !",
+		finishDownload: '{item} a été téléchargé.',
 		allDownloaded: 'Tous les téléchargements sont terminés !',
 		refreshFavs: 'Actualisation terminée !',
 		loggingIn: 'Connexion en cours...',
@@ -163,8 +163,8 @@ const fr = {
 		loggedOut: 'Déconnecté',
 		cancellingCurrentItem: "Annulation de l'élément actuel.",
 		currentItemCancelled: 'Élément actuel annulé.',
-		startAddingArtist: "Ajout de {0} albums à la file d'attente",
-		finishAddingArtist: "{0} albums ajoutés à la file d'attente",
+		startAddingArtist: "Ajout de {artist} albums à la file d'attente",
+		finishAddingArtist: "{artist} albums ajoutés à la file d'attente",
 		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en équivalents Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
 		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !'
@@ -293,7 +293,7 @@ const fr = {
 				nothing: "Enregistrer uniquement l'artiste principal",
 				default: 'En utilisant la spécification standard',
 				andFeat: 'En utilisant & et feat.',
-				using: 'En utilisant "{0}"'
+				using: 'En utilisant "{separator}"'
 			},
 			singleAlbumArtist: "Enregistrer uniquement l'artiste principal de l'album",
 			albumVariousArtists: `Conserver "Various Artists" dans les Artistes de l'Album`,

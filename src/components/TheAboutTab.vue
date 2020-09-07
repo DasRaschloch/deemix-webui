@@ -3,6 +3,7 @@
 		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
 		<ul>
 			<li>{{ $t('about.updates.currentVersion') }}: <span v-if="current">{{ current }}</span><span v-else>{{ $t('about.updates.versionNotAvailable') }}</span></li>
+			<li>{{ $t('about.updates.deemixVersion') }}: {{ deemixVersion }}</li>
 			<li v-if="updateAvailable && latest">{{ $t('about.updates.updateAvailable', {version: latest}) }}</li>
 		</ul>
 
@@ -206,14 +207,16 @@ export default {
 		ethereum,
 		current: null,
 		latest: null,
-		updateAvailable: false
+		updateAvailable: false,
+		deemixVersion: null
 	}),
 	methods: {
 		initUpdate(data){
-			const { currentCommit, latestCommit, updateAvailable } = data
+			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = data
 			this.current = currentCommit
 			this.latest = latestCommit
 			this.updateAvailable = updateAvailable
+			this.deemixVersion = deemixVersion
 		}
 	},
 	mounted() {

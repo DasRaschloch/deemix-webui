@@ -44,7 +44,8 @@ const en = {
 		updates: {
 			currentVersion: 'Current Version',
 			versionNotAvailable: 'N/A',
-			updateAvailable: `You're not running the latest version available: {version}`
+			updateAvailable: `You're not running the latest version available: {version}`,
+			deemixVersion: 'deemix lib version'
 		},
 		titles: {
 			usefulLinks: 'Useful Links',

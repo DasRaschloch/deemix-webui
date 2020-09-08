@@ -151,7 +151,7 @@ const fr = {
 		noResultsAlbum: "Aucun album n'a été trouvé",
 		noResultsArtist: "Aucun artiste n'a été trouvé",
 		noResultsPlaylist: "Aucune playlist n'a été trouvée"
-	},Le
+	},
 	searchbar: 'Saisissez une requête (ou collez simplement un lien)',
 	downloads: 'téléchargements',
 	toasts: {

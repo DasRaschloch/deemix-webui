@@ -3,7 +3,7 @@ const ko = {
 		welcome: '잘왔다, deemix에',
 		back: '뒤로',
 		loading: '불러오는 중',
-		download: '다운로드 {thing}',
+		download: '{thing} 다운로드',
 		by: 'by {artist}',
 		in: 'in {album}',
 		download_hint: '다운로드',
@@ -30,7 +30,7 @@ const ko = {
 			trackN: '0 트랙 | {n} 트랙 | {n} 트랙',
 			releaseN: '0 발매 | {n} 발매 | {n} 발매',
 			playlist: '재생목록 | 재생목록',
-			compile: '편집 | 편집',
+			compile: '편찬물 | 편찬물',
 			ep: 'ep | eps',
 			more: '더 많은 앨범',
 			featured: '특집',
@@ -69,10 +69,10 @@ const ko = {
 		acceptFeatures: `복잡하지 않은 기능 추가도 받습니다, 라이브러리가 아닌 앱에서 직접 구현할 수 있는 것으로요.`,
 		otherLanguages: `당신이 다른 프로그램 언어에 능통하면, 이 deemix 프로그램을 다른 프로그래밍 언어로 포팅할 수도 있습니다!`,
 		understandingCode: `코드를 이해하는 데 도움이 필요합니까? 위에 있는 RemixDev, 텔레그램, 서브레딧 링크를 누르세요.`,
-		contributeWebUI: `만약 당신이 Vue.js (JavaScript), HTML 또는 CSS 개발자라면 the <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>에 도움을 주세요.`,
+		contributeWebUI: `만약 당신이 Vue.js (JavaScript), HTML 또는 CSS 개발자라면 <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>에 도움을 주세요.`,
 		itsFree: `사용하기 전에 이 프로그램이 <strong>무료 프로젝트</strong>이고 개발자를 지원하기 전에 <strong>예술가들</strong>을 먼저 지원해야 함을 기억하세요.`,
 		notObligated: `기부는 프로젝트를 지속할 수 있는 동력이 됩니다!`,
-		lincensedUnder: `이 작업이 요구하고 있는 라이센스는 아래와 같습니다
+		lincensedUnder: `이 작업이 요구하고 있는 라이센스는 아래와 같습니다<br>
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
 	},
 	charts: {
@@ -136,7 +136,7 @@ const ko = {
 		}
 	},
 	search: {
-		startSearching: '검색 중입니다!',
+		startSearching: '검색을 해보세요!',
 		description: '트랙, 아티스트, 재생목록, Deezer 링크 등으로 검색할 수 있습니다!',
 		fans: '{n}명의 팬들',
 		noResults: '결과 없음',
@@ -285,7 +285,7 @@ const ko = {
 		},
 		other: {
 			title: '기타',
-			savePlaylistAsCompilation: '재생목록을 편집으로 저장',
+			savePlaylistAsCompilation: '재생목록을 편찬물로 저장',
 			useNullSeparator: 'null 구분자 사용',
 			saveID3v1: 'ID3v1 태그 형식으로 저장',
 			multiArtistSeparator: {
@@ -351,7 +351,7 @@ const ko = {
 		about: '정보'
 	},
 	tracklist: {
-		downloadSelection: '다운로드 구간'
+		downloadSelection: '선택 다운로드'
 	}
 }
 

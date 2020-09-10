@@ -192,7 +192,8 @@ const it = {
 				question: 'Come ottengo il mio ARL?',
 				update: 'Aggiorna ARL'
 			},
-			logout: 'Disconnettiti'
+			logout: 'Disconnettiti',
+			login: 'Accedi tramite deezer.com'
 		},
 		appearance: {
 			title: 'Aspetto',
@@ -345,7 +346,8 @@ const it = {
 			title: 'Spotify Features',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify username',
+			question: 'Come attivo le Spotify Features?'
 		},
 		reset: 'Reimposta Default',
 		save: 'Salva',

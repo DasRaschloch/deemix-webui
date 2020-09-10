@@ -186,7 +186,8 @@ const en = {
 				question: 'How do I get my own ARL?',
 				update: 'Update ARL'
 			},
-			logout: 'Logout'
+			logout: 'Logout',
+			login: 'Login via deezer.com'
 		},
 		appearance: {
 			title: 'Appearance',
@@ -339,7 +340,8 @@ const en = {
 			title: 'Spotify Features',
 			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify Username'
+			username: 'Spotify Username',
+			question: 'How do I enable Spotify Features?'
 		},
 		reset: 'Reset to Default',
 		save: 'Save',

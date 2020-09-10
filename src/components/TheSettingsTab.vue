@@ -27,7 +27,7 @@
 				{{ $t('settings.login.arl.question') }}
 			</a>
 			<a id="settings_btn_applogin" class="hide" href="#" @click="applogin">
-				Automated login
+				{{ $t('settings.login.login') }}
 			</a>
 			<button id="settings_btn_updateArl" @click="login" style="width: 100%;">
 				{{ $t('settings.login.arl.update') }}
@@ -560,6 +560,9 @@
 				</svg>
 				{{ $t('settings.spotify.title') }}
 			</h3>
+			<a href="https://codeberg.org/RemixDev/deemix/wiki/Enabling-Spotify-Features" target="_blank">
+				{{ $t('settings.spotify.question') }}
+			</a>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.spotify.clientID') }}</p>

@@ -396,6 +396,10 @@
 						<span class="checkbox_text">{{ $t('settings.tags.lyrics') }}</span>
 					</label>
 					<label class="with_checkbox">
+						<input type="checkbox" v-model="settings.tags.syncedLyrics" />
+						<span class="checkbox_text">{{ $t('settings.tags.syncedLyrics') }}</span>
+					</label>
+					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.copyright" />
 						<span class="checkbox_text">{{ $t('settings.tags.copyright') }}</span>
 					</label>

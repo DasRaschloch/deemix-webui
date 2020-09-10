@@ -286,6 +286,7 @@ const en = {
 			replayGain: 'Replay Gain',
 			label: 'Album Label',
 			lyrics: 'Unsynchronized Lyrics',
+			syncedLyrics: 'Synchronized Lyrics',
 			copyright: 'Copyright',
 			composer: 'Composer',
 			involvedPeople: 'Involved People'

@@ -292,6 +292,7 @@ const it = {
 			replayGain: 'Replay gain',
 			label: 'Casa Discografica',
 			lyrics: 'Testo non Sincronizzato',
+			syncedLyrics: 'Testo Sincronizzato',
 			copyright: 'Copyright',
 			composer: 'Compositori',
 			involvedPeople: 'Persone Coinvolte'

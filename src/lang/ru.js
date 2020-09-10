@@ -32,6 +32,7 @@ const ru = {
 			playlist: 'плейлист | плейлисты | плейлисты',
 			compile: 'сплит | сплиты | сплиты',
 			ep: 'ep',
+			bundle: 'бандл | бандлы | бандлы',
 			more: 'Больше альбомов',
 			featured: 'Представлено в',
 			spotifyPlaylist: 'плейлист spotify | плейлисты spotify | плейлисты spotify',
@@ -40,6 +41,12 @@ const ru = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Текущая версия',
+			versionNotAvailable: 'Н/Д',
+			updateAvailable: `Вы используете не последнюю доступную версию: {version}`,
+			deemixVersion: 'Версия библиотеки deemix'
+		},
 		titles: {
 			usefulLinks: 'Полезные ссылки',
 			bugReports: 'Отчёты об ошибках',

@@ -186,7 +186,8 @@ const fr = {
 				question: 'Comment obtenir mon ARL personnel ?',
 				update: "Mettre à jour l'ARL"
 			},
-			logout: 'Déconnexion'
+			logout: 'Déconnexion',
+			login: 'Connexion via deezer.com'
 		},
 		appearance: {
 			title: 'Apparence',
@@ -286,6 +287,7 @@ const fr = {
 			replayGain: 'Gain En Relecture (Replay Gain)',
 			label: "Label De l'Album",
 			lyrics: 'Paroles Non-Synchronisées',
+			syncedLyrics: 'Paroles Synchronisées',
 			copyright: "Droits d'Auteur (Copyright)",
 			composer: 'Compositeur',
 			involvedPeople: 'Personnes Impliquées'
@@ -338,7 +340,8 @@ const fr = {
 			title: 'Fonctionnalités Spotify',
 			clientID: 'clientID Spotify',
 			clientSecret: 'Client Secret Spotify',
-			username: "Nom d'utilisateur Spotify"
+			username: "Nom d'utilisateur Spotify",
+			question: 'Comment activer les Fonctionnalités Spotify ?'
 		},
 		reset: 'Rétablir les valeurs par défaut',
 		save: 'Sauvegarder',
@@ -353,7 +356,7 @@ const fr = {
 		search: 'recherche',
 		charts: 'classements',
 		favorites: 'favoris',
-		linkAnalyzer: 'analyseur de liens',
+		linkAnalyzer: 'analyseur de lien',
 		settings: 'paramètres',
 		about: 'à propos'
 	},

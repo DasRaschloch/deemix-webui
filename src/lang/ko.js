@@ -244,8 +244,8 @@ const ko = {
 			coverImageTemplate: '커버 이름 템플릿',
 			saveArtworkArtist: '아티스트 이미지 저장',
 			artistImageTemplate: '아티스트 이미지 템플릿',
-			localArtworkSize: '별도 그림 크기',
-			embeddedArtworkSize: '내장된 그림 크기',
+			localArtworkSize: '외부 저장 그림 크기',
+			embeddedArtworkSize: '내부 저장 그림 크기',
 			localArtworkFormat: {
 				title: '별도로 저장할 그림의 형식을 무엇으로 하시겠습니까?',
 				jpg: 'jpeg 이미지',

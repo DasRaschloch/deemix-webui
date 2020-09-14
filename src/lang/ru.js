@@ -186,7 +186,7 @@ const ru = {
 				question: 'Как узнать свой ARL?',
 				update: 'Обновить ARL'
 			},
-			logout: 'Выйти'
+			logout: 'Выйти',
 			login: 'Войти через deezer.com'
 		},
 		appearance: {
@@ -340,7 +340,7 @@ const ru = {
 			title: 'Настройки Spotify',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify username',
 			question: 'Как включить функции Spotify?'
 		},
 		reset: 'По умолчанию',

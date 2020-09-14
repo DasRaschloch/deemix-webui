@@ -187,6 +187,7 @@ const ru = {
 				update: 'Обновить ARL'
 			},
 			logout: 'Выйти'
+			login: 'Войти через deezer.com'
 		},
 		appearance: {
 			title: 'Внешний вид',
@@ -286,6 +287,7 @@ const ru = {
 			replayGain: 'Replay Gain',
 			label: 'Издатель',
 			lyrics: 'Текст песни',
+			syncedLyrics: 'Синхрон. текст песни',
 			copyright: 'Права (копирайт)',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди'
@@ -339,6 +341,7 @@ const ru = {
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
 			username: 'Spotify username'
+			question: 'Как включить функции Spotify?'
 		},
 		reset: 'По умолчанию',
 		save: 'Сохранить',

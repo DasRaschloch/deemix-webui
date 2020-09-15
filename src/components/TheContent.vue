@@ -3,7 +3,8 @@
 	<section id="content">
 		<div id="container">
 			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
-			<router-view></router-view>
+
+			<router-view v-show="!loading"></router-view>
 		</div>
 	</section>
 </template>
@@ -54,7 +55,6 @@ export default {
 	}),
 	mounted() {
 		this.$root.$on('updateSearchLoadingState', loading => {
-			console.log({ loading })
 			this.loading = loading
 		})
 	}

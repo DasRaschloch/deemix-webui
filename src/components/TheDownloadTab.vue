@@ -91,6 +91,11 @@ export default {
 			switch (icon) {
 				case 'remove':
 					socket.emit('removeFromQueue', uuid)
+					if ($(`#bar_${uuid}`).hasClass('indeterminate')){
+						$(`#download_${uuid}`).remove()
+					}else{
+						target.innerHTML = `<div class="circle-loader"></div>`
+					}
 					break
 				default:
 			}
@@ -251,7 +256,7 @@ export default {
 
 			if (index > -1) {
 				this.queue.splice(index, 1)
-				$(`#download_${this.queueList[uuid].uuid}`).remove()
+				$(`#download_${uuid}`).remove()
 				delete this.queueList[uuid]
 			}
 		},

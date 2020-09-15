@@ -15,14 +15,40 @@
 			:title="$t('globals.toggle_download_tab_hint')"
 		></i>
 		<div id="queue_buttons">
-			<i id="open_downloads_folder" class="material-icons download_bar_icon hide" :title="$t('globals.open_downloads_folder')" @click="openDownloadsFolder">folder_open</i>
-			<i id="clean_queue" class="material-icons download_bar_icon" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">clear_all</i>
-			<i id="cancel_queue" class="material-icons download_bar_icon" @click="cancelQueue" :title="$t('globals.cancel_queue_hint')">delete_sweep</i>
+			<i
+				id="open_downloads_folder"
+				class="material-icons download_bar_icon hide"
+				:title="$t('globals.open_downloads_folder')"
+				@click="openDownloadsFolder"
+			>
+				folder_open
+			</i>
+			<i
+				id="clean_queue"
+				class="material-icons download_bar_icon"
+				@click="cleanQueue"
+				:title="$t('globals.clean_queue_hint')"
+			>
+				clear_all
+			</i>
+			<i
+				id="cancel_queue"
+				class="material-icons download_bar_icon"
+				@click="cancelQueue"
+				:title="$t('globals.cancel_queue_hint')"
+			>
+				delete_sweep
+			</i>
 		</div>
 		<div id="download_list" @click="handleListClick" ref="list"></div>
 	</div>
 </template>
 
+<style lang="scss" scoped>
+#download_tab_container {
+	height: 100vh;
+}
+</style>
 <script>
 import $ from 'jquery'
 import { socket } from '@/utils/socket'
@@ -91,9 +117,9 @@ export default {
 			switch (icon) {
 				case 'remove':
 					socket.emit('removeFromQueue', uuid)
-					if ($(`#bar_${uuid}`).hasClass('indeterminate')){
+					if ($(`#bar_${uuid}`).hasClass('indeterminate')) {
 						$(`#download_${uuid}`).remove()
-					}else{
+					} else {
 						target.innerHTML = `<div class="circle-loader"></div>`
 					}
 					break
@@ -101,7 +127,13 @@ export default {
 			}
 		},
 		initQueue(data) {
-			const { queue: initQueue, queueComplete: initQueueComplete, currentItem, queueList: initQueueList, restored } = data
+			const {
+				queue: initQueue,
+				queueComplete: initQueueComplete,
+				currentItem,
+				queueList: initQueueList,
+				restored
+			} = data
 
 			if (initQueueComplete.length) {
 				initQueueComplete.forEach(item => {
@@ -120,21 +152,21 @@ export default {
 				this.addToQueue(initQueueList[item])
 			})
 
-			if (restored){
+			if (restored) {
 				toast(this.$t('toasts.queueRestored'), 'done', true, 'restoring_queue')
 				socket.emit('queueRestored')
 			}
 		},
 		addToQueue(queueItem, current = false) {
-			if (Array.isArray(queueItem)){
-				if (queueItem.length > 1){
+			if (Array.isArray(queueItem)) {
+				if (queueItem.length > 1) {
 					queueItem.forEach((item, i) => {
 						item.silent = true
 						this.addToQueue(item)
-					});
-					toast(this.$t('toasts.addedMoreToQueue', {n: queueItem.length}), 'playlist_add_check')
+					})
+					toast(this.$t('toasts.addedMoreToQueue', { n: queueItem.length }), 'playlist_add_check')
 					return
-				}else{
+				} else {
 					queueItem = queueItem[0]
 				}
 			}
@@ -210,7 +242,7 @@ export default {
 			}
 
 			if (!queueItem.silent) {
-				toast(this.$t('toasts.addedToQueue', {item: queueItem.title}), 'playlist_add_check')
+				toast(this.$t('toasts.addedToQueue', { item: queueItem.title }), 'playlist_add_check')
 			}
 		},
 		updateQueue(update) {
@@ -247,7 +279,7 @@ export default {
 				}
 
 				if (conversion) {
-					$('#bar_' + uuid).css('width', (100-conversion) + '%')
+					$('#bar_' + uuid).css('width', 100 - conversion + '%')
 				}
 			}
 		},
@@ -273,7 +305,7 @@ export default {
 				this.queueList = {}
 				this.queueList[currentItem] = tempQueueItem
 
-				$('.download_object').each(function(index) {
+				$('.download_object').each(function (index) {
 					if ($(this).attr('id') != 'download_' + currentItem) $(this).remove()
 				})
 			}
@@ -307,7 +339,7 @@ export default {
 		},
 		finishDownload(uuid) {
 			if (this.queue.indexOf(uuid) > -1) {
-				toast(this.$t('toasts.finishDownload', {item: this.queueList[uuid].title}), 'done')
+				toast(this.$t('toasts.finishDownload', { item: this.queueList[uuid].title }), 'done')
 
 				$('#bar_' + uuid).css('width', '100%')
 
@@ -382,5 +414,3 @@ export default {
 }
 </script>
 
-<style>
-</style>

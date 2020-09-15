@@ -29,7 +29,12 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{ `${$t('globals.by', {artist: release.user.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+						{{
+							`${$t('globals.by', { artist: release.user.name })} - ${$tc(
+								'globals.listTabs.trackN',
+								release.nb_tracks
+							)}`
+						}}
 					</p>
 				</div>
 			</div>
@@ -57,7 +62,7 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', {artist: release.artist.name})}` }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 				</div>
 			</div>
 		</section>
@@ -129,7 +134,6 @@ export default {
 			this.$refs.notLogged.classList.add('hide')
 		}
 
-		// ! Need to init home everytime, atm this is called only on connect
 		this.checkIfWaitData(this.getHomeData)
 		// socket.on('init_home', this.initHome)
 	},

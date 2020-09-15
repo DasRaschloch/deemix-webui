@@ -16,7 +16,7 @@
 					{{ $tc('globals.listTabs.playlist', 2) }}
 				</li>
 			</ul>
-			<div id="search_tab_content">
+			<div id="search_tab_content" v-show="showSearchTab">
 				<!-- ### Main Search Tab ### -->
 				<div id="main_search" class="search_tabcontent">
 					<template v-for="section in results.allTab.ORDER">
@@ -62,8 +62,8 @@
 									<p class="secondary-text">
 										{{
 											results.allTab.TOP_RESULT[0].type == 'artist'
-												? $t('search.fans', {n: $n(results.allTab.TOP_RESULT[0].nb_fan)})
-												: $t('globals.by', {artist: results.allTab.TOP_RESULT[0].artist}) +
+												? $t('search.fans', { n: $n(results.allTab.TOP_RESULT[0].nb_fan) })
+												: $t('globals.by', { artist: results.allTab.TOP_RESULT[0].artist }) +
 												  ' - ' +
 												  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
 										}}
@@ -87,9 +87,7 @@
 											</td>
 											<td class="table__cell table__cell--large breakline">
 												<div class="table__cell-content table__cell-content--vertical-center">
-													<i v-if="track.EXPLICIT_LYRICS == 1" class="material-icons explicit_icon">
-														explicit
-													</i>
+													<i v-if="track.EXPLICIT_LYRICS == 1" class="material-icons explicit_icon"> explicit </i>
 													{{ track.SNG_TITLE + (track.VERSION ? ' ' + track.VERSION : '') }}
 												</div>
 											</td>
@@ -119,9 +117,7 @@
 												role="button"
 												aria-label="download"
 											>
-												<i class="material-icons" :title="$t('globals.download_hint')">
-													get_app
-												</i>
+												<i class="material-icons" :title="$t('globals.download_hint')"> get_app </i>
 											</td>
 										</tr>
 									</tbody>
@@ -155,7 +151,7 @@
 										</div>
 									</div>
 									<p class="primary-text">{{ release.ART_NAME }}</p>
-									<p class="secondary-text">{{ $t('search.fans', {n: $n(release.NB_FAN)}) }}</p>
+									<p class="secondary-text">{{ $t('search.fans', { n: $n(release.NB_FAN) }) }}</p>
 								</div>
 							</div>
 							<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
@@ -256,11 +252,9 @@
 								<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
 								<th>{{ $tc('globals.listTabs.album', 1) }}</th>
 								<th>
-									<i class="material-icons">
-										timer
-									</i>
+									<i class="material-icons"> timer </i>
 								</th>
-								<th style="width: 56px;"></th>
+								<th style="width: 56px"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -286,9 +280,7 @@
 								</td>
 								<td class="table__cell table__cell--large breakline">
 									<div class="table__cell-content table__cell-content--vertical-center">
-										<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
-											explicit
-										</i>
+										<i v-if="track.explicit_lyrics" class="material-icons explicit_icon"> explicit </i>
 										{{
 											track.title +
 											(track.title_version && track.title.indexOf(track.title_version) == -1
@@ -321,9 +313,7 @@
 									role="button"
 									aria-label="download"
 								>
-									<i class="material-icons" :title="$t('globals.download_hint')">
-										get_app
-									</i>
+									<i class="material-icons" :title="$t('globals.download_hint')"> get_app </i>
 								</td>
 							</tr>
 						</tbody>
@@ -360,7 +350,9 @@
 							</p>
 							<p class="secondary-text">
 								{{
-									$t('globals.by', {artist: release.artist.name}) + ' - ' + $tc('globals.listTabs.trackN', release.nb_tracks)
+									$t('globals.by', { artist: release.artist.name }) +
+									' - ' +
+									$tc('globals.listTabs.trackN', release.nb_tracks)
 								}}
 							</p>
 						</div>
@@ -423,7 +415,12 @@
 							</div>
 							<p class="primary-text">{{ release.title }}</p>
 							<p class="secondary-text">
-								{{ `${$t('globals.by', {artist: release.user.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+								{{
+									`${$t('globals.by', { artist: release.user.name })} - ${$tc(
+										'globals.listTabs.trackN',
+										release.nb_tracks
+									)}`
+								}}
 							</p>
 						</div>
 					</div>
@@ -444,7 +441,6 @@ import { changeTab } from '@js/tabs.js'
 import EventBus from '@/utils/EventBus.js'
 
 export default {
-	name: 'the-main-search-tab',
 	components: {
 		BaseLoadingPlaceholder
 	},
@@ -484,7 +480,8 @@ export default {
 					total: 0,
 					loaded: false
 				}
-			}
+			},
+			showSearchTab: false
 		}
 	},
 	props: {
@@ -494,17 +491,11 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('main search mounted')
-		// this.$refs.root.style.display = 'block'
 		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
 
 		this.$root.$on('mainSearch:showNewResults', this.showNewResults)
 		socket.on('mainSearch', this.handleMainSearch)
 		socket.on('search', this.handleSearch)
-	},
-	beforeDestroy() {
-		console.log('main search bef dest')
-		// this.$refs.root.style.display = 'none'
 	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
@@ -570,15 +561,16 @@ export default {
 			}
 		},
 		showNewResults(term, mainSelected) {
-			if (term !== this.results.query || mainSelected == 'search_tab') {
-				document.getElementById('search_tab_content').style.display = 'none'
+			let needToPerformNewSearch = term !== this.results.query || mainSelected == 'search_tab'
+
+			if (needToPerformNewSearch) {
+				this.showSearchTab = false
 				socket.emit('mainSearch', { term })
 
 				// Showing loading placeholder
-				document.getElementById('content').style.display = 'none'
-				document.getElementById('search_placeholder').classList.toggle('loading_placeholder--hidden')
+				this.$root.$emit('updateSearchLoadingState', true)
 			} else {
-				document.getElementById('search_tab_content').style.display = 'block'
+				this.showSearchTab = true
 				document.getElementById('main_search_tablink').click()
 			}
 		},
@@ -639,9 +631,11 @@ export default {
 			}
 		},
 		handleMainSearch(result) {
+			this.$root.$emit('updateSearchLoadingState', false)
+
 			// Hiding loading placeholder
-			document.getElementById('content').style.display = ''
-			document.getElementById('search_placeholder').classList.toggle('loading_placeholder--hidden')
+			// document.getElementById('content').style.display = ''
+			// document.getElementById('search_placeholder').classList.toggle('loading_placeholder--hidden')
 
 			let resetObj = { data: [], next: 0, total: 0, loaded: false }
 
@@ -651,11 +645,13 @@ export default {
 			this.results.artistTab = { ...resetObj }
 			this.results.playlistTab = { ...resetObj }
 
-			if (this.results.query == '') document.getElementById('search_all_tab').click()
+			if (this.results.query == '') {
+				document.getElementById('search_all_tab').click()
+			}
 
 			this.results.query = result.QUERY
 			document.getElementById('search_tab_content').style.display = 'block'
-			document.getElementById('main_search_tablink').click()
+			// document.getElementById('main_search_tablink').click()
 		},
 		handleSearch(result) {
 			const { next: nextResult, total, type, data } = result

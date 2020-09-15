@@ -63,11 +63,11 @@ const routes = [
 		name: 'Settings',
 		component: TheSettingsTab
 	},
-	// {
-	// 	path: '/search',
-	//  name: 'Search',
-	// 	component: TheMainSearch
-	// },
+	{
+		path: '/search',
+		name: 'Search',
+		component: TheMainSearch
+	},
 	// 404 client side
 	{
 		path: '*',

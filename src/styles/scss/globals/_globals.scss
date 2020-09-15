@@ -241,7 +241,7 @@ a {
 }
 
 .loading_placeholder {
-	display: flex;
+	// display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
@@ -314,13 +314,6 @@ a {
 			opacity: 1;
 		}
 	}
-}
-
-#main_content {
-	margin-left: $sidebar-width;
-	width: calc(100% - #{$sidebar-width});
-	height: 100%;
-	display: flex;
 }
 
 // TODO Remove

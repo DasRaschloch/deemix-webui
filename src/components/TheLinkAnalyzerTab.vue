@@ -191,17 +191,11 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('link analyzer mounted')
-		// this.$refs.root.style.display = 'block'
 		EventBus.$on('linkAnalyzerTab:reset', this.reset)
 
 		socket.on('analyze_track', this.showTrack)
 		socket.on('analyze_album', this.showAlbum)
 		socket.on('analyze_notSupported', this.notSupported)
-	},
-	beforeDestroy() {
-		console.log('link analyzer bef dest')
-		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

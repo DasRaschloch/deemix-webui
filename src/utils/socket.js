@@ -23,3 +23,7 @@ socket.on('init_settings', (settings, credentials, defaults) => {
 socket.on('init_home', data => {
 	store.dispatch('cacheHomeData', data)
 })
+
+socket.on('init_update', data => {
+	store.dispatch('setAboutInfo', data)
+})

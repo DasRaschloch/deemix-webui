@@ -3,8 +3,8 @@
 		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
 		<ul>
 			<li>
-				{{ $t('about.updates.currentVersion') }}: <span v-if="current">{{ current }}</span
-				><span v-else>{{ $t('about.updates.versionNotAvailable') }}</span>
+				{{ $t('about.updates.currentVersion') }}:
+				<span>{{ current || $t('about.updates.versionNotAvailable') }}</span>
 			</li>
 			<li>{{ $t('about.updates.deemixVersion') }}: {{ deemixVersion }}</li>
 			<li v-if="updateAvailable && latest">{{ $t('about.updates.updateAvailable', { version: latest }) }}</li>
@@ -203,6 +203,7 @@ ul {
 import { socket } from '@/utils/socket'
 import paypal from '@/assets/paypal.svg'
 import ethereum from '@/assets/ethereum.svg'
+import { mapGetters } from 'vuex'
 
 export default {
 	data: () => ({
@@ -213,6 +214,9 @@ export default {
 		updateAvailable: false,
 		deemixVersion: null
 	}),
+	computed: {
+		...mapGetters(['getAboutInfo'])
+	},
 	methods: {
 		initUpdate(data) {
 			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = data
@@ -223,7 +227,7 @@ export default {
 		}
 	},
 	mounted() {
-		socket.on('init_update', this.initUpdate)
+		this.initUpdate(this.getAboutInfo)
 	}
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-	<aside id="sidebar" role="navigation" @click="handleSidebarClick">
+	<aside id="sidebar" role="navigation">
 		<router-link
 			tag="span"
 			id="main_home_tablink"

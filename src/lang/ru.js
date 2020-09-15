@@ -3,14 +3,15 @@ const ru = {
 		welcome: 'Добро пожаловать в deemix',
 		back: 'назад',
 		loading: 'загрузка',
-		download: 'Скачать {0}',
-		by: '{0}',
-		in: 'из {0}',
+		download: 'Скачать {thing}',
+		by: '{artist}',
+		in: 'из {album}',
 		download_hint: 'Скачать',
 		play_hint: 'Прослушать',
 		toggle_download_tab_hint: 'Показать/Скрыть',
 		clean_queue_hint: 'Очистить завершённые',
 		cancel_queue_hint: 'Очистить всё',
+		open_downloads_folder: 'Открыть папку с загрузками',
 		cut: 'вырезать',
 		copy: 'копировать',
 		copyLink: 'копировать ссылку',
@@ -31,6 +32,7 @@ const ru = {
 			playlist: 'плейлист | плейлисты | плейлисты',
 			compile: 'сплит | сплиты | сплиты',
 			ep: 'ep',
+			bundle: 'бандл | бандлы | бандлы',
 			more: 'Больше альбомов',
 			featured: 'Представлено в',
 			spotifyPlaylist: 'плейлист spotify | плейлисты spotify | плейлисты spotify',
@@ -39,6 +41,12 @@ const ru = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Текущая версия',
+			versionNotAvailable: 'Н/Д',
+			updateAvailable: `Вы используете не последнюю доступную версию: {version}`,
+			deemixVersion: 'Версия библиотеки deemix'
+		},
 		titles: {
 			usefulLinks: 'Полезные ссылки',
 			bugReports: 'Отчёты об ошибках',
@@ -72,9 +80,7 @@ const ru = {
 		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует <strong>поддерживать понравившихся исполнителей</strong> прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
 		lincensedUnder: `Проект распространяется под лицензией
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
 	},
 	charts: {
 		title: 'Чарты',
@@ -82,7 +88,7 @@ const ru = {
 		download: 'Скачать чарт'
 	},
 	errors: {
-		title: 'Ошибки {0}',
+		title: 'Ошибки {name}',
 		ids: {
 			invalidURL: 'URL не распознан',
 			unsupportedURL: 'URL не поддерживается',
@@ -118,8 +124,7 @@ const ru = {
 	},
 	linkAnalyzer: {
 		info: 'Используйте этот раздел, чтобы узнать информацию о ссылке, которую требуется скачать.',
-		useful:
-			"Этот раздел нужен, если вы хотите загрузить треки, недоступные в вашей стране, а также посмотреть, где они доступны.",
+		useful: "Этот раздел нужен, если вы хотите загрузить треки, недоступные в вашей стране, а также посмотреть, где они доступны.",
 		linkNotSupported: 'Ссылка не поддерживается',
 		linkNotSupportedYet: 'Эта ссылка не поддерживается, попробуйте вставить другую.',
 		table: {
@@ -131,7 +136,7 @@ const ru = {
 			trackNumber: 'Номер трека',
 			releaseDate: 'Дата выхода',
 			bpm: 'BPM',
-			label: 'Издатедь',
+			label: 'Издатель',
 			recordType: 'Тип',
 			genres: 'Жанр',
 			tracklist: 'Треклист'
@@ -139,9 +144,8 @@ const ru = {
 	},
 	search: {
 		startSearching: 'Начните искать!',
-		description:
-			'Здесь можно найти трек, альбом, исполнителя, плейлист... всё! Можно также вставить ссылку Deezer',
-		fans: '{0} поклонников',
+		description: 'Здесь можно найти трек, альбом, исполнителя, плейлист... всё! Можно также вставить ссылку Deezer',
+		fans: '{n} поклонников',
 		noResults: 'Нет результатов',
 		noResultsTrack: 'Треков не найдено',
 		noResultsAlbum: 'Альбомов не найдено',
@@ -151,20 +155,23 @@ const ru = {
 	searchbar: 'Ищите, что хотите (или вставьте ссылку)',
 	downloads: 'загрузки',
 	toasts: {
-		addedToQueue: '{0} добавлено в очередь',
-		alreadyInQueue: '{0} уже присутствует в очереди!',
-		finishDownload: 'Загрузка {0} завершена.',
+		restoringQueue: 'Восстановление очереди загрузок...',
+		queueRestored: 'Очередь восстановлена!',
+		addedToQueue: '{item} добавлено в очередь',
+		addedMoreToQueue: '{n} загрузок добавлены в очередь',
+		alreadyInQueue: '{item} уже присутствует в очереди!',
+		finishDownload: 'Загрузка {item} завершена.',
 		allDownloaded: 'Все загрузки завершены!',
 		refreshFavs: 'Обновление завершено!',
-		loggingIn: 'Вход',
+		loggingIn: 'Вход...',
 		loggedIn: 'Вход выполнен',
 		alreadyLogged: 'Вход уже выполнен',
 		loginFailed: "Вход не выполнен",
 		loggedOut: 'Вы вышли из аккаунта',
 		cancellingCurrentItem: 'Отмена текущей загрузки.',
 		currentItemCancelled: 'Отменено.',
-		startAddingArtist: 'Добавление альбомов {0} в очередь',
-		finishAddingArtist: 'Альбомы {0} добавлены в очередь',
+		startAddingArtist: 'Добавление альбомов {artist} в очередь',
+		finishAddingArtist: 'Альбомы {artist} добавлены в очередь',
 		startConvertingSpotifyPlaylist: 'Добавление плейлиста Spotify в очередь',
 		finishConvertingSpotifyPlaylist: 'Spotify плейлист добавлен в очередь',
 		loginNeededToDownload: 'Войдите в аккаунт, чтобы скачивать треки!'
@@ -179,7 +186,8 @@ const ru = {
 				question: 'Как узнать свой ARL?',
 				update: 'Обновить ARL'
 			},
-			logout: 'Выйти'
+			logout: 'Выйти',
+			login: 'Войти через deezer.com'
 		},
 		appearance: {
 			title: 'Внешний вид',
@@ -226,7 +234,8 @@ const ru = {
 				y: 'Да, перезаписать файл',
 				n: "Нет, не перезаписывать",
 				t: 'Обновить только теги',
-				b: 'Нет, оставить оба файла и добавить номер к дубликату'
+				b: 'Нет, оставить оба файла и добавить номер к дубликату',
+				e: "Нет, вне зависимости от расширения"
 			},
 			fallbackBitrate: 'Загружать с битрейтом ниже, если текущий недоступен',
 			fallbackSearch: 'Искать похожий трек, если запрашиваемый недоступен',
@@ -251,7 +260,10 @@ const ru = {
 				png: 'png',
 				both: 'jpeg и png'
 			},
-			jpegImageQuality: 'Качество JPEG'
+			jpegImageQuality: 'Качество JPEG',
+			embeddedArtworkPNG: 'Сохранять вложенную обложку в PNG',
+			embeddedPNGWarning: 'PNG официально не поддерживается в Deezer. Могут быть баги',
+			imageSizeWarning: 'Обложки с разрешением выше x1200 не поддерживаются в Deezer. Могут быть проблемы'
 		},
 		tags: {
 			head: 'Какие теги сохранять',
@@ -275,6 +287,7 @@ const ru = {
 			replayGain: 'Replay Gain',
 			label: 'Издатель',
 			lyrics: 'Текст песни',
+			syncedLyrics: 'Синхрон. текст песни',
 			copyright: 'Права (копирайт)',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди'
@@ -289,7 +302,7 @@ const ru = {
 				nothing: 'Сохранить только основного',
 				default: 'Используя стандартную спецификацию',
 				andFeat: 'Используя & и feat.',
-				using: 'Используя "{0}"'
+				using: 'Используя "{separator}"'
 			},
 			singleAlbumArtist: 'Сохранить только основного исполнителя альбома',
 			albumVariousArtists: 'Оставить "Various Artists" в исполнителях альбома',
@@ -327,7 +340,8 @@ const ru = {
 			title: 'Настройки Spotify',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify username',
+			question: 'Как включить функции Spotify?'
 		},
 		reset: 'По умолчанию',
 		save: 'Сохранить',

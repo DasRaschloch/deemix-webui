@@ -15,6 +15,10 @@ import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
 import { init as initTabs } from '@js/tabs.js'
 
+import { isValidURL } from '@/utils/utils'
+import Downloads from '@/utils/downloads'
+import EventBus from '@/utils/EventBus.js'
+
 /* ===== App initialization ===== */
 
 function startApp() {
@@ -40,6 +44,34 @@ function initClient() {
 
 document.addEventListener('DOMContentLoaded', startApp)
 window.addEventListener('pywebviewready', initClient)
+
+/* ===== Global shortcuts ===== */
+
+document.addEventListener('keyup', keyEvent => {
+	if (keyEvent.key == "Backspace" && keyEvent.ctrlKey){
+		let searchbar = document.querySelector('#searchbar')
+		searchbar.value = ""
+		searchbar.focus()
+	}
+})
+
+document.addEventListener('paste', pasteEvent => {
+	pasteText = pasteEvent.clipboardData.getData('Text')
+	if (pasteEvent.target.localName != "input"){
+		if (isValidURL(pasteText)){
+			if (main_selected === 'analyzer_tab') {
+				EventBus.$emit('linkAnalyzerTab:reset')
+				socket.emit('analyzeLink', pasteText)
+			} else {
+				Downloads.sendAddToQueue(pasteText)
+			}
+		}else{
+			let searchbar = document.querySelector('#searchbar')
+			searchbar.select()
+			searchbar.setSelectionRange(0, 99999)
+		}
+	}
+})
 
 /* ===== Socketio listeners ===== */
 
@@ -147,11 +179,11 @@ socket.on('currentItemCancelled', function(uuid) {
 })
 
 socket.on('startAddingArtist', function(data) {
-	toast(i18n.t('toasts.startAddingArtist', [data.name]), 'loading', false, 'artist_' + data.id)
+	toast(i18n.t('toasts.startAddingArtist', {artist: data.name}), 'loading', false, 'artist_' + data.id)
 })
 
 socket.on('finishAddingArtist', function(data) {
-	toast(i18n.t('toasts.finishAddingArtist', [data.name]), 'done', true, 'artist_' + data.id)
+	toast(i18n.t('toasts.finishAddingArtist', {artist: data.name}), 'done', true, 'artist_' + data.id)
 })
 
 socket.on('startConvertingSpotifyPlaylist', function(id) {
@@ -172,7 +204,7 @@ socket.on('queueError', function(queueItem) {
 })
 
 socket.on('alreadyInQueue', function(data) {
-	toast(i18n.t('toasts.alreadyInQueue', [data.title]), 'playlist_add_check')
+	toast(i18n.t('toasts.alreadyInQueue', {item: data.title}), 'playlist_add_check')
 })
 
 socket.on('loginNeededToDownload', function(data) {

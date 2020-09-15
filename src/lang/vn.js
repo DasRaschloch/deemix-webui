@@ -3,9 +3,9 @@ const vn = {
 		welcome: 'Chào mừng đến với deemix',
 		back: 'trở lại',
 		loading: 'đang tải',
-		download: 'Tải xuống {0}',
-		by: 'bởi {0}',
-		in: 'trong {0}',
+		download: 'Tải xuống {thing}',
+		by: 'bởi {artist}',
+		in: 'trong {album}',
 		download_hint: 'Tải xuống',
 		play_hint: 'Phát',
 		toggle_download_tab_hint: 'Mở rộng/Giấu',
@@ -74,7 +74,7 @@ const vn = {
 		download: 'Tải xuống bảng xếp hạng này'
 	},
 	errors: {
-		title: 'Lỗi {0}',
+		title: 'Lỗi {name}',
 		ids: {
 			invalidURL: 'Không nhận diện được URL',
 			unsupportedURL: 'URL này chưa được hỗ trợ',
@@ -133,7 +133,7 @@ const vn = {
 		startSearching: 'Bắt đầu tìm kiếm!',
 		description:
 			'Bạn có thể tìm một bài hát, album, nghệ sĩ, playlist, v.v...! Bạn cũng có thể dùng link của Deezer',
-		fans: '{0} người hâm mộ',
+		fans: '{n} người hâm mộ',
 		noResults: 'Không có kết quả',
 		noResultsTrack: 'Không tìm được bài hát nào',
 		noResultsAlbum: 'Không tìm được album nào',
@@ -143,9 +143,9 @@ const vn = {
 	searchbar: 'Tìm những gì bạn muốn (bạn cũng có thể sữ dụng một đường link)',
 	downloads: 'Tải xuống',
 	toasts: {
-		addedToQueue: '{0} đã được đưa vào hàng chờ',
-		alreadyInQueue: '{0} đã đang trong hàng chờ!',
-		finishDownload: '{0} đã tải xong.',
+		addedToQueue: '{item} đã được đưa vào hàng chờ',
+		alreadyInQueue: '{item} đã đang trong hàng chờ!',
+		finishDownload: '{item} đã tải xong.',
 		allDownloaded: 'Tất cả các bài hát đã được tải xuống!',
 		refreshFavs: 'Tải lại hoàn tất!',
 		loggingIn: 'Đang đăng nhập',
@@ -155,8 +155,8 @@ const vn = {
 		loggedOut: 'Đăng xuất',
 		cancellingCurrentItem: 'Đang hủy file hiện tại.',
 		currentItemCancelled: 'File hiện tại đã bị hủy.',
-		startAddingArtist: 'Đang đưa {0} album vào hàng chờ',
-		finishAddingArtist: 'Đã đưa {0} album vào hàng chờ',
+		startAddingArtist: 'Đang đưa {artist} album vào hàng chờ',
+		finishAddingArtist: 'Đã đưa {artist} album vào hàng chờ',
 		startConvertingSpotifyPlaylist: 'Đang chuyển đổi các bài hát từ Spotify sang Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist của Spotify đã được chuyển đổi',
 		loginNeededToDownload: 'Bạn cần phải đang nhập để tải nhạc!'
@@ -280,7 +280,7 @@ const vn = {
 				nothing: 'Chỉ lưu nghệ sĩ chính',
 				default: 'Dùng quy cách tiêu chuẩn',
 				andFeat: 'Dùng & và feat.',
-				using: 'Dùng "{0}"'
+				using: 'Dùng "{separator}"'
 			},
 			singleAlbumArtist: 'Chỉ lưu Nghệ sĩ Album chính',
 			albumVariousArtists: 'Giữ nguyên "Nhiều Nghệ sĩ" trong Nghệ sĩ Album',

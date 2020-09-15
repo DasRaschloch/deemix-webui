@@ -1,17 +1,17 @@
 <template>
 	<div id="modal_quality" class="smallmodal" v-show="open" @click="tryToDownloadTrack($event)" ref="modal">
 		<div class="smallmodal-content">
-			<button class="quality-button" data-quality-value="9">{{ $t('globals.download', ['FLAC']) }}</button>
-			<button class="quality-button" data-quality-value="3">{{ $t('globals.download', ['MP3 320kbps']) }}</button>
-			<button class="quality-button" data-quality-value="1">{{ $t('globals.download', ['MP3 128kbps']) }}</button>
+			<button class="quality-button" data-quality-value="9">{{ $t('globals.download', {thing: 'FLAC'}) }}</button>
+			<button class="quality-button" data-quality-value="3">{{ $t('globals.download', {thing: 'MP3 320kbps'}) }}</button>
+			<button class="quality-button" data-quality-value="1">{{ $t('globals.download', {thing: 'MP3 128kbps'}) }}</button>
 			<button class="quality-button" data-quality-value="15">
-				{{ $t('globals.download', ['360 Reality Audio [HQ]']) }}
+				{{ $t('globals.download', {thing: '360 Reality Audio [HQ]'}) }}
 			</button>
 			<button class="quality-button" data-quality-value="14">
-				{{ $t('globals.download', ['360 Reality Audio [MQ]']) }}
+				{{ $t('globals.download', {thing: '360 Reality Audio [MQ]'}) }}
 			</button>
 			<button class="quality-button" data-quality-value="13">
-				{{ $t('globals.download', ['360 Reality Audio [LQ]']) }}
+				{{ $t('globals.download', {thing: '360 Reality Audio [LQ]'}) }}
 			</button>
 		</div>
 	</div>

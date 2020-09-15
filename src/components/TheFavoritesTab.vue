@@ -44,7 +44,7 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{ `${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+						{{ `${$t('globals.by', {artist: release.creator.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 					</p>
 				</div>
 				<div
@@ -67,7 +67,7 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{ `${$t('globals.by', [release.creator.name])} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+						{{ `${$t('globals.by', {artist: release.creator.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
 					</p>
 				</div>
 			</div>
@@ -92,7 +92,7 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', [release.artist.name])}` }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by', {artist: release.artist.name})}` }}</p>
 				</div>
 			</div>
 		</div>

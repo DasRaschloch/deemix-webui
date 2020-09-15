@@ -26,10 +26,10 @@
 			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
-			<a id="settings_btn_applogin" class="hide" href="#" @click.prevent="applogin">
-				Automated login
+			<a id="settings_btn_applogin" class="hide" href="#" @click="applogin">
+				{{ $t('settings.login.login') }}
 			</a>
-			<button id="settings_btn_updateArl" @click="login" style="width: 100%;">
+			<button id="settings_btn_updateArl" @click="login" style="width: 100%">
 				{{ $t('settings.login.arl.update') }}
 			</button>
 		</div>
@@ -275,7 +275,7 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.localArtworkSize') }}</p>
 				<input type="number" min="100" max="10000" step="100" v-model.number="settings.localArtworkSize" />
-				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">
+				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22">
 					⚠️ {{ $t('settings.covers.imageSizeWarning') }}
 				</p>
 			</div>
@@ -283,7 +283,7 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.embeddedArtworkSize') }}</p>
 				<input type="number" min="100" max="10000" step="100" v-model.number="settings.embeddedArtworkSize" />
-				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">
+				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22">
 					⚠️ {{ $t('settings.covers.imageSizeWarning') }}
 				</p>
 			</div>
@@ -301,7 +301,7 @@
 				<input type="checkbox" v-model="settings.embeddedArtworkPNG" />
 				<span class="checkbox_text">{{ $t('settings.covers.embeddedArtworkPNG') }}</span>
 			</label>
-			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22;">
+			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22">
 				⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}
 			</p>
 
@@ -313,7 +313,7 @@
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons" style="width: 1em; height: 1em;">bookmarks</i>{{ $t('settings.tags.head') }}
+				<i class="material-icons" style="width: 1em; height: 1em">bookmarks</i>{{ $t('settings.tags.head') }}
 			</h3>
 
 			<div class="settings-container">
@@ -402,6 +402,10 @@
 						<span class="checkbox_text">{{ $t('settings.tags.lyrics') }}</span>
 					</label>
 					<label class="with_checkbox">
+						<input type="checkbox" v-model="settings.tags.syncedLyrics" />
+						<span class="checkbox_text">{{ $t('settings.tags.syncedLyrics') }}</span>
+					</label>
+					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.copyright" />
 						<span class="checkbox_text">{{ $t('settings.tags.copyright') }}</span>
 					</label>
@@ -443,13 +447,13 @@
 					<option value="nothing">{{ $t('settings.other.multiArtistSeparator.nothing') }}</option>
 					<option value="default">{{ $t('settings.other.multiArtistSeparator.default') }}</option>
 					<option value="andFeat">{{ $t('settings.other.multiArtistSeparator.andFeat') }}</option>
-					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', [' & ']) }}</option>
-					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', [',']) }}</option>
-					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', [', ']) }}</option>
-					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', ['/']) }}</option>
-					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', [' / ']) }}</option>
-					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', [';']) }}</option>
-					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', ['; ']) }}</option>
+					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', { separator: ' & ' }) }}</option>
+					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', { separator: ',' }) }}</option>
+					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', { separator: ', ' }) }}</option>
+					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', { separator: '/' }) }}</option>
+					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', { separator: ' / ' }) }}</option>
+					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', { separator: ';' }) }}</option>
+					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', { separator: '; ' }) }}</option>
 				</select>
 			</div>
 
@@ -476,26 +480,34 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.other.dateFormat.title') }}</p>
 				<select v-model="settings.dateFormat">
-					<option value="Y-M-D">{{
-						`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t(
-							'settings.other.dateFormat.day'
-						)}`
-					}}</option>
-					<option value="Y-D-M">{{
-						`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t(
-							'settings.other.dateFormat.month'
-						)}`
-					}}</option>
-					<option value="D-M-Y">{{
-						`${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t(
-							'settings.other.dateFormat.year'
-						)}`
-					}}</option>
-					<option value="M-D-Y">{{
-						`${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t(
-							'settings.other.dateFormat.year'
-						)}`
-					}}</option>
+					<option value="Y-M-D">
+						{{
+							`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t(
+								'settings.other.dateFormat.day'
+							)}`
+						}}
+					</option>
+					<option value="Y-D-M">
+						{{
+							`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t(
+								'settings.other.dateFormat.month'
+							)}`
+						}}
+					</option>
+					<option value="D-M-Y">
+						{{
+							`${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t(
+								'settings.other.dateFormat.year'
+							)}`
+						}}
+					</option>
+					<option value="M-D-Y">
+						{{
+							`${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t(
+								'settings.other.dateFormat.year'
+							)}`
+						}}
+					</option>
 					<option value="Y">{{ $t('settings.other.dateFormat.year') }}</option>
 				</select>
 			</div>
@@ -562,6 +574,9 @@
 				</svg>
 				{{ $t('settings.spotify.title') }}
 			</h3>
+			<a href="https://codeberg.org/RemixDev/deemix/wiki/Enabling-Spotify-Features" target="_blank">
+				{{ $t('settings.spotify.question') }}
+			</a>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.spotify.clientID') }}</p>

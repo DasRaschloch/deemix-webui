@@ -134,7 +134,7 @@
 		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px;">{{ label }}</span>
 		<footer>
 			<button @click.stop="addToQueue" :data-link="link">
-				{{ `${$t('globals.download', [$tc(`globals.listTabs.${type}`, 1)])}` }}
+				{{ `${$t('globals.download', {thing: $tc(`globals.listTabs.${type}`, 1)})}` }}
 			</button>
 			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
@@ -254,7 +254,7 @@ export default {
 			this.title = playlistTitle
 			this.image = playlistCover
 			this.release_date = creation_date.substring(0, 10)
-			this.metadata = `${this.$t('globals.by', [creatorName])} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
+			this.metadata = `${this.$t('globals.by', {artist: creatorName})} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null
@@ -282,7 +282,7 @@ export default {
 				? images[0].url
 				: 'https://e-cdns-images.dzcdn.net/images/cover/d41d8cd98f00b204e9800998ecf8427e/1000x1000-000000-80-0-0.jpg'
 			this.release_date = ''
-			this.metadata = `${this.$t('globals.by', [ownerName])} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
+			this.metadata = `${this.$t('globals.by', {artist: ownerName})} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null

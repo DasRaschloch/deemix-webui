@@ -2,6 +2,15 @@
 	<div id="about_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
 		<ul>
+			<li>
+				{{ $t('about.updates.currentVersion') }}: <span v-if="current">{{ current }}</span
+				><span v-else>{{ $t('about.updates.versionNotAvailable') }}</span>
+			</li>
+			<li>{{ $t('about.updates.deemixVersion') }}: {{ deemixVersion }}</li>
+			<li v-if="updateAvailable && latest">{{ $t('about.updates.updateAvailable', { version: latest }) }}</li>
+		</ul>
+
+		<ul>
 			<li v-html="$t('about.usesLibrary')"></li>
 			<li v-html="$t('about.thanks')"></li>
 			<li v-html="$t('about.upToDate')"></li>
@@ -93,7 +102,7 @@
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">
 				<img
 					alt="GNU General Public License"
-					style="border-width: 0;"
+					style="border-width: 0"
 					src="https://www.gnu.org/graphics/gplv3-127x51.png"
 				/>
 			</a>
@@ -191,21 +200,30 @@ ul {
 }
 </style>
 <script>
+import { socket } from '@/utils/socket'
 import paypal from '@/assets/paypal.svg'
 import ethereum from '@/assets/ethereum.svg'
 
 export default {
 	data: () => ({
 		paypal,
-		ethereum
+		ethereum,
+		current: null,
+		latest: null,
+		updateAvailable: false,
+		deemixVersion: null
 	}),
-	mounted() {
-		console.log('about mounted')
-		// this.$refs.root.style.display = 'block'
+	methods: {
+		initUpdate(data) {
+			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = data
+			this.current = currentCommit
+			this.latest = latestCommit
+			this.updateAvailable = updateAvailable
+			this.deemixVersion = deemixVersion
+		}
 	},
-	beforeDestroy() {
-		console.log('about bef dest')
-		// this.$refs.root.style.display = 'none'
+	mounted() {
+		socket.on('init_update', this.initUpdate)
 	}
 }
 </script>

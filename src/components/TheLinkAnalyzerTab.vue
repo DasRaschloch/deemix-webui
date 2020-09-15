@@ -25,20 +25,20 @@
 					<h1>{{ title }}</h1>
 					<h2 v-if="type == 'track'">
 						<i18n path="globals.by" tag="span">
-							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{
+							<span place="artist" class="clickable" @click="artistView" :data-id="data.artist.id">{{
 								data.artist.name
 							}}</span>
 						</i18n>
 						•
 						<i18n path="globals.in" tag="span">
-							<span place="0" class="clickable" @click="albumView" :data-id="data.album.id">{{
+							<span place="album" class="clickable" @click="albumView" :data-id="data.album.id">{{
 								data.album.title
 							}}</span>
 						</i18n>
 					</h2>
 					<h2 v-else-if="type == 'album'">
 						<i18n path="globals.by" tag="span">
-							<span place="0" class="clickable" @click="artistView" :data-id="data.artist.id">{{
+							<span place="artist" class="clickable" @click="artistView" :data-id="data.artist.id">{{
 								data.artist.name
 							}}</span>
 						</i18n>

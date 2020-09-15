@@ -1,11 +1,11 @@
 const fr = {
 	globals: {
-		welcome: 'Bienvenue sur deemix',
+		welcome: 'Bienvenue dans deemix',
 		back: 'retour',
-		loading: 'chargement',
-		download: 'Téléchargement {0}',
-		by: 'par {0}',
-		in: 'en {0}',
+		loading: 'chargement en cours',
+		download: 'Télécharger {thing}',
+		by: 'par {artist}',
+		in: 'dans {album}',
 		download_hint: 'Télécharger',
 		play_hint: 'Lire',
 		toggle_download_tab_hint: 'Développer/Réduire',
@@ -28,18 +28,25 @@ const fr = {
 			title: 'titre | titres',
 			track: 'piste | pistes',
 			trackN: '0 piste | {n} piste | {n} pistes',
-			releaseN: '0 parution | {n} parution | {n} parutions',
+			releaseN: '0 sortie | {n} sortie | {n} sorties',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
+			bundle: 'bundle | bundles',
 			more: "Plus d'albums",
-			featured: 'En vedette dans',
+			featured: 'Apparaît dans',
 			spotifyPlaylist: 'playlist spotify | playlists spotify',
-			releaseDate: 'date de parution',
+			releaseDate: 'date de sortie',
 			error: 'erreur'
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Version Actuelle',
+			versionNotAvailable: 'N/A',
+			updateAvailable: "Vous n'utilisez pas la dernière version disponible : {version}",
+			deemixVersion: 'Version de la bibliothèque deemix'
+		},
 		titles: {
 			usefulLinks: 'Liens Utiles',
 			bugReports: 'Rapports De Bug',
@@ -48,45 +55,45 @@ const fr = {
 			license: 'Licence'
 		},
 		subtitles: {
-			bugReports: 'Y a-t-il quelque chose qui ne fonctionne pas dans deemix ? Dites-le nous !',
+			bugReports: 'Quelque chose ne fonctionne pas dans deemix ? Contactez-nous !',
 			contributing: 'Vous souhaitez contribuer à ce projet ? Vous pouvez le faire de différentes manières !',
 			donations: 'Vous souhaitez contribuer financièrement ? Vous pouvez faire un don !'
 		},
 		usesLibrary: 'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
-		thanks: "Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour avoir réalisé l'icône.",
-		upToDate: 'Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal de nouveautés</a> sur Telegram.',
+		thanks: "Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour la création de l'icône.",
+		upToDate: `Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal d'informations</a> sur Telegram.`,
 		officialWebsite: 'Site Officiel',
-		officialRepo: 'Répertoire De Dépôt Officiel De La Bibiliothèque',
+		officialRepo: 'Répertoire De Dépôt Officiel De La Bibliothèque',
 		officialWebuiRepo: 'Répertoire De Dépôt Officiel De La WebUI',
 		officialSubreddit: 'Subreddit Officiel',
-		newsChannel: 'Canal De Nouveautés',
-		questions: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Ensuite, si vous ne trouvez rien, vous pouvez publier un message avec votre problème dans le subreddit.`,
-		beforeReporting: "Avant de signaler un bug, assurez-vous que vous exécutez la dernière version de l'application et que ce que vous voulez signaler est bien un bug et non quelque chose qui ne va pas de votre côté.",
-		beSure: "Assurez-vous que le bug est reproductible sur d'autres machines et aussi de <strong>NE PAS</strong> signaler un bug si celui-ci a déjà été mentionné.",
-		duplicateReports: 'Les doublons de rapports de bug seront supprimés, alors gardez un œil sur cela.',
-		dontOpenIssues: "<strong>NE PAS</strong> ouvrir un nouveau problème pour poser des questions, il existe un subreddit pour cela.",
+		newsChannel: "Canal d'Informations",
+		questions: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Ensuite, si la solution ne s'y trouve pas, vous pouvez publier un message dans le subreddit en décrivant votre problème.`,
+		beforeReporting: "Avant de signaler un bug, assurez-vous que vous utilisez la version la plus récente de l'application. Vérifiez que vous souhaitez nous rapporter un bug et non quelque chose qui ne fonctionne pas uniquement de votre côté.",
+		beSure: "Assurez-vous que le bug soit reproductible sur d'autres appareils mais aussi de <strong>NE PAS</strong> signaler un bug si celui-ci a déjà été recensé.",
+		duplicateReports: "Les rapports de bug répétitifs seront supprimés, merci d'en prendre bonne note.",
+		dontOpenIssues: "<strong>NE PAS</strong> rapporter de problème s'il ne s'agit que de simples questions. Un subreddit existe pour ces questions.",
 		newUI: `Si vous maîtrisez python, vous pouvez essayer de créer une nouvelle interface utilisateur pour l'application à l'aide de la bibliothèque de base, ou corriger des bugs dans la bibliothèque à l'aide d'une demande de fusion de branches (pull request) sur le <a href="https://codeberg.org/RemixDev/deemix" target="_blank">répertoire de dépôt</a>.`,
-		acceptFeatures: "J'accepte également les fonctionnalités, mais pas de choses complexes, car elles peuvent être implémentées directement dans l'application et non dans la bibliothèque.",
-		otherLanguages: "Si vous maîtrisez un autre langage de programmation, vous pouvez essayer de transposer deemix dans d'autres langages de programmation !",
+		acceptFeatures: "J'accepte également les nouvelles fonctionnalités, mais pas de choses complexes, dans la mesure où elles peuvent être implémentées directement dans l'application et non dans la bibliothèque.",
+		otherLanguages: "Si vous maîtrisez un autre langage de programmation, vous pouvez essayer de transposer deemix dans ce dernier !",
 		understandingCode: "Vous avez besoin d'aide pour comprendre le code ? Il suffit de contacter RemixDev sur Telegram ou Reddit.",
-		contributeWebUI: `Si vous vous y connaissez en Vue.js (JavaScript), HTML ou CSS vous pouvez contribuer à la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: "N'oubliez pas que <strong>ceci est un projet gratuit</strong> et que <strong>vous devez soutenir les artistes que vous appréciez</strong> avant de supporter les développeurs.",
-		notObligated: "Ne vous sentez pas obligé de faire un don, je vous apprécie quand même !",
-		lincensedUnder: `Ce projet est autorisé dans le cadre d'une
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.fr.html" target="_blank">Licence publique générale GNU 3.0</a>.`
+		contributeWebUI: `Si vous vous y connaissez en Vue.js (JavaScript), HTML ou CSS, vous pouvez contribuer à la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		itsFree: "N'oubliez pas que <strong>ce projet est libre</strong> et qu'il est important de <strong>soutenir vos artistes préférés</strong> avant de supporter les développeurs.",
+		notObligated: "Ne vous sentez pas obligé de faire un don, vous êtes tout de même apprécié !",
+		lincensedUnder: `Ce projet s'inscrit dans le cadre de la
+			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Licence publique générale GNU, version 3</a>.`
 	},
 	charts: {
-		title: 'Hit-Parade',
+		title: 'Classements',
 		changeCountry: 'Changer De Pays',
-		download: 'Télécharger Le Hit-Parade'
+		download: 'Télécharger Le Classement'
 	},
 	errors: {
-		title: 'Erreurs pour {0}',
+		title: 'Erreurs pour {name}',
 		ids: {
 			invalidURL: "Cette URL n'est pas reconnue",
-			unsupportedURL: "Cette URL n'est pas supportée actuellement",
+			unsupportedURL: "Cette URL n'est actuellement pas supportée",
 			ISRCnotOnDeezer: "L'ISRC de la piste est indisponible sur Deezer",
-			notYourPrivatePlaylist: "Vous ne pouvez pas télécharger les playlists privées de quelqu'un d'autre.",
+			notYourPrivatePlaylist: "Vous n'êtes pas autorisé à télécharger les playlists privées de quelqu'un d'autre.",
 			spotifyDisabled: 'Les Fonctionnalités Spotify ne sont pas configurées correctement.',
 			trackNotOnDeezer: 'La piste est introuvable sur Deezer !',
 			albumNotOnDeezer: "L'album est introuvable sur Deezer !",
@@ -108,16 +115,16 @@ const fr = {
 		noTracks: "Aucune Piste Favorite n'a été trouvée"
 	},
 	home: {
-		needTologin: 'Vous devez vous connecter à votre compte Deezer avant de pouvoir commencer les téléchargements.',
+		needTologin: 'Vous devez vous connecter à votre compte Deezer avant de pouvoir démarrer un téléchargement.',
 		openSettings: 'Ouvrir Les Paramètres',
 		sections: {
-			popularPlaylists: 'Playlists populaires',
-			popularAlbums: 'Albums les plus diffusés'
+			popularPlaylists: 'Playlists les plus écoutées',
+			popularAlbums: 'Albums les plus écoutés'
 		}
 	},
 	linkAnalyzer: {
-		info: "Vous pouvez utiliser cette section pour obtenir plus d'informations sur le lien que vous essayez de télécharger.",
-		useful: "C'est utile si vous essayer de télécharger des pistes qui ne sont pas disponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles, par exemple.",
+		info: "Vous pouvez utiliser cette section pour obtenir davantage d'informations sur le lien que vous essayez de télécharger.",
+		useful: "C'est utile si vous essayez, par exemple, de télécharger des pistes indisponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles.",
 		linkNotSupported: "Ce lien n'est pas encore pris en charge",
 		linkNotSupportedYet: "Il semble que ce lien ne soit pas encore pris en charge, essayez d'en analyser un autre.",
 		table: {
@@ -126,8 +133,8 @@ const fr = {
 			upc: 'UPC',
 			duration: 'Durée',
 			diskNumber: 'Numéro De Disque',
-			trackNumber: 'Numéro De Disque',
-			releaseDate: 'Date De Parution',
+			trackNumber: 'Numéro De Piste',
+			releaseDate: 'Date De Sortie',
 			bpm: 'BPM',
 			label: 'Label',
 			recordType: "Type d'Enregistrement",
@@ -136,36 +143,36 @@ const fr = {
 		}
 	},
 	search: {
-		startSearching: 'Commencer une recherche !',
-		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ! Vous pouvez également copier-coller un lien Deezer',
-		fans: '{0} fans',
+		startSearching: 'Démarrer une recherche !',
+		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ce que vous voulez ! Vous pouvez également coller un lien Deezer.',
+		fans: '{n} fans',
 		noResults: 'Aucun résultat',
 		noResultsTrack: "Aucune piste n'a été trouvée",
 		noResultsAlbum: "Aucun album n'a été trouvé",
 		noResultsArtist: "Aucun artiste n'a été trouvé",
 		noResultsPlaylist: "Aucune playlist n'a été trouvée"
 	},
-	searchbar: 'Recherchez tout ce que vous voulez (ou copiez-collez simplement un lien)',
+	searchbar: 'Saisissez une requête (ou collez simplement un lien)',
 	downloads: 'téléchargements',
 	toasts: {
 		restoringQueue: "Restauration de la file d'attente de téléchargement...",
 		queueRestored: "La file d'attente de téléchargement a été restaurée !",
-		addedToQueue: "{0} ajouté à la file d'attente",
-		addedMoreToQueue: "{0} éléments ajoutés à la file d'attente",
-		alreadyInQueue: "{0} est déjà en file d'attente !",
-		finishDownload: '{0} a été téléchargé.',
+		addedToQueue: "{item} ajouté à la file d'attente",
+		addedMoreToQueue: "{n} éléments ajoutés à la file d'attente",
+		alreadyInQueue: "{item} est déjà dans la file d'attente !",
+		finishDownload: '{item} a été téléchargé.',
 		allDownloaded: 'Tous les téléchargements sont terminés !',
 		refreshFavs: 'Actualisation terminée !',
-		loggingIn: 'Connexion...',
+		loggingIn: 'Connexion en cours...',
 		loggedIn: 'Connecté',
 		alreadyLogged: 'Déjà connecté',
 		loginFailed: 'Connexion impossible',
 		loggedOut: 'Déconnecté',
 		cancellingCurrentItem: "Annulation de l'élément actuel.",
 		currentItemCancelled: 'Élément actuel annulé.',
-		startAddingArtist: "Ajout de {0} albums en file d'attente",
-		finishAddingArtist: "{0} albums ajoutés en file d'attente",
-		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en pistes Deezer',
+		startAddingArtist: "Ajout des albums de {artist} à la file d'attente",
+		finishAddingArtist: "Les albums de {artist} ont été ajoutés à la file d'attente",
+		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en équivalents Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
 		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !'
 	},
@@ -176,41 +183,42 @@ const fr = {
 			title: 'Connexion',
 			loggedIn: 'Vous êtes connecté en tant que {username}',
 			arl: {
-				question: 'Comment puis-je obtenir mon ARL personnel ?',
+				question: 'Comment obtenir mon ARL personnel ?',
 				update: "Mettre à jour l'ARL"
 			},
-			logout: 'Déconnexion'
+			logout: 'Déconnexion',
+			login: 'Connexion via deezer.com'
 		},
 		appearance: {
 			title: 'Apparence',
-			slimDownloadTab: 'Onglet de téléchargement plus petit'
+			slimDownloadTab: 'Onglet de téléchargement compact'
 		},
 		downloadPath: {
 			title: 'Emplacement De Téléchargement'
 		},
 		templates: {
-			title: 'Gabarits',
-			tracknameTemplate: 'Gabarit pour le nom de piste',
-			albumTracknameTemplate: "Gabarit pour le nom de piste de l'album",
-			playlistTracknameTemplate: 'Gabarit pour le nom de piste de la playlist'
+			title: 'Modèles',
+			tracknameTemplate: 'Modèle pour le nom de piste',
+			albumTracknameTemplate: "Modèle pour le nom de piste de l'album",
+			playlistTracknameTemplate: 'Modèle pour le nom de piste de la playlist'
 		},
 		folders: {
 			title: 'Dossiers',
 			createPlaylistFolder: 'Générer des dossiers par playlist',
-			playlistNameTemplate: 'Gabarit pour le nom du dossier de playlist',
+			playlistNameTemplate: 'Modèle pour le nom du dossier de playlist',
 			createArtistFolder: 'Générer des dossiers par artiste',
-			artistNameTemplate: "Gabarit pour le nom du dossier d'artiste",
+			artistNameTemplate: "Modèle pour le nom du dossier d'artiste",
 			createAlbumFolder: 'Générer des dossiers par album',
-			albumNameTemplate: "Gabarit pour le nom du dossier d'album",
+			albumNameTemplate: "Modèle pour le nom du dossier d'album",
 			createCDFolder: 'Générer des dossiers par CD',
-			createStructurePlaylist: 'Créer une structure de dossiers pour les playlists',
-			createSingleFolder: 'Créer une structure de dossiers pour les singles'
+			createStructurePlaylist: 'Générer une structure de dossiers pour les playlists',
+			createSingleFolder: 'Générer une structure de dossiers pour les singles'
 		},
 		trackTitles: {
-			title: 'Titres de pistes',
+			title: 'Titres des pistes',
 			padTracks: "Longueur uniforme des numéros de piste (ajoute automatiquement des zéros devant le numéro initial de la piste)",
-			paddingSize: 'Nombre de zéros à ajouter en permanance devant le numéro initial de la piste',
-			illegalCharacterReplacer: 'Remplacement de caractère inapproprié'
+			paddingSize: 'Nombre de zéros à ajouter en permanence devant le numéro initial de la piste',
+			illegalCharacterReplacer: "Substitut aux caractères non autorisés (dans les noms de fichiers et de dossiers)"
 		},
 		downloads: {
 			title: 'Téléchargements',
@@ -222,30 +230,30 @@ const fr = {
 				1: 'MP3 128kbps'
 			},
 			overwriteFile: {
-				title: 'Dois-je écraser les fichiers ?',
+				title: 'Les fichiers doivent-ils être écrasés ?',
 				y: 'Oui, écraser le fichier',
 				n: 'Non, ne pas écraser le fichier',
 				t: 'Écraser uniquement les métadonnées',
 				b: 'Non, conserver les deux fichiers et ajouter un numéro au doublon',
 				e: "Non, et ne pas tenir compte de l'extension du fichier"
 			},
-			fallbackBitrate: "Recourir à des débits plus faibles si le débit préféré n'est pas disponible",
+			fallbackBitrate: "Recourir à un débit plus faible si le débit préféré n'est pas disponible",
 			fallbackSearch: "Rechercher la piste si le lien original n'est pas disponible",
 			logErrors: "Créer un fichier journal d'erreurs",
 			logSearched: 'Créer un fichier journal des pistes recherchées',
 			createM3U8File: 'Créer un fichier de playlist',
 			syncedLyrics: 'Créer des fichiers .lyr (Paroles Synchronisées)',
-			playlistFilenameTemplate: 'Gabarit du nom de fichier de la playlist',
+			playlistFilenameTemplate: 'Modèle du nom de fichier de la playlist',
 			saveDownloadQueue: "Enregistrer la file d'attente de téléchargement à la fermeture de l'application"
 		},
 		covers: {
 			title: "Pochettes d'albums",
 			saveArtwork: 'Enregistrer Les Pochettes',
-			coverImageTemplate: 'Gabarit pour le nom de la pochette',
+			coverImageTemplate: 'Modèle pour le nom de la pochette',
 			saveArtworkArtist: "Enregistrer l'image de l'artiste",
-			artistImageTemplate: "Gabarit pour le nom de l'image de l'artiste",
+			artistImageTemplate: "Modèle pour le nom de l'image de l'artiste",
 			localArtworkSize: "Taille de l'illustration locale",
-			embeddedArtworkSize: "Taille de l'illustration incorporée",
+			embeddedArtworkSize: "Taille de l'illustration incorporée aux fichiers audio",
 			localArtworkFormat: {
 				title: "Dans quel format souhaitez-vous l'illustration locale ?",
 				jpg: 'Une image jpeg',
@@ -253,9 +261,9 @@ const fr = {
 				both: 'À la fois jpeg et png'
 			},
 			jpegImageQuality: "Qualité de l'image JPEG",
-			embeddedArtworkPNG: "Enregistrer l'illustration incorporée en tant qu'image PNG",
-			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes',
-			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement utilisée par Deezer, vous pourriez donc rencontrer des problèmes"
+			embeddedArtworkPNG: "Enregistrer l'illustration incorporée aux fichiers audio en tant que PNG",
+			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes.',
+			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes."
 		},
 		tags: {
 			head: 'Métadonnées à sauvegarder',
@@ -279,6 +287,7 @@ const fr = {
 			replayGain: 'Gain En Relecture (Replay Gain)',
 			label: "Label De l'Album",
 			lyrics: 'Paroles Non-Synchronisées',
+			syncedLyrics: 'Paroles Synchronisées',
 			copyright: "Droits d'Auteur (Copyright)",
 			composer: 'Compositeur',
 			involvedPeople: 'Personnes Impliquées'
@@ -286,14 +295,14 @@ const fr = {
 		other: {
 			title: 'Autre',
 			savePlaylistAsCompilation: 'Enregistrer les playlists en tant que compilation',
-			useNullSeparator: 'Utiliser un séparateur nul',
+			useNullSeparator: 'Utiliser le caractère NULL comme séparateur',
 			saveID3v1: 'Enregistrer également les métadonnées ID3v1',
 			multiArtistSeparator: {
 				title: 'Comment aimeriez-vous séparer les artistes ?',
 				nothing: "Enregistrer uniquement l'artiste principal",
 				default: 'En utilisant la spécification standard',
 				andFeat: 'En utilisant & et feat.',
-				using: 'En utilisant "{0}"'
+				using: 'En utilisant "{separator}"'
 			},
 			singleAlbumArtist: "Enregistrer uniquement l'artiste principal de l'album",
 			albumVariousArtists: `Conserver "Various Artists" dans les Artistes de l'Album`,
@@ -306,7 +315,7 @@ const fr = {
 				day: 'JJ'
 			},
 			featuredToTitle: {
-				title: 'Que dois-je faire avec les artistes participants (featuring) ?',
+				title: 'Que faire des artistes participants (featuring) ?',
 				0: 'Ne rien faire',
 				1: 'Les retirer du titre de la piste',
 				3: "Les supprimer du titre de la piste et du titre de l'album",
@@ -331,7 +340,8 @@ const fr = {
 			title: 'Fonctionnalités Spotify',
 			clientID: 'clientID Spotify',
 			clientSecret: 'Client Secret Spotify',
-			username: "Nom d'utilisateur Spotify"
+			username: "Nom d'utilisateur Spotify",
+			question: 'Comment activer les Fonctionnalités Spotify ?'
 		},
 		reset: 'Rétablir les valeurs par défaut',
 		save: 'Sauvegarder',
@@ -344,9 +354,9 @@ const fr = {
 	sidebar: {
 		home: 'accueil',
 		search: 'recherche',
-		charts: 'hit-parade',
+		charts: 'classements',
 		favorites: 'favoris',
-		linkAnalyzer: 'analyseur de liens',
+		linkAnalyzer: 'analyseur de lien',
 		settings: 'paramètres',
 		about: 'à propos'
 	},

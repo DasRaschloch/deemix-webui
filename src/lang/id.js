@@ -3,9 +3,9 @@ const id = {
 		welcome: 'Selamat datang di deemix',
 		back: 'kembali',
 		loading: 'memuat',
-		download: 'Mengunduh {0}',
-		by: 'oleh {0}',
-		in: 'di {0}',
+		download: 'Mengunduh {thing}',
+		by: 'oleh {artist}',
+		in: 'di {album}',
 		download_hint: 'Unduh',
 		play_hint: 'Putar',
 		toggle_download_tab_hint: 'Buka/Tutup',
@@ -74,7 +74,7 @@ const id = {
 		download: 'Unduh Tangga Lagu'
 	},
 	errors: {
-		title: 'Galat untuk {0}',
+		title: 'Galat untuk {name}',
 		ids: {
 			invalidURL: 'URL tidak dikenal',
 			unsupportedURL: 'URL belum didukung',
@@ -133,7 +133,7 @@ const id = {
 		startSearching: 'Mulai cari!',
 		description:
 			'Kamu bisa mencari lagu, album, artis, daftar putar.... apa pun! Kamu juga bisa memberikan tautan Deezer',
-		fans: '{0} fan',
+		fans: '{n} fan',
 		noResults: 'Tak ada hasil',
 		noResultsTrack: 'Lagu tidak ditemukan',
 		noResultsAlbum: 'Album tidak ditemukan',
@@ -143,9 +143,9 @@ const id = {
 	searchbar: 'Cari apa pun yang kamu mau (atau berikan tautannya saja)',
 	downloads: 'unduhan',
 	toasts: {
-		addedToQueue: '{0} ditambah ke antrian',
-		alreadyInQueue: '{0} sudah ada di antrian!',
-		finishDownload: '{0} selesai diunduh.',
+		addedToQueue: '{item} ditambah ke antrian',
+		alreadyInQueue: '{item} sudah ada di antrian!',
+		finishDownload: '{item} selesai diunduh.',
 		allDownloaded: 'Seluruh unduhan selesai!',
 		refreshFavs: 'Penyegaran selesai!',
 		loggingIn: 'Masuk',
@@ -155,8 +155,8 @@ const id = {
 		loggedOut: 'Belum masuk',
 		cancellingCurrentItem: 'Membatalkan item.',
 		currentItemCancelled: 'Item telah dibatalan.',
-		startAddingArtist: 'Menambahkan {0} album ke antrian',
-		finishAddingArtist: '{0} album telah ditambahkan ke antrian',
+		startAddingArtist: 'Menambahkan {artist} album ke antrian',
+		finishAddingArtist: '{artist} album telah ditambahkan ke antrian',
 		startConvertingSpotifyPlaylist: 'Mengonversi lagu spotify ke deezer',
 		finishConvertingSpotifyPlaylist: 'Daftar putar Spotify selesai dikonversi'
 	},
@@ -279,7 +279,7 @@ const id = {
 				nothing: 'Simpan artis utamanya saja',
 				default: 'Gunakan spesifikasi standard',
 				andFeat: 'Gunakan & dan feat.',
-				using: 'Gunakan "{0}"'
+				using: 'Gunakan "{separator}"'
 			},
 			singleAlbumArtist: 'Simpan artis utama saja',
 			albumVariousArtists: 'Simpan "Various Artists" sebagai artis',

@@ -3,9 +3,9 @@ const es = {
 		welcome: 'Bienvenido a deemix',
 		back: 'atrás',
 		loading: 'cargando',
-		download: 'Descarga {0}',
-		by: 'por {0}',
-		in: 'en {0}',
+		download: 'Descarga {thing}',
+		by: 'por {artist}',
+		in: 'en {album}',
 		download_hint: 'Descargar',
 		play_hint: 'Reproducir',
 		toggle_download_tab_hint: 'Expandir/Colapsar',
@@ -52,9 +52,8 @@ const es = {
 			contributing: '¿Quieres contribuir a este proyecto? ¡Puedes hacerlo de diferentes maneras!',
 			donations: '¿Quiere contribuir monetariamente? ¡Podrías hacer una donación!'
 		},
-		usesLibrary:
-			'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
-		thanks: `Gracias a <strong>rtonno</fuerte>, <strong>uhwot</fuerte> y <strong>lollilol</fuerte> por ayudarme con este proyecto, a <strong>BasCurtiz</fuerte> y <strong>scarvimane</fuerte> por hacer el icono.`,
+		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
+		thanks: `Gracias a <strong>rtonno</strong>, <strong>uhwot</strong> y <strong>lollilol</strong> por ayudarme con este proyecto, a <strong>BasCurtiz</strong> y <strong>scarvimane</strong> por hacer el icono.`,
 		upToDate: `Mantente al día con las actualizaciones siguiendo el <a href="https://t.me/RemixDevNews" target="_blank">canal de noticias</a> en Telegram.`,
 		officialWebsite: 'Página web oficial',
 		officialRepo: 'Repositorio de la biblioteca oficial',
@@ -62,19 +61,18 @@ const es = {
 		officialSubreddit: 'Subreddit oficial',
 		newsChannel: 'Canal de noticias',
 		questions: `Si tienes preguntas o problemas con la aplicación, busca una solución en el <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> primero. Luego, si no encuentras nada puedes hacer un post con tu problema en el subreddit.`,
-		beforeReporting: `Antes de informar de un error asegúrese de que está ejecutando la última versión de la aplicación y que lo que quiere informar es en realidad un error y no algo que está mal sólo en su extremo.`,
-		beSure: `Asegúrate de que el fallo es reproducible en otras máquinas y también <strong>NO</strong> reporte un fallo si ya ha sido reportado.`,
+		beforeReporting: 'Antes de informar de un error asegúrese de que está ejecutando la última versión de la aplicación y que lo que quiere informar es en realidad un error y no algo que está mal sólo en su extremo.',
+		beSure: 'Asegúrate de que el fallo es reproducible en otras máquinas y también <strong>NO</strong> reporte un fallo si ya ha sido reportado.',
 		duplicateReports: 'Los informes de errores duplicados se cerrarán, así que manténgase al tanto de eso.',
-		dontOpenIssues: `<strong>NO</strong> abra problemas para hacer preguntas, hay un subreddit para eso.`,
+		dontOpenIssues: '<strong>NO</strong> abra problemas para hacer preguntas, hay un subreddit para eso.',
 		newUI: `Si tienes fluidez en Python podrías intentar hacer una nueva interfaz de usuario para la aplicación usando la biblioteca base, o arreglar los errores de la biblioteca con una petición pull en el <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
-		acceptFeatures: `También acepto características, pero no cosas complejas, ya que se pueden implementar directamente en la aplicación y no en la biblioteca.`,
-		otherLanguages: `¡Si dominas otro lenguaje de programación podrías intentar portar Deemix a otros lenguajes de programación!`,
-		understandingCode: `¿Necesitas ayuda para entender el código? Sólo tienes que poner RemixDev en Telegram o Reddit.`,
+		acceptFeatures: 'También acepto características, pero no cosas complejas, ya que se pueden implementar directamente en la aplicación y no en la biblioteca.',
+		otherLanguages: '¡Si dominas otro lenguaje de programación podrías intentar portar Deemix a otros lenguajes de programación!',
+		understandingCode: '¿Necesitas ayuda para entender el código? Sólo tienes que poner RemixDev en Telegram o Reddit.',
 		contributeWebUI: `Si conoces Vue.js (JavaScript), HTML o CSS podrías contribuir a la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: `Debes recordar que <strong>este es un proyecto libre</fuerte> y <strong>debes apoyar a los artistas que amas</fuerte> antes de apoyar a los desarrolladores.`,
-		notObligated: `No te sientas obligado a donar, ¡te aprecio de todas formas!`,
-		lincensedUnder: `Esta obra está autorizada bajo una
-			<a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU Licencia Pública General 3.0</a>.`
+		itsFree: 'Debes recordar que <strong>este es un proyecto libre</strong> y <strong>debes apoyar a los artistas que amas</strong> antes de apoyar a los desarrolladores.',
+		notObligated: 'No te sientas obligado a donar, ¡te aprecio de todas formas!',
+		lincensedUnder: `Esta obra está autorizada bajo una <a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU Licencia Pública General 3.0</a>.`
 	},
 	charts: {
 		title: 'Tablas',
@@ -82,7 +80,7 @@ const es = {
 		download: 'Descargar la tabla'
 	},
 	errors: {
-		title: 'Errores para {0}',
+		title: 'Errores para {name}',
 		ids: {
 			invalidURL: 'No se reconoce la URL',
 			unsupportedURL: 'La URL no está soportada aún',
@@ -139,7 +137,7 @@ const es = {
 	search: {
 		startSearching: '¡Comienza a buscar!',
 		description: 'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
-		fans: '{0} fanáticos',
+		fans: '{n} fanáticos',
 		noResults: 'No hay resultados',
 		noResultsTrack: 'No se encontraron pistas',
 		noResultsAlbum: 'No se encontraron álbumes',
@@ -151,10 +149,10 @@ const es = {
 	toasts: {
 		restoringQueue: 'Restaurando cola de descarga...',
 		queueRestored: '¡Cola de descarga restaurada!',
-		addedToQueue: '{0} añadidos a la cola',
-		addedMoreToQueue: '{0} elementos añadidos a la cola',
-		alreadyInQueue: '¡{0} ya está en la cola!',
-		finishDownload: '{0} terminado de descargar.',
+		addedToQueue: '{item} añadidos a la cola',
+		addedMoreToQueue: '{n} elementos añadidos a la cola',
+		alreadyInQueue: '¡{item} ya está en la cola!',
+		finishDownload: '{item} terminado de descargar.',
 		allDownloaded: '¡Todas las descargas se han completado!',
 		refreshFavs: '¡Actualización completada!',
 		loggingIn: 'Conectando...',
@@ -164,8 +162,8 @@ const es = {
 		loggedOut: 'Desconectado',
 		cancellingCurrentItem: 'Cancelando el elemento actual.',
 		currentItemCancelled: 'El elemento actual se ha cancelado.',
-		startAddingArtist: 'Añadiendo {0} álbumes a la cola',
-		finishAddingArtist: 'Añadido {0} álbumes a la cola',
+		startAddingArtist: 'Añadiendo {artist} álbumes a la cola',
+		finishAddingArtist: 'Añadido {artist} álbumes a la cola',
 		startConvertingSpotifyPlaylist: 'Convertir las pistas de Spotify en pistas de Deezer',
 		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida',
 		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!'
@@ -253,6 +251,8 @@ const es = {
 				both: 'Ambos, jpeg y png'
 			},
 			jpegImageQuality: 'Calidad de la imagen JPEG',
+			embeddedArtworkPNG: 'Guardar las imágenes incrustadas como PNG',
+			embeddedPNGWarning: 'Las PNG no están oficialmente soportadas por Deezer y puede encontrar errores.',
 			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes'
 		},
 		tags: {
@@ -291,7 +291,7 @@ const es = {
 				nothing: 'Guardar sólo el artista principal',
 				default: 'Usar la especificación estándar',
 				andFeat: 'Usar & y feat.',
-				using: 'Usar "{0}"'
+				using: 'Usar "{separator}"'
 			},
 			singleAlbumArtist: 'Guardar sólo el artista principal del álbum',
 			albumVariousArtists: 'Mantén "Various Artists" en los artistas del álbum',

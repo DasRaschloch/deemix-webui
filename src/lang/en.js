@@ -104,7 +104,8 @@ const en = {
 			wrongBitrateNoAlternative: 'Track not found at desired bitrate and no alternative found!',
 			no360RA: 'Track is not available in Reality Audio 360.',
 			notAvailable: "Track not available on Deezer's servers!",
-			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!"
+			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!",
+			noSpaceLeft: "No space left on the device!"
 		}
 	},
 	favorites: {

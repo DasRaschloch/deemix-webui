@@ -22,6 +22,7 @@
 	cursor: pointer;
 	font-size: 1.75rem;
 	margin-bottom: 25px;
+	text-transform: capitalize;
 
 	&:not(.top_result_header) {
 		transition: color 200ms ease-in-out;

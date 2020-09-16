@@ -8,7 +8,7 @@
 				class="search_section"
 			>
 				<h2
-					@click="changeSearchTab(section)"
+					@click="$emit('change-search-tab', section)"
 					class="search_header"
 					:class="{ top_result_header: section === 'TOP_RESULT' }"
 				>
@@ -18,7 +18,7 @@
 				<div
 					v-if="section == 'TOP_RESULT'"
 					class="top_result clickable"
-					@click="handleClickTopResult"
+					@click.stop="$emit(`${topResultType}-view`, $event)"
 					:data-id="results.allTab.TOP_RESULT[0].id"
 				>
 					<div class="cover_container">
@@ -30,7 +30,7 @@
 						<div
 							role="button"
 							aria-label="download"
-							@click.stop="addToQueue"
+							@click.stop="$emit('add-to-queue', $event)"
 							:data-link="results.allTab.TOP_RESULT[0].link"
 							class="download_overlay"
 						>
@@ -70,13 +70,19 @@
 									</div>
 								</td>
 								<td class="table__cell table__cell--medium table__cell--center breakline">
-									<span class="clickable" @click="artistView" :data-id="artist.ART_ID" v-for="artist in track.ARTISTS"
-										>{{ artist.ART_NAME }}
+									<span
+										class="clickable"
+										@click.stop="$emit('artist-view', $event)"
+										:data-id="artist.ART_ID"
+										v-for="artist in track.ARTISTS"
+										:key="artist.ART_ID"
+									>
+										{{ artist.ART_NAME }}
 									</span>
 								</td>
 								<td
 									class="table__cell--medium table__cell--center breakline clickable"
-									@click="albumView"
+									@click.stop="$emit('album-view', $event)"
 									:data-id="track.ALB_ID"
 								>
 									{{ track.ALB_TITLE }}
@@ -86,7 +92,7 @@
 								</td>
 								<td
 									class="table__cell--download table__cell--center clickable"
-									@click.stop="addToQueue"
+									@click.stop="$emit('add-to-queue', $event)"
 									:data-link="'https://www.deezer.com/track/' + track.SNG_ID"
 									role="button"
 									aria-label="download"
@@ -101,7 +107,7 @@
 					<div
 						v-for="release in results.allTab.ARTIST.data.slice(0, 10)"
 						class="release clickable"
-						@click="artistView"
+						@click.stop="$emit('artist-view', $event)"
 						:data-id="release.ART_ID"
 					>
 						<div class="cover_container">
@@ -115,7 +121,7 @@
 							<div
 								role="button"
 								aria-label="download"
-								@click.stop="addToQueue"
+								@click.stop="$emit('add-to-queue', $event)"
 								:data-link="'https://deezer.com/artist/' + release.ART_ID"
 								class="download_overlay"
 							>
@@ -130,7 +136,7 @@
 					<div
 						v-for="release in results.allTab.ALBUM.data.slice(0, 10)"
 						class="release clickable"
-						@click="albumView"
+						@click.stop="$emit('album-view', $event)"
 						:data-id="release.ALB_ID"
 					>
 						<div class="cover_container">
@@ -144,7 +150,7 @@
 							<div
 								role="button"
 								aria-label="download"
-								@click.stop="addToQueue"
+								@click.stop="$emit('add-to-queue', $event)"
 								:data-link="'https://deezer.com/album/' + release.ALB_ID"
 								class="download_overlay"
 							>
@@ -168,7 +174,7 @@
 					<div
 						v-for="release in results.allTab.PLAYLIST.data.slice(0, 10)"
 						class="release clickable"
-						@click="playlistView"
+						@click.stop="$emit('playlist-view', $event)"
 						:data-id="release.PLAYLIST_ID"
 					>
 						<div class="cover_container">
@@ -186,7 +192,7 @@
 							<div
 								role="button"
 								aria-label="download"
-								@click.stop="addToQueue"
+								@click.stop="$emit('add-to-queue', $event)"
 								:data-link="'https://deezer.com/playlist/' + release.PLAYLIST_ID"
 								class="download_overlay"
 							>
@@ -199,7 +205,7 @@
 				</div>
 			</section>
 		</template>
-		<div v-if="test">
+		<div v-if="noResults">
 			<h1>{{ $t('search.noResults') }}</h1>
 		</div>
 	</div>
@@ -210,7 +216,10 @@ import { convertDuration } from '@/utils/utils'
 export default {
 	props: ['results'],
 	computed: {
-		test() {
+		topResultType() {
+			return this.results.allTab.TOP_RESULT[0].type
+		},
+		noResults() {
 			return this.results.allTab.ORDER.every(section =>
 				section == 'TOP_RESULT'
 					? this.results.allTab[section].length == 0
@@ -218,41 +227,8 @@ export default {
 			)
 		}
 	},
-	mounted() {
-		console.log(this.results)
-	},
 	methods: {
-		convertDuration,
-		artistView(event) {
-			this.$emit('artistView', event)
-		},
-		albumView(event) {
-			this.$emit('albumView', event)
-		},
-		playlistView(event) {
-			this.$emit('playlistView', event)
-		},
-		handleClickTopResult(event) {
-			let topResultType = this.results.allTab.TOP_RESULT[0].type
-
-			switch (topResultType) {
-				case 'artist':
-					// this.artistView(event)
-					this.$emit('artistView', event)
-					break
-				case 'album':
-					// this.albumView(event)
-					this.$emit('albumView', event)
-					break
-				case 'playlist':
-					// this.playlistView(event)
-					this.$emit('playlistView', event)
-					break
-
-				default:
-					break
-			}
-		}
+		convertDuration
 	}
 }
 </script>

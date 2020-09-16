@@ -12,8 +12,10 @@
 			:placeholder="$t('searchbar')"
 			autofocus
 			ref="searchbar"
-			@keyup="handleSearchBarKeyup($event)"
+			 @keyup="handleSearchBarKeyup($event)"
 		/>
+			<!-- @keyup.enter.exact="onEnter"
+			@keyup.ctrl.enter="onCTRLEnter" -->
 	</header>
 </template>
 
@@ -31,6 +33,9 @@ export default {
 		}
 	},
 	methods: {
+		test() {
+			console.log('test passato')
+		},
 		async handleSearchBarKeyup(keyEvent) {
 			let isEnterPressed = keyEvent.keyCode === 13
 

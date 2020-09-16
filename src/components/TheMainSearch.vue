@@ -4,11 +4,18 @@
 			<h2>{{ $t('search.startSearching') }}</h2>
 			<p>{{ $t('search.description') }}</p>
 		</div>
+
 		<div v-show="results.query !== ''">
 			<ul class="section-tabs">
-				<li class="section-tabs__tab search_tablinks" id="search_all_tab">{{ $t('globals.listTabs.all') }}</li>
-				<li class="section-tabs__tab search_tablinks" id="search_track_tab">{{ $tc('globals.listTabs.track', 2) }}</li>
-				<li class="section-tabs__tab search_tablinks" id="search_album_tab">{{ $tc('globals.listTabs.album', 2) }}</li>
+				<li class="section-tabs__tab search_tablinks" id="search_all_tab">
+					{{ $t('globals.listTabs.all') }}
+				</li>
+				<li class="section-tabs__tab search_tablinks" id="search_track_tab">
+					{{ $tc('globals.listTabs.track', 2) }}
+				</li>
+				<li class="section-tabs__tab search_tablinks" id="search_album_tab">
+					{{ $tc('globals.listTabs.album', 2) }}
+				</li>
 				<li class="section-tabs__tab search_tablinks" id="search_artist_tab">
 					{{ $tc('globals.listTabs.artist', 2) }}
 				</li>
@@ -16,9 +23,26 @@
 					{{ $tc('globals.listTabs.playlist', 2) }}
 				</li>
 			</ul>
+
+			<ul class="section-tabs">
+				<li
+					class="section-tabs__tab"
+					v-for="tab in tabs"
+					:key="tab.name"
+					@click="currentTab = tab"
+					:class="{ active: currentTab.name === tab.name }"
+				>
+					{{ tab.name }}
+				</li>
+			</ul>
+
+			<template v-if="currentTab.name !== ''">
+				<component :is="currentTab.component" :results="results"></component>
+			</template>
+
 			<div id="search_tab_content" v-show="showSearchTab">
 				<!-- ### Main Search Tab ### -->
-				<div id="main_search" class="search_tabcontent">
+				<!-- <div id="main_search" class="search_tabcontent">
 					<template v-for="section in results.allTab.ORDER">
 						<section
 							v-if="
@@ -34,7 +58,6 @@
 							>
 								{{ $tc(`globals.listTabs.${section.toLowerCase()}`, 2) }}
 							</h2>
-							<!-- Top result -->
 							<div
 								v-if="section == 'TOP_RESULT'"
 								class="top_result clickable"
@@ -238,7 +261,7 @@
 					>
 						<h1>{{ $t('search.noResults') }}</h1>
 					</div>
-				</div>
+				</div> -->
 				<!-- ### Track Search Tab ### -->
 				<div id="track_search" class="search_tabcontent">
 					<base-loading-placeholder v-if="!results.trackTab.loaded"></base-loading-placeholder>
@@ -431,12 +454,17 @@
 </template>
 
 <script>
+import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import ResultsAll from '@components/search/ResultsAll.vue'
+import ResultsAlbums from '@components/search/ResultsAlbums.vue'
+import ResultsArtists from '@components/search/ResultsArtists.vue'
+import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
+import ResultsTracks from '@components/search/ResultsTracks.vue'
+
 import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
-
 import { changeTab } from '@js/tabs.js'
 import EventBus from '@/utils/EventBus.js'
 
@@ -445,7 +473,37 @@ export default {
 		BaseLoadingPlaceholder
 	},
 	data() {
+		const $t = this.$t.bind(this)
+		const $tc = this.$tc.bind(this)
+
 		return {
+			showSearchTab: false,
+			currentTab: {
+				name: '',
+				component: {}
+			},
+			tabs: [
+				{
+					name: $t('globals.listTabs.all'),
+					component: ResultsAll
+				},
+				{
+					name: $tc('globals.listTabs.track', 2),
+					component: ResultsTracks
+				},
+				{
+					name: $tc('globals.listTabs.album', 2),
+					component: ResultsAlbums
+				},
+				{
+					name: $tc('globals.listTabs.artist', 2),
+					component: ResultsArtists
+				},
+				{
+					name: $tc('globals.listTabs.playlist', 2),
+					component: ResultsPlaylists
+				}
+			],
 			results: {
 				query: '',
 				allTab: {
@@ -480,8 +538,7 @@ export default {
 					total: 0,
 					loaded: false
 				}
-			},
-			showSearchTab: false
+			}
 		}
 	},
 	props: {
@@ -496,6 +553,10 @@ export default {
 		this.$root.$on('mainSearch:showNewResults', this.showNewResults)
 		socket.on('mainSearch', this.handleMainSearch)
 		socket.on('search', this.handleSearch)
+
+		this.$on('artistView', this.artistView)
+		this.$on('albumView', this.albumView)
+		this.$on('playlistView', this.playlistView)
 	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
@@ -540,6 +601,8 @@ export default {
 
 			if (!selectedTab) return
 
+			console.log('asfsdf')
+
 			changeTab(target, 'search', selectedTab)
 		},
 		handleClickTopResult(event) {
@@ -571,7 +634,7 @@ export default {
 				this.$root.$emit('updateSearchLoadingState', true)
 			} else {
 				this.showSearchTab = true
-				document.getElementById('main_search_tablink').click()
+				// document.getElementById('main_search_tablink').click()
 			}
 		},
 		checkLoadMoreContent(searchSelected) {
@@ -603,7 +666,7 @@ export default {
 					break
 			}
 
-			document.getElementById(tabID).click()
+			// document.getElementById(tabID).click()
 		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
@@ -643,7 +706,7 @@ export default {
 			this.results.playlistTab = { ...resetObj }
 
 			if (this.results.query == '') {
-				document.getElementById('search_all_tab').click()
+				// document.getElementById('search_all_tab').click()
 			}
 
 			this.results.query = result.QUERY

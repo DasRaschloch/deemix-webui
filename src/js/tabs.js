@@ -1,4 +1,3 @@
-import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
 import router from '@/router'
 
@@ -11,6 +10,8 @@ window.currentStack = {}
 export function changeTab(sidebarEl, section, tabName) {
 	window.windows_stack = []
 	window.currentStack = {}
+
+	console.log(Array.from(arguments))
 
 	// * Only in section search
 	updateTabLink(section)
@@ -81,8 +82,6 @@ export function showView(viewType, event) {
 
 /**
  * Goes back to the previous tab according to the global window stack.
- *
- * Needs EventBus and socket
  */
 export function backTab() {
 	// ! Need to implement the memory of the opened artist tab

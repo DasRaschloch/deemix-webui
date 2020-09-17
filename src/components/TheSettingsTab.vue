@@ -6,7 +6,7 @@
 			<img id="settings_picture" :src="pictureHref" alt="Profile Picture" ref="userpicture" class="circle" />
 
 			<i18n path="settings.login.loggedIn" tag="p">
-				<strong place="username" id="settings_username" ref="username">{{ user.name || 'Non loggato ahah' }}</strong>
+				<strong place="username" id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
 			</i18n>
 
 			<button id="settings_btn_logout" @click="logout">{{ $t('settings.login.logout') }}</button>
@@ -36,7 +36,7 @@
 			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
-			<a id="settings_btn_applogin" class="hide" href="#" @click="applogin">
+			<a id="settings_btn_applogin" v-if="clientMode" href="#" @click="appLogin">
 				{{ $t('settings.login.login') }}
 			</a>
 			<button id="settings_btn_updateArl" @click="login" style="width: 100%">
@@ -77,7 +77,7 @@
 			</h3>
 			<div class="inline-flex">
 				<input autocomplete="off" type="text" v-model="settings.downloadLocation" />
-				<button id="select_downloads_folder" class="only_icon hide" @click="selectDownloadFolder">
+				<button id="select_downloads_folder" v-if="clientMode" class="only_icon" @click="selectDownloadFolder">
 					<i class="material-icons">folder</i>
 				</button>
 			</div>
@@ -612,6 +612,14 @@
 </template>
 
 <style lang="scss">
+#logged_in_info {
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
 .locale-flag {
 	width: 60px;
 	display: inline-flex;
@@ -663,7 +671,8 @@ export default {
 			slimDownloads: false,
 			previewVolume: window.vol,
 			accountNum: 0,
-			accounts: []
+			accounts: [],
+			clientMode: window.clientMode
 		}
 	},
 	computed: {
@@ -699,20 +708,12 @@ export default {
 		this.revertSettings()
 		this.revertCredentials()
 
-		// this.$refs.loggedInInfo.classList.add('hide')
-
 		let storedLocale = localStorage.getItem('locale')
 
 		if (storedLocale) {
 			this.$i18n.locale = storedLocale
 			this.currentLocale = storedLocale
 		}
-
-		let storedArl = localStorage.getItem('arl')
-
-		// if (storedArl) {
-		// 	this.$refs.loginInput.value = storedArl.trim()
-		// }
 
 		let storedAccountNum = localStorage.getItem('accountNum')
 
@@ -738,7 +739,6 @@ export default {
 
 		window.vol.preview_max_volume = volume
 
-		// socket.on('init_settings', this.initSettings)
 		this.waitSettings()
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
@@ -806,7 +806,7 @@ export default {
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
 		},
 		selectDownloadFolder() {
-			if (window.clientMode) socket.emit('selectDownloadFolder')
+			socket.emit('selectDownloadFolder')
 		},
 		downloadFolderSelected(folder) {
 			console.log(folder)
@@ -823,22 +823,17 @@ export default {
 			this.spotifyFeatures = { ...this.getCredentials }
 		},
 		login() {
-			let arl = this.$refs.loginInput.value.trim()
+			let newArl = this.$refs.loginInput.value.trim()
 
-			if (arl !== '' && arl !== localStorage.getItem('arl')) {
-				socket.emit('login', arl, true, this.accountNum)
+			if (newArl && newArl !== this.arl) {
+				socket.emit('login', newArl, true, this.accountNum)
 			}
 		},
-		applogin(e) {
-			if (window.clientMode) {
-				socket.emit('applogin')
-			}
+		appLogin(e) {
+			socket.emit('applogin')
 		},
 		setArl(arl) {
-			console.log({ arl })
-			// this.$refs.loginInput.value = arl
 			this.dispatchARL(arl)
-
 			this.login()
 		},
 		changeAccount() {

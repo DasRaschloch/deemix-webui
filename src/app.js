@@ -36,9 +36,9 @@ function mountApp() {
 
 function initClient() {
 	window.clientMode = true
-	document.querySelector(`#open_downloads_folder`).classList.remove('hide')
-	document.querySelector(`#select_downloads_folder`).classList.remove('hide')
-	document.querySelector(`#settings_btn_applogin`).classList.remove('hide')
+	// document.querySelector(`#open_downloads_folder`).classList.remove('hide')
+	// document.querySelector(`#select_downloads_folder`).classList.remove('hide')
+	// document.querySelector(`#settings_btn_applogin`).classList.remove('hide')
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
@@ -46,16 +46,9 @@ window.addEventListener('pywebviewready', initClient)
 
 /* ===== Global shortcuts ===== */
 
-document.addEventListener('keyup', keyEvent => {
-	if (keyEvent.key == 'Backspace' && keyEvent.ctrlKey) {
-		let searchbar = document.querySelector('#searchbar')
-		searchbar.value = ''
-		searchbar.focus()
-	}
-})
-
 document.addEventListener('paste', pasteEvent => {
 	let pasteText = pasteEvent.clipboardData.getData('Text')
+
 	if (pasteEvent.target.localName != 'input') {
 		if (isValidURL(pasteText)) {
 			if (window.main_selected === 'analyzer_tab') {
@@ -86,8 +79,10 @@ socket.on('logging_in', function() {
 socket.on('init_autologin', function() {
 	let arl = localStorage.getItem('arl')
 	let accountNum = localStorage.getItem('accountNum')
+
 	if (arl) {
 		arl = arl.trim()
+
 		if (accountNum != 0) {
 			socket.emit('login', arl, true, accountNum)
 		} else {
@@ -98,7 +93,6 @@ socket.on('init_autologin', function() {
 
 socket.on('logged_in', function(data) {
 	const { status, user } = data
-	console.log('on logged')
 
 	switch (status) {
 		case 1:
@@ -162,8 +156,11 @@ socket.on('errorMessage', function(error) {
 })
 
 socket.on('queueError', function(queueItem) {
-	if (queueItem.errid) toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
-	else toast(queueItem.error, 'error')
+	if (queueItem.errid) {
+		toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
+	} else {
+		toast(queueItem.error, 'error')
+	}
 })
 
 socket.on('alreadyInQueue', function(data) {

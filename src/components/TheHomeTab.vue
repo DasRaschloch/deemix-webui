@@ -77,6 +77,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+
 import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs'
 import Downloads from '@/utils/downloads'

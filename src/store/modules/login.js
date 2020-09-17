@@ -1,6 +1,6 @@
 const getDefaultState = () => {
 	return {
-		arl: '',
+		arl: localStorage.getItem('arl') || '',
 		status: null,
 		user: {
 			id: null,
@@ -13,21 +13,22 @@ const getDefaultState = () => {
 const state = getDefaultState()
 
 const actions = {
-	login({ commit }, payload) {
+	login({ commit, dispatch }, payload) {
 		const { arl, user, status } = payload
 
-		commit('SET_ARL', arl)
+		dispatch('setARL', { arl })
 		commit('SET_USER', user)
 		commit('SET_STATUS', status)
 	},
 	logout({ commit }) {
-		console.log('logout')
-		commit('RESET_LOGIN')
-
 		localStorage.removeItem('arl')
+
+		commit('RESET_LOGIN')
 	},
 	setARL({ commit }, payload) {
-		const { arl, saveOnLocalStorage } = payload
+		let { arl, saveOnLocalStorage } = payload
+
+		saveOnLocalStorage = typeof saveOnLocalStorage === 'undefined' ? true : saveOnLocalStorage
 
 		commit('SET_ARL', arl)
 
@@ -48,7 +49,8 @@ const actions = {
 const getters = {
 	getARL: state => state.arl,
 	getUser: state => state.user,
-	isLoggedIn: state => [1, 2, 3].indexOf(state.status) !== -1
+	// isLoggedIn: state => [1, 2, 3].indexOf(state.status) !== -1
+	isLoggedIn: state => !!state.arl
 }
 
 const mutations = {

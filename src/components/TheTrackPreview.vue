@@ -25,7 +25,7 @@ export default {
 			await this.$refs.preview.play()
 
 			this.previewStopped = false
-			$(this.$refs.preview).animate({ volume: vol.preview_max_volume / 100 }, 500)
+			$(this.$refs.preview).animate({ volume: window.vol.preview_max_volume / 100 }, 500)
 		},
 		onTimeUpdate() {
 			// Prevents first time entering in this function
@@ -59,7 +59,7 @@ export default {
 
 					$icon.text('pause')
 
-					$(this.$refs.preview).animate({ volume: vol.preview_max_volume / 100 }, 500)
+					$(this.$refs.preview).animate({ volume: window.vol.preview_max_volume / 100 }, 500)
 				} else {
 					this.previewStopped = true
 

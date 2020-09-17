@@ -338,3 +338,7 @@ a {
 .changing-theme {
 	transition: all 200ms ease-in-out;
 }
+
+[v-cloak] {
+	display: none;
+}

@@ -12,9 +12,9 @@
 			:placeholder="$t('searchbar')"
 			autofocus
 			ref="searchbar"
-			 @keyup="handleSearchBarKeyup($event)"
+			@keyup="handleSearchBarKeyup($event)"
 		/>
-			<!-- @keyup.enter.exact="onEnter"
+		<!-- @keyup.enter.exact="onEnter"
 			@keyup.ctrl.enter="onCTRLEnter" -->
 	</header>
 </template>
@@ -31,6 +31,14 @@ export default {
 		return {
 			lastTextSearch: ''
 		}
+	},
+	mounted() {
+		document.addEventListener('keyup', keyEvent => {
+			if (!(keyEvent.key == 'Backspace' && keyEvent.ctrlKey)) return
+
+			this.$refs.searchbar.value = ''
+			this.$refs.searchbar.focus()
+		})
 	},
 	methods: {
 		test() {

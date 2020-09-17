@@ -17,7 +17,8 @@
 		<div id="queue_buttons">
 			<i
 				id="open_downloads_folder"
-				class="material-icons download_bar_icon hide"
+				v-if="clientMode"
+				class="material-icons download_bar_icon"
 				:title="$t('globals.open_downloads_folder')"
 				@click="openDownloadsFolder"
 			>
@@ -58,12 +59,15 @@ const tabMinWidth = 250
 const tabMaxWidth = 500
 
 export default {
-	data: () => ({
-		cachedTabWidth: parseInt(localStorage.getItem('downloadTabWidth')) || 300,
-		queue: [],
-		queueList: {},
-		queueComplete: []
-	}),
+	data() {
+		return {
+			cachedTabWidth: parseInt(localStorage.getItem('downloadTabWidth')) || 300,
+			queue: [],
+			queueList: {},
+			queueComplete: [],
+			clientMode: window.clientMode
+		}
+	},
 	mounted() {
 		socket.on('startDownload', this.startDownload)
 		socket.on('startConversion', this.startConversion)
@@ -375,9 +379,9 @@ export default {
 			}
 		},
 		openDownloadsFolder() {
-			if (window.clientMode) {
-				socket.emit('openDownloadsFolder')
-			}
+			// if (this.clientMode) {
+			socket.emit('openDownloadsFolder')
+			// }
 		},
 		handleDrag(event) {
 			let newWidth = window.innerWidth - event.pageX + 2

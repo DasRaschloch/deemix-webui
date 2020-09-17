@@ -11,8 +11,6 @@ export function changeTab(sidebarEl, section, tabName) {
 	window.windows_stack = []
 	window.currentStack = {}
 
-	console.log(Array.from(arguments))
-
 	// * Only in section search
 	updateTabLink(section)
 

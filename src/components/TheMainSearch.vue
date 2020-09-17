@@ -1,5 +1,5 @@
 <template>
-	<div id="search_tab" class="main_tabcontent" @click="handleSearchTabClick" ref="root">
+	<div id="search_tab" class="main_tabcontent" ref="root">
 		<div v-show="!showSearchTab">
 			<h2>{{ $t('search.startSearching') }}</h2>
 			<p>{{ $t('search.description') }}</p>
@@ -18,15 +18,17 @@
 				</li>
 			</ul>
 
-			<component
-				:is="currentTab.component"
-				:results="results"
-				@add-to-queue="addToQueue"
-				@artist-view="artistView"
-				@album-view="albumView"
-				@playlist-view="playlistView"
-				@change-search-tab="changeSearchTab"
-			></component>
+			<keep-alive>
+				<component
+					:is="currentTab.component"
+					:results="results"
+					@add-to-queue="addToQueue"
+					@artist-view="artistView"
+					@album-view="albumView"
+					@playlist-view="playlistView"
+					@change-search-tab="changeSearchTab"
+				></component>
+			</keep-alive>
 		</div>
 	</div>
 </template>
@@ -40,11 +42,10 @@ import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
 import ResultsTracks from '@components/search/ResultsTracks.vue'
 
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
-import Downloads from '@/utils/downloads'
-import Utils from '@/utils/utils'
-import { changeTab } from '@js/tabs.js'
-import EventBus from '@/utils/EventBus.js'
+import { showView } from '@js/tabs'
+import { sendAddToQueue } from '@/utils/downloads'
+import { numberWithDots, convertDuration } from '@/utils/utils'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	components: {
@@ -126,6 +127,21 @@ export default {
 	computed: {
 		showSearchTab() {
 			return this.results.query !== ''
+		},
+		loadedTabs() {
+			const loaded = []
+
+			for (const resultKey in this.results) {
+				if (this.results.hasOwnProperty(resultKey)) {
+					const result = this.results[resultKey]
+
+					if (result.loaded) {
+						loaded.push(resultKey.replace(/Tab/g, ''))
+					}
+				}
+			}
+
+			return loaded
 		}
 	},
 	props: {
@@ -139,8 +155,8 @@ export default {
 	},
 	mounted() {
 		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
+		this.$root.$on('mainSearch:showNewResults', this.checkIfShowNewResults)
 
-		this.$root.$on('mainSearch:showNewResults', this.showNewResults)
 		socket.on('mainSearch', this.handleMainSearch)
 		socket.on('search', this.handleSearch)
 	},
@@ -148,15 +164,6 @@ export default {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
-		playPausePreview(e) {
-			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
-		previewMouseEnter(e) {
-			EventBus.$emit('trackPreview:previewMouseEnter', e)
-		},
-		previewMouseLeave(e) {
-			EventBus.$emit('trackPreview:previewMouseLeave', e)
-		},
 		changeSearchTab(sectionName) {
 			sectionName = sectionName.toLowerCase()
 
@@ -169,73 +176,24 @@ export default {
 				return
 			}
 
+			window.scrollTo(0, 0)
 			this.currentTab = newTab
 		},
-		handleSearchTabClick(event) {
-			const {
-				target,
-				target: { id }
-			} = event
-			let selectedTab = null
-
-			switch (id) {
-				case 'search_all_tab':
-					selectedTab = 'main_search'
-					break
-				case 'search_track_tab':
-					selectedTab = 'track_search'
-					break
-				case 'search_album_tab':
-					selectedTab = 'album_search'
-					break
-				case 'search_artist_tab':
-					selectedTab = 'artist_search'
-					break
-				case 'search_playlist_tab':
-					selectedTab = 'playlist_search'
-					break
-
-				default:
-					break
-			}
-
-			if (!selectedTab) return
-
-			console.log('asfsdf')
-
-			changeTab(target, 'search', selectedTab)
-		},
-		handleClickTopResult(event) {
-			let topResultType = this.results.allTab.TOP_RESULT[0].type
-
-			switch (topResultType) {
-				case 'artist':
-					this.artistView(event)
-					break
-				case 'album':
-					this.albumView(event)
-					break
-				case 'playlist':
-					this.playlistView(event)
-					break
-
-				default:
-					break
-			}
-		},
-		showNewResults(term, mainSelected) {
-			console.log('show new results')
+		checkIfShowNewResults(term, mainSelected) {
+			console.log('check if show new results')
 			let needToPerformNewSearch = term !== this.results.query || mainSelected == 'search_tab'
 
 			if (needToPerformNewSearch) {
-				// this.showSearchTab = false
-				socket.emit('mainSearch', { term })
-
-				// Showing loading placeholder
-				this.$root.$emit('updateSearchLoadingState', true)
-			} else {
-				// this.showSearchTab = true
+				this.showNewResults(term)
 			}
+		},
+		showNewResults(term) {
+			console.log('show new results')
+			socket.emit('mainSearch', { term })
+
+			// Showing loading placeholder
+			this.$root.$emit('updateSearchLoadingState', true)
+			this.currentTab = this.tabs[0]
 		},
 		checkLoadMoreContent(searchSelected) {
 			if (this.results[searchSelected.split('_')[0] + 'Tab'].data.length !== 0) return
@@ -243,11 +201,10 @@ export default {
 			this.search(searchSelected.split('_')[0])
 		},
 		addToQueue(e) {
-			console.log('add to queue')
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
-		numberWithDots: Utils.numberWithDots,
-		convertDuration: Utils.convertDuration,
+		numberWithDots,
+		convertDuration,
 		search(type) {
 			console.log('search')
 			socket.emit('search', {
@@ -306,6 +263,9 @@ export default {
 			}
 
 			this.results[currentTab].loaded = true
+		},
+		isTabLoaded(tab) {
+			return this.loadedTabs.indexOf(tab.searchType) !== -1 || tab.searchType === 'all'
 		}
 	},
 	watch: {
@@ -315,6 +275,8 @@ export default {
 			this.scrolledSearch(newType)
 		},
 		currentTab(newTab) {
+			if (this.isTabLoaded(newTab)) return
+
 			this.search(newTab.searchType)
 		}
 	}

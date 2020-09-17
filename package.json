@@ -21,7 +21,7 @@
 		"lodash-es": "^4.17.15",
 		"svg-country-flags": "^1.2.7",
 		"toastify-js": "^1.8.0",
-		"vue": "^2.6.11",
+		"vue": "^2.6.12",
 		"vue-i18n": "^8.18.2",
 		"vue-router": "^3.3.4",
 		"vuex": "^3.5.1"
@@ -40,6 +40,6 @@
 		"rollup-plugin-terser": "^6.1.0",
 		"rollup-plugin-vue": "^4.2.0",
 		"sass": "^1.26.8",
-		"vue-template-compiler": "^2.6.11"
+		"vue-template-compiler": "^2.6.12"
 	}
 }

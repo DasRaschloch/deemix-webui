@@ -8,6 +8,7 @@ import spotifyCredentials from '@/store/modules/spotifyCredentials'
 import charts from '@/store/modules/charts'
 import favorites from '@/store/modules/favorites'
 import about from '@/store/modules/about'
+import login from '@/store/modules/login'
 
 // Load Vuex
 Vue.use(Vuex)
@@ -21,7 +22,8 @@ export default new Vuex.Store({
 		spotifyCredentials,
 		charts,
 		favorites,
-		about
+		about,
+		login
 	},
 	strict: process.env.NODE_ENV !== 'production'
 })

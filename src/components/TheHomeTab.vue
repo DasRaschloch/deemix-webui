@@ -1,10 +1,15 @@
 <template>
 	<div id="home_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('globals.welcome') }}</h2>
-		<section id="home_not_logged_in" class="home_section" ref="notLogged">
+
+		<section class="home_section" ref="notLogged" v-if="!isLoggedIn">
 			<p id="home_not_logged_text">{{ $t('home.needTologin') }}</p>
-			<button type="button" name="button" @click="openSettings">{{ $t('home.openSettings') }}</button>
+			<!-- <button type="button" name="button" @click="openSettings">{{ $t('home.openSettings') }}</button> -->
+			<router-link tag="button" name="button" :to="{ name: 'Settings' }">
+				{{ $t('home.openSettings') }}
+			</router-link>
 		</section>
+
 		<section v-if="playlists.length" class="home_section">
 			<h3 class="section_heading">{{ $t('home.sections.popularPlaylists') }}</h3>
 			<div class="release_grid">
@@ -39,6 +44,7 @@
 				</div>
 			</div>
 		</section>
+
 		<section v-if="albums.length" class="home_section">
 			<h3 class="section_heading">{{ $t('home.sections.popularAlbums') }}</h3>
 			<div class="release_grid">
@@ -84,7 +90,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getHomeData']),
+		...mapGetters(['getHomeData', 'isLoggedIn']),
 		needToWait() {
 			return this.getHomeData.albums.data.length === 0 && this.getHomeData.playlists.data.length === 0
 		}
@@ -93,9 +99,6 @@ export default {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
-		openSettings() {
-			document.getElementById('main_settings_tablink').click()
-		},
 		addToQueue(e) {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
@@ -127,19 +130,11 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('home mounted')
-		// this.$refs.root.style.display = 'block'
-
-		if (localStorage.getItem('arl')) {
-			this.$refs.notLogged.classList.add('hide')
-		}
+		// if (localStorage.getItem('arl')) {
+		// 	this.$refs.notLogged.classList.add('hide')
+		// }
 
 		this.checkIfWaitData(this.getHomeData)
-		// socket.on('init_home', this.initHome)
-	},
-	beforeDestroy() {
-		console.log('home bef dest')
-		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

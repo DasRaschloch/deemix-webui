@@ -2,14 +2,17 @@
 	<div id="settings_tab" class="main_tabcontent fixed_footer" ref="root">
 		<h2 class="page_heading">{{ $t('settings.title') }}</h2>
 
-		<div id="logged_in_info" ref="loggedInInfo">
-			<img id="settings_picture" src="" alt="Profile Picture" ref="userpicture" class="circle" />
+		<div id="logged_in_info" v-if="isLoggedIn" ref="loggedInInfo">
+			<img id="settings_picture" :src="pictureHref" alt="Profile Picture" ref="userpicture" class="circle" />
+
 			<i18n path="settings.login.loggedIn" tag="p">
-				<strong place="username" id="settings_username" ref="username"></strong>
+				<strong place="username" id="settings_username" ref="username">{{ user.name || 'Non loggato ahah' }}</strong>
 			</i18n>
+
 			<button id="settings_btn_logout" @click="logout">{{ $t('settings.login.logout') }}</button>
+
 			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
-				<option v-for="(account, i) in accounts" :value="i.toString()">{{ account.BLOG_NAME }}</option>
+				<option v-for="(account, i) in accounts" :key="account" :value="i.toString()">{{ account.BLOG_NAME }}</option>
 			</select>
 		</div>
 
@@ -18,7 +21,14 @@
 				<i class="material-icons">person</i>{{ $t('settings.login.title') }}
 			</h3>
 			<div class="inline-flex">
-				<input autocomplete="off" type="password" id="login_input_arl" ref="loginInput" placeholder="ARL" />
+				<input
+					autocomplete="off"
+					type="password"
+					:value="arl"
+					id="login_input_arl"
+					ref="loginInput"
+					placeholder="ARL"
+				/>
 				<button id="settings_btn_copyArl" class="only_icon" @click="copyARLtoClipboard">
 					<i class="material-icons">assignment</i>
 				</button>
@@ -600,6 +610,7 @@
 		</footer>
 	</div>
 </template>
+
 <style lang="scss">
 .locale-flag {
 	width: 60px;
@@ -627,45 +638,68 @@
 </style>
 
 <script>
-import Vue from 'vue'
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+
 import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
 import flags from '@/utils/flags'
 
 export default {
-	name: 'the-settings-tab',
-	data: () => ({
-		flags,
-		currentLocale: 'en',
-		locales: [],
-		settings: {
-			tags: {}
+	data() {
+		return {
+			flags,
+			currentLocale: 'en',
+			locales: [],
+			settings: {
+				tags: {}
+			},
+			lastSettings: {},
+			spotifyFeatures: {},
+			lastCredentials: {},
+			// defaultSettings: {},
+			lastUser: '',
+			spotifyUser: '',
+			slimDownloads: false,
+			previewVolume: window.vol,
+			accountNum: 0,
+			accounts: []
+		}
+	},
+	computed: {
+		...mapGetters({
+			getSettings: 'getSettings',
+			getCredentials: 'getCredentials',
+			getDefaultSettings: 'getDefaultSettings',
+			arl: 'getARL',
+			user: 'getUser',
+			isLoggedIn: 'isLoggedIn'
+		}),
+		needToWait() {
+			return Object.keys(this.getSettings).length === 0
 		},
-		lastSettings: {},
-		spotifyFeatures: {},
-		lastCredentials: {},
-		// defaultSettings: {},
-		lastUser: '',
-		spotifyUser: '',
-		slimDownloads: false,
-		previewVolume: window.vol,
-		accountNum: 0,
-		accounts: []
-	}),
+		changeSlimDownloads: {
+			get() {
+				return this.slimDownloads
+			},
+			set(wantSlimDownloads) {
+				this.slimDownloads = wantSlimDownloads
+				document.getElementById('download_list').classList.toggle('slim', wantSlimDownloads)
+				localStorage.setItem('slimDownloads', wantSlimDownloads)
+			}
+		},
+		pictureHref() {
+			// Default image: https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg
+			return `https://e-cdns-images.dzcdn.net/images/user/${this.user.picture}/125x125-000000-80-0-0.jpg`
+		}
+	},
 	mounted() {
-		console.log('settings mounted')
-
 		this.locales = this.$i18n.availableLocales
 
 		this.revertSettings()
 		this.revertCredentials()
 
-		// EventBus.$on('settingsTab:revertSettings', this.revertSettings)
-		// EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
-
-		this.$refs.loggedInInfo.classList.add('hide')
+		// this.$refs.loggedInInfo.classList.add('hide')
 
 		let storedLocale = localStorage.getItem('locale')
 
@@ -676,9 +710,9 @@ export default {
 
 		let storedArl = localStorage.getItem('arl')
 
-		if (storedArl) {
-			this.$refs.loginInput.value = storedArl.trim()
-		}
+		// if (storedArl) {
+		// 	this.$refs.loginInput.value = storedArl.trim()
+		// }
 
 		let storedAccountNum = localStorage.getItem('accountNum')
 
@@ -712,23 +746,11 @@ export default {
 		socket.on('downloadFolderSelected', this.downloadFolderSelected)
 		socket.on('applogin_arl', this.setArl)
 	},
-	computed: {
-		...mapGetters(['getSettings', 'getCredentials', 'getDefaultSettings']),
-		needToWait() {
-			return Object.keys(this.getSettings).length === 0
-		},
-		changeSlimDownloads: {
-			get() {
-				return this.slimDownloads
-			},
-			set(wantSlimDownloads) {
-				this.slimDownloads = wantSlimDownloads
-				document.getElementById('download_list').classList.toggle('slim', wantSlimDownloads)
-				localStorage.setItem('slimDownloads', wantSlimDownloads)
-			}
-		}
-	},
+
 	methods: {
+		...mapActions({
+			dispatchARL: 'setARL'
+		}),
 		waitSettings() {
 			if (this.needToWait) {
 				// Checking if the saving of the settings is completed
@@ -802,7 +824,8 @@ export default {
 		},
 		login() {
 			let arl = this.$refs.loginInput.value.trim()
-			if (arl != '' && arl != localStorage.getItem('arl')) {
+
+			if (arl !== '' && arl !== localStorage.getItem('arl')) {
 				socket.emit('login', arl, true, this.accountNum)
 			}
 		},
@@ -812,7 +835,10 @@ export default {
 			}
 		},
 		setArl(arl) {
-			this.$refs.loginInput.value = arl
+			console.log({ arl })
+			// this.$refs.loginInput.value = arl
+			this.dispatchARL(arl)
+
 			this.login()
 		},
 		changeAccount() {

@@ -3,7 +3,13 @@
 		<div id="container">
 			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
 
-			<router-view v-show="!loading" :perform-scrolled-search="performScrolledSearch"></router-view>
+			<keep-alive>
+				<router-view
+					v-show="!loading"
+					:key="$route.fullPath"
+					:perform-scrolled-search="performScrolledSearch"
+				></router-view>
+			</keep-alive>
 		</div>
 	</section>
 </template>

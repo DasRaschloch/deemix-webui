@@ -334,3 +334,7 @@ a {
 .hide {
 	display: none !important;
 }
+
+.changing-theme {
+	transition: all 200ms ease-in-out;
+}

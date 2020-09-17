@@ -1,96 +1,21 @@
 <template>
 	<aside id="sidebar" role="navigation">
 		<router-link
+			v-for="link in links"
+			:key="link.id"
 			tag="span"
-			id="main_home_tablink"
 			class="main_tablinks"
-			:class="{ active: activeTablink === 'home' }"
 			role="link"
-			aria-label="home"
-			:to="{ name: 'Home' }"
-			@click.native="activeTablink = 'home'"
+			:id="link.id"
+			:class="{ active: activeTablink === link.name }"
+			:aria-label="link.ariaLabel"
+			:to="{ name: link.routerName }"
+			@click.native="activeTablink = link.name"
 		>
-			<i class="material-icons side_icon">home</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.home') }}</span>
+			<i class="material-icons side_icon">{{ link.icon }}</i>
+			<span class="main_tablinks_text">{{ link.label }}</span>
 		</router-link>
-		<router-link
-			tag="span"
-			id="main_search_tablink"
-			class="main_tablinks"
-			:class="{ active: activeTablink === 'search' }"
-			role="link"
-			aria-label="search"
-			:to="{ name: 'Search' }"
-			@click.native="activeTablink = 'search'"
-		>
-			<i class="material-icons side_icon">search</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.search') }}</span>
-		</router-link>
-		<router-link
-			tag="span"
-			id="main_charts_tablink"
-			class="main_tablinks"
-			:class="{ active: activeTablink === 'charts' }"
-			role="link"
-			aria-label="charts"
-			:to="{ name: 'Charts' }"
-			@click.native="activeTablink = 'charts'"
-		>
-			<i class="material-icons side_icon">show_chart</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.charts') }}</span>
-		</router-link>
-		<router-link
-			tag="span"
-			id="main_favorites_tablink"
-			class="main_tablinks"
-			:class="{ active: activeTablink === 'favorites' }"
-			role="link"
-			aria-label="favorites"
-			:to="{ name: 'Favorites' }"
-			@click.native="activeTablink = 'favorites'"
-		>
-			<i class="material-icons side_icon">star</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.favorites') }}</span>
-		</router-link>
-		<router-link
-			tag="span"
-			id="main_analyzer_tablink"
-			class="main_tablinks"
-			:class="{ active: activeTablink === 'analyzer' }"
-			role="link"
-			aria-label="link analyzer"
-			:to="{ name: 'Link Analyzer' }"
-			@click.native="activeTablink = 'analyzer'"
-		>
-			<i class="material-icons side_icon">link</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.linkAnalyzer') }}</span>
-		</router-link>
-		<router-link
-			tag="span"
-			id="main_settings_tablink"
-			class="main_tablinks"
-			:class="{ active: activeTablink === 'settings' }"
-			role="link"
-			aria-label="settings"
-			:to="{ name: 'Settings' }"
-			@click.native="activeTablink = 'settings'"
-		>
-			<i class="material-icons side_icon">settings</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.settings') }}</span>
-		</router-link>
-		<router-link
-			tag="span"
-			id="main_about_tablink"
-			class="main_tablinks"
-			:class="{ active: activeTablink === 'about' }"
-			role="link"
-			aria-label="info"
-			:to="{ name: 'About' }"
-			@click.native="activeTablink = 'about'"
-		>
-			<i class="material-icons side_icon">info</i>
-			<span class="main_tablinks_text">{{ $t('sidebar.about') }}</span>
-		</router-link>
+
 		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
 			<i class="material-icons side_icon side_icon--theme">palette</i>
 			<div id="theme_togglers">
@@ -140,16 +65,76 @@
 </style>
 
 <script>
-import { changeTab } from '@js/tabs.js'
-
 export default {
-	name: 'the-sidebar',
-	data: () => ({
-		appOnline: null,
-		activeTheme: 'light',
-		themes: ['purple', 'dark', 'light'],
-		activeTablink: 'home'
-	}),
+	data() {
+		const $t = this.$t.bind(this)
+		const $tc = this.$tc.bind(this)
+
+		return {
+			appOnline: null,
+			activeTheme: 'light',
+			themes: ['purple', 'dark', 'light'],
+			activeTablink: 'home',
+			links: [
+				{
+					id: 'main_home_tablink',
+					name: 'home',
+					ariaLabel: 'home',
+					routerName: 'Home',
+					icon: 'home',
+					label: $t('sidebar.home')
+				},
+				{
+					id: 'main_search_tablink',
+					name: 'search',
+					ariaLabel: 'search',
+					routerName: 'Search',
+					icon: 'search',
+					label: $t('sidebar.search')
+				},
+				{
+					id: 'main_charts_tablink',
+					name: 'charts',
+					ariaLabel: 'charts',
+					routerName: 'Charts',
+					icon: 'show_chart',
+					label: $t('sidebar.charts')
+				},
+				{
+					id: 'main_favorites_tablink',
+					name: 'favorites',
+					ariaLabel: 'favorites',
+					routerName: 'Favorites',
+					icon: 'star',
+					label: $t('sidebar.favorites')
+				},
+				{
+					id: 'main_analyzer_tablink',
+					name: 'analyzer',
+					ariaLabel: 'link analyzer',
+					routerName: 'Link Analyzer',
+					icon: 'link',
+					label: $t('sidebar.linkAnalyzer')
+				},
+				{
+					id: 'main_settings_tablink',
+					name: 'settings',
+					ariaLabel: 'settings',
+					routerName: 'Settings',
+					icon: 'settings',
+					label: $t('sidebar.settings')
+				},
+				{
+					id: 'main_about_tablink',
+					name: 'about',
+					ariaLabel: 'info',
+					routerName: 'About',
+					icon: 'info',
+					label: $t('sidebar.about')
+				}
+			]
+		}
+	},
 	mounted() {
 		/* === Online status handling === */
 		this.appOnline = navigator.onLine
@@ -164,6 +149,14 @@ export default {
 
 		/* === Current theme handling === */
 		this.activeTheme = localStorage.getItem('selectedTheme') || 'light'
+
+		this.$router.afterEach((to, from) => {
+			const linkInSidebar = this.links.find(link => link.routerName === to.name)
+
+			if (!linkInSidebar) return
+
+			this.activeTablink = linkInSidebar.name
+		})
 	},
 	methods: {
 		changeTheme(newTheme) {
@@ -174,13 +167,15 @@ export default {
 			localStorage.setItem('selectedTheme', newTheme)
 
 			// Animating everything to have a smoother theme switch
-			document.querySelectorAll('*').forEach(el => {
-				el.style.transition = 'all 200ms ease-in-out'
+			const allElements = document.querySelectorAll('*')
+
+			allElements.forEach(el => {
+				el.classList.add('changing-theme')
 			})
 
 			document.documentElement.addEventListener('transitionend', function transitionHandler() {
-				document.querySelectorAll('*').forEach(el => {
-					el.style.transition = ''
+				allElements.forEach(el => {
+					el.classList.remove('changing-theme')
 				})
 
 				document.documentElement.removeEventListener('transitionend', transitionHandler)

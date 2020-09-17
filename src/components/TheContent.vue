@@ -1,10 +1,9 @@
 <template>
-	<!-- <section id="content" @scroll="handleContentScroll" ref="content"> -->
-	<section id="content">
+	<section id="content" @scroll="$route.name === 'Search' ? handleContentScroll($event) : null" ref="content">
 		<div id="container">
 			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
 
-			<router-view v-show="!loading"></router-view>
+			<router-view v-show="!loading" :perform-scrolled-search="performScrolledSearch"></router-view>
 		</div>
 	</section>
 </template>
@@ -50,31 +49,23 @@ export default {
 		BaseLoadingPlaceholder
 	},
 	data: () => ({
-		newScrolled: null,
+		performScrolledSearch: false,
 		loading: false
 	}),
 	mounted() {
 		this.$root.$on('updateSearchLoadingState', loading => {
 			this.loading = loading
 		})
+	},
+	methods: {
+		handleContentScroll: debounce(async function () {
+			if (this.$refs.content.scrollTop + this.$refs.content.clientHeight < this.$refs.content.scrollHeight) return
+			this.performScrolledSearch = true
+
+			await this.$nextTick()
+
+			this.performScrolledSearch = false
+		}, 100)
 	}
-	// methods: {
-	// 	handleContentScroll: debounce(async function () {
-	// 		if (this.$refs.content.scrollTop + this.$refs.content.clientHeight < this.$refs.content.scrollHeight) return
-
-	// 		if (
-	// 			main_selected !== 'search_tab' ||
-	// 			['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(window.search_selected) === -1
-	// 		) {
-	// 			return
-	// 		}
-
-	// 		this.newScrolled = window.search_selected.split('_')[0]
-
-	// 		await this.$nextTick()
-
-	// 		this.newScrolled = null
-	// 	}, 100)
-	// }
 }
 </script>

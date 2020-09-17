@@ -145,8 +145,8 @@ export default {
 		}
 	},
 	props: {
-		scrolledSearchType: {
-			type: String,
+		performScrolledSearch: {
+			type: Boolean,
 			required: false
 		}
 	},
@@ -206,24 +206,22 @@ export default {
 		numberWithDots,
 		convertDuration,
 		search(type) {
-			console.log('search')
+			console.log('search method called')
+
 			socket.emit('search', {
 				term: this.results.query,
-				type: type,
-				start: this.results[type + 'Tab'].next,
+				type,
+				start: this.results[`${type}Tab`].next,
 				nb: 30
 			})
 		},
-		scrolledSearch(type) {
-			let currentTab = type + 'Tab'
+		scrolledSearch() {
+			if (this.currentTab.searchType === 'all') return
+
+			let currentTab = `${this.currentTab.searchType}Tab`
 
 			if (this.results[currentTab].next < this.results[currentTab].total) {
-				socket.emit('search', {
-					term: this.results.query,
-					type: type,
-					start: this.results[currentTab].next,
-					nb: 30
-				})
+				this.search(this.currentTab.searchType)
 			}
 		},
 		handleMainSearch(result) {
@@ -269,10 +267,10 @@ export default {
 		}
 	},
 	watch: {
-		scrolledSearchType(newType) {
-			if (!newType) return
+		performScrolledSearch(needToSearch) {
+			if (!needToSearch) return
 
-			this.scrolledSearch(newType)
+			this.scrolledSearch(needToSearch)
 		},
 		currentTab(newTab) {
 			if (this.isTabLoaded(newTab)) return

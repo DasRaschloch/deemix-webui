@@ -67,7 +67,7 @@ export default {
 					this.$root.$emit('QualityModal:open', term)
 				} else {
 					if (isShowingAnalyzer) {
-						EventBus.$emit('linkAnalyzerTab:reset')
+						// EventBus.$emit('linkAnalyzerTab:reset')
 						socket.emit('analyzeLink', term)
 					} else {
 						// ? Open downloads tab ?

@@ -1,7 +1,8 @@
 <template>
 	<div id="analyzer_tab" class="main_tabcontent image_header" ref="root">
 		<h2 class="page_heading page_heading--capitalize">{{ $t('sidebar.linkAnalyzer') }}</h2>
-		<div v-if="link == ''">
+
+		<div v-if="link === ''">
 			<p>
 				{{ $t('linkAnalyzer.info') }}
 			</p>
@@ -9,10 +10,11 @@
 				{{ $t('linkAnalyzer.useful') }}
 			</p>
 		</div>
-		<div v-else-if="link == 'error'">
+		<div v-else-if="link === 'error'">
 			<h2>{{ $t('linkAnalyzer.linkNotSupported') }}</h2>
 			<p>{{ $t('linkAnalyzer.linkNotSupportedYet') }}</p>
 		</div>
+
 		<div v-else>
 			<header
 				class="inline-flex"
@@ -115,21 +117,21 @@
 
 <script>
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
-import Utils from '@/utils/utils'
+import { showView } from '@js/tabs'
+import { convertDuration } from '@/utils/utils'
+import { COUNTRIES } from '@/utils/countries'
 import EventBus from '@/utils/EventBus'
-import Downloads from '@/utils/downloads'
+import { sendAddToQueue } from '@/utils/downloads'
 
 export default {
-	name: 'the-link-analyzer-tab',
 	data() {
 		return {
+			link: '',
 			title: '',
 			subtitle: '',
 			image: '',
 			data: {},
 			type: '',
-			link: '',
 			id: '0',
 			countries: []
 		}
@@ -137,7 +139,7 @@ export default {
 	methods: {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
-		convertDuration: Utils.convertDuration,
+		convertDuration,
 		reset() {
 			this.title = 'Loading...'
 			this.subtitle = ''
@@ -148,6 +150,7 @@ export default {
 			this.countries = []
 		},
 		showTrack(data) {
+			this.reset()
 			const {
 				title,
 				title_version,
@@ -167,13 +170,14 @@ export default {
 				let temp = []
 				let chars = [...cc].map(c => c.charCodeAt() + 127397)
 				temp.push(String.fromCodePoint(...chars))
-				temp.push(Utils.COUNTRIES[cc])
+				temp.push(COUNTRIES[cc])
 				this.countries.push(temp)
 			})
 
 			this.data = data
 		},
 		showAlbum(data) {
+			this.reset()
 			const { title, cover_xl, link, id } = data
 
 			this.title = title
@@ -187,7 +191,7 @@ export default {
 			this.link = 'error'
 		},
 		addToQueue(e) {
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		}
 	},
 	mounted() {

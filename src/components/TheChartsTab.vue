@@ -130,15 +130,9 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('charts mounted')
-		// this.$refs.root.style.display = 'block'
 		this.waitCharts()
 		// socket.on('init_charts', this.initCharts)
 		socket.on('setChartTracks', this.setTracklist)
-	},
-	beforeDestroy() {
-		console.log('charts bef dest')
-		// this.$refs.root.style.display = 'none'
 	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
@@ -190,7 +184,6 @@ export default {
 			socket.emit('getChartTracks', this.id)
 		},
 		setTracklist(data) {
-			console.log('settracklist')
 			this.chart = data
 		},
 		changeCountry() {
@@ -198,7 +191,6 @@ export default {
 			this.id = 0
 		},
 		initCharts() {
-			console.log('init charts')
 			this.countries = this.getCharts
 			this.country = localStorage.getItem('chart') || ''
 

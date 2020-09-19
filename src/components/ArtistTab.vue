@@ -51,22 +51,18 @@
 						<img
 							class="rounded coverart"
 							:src="release.cover_small"
-							style="margin-right: 16px; width: 56px; height: 56px;"
+							style="margin-right: 16px; width: 56px; height: 56px"
 						/>
-						<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">
-							explicit
-						</i>
+						<i v-if="release.explicit_lyrics" class="material-icons explicit_icon"> explicit </i>
 						{{ release.title }}
-						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color: #ff7300;">
+						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color: #ff7300">
 							fiber_new
 						</i>
 					</td>
 					<td>{{ release.release_date }}</td>
 					<td>{{ release.nb_song }}</td>
 					<td @click.stop="addToQueue" :data-link="release.link" class="clickable">
-						<i class="material-icons" :title="$t('globals.download_hint')">
-							file_download
-						</i>
+						<i class="material-icons" :title="$t('globals.download_hint')"> file_download </i>
 					</td>
 				</tr>
 			</tbody>
@@ -184,17 +180,10 @@ export default {
 		}
 	},
 	mounted() {
-		// this.$refs.root.style.display = 'block'
-		console.log('artist mounted')
-
 		socket.on('show_artist', this.showArtist)
 
 		EventBus.$on('artistTab:updateSelected', this.updateSelected)
 		EventBus.$on('artistTab:changeTab', this.changeTab)
-	},
-	beforeDestroy() {
-		console.log('artist bef dest')
-		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

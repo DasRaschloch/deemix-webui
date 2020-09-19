@@ -7,12 +7,11 @@ socket.on('connect', () => {
 })
 
 socket.on('init_charts', charts => {
-	// store.dispatch('cacheCharts', charts)
+	store.dispatch('cacheCharts', charts)
 })
 
 socket.on('init_favorites', favorites => {
 	store.dispatch('setFavorites', favorites)
-	// store.dispatch('setFavorites', JSON.parse(JSON.stringify(favorites)))
 })
 
 socket.on('init_settings', (settings, credentials, defaults) => {

@@ -104,7 +104,6 @@ export default {
 			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		initHome(data) {
-			console.log('init home')
 			const {
 				playlists: { data: playlistData },
 				albums: { data: albumData }

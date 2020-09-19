@@ -180,7 +180,6 @@ export default {
 			this.currentTab = newTab
 		},
 		checkIfShowNewResults(term, mainSelected) {
-			console.log('check if show new results')
 			let needToPerformNewSearch = term !== this.results.query || mainSelected == 'search_tab'
 
 			if (needToPerformNewSearch) {
@@ -188,7 +187,6 @@ export default {
 			}
 		},
 		showNewResults(term) {
-			console.log('show new results')
 			socket.emit('mainSearch', { term })
 
 			// Showing loading placeholder
@@ -206,8 +204,6 @@ export default {
 		numberWithDots,
 		convertDuration,
 		search(type) {
-			console.log('search method called')
-
 			socket.emit('search', {
 				term: this.results.query,
 				type,
@@ -225,7 +221,6 @@ export default {
 			}
 		},
 		handleMainSearch(result) {
-			console.log('handle main search', result)
 			// Hiding loading placeholder
 			this.$root.$emit('updateSearchLoadingState', false)
 
@@ -239,7 +234,6 @@ export default {
 			this.results.query = result.QUERY
 		},
 		handleSearch(result) {
-			console.log('handle search', result)
 			const { next: nextResult, total, type, data } = result
 
 			let currentTab = type + 'Tab'

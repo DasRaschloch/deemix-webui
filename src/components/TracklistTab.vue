@@ -55,9 +55,7 @@
 							</td>
 							<td class="table__cell--large table__cell--with-icon">
 								<div class="table__cell-content table__cell-content--vertical-center">
-									<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
-										explicit
-									</i>
+									<i v-if="track.explicit_lyrics" class="material-icons explicit_icon"> explicit </i>
 									{{
 										track.title +
 										(track.title_version && track.title.indexOf(track.title_version) == -1
@@ -91,9 +89,9 @@
 								<input class="clickable" type="checkbox" v-model="track.selected" />
 							</td>
 						</tr>
-						<tr v-else-if="track.type == 'disc_separator'" class="table__row-no-highlight" style="opacity: 0.54;">
+						<tr v-else-if="track.type == 'disc_separator'" class="table__row-no-highlight" style="opacity: 0.54">
 							<td>
-								<div class="table__cell-content table__cell-content--vertical-center" style="opacity: 0.54;">
+								<div class="table__cell-content table__cell-content--vertical-center" style="opacity: 0.54">
 									<i class="material-icons">album</i>
 								</div>
 							</td>
@@ -131,10 +129,10 @@
 				</template>
 			</tbody>
 		</table>
-		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px;">{{ label }}</span>
+		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px">{{ label }}</span>
 		<footer>
 			<button @click.stop="addToQueue" :data-link="link">
-				{{ `${$t('globals.download', {thing: $tc(`globals.listTabs.${type}`, 1)})}` }}
+				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${type}`, 1) })}` }}
 			</button>
 			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
@@ -173,7 +171,6 @@ export default {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},
 		reset() {
-			console.log('resetto')
 			this.title = 'Loading...'
 			this.image = ''
 			this.metadata = ''
@@ -236,8 +233,6 @@ export default {
 		},
 		showPlaylist(data) {
 			this.reset()
-			console.log(data)
-			console.log('mandi')
 
 			const {
 				id: playlistID,
@@ -254,7 +249,10 @@ export default {
 			this.title = playlistTitle
 			this.image = playlistCover
 			this.release_date = creation_date.substring(0, 10)
-			this.metadata = `${this.$t('globals.by', {artist: creatorName})} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
+			this.metadata = `${this.$t('globals.by', { artist: creatorName })} • ${this.$tc(
+				'globals.listTabs.trackN',
+				numberOfTracks
+			)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null
@@ -282,7 +280,10 @@ export default {
 				? images[0].url
 				: 'https://e-cdns-images.dzcdn.net/images/cover/d41d8cd98f00b204e9800998ecf8427e/1000x1000-000000-80-0-0.jpg'
 			this.release_date = ''
-			this.metadata = `${this.$t('globals.by', {artist: ownerName})} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
+			this.metadata = `${this.$t('globals.by', { artist: ownerName })} • ${this.$tc(
+				'globals.listTabs.trackN',
+				numberOfTracks
+			)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null
@@ -295,17 +296,11 @@ export default {
 		}
 	},
 	mounted() {
-		console.log('tracklist mounted')
-		// this.$refs.root.style.display = 'block'
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)
 		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
-	},
-	beforeDestroy() {
-		console.log('tracklist bef dest')
-		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

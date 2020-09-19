@@ -104,7 +104,8 @@ const ru = {
 			wrongBitrateNoAlternative: 'Данного трека нет в нужном битрейте. Альтернатив не найдено!',
 			no360RA: 'Трек недоступен в формате Reality Audio 360.',
 			notAvailable: "Трек недоступен на серверах Deezer!",
-			notAvailableNoAlternative: "Трек недоступен на серверах Deezer. Альтернатив не найдено!"
+			notAvailableNoAlternative: "Трек недоступен на серверах Deezer. Альтернатив не найдено!",
+			noSpaceLeft: "На устройстве не осталось свободного места!"
 		}
 	},
 	favorites: {

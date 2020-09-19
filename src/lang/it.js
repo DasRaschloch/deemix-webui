@@ -270,7 +270,8 @@ const it = {
 			jpegImageQuality: 'Qualità immagine JPEG',
 			embeddedArtworkPNG: 'Salva copertina incorporata come PNG',
 			embeddedPNGWarning: 'Le immagini PNG non sono usate ufficialmente da Deezer e potrebbero dare problemi',
-			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi'
+			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi',
+			coverDescriptionUTF8: 'Salva la descrizione della copertina in UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Quali tag salvare',

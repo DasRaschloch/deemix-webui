@@ -9,6 +9,7 @@ import charts from '@/store/modules/charts'
 import favorites from '@/store/modules/favorites'
 import about from '@/store/modules/about'
 import login from '@/store/modules/login'
+import errors from '@/store/modules/errors'
 
 // Load Vuex
 Vue.use(Vuex)
@@ -23,7 +24,8 @@ export default new Vuex.Store({
 		charts,
 		favorites,
 		about,
-		login
+		login,
+		errors
 	},
 	strict: process.env.NODE_ENV !== 'production'
 })

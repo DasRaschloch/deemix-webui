@@ -1,6 +1,7 @@
 <template>
 	<div id="errors_tab" class="main_tabcontent">
 		<h1>{{ $t('errors.title', { name: title }) }}</h1>
+
 		<table class="table table--tracklist">
 			<tr>
 				<th>ID</th>
@@ -19,37 +20,17 @@
 </template>
 
 <script>
-import { changeTab } from '@js/tabs.js'
-
-import EventBus from '@/utils/EventBus'
+import { mapGetters } from 'vuex'
 
 export default {
-	name: 'the-errors-tab',
-	data: () => ({
-		title: '',
-		errors: []
-	}),
-	methods: {
-		reset() {
-			this.title = ''
-			this.errors = []
+	computed: {
+		...mapGetters(['getErrors']),
+		title() {
+			return `${this.getErrors.artist} - ${this.getErrors.title}`
 		},
-		showErrors(data, eventTarget) {
-			this.title = data.artist + ' - ' + data.title
-			this.errors = data.errors
-
-			changeTab(eventTarget, 'main', 'errors_tab')
+		errors() {
+			return this.getErrors.errors
 		}
-	},
-	mounted() {
-		console.log('errors mounted')
-		// this.$refs.root.style.display = 'block'
-		EventBus.$on('showTabErrors', this.showErrors)
-		this.$root.$on('showTabErrors', this.showErrors)
-	},
-	beforeDestroy() {
-		console.log('errors bef dest')
-		// this.$refs.root.style.display = 'none'
 	}
 }
 </script>

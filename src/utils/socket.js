@@ -11,7 +11,8 @@ socket.on('init_charts', charts => {
 })
 
 socket.on('init_favorites', favorites => {
-	// store.dispatch('setFavorites', favorites)
+	store.dispatch('setFavorites', favorites)
+	// store.dispatch('setFavorites', JSON.parse(JSON.stringify(favorites)))
 })
 
 socket.on('init_settings', (settings, credentials, defaults) => {

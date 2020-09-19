@@ -4,7 +4,8 @@ const state = {
 	albums: [],
 	artists: [],
 	playlists: [],
-	tracks: []
+	tracks: [],
+	test: ''
 }
 
 const actions = {
@@ -21,7 +22,7 @@ const actions = {
 			commit('SET_FAVORITES_ARTISTS', { index, data: artist })
 		})
 
-		dispatch('setFavoritesTracks', payload.tracks)
+		// dispatch('setFavoritesTracks', payload.tracks)
 	},
 	setFavoritesTracks({ commit }, payload) {
 		payload.forEach((track, index) => {

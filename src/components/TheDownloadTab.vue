@@ -50,10 +50,12 @@
 	height: 100vh;
 }
 </style>
+
 <script>
 import $ from 'jquery'
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
+import { mapActions } from 'vuex'
 
 const tabMinWidth = 250
 const tabMaxWidth = 500
@@ -99,6 +101,7 @@ export default {
 		})
 	},
 	methods: {
+		...mapActions(['setErrors']),
 		setTabWidth(newWidth) {
 			if (undefined === newWidth) {
 				this.$refs.container.style.width = ''
@@ -411,8 +414,10 @@ export default {
 				.addClass('determinate')
 				.css('width', '100%')
 		},
-		showErrorsTab(clickEvent) {
-			this.$root.$emit('showTabErrors', clickEvent.data.item, clickEvent.target)
+		async showErrorsTab(clickEvent) {
+			await this.setErrors(clickEvent.data.item)
+
+			this.$router.push({ name: 'Errors' })
 		}
 	}
 }

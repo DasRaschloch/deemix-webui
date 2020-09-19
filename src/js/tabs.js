@@ -7,6 +7,7 @@ window.main_selected = ''
 window.windows_stack = []
 window.currentStack = {}
 
+// Used only in errors tab
 export function changeTab(sidebarEl, section, tabName) {
 	window.windows_stack = []
 	window.currentStack = {}

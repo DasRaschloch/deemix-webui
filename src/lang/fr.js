@@ -97,7 +97,7 @@ const fr = {
 			spotifyDisabled: 'Les Fonctionnalités Spotify ne sont pas configurées correctement.',
 			trackNotOnDeezer: 'La piste est introuvable sur Deezer !',
 			albumNotOnDeezer: "L'album est introuvable sur Deezer !",
-			notOnDeezer: 'La piste est indisponible sur Deezer !’,
+			notOnDeezer: 'La piste est indisponible sur Deezer !',
 			notEncoded: "La piste n'a pas encore été encodée !",
 			notEncodedNoAlternative: "La piste n'a pas encore été encodée et aucune alternative n'a été trouvée !",
 			wrongBitrate: 'La piste est introuvable au débit souhaité.',
@@ -105,7 +105,7 @@ const fr = {
 			no360RA: 'La piste est indisponible au format Reality Audio 360.',
 			notAvailable: 'La piste est indisponible sur les serveurs de Deezer !',
 			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
-			noSpaceLeft: "L’espace disponible sur cet appareil est insuffisant !"
+			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !"
 		}
 	},
 	favorites: {
@@ -175,7 +175,7 @@ const fr = {
 		finishAddingArtist: "Les albums de {artist} ont été ajoutés à la file d'attente",
 		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en équivalents Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
-		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !’,
+		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !',
 		deezerNotAvailable: "Deezer est indisponible dans votre pays. Vous devez utiliser un VPN."
 	},
 	settings: {

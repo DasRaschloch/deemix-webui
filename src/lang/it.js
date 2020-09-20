@@ -181,7 +181,8 @@ const it = {
 		finishAddingArtist: 'Aggiunto gli album di {artist} alla coda',
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
-		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!'
+		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
+		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.'
 	},
 	settings: {
 		title: 'Impostazioni',

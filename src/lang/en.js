@@ -175,7 +175,8 @@ const en = {
 		finishAddingArtist: 'Added {artist} albums to queue',
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
-		loginNeededToDownload: 'You need to log in to download tracks!'
+		loginNeededToDownload: 'You need to log in to download tracks!',
+		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.'
 	},
 	settings: {
 		title: 'Settings',

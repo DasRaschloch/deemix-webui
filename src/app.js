@@ -140,6 +140,13 @@ socket.on('logged_in', function(data) {
 			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 			document.getElementById('home_not_logged_in').classList.remove('hide')
 			break
+		case -1:
+			toast(i18n.t('toasts.deezerNotAvailable'), 'close', true, 'login-toast')
+			$('#open_login_prompt').show()
+			document.getElementById('logged_in_info').classList.add('hide')
+			$('#settings_username').text('Not Logged')
+			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
+			document.getElementById('home_not_logged_in').classList.remove('hide')
 	}
 })
 

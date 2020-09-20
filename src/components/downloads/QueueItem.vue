@@ -27,7 +27,6 @@
 		</div>
 		<div class="download_bar">
 			<div class="progress">
-				<!-- class="indeterminate" -->
 				<div :id="`bar_${queueItem.uuid}`" :class="barClass" :style="barStyle"></div>
 			</div>
 			<i

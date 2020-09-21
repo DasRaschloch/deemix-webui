@@ -175,7 +175,8 @@ const en = {
 		finishAddingArtist: 'Added {artist} albums to queue',
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
-		loginNeededToDownload: 'You need to log in to download tracks!'
+		loginNeededToDownload: 'You need to log in to download tracks!',
+		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.'
 	},
 	settings: {
 		title: 'Settings',
@@ -264,7 +265,8 @@ const en = {
 			jpegImageQuality: 'JPEG image quality',
 			embeddedArtworkPNG: 'Save embedded artwork as PNG',
 			embeddedPNGWarning: 'PNGs are not officialy supported by Deezer and can be buggy',
-			imageSizeWarning: 'Anything above x1200 is not officialy used by Deezer, you may encounter issues'
+			imageSizeWarning: 'Anything above x1200 is not officialy used by Deezer, you may encounter issues',
+			coverDescriptionUTF8: 'Save cover description using UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Which tags to save',

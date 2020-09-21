@@ -104,7 +104,8 @@ const fr = {
 			wrongBitrateNoAlternative: "La piste est introuvable au débit souhaité et aucune alternative n'a été trouvée !",
 			no360RA: 'La piste est indisponible au format Reality Audio 360.',
 			notAvailable: 'La piste est indisponible sur les serveurs de Deezer !',
-			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !"
+			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
+			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !"
 		}
 	},
 	favorites: {
@@ -174,7 +175,8 @@ const fr = {
 		finishAddingArtist: "Les albums de {artist} ont été ajoutés à la file d'attente",
 		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en équivalents Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
-		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !'
+		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !',
+		deezerNotAvailable: "Deezer est indisponible dans votre pays. Vous devez utiliser un VPN."
 	},
 	settings: {
 		title: 'Paramètres',
@@ -263,7 +265,8 @@ const fr = {
 			jpegImageQuality: "Qualité de l'image JPEG",
 			embeddedArtworkPNG: "Enregistrer l'illustration incorporée aux fichiers audio en tant que PNG",
 			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes.',
-			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes."
+			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes.",
+			coverDescriptionUTF8: 'Enregistrer la description de la pochette au format UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Métadonnées à sauvegarder',

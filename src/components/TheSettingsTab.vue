@@ -315,6 +315,11 @@
 				⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}
 			</p>
 
+			<label class="with_checkbox">
+				<input type="checkbox" v-model="settings.tags.coverDescriptionUTF8" />
+				<span class="checkbox_text">{{ $t('settings.covers.coverDescriptionUTF8') }}</span>
+			</label>
+
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.jpegImageQuality') }}</p>
 				<input type="number" min="1" max="100" v-model.number="settings.jpegImageQuality" />

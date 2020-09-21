@@ -181,7 +181,8 @@ const it = {
 		finishAddingArtist: 'Aggiunto gli album di {artist} alla coda',
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
-		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!'
+		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
+		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.'
 	},
 	settings: {
 		title: 'Impostazioni',
@@ -270,7 +271,8 @@ const it = {
 			jpegImageQuality: 'Qualità immagine JPEG',
 			embeddedArtworkPNG: 'Salva copertina incorporata come PNG',
 			embeddedPNGWarning: 'Le immagini PNG non sono usate ufficialmente da Deezer e potrebbero dare problemi',
-			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi'
+			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi',
+			coverDescriptionUTF8: 'Salva la descrizione della copertina in UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Quali tag salvare',

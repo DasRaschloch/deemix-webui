@@ -127,7 +127,6 @@ export default {
 			}
 		},
 		initQueue(data) {
-			console.log('this.initQueue')
 			const {
 				queue: initQueue,
 				queueComplete: initQueueComplete,
@@ -159,7 +158,6 @@ export default {
 			}
 		},
 		addToQueue(queueItem, current = false) {
-			console.log('this.addToQueue')
 			if (Array.isArray(queueItem)) {
 				if (queueItem.length > 1) {
 					queueItem.forEach((item, i) => {
@@ -210,7 +208,6 @@ export default {
 		updateQueue(update) {
 			// downloaded and failed default to false?
 			const { uuid, downloaded, failed, progress, conversion, error, data, errid } = update
-			console.log('this.updateQueue', !!this.queueList[uuid])
 
 			if (uuid && this.queue.indexOf(uuid) > -1) {
 				if (downloaded) {
@@ -232,7 +229,6 @@ export default {
 			}
 		},
 		removeFromQueue(uuid) {
-			console.log('this.removeFromQueue')
 			let index = this.queue.indexOf(uuid)
 
 			if (index > -1) {
@@ -241,7 +237,6 @@ export default {
 			}
 		},
 		removeAllDownloads(currentItem) {
-			console.log('this.removeFromQueue', currentItem)
 			this.queueComplete = []
 
 			if (!currentItem) {
@@ -257,7 +252,6 @@ export default {
 			}
 		},
 		removedFinishedDownloads() {
-			console.log('this.removedFinishedDownloads')
 			this.queueComplete.forEach(uuid => {
 				this.$delete(this.queueList, uuid)
 			})
@@ -279,11 +273,9 @@ export default {
 			localStorage.setItem('downloadTabOpen', !isHidden)
 		},
 		cleanQueue() {
-			console.log('this.cleanQueue')
 			socket.emit('removeFinishedDownloads')
 		},
 		cancelQueue() {
-			console.log('this.cancelQueue')
 			socket.emit('cancelAllDownloads')
 		},
 		openDownloadsFolder() {
@@ -307,12 +299,9 @@ export default {
 			document.addEventListener('mousemove', this.handleDrag)
 		},
 		startDownload(uuid) {
-			console.log('this.startDownload')
 			this.$set(this.queueList[uuid], 'status', 'downloading')
 		},
 		finishDownload(uuid) {
-			console.log('this.finishDownload')
-
 			let isInQueue = this.queue.indexOf(uuid) > -1
 
 			if (!isInQueue) return
@@ -332,7 +321,6 @@ export default {
 			}
 		},
 		startConversion(uuid) {
-			console.log('this.startConversion')
 			this.$set(this.queueList[uuid], 'status', 'converting')
 			this.$set(this.queueList[uuid], 'conversion', 0)
 		},

@@ -772,10 +772,12 @@ export default {
 			}
 		},
 		revertSettings() {
-			this.settings = { ...this.lastSettings }
+			// this.settings = { ...this.lastSettings }
+			this.settings = JSON.parse(JSON.stringify(this.lastSettings))
 		},
 		revertCredentials() {
-			this.spotifyCredentials = { ...this.lastCredentials }
+			// this.spotifyCredentials = { ...this.lastCredentials }
+			this.spotifyCredentials = JSON.parse(JSON.stringify(this.lastCredentials))
 			this.spotifyUser = (' ' + this.lastUser).slice(1)
 		},
 		copyARLtoClipboard() {
@@ -798,8 +800,12 @@ export default {
 			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
 		},
 		saveSettings() {
-			this.lastSettings = { ...this.settings }
-			this.lastCredentials = { ...this.spotifyFeatures }
+			// this.lastSettings = { ...this.settings }
+			// this.lastCredentials = { ...this.spotifyFeatures }
+
+			this.lastSettings = JSON.parse(JSON.stringify(this.settings))
+			this.lastCredentials = JSON.parse(JSON.stringify(this.spotifyFeatures))
+
 			let changed = false
 			if (this.lastUser != this.spotifyUser) {
 				// force cloning without linking
@@ -821,11 +827,15 @@ export default {
 		// 	this.defaultSettings = { ...this.getDefaultSettings }
 		// },
 		loadSettings() {
-			this.lastSettings = { ...this.getSettings }
-			this.lastCredentials = { ...this.getCredentials }
+			// this.lastSettings = { ...this.getSettings }
+			this.lastSettings = JSON.parse(JSON.stringify(this.getSettings))
+			// this.lastCredentials = { ...this.getCredentials }
+			this.lastCredentials = JSON.parse(JSON.stringify(this.getCredentials))
 
-			this.settings = { ...this.getSettings }
-			this.spotifyFeatures = { ...this.getCredentials }
+			// this.settings = { ...this.getSettings }
+			this.settings = JSON.parse(JSON.stringify(this.getSettings))
+			// this.spotifyFeatures = { ...this.getCredentials }
+			this.spotifyFeatures = JSON.parse(JSON.stringify(this.getCredentials))
 		},
 		login() {
 			let newArl = this.$refs.loginInput.value.trim()
@@ -868,7 +878,8 @@ export default {
 			toast(this.$t('settings.toasts.update'), 'settings')
 		},
 		resetSettings() {
-			this.settings = { ...this.getDefaultSettings }
+			// this.settings = { ...this.getDefaultSettings }
+			this.settings = JSON.parse(JSON.stringify(this.getDefaultSettings))
 		}
 	}
 }

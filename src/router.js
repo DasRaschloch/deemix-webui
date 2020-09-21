@@ -21,7 +21,10 @@ const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: TheHomeTab
+		component: TheHomeTab,
+		meta: {
+			notKeepAlive: true
+		}
 	},
 	{
 		path: '/tracklist/:type/:id',
@@ -101,7 +104,7 @@ router.beforeEach((to, from, next) => {
 			}
 			break
 		case 'Home':
-			socket.emit('get_home_data')
+			// socket.emit('get_home_data')
 			break
 		case 'Charts':
 			socket.emit('get_charts_data')

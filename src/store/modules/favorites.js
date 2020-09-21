@@ -22,12 +22,10 @@ const actions = {
 			commit('SET_FAVORITES_ARTISTS', { index, data: artist })
 		})
 
-		// dispatch('setFavoritesTracks', payload.tracks)
+		dispatch('setFavoritesTracks', payload.tracks)
 	},
 	setFavoritesTracks({ commit }, payload) {
-		payload.forEach((track, index) => {
-			commit('SET_FAVORITES_TRACKS', { index, data: track })
-		})
+		commit('SET_FAVORITES_TRACKS', payload)
 	}
 }
 
@@ -50,7 +48,12 @@ const mutations = {
 		Vue.set(state.playlists, payload.index, payload.data)
 	},
 	SET_FAVORITES_TRACKS: (state, payload) => {
-		Vue.set(state.tracks, payload.index, payload.data)
+		if (typeof payload !== 'string') {
+			console.error('[deemix] Not setting the favorites tracks because they are not in string format')
+			return
+		}
+
+		state.tracks = payload
 	}
 }
 

@@ -299,13 +299,16 @@ export default {
 		},
 		reloadTabs() {
 			this.$refs.reloadButton.classList.add('spin')
+
 			socket.emit('update_userFavorites')
-			if (localStorage.getItem('spotifyUser'))
+
+			if (localStorage.getItem('spotifyUser')) {
 				socket.emit('update_userSpotifyPlaylists', localStorage.getItem('spotifyUser'))
+			}
 		},
 		updated_userFavorites(data) {
 			const { tracks, albums, artists, playlists } = data
-			this.tracks = tracks
+			this.tracks = typeof tracks === 'string' ? JSON.parse(tracks) : tracks
 			this.albums = albums
 			this.artists = artists
 			this.playlists = playlists

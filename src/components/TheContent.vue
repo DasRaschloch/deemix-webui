@@ -5,11 +5,21 @@
 
 			<keep-alive>
 				<router-view
+					v-if="!$route.meta.notKeepAlive"
 					v-show="!loading"
 					:key="$route.fullPath"
 					:perform-scrolled-search="performScrolledSearch"
+					exclude=""
 				></router-view>
 			</keep-alive>
+
+			<router-view
+				v-if="$route.meta.notKeepAlive"
+				v-show="!loading"
+				:key="$route.fullPath"
+				:perform-scrolled-search="performScrolledSearch"
+				exclude=""
+			></router-view>
 		</div>
 	</section>
 </template>

@@ -82,16 +82,26 @@ import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs'
 import Downloads from '@/utils/downloads'
 
+import { getHomeData } from '@/data/home'
+
 export default {
-	name: 'the-home-tab',
 	data() {
 		return {
 			playlists: [],
 			albums: []
 		}
 	},
+	async created() {
+		// if (localStorage.getItem('arl')) {
+		// 	this.$refs.notLogged.classList.add('hide')
+		// }
+
+		const homeData = await getHomeData()
+
+		this.initHome(homeData)
+	},
 	computed: {
-		...mapGetters(['getHomeData', 'isLoggedIn']),
+		...mapGetters([/* 'getHomeData', */ 'isLoggedIn']),
 		needToWait() {
 			return this.getHomeData.albums.data.length === 0 && this.getHomeData.playlists.data.length === 0
 		}
@@ -128,13 +138,6 @@ export default {
 				this.initHome(this.getHomeData)
 			}
 		}
-	},
-	mounted() {
-		// if (localStorage.getItem('arl')) {
-		// 	this.$refs.notLogged.classList.add('hide')
-		// }
-
-		this.checkIfWaitData(this.getHomeData)
 	}
 }
 </script>

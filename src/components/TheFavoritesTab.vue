@@ -210,12 +210,14 @@
 </style>
 
 <script>
-import { mapGetters } from 'vuex'
-import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs'
-import Downloads from '@/utils/downloads'
+
+import { socket } from '@/utils/socket'
+import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 import { toast } from '@/utils/toasts'
+
+import { getFavoritesData } from '@/data/favorites'
 
 export default {
 	data() {
@@ -229,45 +231,33 @@ export default {
 			tabs: ['playlist', 'album', 'artist', 'track']
 		}
 	},
-	computed: {
-		...mapGetters(['getFavorites']),
-		needToWait() {
-			return Object.keys(this.getFavorites).length === 0
-		}
+	async created() {
+		const favoritesData = await getFavoritesData()
+
+		this.setFavorites(favoritesData)
 	},
 	mounted() {
-		// ! Need to implement memorization of the last tab clicked
-		// ! Use router query
-
-		this.waitFavorites()
-
 		socket.on('updated_userFavorites', this.updated_userFavorites)
 		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
 		socket.on('updated_userPlaylists', this.updated_userPlaylists)
 		socket.on('updated_userAlbums', this.updated_userAlbums)
 		socket.on('updated_userArtist', this.updated_userArtist)
 		socket.on('updated_userTracks', this.updated_userTracks)
+
+		this.$on('hook:destroyed', () => {
+			socket.off('updated_userFavorites')
+			socket.off('updated_userSpotifyPlaylists')
+			socket.off('updated_userPlaylists')
+			socket.off('updated_userAlbums')
+			socket.off('updated_userArtist')
+			socket.off('updated_userTracks')
+		})
 	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
 		spotifyPlaylistView: showView.bind(null, 'spotifyplaylist'),
-		waitFavorites() {
-			if (this.needToWait) {
-				// Checking if the saving of the settings is completed
-				let unsub = this.$store.subscribeAction({
-					after: (action, state) => {
-						if (action.type === 'setFavorites') {
-							this.initFavorites()
-							unsub()
-						}
-					}
-				})
-			} else {
-				this.initFavorites()
-			}
-		},
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},
@@ -279,13 +269,13 @@ export default {
 		},
 		convertDuration,
 		addToQueue(e) {
-			e.stopPropagation()
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		updated_userSpotifyPlaylists(data) {
 			this.spotifyPlaylists = data
 		},
 		updated_userPlaylists(data) {
+			console.log(data)
 			this.playlists = data
 		},
 		updated_userAlbums(data) {
@@ -307,11 +297,7 @@ export default {
 			}
 		},
 		updated_userFavorites(data) {
-			const { tracks, albums, artists, playlists } = data
-			this.tracks = typeof tracks === 'string' ? JSON.parse(tracks) : tracks
-			this.albums = albums
-			this.artists = artists
-			this.playlists = playlists
+			this.setFavorites(data)
 
 			// Removing animation class only when the animation has completed an iteration
 			// Prevents animation ugly stutter
@@ -324,8 +310,13 @@ export default {
 				{ once: true }
 			)
 		},
-		initFavorites() {
-			this.updated_userFavorites(this.getFavorites)
+		setFavorites(data) {
+			const { tracks, albums, artists, playlists } = data
+
+			this.tracks = tracks
+			this.albums = albums
+			this.artists = artists
+			this.playlists = playlists
 		}
 	}
 }

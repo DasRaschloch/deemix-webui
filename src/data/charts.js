@@ -14,6 +14,7 @@ export function getChartsData() {
 				chartsData = data
 				cached = true
 
+				socket.off('init_charts')
 				resolve(data)
 			})
 		})

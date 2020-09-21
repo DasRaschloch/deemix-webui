@@ -658,6 +658,8 @@ import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
 import flags from '@/utils/flags'
 
+import { getSettingsData } from '@/data/settings'
+
 export default {
 	data() {
 		return {
@@ -670,7 +672,7 @@ export default {
 			lastSettings: {},
 			spotifyFeatures: {},
 			lastCredentials: {},
-			// defaultSettings: {},
+			defaultSettings: {},
 			lastUser: '',
 			spotifyUser: '',
 			slimDownloads: false,
@@ -682,9 +684,6 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			getSettings: 'getSettings',
-			getCredentials: 'getCredentials',
-			getDefaultSettings: 'getDefaultSettings',
 			arl: 'getARL',
 			user: 'getUser',
 			isLoggedIn: 'isLoggedIn'
@@ -707,11 +706,16 @@ export default {
 			return `https://e-cdns-images.dzcdn.net/images/user/${this.user.picture}/125x125-000000-80-0-0.jpg`
 		}
 	},
-	mounted() {
+	async mounted() {
 		this.locales = this.$i18n.availableLocales
 
-		this.revertSettings()
-		this.revertCredentials()
+		const { settingsData, defaultSettingsData, spotifyCredentials } = await getSettingsData()
+
+		this.defaultSettings = defaultSettingsData
+		this.initSettings(settingsData, spotifyCredentials)
+
+		// this.revertSettings()
+		// this.revertCredentials()
 
 		let storedLocale = localStorage.getItem('locale')
 
@@ -737,6 +741,7 @@ export default {
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
 
 		let volume = parseInt(localStorage.getItem('previewVolume'))
+
 		if (isNaN(volume)) {
 			volume = 80
 			localStorage.setItem('previewVolume', volume)
@@ -744,39 +749,28 @@ export default {
 
 		window.vol.preview_max_volume = volume
 
-		this.waitSettings()
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
 		socket.on('downloadFolderSelected', this.downloadFolderSelected)
 		socket.on('applogin_arl', this.setArl)
-	},
 
+		this.$on('hook:destroyed', () => {
+			socket.off('updateSettings')
+			socket.off('accountChanged')
+			socket.off('familyAccounts')
+			socket.off('downloadFolderSelected')
+			socket.off('applogin_arl')
+		})
+	},
 	methods: {
 		...mapActions({
 			dispatchARL: 'setARL'
 		}),
-		waitSettings() {
-			if (this.needToWait) {
-				// Checking if the saving of the settings is completed
-				let unsub = this.$store.subscribeAction({
-					after: (action, state) => {
-						if (action.type === 'setSettings') {
-							this.initSettings()
-							unsub()
-						}
-					}
-				})
-			} else {
-				this.initSettings()
-			}
-		},
 		revertSettings() {
-			// this.settings = { ...this.lastSettings }
 			this.settings = JSON.parse(JSON.stringify(this.lastSettings))
 		},
 		revertCredentials() {
-			// this.spotifyCredentials = { ...this.lastCredentials }
 			this.spotifyCredentials = JSON.parse(JSON.stringify(this.lastCredentials))
 			this.spotifyUser = (' ' + this.lastUser).slice(1)
 		},
@@ -800,13 +794,11 @@ export default {
 			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
 		},
 		saveSettings() {
-			// this.lastSettings = { ...this.settings }
-			// this.lastCredentials = { ...this.spotifyFeatures }
-
 			this.lastSettings = JSON.parse(JSON.stringify(this.settings))
 			this.lastCredentials = JSON.parse(JSON.stringify(this.spotifyFeatures))
 
 			let changed = false
+
 			if (this.lastUser != this.spotifyUser) {
 				// force cloning without linking
 				this.lastUser = (' ' + this.spotifyUser).slice(1)
@@ -823,19 +815,13 @@ export default {
 			console.log(folder)
 			this.$set(this.settings, 'downloadLocation', folder)
 		},
-		// loadDefaultSettings() {
-		// 	this.defaultSettings = { ...this.getDefaultSettings }
-		// },
-		loadSettings() {
-			// this.lastSettings = { ...this.getSettings }
-			this.lastSettings = JSON.parse(JSON.stringify(this.getSettings))
-			// this.lastCredentials = { ...this.getCredentials }
-			this.lastCredentials = JSON.parse(JSON.stringify(this.getCredentials))
-
-			// this.settings = { ...this.getSettings }
-			this.settings = JSON.parse(JSON.stringify(this.getSettings))
-			// this.spotifyFeatures = { ...this.getCredentials }
-			this.spotifyFeatures = JSON.parse(JSON.stringify(this.getCredentials))
+		loadSettings(data) {
+			this.lastSettings = JSON.parse(JSON.stringify(data))
+			this.settings = JSON.parse(JSON.stringify(data))
+		},
+		loadCredentials(credentials) {
+			this.lastCredentials = JSON.parse(JSON.stringify(credentials))
+			this.spotifyFeatures = JSON.parse(JSON.stringify(credentials))
 		},
 		login() {
 			let newArl = this.$refs.loginInput.value.trim()
@@ -858,6 +844,7 @@ export default {
 			this.$refs.username.innerText = user.name
 			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
 			this.accountNum = accountNum
+
 			localStorage.setItem('accountNum', this.accountNum)
 		},
 		initAccounts(accounts) {
@@ -866,20 +853,21 @@ export default {
 		logout() {
 			socket.emit('logout')
 		},
-		initSettings() {
+		initSettings(settings, credentials) {
 			// this.loadDefaultSettings()
-			this.loadSettings()
+			this.loadSettings(settings)
+			this.loadCredentials(credentials)
 
 			toast(this.$t('settings.toasts.init'), 'settings')
 		},
-		updateSettings() {
-			this.loadSettings()
+		updateSettings(newSettings, newCredentials) {
+			this.loadSettings(newSettings)
+			this.loadCredentials(newCredentials)
 
 			toast(this.$t('settings.toasts.update'), 'settings')
 		},
 		resetSettings() {
-			// this.settings = { ...this.getDefaultSettings }
-			this.settings = JSON.parse(JSON.stringify(this.getDefaultSettings))
+			this.settings = JSON.parse(JSON.stringify(this.defaultSettings))
 		}
 	}
 }

@@ -14,6 +14,7 @@ export function getHomeData() {
 				homeData = data
 				cached = true
 
+				socket.off('init_home')
 				resolve(data)
 			})
 		})

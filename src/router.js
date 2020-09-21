@@ -47,7 +47,10 @@ const routes = [
 	{
 		path: '/favorites',
 		name: 'Favorites',
-		component: TheFavoritesTab
+		component: TheFavoritesTab,
+		meta: {
+			notKeepAlive: true
+		}
 	},
 	{
 		path: '/errors',
@@ -105,12 +108,6 @@ router.beforeEach((to, from, next) => {
 				type: to.params.type,
 				id: to.params.id
 			}
-			break
-		case 'Home':
-			// socket.emit('get_home_data')
-			break
-		case 'Charts':
-			// socket.emit('get_charts_data')
 			break
 
 		default:

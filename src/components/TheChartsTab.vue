@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div v-else id="charts_table">
-			<button @click="changeCountry">{{ $t('charts.changeCountry') }}</button>
+			<button @click="onChangeCountry">{{ $t('charts.changeCountry') }}</button>
 			<button @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
 				{{ $t('charts.download') }}
 			</button>
@@ -127,7 +127,6 @@ export default {
 	async created() {
 		socket.on('setChartTracks', this.setTracklist)
 		this.$on('hook:destroyed', () => {
-			console.log('destroyed')
 			socket.off('setChartTracks')
 		})
 
@@ -170,10 +169,9 @@ export default {
 			socket.emit('getChartTracks', this.id)
 		},
 		setTracklist(data) {
-			console.log('set tracklist')
 			this.chart = data
 		},
-		changeCountry() {
+		onChangeCountry() {
 			this.country = ''
 			this.id = 0
 		},

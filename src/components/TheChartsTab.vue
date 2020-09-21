@@ -108,8 +108,8 @@
 import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
-import Downloads from '@/utils/downloads'
-import Utils from '@/utils/utils'
+import { sendAddToQueue } from '@/utils/downloads'
+import { convertDuration } from '@/utils/utils'
 
 import { getChartsData } from '@/data/charts'
 
@@ -124,38 +124,21 @@ export default {
 			chart: []
 		}
 	},
-	computed: {
-		...mapGetters(['getCharts']),
-		needToWait() {
-			return this.getCharts.length === 0
-		}
-	},
 	async created() {
+		socket.on('setChartTracks', this.setTracklist)
+		this.$on('hook:destroyed', () => {
+			console.log('destroyed')
+			socket.off('setChartTracks')
+		})
+
 		const chartsData = await getChartsData()
 
 		this.initCharts(chartsData)
 	},
-	mounted() {
-		socket.on('setChartTracks', this.setTracklist)
-	},
 	methods: {
+		convertDuration,
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
-		waitCharts() {
-			if (this.needToWait) {
-				// Checking if the saving of the settings is completed
-				let unsub = this.$store.subscribeAction({
-					after: (action, state) => {
-						if (action.type === 'cacheCharts') {
-							this.initCharts()
-							unsub()
-						}
-					}
-				})
-			} else {
-				this.initCharts()
-			}
-		},
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},
@@ -165,10 +148,9 @@ export default {
 		previewMouseLeave(e) {
 			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		},
-		convertDuration: Utils.convertDuration,
 		addToQueue(e) {
 			e.stopPropagation()
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		getTrackList(event) {
 			document.getElementById('content').scrollTo(0, 0)
@@ -188,6 +170,7 @@ export default {
 			socket.emit('getChartTracks', this.id)
 		},
 		setTracklist(data) {
+			console.log('set tracklist')
 			this.chart = data
 		},
 		changeCountry() {

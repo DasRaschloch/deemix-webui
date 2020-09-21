@@ -78,10 +78,8 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs'
-import Downloads from '@/utils/downloads'
-
+import { sendAddToQueue } from '@/utils/downloads'
 import { getHomeData } from '@/data/home'
 
 export default {
@@ -92,16 +90,12 @@ export default {
 		}
 	},
 	async created() {
-		// if (localStorage.getItem('arl')) {
-		// 	this.$refs.notLogged.classList.add('hide')
-		// }
-
 		const homeData = await getHomeData()
 
 		this.initHome(homeData)
 	},
 	computed: {
-		...mapGetters([/* 'getHomeData', */ 'isLoggedIn']),
+		...mapGetters(['isLoggedIn']),
 		needToWait() {
 			return this.getHomeData.albums.data.length === 0 && this.getHomeData.playlists.data.length === 0
 		}
@@ -111,7 +105,7 @@ export default {
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
 		addToQueue(e) {
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		initHome(data) {
 			const {
@@ -121,22 +115,6 @@ export default {
 
 			this.playlists = playlistData
 			this.albums = albumData
-		},
-		// ! Define this functionality as a Vue Mixin
-		checkIfWaitData(data) {
-			if (this.needToWait) {
-				// This case verifies only at the first load, beacuse the data retrieving is not completed yet
-				let unsub = this.$store.subscribeAction({
-					after: (action, state) => {
-						if (action.type === 'cacheHomeData') {
-							this.initHome(this.getHomeData)
-							unsub()
-						}
-					}
-				})
-			} else {
-				this.initHome(this.getHomeData)
-			}
 		}
 	}
 }

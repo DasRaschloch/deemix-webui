@@ -5,7 +5,7 @@ import Vue from 'vue'
 import settings from '@/store/modules/settings'
 import defaultSettings from '@/store/modules/defaultSettings'
 import spotifyCredentials from '@/store/modules/spotifyCredentials'
-import charts from '@/store/modules/charts'
+// import charts from '@/store/modules/charts'
 import favorites from '@/store/modules/favorites'
 import about from '@/store/modules/about'
 import login from '@/store/modules/login'
@@ -21,7 +21,7 @@ export default new Vuex.Store({
 		settings,
 		defaultSettings,
 		spotifyCredentials,
-		charts,
+		// charts,
 		favorites,
 		about,
 		login,

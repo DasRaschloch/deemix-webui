@@ -6,9 +6,9 @@ socket.on('connect', () => {
 	document.getElementById('start_app_placeholder').classList.add('loading_placeholder--hidden')
 })
 
-socket.on('init_charts', charts => {
-	store.dispatch('cacheCharts', charts)
-})
+// socket.on('init_charts', charts => {
+// 	store.dispatch('cacheCharts', charts)
+// })
 
 socket.on('init_favorites', favorites => {
 	favorites.tracks = JSON.stringify(favorites.tracks)

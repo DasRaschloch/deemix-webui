@@ -111,10 +111,11 @@ import { showView } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 
+import { getChartsData } from '@/data/charts'
+
 import EventBus from '@/utils/EventBus'
 
 export default {
-	name: 'the-charts-tab',
 	data() {
 		return {
 			country: '',
@@ -129,9 +130,12 @@ export default {
 			return this.getCharts.length === 0
 		}
 	},
+	async created() {
+		const chartsData = await getChartsData()
+
+		this.initCharts(chartsData)
+	},
 	mounted() {
-		this.waitCharts()
-		// socket.on('init_charts', this.initCharts)
 		socket.on('setChartTracks', this.setTracklist)
 	},
 	methods: {
@@ -190,8 +194,8 @@ export default {
 			this.country = ''
 			this.id = 0
 		},
-		initCharts() {
-			this.countries = this.getCharts
+		initCharts(chartsData) {
+			this.countries = chartsData
 			this.country = localStorage.getItem('chart') || ''
 
 			if (!this.country) return

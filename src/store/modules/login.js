@@ -6,7 +6,8 @@ const getDefaultState = () => {
 			id: null,
 			name: '',
 			picture: ''
-		}
+		},
+		clientMode: false
 	}
 }
 
@@ -43,13 +44,16 @@ const actions = {
 	},
 	setUser({ commit }, payload) {
 		commit('SET_USER', payload)
+	},
+	setClientMode({ commit }, payload) {
+		commit('SET_CLIENT_MODE', payload)
 	}
 }
 
 const getters = {
 	getARL: state => state.arl,
 	getUser: state => state.user,
-	// isLoggedIn: state => [1, 2, 3].indexOf(state.status) !== -1
+	getClientMode: state => state.clientMode,
 	isLoggedIn: state => !!state.arl
 }
 
@@ -62,6 +66,9 @@ const mutations = {
 	},
 	SET_USER(state, payload) {
 		state.user = payload
+	},
+	SET_CLIENT_MODE(state, payload) {
+		state.clientMode = payload
 	},
 	RESET_LOGIN(state) {
 		// Needed for reactivity

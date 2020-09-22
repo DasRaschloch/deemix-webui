@@ -234,6 +234,9 @@ export default {
 	async created() {
 		const favoritesData = await getFavoritesData()
 
+		// TODO Change with isLoggedIn vuex getter
+		if (Object.entries(favoritesData).length === 0) return
+
 		this.setFavorites(favoritesData)
 	},
 	mounted() {
@@ -275,7 +278,6 @@ export default {
 			this.spotifyPlaylists = data
 		},
 		updated_userPlaylists(data) {
-			console.log(data)
 			this.playlists = data
 		},
 		updated_userAlbums(data) {

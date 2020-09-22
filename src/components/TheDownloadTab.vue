@@ -60,7 +60,7 @@
 </style>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import QueueItem from '@components/downloads/QueueItem.vue'
 
 import { socket } from '@/utils/socket'
@@ -78,9 +78,14 @@ export default {
 			cachedTabWidth: parseInt(localStorage.getItem('downloadTabWidth')) || 300,
 			queue: [],
 			queueList: {},
-			queueComplete: [],
-			clientMode: window.clientMode
+			queueComplete: []
+			// clientMode: window.clientMode
 		}
+	},
+	computed: {
+		...mapGetters({
+			clientMode: 'getClientMode'
+		})
 	},
 	mounted() {
 		socket.on('startDownload', this.startDownload)

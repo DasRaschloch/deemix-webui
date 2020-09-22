@@ -13,7 +13,9 @@
 		"build:js": "rollup -c",
 		"watch:js": "rollup -c -w",
 		"serve": "python ../server.py",
+		"serve:gui": "python ../deemix-pyweb.py --dev",
 		"dev": "npm-run-all --parallel serve watch:js watch:styles",
+		"dev:gui": "npm-run-all --parallel serve:gui watch:js watch:styles",
 		"build": "npm-run-all --sequential clean build:js build:styles"
 	},
 	"dependencies": {

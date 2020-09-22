@@ -678,15 +678,16 @@ export default {
 			slimDownloads: false,
 			previewVolume: window.vol,
 			accountNum: 0,
-			accounts: [],
-			clientMode: window.clientMode
+			accounts: []
+			// clientMode: window.clientMode
 		}
 	},
 	computed: {
 		...mapGetters({
 			arl: 'getARL',
 			user: 'getUser',
-			isLoggedIn: 'isLoggedIn'
+			isLoggedIn: 'isLoggedIn',
+			clientMode: 'getClientMode'
 		}),
 		needToWait() {
 			return Object.keys(this.getSettings).length === 0
@@ -753,7 +754,7 @@ export default {
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
 		socket.on('downloadFolderSelected', this.downloadFolderSelected)
-		socket.on('applogin_arl', this.setArl)
+		socket.on('applogin_arl', this.loggedInViaDeezer)
 
 		this.$on('hook:destroyed', () => {
 			socket.off('updateSettings')
@@ -812,7 +813,6 @@ export default {
 			socket.emit('selectDownloadFolder')
 		},
 		downloadFolderSelected(folder) {
-			console.log(folder)
 			this.$set(this.settings, 'downloadLocation', folder)
 		},
 		loadSettings(data) {
@@ -833,8 +833,8 @@ export default {
 		appLogin(e) {
 			socket.emit('applogin')
 		},
-		setArl(arl) {
-			this.dispatchARL(arl)
+		loggedInViaDeezer(arl) {
+			this.dispatchARL({ arl })
 			this.login()
 		},
 		changeAccount() {

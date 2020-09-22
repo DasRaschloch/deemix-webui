@@ -34,6 +34,8 @@ By simply running
 $ npm run dev
 ```
 
+P.S.: You need to be inside the [deemix-pyweb](https://codeberg.org/RemixDev/deemix-pyweb) repo to have the server working correctly.
+
 you will have 3 tasks running at the same time:
 - the server
 - the [rollup](https://rollupjs.org/guide/en/) watcher pointing to the configured `.js` file and ready to re-bundle

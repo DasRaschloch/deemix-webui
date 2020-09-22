@@ -1,5 +1,4 @@
 import Toastify from 'toastify-js'
-import $ from 'jquery'
 
 import { socket } from '@/utils/socket'
 
@@ -8,49 +7,83 @@ let toastsWithId = {}
 export const toast = function(msg, icon = null, dismiss = true, id = null) {
 	if (toastsWithId[id]) {
 		let toastObj = toastsWithId[id]
-		let toastDOM = $(`div.toastify[toast_id=${id}]`)
+
+		let toastElement = document.querySelectorAll(`div.toastify[toast_id=${id}]`)
+
 		if (msg) {
-			toastDOM.find('.toast-message').html(msg)
+			toastElement.forEach(toast => {
+				const messages = toast.querySelectorAll('.toast-message')
+
+				messages.forEach(message => {
+					message.innerHTML = msg
+				})
+			})
 		}
+
 		if (icon) {
-			if (icon == 'loading') icon = `<div class="circle-loader"></div>`
-			else icon = `<i class="material-icons">${icon}</i>`
-			toastDOM.find('.toast-icon').html(icon)
+			if (icon == 'loading') {
+				icon = `<div class="circle-loader"></div>`
+			} else {
+				icon = `<i class="material-icons">${icon}</i>`
+			}
+
+			toastElement.forEach(toast => {
+				const icons = toast.querySelectorAll('.toast-icon')
+
+				icons.forEach(toastIcon => {
+					toastIcon.innerHTML = icon
+				})
+			})
 		}
 		if (dismiss !== null && dismiss) {
-			toastDOM.addClass('dismissable')
-			setTimeout(function() {
+			toastElement.forEach(toast => {
+				toast.classList.add('dismissable')
+			})
+
+			setTimeout(() => {
 				toastObj.hideToast()
+
 				delete toastsWithId[id]
 			}, 3000)
 		}
 	} else {
-		if (icon == null) icon = ''
-		else if (icon == 'loading') icon = `<div class="circle-loader"></div>`
-		else icon = `<i class="material-icons">${icon}</i>`
+		if (icon == null) {
+			icon = ''
+		} else if (icon == 'loading') {
+			icon = `<div class="circle-loader"></div>`
+		} else {
+			icon = `<i class="material-icons">${icon}</i>`
+		}
+
 		let toastObj = Toastify({
 			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
 			duration: dismiss ? 3000 : 0,
 			gravity: 'bottom',
 			position: 'left',
 			className: dismiss ? 'dismissable' : '',
-			onClick: function(){
+			onClick: function() {
 				let dismissable = true
-				if (id){
+
+				if (id) {
 					let toastClasses = document.querySelector(`div.toastify[toast_id=${id}]`).classList
-					if (toastClasses){
-						dismissable = Array.from(toastClasses).indexOf('dismissable') != -1
+
+					if (toastClasses) {
+						dismissable = Array.prototype.slice.call(toastClasses).indexOf('dismissable') != -1
 					}
 				}
 				if (toastObj && dismissable) {
 					toastObj.hideToast()
-					if (id) delete toastsWithId[id]
+
+					if (id) {
+						delete toastsWithId[id]
+					}
 				}
 			}
 		}).showToast()
 		if (id) {
 			toastsWithId[id] = toastObj
-			$(toastObj.toastElement).attr('toast_id', id)
+
+			toastObj.toastElement.setAttribute('toast_id', id)
 		}
 	}
 }

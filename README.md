@@ -1,21 +1,20 @@
 # deemix-webui
 
-This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that
+This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that.
+If you are a web developer and want to contribute to this project, please read the [COMPILE-UI](COMPILE-UI.md) file.
+
+## Related projects
+
+You can find more informations about deemix at https://deemix.app/
+
+- [deemix](https://codeberg.org/RemixDev/deemix)
+- [deemix-pyweb](https://codeberg.org/RemixDev/deemix-pyweb)
+- [deemix-tools](https://codeberg.org/RemixDev/deemix-tools)
 
 ## What's left to do?
 
-- [ ] Use Vue app-wide
-  - [X] Rewrite the app in Single File Components way
-  - [ ] Implement routing for the whole app using Vue Router ⚒
-  - [ ] Implement Vuex store for FE caching
-  - [ ] Remove jQuery
+- [ ] Completely remove jQuery
 - [ ] Improve artist/tracklist tabs displaying
-- [ ] Implement custom contextmenu ⚒
-  - [X] Copy and paste functions
-  - [X] Copy Link where possible
-  - [X] Download Quality
-  - [X] Copy Image URL where possible
-  - [ ] Resolve cut/copy/paste compatibility issues
 - [ ] Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
   - Use ES2020 async imports, if possible
 - [ ] Make the UI look coherent
@@ -33,8 +32,6 @@ This is just the WebUI for deemix, it should be used with deemix-pyweb or someth
 - [ ] Block selection where it's not needed (keep only titles artists albums labels and useful data)
   - There's a SASS mixin for this. Need to use it in the proper classes
 - [ ] Better feedback for socket.io possible errors
-- [X] Remove images size limit and add warning if > 1200
-- ?
 
 # License
 

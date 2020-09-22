@@ -110,6 +110,7 @@
 		<p v-html="$t('about.lincensedUnder')"></p>
 	</div>
 </template>
+
 <style lang="scss" scoped>
 li,
 p,
@@ -199,6 +200,7 @@ ul {
 	}
 }
 </style>
+
 <script>
 import { socket } from '@/utils/socket'
 import paypal from '@/assets/paypal.svg'

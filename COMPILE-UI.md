@@ -35,11 +35,11 @@ $ npm run dev
 ```
 
 you will have 3 tasks running at the same time:
-- the [Python](https://www.python.org/) server
+- the server
 - the [rollup](https://rollupjs.org/guide/en/) watcher pointing to the configured `.js` file and ready to re-bundle
 - the [SASS](https://sass-lang.com/) compiler watching for `.scss` files changes
 
-Note that in development mode 2 more files, `bundle.js.map` and `style.css.map`, will be created in the public folder. These files will be deleted when running the build command, so you don't need to worry about them.
+Note that in development mode 2 more files (`bundle.js.map` and `style.css.map`) will be created in the public folder. These files will be deleted when running the build command, so you don't need to worry about them.
 
 **You can now go to http://127.0.0.1:6595 and see the app running.**
 
@@ -51,7 +51,7 @@ However, if you need to edit the `public/index.html` file you'll have to kill th
 
 ### Adding files
 
-If you want to add new super-awesome `.js` files, just add them. Deemix uses ES6 synthax, so you'll probably need to export some functions or variables from your new file. Files that will export and import nothing will be ignored by the bundler (rollup).
+If you want to add new super-awesome `.js` or `.vue` files, just add them. Deemix uses ES6 synthax, so you'll probably need to export some functions or variables from your new file. Files that will export and import nothing will be ignored by the bundler (rollup).
 
 If you want to add new mega-awesome `.scss` (style) files, you need to import them in the main `style.scss` file. The `.scss` files **must** all start with an underscore _, except for the `style.scss` file.
 

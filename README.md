@@ -11,28 +11,6 @@ You can find more informations about deemix at https://deemix.app/
 - [deemix-pyweb](https://codeberg.org/RemixDev/deemix-pyweb)
 - [deemix-tools](https://codeberg.org/RemixDev/deemix-tools)
 
-## What's left to do?
-
-- [ ] Completely remove jQuery
-- [ ] Improve artist/tracklist tabs displaying
-- [ ] Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
-  - Use ES2020 async imports, if possible
-- [ ] Make the UI look coherent
-  - [ ] Style buttons
-  - [ ] Style text inputs
-  - [ ] Style checkboxes
-- [ ] Search tab
-	- [ ] Better placeholer before search
-- [ ] Link Analyzer
-	- [ ] Better placeholer before analyzing and error feedback
-- [ ] Settings tab
-  - [ ] Variable selector near template inputs
-  - Maybe tabbing the section for easy navigation
-  - Could use a carousel, but it's not worth adding a new dep
-- [ ] Block selection where it's not needed (keep only titles artists albums labels and useful data)
-  - There's a SASS mixin for this. Need to use it in the proper classes
-- [ ] Better feedback for socket.io possible errors
-
 # License
 
 This program is free software: you can redistribute it and/or modify

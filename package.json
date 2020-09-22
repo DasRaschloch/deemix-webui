@@ -17,7 +17,6 @@
 		"build": "npm-run-all --sequential clean build:js build:styles"
 	},
 	"dependencies": {
-		"jquery": "^3.5.1",
 		"lodash-es": "^4.17.15",
 		"svg-country-flags": "^1.2.7",
 		"toastify-js": "^1.8.0",

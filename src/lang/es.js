@@ -40,6 +40,12 @@ const es = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Versión actual',
+			versionNotAvailable: 'N/D',
+			updateAvailable: `No estás ejecutando la última versión disponible: {versión}`,
+			deemixVersion: 'versión de la biblioteca deemix'
+		},
 		titles: {
 			usefulLinks: 'Enlaces útiles',
 			bugReports: 'Reportar fallos',
@@ -96,7 +102,8 @@ const es = {
 			wrongBitrateNoAlternative: '¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
 			no360RA: 'La pista no está disponible en Reality Audio 360.',
 			notAvailable: '¡La pista no está disponible en los servidores de Deezer!',
-			notAvailableNoAlternative: '¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!'
+			notAvailableNoAlternative: '¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!',
+			noSpaceLeft: '¡No queda espacio en el dispositivo!'
 		}
 	},
 	favorites: {
@@ -166,7 +173,8 @@ const es = {
 		finishAddingArtist: 'Añadido {artist} álbumes a la cola',
 		startConvertingSpotifyPlaylist: 'Convertir las pistas de Spotify en pistas de Deezer',
 		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida',
-		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!'
+		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!',
+		deezerNotAvailable: 'Deezer no está disponible en su país. Deberías usar una VPN.'
 	},
 	settings: {
 		title: 'Configuración',
@@ -178,7 +186,8 @@ const es = {
 				question: '¿Cómo consigo mi propio ARL?',
 				update: 'Actualiza la ARL'
 			},
-			logout: 'Cerrar sesión'
+			logout: 'Cerrar sesión',
+			login: 'Ingresa a través de deezer.com'
 		},
 		appearance: {
 			title: 'Apariencia',
@@ -225,7 +234,8 @@ const es = {
 				y: 'Sí, sobrescribir el archivo',
 				n: 'No, no sobrescribir el archivo',
 				t: 'Sobrescribir sólo las etiquetas',
-				b: 'No, mantener los dos archivos y agrega un número al archivo duplicado'
+				b: 'No, mantener los dos archivos y agrega un número al archivo duplicado',
+				e: 'No, y no mirar las extensiones'
 			},
 			fallbackBitrate: 'La solución alternativa de bitrate',
 			fallbackSearch: 'Búsqueda de la segunda opción',
@@ -253,7 +263,8 @@ const es = {
 			jpegImageQuality: 'Calidad de la imagen JPEG',
 			embeddedArtworkPNG: 'Guardar las imágenes incrustadas como PNG',
 			embeddedPNGWarning: 'Las PNG no están oficialmente soportadas por Deezer y puede encontrar errores.',
-			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes'
+			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes',
+			coverDescriptionUTF8: 'Guardar la descripción de la portada usando UTF8 (arregla la portada de iTunes)'
 		},
 		tags: {
 			head: '¿Qué etiquetas guardar?',
@@ -277,6 +288,7 @@ const es = {
 			replayGain: 'Ganancia de la reproducción',
 			label: 'Etiqueta del álbum',
 			lyrics: 'Letras no sincronizadas',
+			syncedLyrics: 'Letra sincronizada',
 			copyright: 'Derechos de autor',
 			composer: 'Compositor',
 			involvedPeople: 'Personas involucradas'

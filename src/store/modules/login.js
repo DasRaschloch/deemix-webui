@@ -72,7 +72,9 @@ const mutations = {
 	},
 	RESET_LOGIN(state) {
 		// Needed for reactivity
+		let clientMode = state.clientMode
 		Object.assign(state, getDefaultState())
+		state.clientMode = clientMode
 	}
 }
 

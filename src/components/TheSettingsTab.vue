@@ -680,7 +680,6 @@ export default {
 			previewVolume: window.vol,
 			accountNum: 0,
 			accounts: []
-			// clientMode: window.clientMode
 		}
 	},
 	computed: {
@@ -823,6 +822,11 @@ export default {
 			this.lastCredentials = JSON.parse(JSON.stringify(credentials))
 			this.spotifyFeatures = JSON.parse(JSON.stringify(credentials))
 		},
+		loggedInViaDeezer(arl) {
+			this.dispatchARL({ arl })
+			socket.emit('login', arl, true, this.accountNum)
+			// this.login()
+		},
 		login() {
 			let newArl = this.$refs.loginInput.value.trim()
 
@@ -832,10 +836,6 @@ export default {
 		},
 		appLogin(e) {
 			socket.emit('applogin')
-		},
-		loggedInViaDeezer(arl) {
-			this.dispatchARL({ arl })
-			this.login()
 		},
 		changeAccount() {
 			socket.emit('changeAccount', this.accountNum)

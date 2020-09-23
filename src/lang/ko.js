@@ -98,6 +98,7 @@ const ko = {
 			no360RA: '해당 트랙은 360 리얼리티 오디오에 존재하지 않습니다.',
 			notAvailable: "해당 트랙은 Deezer 서버에 존재하지 않습니다!",
 			notAvailableNoAlternative: "해당 트랙은 Deezer 서버에 존재하지 않을 뿐더러 대체할 것을 찾지 못했습니다!"
+			noSpaceLeft: "장치에 여유 공간이 없습니다!"
 		}
 	},
 	favorites: {
@@ -168,6 +169,7 @@ const ko = {
 		startConvertingSpotifyPlaylist: '스포티파이 트랙을 Deezer 트랙으로 전환 중입니다',
 		finishConvertingSpotifyPlaylist: '스프토파이 재생 목록이 전환되었습니다',
 		loginNeededToDownload: '트랙을 다운로드하려면 로그인이 필요합니다!'
+		deezerNotAvailable: 'Deezer 사이트는 현재 귀하의 국가에서 사용이 불가능합니다. VPN을 사용하세요.'
 	},
 	settings: {
 		title: '설정',
@@ -180,6 +182,7 @@ const ko = {
 				update: 'ARL 업데이트'
 			},
 			logout: '로그아웃'
+			question: '스포티파이 기능들을 쓰려면 어떻게 해야합니까?
 		},
 		appearance: {
 			title: '외관',
@@ -244,8 +247,8 @@ const ko = {
 			coverImageTemplate: '커버 이름 템플릿',
 			saveArtworkArtist: '아티스트 이미지 저장',
 			artistImageTemplate: '아티스트 이미지 템플릿',
-			localArtworkSize: '별도 그림 크기',
-			embeddedArtworkSize: '내장된 그림 크기',
+			localArtworkSize: '외부 저장 그림 크기',
+			embeddedArtworkSize: '내부 저장 그림 크기',
 			localArtworkFormat: {
 				title: '별도로 저장할 그림의 형식을 무엇으로 하시겠습니까?',
 				jpg: 'jpeg 이미지',
@@ -256,6 +259,7 @@ const ko = {
 			embeddedArtworkPNG: '포함된 그림의 형식을 PNG로 저장합니다',
 			embeddedPNGWarning: 'PNG는 Deezer에서 공식적으로 지원하지 않기 때문에 버그가 있을 수 있습니다',
 			imageSizeWarning: 'x1200 크기를 초과해서는 Deezer에서 공식적으로 사용되지 않기 때문에 문제가 생길 수 있습니다'
+			coverDescriptionUTF8: '커버 설명을 UTF8 포맷을 이용해 저장합니다 (iTunes 커버 오류 해결)'
 		},
 		tags: {
 			head: '저장할 태그를 선택하세요',

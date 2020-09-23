@@ -3,9 +3,8 @@
 		<router-link
 			v-for="link in links"
 			:key="link.id"
-			tag="span"
+			tag="a"
 			class="main_tablinks"
-			role="link"
 			:id="link.id"
 			:class="{ active: activeTablink === link.name }"
 			:aria-label="link.ariaLabel"

@@ -23,7 +23,7 @@
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
@@ -32,7 +32,7 @@
 							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
@@ -60,7 +60,7 @@
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
@@ -69,7 +69,7 @@
 							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>

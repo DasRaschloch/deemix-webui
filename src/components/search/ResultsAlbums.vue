@@ -13,15 +13,16 @@
 			>
 				<div class="cover_container">
 					<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
-					<div
+					<button
 						role="button"
 						aria-label="download"
 						@click.stop="$emit('add-to-queue', $event)"
 						:data-link="release.link"
 						class="download_overlay"
+						tabindex="0"
 					>
 						<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-					</div>
+					</button>
 				</div>
 				<p class="primary-text inline-flex">
 					<i v-if="release.explicit_lyrics" class="material-icons explicit_icon">explicit</i>

@@ -32,15 +32,16 @@
 				<div v-for="release in playlists" class="release clickable" @click="playlistView" :data-id="release.id">
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
@@ -60,15 +61,16 @@
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
@@ -91,15 +93,16 @@
 				<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
@@ -115,15 +118,16 @@
 				<div v-for="release in artists" class="release clickable" @click="artistView" :data-id="release.id">
 					<div class="cover_container">
 						<img aria-hidden="true" class="circle coverart" :src="release.picture_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.name }}</p>
 				</div>

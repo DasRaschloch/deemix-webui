@@ -27,15 +27,16 @@
 							:src="results.allTab.TOP_RESULT[0].picture"
 							:class="(results.allTab.TOP_RESULT[0].type == 'artist' ? 'circle' : 'rounded') + ' coverart'"
 						/>
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="$emit('add-to-queue', $event)"
 							:data-link="results.allTab.TOP_RESULT[0].link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<div class="info_box">
 						<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
@@ -118,15 +119,16 @@
 									'https://e-cdns-images.dzcdn.net/images/artist/' + release.ART_PICTURE + '/156x156-000000-80-0-0.jpg'
 								"
 							/>
-							<div
+							<button
 								role="button"
 								aria-label="download"
 								@click.stop="$emit('add-to-queue', $event)"
 								:data-link="'https://deezer.com/artist/' + release.ART_ID"
 								class="download_overlay"
+								tabindex="0"
 							>
 								<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-							</div>
+							</button>
 						</div>
 						<p class="primary-text">{{ release.ART_NAME }}</p>
 						<p class="secondary-text">{{ $t('search.fans', { n: $n(release.NB_FAN) }) }}</p>
@@ -147,15 +149,16 @@
 									'https://e-cdns-images.dzcdn.net/images/cover/' + release.ALB_PICTURE + '/156x156-000000-80-0-0.jpg'
 								"
 							/>
-							<div
+							<button
 								role="button"
 								aria-label="download"
 								@click.stop="$emit('add-to-queue', $event)"
 								:data-link="'https://deezer.com/album/' + release.ALB_ID"
 								class="download_overlay"
+								tabindex="0"
 							>
 								<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-							</div>
+							</button>
 						</div>
 						<p class="primary-text inline-flex">
 							<i
@@ -189,15 +192,16 @@
 									'/156x156-000000-80-0-0.jpg'
 								"
 							/>
-							<div
+							<button
 								role="button"
 								aria-label="download"
 								@click.stop="$emit('add-to-queue', $event)"
 								:data-link="'https://deezer.com/playlist/' + release.PLAYLIST_ID"
 								class="download_overlay"
+								tabindex="0"
 							>
 								<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-							</div>
+							</button>
 						</div>
 						<p class="primary-text">{{ release.TITLE }}</p>
 						<p class="secondary-text">{{ $tc('globals.listTabs.trackN', release.NB_SONG) }}</p>

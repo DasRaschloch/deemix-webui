@@ -19,6 +19,7 @@
 					class="release clickable"
 					@click="playlistView"
 					:data-id="release.id"
+					tabindex="0"
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
@@ -28,6 +29,7 @@
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>
@@ -54,6 +56,7 @@
 					class="release clickable"
 					@click="albumView"
 					:data-id="release.id"
+					tabindex="0"
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
@@ -63,6 +66,7 @@
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 						</div>

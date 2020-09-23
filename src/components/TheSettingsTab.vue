@@ -56,6 +56,7 @@
 					:class="{ 'locale-flag--current': currentLocale === locale }"
 					@click="changeLocale(locale)"
 					v-html="flags[locale]"
+					:title="locale"
 				>
 				</span>
 			</div>

@@ -62,6 +62,13 @@ document.addEventListener('paste', pasteEvent => {
 	}
 })
 
+document.addEventListener('keydown', e => {
+	if(e.keyCode == 70 && e.ctrlKey){
+		e.preventDefault()
+		document.querySelector('#searchbar').focus()
+	}
+})
+
 /* ===== Socketio listeners ===== */
 
 // Debug messages for socketio

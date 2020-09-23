@@ -1,4 +1,4 @@
-const en = {
+const ph = {
 	globals: {
 		welcome: 'Welcome sa deemix',
 		back: 'bumalik',
@@ -173,7 +173,7 @@ const en = {
 		currentItemCancelled: 'Nakansel na ang item.',
 		startAddingArtist: 'Idinadagdag si {artist} sa queue ng mga album',
 		finishAddingArtist: 'Naidagdag na si {artist} sa queue ng mga album',
-		startConvertingSpotifyPlaylist: 'Kino-convert ang mga track sa spotify papuntang Deezer,
+		startConvertingSpotifyPlaylist: 'Kino-convert ang mga track sa spotify papuntang Deezer',
 		finishConvertingSpotifyPlaylist: 'Naconvert na ang playlist sa Spotify',
 		loginNeededToDownload: 'Kailangan mong mag-login para madownload ang mga track!',
 		deezerNotAvailable: 'Hindi available ang Deezer sa iyong bansa. Kailangan mong gumamit ng VPN.'
@@ -368,4 +368,4 @@ const en = {
 	}
 }
 
-export default en
+export default ph

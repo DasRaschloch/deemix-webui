@@ -5,6 +5,7 @@
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
 		:data-label="$t('downloads')"
+		 aria-label="downloads"
 	>
 		<div id="download_tab_drag_handler" @mousedown.prevent="startDrag" ref="dragHandler"></div>
 		<i
@@ -337,4 +338,3 @@ export default {
 	}
 }
 </script>
-

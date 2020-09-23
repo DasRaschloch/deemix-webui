@@ -1,5 +1,5 @@
 <template>
-	<header id="search">
+	<header id="search" aria-label="searchbar">
 		<div class="search__icon">
 			<i class="material-icons">search</i>
 		</div>

@@ -1,5 +1,5 @@
 <template>
-	<aside id="sidebar" role="navigation">
+	<aside id="sidebar" role="navigation" aria-label="sidebar">
 		<router-link
 			v-for="link in links"
 			:key="link.id"

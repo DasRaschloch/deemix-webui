@@ -1,5 +1,5 @@
 <template>
-	<main id="main_content">
+	<main id="main_content" aria-label="content">
 		<TheContent />
 		<!-- <BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="true" /> -->
 	</main>

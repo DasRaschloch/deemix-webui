@@ -4,7 +4,6 @@
 
 		<section class="home_section" ref="notLogged" v-if="!isLoggedIn">
 			<p id="home_not_logged_text">{{ $t('home.needTologin') }}</p>
-			<!-- <button type="button" name="button" @click="openSettings">{{ $t('home.openSettings') }}</button> -->
 			<router-link tag="button" name="button" :to="{ name: 'Settings' }">
 				{{ $t('home.openSettings') }}
 			</router-link>
@@ -18,6 +17,7 @@
 					:key="release.id"
 					class="release clickable"
 					@click="playlistView"
+					@keyup.enter="playlistView"
 					:data-id="release.id"
 					tabindex="0"
 				>
@@ -55,6 +55,7 @@
 					:key="release.id"
 					class="release clickable"
 					@click="albumView"
+					@keyup.enter="albumView"
 					:data-id="release.id"
 					tabindex="0"
 				>

@@ -34,7 +34,7 @@ export default {
 	},
 	mounted() {
 		document.addEventListener('keyup', keyEvent => {
-			if (!(keyEvent.key == 'Backspace' && keyEvent.ctrlKey)) return
+			if (!(keyEvent.key == 'Backspace' && keyEvent.ctrlKey && keyEvent.shiftKey)) return
 
 			this.$refs.searchbar.value = ''
 			this.$refs.searchbar.focus()

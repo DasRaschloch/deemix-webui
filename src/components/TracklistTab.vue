@@ -1,5 +1,5 @@
 <template>
-	<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header">
+	<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header" ref="root">
 		<header
 			:style="{
 				'background-image':
@@ -55,9 +55,7 @@
 							</td>
 							<td class="table__cell--large table__cell--with-icon">
 								<div class="table__cell-content table__cell-content--vertical-center">
-									<i v-if="track.explicit_lyrics" class="material-icons explicit_icon">
-										explicit
-									</i>
+									<i v-if="track.explicit_lyrics" class="material-icons explicit_icon"> explicit </i>
 									{{
 										track.title +
 										(track.title_version && track.title.indexOf(track.title_version) == -1
@@ -91,9 +89,9 @@
 								<input class="clickable" type="checkbox" v-model="track.selected" />
 							</td>
 						</tr>
-						<tr v-else-if="track.type == 'disc_separator'" class="table__row-no-highlight" style="opacity: 0.54;">
+						<tr v-else-if="track.type == 'disc_separator'" class="table__row-no-highlight" style="opacity: 0.54">
 							<td>
-								<div class="table__cell-content table__cell-content--vertical-center" style="opacity: 0.54;">
+								<div class="table__cell-content table__cell-content--vertical-center" style="opacity: 0.54">
 									<i class="material-icons">album</i>
 								</div>
 							</td>
@@ -131,15 +129,15 @@
 				</template>
 			</tbody>
 		</table>
-		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px;">{{ label }}</span>
+		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px">{{ label }}</span>
 		<footer>
 			<button @click.stop="addToQueue" :data-link="link">
-				{{ `${$t('globals.download', {thing: $tc(`globals.listTabs.${type}`, 1)})}` }}
+				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${type}`, 1) })}` }}
 			</button>
 			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
 			</button>
-			<button class="back-button">{{ $t('globals.back') }}</button>
+			<button class="back-button" @click="backTab">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>
@@ -147,7 +145,7 @@
 <script>
 import { isEmpty } from 'lodash-es'
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
+import { showView, backTab } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
@@ -166,6 +164,7 @@ export default {
 		body: []
 	}),
 	methods: {
+		backTab,
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playPausePreview(e) {
@@ -203,6 +202,8 @@ export default {
 		},
 		convertDuration: Utils.convertDuration,
 		showAlbum(data) {
+			this.reset()
+
 			const {
 				id: albumID,
 				title: albumTitle,
@@ -231,6 +232,8 @@ export default {
 			}
 		},
 		showPlaylist(data) {
+			this.reset()
+
 			const {
 				id: playlistID,
 				title: playlistTitle,
@@ -246,7 +249,10 @@ export default {
 			this.title = playlistTitle
 			this.image = playlistCover
 			this.release_date = creation_date.substring(0, 10)
-			this.metadata = `${this.$t('globals.by', {artist: creatorName})} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
+			this.metadata = `${this.$t('globals.by', { artist: creatorName })} • ${this.$tc(
+				'globals.listTabs.trackN',
+				numberOfTracks
+			)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null
@@ -255,6 +261,8 @@ export default {
 			}
 		},
 		showSpotifyPlaylist(data) {
+			this.reset()
+
 			const {
 				uri: playlistURI,
 				name: playlistName,
@@ -272,7 +280,10 @@ export default {
 				? images[0].url
 				: 'https://e-cdns-images.dzcdn.net/images/cover/d41d8cd98f00b204e9800998ecf8427e/1000x1000-000000-80-0-0.jpg'
 			this.release_date = ''
-			this.metadata = `${this.$t('globals.by', {artist: ownerName})} • ${this.$tc('globals.listTabs.trackN', numberOfTracks)}`
+			this.metadata = `${this.$t('globals.by', { artist: ownerName })} • ${this.$tc(
+				'globals.listTabs.trackN',
+				numberOfTracks
+			)}`
 
 			if (isEmpty(playlistTracks)) {
 				this.body = null
@@ -285,7 +296,6 @@ export default {
 		}
 	},
 	mounted() {
-		EventBus.$on('tracklistTab:reset', this.reset)
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)
 
 		socket.on('show_album', this.showAlbum)

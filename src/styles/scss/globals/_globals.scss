@@ -316,13 +316,6 @@ a {
 	}
 }
 
-#main_content {
-	margin-left: $sidebar-width;
-	width: calc(100% - #{$sidebar-width});
-	height: 100%;
-	display: flex;
-}
-
 // TODO Remove
 .inline-flex {
 	display: flex;
@@ -340,4 +333,12 @@ a {
 
 .hide {
 	display: none !important;
+}
+
+.changing-theme {
+	transition: all 200ms ease-in-out;
+}
+
+[v-cloak] {
+	display: none;
 }

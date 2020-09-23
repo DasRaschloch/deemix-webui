@@ -5,8 +5,10 @@
 </template>
 
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 import EventBus from '@/utils/EventBus'
+
+import { adjustVolume } from '@/utils/adjust-volume'
 
 export default {
 	data: () => ({
@@ -25,98 +27,113 @@ export default {
 			await this.$refs.preview.play()
 
 			this.previewStopped = false
-			$(this.$refs.preview).animate({ volume: vol.preview_max_volume / 100 }, 500)
+
+			await adjustVolume(this.$refs.preview, window.vol.preview_max_volume / 100, { duration: 500 })
 		},
-		onTimeUpdate() {
+		async onTimeUpdate() {
 			// Prevents first time entering in this function
 			if (isNaN(this.$refs.preview.duration)) return
+
 			let duration = this.$refs.preview.duration
-			if (!isFinite(duration)) duration = 30
+
+			if (!isFinite(duration)) {
+				duration = 30
+			}
+
 			if (duration - this.$refs.preview.currentTime >= 1) return
 			if (this.previewStopped) return
 
-			$(this.$refs.preview).animate({ volume: 0 }, 800)
+			await adjustVolume(this.$refs.preview, 0, { duration: 800 })
 
 			this.previewStopped = true
 
-			$('a[playing] > .preview_controls').css({ opacity: 0 })
-			$('*').removeAttr('playing')
-			$('.preview_controls').text('play_arrow')
-			$('.preview_playlist_controls').text('play_arrow')
+			document.querySelectorAll('a[playing] > .preview_controls').forEach(control => {
+				control.style.opacity = 0
+			})
+
+			document.querySelectorAll('*').forEach(el => {
+				el.removeAttribute('playing')
+			})
+
+			document.querySelectorAll('.preview_controls, .preview_playlist_controls').forEach(el => {
+				el.textContent = 'play_arrow'
+			})
 		},
-		playPausePreview(e) {
+		async playPausePreview(e) {
 			e.preventDefault()
 			e.stopPropagation()
 
 			const { currentTarget: obj } = event
 
-			var $icon = obj.tagName == 'I' ? $(obj) : $(obj).children('i')
+			var icon = obj.tagName == 'I' ? obj : obj.querySelector('i')
 
-			if ($(obj).attr('playing')) {
+			if (obj.hasAttribute('playing')) {
 				if (this.$refs.preview.paused) {
 					this.$refs.preview.play()
 					this.previewStopped = false
 
-					$icon.text('pause')
+					icon.innerText = 'pause'
 
-					$(this.$refs.preview).animate({ volume: vol.preview_max_volume / 100 }, 500)
+					await adjustVolume(this.$refs.preview, window.vol.preview_max_volume / 100, { duration: 500 })
 				} else {
 					this.previewStopped = true
 
-					$icon.text('play_arrow')
+					icon.innerText = 'play_arrow'
 
-					$(this.$refs.preview).animate({ volume: 0 }, 250, 'swing', () => {
-						this.$refs.preview.pause()
-					})
+					await adjustVolume(this.$refs.preview, 0, { duration: 250 })
+
+					this.$refs.preview.pause()
 				}
 			} else {
-				$('*').removeAttr('playing')
-				$(obj).attr('playing', true)
+				document.querySelectorAll('*').forEach(el => {
+					el.removeAttribute('playing')
+				})
+				obj.setAttribute('playing', true)
 
-				$('.preview_controls').text('play_arrow')
-				$('.preview_playlist_controls').text('play_arrow')
-				$('.preview_controls').css({ opacity: 0 })
+				document.querySelectorAll('.preview_controls, .preview_playlist_controls').forEach(el => {
+					el.textContent = 'play_arrow'
+				})
 
-				$icon.text('pause')
-				$icon.css({ opacity: 1 })
+				document.querySelectorAll('.preview_controls').forEach(el => {
+					el.style.opacity = 0
+				})
+
+				icon.innerText = 'pause'
+				icon.style.opacity = 1
 
 				this.previewStopped = false
 
-				$(this.$refs.preview).animate({ volume: 0 }, 250, 'swing', () => {
-					this.$refs.preview.pause()
-					$('#preview-track_source').prop('src', $(obj).data('preview'))
-					this.$refs.preview.load()
-				})
+				await adjustVolume(this.$refs.preview, 0, { duration: 250 })
+				this.$refs.preview.pause()
+
+				document.getElementById('preview-track_source').src = obj.getAttribute('data-preview')
+
+				this.$refs.preview.load()
 			}
 		},
-		stopStackedTabsPreview() {
-			if (
-				$('.preview_playlist_controls').filter(function() {
-					return $(this).attr('playing')
-				}).length > 0
-			) {
-				$(this.$refs.preview).animate({ volume: 0 }, 800)
-				this.previewStopped = true
-				$('.preview_playlist_controls').removeAttr('playing')
-				$('.preview_playlist_controls').text('play_arrow')
-			}
+		async stopStackedTabsPreview() {
+			let controls = Array.prototype.slice.call(document.querySelectorAll('.preview_playlist_controls[playing]'))
+
+			if (controls.length === 0) return
+
+			await adjustVolume(this.$refs.preview, 0, { duration: 800 })
+
+			this.previewStopped = true
+
+			controls.forEach(control => {
+				control.removeAttribute('playing')
+				control.innerText = 'play_arrow'
+			})
 		},
 		previewMouseEnter(e) {
-			$(e.currentTarget).css({ opacity: 1 })
+			e.currentTarget.style.opacity = 1
 		},
 		previewMouseLeave(event) {
 			const { currentTarget: obj } = event
+			const parentIsPlaying = obj.parentElement.hasAttribute('playing')
 
-			if (
-				($(obj)
-					.parent()
-					.attr('playing') &&
-					this.previewStopped) ||
-				!$(obj)
-					.parent()
-					.attr('playing')
-			) {
-				$(obj).css({ opacity: 0 }, 200)
+			if ((parentIsPlaying && this.previewStopped) || !parentIsPlaying) {
+				obj.style.opacity = 0
 			}
 		}
 	}

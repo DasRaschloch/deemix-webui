@@ -1,5 +1,5 @@
 <template>
-	<div id="favorites_tab" class="main_tabcontent" @click="handleFavoritesTabClick">
+	<div id="favorites_tab" class="main_tabcontent">
 		<h2 class="page_heading">
 			{{ $t('favorites.title') }}
 			<div
@@ -13,21 +13,18 @@
 			</div>
 		</h2>
 		<div class="section-tabs">
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_playlist_tab">
-				{{ $tc('globals.listTabs.playlist', 2) }}
-			</div>
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_album_tab">
-				{{ $tc('globals.listTabs.album', 2) }}
-			</div>
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_artist_tab">
-				{{ $tc('globals.listTabs.artist', 2) }}
-			</div>
-			<div class="section-tabs__tab favorites_tablinks" id="favorites_track_tab">
-				{{ $tc('globals.listTabs.track', 2) }}
+			<div
+				class="section-tabs__tab favorites_tablinks"
+				:class="{ active: activeTab === tab }"
+				@click="activeTab = tab"
+				v-for="tab in tabs"
+				:key="tab"
+			>
+				{{ $tc(`globals.listTabs.${tab}`, 2) }}
 			</div>
 		</div>
 
-		<div id="playlist_favorites" class="favorites_tabcontent">
+		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'playlist' }">
 			<div v-if="playlists.length == 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
@@ -47,7 +44,12 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{ `${$t('globals.by', {artist: release.creator.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+						{{
+							`${$t('globals.by', { artist: release.creator.name })} - ${$tc(
+								'globals.listTabs.trackN',
+								release.nb_tracks
+							)}`
+						}}
 					</p>
 				</div>
 				<div
@@ -70,12 +72,18 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{ `${$t('globals.by', {artist: release.creator.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+						{{
+							`${$t('globals.by', { artist: release.creator.name })} - ${$tc(
+								'globals.listTabs.trackN',
+								release.nb_tracks
+							)}`
+						}}
 					</p>
 				</div>
 			</div>
 		</div>
-		<div id="album_favorites" class="favorites_tabcontent">
+
+		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'album' }">
 			<div v-if="albums.length == 0">
 				<h1>{{ $t('favorites.noAlbums') }}</h1>
 			</div>
@@ -94,11 +102,12 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', {artist: release.artist.name})}` }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 				</div>
 			</div>
 		</div>
-		<div id="artist_favorites" class="favorites_tabcontent">
+
+		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'artist' }">
 			<div v-if="artists.length == 0">
 				<h1>{{ $t('favorites.noArtists') }}</h1>
 			</div>
@@ -120,7 +129,8 @@
 				</div>
 			</div>
 		</div>
-		<div id="track_favorites" class="favorites_tabcontent">
+
+		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'track' }">
 			<div v-if="tracks.length == 0">
 				<h1>{{ $t('favorites.noTracks') }}</h1>
 			</div>
@@ -189,23 +199,62 @@
 	</div>
 </template>
 
+<style lang="scss">
+.favorites_tabcontent {
+	display: none;
+
+	&--active {
+		display: block;
+	}
+}
+</style>
+
 <script>
+import { showView } from '@js/tabs'
+
 import { socket } from '@/utils/socket'
-import { showView, changeTab } from '@js/tabs.js'
-import Downloads from '@/utils/downloads'
-import Utils from '@/utils/utils'
+import { sendAddToQueue } from '@/utils/downloads'
+import { convertDuration } from '@/utils/utils'
 import { toast } from '@/utils/toasts'
 
+import { getFavoritesData } from '@/data/favorites'
+
 export default {
-	name: 'the-favorites-tab',
 	data() {
 		return {
 			tracks: [],
 			albums: [],
 			artists: [],
 			playlists: [],
-			spotifyPlaylists: []
+			spotifyPlaylists: [],
+			activeTab: 'playlist',
+			tabs: ['playlist', 'album', 'artist', 'track']
 		}
+	},
+	async created() {
+		const favoritesData = await getFavoritesData()
+
+		// TODO Change with isLoggedIn vuex getter
+		if (Object.entries(favoritesData).length === 0) return
+
+		this.setFavorites(favoritesData)
+	},
+	mounted() {
+		socket.on('updated_userFavorites', this.updated_userFavorites)
+		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
+		socket.on('updated_userPlaylists', this.updated_userPlaylists)
+		socket.on('updated_userAlbums', this.updated_userAlbums)
+		socket.on('updated_userArtist', this.updated_userArtist)
+		socket.on('updated_userTracks', this.updated_userTracks)
+
+		this.$on('hook:destroyed', () => {
+			socket.off('updated_userFavorites')
+			socket.off('updated_userSpotifyPlaylists')
+			socket.off('updated_userPlaylists')
+			socket.off('updated_userAlbums')
+			socket.off('updated_userArtist')
+			socket.off('updated_userTracks')
+		})
 	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
@@ -221,39 +270,9 @@ export default {
 		previewMouseLeave(e) {
 			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		},
-		convertDuration: Utils.convertDuration,
-		handleFavoritesTabClick(event) {
-			const {
-				target,
-				target: { id }
-			} = event
-			let selectedTab = null
-
-			switch (id) {
-				case 'favorites_playlist_tab':
-					selectedTab = 'playlist_favorites'
-					break
-				case 'favorites_album_tab':
-					selectedTab = 'album_favorites'
-					break
-				case 'favorites_artist_tab':
-					selectedTab = 'artist_favorites'
-					break
-				case 'favorites_track_tab':
-					selectedTab = 'track_favorites'
-					break
-
-				default:
-					break
-			}
-
-			if (!selectedTab) return
-
-			changeTab(target, 'favorites', selectedTab)
-		},
+		convertDuration,
 		addToQueue(e) {
-			e.stopPropagation()
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		updated_userSpotifyPlaylists(data) {
 			this.spotifyPlaylists = data
@@ -272,16 +291,15 @@ export default {
 		},
 		reloadTabs() {
 			this.$refs.reloadButton.classList.add('spin')
+
 			socket.emit('update_userFavorites')
-			if (localStorage.getItem('spotifyUser'))
+
+			if (localStorage.getItem('spotifyUser')) {
 				socket.emit('update_userSpotifyPlaylists', localStorage.getItem('spotifyUser'))
+			}
 		},
 		updated_userFavorites(data) {
-			const { tracks, albums, artists, playlists } = data
-			this.tracks = tracks
-			this.albums = albums
-			this.artists = artists
-			this.playlists = playlists
+			this.setFavorites(data)
 
 			// Removing animation class only when the animation has completed an iteration
 			// Prevents animation ugly stutter
@@ -294,22 +312,14 @@ export default {
 				{ once: true }
 			)
 		},
-		initFavorites(data) {
-			this.updated_userFavorites(data)
-			document.getElementById('favorites_playlist_tab').click()
+		setFavorites(data) {
+			const { tracks, albums, artists, playlists } = data
+
+			this.tracks = tracks
+			this.albums = albums
+			this.artists = artists
+			this.playlists = playlists
 		}
-	},
-	mounted() {
-		socket.on('init_favorites', this.initFavorites)
-		socket.on('updated_userFavorites', this.updated_userFavorites)
-		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
-		socket.on('updated_userPlaylists', this.updated_userPlaylists)
-		socket.on('updated_userAlbums', this.updated_userAlbums)
-		socket.on('updated_userArtist', this.updated_userArtist)
-		socket.on('updated_userTracks', this.updated_userTracks)
 	}
 }
 </script>
-
-<style>
-</style>

@@ -41,6 +41,12 @@ const en = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Current Version',
+			versionNotAvailable: 'N/A',
+			updateAvailable: `You're not running the latest version available: {version}`,
+			deemixVersion: 'deemix lib version'
+		},
 		titles: {
 			usefulLinks: 'Useful Links',
 			bugReports: 'Bug Reports',
@@ -98,7 +104,8 @@ const en = {
 			wrongBitrateNoAlternative: 'Track not found at desired bitrate and no alternative found!',
 			no360RA: 'Track is not available in Reality Audio 360.',
 			notAvailable: "Track not available on Deezer's servers!",
-			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!"
+			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!",
+			noSpaceLeft: "No space left on the device!"
 		}
 	},
 	favorites: {
@@ -168,7 +175,8 @@ const en = {
 		finishAddingArtist: 'Added {artist} albums to queue',
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
-		loginNeededToDownload: 'You need to log in to download tracks!'
+		loginNeededToDownload: 'You need to log in to download tracks!',
+		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.'
 	},
 	settings: {
 		title: 'Settings',
@@ -180,7 +188,8 @@ const en = {
 				question: 'How do I get my own ARL?',
 				update: 'Update ARL'
 			},
-			logout: 'Logout'
+			logout: 'Logout',
+			login: 'Login via deezer.com'
 		},
 		appearance: {
 			title: 'Appearance',
@@ -256,7 +265,8 @@ const en = {
 			jpegImageQuality: 'JPEG image quality',
 			embeddedArtworkPNG: 'Save embedded artwork as PNG',
 			embeddedPNGWarning: 'PNGs are not officialy supported by Deezer and can be buggy',
-			imageSizeWarning: 'Anything above x1200 is not officialy used by Deezer, you may encounter issues'
+			imageSizeWarning: 'Anything above x1200 is not officialy used by Deezer, you may encounter issues',
+			coverDescriptionUTF8: 'Save cover description using UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Which tags to save',
@@ -280,6 +290,7 @@ const en = {
 			replayGain: 'Replay Gain',
 			label: 'Album Label',
 			lyrics: 'Unsynchronized Lyrics',
+			syncedLyrics: 'Synchronized Lyrics',
 			copyright: 'Copyright',
 			composer: 'Composer',
 			involvedPeople: 'Involved People'
@@ -332,7 +343,8 @@ const en = {
 			title: 'Spotify Features',
 			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify Username'
+			username: 'Spotify Username',
+			question: 'How do I enable Spotify Features?'
 		},
 		reset: 'Reset to Default',
 		save: 'Save',

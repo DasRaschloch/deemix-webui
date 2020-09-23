@@ -32,14 +32,21 @@ const fr = {
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
+			bundle: 'bundle | bundles',
 			more: "Plus d'albums",
-			featured: 'En vedette dans',
+			featured: 'Apparaît dans',
 			spotifyPlaylist: 'playlist spotify | playlists spotify',
 			releaseDate: 'date de sortie',
 			error: 'erreur'
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Version Actuelle',
+			versionNotAvailable: 'N/A',
+			updateAvailable: "Vous n'utilisez pas la dernière version disponible : {version}",
+			deemixVersion: 'Version de la bibliothèque deemix'
+		},
 		titles: {
 			usefulLinks: 'Liens Utiles',
 			bugReports: 'Rapports De Bug',
@@ -61,7 +68,7 @@ const fr = {
 		officialSubreddit: 'Subreddit Officiel',
 		newsChannel: "Canal d'Informations",
 		questions: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Ensuite, si la solution ne s'y trouve pas, vous pouvez publier un message dans le subreddit en décrivant votre problème.`,
-		beforeReporting: "Avant de signaler un bug, assurez-vous que vous utilisez la version la plus récente de l'application. Vérifiez que vous souhaitez nous rapporter un bug et non quelque chose qui ne fonctionne pas de votre côté.",
+		beforeReporting: "Avant de signaler un bug, assurez-vous que vous utilisez la version la plus récente de l'application. Vérifiez que vous souhaitez nous rapporter un bug et non quelque chose qui ne fonctionne pas uniquement de votre côté.",
 		beSure: "Assurez-vous que le bug soit reproductible sur d'autres appareils mais aussi de <strong>NE PAS</strong> signaler un bug si celui-ci a déjà été recensé.",
 		duplicateReports: "Les rapports de bug répétitifs seront supprimés, merci d'en prendre bonne note.",
 		dontOpenIssues: "<strong>NE PAS</strong> rapporter de problème s'il ne s'agit que de simples questions. Un subreddit existe pour ces questions.",
@@ -97,7 +104,8 @@ const fr = {
 			wrongBitrateNoAlternative: "La piste est introuvable au débit souhaité et aucune alternative n'a été trouvée !",
 			no360RA: 'La piste est indisponible au format Reality Audio 360.',
 			notAvailable: 'La piste est indisponible sur les serveurs de Deezer !',
-			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !"
+			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
+			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !"
 		}
 	},
 	favorites: {
@@ -111,7 +119,7 @@ const fr = {
 		needTologin: 'Vous devez vous connecter à votre compte Deezer avant de pouvoir démarrer un téléchargement.',
 		openSettings: 'Ouvrir Les Paramètres',
 		sections: {
-			popularPlaylists: 'Playlists populaires',
+			popularPlaylists: 'Playlists les plus écoutées',
 			popularAlbums: 'Albums les plus écoutés'
 		}
 	},
@@ -136,8 +144,8 @@ const fr = {
 		}
 	},
 	search: {
-		startSearching: 'Démarrer la recherche !',
-		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ce que vous voulez ! Vous pouvez également copier-coller un lien Deezer',
+		startSearching: 'Démarrer une recherche !',
+		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ce que vous voulez ! Vous pouvez également coller un lien Deezer.',
 		fans: '{n} fans',
 		noResults: 'Aucun résultat',
 		noResultsTrack: "Aucune piste n'a été trouvée",
@@ -163,11 +171,12 @@ const fr = {
 		loggedOut: 'Déconnecté',
 		cancellingCurrentItem: "Annulation de l'élément actuel.",
 		currentItemCancelled: 'Élément actuel annulé.',
-		startAddingArtist: "Ajout de {artist} albums à la file d'attente",
-		finishAddingArtist: "{artist} albums ajoutés à la file d'attente",
+		startAddingArtist: "Ajout des albums de {artist} à la file d'attente",
+		finishAddingArtist: "Les albums de {artist} ont été ajoutés à la file d'attente",
 		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en équivalents Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
-		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !'
+		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !',
+		deezerNotAvailable: "Deezer est indisponible dans votre pays. Vous devez utiliser un VPN."
 	},
 	settings: {
 		title: 'Paramètres',
@@ -179,7 +188,8 @@ const fr = {
 				question: 'Comment obtenir mon ARL personnel ?',
 				update: "Mettre à jour l'ARL"
 			},
-			logout: 'Déconnexion'
+			logout: 'Déconnexion',
+			login: 'Connexion via deezer.com'
 		},
 		appearance: {
 			title: 'Apparence',
@@ -210,7 +220,7 @@ const fr = {
 			title: 'Titres des pistes',
 			padTracks: "Longueur uniforme des numéros de piste (ajoute automatiquement des zéros devant le numéro initial de la piste)",
 			paddingSize: 'Nombre de zéros à ajouter en permanence devant le numéro initial de la piste',
-			illegalCharacterReplacer: 'Remplacement de caractère inapproprié'
+			illegalCharacterReplacer: "Substitut aux caractères non autorisés (dans les noms de fichiers et de dossiers)"
 		},
 		downloads: {
 			title: 'Téléchargements',
@@ -222,7 +232,7 @@ const fr = {
 				1: 'MP3 128kbps'
 			},
 			overwriteFile: {
-				title: 'Faut-il écraser les fichiers ?',
+				title: 'Les fichiers doivent-ils être écrasés ?',
 				y: 'Oui, écraser le fichier',
 				n: 'Non, ne pas écraser le fichier',
 				t: 'Écraser uniquement les métadonnées',
@@ -254,8 +264,9 @@ const fr = {
 			},
 			jpegImageQuality: "Qualité de l'image JPEG",
 			embeddedArtworkPNG: "Enregistrer l'illustration incorporée aux fichiers audio en tant que PNG",
-			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes',
-			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes"
+			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes.',
+			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes.",
+			coverDescriptionUTF8: 'Enregistrer la description de la pochette au format UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Métadonnées à sauvegarder',
@@ -279,6 +290,7 @@ const fr = {
 			replayGain: 'Gain En Relecture (Replay Gain)',
 			label: "Label De l'Album",
 			lyrics: 'Paroles Non-Synchronisées',
+			syncedLyrics: 'Paroles Synchronisées',
 			copyright: "Droits d'Auteur (Copyright)",
 			composer: 'Compositeur',
 			involvedPeople: 'Personnes Impliquées'
@@ -306,7 +318,7 @@ const fr = {
 				day: 'JJ'
 			},
 			featuredToTitle: {
-				title: 'Que faut-il faire avec les artistes participants (featuring) ?',
+				title: 'Que faire des artistes participants (featuring) ?',
 				0: 'Ne rien faire',
 				1: 'Les retirer du titre de la piste',
 				3: "Les supprimer du titre de la piste et du titre de l'album",
@@ -331,7 +343,8 @@ const fr = {
 			title: 'Fonctionnalités Spotify',
 			clientID: 'clientID Spotify',
 			clientSecret: 'Client Secret Spotify',
-			username: "Nom d'utilisateur Spotify"
+			username: "Nom d'utilisateur Spotify",
+			question: 'Comment activer les Fonctionnalités Spotify ?'
 		},
 		reset: 'Rétablir les valeurs par défaut',
 		save: 'Sauvegarder',
@@ -346,7 +359,7 @@ const fr = {
 		search: 'recherche',
 		charts: 'classements',
 		favorites: 'favoris',
-		linkAnalyzer: 'analyseur de liens',
+		linkAnalyzer: 'analyseur de lien',
 		settings: 'paramètres',
 		about: 'à propos'
 	},

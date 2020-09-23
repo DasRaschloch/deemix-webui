@@ -41,6 +41,12 @@ const it = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Versione corrente',
+			versionNotAvailable: 'N/A',
+			updateAvailable: `Non stai usando l'ultima versione disponibile: {version}`,
+			deemixVersion: 'Versione libreria deemix'
+		},
 		titles: {
 			usefulLinks: 'Link Utili',
 			bugReports: 'Segnalazione di bug',
@@ -101,7 +107,8 @@ const it = {
 			wrongBitrateNoAlternative: 'Brano non trovato con il bitrate specificato e nessuna alternativa trovata!',
 			no360RA: 'Brano non disponibile in Reality Audio 360.',
 			notAvailable: 'Brano non presente sui server di Deezer!',
-			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!'
+			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!',
+			noSpaceLeft: "Spazio su disco esaurito!"
 		}
 	},
 	favorites: {
@@ -174,7 +181,8 @@ const it = {
 		finishAddingArtist: 'Aggiunto gli album di {artist} alla coda',
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
-		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!'
+		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
+		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.'
 	},
 	settings: {
 		title: 'Impostazioni',
@@ -186,7 +194,8 @@ const it = {
 				question: 'Come ottengo il mio ARL?',
 				update: 'Aggiorna ARL'
 			},
-			logout: 'Disconnettiti'
+			logout: 'Disconnettiti',
+			login: 'Accedi tramite deezer.com'
 		},
 		appearance: {
 			title: 'Aspetto',
@@ -262,7 +271,8 @@ const it = {
 			jpegImageQuality: 'Qualità immagine JPEG',
 			embeddedArtworkPNG: 'Salva copertina incorporata come PNG',
 			embeddedPNGWarning: 'Le immagini PNG non sono usate ufficialmente da Deezer e potrebbero dare problemi',
-			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi'
+			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi',
+			coverDescriptionUTF8: 'Salva la descrizione della copertina in UTF8 (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Quali tag salvare',
@@ -286,6 +296,7 @@ const it = {
 			replayGain: 'Replay gain',
 			label: 'Casa Discografica',
 			lyrics: 'Testo non Sincronizzato',
+			syncedLyrics: 'Testo Sincronizzato',
 			copyright: 'Copyright',
 			composer: 'Compositori',
 			involvedPeople: 'Persone Coinvolte'
@@ -338,7 +349,8 @@ const it = {
 			title: 'Spotify Features',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify username',
+			question: 'Come attivo le Spotify Features?'
 		},
 		reset: 'Reimposta Default',
 		save: 'Salva',

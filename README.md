@@ -1,38 +1,15 @@
 # deemix-webui
 
-This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that
+This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that.
+If you are a web developer and want to contribute to this project, please read the [COMPILE-UI](COMPILE-UI.md) file.
 
-## What's left to do?
+## Related projects
 
-- [ ] Use Vue app-wide
-  - [X] First step: rewrite the app in Single File Components way
-  - [ ] Second step: Implement routing for the whole app using Vue Router ⚒
-  - [ ] Third step: Remove jQuery
-- [ ] Implement custom contextmenu ⚒
-  - [X] Copy and paste functions
-  - [X] Copy Link where possible
-  - [X] Download Quality
-  - [X] Copy Image URL where possible
-  - [ ] Resolve cut/copy/paste compatibility issues
-- [ ] Make i18n async (https://kazupon.github.io/vue-i18n/guide/lazy-loading.html)
-  - Use ES2020 async imports, if possible
-- [ ] Make the UI look coherent
-  - [ ] Style buttons
-  - [ ] Style text inputs
-  - [ ] Style checkboxes
-- [ ] Search tab
-	- [ ] Better placeholer before search
-- [ ] Link Analyzer
-	- [ ] Better placeholer before analyzing and error feedback
-- [ ] Settings tab
-  - [ ] Variable selector near template inputs
-  - Maybe tabbing the section for easy navigation
-  - Could use a carousel, but it's not worth adding a new dep
-- [ ] Block selection where it's not needed (keep only titles artists albums labels and useful data)
-  - There's a SASS mixin for this. Need to use it in the proper classes
-- [ ] Better feedback for socket.io possible errors
-- [X] Remove images size limit and add warning if > 1200
-- ?
+You can find more informations about deemix at https://deemix.app/
+
+- [deemix](https://codeberg.org/RemixDev/deemix)
+- [deemix-pyweb](https://codeberg.org/RemixDev/deemix-pyweb)
+- [deemix-tools](https://codeberg.org/RemixDev/deemix-tools)
 
 # License
 

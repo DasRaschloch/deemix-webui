@@ -1,15 +1,18 @@
 <template>
-	<div id="settings_tab" class="main_tabcontent fixed_footer">
+	<div id="settings_tab" class="main_tabcontent fixed_footer" ref="root">
 		<h2 class="page_heading">{{ $t('settings.title') }}</h2>
 
-		<div id="logged_in_info" ref="loggedInInfo">
-			<img id="settings_picture" src="" alt="Profile Picture" ref="userpicture" class="circle" />
+		<div id="logged_in_info" v-if="isLoggedIn" ref="loggedInInfo">
+			<img id="settings_picture" :src="pictureHref" alt="Profile Picture" ref="userpicture" class="circle" />
+
 			<i18n path="settings.login.loggedIn" tag="p">
-				<strong place="username" id="settings_username" ref="username"></strong>
+				<strong place="username" id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
 			</i18n>
+
 			<button id="settings_btn_logout" @click="logout">{{ $t('settings.login.logout') }}</button>
+
 			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
-				<option v-for="(account, i) in accounts" :value="i.toString()">{{ account.BLOG_NAME }}</option>
+				<option v-for="(account, i) in accounts" :key="account" :value="i.toString()">{{ account.BLOG_NAME }}</option>
 			</select>
 		</div>
 
@@ -18,7 +21,14 @@
 				<i class="material-icons">person</i>{{ $t('settings.login.title') }}
 			</h3>
 			<div class="inline-flex">
-				<input autocomplete="off" type="password" id="login_input_arl" ref="loginInput" placeholder="ARL" />
+				<input
+					autocomplete="off"
+					type="password"
+					:value="arl"
+					id="login_input_arl"
+					ref="loginInput"
+					placeholder="ARL"
+				/>
 				<button id="settings_btn_copyArl" class="only_icon" @click="copyARLtoClipboard">
 					<i class="material-icons">assignment</i>
 				</button>
@@ -26,10 +36,10 @@
 			<a href="https://codeberg.org/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
 				{{ $t('settings.login.arl.question') }}
 			</a>
-			<a id="settings_btn_applogin" class="hide" href="#" @click="applogin">
-				Automated login
+			<a id="settings_btn_applogin" v-if="clientMode" href="#" @click="appLogin">
+				{{ $t('settings.login.login') }}
 			</a>
-			<button id="settings_btn_updateArl" @click="login" style="width: 100%;">
+			<button id="settings_btn_updateArl" @click="login" style="width: 100%">
 				{{ $t('settings.login.arl.update') }}
 			</button>
 		</div>
@@ -67,7 +77,7 @@
 			</h3>
 			<div class="inline-flex">
 				<input autocomplete="off" type="text" v-model="settings.downloadLocation" />
-				<button id="select_downloads_folder" class="only_icon hide" @click="selectDownloadFolder">
+				<button id="select_downloads_folder" v-if="clientMode" class="only_icon" @click="selectDownloadFolder">
 					<i class="material-icons">folder</i>
 				</button>
 			</div>
@@ -275,13 +285,17 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.localArtworkSize') }}</p>
 				<input type="number" min="100" max="10000" step="100" v-model.number="settings.localArtworkSize" />
-				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
+				<p v-if="settings.localArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22">
+					⚠️ {{ $t('settings.covers.imageSizeWarning') }}
+				</p>
 			</div>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.embeddedArtworkSize') }}</p>
 				<input type="number" min="100" max="10000" step="100" v-model.number="settings.embeddedArtworkSize" />
-				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.imageSizeWarning') }}</p>
+				<p v-if="settings.embeddedArtworkSize > 1200" class="input_group_text" style="opacity: 0.75; color: #ffcc22">
+					⚠️ {{ $t('settings.covers.imageSizeWarning') }}
+				</p>
 			</div>
 
 			<div class="input_group">
@@ -297,7 +311,14 @@
 				<input type="checkbox" v-model="settings.embeddedArtworkPNG" />
 				<span class="checkbox_text">{{ $t('settings.covers.embeddedArtworkPNG') }}</span>
 			</label>
-			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22;">⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}</p>
+			<p v-if="settings.embeddedArtworkPNG" style="opacity: 0.75; color: #ffcc22">
+				⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}
+			</p>
+
+			<label class="with_checkbox">
+				<input type="checkbox" v-model="settings.tags.coverDescriptionUTF8" />
+				<span class="checkbox_text">{{ $t('settings.covers.coverDescriptionUTF8') }}</span>
+			</label>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.covers.jpegImageQuality') }}</p>
@@ -307,7 +328,7 @@
 
 		<div class="settings-group">
 			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons" style="width: 1em; height: 1em;">bookmarks</i>{{ $t('settings.tags.head') }}
+				<i class="material-icons" style="width: 1em; height: 1em">bookmarks</i>{{ $t('settings.tags.head') }}
 			</h3>
 
 			<div class="settings-container">
@@ -396,6 +417,10 @@
 						<span class="checkbox_text">{{ $t('settings.tags.lyrics') }}</span>
 					</label>
 					<label class="with_checkbox">
+						<input type="checkbox" v-model="settings.tags.syncedLyrics" />
+						<span class="checkbox_text">{{ $t('settings.tags.syncedLyrics') }}</span>
+					</label>
+					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.copyright" />
 						<span class="checkbox_text">{{ $t('settings.tags.copyright') }}</span>
 					</label>
@@ -437,13 +462,13 @@
 					<option value="nothing">{{ $t('settings.other.multiArtistSeparator.nothing') }}</option>
 					<option value="default">{{ $t('settings.other.multiArtistSeparator.default') }}</option>
 					<option value="andFeat">{{ $t('settings.other.multiArtistSeparator.andFeat') }}</option>
-					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', {separator: ' & '}) }}</option>
-					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', {separator: ','}) }}</option>
-					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', {separator: ', '}) }}</option>
-					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', {separator: '/'}) }}</option>
-					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', {separator: ' / '}) }}</option>
-					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', {separator: ';'}) }}</option>
-					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', {separator: '; '}) }}</option>
+					<option value=" & ">{{ $t('settings.other.multiArtistSeparator.using', { separator: ' & ' }) }}</option>
+					<option value=",">{{ $t('settings.other.multiArtistSeparator.using', { separator: ',' }) }}</option>
+					<option value=", ">{{ $t('settings.other.multiArtistSeparator.using', { separator: ', ' }) }}</option>
+					<option value="/">{{ $t('settings.other.multiArtistSeparator.using', { separator: '/' }) }}</option>
+					<option value=" / ">{{ $t('settings.other.multiArtistSeparator.using', { separator: ' / ' }) }}</option>
+					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', { separator: ';' }) }}</option>
+					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', { separator: '; ' }) }}</option>
 				</select>
 			</div>
 
@@ -470,26 +495,34 @@
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.other.dateFormat.title') }}</p>
 				<select v-model="settings.dateFormat">
-					<option value="Y-M-D">{{
-						`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t(
-							'settings.other.dateFormat.day'
-						)}`
-					}}</option>
-					<option value="Y-D-M">{{
-						`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t(
-							'settings.other.dateFormat.month'
-						)}`
-					}}</option>
-					<option value="D-M-Y">{{
-						`${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t(
-							'settings.other.dateFormat.year'
-						)}`
-					}}</option>
-					<option value="M-D-Y">{{
-						`${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t(
-							'settings.other.dateFormat.year'
-						)}`
-					}}</option>
+					<option value="Y-M-D">
+						{{
+							`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.month')}-${$t(
+								'settings.other.dateFormat.day'
+							)}`
+						}}
+					</option>
+					<option value="Y-D-M">
+						{{
+							`${$t('settings.other.dateFormat.year')}-${$t('settings.other.dateFormat.day')}-${$t(
+								'settings.other.dateFormat.month'
+							)}`
+						}}
+					</option>
+					<option value="D-M-Y">
+						{{
+							`${$t('settings.other.dateFormat.day')}-${$t('settings.other.dateFormat.month')}-${$t(
+								'settings.other.dateFormat.year'
+							)}`
+						}}
+					</option>
+					<option value="M-D-Y">
+						{{
+							`${$t('settings.other.dateFormat.month')}-${$t('settings.other.dateFormat.day')}-${$t(
+								'settings.other.dateFormat.year'
+							)}`
+						}}
+					</option>
 					<option value="Y">{{ $t('settings.other.dateFormat.year') }}</option>
 				</select>
 			</div>
@@ -556,6 +589,9 @@
 				</svg>
 				{{ $t('settings.spotify.title') }}
 			</h3>
+			<a href="https://codeberg.org/RemixDev/deemix/wiki/Enabling-Spotify-Features" target="_blank">
+				{{ $t('settings.spotify.question') }}
+			</a>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.spotify.clientID') }}</p>
@@ -579,7 +615,16 @@
 		</footer>
 	</div>
 </template>
+
 <style lang="scss">
+#logged_in_info {
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
 .locale-flag {
 	width: 60px;
 	display: inline-flex;
@@ -606,30 +651,47 @@
 </style>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
 import flags from '@/utils/flags'
 
+import { getSettingsData } from '@/data/settings'
+
 export default {
-	name: 'the-settings-tab',
-	data: () => ({
-		flags,
-		currentLocale: 'en',
-		locales: [],
-		settings: { tags: {} },
-		lastSettings: {},
-		spotifyFeatures: {},
-		lastCredentials: {},
-		defaultSettings: {},
-		lastUser: '',
-		spotifyUser: '',
-		slimDownloads: false,
-		previewVolume: window.vol,
-		accountNum: 0,
-		accounts: []
-	}),
+	data() {
+		return {
+			flags,
+			currentLocale: 'en',
+			locales: [],
+			settings: {
+				tags: {}
+			},
+			lastSettings: {},
+			spotifyFeatures: {},
+			lastCredentials: {},
+			defaultSettings: {},
+			lastUser: '',
+			spotifyUser: '',
+			slimDownloads: false,
+			previewVolume: window.vol,
+			accountNum: 0,
+			accounts: []
+			// clientMode: window.clientMode
+		}
+	},
 	computed: {
+		...mapGetters({
+			arl: 'getARL',
+			user: 'getUser',
+			isLoggedIn: 'isLoggedIn',
+			clientMode: 'getClientMode'
+		}),
+		needToWait() {
+			return Object.keys(this.getSettings).length === 0
+		},
 		changeSlimDownloads: {
 			get() {
 				return this.slimDownloads
@@ -639,27 +701,28 @@ export default {
 				document.getElementById('download_list').classList.toggle('slim', wantSlimDownloads)
 				localStorage.setItem('slimDownloads', wantSlimDownloads)
 			}
+		},
+		pictureHref() {
+			// Default image: https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg
+			return `https://e-cdns-images.dzcdn.net/images/user/${this.user.picture}/125x125-000000-80-0-0.jpg`
 		}
 	},
-	mounted() {
+	async mounted() {
 		this.locales = this.$i18n.availableLocales
 
-		EventBus.$on('settingsTab:revertSettings', this.revertSettings)
-		EventBus.$on('settingsTab:revertCredentials', this.revertCredentials)
+		const { settingsData, defaultSettingsData, spotifyCredentials } = await getSettingsData()
 
-		this.$refs.loggedInInfo.classList.add('hide')
+		this.defaultSettings = defaultSettingsData
+		this.initSettings(settingsData, spotifyCredentials)
+
+		// this.revertSettings()
+		// this.revertCredentials()
 
 		let storedLocale = localStorage.getItem('locale')
 
 		if (storedLocale) {
 			this.$i18n.locale = storedLocale
 			this.currentLocale = storedLocale
-		}
-
-		let storedArl = localStorage.getItem('arl')
-
-		if (storedArl) {
-			this.$refs.loginInput.value = storedArl.trim()
 		}
 
 		let storedAccountNum = localStorage.getItem('accountNum')
@@ -679,25 +742,37 @@ export default {
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
 
 		let volume = parseInt(localStorage.getItem('previewVolume'))
+
 		if (isNaN(volume)) {
 			volume = 80
 			localStorage.setItem('previewVolume', volume)
 		}
+
 		window.vol.preview_max_volume = volume
 
-		socket.on('init_settings', this.initSettings)
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
 		socket.on('downloadFolderSelected', this.downloadFolderSelected)
-		socket.on('applogin_arl', this.setArl)
+		socket.on('applogin_arl', this.loggedInViaDeezer)
+
+		this.$on('hook:destroyed', () => {
+			socket.off('updateSettings')
+			socket.off('accountChanged')
+			socket.off('familyAccounts')
+			socket.off('downloadFolderSelected')
+			socket.off('applogin_arl')
+		})
 	},
 	methods: {
+		...mapActions({
+			dispatchARL: 'setARL'
+		}),
 		revertSettings() {
-			this.settings = { ...this.lastSettings }
+			this.settings = JSON.parse(JSON.stringify(this.lastSettings))
 		},
 		revertCredentials() {
-			this.spotifyCredentials = { ...this.lastCredentials }
+			this.spotifyCredentials = JSON.parse(JSON.stringify(this.lastCredentials))
 			this.spotifyUser = (' ' + this.lastUser).slice(1)
 		},
 		copyARLtoClipboard() {
@@ -720,9 +795,11 @@ export default {
 			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
 		},
 		saveSettings() {
-			this.lastSettings = { ...this.settings }
-			this.lastCredentials = { ...this.spotifyFeatures }
+			this.lastSettings = JSON.parse(JSON.stringify(this.settings))
+			this.lastCredentials = JSON.parse(JSON.stringify(this.spotifyFeatures))
+
 			let changed = false
+
 			if (this.lastUser != this.spotifyUser) {
 				// force cloning without linking
 				this.lastUser = (' ' + this.spotifyUser).slice(1)
@@ -733,34 +810,31 @@ export default {
 			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
 		},
 		selectDownloadFolder() {
-			if (window.clientMode) socket.emit('selectDownloadFolder')
+			socket.emit('selectDownloadFolder')
 		},
-		downloadFolderSelected(folder){
-			console.log(folder)
-			this.settings.downloadLocation = folder
+		downloadFolderSelected(folder) {
+			this.$set(this.settings, 'downloadLocation', folder)
 		},
-		loadSettings(settings, spotifyCredentials, defaults = null) {
-			if (defaults) {
-				this.defaultSettings = { ...defaults }
-			}
-
-			this.lastSettings = { ...settings }
-			this.lastCredentials = { ...spotifyCredentials }
-			this.settings = settings
-			this.spotifyFeatures = spotifyCredentials
+		loadSettings(data) {
+			this.lastSettings = JSON.parse(JSON.stringify(data))
+			this.settings = JSON.parse(JSON.stringify(data))
+		},
+		loadCredentials(credentials) {
+			this.lastCredentials = JSON.parse(JSON.stringify(credentials))
+			this.spotifyFeatures = JSON.parse(JSON.stringify(credentials))
 		},
 		login() {
-			let arl = this.$refs.loginInput.value.trim()
-			if (arl != '' && arl != localStorage.getItem('arl')) {
-				socket.emit('login', arl, true, this.accountNum)
+			let newArl = this.$refs.loginInput.value.trim()
+
+			if (newArl && newArl !== this.arl) {
+				socket.emit('login', newArl, true, this.accountNum)
 			}
 		},
-		applogin(e) {
-			e.preventDefault()
-			if (window.clientMode) socket.emit('applogin')
+		appLogin(e) {
+			socket.emit('applogin')
 		},
-		setArl(arl) {
-			this.$refs.loginInput.value = arl
+		loggedInViaDeezer(arl) {
+			this.dispatchARL({ arl })
 			this.login()
 		},
 		changeAccount() {
@@ -770,6 +844,7 @@ export default {
 			this.$refs.username.innerText = user.name
 			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
 			this.accountNum = accountNum
+
 			localStorage.setItem('accountNum', this.accountNum)
 		},
 		initAccounts(accounts) {
@@ -778,16 +853,21 @@ export default {
 		logout() {
 			socket.emit('logout')
 		},
-		initSettings(settings, credentials, defaults) {
-			this.loadSettings(settings, credentials, defaults)
+		initSettings(settings, credentials) {
+			// this.loadDefaultSettings()
+			this.loadSettings(settings)
+			this.loadCredentials(credentials)
+
 			toast(this.$t('settings.toasts.init'), 'settings')
 		},
-		updateSettings(settings, credentials) {
-			this.loadSettings(settings, credentials)
+		updateSettings(newSettings, newCredentials) {
+			this.loadSettings(newSettings)
+			this.loadCredentials(newCredentials)
+
 			toast(this.$t('settings.toasts.update'), 'settings')
 		},
 		resetSettings() {
-			this.settings = { ...this.defaultSettings }
+			this.settings = JSON.parse(JSON.stringify(this.defaultSettings))
 		}
 	}
 }

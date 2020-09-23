@@ -1,5 +1,5 @@
 <template>
-	<div id="charts_tab" class="main_tabcontent">
+	<div id="charts_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('charts.title') }}</h2>
 		<div v-if="country === ''" id="charts_selection">
 			<div class="release_grid charts_grid">
@@ -35,7 +35,7 @@
 			</div>
 		</div>
 		<div v-else id="charts_table">
-			<button @click="changeCountry">{{ $t('charts.changeCountry') }}</button>
+			<button @click="onChangeCountry">{{ $t('charts.changeCountry') }}</button>
 			<button @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
 				{{ $t('charts.download') }}
 			</button>
@@ -105,15 +105,17 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
 import { showView } from '@js/tabs.js'
-import Downloads from '@/utils/downloads'
-import Utils from '@/utils/utils'
+import { sendAddToQueue } from '@/utils/downloads'
+import { convertDuration } from '@/utils/utils'
+
+import { getChartsData } from '@/data/charts'
 
 import EventBus from '@/utils/EventBus'
 
 export default {
-	name: 'the-charts-tab',
 	data() {
 		return {
 			country: '',
@@ -122,7 +124,18 @@ export default {
 			chart: []
 		}
 	},
+	async created() {
+		socket.on('setChartTracks', this.setTracklist)
+		this.$on('hook:destroyed', () => {
+			socket.off('setChartTracks')
+		})
+
+		const chartsData = await getChartsData()
+
+		this.initCharts(chartsData)
+	},
 	methods: {
+		convertDuration,
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playPausePreview(e) {
@@ -134,10 +147,9 @@ export default {
 		previewMouseLeave(e) {
 			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		},
-		convertDuration: Utils.convertDuration,
 		addToQueue(e) {
 			e.stopPropagation()
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		getTrackList(event) {
 			document.getElementById('content').scrollTo(0, 0)
@@ -159,12 +171,12 @@ export default {
 		setTracklist(data) {
 			this.chart = data
 		},
-		changeCountry() {
+		onChangeCountry() {
 			this.country = ''
 			this.id = 0
 		},
-		initCharts(data) {
-			this.countries = data
+		initCharts(chartsData) {
+			this.countries = chartsData
 			this.country = localStorage.getItem('chart') || ''
 
 			if (!this.country) return
@@ -182,10 +194,6 @@ export default {
 				localStorage.setItem('chart', this.country)
 			}
 		}
-	},
-	mounted() {
-		socket.on('init_charts', this.initCharts)
-		socket.on('setChartTracks', this.setTracklist)
 	}
 }
 </script>

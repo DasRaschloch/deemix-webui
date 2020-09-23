@@ -1,10 +1,15 @@
 <template>
-	<div id="home_tab" class="main_tabcontent">
+	<div id="home_tab" class="main_tabcontent" ref="root">
 		<h2 class="page_heading">{{ $t('globals.welcome') }}</h2>
-		<section id="home_not_logged_in" class="home_section" ref="notLogged">
+
+		<section class="home_section" ref="notLogged" v-if="!isLoggedIn">
 			<p id="home_not_logged_text">{{ $t('home.needTologin') }}</p>
-			<button type="button" name="button" @click="openSettings">{{ $t('home.openSettings') }}</button>
+			<!-- <button type="button" name="button" @click="openSettings">{{ $t('home.openSettings') }}</button> -->
+			<router-link tag="button" name="button" :to="{ name: 'Settings' }">
+				{{ $t('home.openSettings') }}
+			</router-link>
 		</section>
+
 		<section v-if="playlists.length" class="home_section">
 			<h3 class="section_heading">{{ $t('home.sections.popularPlaylists') }}</h3>
 			<div class="release_grid">
@@ -29,11 +34,17 @@
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
-						{{ `${$t('globals.by', {artist: release.user.name})} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}` }}
+						{{
+							`${$t('globals.by', { artist: release.user.name })} - ${$tc(
+								'globals.listTabs.trackN',
+								release.nb_tracks
+							)}`
+						}}
 					</p>
 				</div>
 			</div>
 		</section>
+
 		<section v-if="albums.length" class="home_section">
 			<h3 class="section_heading">{{ $t('home.sections.popularAlbums') }}</h3>
 			<div class="release_grid">
@@ -57,7 +68,7 @@
 						</div>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', {artist: release.artist.name})}` }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 				</div>
 			</div>
 		</section>
@@ -65,27 +76,36 @@
 </template>
 
 <script>
-import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
-import Downloads from '@/utils/downloads'
+import { mapGetters } from 'vuex'
+
+import { showView } from '@js/tabs'
+import { sendAddToQueue } from '@/utils/downloads'
+import { getHomeData } from '@/data/home'
 
 export default {
-	name: 'the-home-tab',
 	data() {
 		return {
 			playlists: [],
 			albums: []
 		}
 	},
+	async created() {
+		const homeData = await getHomeData()
+
+		this.initHome(homeData)
+	},
+	computed: {
+		...mapGetters(['isLoggedIn']),
+		needToWait() {
+			return this.getHomeData.albums.data.length === 0 && this.getHomeData.playlists.data.length === 0
+		}
+	},
 	methods: {
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playlistView: showView.bind(null, 'playlist'),
-		openSettings() {
-			document.getElementById('main_settings_tablink').click()
-		},
 		addToQueue(e) {
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		initHome(data) {
 			const {
@@ -96,13 +116,6 @@ export default {
 			this.playlists = playlistData
 			this.albums = albumData
 		}
-	},
-	mounted() {
-		if (localStorage.getItem('arl')) {
-			this.$refs.notLogged.classList.add('hide')
-		}
-
-		socket.on('init_home', this.initHome)
 	}
 }
 </script>

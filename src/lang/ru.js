@@ -32,6 +32,7 @@ const ru = {
 			playlist: 'плейлист | плейлисты | плейлисты',
 			compile: 'сплит | сплиты | сплиты',
 			ep: 'ep',
+			bundle: 'бандл | бандлы | бандлы',
 			more: 'Больше альбомов',
 			featured: 'Представлено в',
 			spotifyPlaylist: 'плейлист spotify | плейлисты spotify | плейлисты spotify',
@@ -40,6 +41,12 @@ const ru = {
 		}
 	},
 	about: {
+		updates: {
+			currentVersion: 'Текущая версия',
+			versionNotAvailable: 'Н/Д',
+			updateAvailable: `Вы используете не последнюю доступную версию: {version}`,
+			deemixVersion: 'Версия библиотеки deemix'
+		},
 		titles: {
 			usefulLinks: 'Полезные ссылки',
 			bugReports: 'Отчёты об ошибках',
@@ -97,7 +104,8 @@ const ru = {
 			wrongBitrateNoAlternative: 'Данного трека нет в нужном битрейте. Альтернатив не найдено!',
 			no360RA: 'Трек недоступен в формате Reality Audio 360.',
 			notAvailable: "Трек недоступен на серверах Deezer!",
-			notAvailableNoAlternative: "Трек недоступен на серверах Deezer. Альтернатив не найдено!"
+			notAvailableNoAlternative: "Трек недоступен на серверах Deezer. Альтернатив не найдено!",
+			noSpaceLeft: "На устройстве не осталось свободного места!"
 		}
 	},
 	favorites: {
@@ -179,7 +187,8 @@ const ru = {
 				question: 'Как узнать свой ARL?',
 				update: 'Обновить ARL'
 			},
-			logout: 'Выйти'
+			logout: 'Выйти',
+			login: 'Войти через deezer.com'
 		},
 		appearance: {
 			title: 'Внешний вид',
@@ -279,6 +288,7 @@ const ru = {
 			replayGain: 'Replay Gain',
 			label: 'Издатель',
 			lyrics: 'Текст песни',
+			syncedLyrics: 'Синхрон. текст песни',
 			copyright: 'Права (копирайт)',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди'
@@ -331,7 +341,8 @@ const ru = {
 			title: 'Настройки Spotify',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username'
+			username: 'Spotify username',
+			question: 'Как включить функции Spotify?'
 		},
 		reset: 'По умолчанию',
 		save: 'Сохранить',

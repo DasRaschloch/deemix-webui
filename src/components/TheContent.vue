@@ -1,72 +1,87 @@
 <template>
-	<section id="content" @scroll="handleContentScroll" ref="content">
+	<section id="content" @scroll="$route.name === 'Search' ? handleContentScroll($event) : null" ref="content">
 		<div id="container">
-			<ArtistTab />
-			<TheChartsTab />
-			<TheFavoritesTab />
-			<TheErrorsTab />
-			<TheHomeTab />
-			<TheLinkAnalyzerTab />
-			<TheAboutTab />
-			<TheSettingsTab />
-			<TheMainSearch :scrolled-search-type="newScrolled" />
-			<TracklistTab />
+			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
+
+			<keep-alive>
+				<router-view
+					v-if="!$route.meta.notKeepAlive"
+					v-show="!loading"
+					:key="$route.fullPath"
+					:perform-scrolled-search="performScrolledSearch"
+					exclude=""
+				></router-view>
+			</keep-alive>
+
+			<router-view
+				v-if="$route.meta.notKeepAlive"
+				v-show="!loading"
+				:key="$route.fullPath"
+				:perform-scrolled-search="performScrolledSearch"
+				exclude=""
+			></router-view>
 		</div>
 	</section>
 </template>
 
+<style lang="scss">
+#container {
+	margin: 0 auto;
+	max-width: 1280px;
+	width: var(--container-width);
+}
+
+#content {
+	background-color: var(--main-background);
+	width: 100%;
+	height: calc(100vh - 93px);
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--main-background);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--main-scroll);
+		border-radius: 4px;
+		width: 6px;
+		padding: 0px 2px;
+	}
+}
+</style>
+
 <script>
-import ArtistTab from '@components/ArtistTab.vue'
-import TracklistTab from '@components/TracklistTab.vue'
-
-import TheChartsTab from '@components/TheChartsTab.vue'
-import TheFavoritesTab from '@components/TheFavoritesTab.vue'
-import TheErrorsTab from '@components/TheErrorsTab.vue'
-import TheHomeTab from '@components/TheHomeTab.vue'
-import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
-import TheAboutTab from '@components/TheAboutTab.vue'
-import TheSettingsTab from '@components/TheSettingsTab.vue'
-import TheMainSearch from '@components/TheMainSearch.vue'
-
 import { debounce } from '@/utils/utils'
 import EventBus from '@/utils/EventBus.js'
+import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
 
 export default {
 	components: {
-		ArtistTab,
-		TheChartsTab,
-		TheFavoritesTab,
-		TheErrorsTab,
-		TheHomeTab,
-		TheLinkAnalyzerTab,
-		TheAboutTab,
-		TheSettingsTab,
-		TheMainSearch,
-		TracklistTab
+		BaseLoadingPlaceholder
 	},
 	data: () => ({
-		newScrolled: null
+		performScrolledSearch: false,
+		loading: false
 	}),
+	mounted() {
+		this.$root.$on('updateSearchLoadingState', loading => {
+			this.loading = loading
+		})
+	},
 	methods: {
-		handleContentScroll: debounce(async function() {
+		handleContentScroll: debounce(async function () {
 			if (this.$refs.content.scrollTop + this.$refs.content.clientHeight < this.$refs.content.scrollHeight) return
-
-			if (
-				main_selected !== 'search_tab' ||
-				['track_search', 'album_search', 'artist_search', 'playlist_search'].indexOf(window.search_selected) === -1
-			) {
-				return
-			}
-
-			this.newScrolled = window.search_selected.split('_')[0]
+			this.performScrolledSearch = true
 
 			await this.$nextTick()
 
-			this.newScrolled = null
+			this.performScrolledSearch = false
 		}, 100)
 	}
 }
 </script>
-
-<style>
-</style>

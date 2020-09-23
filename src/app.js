@@ -7,9 +7,9 @@ window.vol = {
 
 import App from '@components/App.vue'
 import i18n from '@/plugins/i18n'
-// import router from '@/plugins/router'
+import router from '@/router'
+import store from '@/store'
 
-import $ from 'jquery'
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
 import { init as initTabs } from '@js/tabs.js'
@@ -27,17 +27,15 @@ function startApp() {
 
 function mountApp() {
 	new Vue({
-		// router,
+		store,
+		router,
 		i18n,
 		render: h => h(App)
 	}).$mount('#app')
 }
 
 function initClient() {
-	window.clientMode = true
-	document.querySelector(`#open_downloads_folder`).classList.remove('hide')
-	document.querySelector(`#select_downloads_folder`).classList.remove('hide')
-	document.querySelector(`#settings_btn_applogin`).classList.remove('hide')
+	store.dispatch('setClientMode', true)
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
@@ -45,25 +43,18 @@ window.addEventListener('pywebviewready', initClient)
 
 /* ===== Global shortcuts ===== */
 
-document.addEventListener('keyup', keyEvent => {
-	if (keyEvent.key == "Backspace" && keyEvent.ctrlKey){
-		let searchbar = document.querySelector('#searchbar')
-		searchbar.value = ""
-		searchbar.focus()
-	}
-})
-
 document.addEventListener('paste', pasteEvent => {
-	pasteText = pasteEvent.clipboardData.getData('Text')
-	if (pasteEvent.target.localName != "input"){
-		if (isValidURL(pasteText)){
-			if (main_selected === 'analyzer_tab') {
+	let pasteText = pasteEvent.clipboardData.getData('Text')
+
+	if (pasteEvent.target.localName != 'input') {
+		if (isValidURL(pasteText)) {
+			if (window.main_selected === 'analyzer_tab') {
 				EventBus.$emit('linkAnalyzerTab:reset')
 				socket.emit('analyzeLink', pasteText)
 			} else {
 				Downloads.sendAddToQueue(pasteText)
 			}
-		}else{
+		} else {
 			let searchbar = document.querySelector('#searchbar')
 			searchbar.select()
 			searchbar.setSelectionRange(0, 99999)
@@ -85,8 +76,10 @@ socket.on('logging_in', function() {
 socket.on('init_autologin', function() {
 	let arl = localStorage.getItem('arl')
 	let accountNum = localStorage.getItem('accountNum')
+
 	if (arl) {
 		arl = arl.trim()
+
 		if (accountNum != 0) {
 			socket.emit('login', arl, true, accountNum)
 		} else {
@@ -96,62 +89,42 @@ socket.on('init_autologin', function() {
 })
 
 socket.on('logged_in', function(data) {
-	switch (data.status) {
+	const { status, user } = data
+
+	switch (status) {
 		case 1:
 		case 3:
+			// Login ok
 			toast(i18n.t('toasts.loggedIn'), 'done', true, 'login-toast')
-			if (data.arl) {
-				localStorage.setItem('arl', data.arl)
-				$('#login_input_arl').val(data.arl)
-			}
-			$('#open_login_prompt').hide()
-			if (data.user) {
-				$('#settings_username').text(data.user.name)
-				$('#settings_picture').attr(
-					'src',
-					`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`
-				)
-				// $('#logged_in_info').show()
-				document.getElementById('logged_in_info').classList.remove('hide')
-			}
-			document.getElementById('home_not_logged_in').classList.add('hide')
+
+			store.dispatch('login', data)
 			break
 		case 2:
+			// Already logged in
 			toast(i18n.t('toasts.alreadyLogged'), 'done', true, 'login-toast')
-			if (data.user) {
-				$('#settings_username').text(data.user.name)
-				$('#settings_picture').attr(
-					'src',
-					`https://e-cdns-images.dzcdn.net/images/user/${data.user.picture}/125x125-000000-80-0-0.jpg`
-				)
-				// $('#logged_in_info').show()
-				document.getElementById('logged_in_info').classList.remove('hide')
-			}
-			document.getElementById('home_not_logged_in').classList.add('hide')
+
+			store.dispatch('setUser', user)
 			break
 		case 0:
+			// Login failed
 			toast(i18n.t('toasts.loginFailed'), 'close', true, 'login-toast')
-			localStorage.removeItem('arl')
-			$('#login_input_arl').val('')
+
+			store.dispatch('removeARL')
+			break
+		case -1:
+			toast(i18n.t('toasts.deezerNotAvailable'), 'close', true, 'login-toast')
 			$('#open_login_prompt').show()
 			document.getElementById('logged_in_info').classList.add('hide')
-			// $('#logged_in_info').hide()
 			$('#settings_username').text('Not Logged')
 			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 			document.getElementById('home_not_logged_in').classList.remove('hide')
-			break
 	}
 })
 
 socket.on('logged_out', function() {
 	toast(i18n.t('toasts.loggedOut'), 'done', true, 'login-toast')
-	localStorage.removeItem('arl')
-	$('#login_input_arl').val('')
-	$('#open_login_prompt').show()
-	document.getElementById('logged_in_info').classList.add('hide')
-	$('#settings_username').text('Not Logged')
-	$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
-	document.getElementById('home_not_logged_in').classList.remove('hide')
+
+	store.dispatch('logout')
 })
 
 socket.on('restoringQueue', function() {
@@ -167,11 +140,11 @@ socket.on('currentItemCancelled', function(uuid) {
 })
 
 socket.on('startAddingArtist', function(data) {
-	toast(i18n.t('toasts.startAddingArtist', {artist: data.name}), 'loading', false, 'artist_' + data.id)
+	toast(i18n.t('toasts.startAddingArtist', { artist: data.name }), 'loading', false, 'artist_' + data.id)
 })
 
 socket.on('finishAddingArtist', function(data) {
-	toast(i18n.t('toasts.finishAddingArtist', {artist: data.name}), 'done', true, 'artist_' + data.id)
+	toast(i18n.t('toasts.finishAddingArtist', { artist: data.name }), 'done', true, 'artist_' + data.id)
 })
 
 socket.on('startConvertingSpotifyPlaylist', function(id) {
@@ -187,12 +160,15 @@ socket.on('errorMessage', function(error) {
 })
 
 socket.on('queueError', function(queueItem) {
-	if (queueItem.errid) toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
-	else toast(queueItem.error, 'error')
+	if (queueItem.errid) {
+		toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
+	} else {
+		toast(queueItem.error, 'error')
+	}
 })
 
 socket.on('alreadyInQueue', function(data) {
-	toast(i18n.t('toasts.alreadyInQueue', {item: data.title}), 'playlist_add_check')
+	toast(i18n.t('toasts.alreadyInQueue', { item: data.title }), 'playlist_add_check')
 })
 
 socket.on('loginNeededToDownload', function(data) {

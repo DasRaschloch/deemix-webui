@@ -1,11 +1,3 @@
-/* Middle section */
-#middle_section {
-	background-color: var(--main-background);
-	width: 100%;
-	height: 100%;
-	min-width: 10px;
-}
-
 /* Center section */
 $icon-dimension: 2rem;
 $searchbar-height: calc(2rem + 1em);
@@ -63,31 +55,6 @@ $searchbar-height: calc(2rem + 1em);
 	}
 }
 
-#content {
-	background-color: var(--main-background);
-	// width: calc(100% - 10px);
-	width: 100%;
-	height: calc(100% - 93px);
-	overflow-y: scroll;
-	overflow-x: hidden;
-	// padding-left: 10px;
-
-	&::-webkit-scrollbar {
-		width: 10px;
-	}
-
-	&::-webkit-scrollbar-track {
-		background: var(--main-background);
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background: var(--main-scroll);
-		border-radius: 4px;
-		width: 6px;
-		padding: 0px 2px;
-	}
-}
-
 #container {
 	--container-width: 95%;
 
@@ -98,12 +65,6 @@ $searchbar-height: calc(2rem + 1em);
 	@media only screen and (min-width: $medium) {
 		--container-width: 70%;
 	}
-}
-
-#container {
-	margin: 0 auto;
-	max-width: 1280px;
-	width: var(--container-width);
 }
 
 /* Modal Content */

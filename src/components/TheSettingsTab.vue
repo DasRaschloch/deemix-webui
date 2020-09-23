@@ -722,7 +722,6 @@ export default {
 		let storedLocale = localStorage.getItem('locale')
 
 		if (storedLocale) {
-			this.$i18n.locale = storedLocale
 			this.currentLocale = storedLocale
 		}
 

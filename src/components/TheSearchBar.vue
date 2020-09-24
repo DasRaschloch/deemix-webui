@@ -76,7 +76,7 @@ export default {
 				}
 			} else {
 				if (isShowingSearch && sameAsLastSearch){
-					this.$root.$emit('mainSearch:updateResults', term, window.main_selected)
+					this.$root.$emit('mainSearch:updateResults', term)
 					return
 				}
 

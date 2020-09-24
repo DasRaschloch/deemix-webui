@@ -187,7 +187,7 @@ export default {
 				this.showNewResults(term)
 			}
 		},
-		checkIfUpdateResults(term, mainSelected) {
+		checkIfUpdateResults(term) {
 			let needToUpdateSearch = term === this.results.query && this.currentTab.searchType !== 'all'
 
 			if (needToUpdateSearch) {

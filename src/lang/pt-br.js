@@ -39,11 +39,12 @@
 			license: 'Licença'
 		},
 		subtitles: {
-			bugReports: "Há algo não funcionando no deemix? Nos diga!",
+			bugReports: 'Há algo não funcionando no deemix? Nos diga!',
 			contributing: 'Você quer contribuir para este projeto? Você pode fazer isso de diferentes maneiras!',
 			donations: 'Você quer contribuir monetariamente? Você pode fazer uma doação!'
 		},
-		usesLibrary: 'Esse app usa a biblioteca do <strong>deemix</strong>, no qual você pode usar para criar sua própria UI para o deemix',
+		usesLibrary:
+			'Esse app usa a biblioteca do <strong>deemix</strong>, no qual você pode usar para criar sua própria UI para o deemix',
 		thanks: `Agradecimentos para <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> por ajudar neste projeto, e para <strong>BasCurtiz</strong> e <strong>scarvimane</strong> por fazerem o ícone`,
 		upToDate: `Para mais novidades siga o <a href="https://t.me/RemixDevNews" target="_blank">news channel</a> no Telegram.`,
 		officialWebsite: 'Site Oficial',
@@ -79,7 +80,7 @@
 			invalidURL: 'URL inválida',
 			unsupportedURL: 'URL não suportada ainda',
 			ISRCnotOnDeezer: 'Faixa ISRC não está disponível ainda no deezer',
-			notYourPrivatePlaylist: "Você não pode baixar playlists privadas.",
+			notYourPrivatePlaylist: 'Você não pode baixar playlists privadas.',
 			spotifyDisabled: 'Os Recursos do Spotify não foram configurados corretamente.',
 			trackNotOnDeezer: 'Faixa não encontrada no deezer!',
 			albumNotOnDeezer: 'Album not found on deezer! Álbum não encontrado no deezer!',
@@ -89,8 +90,8 @@
 			wrongBitrate: 'Faixa não encontrada no bitrate desejado.',
 			wrongBitrateNoAlternative: 'Faixa não encontrada no bitrate desejado e nenhuma outra alternativa encontrada!',
 			no360RA: 'Faixa não disponível na qualidade Reality Audio 360.',
-			notAvailable: "Faixa não disponível nos servidores do deezer!",
-			notAvailableNoAlternative: "Faixa não disponível nos servidores do deezer e nenhuma outra alternativa encontrada!"
+			notAvailable: 'Faixa não disponível nos servidores do deezer!',
+			notAvailableNoAlternative: 'Faixa não disponível nos servidores do deezer e nenhuma outra alternativa encontrada!'
 		}
 	},
 	favorites: {
@@ -111,7 +112,7 @@
 	linkAnalyzer: {
 		info: 'Você pode usar essa seção para encontrar mais informações sobre o link que você quer baixar.',
 		useful:
-			"Isso é útil se você está tentando baixar algumas faixas que não estão disponíveis no seu país, e quer saber onde elas estão disponíveis, por exemplo.",
+			'Isso é útil se você está tentando baixar algumas faixas que não estão disponíveis no seu país, e quer saber onde elas estão disponíveis, por exemplo.',
 		linkNotSupported: 'Esse link não é suportado ainda',
 		linkNotSupportedYet: 'Parece que esse link não é suportado ainda, tente analizar outro.',
 		table: {
@@ -151,7 +152,7 @@
 		loggingIn: 'Logando',
 		loggedIn: 'Logado',
 		alreadyLogged: 'Você já está logado',
-		loginFailed: "Não foi possivel entrar",
+		loginFailed: 'Não foi possivel entrar',
 		loggedOut: 'Desconectando',
 		cancellingCurrentItem: 'Cancelando item atual.',
 		currentItemCancelled: 'Item atual cancelado.',
@@ -215,7 +216,7 @@
 			overwriteFile: {
 				title: 'Sobrescrever arquivos?',
 				y: 'Sim, sobrescrever arquivos',
-				n: "Não, não sobrescrever arquivos",
+				n: 'Não, não sobrescrever arquivos',
 				t: 'Sobrescrever apenas as tags'
 			},
 			fallbackBitrate: 'Taxa de bits reserva',

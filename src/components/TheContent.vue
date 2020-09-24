@@ -70,7 +70,9 @@ export default {
 	}),
 	mounted() {
 		this.$root.$on('updateSearchLoadingState', loading => {
+			console.log('yes')
 			this.loading = loading
+			console.log('no')
 		})
 
 		this.$router.beforeEach((to, from, next) => {

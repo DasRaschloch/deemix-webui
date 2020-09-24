@@ -94,7 +94,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	console.log('js before each')
 	let getTracklistParams = null
 
 	switch (to.name) {

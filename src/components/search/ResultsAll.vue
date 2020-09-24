@@ -41,13 +41,7 @@
 					<div class="info_box">
 						<p class="primary-text">{{ results.allTab.TOP_RESULT[0].title }}</p>
 						<p class="secondary-text">
-							{{
-								results.allTab.TOP_RESULT[0].type == 'artist'
-									? $t('search.fans', { n: $n(results.allTab.TOP_RESULT[0].nb_fan) })
-									: $t('globals.by', { artist: results.allTab.TOP_RESULT[0].artist }) +
-									  ' - ' +
-									  $tc('globals.listTabs.trackN', results.allTab.TOP_RESULT[0].nb_song)
-							}}
+							{{ fansNumber }}
 						</p>
 						<span class="tag">{{ $tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1) }}</span>
 					</div>
@@ -229,6 +223,21 @@ export default {
 					? this.results.allTab[section].length == 0
 					: this.results.allTab[section].data.length == 0
 			)
+		},
+		fansNumber() {
+			let number
+
+			try {
+				number = this.$n(this.results.allTab.TOP_RESULT[0].nb_fan)
+			} catch (error) {
+				number = this.$n(this.results.allTab.TOP_RESULT[0].nb_fan, { locale: 'en' })
+			}
+
+			return this.results.allTab.TOP_RESULT[0].type == 'artist'
+				? this.$t('search.fans', { n: number })
+				: this.$t('globals.by', { artist: this.results.allTab.TOP_RESULT[0].artist }) +
+						' - ' +
+						this.$tc('globals.listTabs.trackN', this.results.allTab.TOP_RESULT[0].nb_song)
 		}
 	},
 	methods: {

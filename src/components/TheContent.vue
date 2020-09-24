@@ -72,6 +72,11 @@ export default {
 		this.$root.$on('updateSearchLoadingState', loading => {
 			this.loading = loading
 		})
+
+		this.$router.beforeEach((to, from, next) => {
+			this.$refs.content.scrollTo(0, 0)
+			next()
+		})
 	},
 	methods: {
 		handleContentScroll: debounce(async function () {

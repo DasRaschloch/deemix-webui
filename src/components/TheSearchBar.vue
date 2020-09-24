@@ -75,7 +75,10 @@ export default {
 					}
 				}
 			} else {
-				if (isShowingSearch && sameAsLastSearch) return
+				if (isShowingSearch && sameAsLastSearch){
+					this.$root.$emit('mainSearch:updateResults', term, window.main_selected)
+					return
+				}
 
 				if (!isShowingSearch) {
 					await this.$router.push({

@@ -156,6 +156,7 @@ export default {
 	mounted() {
 		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
 		this.$root.$on('mainSearch:showNewResults', this.checkIfShowNewResults)
+		this.$root.$on('mainSearch:updateResults', this.checkIfUpdateResults)
 
 		socket.on('mainSearch', this.handleMainSearch)
 		socket.on('search', this.handleSearch)
@@ -184,6 +185,15 @@ export default {
 
 			if (needToPerformNewSearch) {
 				this.showNewResults(term)
+			}
+		},
+		checkIfUpdateResults(term, mainSelected) {
+			let needToUpdateSearch = term === this.results.query && this.currentTab.searchType !== 'all'
+
+			if (needToUpdateSearch) {
+				let resetObj = { data: [], next: 0, total: 0, loaded: false }
+				this.results[this.currentTab.searchType+"Tab"] = { ...resetObj }
+				this.search(this.currentTab.searchType)
 			}
 		},
 		showNewResults(term) {

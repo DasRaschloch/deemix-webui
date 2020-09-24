@@ -45,6 +45,7 @@ function mountApp() {
 
 function initClient() {
 	store.dispatch('setClientMode', true)
+	setClientModeKeyBindings()
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
@@ -77,6 +78,23 @@ document.addEventListener('keydown', e => {
 		document.querySelector('#searchbar').focus()
 	}
 })
+
+/**
+ * Sets up key bindings that already work in the browser (server mode)
+ */
+function setClientModeKeyBindings() {
+	document.addEventListener('keyup', keyEvent => {
+		// ALT + left
+		if (keyEvent.altKey && keyEvent.key === 'ArrowLeft') {
+			router.back()
+		}
+
+		// ALT + right
+		if (keyEvent.altKey && keyEvent.key === 'ArrowRight') {
+			router.forward()
+		}
+	})
+}
 
 /* ===== Socketio listeners ===== */
 

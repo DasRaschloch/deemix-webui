@@ -5,7 +5,7 @@
 		<div class="app-container">
 			<div class="content-container">
 				<TheSearchBar />
-				<TheMiddleSection />
+				<TheContent />
 			</div>
 			<TheDownloadTab class="downlaods" />
 		</div>
@@ -38,24 +38,24 @@
 
 <script>
 import TheSidebar from '@components/TheSidebar.vue'
-import TheMiddleSection from '@components/TheMiddleSection.vue'
 import TheTrackPreview from '@components/TheTrackPreview.vue'
 import TheQualityModal from '@components/TheQualityModal.vue'
 import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
 import TheContextMenu from '@components/TheContextMenu.vue'
 import TheDownloadTab from '@components/TheDownloadTab.vue'
 import TheSearchBar from '@components/TheSearchBar.vue'
+import TheContent from '@components/TheContent.vue'
 
 export default {
 	components: {
 		TheSidebar,
 		TheSearchBar,
-		TheMiddleSection,
 		TheDownloadTab,
 		TheTrackPreview,
 		TheQualityModal,
 		BaseLoadingPlaceholder,
-		TheContextMenu
+		TheContextMenu,
+		TheContent
 	}
 }
 </script>

@@ -5,7 +5,7 @@ window.vol = {
 	preview_max_volume: 100
 }
 
-import App from '@components/App.vue'
+import App from '@/App.vue'
 import i18n from '@/plugins/i18n'
 import router from '@/router'
 import store from '@/store'

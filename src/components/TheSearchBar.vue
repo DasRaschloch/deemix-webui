@@ -19,6 +19,62 @@
 	</header>
 </template>
 
+<style lang="scss">
+$icon-dimension: 2rem;
+$searchbar-height: 45px;
+
+#search {
+	background-color: var(--secondary-background);
+	padding: 0 1em;
+	display: flex;
+	align-items: center;
+	border: 1px solid transparent;
+	transition: border 200ms ease-in-out;
+	border-radius: 15px;
+	margin: 10px 10px 20px 10px;
+
+	&:focus-within {
+		border: 1px solid var(--foreground);
+	}
+
+	.search__icon {
+		width: $icon-dimension;
+		height: $icon-dimension;
+
+		i {
+			font-size: $icon-dimension;
+			color: var(--foreground);
+		}
+	}
+
+	#searchbar {
+		height: $searchbar-height;
+		padding-left: 0.5em;
+		border: 0px;
+		border-radius: 0px;
+		background-color: var(--secondary-background);
+		color: var(--foreground);
+		font-size: 1.2rem;
+		font-family: 'Open Sans';
+		font-weight: 300;
+		margin-bottom: 0;
+
+		&:focus {
+			outline: none;
+		}
+
+		// Removing Chrome autofill color
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			-webkit-box-shadow: 0 0 0 $searchbar-height var(--secondary-background) inset !important;
+			box-shadow: 0 0 0 $searchbar-height var(--secondary-background) inset !important;
+		}
+	}
+}
+</style>
+
 <script>
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -112,5 +168,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+

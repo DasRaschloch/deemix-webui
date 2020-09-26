@@ -7,7 +7,7 @@
 				<TheSearchBar />
 				<TheContent />
 			</div>
-			<TheDownloadBar class="downlaods" />
+			<TheDownloadBar />
 		</div>
 
 		<BaseLoadingPlaceholder id="start_app_placeholder" text="Connecting to the server..." />
@@ -29,10 +29,6 @@
 	display: flex;
 	flex-direction: column;
 	margin-left: 48px;
-}
-
-.downlaods {
-	flex-basis: 32px;
 }
 </style>
 

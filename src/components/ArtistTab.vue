@@ -69,7 +69,7 @@
 		</table>
 
 		<footer>
-			<button class="back-button" @click="backTab">{{ $t('globals.back') }}</button>
+			<button class="back-button" @click="$router.back()">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>
@@ -78,7 +78,7 @@
 import { isEmpty, orderBy } from 'lodash-es'
 import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
-import { showView, backTab } from '@js/tabs'
+import { showView } from '@js/tabs'
 import EventBus from '@/utils/EventBus'
 
 export default {
@@ -97,7 +97,6 @@ export default {
 		}
 	},
 	methods: {
-		backTab,
 		albumView: showView.bind(null, 'album'),
 		reset() {
 			this.title = 'Loading...'
@@ -128,9 +127,7 @@ export default {
 		getCurrentTab() {
 			return this.currentTab
 		},
-		updateSelected() {
-			window.currentStack.selected = this.currentTab
-		},
+		updateSelected() {},
 		checkNewRelease(date) {
 			let g1 = new Date()
 			let g2 = new Date(date)

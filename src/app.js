@@ -12,29 +12,11 @@ import store from '@/store'
 
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
-import { init as initTabs } from '@js/tabs.js'
-
 import { isValidURL } from '@/utils/utils'
-import Downloads from '@/utils/downloads'
-import EventBus from '@/utils/EventBus.js'
+import { sendAddToQueue } from '@/utils/downloads'
 
 /* ===== App initialization ===== */
-
 function startApp() {
-	setLocale()
-	mountApp()
-	initTabs()
-}
-
-function setLocale() {
-	let storedLocale = localStorage.getItem('locale')
-
-	if (storedLocale) {
-		i18n.locale = storedLocale
-	}
-}
-
-function mountApp() {
 	new Vue({
 		store,
 		router,
@@ -54,28 +36,20 @@ window.addEventListener('pywebviewready', initClient)
 /* ===== Global shortcuts ===== */
 
 document.addEventListener('paste', pasteEvent => {
-	let pasteText = pasteEvent.clipboardData.getData('Text')
+	if (pasteEvent.target.localName === 'input') return
 
-	if (pasteEvent.target.localName != 'input') {
-		if (isValidURL(pasteText)) {
-			if (window.main_selected === 'analyzer_tab') {
-				EventBus.$emit('linkAnalyzerTab:reset')
-				socket.emit('analyzeLink', pasteText)
-			} else {
-				Downloads.sendAddToQueue(pasteText)
-			}
+	let pastedText = pasteEvent.clipboardData.getData('Text')
+
+	if (isValidURL(pastedText)) {
+		if (router.currentRoute.name === 'Link Analyzer') {
+			socket.emit('analyzeLink', pastedText)
 		} else {
-			let searchbar = document.querySelector('#searchbar')
-			searchbar.select()
-			searchbar.setSelectionRange(0, 99999)
+			sendAddToQueue(pastedText)
 		}
-	}
-})
-
-document.addEventListener('keydown', e => {
-	if (e.keyCode == 70 && e.ctrlKey) {
-		e.preventDefault()
-		document.querySelector('#searchbar').focus()
+	} else {
+		let searchbar = document.querySelector('#searchbar')
+		searchbar.select()
+		searchbar.setSelectionRange(0, 99999)
 	}
 })
 

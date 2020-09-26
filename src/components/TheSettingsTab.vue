@@ -644,8 +644,8 @@
 	}
 
 	svg {
-		width: 40px;
-		height: 40px;
+		width: 40px !important;
+		height: 40px !important;
 		filter: brightness(0.5);
 	}
 }
@@ -654,19 +654,18 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
+import { getSettingsData } from '@/data/settings'
+
 import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
-import EventBus from '@/utils/EventBus'
-import flags from '@/utils/flags'
-
-import { getSettingsData } from '@/data/settings'
+import { flags } from '@/utils/flags'
 
 export default {
 	data() {
 		return {
 			flags,
-			currentLocale: 'en',
-			locales: [],
+			currentLocale: this.$i18n.locale,
+			locales: this.$i18n.availableLocales,
 			settings: {
 				tags: {}
 			},
@@ -708,21 +707,10 @@ export default {
 		}
 	},
 	async mounted() {
-		this.locales = this.$i18n.availableLocales
-
 		const { settingsData, defaultSettingsData, spotifyCredentials } = await getSettingsData()
 
 		this.defaultSettings = defaultSettingsData
 		this.initSettings(settingsData, spotifyCredentials)
-
-		// this.revertSettings()
-		// this.revertCredentials()
-
-		let storedLocale = localStorage.getItem('locale')
-
-		if (storedLocale) {
-			this.currentLocale = storedLocale
-		}
 
 		let storedAccountNum = localStorage.getItem('accountNum')
 

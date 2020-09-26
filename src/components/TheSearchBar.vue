@@ -21,9 +21,8 @@
 
 <script>
 import { isValidURL } from '@/utils/utils'
-import Downloads from '@/utils/downloads'
-
-import EventBus from '@/utils/EventBus.js'
+import { sendAddToQueue } from '@/utils/downloads'
+import EventBus from '@/utils/EventBus'
 import { socket } from '@/utils/socket'
 
 export default {
@@ -32,12 +31,27 @@ export default {
 			lastTextSearch: ''
 		}
 	},
-	mounted() {
-		document.addEventListener('keyup', keyEvent => {
+	created() {
+		const focusSearchBar = keyEvent => {
+			if (keyEvent.keyCode === 70 && keyEvent.ctrlKey) {
+				keyEvent.preventDefault()
+				this.$refs.searchbar.focus()
+			}
+		}
+
+		const deleteSearchBarContent = keyEvent => {
 			if (!(keyEvent.key == 'Backspace' && keyEvent.ctrlKey && keyEvent.shiftKey)) return
 
 			this.$refs.searchbar.value = ''
 			this.$refs.searchbar.focus()
+		}
+
+		document.addEventListener('keydown', focusSearchBar)
+		document.addEventListener('keyup', deleteSearchBarContent)
+
+		this.$on('hook:destroyed', () => {
+			document.removeEventListener('keydown', focusSearchBar)
+			document.removeEventListener('keyup', deleteSearchBarContent)
 		})
 	},
 	methods: {
@@ -71,11 +85,11 @@ export default {
 						socket.emit('analyzeLink', term)
 					} else {
 						// ? Open downloads tab ?
-						Downloads.sendAddToQueue(term)
+						sendAddToQueue(term)
 					}
 				}
 			} else {
-				if (isShowingSearch && sameAsLastSearch){
+				if (isShowingSearch && sameAsLastSearch) {
 					this.$root.$emit('mainSearch:updateResults', term)
 					return
 				}
@@ -91,7 +105,7 @@ export default {
 					this.lastTextSearch = term
 				}
 
-				this.$root.$emit('mainSearch:showNewResults', term, window.main_selected)
+				this.$root.$emit('mainSearch:showNewResults', term /* , window.main_selected */)
 			}
 		}
 	}

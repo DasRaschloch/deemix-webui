@@ -181,7 +181,7 @@ export default {
 			this.currentTab = newTab
 		},
 		checkIfShowNewResults(term, mainSelected) {
-			let needToPerformNewSearch = term !== this.results.query || mainSelected == 'search_tab'
+			let needToPerformNewSearch = term !== this.results.query /* || mainSelected == 'search_tab' */
 
 			if (needToPerformNewSearch) {
 				this.showNewResults(term)
@@ -192,7 +192,7 @@ export default {
 
 			if (needToUpdateSearch) {
 				let resetObj = { data: [], next: 0, total: 0, loaded: false }
-				this.results[this.currentTab.searchType+"Tab"] = { ...resetObj }
+				this.results[this.currentTab.searchType + 'Tab'] = { ...resetObj }
 				this.search(this.currentTab.searchType)
 			}
 		},

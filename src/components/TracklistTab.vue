@@ -137,7 +137,7 @@
 			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
 			</button>
-			<button class="back-button" @click="backTab">{{ $t('globals.back') }}</button>
+			<button class="back-button" @click="$router.back()">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>
@@ -145,7 +145,7 @@
 <script>
 import { isEmpty } from 'lodash-es'
 import { socket } from '@/utils/socket'
-import { showView, backTab } from '@js/tabs.js'
+import { showView } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
@@ -164,7 +164,6 @@ export default {
 		body: []
 	}),
 	methods: {
-		backTab,
 		artistView: showView.bind(null, 'artist'),
 		albumView: showView.bind(null, 'album'),
 		playPausePreview(e) {

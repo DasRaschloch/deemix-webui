@@ -64,21 +64,21 @@
 									}}
 								</div>
 							</td>
-							<td
+							<router-link
+								tag="td"
 								class="table__cell--medium table__cell--center clickable"
-								@click="artistView"
-								:data-id="track.artist.id"
+								:to="{ name: 'Artist', params: { id: track.artist.id } }"
 							>
 								{{ track.artist.name }}
-							</td>
-							<td
-								v-if="type == 'playlist'"
+							</router-link>
+							<router-link
+								tag="td"
+								v-if="type === 'playlist'"
 								class="table__cell--medium table__cell--center clickable"
-								@click="albumView"
-								:data-id="track.album.id"
+								:to="{ name: 'Tracklist', params: { type: 'album', id: track.album.id } }"
 							>
 								{{ track.album.title }}
-							</td>
+							</router-link>
 							<td
 								class="table__cell--center"
 								:class="{ 'table__cell--small': type === 'album', 'table__cell--x-small': type === 'playlist' }"
@@ -145,27 +145,25 @@
 <script>
 import { isEmpty } from 'lodash-es'
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
 
 export default {
-	name: 'tracklist-tab',
-	data: () => ({
-		title: '',
-		metadata: '',
-		release_date: '',
-		label: '',
-		explicit: false,
-		image: '',
-		type: 'empty',
-		link: '',
-		body: []
-	}),
+	data() {
+		return {
+			title: '',
+			metadata: '',
+			release_date: '',
+			label: '',
+			explicit: false,
+			image: '',
+			type: 'empty',
+			link: '',
+			body: []
+		}
+	},
 	methods: {
-		artistView: showView.bind(null, 'artist'),
-		albumView: showView.bind(null, 'album'),
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},

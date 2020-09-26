@@ -71,20 +71,20 @@
 								(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
 							}}
 						</td>
-						<td
-							class="table__cell--medium table__cell--center breakline clickable"
-							@click="artistView"
-							:data-id="track.artist.id"
+						<router-link
+							tag="td"
+							class="table__cell table__cell--medium table__cell--center breakline clickable"
+							:to="{ name: 'Artist', params: { id: track.artist.id } }"
 						>
 							{{ track.artist.name }}
-						</td>
-						<td
+						</router-link>
+						<router-link
+							tag="td"
 							class="table__cell--medium table__cell--center breakline clickable"
-							@click="albumView"
-							:data-id="track.album.id"
+							:to="{ name: 'Tracklist', params: { type: 'album', id: track.album.id } }"
 						>
 							{{ track.album.title }}
-						</td>
+						</router-link>
 						<td class="table__cell--small table__cell--center">
 							{{ convertDuration(track.duration) }}
 						</td>
@@ -107,7 +107,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs.js'
 import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 
@@ -136,8 +135,6 @@ export default {
 	},
 	methods: {
 		convertDuration,
-		artistView: showView.bind(null, 'artist'),
-		albumView: showView.bind(null, 'album'),
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},

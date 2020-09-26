@@ -32,10 +32,6 @@ export default {
 					replacement: __dirname + '/src'
 				},
 				{
-					find: '@js',
-					replacement: __dirname + '/src/js'
-				},
-				{
 					find: '@components',
 					replacement: __dirname + '/src/components'
 				}

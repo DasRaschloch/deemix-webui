@@ -47,7 +47,11 @@
 			</thead>
 			<tbody>
 				<tr v-for="release in showTable" :key="release.id">
-					<td class="inline-flex clickable" @click="albumView" :data-id="release.id">
+					<router-link
+						tag="td"
+						class="inline-flex clickable"
+						:to="{ name: 'Tracklist', params: { type: 'album', id: release.id } }"
+					>
 						<img
 							class="rounded coverart"
 							:src="release.cover_small"
@@ -58,7 +62,7 @@
 						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color: #ff7300">
 							fiber_new
 						</i>
-					</td>
+					</router-link>
 					<td>{{ release.release_date }}</td>
 					<td>{{ release.nb_song }}</td>
 					<td @click.stop="addToQueue" :data-link="release.link" class="clickable">
@@ -78,7 +82,6 @@
 import { isEmpty, orderBy } from 'lodash-es'
 import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
-import { showView } from '@js/tabs'
 import EventBus from '@/utils/EventBus'
 
 export default {
@@ -97,7 +100,6 @@ export default {
 		}
 	},
 	methods: {
-		albumView: showView.bind(null, 'album'),
 		reset() {
 			this.title = 'Loading...'
 			this.image = ''
@@ -124,10 +126,9 @@ export default {
 		changeTab(tab) {
 			this.currentTab = tab
 		},
-		getCurrentTab() {
-			return this.currentTab
+		updateSelected() {
+			// Last tab opened logic
 		},
-		updateSelected() {},
 		checkNewRelease(date) {
 			let g1 = new Date()
 			let g2 = new Date(date)

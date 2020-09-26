@@ -23,9 +23,6 @@
 					:is="currentTab.component"
 					:results="results"
 					@add-to-queue="addToQueue"
-					@artist-view="artistView"
-					@album-view="albumView"
-					@playlist-view="playlistView"
 					@change-search-tab="changeSearchTab"
 				></component>
 			</keep-alive>
@@ -42,7 +39,6 @@ import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
 import ResultsTracks from '@components/search/ResultsTracks.vue'
 
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs'
 import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
@@ -162,9 +158,6 @@ export default {
 		socket.on('search', this.handleSearch)
 	},
 	methods: {
-		artistView: showView.bind(null, 'artist'),
-		albumView: showView.bind(null, 'album'),
-		playlistView: showView.bind(null, 'playlist'),
 		changeSearchTab(sectionName) {
 			sectionName = sectionName.toLowerCase()
 

@@ -105,7 +105,7 @@ export default {
 					this.lastTextSearch = term
 				}
 
-				this.$root.$emit('mainSearch:showNewResults', term /* , window.main_selected */)
+				this.$root.$emit('mainSearch:showNewResults', term)
 			}
 		}
 	}

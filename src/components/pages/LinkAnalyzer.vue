@@ -42,7 +42,7 @@
 								tag="span"
 								place="album"
 								class="clickable"
-								:to="{ name: 'Tracklist', params: { type: 'album', id: data.album.id } }"
+								:to="{ name: 'Album', params: { id: data.album.id } }"
 							>
 								{{ data.album.title }}
 							</router-link>
@@ -121,7 +121,7 @@
 			</table>
 
 			<div v-if="type == 'album'">
-				<router-link tag="button" :to="{ name: 'Tracklist', params: { type: 'album', id } }">
+				<router-link tag="button" :to="{ name: 'Album', params: { id } }">
 					{{ $t('linkAnalyzer.table.tracklist') }}
 				</router-link>
 			</div>

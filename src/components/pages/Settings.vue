@@ -188,7 +188,7 @@
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.downloads.queueConcurrency') }}</p>
-				<input type="number" v-model.number="settings.queueConcurrency" />
+				<input type="number" min="1" v-model.number="settings.queueConcurrency" />
 			</div>
 
 			<div class="input_group">

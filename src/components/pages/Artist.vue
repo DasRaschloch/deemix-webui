@@ -47,11 +47,7 @@
 			</thead>
 			<tbody>
 				<tr v-for="release in showTable" :key="release.id">
-					<router-link
-						tag="td"
-						class="inline-flex clickable"
-						:to="{ name: 'Tracklist', params: { type: 'album', id: release.id } }"
-					>
+					<router-link tag="td" class="inline-flex clickable" :to="{ name: 'Album', params: { id: release.id } }">
 						<img
 							class="rounded coverart"
 							:src="release.cover_small"

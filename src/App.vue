@@ -7,7 +7,7 @@
 				<TheSearchBar />
 				<TheContent />
 			</div>
-			<TheDownloadTab class="downlaods" />
+			<TheDownloadBar class="downlaods" />
 		</div>
 
 		<BaseLoadingPlaceholder id="start_app_placeholder" text="Connecting to the server..." />
@@ -37,12 +37,14 @@
 </style>
 
 <script>
+import TheDownloadBar from '@components/downloads/TheDownloadBar.vue'
+
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
+import TheContextMenu from '@components/globals/TheContextMenu.vue'
+import TheTrackPreview from '@components/globals/TheTrackPreview.vue'
+import TheQualityModal from '@components/globals/TheQualityModal.vue'
+
 import TheSidebar from '@components/TheSidebar.vue'
-import TheTrackPreview from '@components/TheTrackPreview.vue'
-import TheQualityModal from '@components/TheQualityModal.vue'
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
-import TheContextMenu from '@components/TheContextMenu.vue'
-import TheDownloadTab from '@components/TheDownloadTab.vue'
 import TheSearchBar from '@components/TheSearchBar.vue'
 import TheContent from '@components/TheContent.vue'
 
@@ -50,7 +52,7 @@ export default {
 	components: {
 		TheSidebar,
 		TheSearchBar,
-		TheDownloadTab,
+		TheDownloadBar,
 		TheTrackPreview,
 		TheQualityModal,
 		BaseLoadingPlaceholder,

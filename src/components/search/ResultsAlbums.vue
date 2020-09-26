@@ -5,11 +5,12 @@
 			<h1>{{ $t('search.noResultsAlbum') }}</h1>
 		</div>
 		<div class="release_grid" v-if="results.albumTab.data.length > 0">
-			<div
+			<router-link
+				tag="div"
 				v-for="release in results.albumTab.data"
+				:key="release.id"
 				class="release clickable"
-				@click.stop="$emit('album-view', $event)"
-				:data-id="release.id"
+				:to="{ name: 'Album', params: { id: release.id } }"
 			>
 				<div class="cover_container">
 					<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
@@ -35,13 +36,13 @@
 						$tc('globals.listTabs.trackN', release.nb_tracks)
 					}}
 				</p>
-			</div>
+			</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 
 export default {
 	props: ['results'],

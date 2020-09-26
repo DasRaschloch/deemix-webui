@@ -17,8 +17,8 @@
 					v-for="release in playlists"
 					:key="release.id"
 					class="release clickable"
-					:to="{ name: 'Tracklist', params: { type: 'playlist', id: release.id } }"
-					@keyup.enter.native="$router.push({ name: 'Tracklist', params: { type: 'playlist', id: release.id } })"
+					:to="{ name: 'Playlist', params: { id: release.id } }"
+					@keyup.enter.native="$router.push({ name: 'Playlist', params: { id: release.id } })"
 					tabindex="0"
 				>
 					<div class="cover_container">
@@ -55,8 +55,8 @@
 					v-for="release in albums"
 					:key="release.id"
 					class="release clickable"
-					:to="{ name: 'Tracklist', params: { type: 'album', id: release.id } }"
-					@keyup.enter.native="$router.push({ name: 'Tracklist', params: { type: 'album', id: release.id } })"
+					:to="{ name: 'Album', params: { id: release.id } }"
+					@keyup.enter.native="$router.push({ name: 'Album', params: { id: release.id } })"
 					:data-id="release.id"
 					tabindex="0"
 				>

@@ -34,7 +34,7 @@
 					v-for="release in playlists"
 					:key="release.id"
 					class="release clickable"
-					:to="{ name: 'Tracklist', params: { type: 'playlist', id: release.id } }"
+					:to="{ name: 'Playlist', params: { id: release.id } }"
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
@@ -64,7 +64,7 @@
 					v-for="release in spotifyPlaylists"
 					:key="release.id"
 					class="release clickable"
-					:to="{ name: 'Tracklist', params: { type: 'spotifyplaylist', id: release.id } }"
+					:to="{ name: 'Spotify Playlist', params: { id: release.id } }"
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
@@ -102,7 +102,7 @@
 					class="release clickable"
 					v-for="release in albums"
 					:key="release.id"
-					:to="{ name: 'Tracklist', params: { type: 'album', id: release.id } }"
+					:to="{ name: 'Album', params: { id: release.id } }"
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
@@ -198,7 +198,7 @@
 					<router-link
 						tag="td"
 						class="table__cell--medium table__cell--center breakline clickable"
-						:to="{ name: 'Tracklist', params: { type: 'album', id: track.album.id } }"
+						:to="{ name: 'Album', params: { id: track.album.id } }"
 					>
 						{{ track.album.title }}
 					</router-link>

@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import ResultsAll from '@components/search/ResultsAll.vue'
 import ResultsAlbums from '@components/search/ResultsAlbums.vue'
 import ResultsArtists from '@components/search/ResultsArtists.vue'

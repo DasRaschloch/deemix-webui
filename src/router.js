@@ -3,17 +3,17 @@ import VueRouter from 'vue-router'
 import { socket } from '@/utils/socket'
 import EventBus from '@/utils/EventBus'
 
-import ArtistTab from '@components/ArtistTab.vue'
-import TracklistTab from '@components/TracklistTab.vue'
-
-import TheHomeTab from '@components/TheHomeTab.vue'
-import TheChartsTab from '@components/TheChartsTab.vue'
-import TheFavoritesTab from '@components/TheFavoritesTab.vue'
-import TheErrorsTab from '@components/TheErrorsTab.vue'
-import TheLinkAnalyzerTab from '@components/TheLinkAnalyzerTab.vue'
-import TheAboutTab from '@components/TheAboutTab.vue'
-import TheSettingsTab from '@components/TheSettingsTab.vue'
-import TheMainSearch from '@components/TheMainSearch.vue'
+// Pages
+import About from '@components/pages/About.vue'
+import Artist from '@components/pages/Artist.vue'
+import Charts from '@components/pages/Charts.vue'
+import Errors from '@components/pages/Errors.vue'
+import Favorites from '@components/pages/Favorites.vue'
+import Home from '@components/pages/Home.vue'
+import LinkAnalyzer from '@components/pages/LinkAnalyzer.vue'
+import Search from '@components/pages/Search.vue'
+import Settings from '@components/pages/Settings.vue'
+import Tracklist from '@components/pages/Tracklist.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +21,7 @@ const routes = [
 	{
 		path: '/',
 		name: 'Home',
-		component: TheHomeTab,
+		component: Home,
 		meta: {
 			notKeepAlive: true
 		}
@@ -29,17 +29,32 @@ const routes = [
 	{
 		path: '/tracklist/:type/:id',
 		name: 'Tracklist',
-		component: TracklistTab
+		component: Tracklist
 	},
 	{
 		path: '/artist/:id',
 		name: 'Artist',
-		component: ArtistTab
+		component: Artist
+	},
+	{
+		path: '/album/:id',
+		name: 'Album',
+		component: Tracklist
+	},
+	{
+		path: '/tracklist/:id',
+		name: 'Playlist',
+		component: Tracklist
+	},
+	{
+		path: '/tracklist/:id',
+		name: 'Spotify Playlist',
+		component: Tracklist
 	},
 	{
 		path: '/charts',
 		name: 'Charts',
-		component: TheChartsTab,
+		component: Charts,
 		meta: {
 			notKeepAlive: true
 		}
@@ -47,7 +62,7 @@ const routes = [
 	{
 		path: '/favorites',
 		name: 'Favorites',
-		component: TheFavoritesTab,
+		component: Favorites,
 		meta: {
 			notKeepAlive: true
 		}
@@ -55,32 +70,32 @@ const routes = [
 	{
 		path: '/errors',
 		name: 'Errors',
-		component: TheErrorsTab
+		component: Errors
 	},
 	{
 		path: '/link-analyzer',
 		name: 'Link Analyzer',
-		component: TheLinkAnalyzerTab
+		component: LinkAnalyzer
 	},
 	{
 		path: '/about',
 		name: 'About',
-		component: TheAboutTab
+		component: About
 	},
 	{
 		path: '/settings',
 		name: 'Settings',
-		component: TheSettingsTab
+		component: Settings
 	},
 	{
 		path: '/search',
 		name: 'Search',
-		component: TheMainSearch
+		component: Search
 	},
 	// 404 client side
 	{
 		path: '*',
-		component: TheHomeTab
+		component: Home
 	}
 ]
 
@@ -106,6 +121,24 @@ router.beforeEach((to, from, next) => {
 		case 'Tracklist':
 			getTracklistParams = {
 				type: to.params.type,
+				id: to.params.id
+			}
+			break
+		case 'Album':
+			getTracklistParams = {
+				type: 'album',
+				id: to.params.id
+			}
+			break
+		case 'Playlist':
+			getTracklistParams = {
+				type: 'playlist',
+				id: to.params.id
+			}
+			break
+		case 'Spotify Playlist':
+			getTracklistParams = {
+				type: 'spotifyplaylist',
 				id: to.params.id
 			}
 			break

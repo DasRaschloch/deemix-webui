@@ -63,7 +63,7 @@ main {
 
 <script>
 import { debounce } from '@/utils/utils'
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 
 export default {
 	components: {

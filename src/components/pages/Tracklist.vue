@@ -75,7 +75,7 @@
 								tag="td"
 								v-if="type === 'playlist'"
 								class="table__cell--medium table__cell--center clickable"
-								:to="{ name: 'Tracklist', params: { type: 'album', id: track.album.id } }"
+								:to="{ name: 'Album', params: { id: track.album.id } }"
 							>
 								{{ track.album.title }}
 							</router-link>

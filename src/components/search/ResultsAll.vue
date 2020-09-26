@@ -15,11 +15,11 @@
 					{{ $tc(`globals.listTabs.${section.toLowerCase()}`, 2) }}
 				</h2>
 				<!-- Top result -->
-				<div
+				<router-link
+					tag="div"
 					v-if="section == 'TOP_RESULT'"
 					class="top_result clickable"
-					@click.stop="$emit(`${topResultType}-view`, $event)"
-					:data-id="results.allTab.TOP_RESULT[0].id"
+					:to="{ name: upperCaseFirstLowerCaseRest(topResultType), params: { id: results.allTab.TOP_RESULT[0].id } }"
 				>
 					<div class="cover_container">
 						<img
@@ -45,11 +45,11 @@
 						</p>
 						<span class="tag">{{ $tc(`globals.listTabs.${results.allTab.TOP_RESULT[0].type}`, 1) }}</span>
 					</div>
-				</div>
+				</router-link>
 				<div v-else-if="section == 'TRACK'">
 					<table class="table table--tracks">
 						<tbody>
-							<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)">
+							<tr v-for="track in results.allTab.TRACK.data.slice(0, 6)" :key="track.SNG_ID">
 								<td class="table__icon" aria-hidden="true">
 									<img
 										class="rounded coverart"
@@ -65,23 +65,26 @@
 									</div>
 								</td>
 								<td class="table__cell table__cell--medium table__cell--center breakline">
-									<span
-										class="clickable"
-										@click.stop="$emit('artist-view', $event)"
-										:data-id="artist.ART_ID"
+									<router-link
+										tag="span"
 										v-for="artist in track.ARTISTS"
 										:key="artist.ART_ID"
+										class="clickable"
+										:to="{
+											name: 'Artist',
+											params: { id: artist.ART_ID }
+										}"
 									>
 										{{ artist.ART_NAME }}
-									</span>
+									</router-link>
 								</td>
-								<td
+								<router-link
+									tag="td"
 									class="table__cell--medium table__cell--center breakline clickable"
-									@click.stop="$emit('album-view', $event)"
-									:data-id="track.ALB_ID"
+									:to="{ name: 'Album', params: { id: track.ALB_ID } }"
 								>
 									{{ track.ALB_TITLE }}
-								</td>
+								</router-link>
 								<td class="table__cell table__cell--center">
 									{{ convertDuration(track.DURATION) }}
 								</td>
@@ -99,11 +102,12 @@
 					</table>
 				</div>
 				<div v-else-if="section == 'ARTIST'" class="release_grid firstrow_only">
-					<div
+					<router-link
+						tag="div"
 						v-for="release in results.allTab.ARTIST.data.slice(0, 10)"
 						class="release clickable"
-						@click.stop="$emit('artist-view', $event)"
-						:data-id="release.ART_ID"
+						:key="release.ART_ID"
+						:to="{ name: 'Artist', params: { id: release.ART_ID } }"
 					>
 						<div class="cover_container">
 							<img
@@ -126,14 +130,15 @@
 						</div>
 						<p class="primary-text">{{ release.ART_NAME }}</p>
 						<p class="secondary-text">{{ $t('search.fans', { n: $n(release.NB_FAN) }) }}</p>
-					</div>
+					</router-link>
 				</div>
 				<div v-else-if="section == 'ALBUM'" class="release_grid firstrow_only">
-					<div
+					<router-link
+						tag="div"
 						v-for="release in results.allTab.ALBUM.data.slice(0, 10)"
+						:key="release.ALB_ID"
 						class="release clickable"
-						@click.stop="$emit('album-view', $event)"
-						:data-id="release.ALB_ID"
+						:to="{ name: 'Album', params: { id: release.ALB_ID } }"
 					>
 						<div class="cover_container">
 							<img
@@ -165,14 +170,15 @@
 						<p class="secondary-text">
 							{{ release.ART_NAME + ' - ' + $tc('globals.listTabs.trackN', release.NUMBER_TRACK) }}
 						</p>
-					</div>
+					</router-link>
 				</div>
 				<div v-else-if="section == 'PLAYLIST'" class="release_grid firstrow_only">
-					<div
+					<router-link
+						tag="div"
 						v-for="release in results.allTab.PLAYLIST.data.slice(0, 10)"
 						class="release clickable"
-						@click.stop="$emit('playlist-view', $event)"
-						:data-id="release.PLAYLIST_ID"
+						:key="release.PLAYLIST_ID"
+						:to="{ name: 'Playlist', params: { id: release.PLAYLIST_ID } }"
 					>
 						<div class="cover_container">
 							<img
@@ -199,7 +205,7 @@
 						</div>
 						<p class="primary-text">{{ release.TITLE }}</p>
 						<p class="secondary-text">{{ $tc('globals.listTabs.trackN', release.NB_SONG) }}</p>
-					</div>
+					</router-link>
 				</div>
 			</section>
 		</template>
@@ -210,6 +216,7 @@
 </template>
 <script>
 import { convertDuration } from '@/utils/utils'
+import { upperCaseFirstLowerCaseRest } from '@/utils/texts'
 
 export default {
 	props: ['results'],
@@ -241,7 +248,8 @@ export default {
 		}
 	},
 	methods: {
-		convertDuration
+		convertDuration,
+		upperCaseFirstLowerCaseRest
 	}
 }
 </script>

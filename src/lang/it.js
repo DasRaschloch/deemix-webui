@@ -108,7 +108,8 @@ const it = {
 			no360RA: 'Brano non disponibile in Reality Audio 360.',
 			notAvailable: 'Brano non presente sui server di Deezer!',
 			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!',
-			noSpaceLeft: "Spazio su disco esaurito!"
+			noSpaceLeft: "Spazio su disco esaurito!",
+			albumDoesntExsists: "Il brano non ha nessun album, impossibile ottenere informazioni"
 		}
 	},
 	favorites: {

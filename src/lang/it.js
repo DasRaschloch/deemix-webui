@@ -109,7 +109,7 @@ const it = {
 			notAvailable: 'Brano non presente sui server di Deezer!',
 			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!',
 			noSpaceLeft: "Spazio su disco esaurito!",
-			albumDoesntExsists: "Il brano non ha nessun album, impossibile ottenere informazioni"
+			albumDoesntExists: "Il brano non ha nessun album, impossibile ottenere informazioni"
 		}
 	},
 	favorites: {

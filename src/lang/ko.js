@@ -98,7 +98,8 @@ const ko = {
 			no360RA: '해당 트랙은 360 리얼리티 오디오에 존재하지 않습니다.',
 			notAvailable: "해당 트랙은 Deezer 서버에 존재하지 않습니다!",
 			notAvailableNoAlternative: "해당 트랙은 Deezer 서버에 존재하지 않을 뿐더러 대체할 것을 찾지 못했습니다!",
-			noSpaceLeft: "장치에 여유 공간이 없습니다!"
+			noSpaceLeft: "장치에 여유 공간이 없습니다!",
+			albumDoesntExists: "트랙의 앨범이 존재하지 않습니다, 정보 수집에 실패했습니다."
 		}
 	},
 	favorites: {

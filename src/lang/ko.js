@@ -97,7 +97,7 @@ const ko = {
 			wrongBitrateNoAlternative: '요구하는 비트레이트를 찾을 수 없을 뿐더러 대체할 것을 찾지 못했습니다!',
 			no360RA: '해당 트랙은 360 리얼리티 오디오에 존재하지 않습니다.',
 			notAvailable: "해당 트랙은 Deezer 서버에 존재하지 않습니다!",
-			notAvailableNoAlternative: "해당 트랙은 Deezer 서버에 존재하지 않을 뿐더러 대체할 것을 찾지 못했습니다!"
+			notAvailableNoAlternative: "해당 트랙은 Deezer 서버에 존재하지 않을 뿐더러 대체할 것을 찾지 못했습니다!",
 			noSpaceLeft: "장치에 여유 공간이 없습니다!"
 		}
 	},
@@ -168,7 +168,7 @@ const ko = {
 		finishAddingArtist: '{artist} 앨범이 대기열에 추가되었습니다',
 		startConvertingSpotifyPlaylist: '스포티파이 트랙을 Deezer 트랙으로 전환 중입니다',
 		finishConvertingSpotifyPlaylist: '스프토파이 재생 목록이 전환되었습니다',
-		loginNeededToDownload: '트랙을 다운로드하려면 로그인이 필요합니다!'
+		loginNeededToDownload: '트랙을 다운로드하려면 로그인이 필요합니다!',
 		deezerNotAvailable: 'Deezer 사이트는 현재 귀하의 국가에서 사용이 불가능합니다. VPN을 사용하세요.'
 	},
 	settings: {
@@ -181,8 +181,8 @@ const ko = {
 				question: 'ARL을 어떻게 확인합니까?',
 				update: 'ARL 업데이트'
 			},
-			logout: '로그아웃'
-			question: '스포티파이 기능들을 쓰려면 어떻게 해야합니까?
+			logout: '로그아웃',
+			question: '스포티파이 기능들을 쓰려면 어떻게 해야합니까?'
 		},
 		appearance: {
 			title: '외관',
@@ -258,7 +258,7 @@ const ko = {
 			jpegImageQuality: 'JPEG 이미지 품질',
 			embeddedArtworkPNG: '포함된 그림의 형식을 PNG로 저장합니다',
 			embeddedPNGWarning: 'PNG는 Deezer에서 공식적으로 지원하지 않기 때문에 버그가 있을 수 있습니다',
-			imageSizeWarning: 'x1200 크기를 초과해서는 Deezer에서 공식적으로 사용되지 않기 때문에 문제가 생길 수 있습니다'
+			imageSizeWarning: 'x1200 크기를 초과해서는 Deezer에서 공식적으로 사용되지 않기 때문에 문제가 생길 수 있습니다',
 			coverDescriptionUTF8: '커버 설명을 UTF8 포맷을 이용해 저장합니다 (iTunes 커버 오류 해결)'
 		},
 		tags: {

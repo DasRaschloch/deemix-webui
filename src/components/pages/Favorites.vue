@@ -29,46 +29,25 @@
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
 			<div class="release_grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
-				<div v-for="release in playlists" class="release clickable" @click="playlistView" :data-id="release.id">
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<div
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
-					</div>
-					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">
-						{{
-							`${$t('globals.by', { artist: release.creator.name })} - ${$tc(
-								'globals.listTabs.trackN',
-								release.nb_tracks
-							)}`
-						}}
-					</p>
-				</div>
-				<div
-					v-for="release in spotifyPlaylists"
+				<router-link
+					tag="div"
+					v-for="release in playlists"
+					:key="release.id"
 					class="release clickable"
-					@click="spotifyPlaylistView"
-					:data-id="release.id"
+					:to="{ name: 'Playlist', params: { id: release.id } }"
 				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
@@ -79,7 +58,37 @@
 							)}`
 						}}
 					</p>
-				</div>
+				</router-link>
+				<router-link
+					tag="div"
+					v-for="release in spotifyPlaylists"
+					:key="release.id"
+					class="release clickable"
+					:to="{ name: 'Spotify Playlist', params: { id: release.id } }"
+				>
+					<div class="cover_container">
+						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
+						<button
+							role="button"
+							aria-label="download"
+							@click.stop="addToQueue"
+							:data-link="release.link"
+							class="download_overlay"
+							tabindex="0"
+						>
+							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+						</button>
+					</div>
+					<p class="primary-text">{{ release.title }}</p>
+					<p class="secondary-text">
+						{{
+							`${$t('globals.by', { artist: release.creator.name })} - ${$tc(
+								'globals.listTabs.trackN',
+								release.nb_tracks
+							)}`
+						}}
+					</p>
+				</router-link>
 			</div>
 		</div>
 
@@ -88,22 +97,29 @@
 				<h1>{{ $t('favorites.noAlbums') }}</h1>
 			</div>
 			<div class="release_grid" v-if="albums.length > 0">
-				<div v-for="release in albums" class="release clickable" @click="albumView" :data-id="release.id">
+				<router-link
+					tag="div"
+					class="release clickable"
+					v-for="release in albums"
+					:key="release.id"
+					:to="{ name: 'Album', params: { id: release.id } }"
+				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
-				</div>
+				</router-link>
 			</div>
 		</div>
 
@@ -112,21 +128,28 @@
 				<h1>{{ $t('favorites.noArtists') }}</h1>
 			</div>
 			<div class="release_grid" v-if="artists.length > 0">
-				<div v-for="release in artists" class="release clickable" @click="artistView" :data-id="release.id">
+				<router-link
+					tag="div"
+					class="release clickable"
+					v-for="release in artists"
+					:key="release.id"
+					:to="{ name: 'Artist', params: { id: release.id } }"
+				>
 					<div class="cover_container">
 						<img aria-hidden="true" class="circle coverart" :src="release.picture_medium" />
-						<div
+						<button
 							role="button"
 							aria-label="download"
 							@click.stop="addToQueue"
 							:data-link="release.link"
 							class="download_overlay"
+							tabindex="0"
 						>
 							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</div>
+						</button>
 					</div>
 					<p class="primary-text">{{ release.name }}</p>
-				</div>
+				</router-link>
 			</div>
 		</div>
 
@@ -165,20 +188,20 @@
 							(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
 						}}
 					</td>
-					<td
-						class="table__cell--medium table__cell--center breakline clickable"
-						@click="artistView"
-						:data-id="track.artist.id"
+					<router-link
+						tag="td"
+						class="table__cell table__cell--medium table__cell--center breakline clickable"
+						:to="{ name: 'Artist', params: { id: track.artist.id } }"
 					>
 						{{ track.artist.name }}
-					</td>
-					<td
+					</router-link>
+					<router-link
+						tag="td"
 						class="table__cell--medium table__cell--center breakline clickable"
-						@click="albumView"
-						:data-id="track.album.id"
+						:to="{ name: 'Album', params: { id: track.album.id } }"
 					>
 						{{ track.album.title }}
-					</td>
+					</router-link>
 					<td class="table__cell--small">
 						{{ convertDuration(track.duration) }}
 					</td>
@@ -210,8 +233,6 @@
 </style>
 
 <script>
-import { showView } from '@js/tabs'
-
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
@@ -257,10 +278,6 @@ export default {
 		})
 	},
 	methods: {
-		artistView: showView.bind(null, 'artist'),
-		albumView: showView.bind(null, 'album'),
-		playlistView: showView.bind(null, 'playlist'),
-		spotifyPlaylistView: showView.bind(null, 'spotifyplaylist'),
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},

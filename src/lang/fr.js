@@ -105,7 +105,8 @@ const fr = {
 			no360RA: 'La piste est indisponible au format Reality Audio 360.',
 			notAvailable: 'La piste est indisponible sur les serveurs de Deezer !',
 			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
-			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !"
+			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !",
+			albumDoesntExists: "Aucun album n'existe pour cette piste, impossible de collecter les informations nécessaires"
 		}
 	},
 	favorites: {

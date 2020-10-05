@@ -5,6 +5,7 @@
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
 		:data-label="$t('downloads')"
+		aria-label="downloads"
 	>
 		<div id="download_tab_drag_handler" @mousedown.prevent="startDrag" ref="dragHandler"></div>
 		<i
@@ -16,7 +17,6 @@
 		></i>
 		<div id="queue_buttons">
 			<i
-				id="open_downloads_folder"
 				v-if="clientMode"
 				class="material-icons download_bar_icon"
 				:title="$t('globals.open_downloads_folder')"
@@ -24,20 +24,10 @@
 			>
 				folder_open
 			</i>
-			<i
-				id="clean_queue"
-				class="material-icons download_bar_icon"
-				@click="cleanQueue"
-				:title="$t('globals.clean_queue_hint')"
-			>
+			<i class="material-icons download_bar_icon" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">
 				clear_all
 			</i>
-			<i
-				id="cancel_queue"
-				class="material-icons download_bar_icon"
-				@click="cancelQueue"
-				:title="$t('globals.cancel_queue_hint')"
-			>
+			<i class="material-icons download_bar_icon" @click="cancelQueue" :title="$t('globals.cancel_queue_hint')">
 				delete_sweep
 			</i>
 		</div>
@@ -85,6 +75,19 @@ export default {
 	computed: {
 		...mapGetters({
 			clientMode: 'getClientMode'
+		})
+	},
+	created() {
+		const checkIfToggleBar = keyEvent => {
+			if (!(keyEvent.ctrlKey && keyEvent.key === 'b')) return
+
+			this.toggleDownloadTab()
+		}
+
+		document.addEventListener('keyup', checkIfToggleBar)
+
+		this.$on('hook:destroyed', () => {
+			document.removeEventListener('keyup', checkIfToggleBar)
 		})
 	},
 	mounted() {
@@ -263,7 +266,7 @@ export default {
 
 			this.queueComplete = []
 		},
-		toggleDownloadTab(clickEvent) {
+		toggleDownloadTab() {
 			this.setTabWidth()
 
 			this.$refs.container.style.transition = 'all 250ms ease-in-out'
@@ -337,4 +340,3 @@ export default {
 	}
 }
 </script>
-

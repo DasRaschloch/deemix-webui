@@ -1,54 +1,24 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-// Languages
-import it from '@/lang/it'
-import en from '@/lang/en'
-import es from '@/lang/es'
-import de from '@/lang/de'
-import fr from '@/lang/fr'
-import id from '@/lang/id'
-import pt from '@/lang/pt-pt'
-import pt_br from '@/lang/pt-br'
-import ru from '@/lang/ru'
-import tr from '@/lang/tr'
-import vn from '@/lang/vn'
-import hr from '@/lang/hr'
-import ar from '@/lang/ar'
-import ko from '@/lang/ko'
+import { locales } from '@/lang/index'
 
 Vue.use(VueI18n)
 
-const DEFAULT_LANG = 'en'
+const storedLocale = localStorage.getItem('locale')
+const DEFAULT_LANG = storedLocale || 'en'
 
 document.querySelector('html').setAttribute('lang', DEFAULT_LANG)
 
-const locales = {
-	it,
-	en,
-	es,
-	de,
-	fr,
-	id,
-	pt,
-	pt_br,
-	ru,
-	tr,
-	vn,
-	hr,
-	ar,
-	ko
-}
-
 const i18n = new VueI18n({
 	locale: DEFAULT_LANG,
-	fallbackLocale: DEFAULT_LANG,
+	fallbackLocale: 'en',
 	messages: locales,
 	pluralizationRules: {
 		/**
-		 * @param choice {number} a choice index given by the input to $tc: `$tc('path.to.rule', choiceIndex)`
-		 * @param choicesLength {number} an overall amount of available choices
-		 * @returns a final choice index to select plural word by
+		 * @param {number}	choice 					A choice index given by the input to $tc: `$tc('path.to.rule', choiceIndex)`
+		 * @param {number}	choicesLength		An overall amount of available choices
+		 * @returns 				A final choice index to select plural word by
 		 */
 		ru: function(choice, choicesLength) {
 			var n = Math.abs(choice) % 100

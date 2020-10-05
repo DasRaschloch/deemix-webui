@@ -25,24 +25,39 @@
 			>
 				<div>
 					<h1>{{ title }}</h1>
-					<h2 v-if="type == 'track'">
+					<h2 v-if="type === 'track'">
 						<i18n path="globals.by" tag="span">
-							<span place="artist" class="clickable" @click="artistView" :data-id="data.artist.id">{{
-								data.artist.name
-							}}</span>
+							<router-link
+								tag="span"
+								place="artist"
+								class="clickable"
+								:to="{ name: 'Artist', params: { id: data.artist.id } }"
+							>
+								{{ data.artist.name }}
+							</router-link>
 						</i18n>
 						•
 						<i18n path="globals.in" tag="span">
-							<span place="album" class="clickable" @click="albumView" :data-id="data.album.id">{{
-								data.album.title
-							}}</span>
+							<router-link
+								tag="span"
+								place="album"
+								class="clickable"
+								:to="{ name: 'Album', params: { id: data.album.id } }"
+							>
+								{{ data.album.title }}
+							</router-link>
 						</i18n>
 					</h2>
-					<h2 v-else-if="type == 'album'">
+					<h2 v-else-if="type === 'album'">
 						<i18n path="globals.by" tag="span">
-							<span place="artist" class="clickable" @click="artistView" :data-id="data.artist.id">{{
-								data.artist.name
-							}}</span>
+							<router-link
+								tag="span"
+								place="artist"
+								class="clickable"
+								:to="{ name: 'Artist', params: { id: data.artist.id } }"
+							>
+								{{ data.artist.name }}
+							</router-link>
 						</i18n>
 						{{ ` • ${$tc('globals.listTabs.trackN', data.nb_tracks)}` }}
 					</h2>
@@ -106,7 +121,9 @@
 			</table>
 
 			<div v-if="type == 'album'">
-				<button @click="albumView" :data-id="id">{{ $t('linkAnalyzer.table.tracklist') }}</button>
+				<router-link tag="button" :to="{ name: 'Album', params: { id } }">
+					{{ $t('linkAnalyzer.table.tracklist') }}
+				</router-link>
 			</div>
 			<div v-if="countries.length">
 				<p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
@@ -117,7 +134,6 @@
 
 <script>
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs'
 import { convertDuration } from '@/utils/utils'
 import { COUNTRIES } from '@/utils/countries'
 import EventBus from '@/utils/EventBus'
@@ -137,8 +153,6 @@ export default {
 		}
 	},
 	methods: {
-		artistView: showView.bind(null, 'artist'),
-		albumView: showView.bind(null, 'album'),
 		convertDuration,
 		reset() {
 			this.title = 'Loading...'

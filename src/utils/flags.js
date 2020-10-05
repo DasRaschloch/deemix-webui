@@ -1,19 +1,20 @@
 import it from 'svg-country-flags/svg/it.svg'
 import gb from 'svg-country-flags/svg/gb.svg'
-import es from 'svg-country-flags/svg/es.svg'
+import es from 'flag-icon-css/flags/4x3/es.svg'
 import de from 'svg-country-flags/svg/de.svg'
 import fr from 'svg-country-flags/svg/fr.svg'
 import id from 'svg-country-flags/svg/id.svg'
-import pt from 'svg-country-flags/svg/pt.svg'
+import pt from 'flag-icon-css/flags/4x3/pt.svg'
 import br from 'svg-country-flags/svg/br.svg'
 import ru from 'svg-country-flags/svg/ru.svg'
 import tr from 'svg-country-flags/svg/tr.svg'
 import vn from 'svg-country-flags/svg/vn.svg'
-import hr from 'svg-country-flags/svg/hr.svg'
+import hr from 'flag-icon-css/flags/4x3/hr.svg'
 import ar from '@/assets/ar.svg'
-import ko from 'svg-country-flags/svg/kr.svg'
+import ko from 'flag-icon-css/flags/4x3/kr.svg'
+import ph from 'flag-icon-css/flags/4x3/ph.svg'
 
-export default {
+export const flags = {
 	it,
 	en: gb,
 	es,
@@ -27,5 +28,6 @@ export default {
 	vn,
 	hr,
 	ar,
-	ko
+	ko,
+	ph
 }

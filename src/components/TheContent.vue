@@ -1,5 +1,10 @@
 <template>
-	<section id="content" @scroll="$route.name === 'Search' ? handleContentScroll($event) : null" ref="content">
+	<main
+		id="content"
+		@scroll="$route.name === 'Search' ? handleContentScroll($event) : null"
+		ref="content"
+		aria-label="main content"
+	>
 		<div id="container">
 			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
 
@@ -21,7 +26,7 @@
 				exclude=""
 			></router-view>
 		</div>
-	</section>
+	</main>
 </template>
 
 <style lang="scss">
@@ -31,8 +36,9 @@
 	width: var(--container-width);
 }
 
-#content {
+main {
 	background-color: var(--main-background);
+	padding-right: 5px;
 	width: 100%;
 	height: calc(100vh - 93px);
 	overflow-y: scroll;
@@ -57,8 +63,7 @@
 
 <script>
 import { debounce } from '@/utils/utils'
-import EventBus from '@/utils/EventBus.js'
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 
 export default {
 	components: {
@@ -71,6 +76,11 @@ export default {
 	mounted() {
 		this.$root.$on('updateSearchLoadingState', loading => {
 			this.loading = loading
+		})
+
+		this.$router.beforeEach((to, from, next) => {
+			this.$refs.content.scrollTo(0, 0)
+			next()
 		})
 	},
 	methods: {

@@ -20,6 +20,8 @@ $sidebar-delay: 75ms;
 
 	.main_tablinks {
 		transition: all 500ms;
+		text-decoration: none;
+		color: inherit;
 
 		&.active {
 			background-color: var(--accent-color);

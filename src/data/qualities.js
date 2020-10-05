@@ -1,4 +1,4 @@
-export default [
+export const downloadQualities = [
 	{
 		objName: 'flac',
 		label: 'FLAC',

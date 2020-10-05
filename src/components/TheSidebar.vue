@@ -1,11 +1,10 @@
 <template>
-	<aside id="sidebar" role="navigation">
+	<aside id="sidebar" role="navigation" aria-label="sidebar">
 		<router-link
 			v-for="link in links"
 			:key="link.id"
-			tag="span"
+			tag="a"
 			class="main_tablinks"
-			role="link"
 			:id="link.id"
 			:class="{ active: activeTablink === link.name }"
 			:aria-label="link.ariaLabel"
@@ -13,7 +12,7 @@
 			@click.native="activeTablink = link.name"
 		>
 			<i class="material-icons side_icon">{{ link.icon }}</i>
-			<span class="main_tablinks_text">{{ link.label }}</span>
+			<span class="main_tablinks_text">{{ $t(link.label) }}</span>
 		</router-link>
 
 		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
@@ -67,9 +66,6 @@
 <script>
 export default {
 	data() {
-		const $t = this.$t.bind(this)
-		const $tc = this.$tc.bind(this)
-
 		return {
 			appOnline: null,
 			activeTheme: 'light',
@@ -82,7 +78,7 @@ export default {
 					ariaLabel: 'home',
 					routerName: 'Home',
 					icon: 'home',
-					label: $t('sidebar.home')
+					label: 'sidebar.home'
 				},
 				{
 					id: 'main_search_tablink',
@@ -90,7 +86,7 @@ export default {
 					ariaLabel: 'search',
 					routerName: 'Search',
 					icon: 'search',
-					label: $t('sidebar.search')
+					label: 'sidebar.search'
 				},
 				{
 					id: 'main_charts_tablink',
@@ -98,7 +94,7 @@ export default {
 					ariaLabel: 'charts',
 					routerName: 'Charts',
 					icon: 'show_chart',
-					label: $t('sidebar.charts')
+					label: 'sidebar.charts'
 				},
 				{
 					id: 'main_favorites_tablink',
@@ -106,7 +102,7 @@ export default {
 					ariaLabel: 'favorites',
 					routerName: 'Favorites',
 					icon: 'star',
-					label: $t('sidebar.favorites')
+					label: 'sidebar.favorites'
 				},
 				{
 					id: 'main_analyzer_tablink',
@@ -114,7 +110,7 @@ export default {
 					ariaLabel: 'link analyzer',
 					routerName: 'Link Analyzer',
 					icon: 'link',
-					label: $t('sidebar.linkAnalyzer')
+					label: 'sidebar.linkAnalyzer'
 				},
 				{
 					id: 'main_settings_tablink',
@@ -122,7 +118,7 @@ export default {
 					ariaLabel: 'settings',
 					routerName: 'Settings',
 					icon: 'settings',
-					label: $t('sidebar.settings')
+					label: 'sidebar.settings'
 				},
 				{
 					id: 'main_about_tablink',
@@ -130,7 +126,7 @@ export default {
 					ariaLabel: 'info',
 					routerName: 'About',
 					icon: 'info',
-					label: $t('sidebar.about')
+					label: 'sidebar.about'
 				}
 			]
 		}

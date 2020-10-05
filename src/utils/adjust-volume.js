@@ -14,7 +14,6 @@ export async function adjustVolume(element, newVolume, { duration = 1000, easing
 	return new Promise(resolve => {
 		const timer = setInterval(() => {
 			element.volume = originalVolume + easing(tick / ticks) * delta
-			// console.log(element.volume)
 			if (++tick === ticks) {
 				clearInterval(timer)
 				resolve()

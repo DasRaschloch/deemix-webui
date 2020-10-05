@@ -5,23 +5,25 @@
 			<h1>{{ $t('search.noResultsPlaylist') }}</h1>
 		</div>
 		<div class="release_grid" v-if="results.playlistTab.data.length > 0">
-			<div
+			<router-link
+				tag="div"
 				v-for="release in results.playlistTab.data"
 				class="release clickable"
-				@click.stop="$emit('playlist-view', $event)"
-				:data-id="release.id"
+				:key="release.id"
+				:to="{ name: 'Playlist', params: { id: release.id } }"
 			>
 				<div class="cover_container">
 					<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-					<div
+					<button
 						role="button"
 						aria-label="download"
 						@click.stop="$emit('add-to-queue', $event)"
 						:data-link="release.link"
 						class="download_overlay"
+						tabindex="0"
 					>
 						<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-					</div>
+					</button>
 				</div>
 				<p class="primary-text">{{ release.title }}</p>
 				<p class="secondary-text">
@@ -29,13 +31,13 @@
 						`${$t('globals.by', { artist: release.user.name })} - ${$tc('globals.listTabs.trackN', release.nb_tracks)}`
 					}}
 				</p>
-			</div>
+			</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 
 export default {
 	props: ['results'],

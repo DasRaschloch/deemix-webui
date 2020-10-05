@@ -46,20 +46,20 @@
 							}}
 						</div>
 					</td>
-					<td
+					<router-link
+						tag="td"
 						class="table__cell table__cell--medium table__cell--center breakline clickable"
-						@click.stop="artistView"
-						:data-id="track.artist.id"
+						:to="{ name: 'Artist', params: { id: track.artist.id } }"
 					>
 						{{ track.artist.name }}
-					</td>
-					<td
+					</router-link>
+					<router-link
+						tag="td"
 						class="table__cell table__cell--medium table__cell--center breakline clickable"
-						@click.stop="albumView"
-						:data-id="track.album.id"
+						:to="{ name: 'Album', params: { id: track.album.id } }"
 					>
 						{{ track.album.title }}
-					</td>
+					</router-link>
 					<td class="table__cell table__cell--small table__cell--center">
 						{{ convertDuration(track.duration) }}
 					</td>
@@ -79,9 +79,9 @@
 </template>
 
 <script>
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 
-import EventBus from '@/utils/EventBus.js'
+import EventBus from '@/utils/EventBus'
 import { convertDuration } from '@/utils/utils'
 
 export default {
@@ -91,15 +91,6 @@ export default {
 	},
 	methods: {
 		convertDuration,
-		artistView(event) {
-			this.$emit('artist-view', event)
-		},
-		albumView(event) {
-			this.$emit('album-view', event)
-		},
-		playlistView(event) {
-			this.$emit('playlist-view', event)
-		},
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
 		},

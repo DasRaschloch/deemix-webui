@@ -5,27 +5,18 @@ window.vol = {
 	preview_max_volume: 100
 }
 
-import App from '@components/App.vue'
+import App from '@/App.vue'
 import i18n from '@/plugins/i18n'
 import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
-import { init as initTabs } from '@js/tabs.js'
-
 import { isValidURL } from '@/utils/utils'
-import Downloads from '@/utils/downloads'
-import EventBus from '@/utils/EventBus.js'
+import { sendAddToQueue } from '@/utils/downloads'
 
 /* ===== App initialization ===== */
-
 function startApp() {
-	mountApp()
-	initTabs()
-}
-
-function mountApp() {
 	new Vue({
 		store,
 		router,
@@ -36,6 +27,7 @@ function mountApp() {
 
 function initClient() {
 	store.dispatch('setClientMode', true)
+	setClientModeKeyBindings()
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
@@ -44,23 +36,39 @@ window.addEventListener('pywebviewready', initClient)
 /* ===== Global shortcuts ===== */
 
 document.addEventListener('paste', pasteEvent => {
-	let pasteText = pasteEvent.clipboardData.getData('Text')
+	if (pasteEvent.target.localName === 'input') return
 
-	if (pasteEvent.target.localName != 'input') {
-		if (isValidURL(pasteText)) {
-			if (window.main_selected === 'analyzer_tab') {
-				EventBus.$emit('linkAnalyzerTab:reset')
-				socket.emit('analyzeLink', pasteText)
-			} else {
-				Downloads.sendAddToQueue(pasteText)
-			}
+	let pastedText = pasteEvent.clipboardData.getData('Text')
+
+	if (isValidURL(pastedText)) {
+		if (router.currentRoute.name === 'Link Analyzer') {
+			socket.emit('analyzeLink', pastedText)
 		} else {
-			let searchbar = document.querySelector('#searchbar')
-			searchbar.select()
-			searchbar.setSelectionRange(0, 99999)
+			sendAddToQueue(pastedText)
 		}
+	} else {
+		let searchbar = document.querySelector('#searchbar')
+		searchbar.select()
+		searchbar.setSelectionRange(0, 99999)
 	}
 })
+
+/**
+ * Sets up key bindings that already work in the browser (server mode)
+ */
+function setClientModeKeyBindings() {
+	document.addEventListener('keyup', keyEvent => {
+		// ALT + left
+		if (keyEvent.altKey && keyEvent.key === 'ArrowLeft') {
+			router.back()
+		}
+
+		// ALT + right
+		if (keyEvent.altKey && keyEvent.key === 'ArrowRight') {
+			router.forward()
+		}
+	})
+}
 
 /* ===== Socketio listeners ===== */
 
@@ -113,11 +121,13 @@ socket.on('logged_in', function(data) {
 			break
 		case -1:
 			toast(i18n.t('toasts.deezerNotAvailable'), 'close', true, 'login-toast')
-			$('#open_login_prompt').show()
-			document.getElementById('logged_in_info').classList.add('hide')
-			$('#settings_username').text('Not Logged')
-			$('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
-			document.getElementById('home_not_logged_in').classList.remove('hide')
+			return
+		// TODO
+		// $('#open_login_prompt').show()
+		// document.getElementById('logged_in_info').classList.add('hide')
+		// $('#settings_username').text('Not Logged')
+		// $('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
+		// document.getElementById('home_not_logged_in').classList.remove('hide')
 	}
 })
 

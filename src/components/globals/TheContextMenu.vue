@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import Downloads from '@/utils/downloads'
-import downloadQualities from '@js/qualities'
+import { sendAddToQueue } from '@/utils/downloads'
 import { generatePath, copyToClipboard } from '@/utils/utils'
+import { downloadQualities } from '@/data/qualities'
 
 export default {
 	data() {
@@ -95,10 +95,10 @@ export default {
 
 			downloadQualities.forEach((quality, index) => {
 				options[quality.objName] = {
-					label: `${this.$t('globals.download', {thing: quality.label})}`,
+					label: `${this.$t('globals.download', { thing: quality.label })}`,
 					show: false,
 					position: nextValuePosition + index,
-					action: this.tryToDownloadTrack.bind(null, quality.value)
+					action: sendAddToQueue.bind(null, this.deezerHref, quality.value)
 				}
 			})
 
@@ -123,7 +123,6 @@ export default {
 	},
 	methods: {
 		showMenu(contextMenuEvent) {
-			// contextMenuEvent.preventDefault()
 			const { pageX, pageY, target: elementClicked } = contextMenuEvent
 			const path = generatePath(elementClicked)
 			let deezerLink = null
@@ -213,9 +212,6 @@ export default {
 			downloadQualities.forEach(quality => {
 				this.options[quality.objName].show = true
 			})
-		},
-		tryToDownloadTrack(qualityValue) {
-			Downloads.sendAddToQueue(this.deezerHref, qualityValue)
 		}
 	}
 }

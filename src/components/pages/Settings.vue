@@ -56,6 +56,7 @@
 					:class="{ 'locale-flag--current': currentLocale === locale }"
 					@click="changeLocale(locale)"
 					v-html="flags[locale]"
+					:title="locale"
 				>
 				</span>
 			</div>
@@ -187,7 +188,7 @@
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.downloads.queueConcurrency') }}</p>
-				<input type="number" v-model.number="settings.queueConcurrency" />
+				<input type="number" min="1" v-model.number="settings.queueConcurrency" />
 			</div>
 
 			<div class="input_group">
@@ -643,8 +644,8 @@
 	}
 
 	svg {
-		width: 40px;
-		height: 40px;
+		width: 40px !important;
+		height: 40px !important;
 		filter: brightness(0.5);
 	}
 }
@@ -653,19 +654,18 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 
+import { getSettingsData } from '@/data/settings'
+
 import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
-import EventBus from '@/utils/EventBus'
-import flags from '@/utils/flags'
-
-import { getSettingsData } from '@/data/settings'
+import { flags } from '@/utils/flags'
 
 export default {
 	data() {
 		return {
 			flags,
-			currentLocale: 'en',
-			locales: [],
+			currentLocale: this.$i18n.locale,
+			locales: this.$i18n.availableLocales,
 			settings: {
 				tags: {}
 			},
@@ -679,7 +679,6 @@ export default {
 			previewVolume: window.vol,
 			accountNum: 0,
 			accounts: []
-			// clientMode: window.clientMode
 		}
 	},
 	computed: {
@@ -708,22 +707,10 @@ export default {
 		}
 	},
 	async mounted() {
-		this.locales = this.$i18n.availableLocales
-
 		const { settingsData, defaultSettingsData, spotifyCredentials } = await getSettingsData()
 
 		this.defaultSettings = defaultSettingsData
 		this.initSettings(settingsData, spotifyCredentials)
-
-		// this.revertSettings()
-		// this.revertCredentials()
-
-		let storedLocale = localStorage.getItem('locale')
-
-		if (storedLocale) {
-			this.$i18n.locale = storedLocale
-			this.currentLocale = storedLocale
-		}
 
 		let storedAccountNum = localStorage.getItem('accountNum')
 
@@ -823,6 +810,11 @@ export default {
 			this.lastCredentials = JSON.parse(JSON.stringify(credentials))
 			this.spotifyFeatures = JSON.parse(JSON.stringify(credentials))
 		},
+		loggedInViaDeezer(arl) {
+			this.dispatchARL({ arl })
+			socket.emit('login', arl, true, this.accountNum)
+			// this.login()
+		},
 		login() {
 			let newArl = this.$refs.loginInput.value.trim()
 
@@ -832,10 +824,6 @@ export default {
 		},
 		appLogin(e) {
 			socket.emit('applogin')
-		},
-		loggedInViaDeezer(arl) {
-			this.dispatchARL({ arl })
-			this.login()
 		},
 		changeAccount() {
 			socket.emit('changeAccount', this.accountNum)

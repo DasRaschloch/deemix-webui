@@ -1,5 +1,5 @@
 <template>
-	<header id="search">
+	<header id="search" aria-label="searchbar">
 		<div class="search__icon">
 			<i class="material-icons">search</i>
 		</div>
@@ -19,11 +19,66 @@
 	</header>
 </template>
 
+<style lang="scss">
+$icon-dimension: 2rem;
+$searchbar-height: 45px;
+
+#search {
+	background-color: var(--secondary-background);
+	padding: 0 1em;
+	display: flex;
+	align-items: center;
+	border: 1px solid transparent;
+	transition: border 200ms ease-in-out;
+	border-radius: 15px;
+	margin: 10px 10px 20px 10px;
+
+	&:focus-within {
+		border: 1px solid var(--foreground);
+	}
+
+	.search__icon {
+		width: $icon-dimension;
+		height: $icon-dimension;
+
+		i {
+			font-size: $icon-dimension;
+			color: var(--foreground);
+		}
+	}
+
+	#searchbar {
+		height: $searchbar-height;
+		padding-left: 0.5em;
+		border: 0px;
+		border-radius: 0px;
+		background-color: var(--secondary-background);
+		color: var(--foreground);
+		font-size: 1.2rem;
+		font-family: 'Open Sans';
+		font-weight: 300;
+		margin-bottom: 0;
+
+		&:focus {
+			outline: none;
+		}
+
+		// Removing Chrome autofill color
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			-webkit-box-shadow: 0 0 0 $searchbar-height var(--secondary-background) inset !important;
+			box-shadow: 0 0 0 $searchbar-height var(--secondary-background) inset !important;
+		}
+	}
+}
+</style>
+
 <script>
 import { isValidURL } from '@/utils/utils'
-import Downloads from '@/utils/downloads'
-
-import EventBus from '@/utils/EventBus.js'
+import { sendAddToQueue } from '@/utils/downloads'
+import EventBus from '@/utils/EventBus'
 import { socket } from '@/utils/socket'
 
 export default {
@@ -32,12 +87,27 @@ export default {
 			lastTextSearch: ''
 		}
 	},
-	mounted() {
-		document.addEventListener('keyup', keyEvent => {
-			if (!(keyEvent.key == 'Backspace' && keyEvent.ctrlKey)) return
+	created() {
+		const focusSearchBar = keyEvent => {
+			if (keyEvent.keyCode === 70 && keyEvent.ctrlKey) {
+				keyEvent.preventDefault()
+				this.$refs.searchbar.focus()
+			}
+		}
+
+		const deleteSearchBarContent = keyEvent => {
+			if (!(keyEvent.key == 'Backspace' && keyEvent.ctrlKey && keyEvent.shiftKey)) return
 
 			this.$refs.searchbar.value = ''
 			this.$refs.searchbar.focus()
+		}
+
+		document.addEventListener('keydown', focusSearchBar)
+		document.addEventListener('keyup', deleteSearchBarContent)
+
+		this.$on('hook:destroyed', () => {
+			document.removeEventListener('keydown', focusSearchBar)
+			document.removeEventListener('keyup', deleteSearchBarContent)
 		})
 	},
 	methods: {
@@ -71,11 +141,14 @@ export default {
 						socket.emit('analyzeLink', term)
 					} else {
 						// ? Open downloads tab ?
-						Downloads.sendAddToQueue(term)
+						sendAddToQueue(term)
 					}
 				}
 			} else {
-				if (isShowingSearch && sameAsLastSearch) return
+				if (isShowingSearch && sameAsLastSearch) {
+					this.$root.$emit('mainSearch:updateResults', term)
+					return
+				}
 
 				if (!isShowingSearch) {
 					await this.$router.push({
@@ -88,12 +161,11 @@ export default {
 					this.lastTextSearch = term
 				}
 
-				this.$root.$emit('mainSearch:showNewResults', term, window.main_selected)
+				this.$root.$emit('mainSearch:showNewResults', term)
 			}
 		}
 	}
 }
 </script>
 
-<style>
-</style>
+

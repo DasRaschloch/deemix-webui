@@ -23,9 +23,6 @@
 					:is="currentTab.component"
 					:results="results"
 					@add-to-queue="addToQueue"
-					@artist-view="artistView"
-					@album-view="albumView"
-					@playlist-view="playlistView"
 					@change-search-tab="changeSearchTab"
 				></component>
 			</keep-alive>
@@ -34,7 +31,7 @@
 </template>
 
 <script>
-import BaseLoadingPlaceholder from '@components/BaseLoadingPlaceholder.vue'
+import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import ResultsAll from '@components/search/ResultsAll.vue'
 import ResultsAlbums from '@components/search/ResultsAlbums.vue'
 import ResultsArtists from '@components/search/ResultsArtists.vue'
@@ -42,7 +39,6 @@ import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
 import ResultsTracks from '@components/search/ResultsTracks.vue'
 
 import { socket } from '@/utils/socket'
-import { showView } from '@js/tabs'
 import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
@@ -156,14 +152,12 @@ export default {
 	mounted() {
 		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
 		this.$root.$on('mainSearch:showNewResults', this.checkIfShowNewResults)
+		this.$root.$on('mainSearch:updateResults', this.checkIfUpdateResults)
 
 		socket.on('mainSearch', this.handleMainSearch)
 		socket.on('search', this.handleSearch)
 	},
 	methods: {
-		artistView: showView.bind(null, 'artist'),
-		albumView: showView.bind(null, 'album'),
-		playlistView: showView.bind(null, 'playlist'),
 		changeSearchTab(sectionName) {
 			sectionName = sectionName.toLowerCase()
 
@@ -180,10 +174,19 @@ export default {
 			this.currentTab = newTab
 		},
 		checkIfShowNewResults(term, mainSelected) {
-			let needToPerformNewSearch = term !== this.results.query || mainSelected == 'search_tab'
+			let needToPerformNewSearch = term !== this.results.query /* || mainSelected == 'search_tab' */
 
 			if (needToPerformNewSearch) {
 				this.showNewResults(term)
+			}
+		},
+		checkIfUpdateResults(term) {
+			let needToUpdateSearch = term === this.results.query && this.currentTab.searchType !== 'all'
+
+			if (needToUpdateSearch) {
+				let resetObj = { data: [], next: 0, total: 0, loaded: false }
+				this.results[this.currentTab.searchType + 'Tab'] = { ...resetObj }
+				this.search(this.currentTab.searchType)
 			}
 		},
 		showNewResults(term) {

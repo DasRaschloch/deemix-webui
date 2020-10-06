@@ -13,6 +13,7 @@ import hr from 'flag-icon-css/flags/4x3/hr.svg'
 import ar from '@/assets/ar.svg'
 import ko from 'flag-icon-css/flags/4x3/kr.svg'
 import ph from 'flag-icon-css/flags/4x3/ph.svg'
+import tw from 'flag-icon-css/flags/4x3/tw.svg'
 
 export const flags = {
 	it,
@@ -29,5 +30,6 @@ export const flags = {
 	hr,
 	ar,
 	ko,
-	ph
+	ph,
+	zh_tw: tw
 }

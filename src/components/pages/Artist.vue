@@ -1,5 +1,5 @@
 <template>
-	<div id="artist_tab" class="main_tabcontent fixed_footer image_header" ref="root">
+	<div id="artist_tab" class="main_tabcontent image_header" ref="root">
 		<header
 			class="inline-flex"
 			:style="{
@@ -7,6 +7,8 @@
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
+			<BackButton />
+
 			<h1>{{ title }}</h1>
 			<div role="button" aria-label="download" @click.stop="addToQueue" :data-link="link" class="fab right">
 				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
@@ -67,12 +69,14 @@
 				</tr>
 			</tbody>
 		</table>
-
-		<footer>
-			<button class="back-button" @click="$router.back()">{{ $t('globals.back') }}</button>
-		</footer>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.main_tabcontent {
+	position: relative;
+}
+</style>
 
 <script>
 import { isEmpty, orderBy } from 'lodash-es'
@@ -80,8 +84,9 @@ import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
 import EventBus from '@/utils/EventBus'
 
+import BackButton from '@components/globals/BackButton.vue'
+
 export default {
-	name: 'artist-tab',
 	data() {
 		return {
 			currentTab: '',
@@ -94,6 +99,30 @@ export default {
 			head: null,
 			body: null
 		}
+	},
+	computed: {
+		showTable() {
+			if (this.body) {
+				if (this.sortKey == 'nb_song')
+					return orderBy(
+						this.body[this.currentTab],
+						function (o) {
+							return new Number(o.nb_song)
+						},
+						this.sortOrder
+					)
+				else return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
+			} else return []
+		}
+	},
+	components: {
+		BackButton
+	},
+	mounted() {
+		socket.on('show_artist', this.showArtist)
+
+		EventBus.$on('artistTab:updateSelected', this.updateSelected)
+		EventBus.$on('artistTab:changeTab', this.changeTab)
 	},
 	methods: {
 		reset() {
@@ -157,30 +186,7 @@ export default {
 				this.body = releases
 			}
 		}
-	},
-	computed: {
-		showTable() {
-			if (this.body) {
-				if (this.sortKey == 'nb_song')
-					return orderBy(
-						this.body[this.currentTab],
-						function (o) {
-							return new Number(o.nb_song)
-						},
-						this.sortOrder
-					)
-				else return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
-			} else return []
-		}
-	},
-	mounted() {
-		socket.on('show_artist', this.showArtist)
-
-		EventBus.$on('artistTab:updateSelected', this.updateSelected)
-		EventBus.$on('artistTab:changeTab', this.changeTab)
 	}
 }
 </script>
 
-<style>
-</style>

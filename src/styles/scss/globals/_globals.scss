@@ -191,22 +191,25 @@ a {
 .clickable {
 	cursor: pointer !important;
 }
+
 .table--tracklist .clickable:hover,
 .table--charts .clickable:hover {
 	text-decoration: underline;
 }
 
-.fixed_footer footer {
-	position: sticky;
-	display: flex;
-	align-items: center;
-	flex-direction: row;
-	justify-content: flex-end;
-	background-color: var(--main-background);
-	bottom: 0px;
-	height: 64px;
-	width: 100%;
-	margin-top: 24px;
+.fixed_footer {
+	footer {
+		position: sticky;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		justify-content: flex-end;
+		background-color: var(--main-background);
+		bottom: 0px;
+		height: 64px;
+		width: 100%;
+		margin-top: 24px;
+	}
 }
 
 .fab {

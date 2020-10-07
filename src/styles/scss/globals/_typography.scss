@@ -15,3 +15,17 @@
 	font-size: 1.75rem;
 	margin-bottom: 25px;
 }
+
+.material-icons {
+	$sizes: 18, 24, 36, 48;
+
+	@each $size in $sizes {
+		&.md-#{$size} {
+			font-size: $size * 1px;
+		}
+	}
+
+	&.mirrored {
+		transform: scaleX(-1);
+	}
+}

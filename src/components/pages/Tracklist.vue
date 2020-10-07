@@ -1,17 +1,20 @@
 <template>
-	<div id="tracklist_tab" class="main_tabcontent fixed_footer image_header" ref="root">
+	<div class="main_tabcontent fixed_footer image_header" ref="root">
 		<header
 			:style="{
 				'background-image':
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
+			<BackButton />
+
 			<h1 class="inline-flex">
 				{{ title }} <i v-if="explicit" class="material-icons explicit_icon explicit_icon--right">explicit</i>
 			</h1>
-			<h2 class="inline-flex">
-				<span v-if="metadata">{{ metadata }}</span>
-				<span class="right" v-if="release_date">{{ release_date }}</span>
+
+			<h2>
+				<p v-if="metadata">{{ metadata }}</p>
+				<p v-if="release_date">{{ release_date }}</p>
 			</h2>
 		</header>
 
@@ -137,10 +140,15 @@
 			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
 				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
 			</button>
-			<button class="back-button" @click="$router.back()">{{ $t('globals.back') }}</button>
 		</footer>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.main_tabcontent {
+	position: relative;
+}
+</style>
 
 <script>
 import { isEmpty } from 'lodash-es'
@@ -148,6 +156,8 @@ import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
+
+import BackButton from '@components/globals/BackButton.vue'
 
 export default {
 	data() {
@@ -162,6 +172,16 @@ export default {
 			link: '',
 			body: []
 		}
+	},
+	components: {
+		BackButton
+	},
+	mounted() {
+		EventBus.$on('tracklistTab:selectRow', this.selectRow)
+
+		socket.on('show_album', this.showAlbum)
+		socket.on('show_playlist', this.showPlaylist)
+		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
 	},
 	methods: {
 		playPausePreview(e) {
@@ -291,16 +311,7 @@ export default {
 		selectRow(index, track) {
 			track.selected = !track.selected
 		}
-	},
-	mounted() {
-		EventBus.$on('tracklistTab:selectRow', this.selectRow)
-
-		socket.on('show_album', this.showAlbum)
-		socket.on('show_playlist', this.showPlaylist)
-		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
 	}
 }
 </script>
 
-<style>
-</style>

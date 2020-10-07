@@ -159,11 +159,14 @@ export default {
 		finishedWithFails() {
 			return this.queueItem.status === 'download finished' && this.hasFails
 		},
+		isDeterminateStatus() {
+			return possibleStates.indexOf(this.queueItem.status) !== -1
+		},
 		barClass() {
 			return {
 				converting: this.queueItem.status === 'converting',
-				indeterminate: possibleStates.indexOf(this.queueItem.status) === -1,
-				determinate: possibleStates.indexOf(this.queueItem.status) !== -1
+				indeterminate: !this.isDeterminateStatus,
+				determinate: this.isDeterminateStatus
 			}
 		},
 		barStyle() {
@@ -220,11 +223,16 @@ export default {
 	},
 	methods: {
 		onResultIconClick() {
-			if (this.finishedWithFails) {
-				this.$emit('show-errors', this.queueItem)
-			}
+			if (this.isDeterminateStatus) {
+				if (this.finishedWithFails) {
+					this.$emit('show-errors', this.queueItem)
+				}
 
-			if (this.queueItem.status === 'downloading') {
+				if (this.queueItem.status === 'downloading') {
+					this.isLoading = true
+					this.$emit('remove-item', this.queueItem.uuid)
+				}
+			} else {
 				this.isLoading = true
 				this.$emit('remove-item', this.queueItem.uuid)
 			}

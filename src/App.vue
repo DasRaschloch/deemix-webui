@@ -14,6 +14,7 @@
 
 		<TheTrackPreview />
 		<TheQualityModal />
+		<!-- <ConfirmModal /> -->
 
 		<TheContextMenu />
 	</div>
@@ -39,6 +40,7 @@ import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.v
 import TheContextMenu from '@components/globals/TheContextMenu.vue'
 import TheTrackPreview from '@components/globals/TheTrackPreview.vue'
 import TheQualityModal from '@components/globals/TheQualityModal.vue'
+import ConfirmModal from '@components/globals/ConfirmModal.vue'
 
 import TheSidebar from '@components/TheSidebar.vue'
 import TheSearchBar from '@components/TheSearchBar.vue'
@@ -53,7 +55,8 @@ export default {
 		TheQualityModal,
 		BaseLoadingPlaceholder,
 		TheContextMenu,
-		TheContent
+		TheContent,
+		ConfirmModal
 	}
 }
 </script>

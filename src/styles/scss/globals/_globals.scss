@@ -93,6 +93,22 @@ button {
 		opacity: 0.75;
 	}
 
+	&.btn-green {
+		background-color: green;
+
+		&:active {
+			background-color: green;
+		}
+	}
+
+	&.btn-red {
+		background-color: red;
+
+		&:active {
+			background-color: red;
+		}
+	}
+
 	&.selective {
 		background-color: var(--main-background);
 		color: var(--foreground);
@@ -128,7 +144,7 @@ button {
 		transform: scale(0.98);
 	}
 
-	&:hover {
+	&:not(.no-hover):hover {
 		background: none;
 		border: 1px solid var(--accent-color);
 	}

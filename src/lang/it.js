@@ -4,6 +4,7 @@ const it = {
 		back: 'indietro',
 		loading: 'caricamento',
 		download: 'Scarica {thing}',
+		downloadAll: 'Scarica ogni {thing}',
 		by: 'di {artist}',
 		in: 'in {album}',
 		download_hint: 'Scarica',
@@ -108,8 +109,8 @@ const it = {
 			no360RA: 'Brano non disponibile in Reality Audio 360.',
 			notAvailable: 'Brano non presente sui server di Deezer!',
 			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!',
-			noSpaceLeft: "Spazio su disco esaurito!",
-			albumDoesntExists: "Il brano non ha nessun album, impossibile ottenere informazioni"
+			noSpaceLeft: 'Spazio su disco esaurito!',
+			albumDoesntExists: 'Il brano non ha nessun album, impossibile ottenere informazioni'
 		}
 	},
 	favorites: {
@@ -244,7 +245,7 @@ const it = {
 				n: 'No, non sovrascrivere i file',
 				t: 'Sovrascrivi solo i tag',
 				b: 'No, mantieni entrambi i file e aggiungi un numero al duplicato',
-				e: "No, e non tener conto della estensione del file"
+				e: 'No, e non tener conto della estensione del file'
 			},
 			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
 			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',
@@ -272,7 +273,8 @@ const it = {
 			jpegImageQuality: 'Qualità immagine JPEG',
 			embeddedArtworkPNG: 'Salva copertina incorporata come PNG',
 			embeddedPNGWarning: 'Le immagini PNG non sono usate ufficialmente da Deezer e potrebbero dare problemi',
-			imageSizeWarning: 'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi',
+			imageSizeWarning:
+				'Dimensioni maggiori di x1200 non sono usate ufficialmente da Deezer, potresti incontrare problemi',
 			coverDescriptionUTF8: 'Salva la descrizione della copertina in UTF8 (iTunes Cover Fix)'
 		},
 		tags: {

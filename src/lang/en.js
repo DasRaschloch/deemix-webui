@@ -4,6 +4,7 @@ const en = {
 		back: 'back',
 		loading: 'loading',
 		download: 'Download {thing}',
+		downloadAll: 'Download all {thing}',
 		by: 'by {artist}',
 		in: 'in {album}',
 		download_hint: 'Download',
@@ -105,7 +106,7 @@ const en = {
 			no360RA: 'Track is not available in Reality Audio 360.',
 			notAvailable: "Track not available on Deezer's servers!",
 			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!",
-			noSpaceLeft: "No space left on the device!",
+			noSpaceLeft: 'No space left on the device!',
 			albumDoesntExists: "Track's album doesn't exist, failed to gather info"
 		}
 	},
@@ -126,7 +127,8 @@ const en = {
 	},
 	linkAnalyzer: {
 		info: 'You can use this section to find more information about the link you are trying to download.',
-		useful: "This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
+		useful:
+			"This is useful if you're trying to download some tracks that are not available in your country and want to know where they are available, for instance.",
 		linkNotSupported: 'This link is not yet supported',
 		linkNotSupportedYet: 'Seems like this link is not yet supported, try analyzing another one.',
 		table: {
@@ -146,7 +148,8 @@ const en = {
 	},
 	search: {
 		startSearching: 'Start searching!',
-		description: 'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
+		description:
+			'You can search a track, a whole album, an artist, a playlist.... everything! You can also paste a Deezer link',
 		fans: '{n} fans',
 		noResults: 'No results',
 		noResultsTrack: 'No Tracks found',

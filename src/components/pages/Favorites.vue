@@ -1,5 +1,5 @@
 <template>
-	<div id="favorites_tab" class="main_tabcontent">
+	<div class="main_tabcontent">
 		<h2 class="page_heading">
 			{{ $t('favorites.title') }}
 			<div
@@ -12,6 +12,7 @@
 				<i class="material-icons">sync</i>
 			</div>
 		</h2>
+
 		<div class="section-tabs">
 			<div
 				class="section-tabs__tab favorites_tablinks"
@@ -23,6 +24,10 @@
 				{{ $tc(`globals.listTabs.${tab}`, 2) }}
 			</div>
 		</div>
+
+		<button v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
+			{{ $t('globals.downloadAll', { thing: $tc(`globals.listTabs.${activeTab}`, 2) }) }}
+		</button>
 
 		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'playlist' }">
 			<div v-if="playlists.length == 0">
@@ -222,7 +227,7 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .favorites_tabcontent {
 	display: none;
 
@@ -234,7 +239,7 @@
 
 <script>
 import { socket } from '@/utils/socket'
-import { sendAddToQueue } from '@/utils/downloads'
+import { sendAddToQueue, aggregateDownloadLinks } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 import { toast } from '@/utils/toasts'
 
@@ -250,6 +255,13 @@ export default {
 			spotifyPlaylists: [],
 			activeTab: 'playlist',
 			tabs: ['playlist', 'album', 'artist', 'track']
+		}
+	},
+	computed: {
+		activeTabEmpty() {
+			let toCheck = this.getActiveRelease()
+
+			return toCheck.length === 0
 		}
 	},
 	async created() {
@@ -288,6 +300,21 @@ export default {
 			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		},
 		convertDuration,
+		downloadAllOfType() {
+			try {
+				let toDownload = this.getActiveRelease()
+
+				if (this.activeTab === 'track') {
+					let lovedTracks = this.getLovedTracksPlaylist()
+
+					sendAddToQueue(lovedTracks.link)
+				} else {
+					sendAddToQueue(aggregateDownloadLinks(toDownload))
+				}
+			} catch (error) {
+				console.error(error.message)
+			}
+		},
 		addToQueue(e) {
 			sendAddToQueue(e.currentTarget.dataset.link)
 		},
@@ -336,6 +363,40 @@ export default {
 			this.albums = albums
 			this.artists = artists
 			this.playlists = playlists
+		},
+		getActiveRelease(tab = this.activeTab) {
+			let toDownload
+
+			switch (tab) {
+				case 'playlist':
+					toDownload = this.playlists
+					break
+				case 'album':
+					toDownload = this.albums
+					break
+				case 'artist':
+					toDownload = this.artists
+					break
+				case 'track':
+					toDownload = this.tracks
+					break
+
+				default:
+					break
+			}
+
+			return toDownload
+		},
+		getLovedTracksPlaylist() {
+			let lovedTracks = this.playlists.filter(playlist => {
+				return playlist.is_loved_track
+			})
+
+			if (lovedTracks.length !== 0) {
+				return lovedTracks[0]
+			} else {
+				throw new Error('No loved tracks playlist!')
+			}
 		}
 	}
 }

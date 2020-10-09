@@ -4,6 +4,7 @@ const fr = {
 		back: 'retour',
 		loading: 'chargement en cours',
 		download: 'Télécharger {thing}',
+		downloadAll: 'Télécharger l'intégralité des {thing}',
 		by: 'par {artist}',
 		in: 'dans {album}',
 		download_hint: 'Télécharger',
@@ -126,7 +127,8 @@ const fr = {
 	},
 	linkAnalyzer: {
 		info: "Vous pouvez utiliser cette section pour obtenir davantage d'informations sur le lien que vous essayez de télécharger.",
-		useful: "C'est utile si vous essayez, par exemple, de télécharger des pistes indisponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles.",
+		useful:
+			"C'est utile si vous essayez, par exemple, de télécharger des pistes indisponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles.",
 		linkNotSupported: "Ce lien n'est pas encore pris en charge",
 		linkNotSupportedYet: "Il semble que ce lien ne soit pas encore pris en charge, essayez d'en analyser un autre.",
 		table: {
@@ -146,7 +148,8 @@ const fr = {
 	},
 	search: {
 		startSearching: 'Démarrer une recherche !',
-		description: 'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ce que vous voulez ! Vous pouvez également coller un lien Deezer.',
+		description:
+			'Vous pouvez rechercher une piste, un album entier, un artiste, une playlist... tout ce que vous voulez ! Vous pouvez également coller un lien Deezer.',
 		fans: '{n} fans',
 		noResults: 'Aucun résultat',
 		noResultsTrack: "Aucune piste n'a été trouvée",

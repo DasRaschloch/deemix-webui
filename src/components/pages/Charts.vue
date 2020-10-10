@@ -35,8 +35,8 @@
 			</div>
 		</div>
 		<div v-else id="charts_table">
-			<button @click="onChangeCountry">{{ $t('charts.changeCountry') }}</button>
-			<button @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
+			<button class="btn btn-primary" @click="onChangeCountry">{{ $t('charts.changeCountry') }}</button>
+			<button class="btn btn-primary" @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
 				{{ $t('charts.download') }}
 			</button>
 			<table class="table table--charts">

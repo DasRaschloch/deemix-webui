@@ -19,7 +19,7 @@
 			<button
 				v-for="(item, name) in body"
 				:key="name"
-				class="selective"
+				class="btn btn-primary"
 				:class="{ active: name === currentTab }"
 				:href="'#artist_' + name"
 				@click="changeTab(name)"

@@ -13,7 +13,7 @@
 		top: 0;
 		left: 0;
 		bottom: 0;
-		background-color: var(--accent-color);
+		background-color: var(--primary-color);
 		transition: width 0.3s linear;
 	}
 
@@ -23,7 +23,7 @@
 	}
 
 	.indeterminate {
-		background-color: var(--accent-color);
+		background-color: var(--primary-color);
 
 		&::before {
 			content: '';

@@ -6,6 +6,10 @@
 	--toast-background: hsla(0, 0%, 0%, 0.85);
 	--toast-secondary: hsla(0, 0%, 100%, 0.15);
 	--toast-text: hsla(0, 0%, 100%, 0.85);
+
+	--primary-color: hsl(210, 100%, 52%); // will remove variable
+	--primary-text: theme('colors.grayscale.870'); // will remove variable
+	--secondary-color: hsl(46, 100%, 57%); // will remove variable
 }
 
 :root[data-theme='light'] {
@@ -13,16 +17,13 @@
 	--secondary-background: theme('colors.grayscale.930');
 	--foreground: theme('colors.grayscale.200');
 	--foreground-inverted: theme('colors.grayscale.930');
-	--accent-color: hsl(210, 100%, 52%);
-	--secondary-color: hsl(46, 100%, 57%);
 	--panels-background: hsl(210, 3%, 14%);
 	--panels-text: theme('colors.white');
-	--accent-text: theme('colors.black');
 
 	--sidebar-link-bg: theme('colors.grayscale.240');
 	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
 
-	--icon-hover: var(--accent-color);
+	--icon-hover: var(--primary-color);
 
 	--table-bg: theme('colors.white');
 	--table-zebra: theme('colors.grayscale.900');
@@ -34,16 +35,13 @@
 	--secondary-background: theme('colors.grayscale.140');
 	--foreground: theme('colors.grayscale.930');
 	--foreground-inverted: theme('colors.grayscale.200');
-	--accent-color: hsl(210, 100%, 52%);
-	--secondary-color: hsl(46, 100%, 57%);
 	--panels-background: theme('colors.grayscale.100');
 	--panels-text: theme('colors.white');
-	--accent-text: theme('colors.grayscale.870');
 
 	--sidebar-link-bg: theme('colors.grayscale.240');
 	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
 
-	--icon-hover: var(--accent-color);
+	--icon-hover: var(--primary-color);
 
 	--table-bg: theme('colors.grayscale.80');
 	--table-zebra: theme('colors.grayscale.140');
@@ -55,11 +53,8 @@
 	--secondary-background: hsl(257, 61%, 10%);
 	--foreground: theme('colors.grayscale.930');
 	--foreground-inverted: hsl(258, 62%, 8%);
-	--accent-color: hsl(261, 85%, 37%);
-	--secondary-color: hsl(46, 100%, 57%);
 	--panels-background: hsl(257, 70%, 9%);
 	--panels-text: theme('colors.white');
-	--accent-text: theme('colors.grayscale.870');
 
 	--sidebar-link-bg: hsl(257, 70%, 17%);
 	--sidebar-link-bg-20: hsla(257, 70%, 17%, 0.2);

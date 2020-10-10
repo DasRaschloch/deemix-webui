@@ -37,7 +37,7 @@ module.exports = {
 					900: 'hsl(0, 0%, 90%)',
 					930: 'hsl(0, 0%, 93%)' // Remove maybe
 				},
-				accent: 'var(--accent-color)',
+				primary: 'var(--primary-color)',
 				background: {
 					main: 'var(--main-background)',
 					secondary: 'var(--secondary-background)'
@@ -57,5 +57,34 @@ module.exports = {
 	corePlugins: {
 		preflight: false
 	},
-	plugins: []
+	plugins: [outlinesPlugin()]
+}
+
+function outlinesPlugin() {
+	return ({ addUtilities, theme }) => {
+		// https://github.com/tailwindlabs/discuss/issues/196
+		let newUtilities = {}
+		const boxShadowPrefix = '0 0 0 3px'
+		const colors = theme('colors')
+
+		Object.keys(colors).forEach(color => {
+			const colorData = colors[color]
+
+			if (typeof colorData === 'string') {
+				newUtilities[`.outline-${color}`] = {
+					boxShadow: `${boxShadowPrefix} ${colorData}`
+				}
+			} else {
+				Object.keys(colorData).forEach(colorVariation => {
+					newUtilities[`.outline-${color}-${colorVariation}`] = {
+						boxShadow: `${boxShadowPrefix} ${colorData[colorVariation]}`
+					}
+				})
+			}
+		})
+
+		addUtilities(newUtilities, {
+			variants: ['focus']
+		})
+	}
 }

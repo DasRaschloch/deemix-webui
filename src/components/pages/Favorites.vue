@@ -25,7 +25,7 @@
 			</div>
 		</div>
 
-		<button v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
+		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
 			{{ $t('globals.downloadAll', { thing: $tc(`globals.listTabs.${activeTab}`, 2) }) }}
 		</button>
 

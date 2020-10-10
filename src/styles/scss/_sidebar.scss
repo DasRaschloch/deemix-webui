@@ -24,7 +24,7 @@ $sidebar-delay: 75ms;
 		color: inherit;
 
 		&.active {
-			background-color: var(--accent-color);
+			background-color: var(--primary-color);
 		}
 
 		&:not(#theme_selector) {
@@ -37,7 +37,7 @@ $sidebar-delay: 75ms;
 				background-color: var(--sidebar-link-bg);
 
 				.side_icon {
-					color: var(--accent-color);
+					color: var(--primary-color);
 				}
 			}
 		}

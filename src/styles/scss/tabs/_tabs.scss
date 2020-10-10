@@ -12,7 +12,7 @@
 		color: var(--foreground);
 
 		&.active {
-			background-color: var(--accent-color);
+			background-color: var(--primary-color);
 		}
 	}
 }
@@ -43,8 +43,8 @@
 		text-transform: capitalize;
 
 		&.active {
-			color: var(--accent-color);
-			border-top: 3px solid var(--accent-color);
+			color: var(--primary-color);
+			border-top: 3px solid var(--primary-color);
 		}
 	}
 }

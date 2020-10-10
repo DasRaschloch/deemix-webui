@@ -6,6 +6,8 @@ window.vol = {
 }
 
 import '@/styles/scss/style.scss'
+import '@/styles/css/components.css'
+
 import App from '@/App.vue'
 import i18n from '@/plugins/i18n'
 import router from '@/router'

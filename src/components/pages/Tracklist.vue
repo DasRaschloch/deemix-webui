@@ -134,11 +134,11 @@
 		</table>
 		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px">{{ label }}</span>
 		<footer>
-			<button @click.stop="addToQueue" :data-link="link">
+			<button class="btn btn-primary mr-2" @click.stop="addToQueue" :data-link="link">
 				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${type}`, 1) })}` }}
 			</button>
-			<button class="with_icon" @click.stop="addToQueue" :data-link="selectedLinks()">
-				{{ $t('tracklist.downloadSelection') }}<i class="material-icons">file_download</i>
+			<button class="btn btn-primary flex items-center" @click.stop="addToQueue" :data-link="selectedLinks()">
+				{{ $t('tracklist.downloadSelection') }}<i class="material-icons ml-2">file_download</i>
 			</button>
 		</footer>
 	</div>

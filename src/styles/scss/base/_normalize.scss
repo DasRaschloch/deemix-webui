@@ -28,3 +28,21 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+/* Taken from Tailwind Preflight */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	-webkit-appearance: button;
+}
+
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
+	height: auto;
+}
+
+button,
+[role='button'] {
+	cursor: pointer;
+}

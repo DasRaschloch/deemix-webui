@@ -1,7 +1,7 @@
 <template>
 	<div class="context-menu" v-show="menuOpen" ref="contextMenu" :style="{ top: yPos, left: xPos }">
 		<button
-			class="menu-option"
+			class="btn menu-option"
 			v-for="option of sortedOptions"
 			:key="option.label"
 			v-show="option.show"
@@ -252,9 +252,9 @@ export default {
 
 // Resetting buttons only for this component (because the style is scoped)
 button {
-	color: var(--accent-text);
+	color: var(--primary-text);
 	color: unset;
-	background-color: var(--accent-color);
+	background-color: var(--primary-color);
 	background-color: unset;
 	min-width: unset;
 	position: unset;
@@ -272,31 +272,6 @@ button {
 
 	&:focus {
 		outline: none;
-	}
-
-	&[disabled] {
-		background-color: unset;
-		color: unset;
-		opacity: unset;
-	}
-
-	&.selective {
-		background-color: unset;
-		color: unset;
-
-		&.active {
-			background-color: unset;
-			color: unset;
-		}
-	}
-
-	&.with_icon {
-		display: unset;
-		align-items: unset;
-
-		i {
-			margin-left: unset;
-		}
 	}
 
 	&:active {

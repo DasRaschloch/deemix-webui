@@ -171,7 +171,7 @@ export default {
 		},
 		barStyle() {
 			let width = 0
-			let backgroundColor = 'var(--accent-color)'
+			let backgroundColor = 'var(--primary-color)'
 
 			if (this.hasFails) {
 				// Orange

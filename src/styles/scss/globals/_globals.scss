@@ -37,14 +37,14 @@ input[type='checkbox'] {
 
 	&:checked {
 		opacity: 1;
-		background-color: var(--accent-color);
+		background-color: var(--primary-color);
 		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18' viewBox='3 3 18 18' width='18'%3E%3Cpath fill='%23ffffff' d='M 10,17 5,12 6.41,10.59 10,14.17 17.59,6.58 19,8 Z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
 		background-position: center center;
-		border: 0px solid var(--accent-color);
+		border: 0px solid var(--primary-color);
 		border-radius: 2px;
 		padding: 9px;
 		margin: 3px;
-		color: var(--accent-text);
+		color: var(--primary-text);
 	}
 }
 
@@ -68,86 +68,6 @@ select {
 
 p {
 	word-break: break-word;
-}
-
-button {
-	min-width: 64px;
-	color: var(--accent-text);
-	position: relative;
-	background-color: var(--accent-color);
-	border: 1px solid transparent;
-	border-radius: 4px;
-	font-family: inherit;
-	font-weight: 600;
-	font-size: 14px;
-	padding: 0px 8px;
-	margin-right: 8px;
-	height: 36px;
-	text-transform: uppercase;
-	cursor: pointer;
-	transition: transform 50ms ease-in-out, background-color 200ms ease;
-
-	&[disabled] {
-		background-color: var(--secondary-background);
-		color: var(--foreground);
-		opacity: 0.75;
-	}
-
-	&.btn-green {
-		background-color: green;
-
-		&:active {
-			background-color: green;
-		}
-	}
-
-	&.btn-red {
-		background-color: red;
-
-		&:active {
-			background-color: red;
-		}
-	}
-
-	&.selective {
-		background-color: var(--main-background);
-		color: var(--foreground);
-
-		&.active {
-			background-color: var(--accent-color);
-			color: var(--accent-text);
-		}
-	}
-
-	&.with_icon {
-		display: flex;
-		align-items: center;
-
-		i {
-			margin-left: 8px;
-		}
-	}
-
-	&.only_icon {
-		min-width: 24px;
-		width: 48px;
-		margin: 0px 0px 0px 8px;
-		padding: 0px 4px;
-
-		i {
-			padding: 6px 0px;
-		}
-	}
-
-	&:active {
-		background-color: var(--accent-color);
-		transform: scale(0.98);
-	}
-
-	&:not(.no-hover):hover {
-		background: none;
-		border: 1px solid var(--accent-color);
-	}
 }
 
 img {
@@ -233,8 +153,8 @@ a {
 	height: 56px;
 	border-radius: 28px;
 	display: inline-block;
-	background-color: var(--accent-color);
-	color: var(--accent-text);
+	background-color: var(--primary-color);
+	color: var(--primary-text);
 	cursor: pointer;
 
 	i {

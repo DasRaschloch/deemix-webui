@@ -4,8 +4,8 @@
 			<h1 style="flex: 1">{{ titleText }}</h1>
 
 			<div class="confirm-area">
-				<button class="no-hover"></button>
-				<button class="btn-red no-hover"></button>
+				<button class="no-hover">Text</button>
+				<button class="no-hover bg-red-600">Text</button>
 			</div>
 		</div>
 

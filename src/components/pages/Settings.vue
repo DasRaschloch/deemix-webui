@@ -9,7 +9,9 @@
 				<strong place="username" id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
 			</i18n>
 
-			<button id="settings_btn_logout" @click="logout">{{ $t('settings.login.logout') }}</button>
+			<button class="btn btn-primary" id="settings_btn_logout" @click="logout">
+				{{ $t('settings.login.logout') }}
+			</button>
 
 			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
 				<option v-for="(account, i) in accounts" :key="account" :value="i.toString()">{{ account.BLOG_NAME }}</option>
@@ -29,7 +31,7 @@
 					ref="loginInput"
 					placeholder="ARL"
 				/>
-				<button id="settings_btn_copyArl" class="only_icon" @click="copyARLtoClipboard">
+				<button id="settings_btn_copyArl" class="btn btn-primary btn-only-icon ml-2" @click="copyARLtoClipboard">
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
@@ -39,7 +41,7 @@
 			<a id="settings_btn_applogin" v-if="clientMode" href="#" @click="appLogin">
 				{{ $t('settings.login.login') }}
 			</a>
-			<button id="settings_btn_updateArl" @click="login" style="width: 100%">
+			<button class="btn btn-primary" id="settings_btn_updateArl" @click="login" style="width: 100%">
 				{{ $t('settings.login.arl.update') }}
 			</button>
 		</div>
@@ -78,7 +80,12 @@
 			</h3>
 			<div class="inline-flex">
 				<input autocomplete="off" type="text" v-model="settings.downloadLocation" />
-				<button id="select_downloads_folder" v-if="clientMode" class="only_icon" @click="selectDownloadFolder">
+				<button
+					id="select_downloads_folder"
+					v-if="clientMode"
+					class="btn btn-primary btn-only-icon ml-2"
+					@click="selectDownloadFolder"
+				>
 					<i class="material-icons">folder</i>
 				</button>
 			</div>
@@ -611,8 +618,8 @@
 		</div>
 
 		<footer>
-			<button @click="resetSettings">{{ $t('settings.reset') }}</button>
-			<button @click="saveSettings">{{ $t('settings.save') }}</button>
+			<button class="btn btn-primary mr-2" @click="resetSettings">{{ $t('settings.reset') }}</button>
+			<button class="btn btn-primary" @click="saveSettings">{{ $t('settings.save') }}</button>
 		</footer>
 	</div>
 </template>

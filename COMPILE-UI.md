@@ -36,12 +36,11 @@ $ npm run dev
 
 P.S.: You need to be inside the [deemix-pyweb](https://codeberg.org/RemixDev/deemix-pyweb) repo to have the server working correctly.
 
-you will have 3 tasks running at the same time:
+you will have 2 tasks running at the same time:
 - the server
 - the [rollup](https://rollupjs.org/guide/en/) watcher pointing to the configured `.js` file and ready to re-bundle
-- the [SASS](https://sass-lang.com/) compiler watching for `.scss` files changes
 
-Note that in development mode 2 more files (`bundle.js.map` and `style.css.map`) will be created in the public folder. These files will be deleted when running the build command, so you don't need to worry about them.
+Note that in development mode 1 more file (`bundle.js.map`) will be created in the public folder. This file will be deleted when running the build command, so you don't need to worry about it.
 
 **You can now go to http://127.0.0.1:6595 and see the app running.**
 
@@ -68,10 +67,9 @@ $ npm run build
 This is necessary to get
 
 - a bundled `.js` file **minified**
-- the compiled `.css` compressed
-- deleted the 2 `.map` files
+- deleted the `.map` file
 
-in order to drop the final application size (we are talking about MBs, the maps are heavy).
+in order to drop the final application size (we are talking about MBs, maps are heavy).
 
 # Other
 

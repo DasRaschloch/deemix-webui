@@ -46,8 +46,8 @@ export default {
 		resolve(), // Tells Rollup how to find imported modules in node_modules
 		commonjs(), // Converts imported modules to ES modules, if necessary
 		svg(),
-		postcss(),
 		vue(),
+		postcss(),
 		production && terser(), // Minify, but only in production
 		production && analyze({ showExports: true, limit: 15 }) // Show useful information about bundles, only in production
 	]

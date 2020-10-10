@@ -29,7 +29,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	border-top: 1px solid var(--separator); /* Need less opacity */
+	border-top: 1px solid theme('colors.grayscale.500'); /* Need less opacity */
 	padding-top: 20px;
 	padding-bottom: 20px;
 

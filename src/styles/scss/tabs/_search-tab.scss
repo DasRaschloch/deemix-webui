@@ -5,7 +5,7 @@
 		padding-bottom: 20px;
 
 		&:not(:first-child) {
-			border-top: 1px solid var(--separator);
+			border-top: 1px solid theme('colors.grayscale.500');
 		}
 	}
 

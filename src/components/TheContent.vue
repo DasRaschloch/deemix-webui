@@ -43,21 +43,21 @@ main {
 	height: calc(100vh - 93px);
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
 
-	&::-webkit-scrollbar {
-		width: 10px;
-	}
+main::-webkit-scrollbar {
+	width: 10px;
+}
 
-	&::-webkit-scrollbar-track {
-		background: var(--main-background);
-	}
+main::-webkit-scrollbar-track {
+	background: var(--main-background);
+}
 
-	&::-webkit-scrollbar-thumb {
-		background: var(--main-scroll);
-		border-radius: 4px;
-		width: 6px;
-		padding: 0px 2px;
-	}
+main::-webkit-scrollbar-thumb {
+	background: var(--main-scroll);
+	border-radius: 4px;
+	width: 6px;
+	padding: 0px 2px;
 }
 </style>
 

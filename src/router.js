@@ -151,8 +151,6 @@ router.beforeEach((to, from, next) => {
 		socket.emit('getTracklist', getTracklistParams)
 	}
 
-	EventBus.$emit('trackPreview:stopStackedTabsPreview')
-
 	next()
 })
 

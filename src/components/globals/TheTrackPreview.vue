@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// import $ from 'jquery'
 import EventBus from '@/utils/EventBus'
 
 import { adjustVolume } from '@/utils/adjust-volume'
@@ -17,8 +16,12 @@ export default {
 	mounted() {
 		this.$refs.preview.volume = 1
 
+		this.$router.beforeEach((to, from, next) => {
+			this.stopStackedTabsPreview()
+			next()
+		})
+
 		EventBus.$on('trackPreview:playPausePreview', this.playPausePreview)
-		EventBus.$on('trackPreview:stopStackedTabsPreview', this.stopStackedTabsPreview)
 		EventBus.$on('trackPreview:previewMouseEnter', this.previewMouseEnter)
 		EventBus.$on('trackPreview:previewMouseLeave', this.previewMouseLeave)
 	},
@@ -116,7 +119,8 @@ export default {
 
 			if (controls.length === 0) return
 
-			await adjustVolume(this.$refs.preview, 0, { duration: 800 })
+			await adjustVolume(this.$refs.preview, 0, { duration: 250 })
+			this.$refs.preview.pause()
 
 			this.previewStopped = true
 

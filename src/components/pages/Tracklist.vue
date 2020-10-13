@@ -6,8 +6,6 @@
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
-			<BackButton />
-
 			<h1 class="inline-flex">
 				{{ title }} <i v-if="explicit" class="material-icons explicit_icon explicit_icon--right">explicit</i>
 			</h1>
@@ -157,8 +155,6 @@ import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
 
-import BackButton from '@components/globals/BackButton.vue'
-
 export default {
 	data() {
 		return {
@@ -172,9 +168,6 @@ export default {
 			link: '',
 			body: []
 		}
-	},
-	components: {
-		BackButton
 	},
 	mounted() {
 		EventBus.$on('tracklistTab:selectRow', this.selectRow)

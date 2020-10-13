@@ -42,12 +42,12 @@ const routes = [
 		component: Tracklist
 	},
 	{
-		path: '/tracklist/:id',
+		path: '/playlist/:id',
 		name: 'Playlist',
 		component: Tracklist
 	},
 	{
-		path: '/tracklist/:id',
+		path: '/spotify-playlist/:id',
 		name: 'Spotify Playlist',
 		component: Tracklist
 	},

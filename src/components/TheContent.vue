@@ -7,23 +7,24 @@
 	>
 		<div id="container">
 			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
+			<BackButton v-if="showBackButton" class="sticky -ml-20" style="top: 1rem" />
 
 			<keep-alive>
 				<router-view
 					v-if="!$route.meta.notKeepAlive"
 					v-show="!loading"
+					class="-mt-16"
 					:key="$route.fullPath"
 					:perform-scrolled-search="performScrolledSearch"
-					exclude=""
 				></router-view>
 			</keep-alive>
 
 			<router-view
 				v-if="$route.meta.notKeepAlive"
 				v-show="!loading"
+				class="-mt-16"
 				:key="$route.fullPath"
 				:perform-scrolled-search="performScrolledSearch"
-				exclude=""
 			></router-view>
 		</div>
 	</main>
@@ -34,6 +35,7 @@
 	margin: 0 auto;
 	max-width: 1280px;
 	width: var(--container-width);
+	transform: scale(1);
 }
 
 main {
@@ -64,15 +66,22 @@ main::-webkit-scrollbar-thumb {
 <script>
 import { debounce } from '@/utils/utils'
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
+import BackButton from '@components/globals/BackButton.vue'
 
 export default {
 	components: {
-		BaseLoadingPlaceholder
+		BaseLoadingPlaceholder,
+		BackButton
 	},
 	data: () => ({
 		performScrolledSearch: false,
 		loading: false
 	}),
+	computed: {
+		showBackButton() {
+			return ['Tracklist', 'Artist', 'Album', 'Playlist', 'Spotify Playlist'].indexOf(this.$route.name) !== -1
+		}
+	},
 	mounted() {
 		this.$root.$on('updateSearchLoadingState', loading => {
 			this.loading = loading

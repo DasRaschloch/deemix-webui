@@ -7,8 +7,6 @@
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
-			<BackButton />
-
 			<h1>{{ title }}</h1>
 			<div role="button" aria-label="download" @click.stop="addToQueue" :data-link="link" class="fab right">
 				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
@@ -84,8 +82,6 @@ import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
 import EventBus from '@/utils/EventBus'
 
-import BackButton from '@components/globals/BackButton.vue'
-
 export default {
 	data() {
 		return {
@@ -114,9 +110,6 @@ export default {
 				else return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
 			} else return []
 		}
-	},
-	components: {
-		BackButton
 	},
 	mounted() {
 		socket.on('show_artist', this.showArtist)

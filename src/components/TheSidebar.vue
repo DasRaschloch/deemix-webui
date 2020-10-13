@@ -13,6 +13,11 @@
 		>
 			<i class="material-icons side_icon">{{ link.icon }}</i>
 			<span class="main_tablinks_text">{{ $t(link.label) }}</span>
+			<span
+				v-if="link.name === 'about' && updateAvailable"
+				id="update-notification"
+				class="bg-red-600 w-3 h-3 rounded-full"
+			></span>
 		</router-link>
 
 		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
@@ -61,6 +66,12 @@
 	width: 1em;
 	height: 1em;
 }
+
+#update-notification {
+	position: absolute;
+	left: 30px;
+	top: 12px;
+}
 </style>
 
 <script>
@@ -73,6 +84,7 @@ export default {
 			activeTheme: 'light',
 			themes: ['purple', 'dark', 'light'],
 			activeTablink: 'home',
+			updateAvailable: false,
 			links: [
 				{
 					id: 'main_home_tablink',
@@ -146,7 +158,7 @@ export default {
 		})
 
 		/* === Current theme handling === */
-		this.activeTheme = localStorage.getItem('selectedTheme') || 'light'
+		this.activeTheme = localStorage.getItem('selectedTheme') || 'dark'
 
 		this.$router.afterEach((to, from) => {
 			const linkInSidebar = this.links.find(link => link.routerName === to.name)
@@ -157,13 +169,8 @@ export default {
 		})
 
 		/* === Add update notification near info === */
-		updateNotification = document.createElement('span')
-		updateNotification.id = "update-notification"
-		updateNotification.className = "hide"
-		document.getElementById("main_about_tablink").append(updateNotification)
-
-		socket.on('updateAvailable', function() {
-			document.getElementById("update-notification").classList.remove("hide")
+		socket.on('updateAvailable', () => {
+			this.updateAvailable = true
 		})
 	},
 	methods: {

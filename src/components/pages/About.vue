@@ -208,20 +208,23 @@ import ethereum from '@/assets/ethereum.svg'
 import { mapGetters } from 'vuex'
 
 export default {
-	data: () => ({
-		paypal,
-		ethereum,
-		current: null,
-		latest: null,
-		updateAvailable: false,
-		deemixVersion: null
-	}),
+	data() {
+		return {
+			paypal,
+			ethereum,
+			current: null,
+			latest: null,
+			updateAvailable: false,
+			deemixVersion: null
+		}
+	},
 	computed: {
 		...mapGetters(['getAboutInfo'])
 	},
 	methods: {
 		initUpdate(data) {
 			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = data
+
 			this.current = currentCommit
 			this.latest = latestCommit
 			this.updateAvailable = updateAvailable

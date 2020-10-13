@@ -175,15 +175,8 @@
 							@click="playPausePreview"
 							:data-preview="track.preview"
 						>
-							<i
-								@mouseenter="previewMouseEnter"
-								@mouseleave="previewMouseLeave"
-								v-if="track.preview"
-								class="material-icons preview_controls"
-								:title="$t('globals.play_hint')"
-							>
-								play_arrow
-							</i>
+							<PreviewControls v-if="track.preview" />
+
 							<img class="rounded coverart" :src="track.album.cover_small" />
 						</a>
 					</td>
@@ -242,10 +235,15 @@ import { socket } from '@/utils/socket'
 import { sendAddToQueue, aggregateDownloadLinks } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 import { toast } from '@/utils/toasts'
-
 import { getFavoritesData } from '@/data/favorites'
 
+import EventBus from '@/utils/EventBus'
+import PreviewControls from '@components/globals/PreviewControls.vue'
+
 export default {
+	components: {
+		PreviewControls
+	},
 	data() {
 		return {
 			tracks: [],
@@ -292,12 +290,6 @@ export default {
 	methods: {
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
-		previewMouseEnter(e) {
-			EventBus.$emit('trackPreview:previewMouseEnter', e)
-		},
-		previewMouseLeave(e) {
-			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		},
 		convertDuration,
 		downloadAllOfType() {

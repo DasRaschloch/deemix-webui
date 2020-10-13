@@ -25,15 +25,8 @@
 							:class="'rounded' + (track.preview ? ' single-cover' : '')"
 							:data-preview="track.preview"
 						>
-							<i
-								@mouseenter="previewMouseEnter"
-								@mouseleave="previewMouseLeave"
-								v-if="track.preview"
-								class="material-icons preview_controls"
-								:title="$t('globals.play_hint')"
-							>
-								play_arrow
-							</i>
+							<PreviewControls v-if="track.preview" />
+
 							<img class="rounded coverart" :src="track.album.cover_small" />
 						</a>
 					</td>
@@ -80,6 +73,7 @@
 
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
+import PreviewControls from '@components/globals/PreviewControls.vue'
 
 import EventBus from '@/utils/EventBus'
 import { convertDuration } from '@/utils/utils'
@@ -87,18 +81,13 @@ import { convertDuration } from '@/utils/utils'
 export default {
 	props: ['results'],
 	components: {
-		BaseLoadingPlaceholder
+		BaseLoadingPlaceholder,
+		PreviewControls
 	},
 	methods: {
 		convertDuration,
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
-		previewMouseEnter(e) {
-			EventBus.$emit('trackPreview:previewMouseEnter', e)
-		},
-		previewMouseLeave(e) {
-			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		}
 	}
 }

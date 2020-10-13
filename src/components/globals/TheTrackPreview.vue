@@ -66,7 +66,7 @@ export default {
 			e.preventDefault()
 			e.stopPropagation()
 
-			const { currentTarget: obj } = event
+			const { currentTarget: obj } = e
 
 			var icon = obj.tagName == 'I' ? obj : obj.querySelector('i')
 

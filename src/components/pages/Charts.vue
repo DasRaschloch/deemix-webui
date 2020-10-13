@@ -53,15 +53,7 @@
 								:class="{ 'single-cover': track.preview }"
 								:data-preview="track.preview"
 							>
-								<i
-									@mouseenter="previewMouseEnter"
-									@mouseleave="previewMouseLeave"
-									v-if="track.preview"
-									class="material-icons preview_controls"
-									:title="$t('globals.play_hint')"
-								>
-									play_arrow
-								</i>
+								<PreviewControls v-if="track.preview" />
 								<img class="rounded coverart" :src="track.album.cover_small" />
 							</a>
 						</td>
@@ -109,12 +101,15 @@ import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
-
 import { getChartsData } from '@/data/charts'
 
 import EventBus from '@/utils/EventBus'
+import PreviewControls from '@components/globals/PreviewControls.vue'
 
 export default {
+	components: {
+		PreviewControls
+	},
 	data() {
 		return {
 			country: '',
@@ -137,12 +132,6 @@ export default {
 		convertDuration,
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
-		previewMouseEnter(e) {
-			EventBus.$emit('trackPreview:previewMouseEnter', e)
-		},
-		previewMouseLeave(e) {
-			EventBus.$emit('trackPreview:previewMouseLeave', e)
 		},
 		addToQueue(e) {
 			e.stopPropagation()

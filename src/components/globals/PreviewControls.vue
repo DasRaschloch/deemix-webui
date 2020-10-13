@@ -1,0 +1,25 @@
+<template>
+	<i
+		@mouseenter="previewMouseEnter"
+		@mouseleave="previewMouseLeave"
+		class="absolute top-0 right-0 flex items-center justify-center w-full h-full text-center transition-opacity duration-200 ease-in-out bg-black bg-opacity-50 rounded opacity-0 material-icons preview_controls"
+		:title="$t('globals.play_hint')"
+	>
+		play_arrow
+	</i>
+</template>
+
+<script>
+import EventBus from '@/utils/EventBus'
+
+export default {
+	methods: {
+		previewMouseEnter(e) {
+			EventBus.$emit('trackPreview:previewMouseEnter', e)
+		},
+		previewMouseLeave(e) {
+			EventBus.$emit('trackPreview:previewMouseLeave', e)
+		}
+	}
+}
+</script>

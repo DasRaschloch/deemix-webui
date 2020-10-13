@@ -42,7 +42,11 @@
 								<div class="table__cell-content table__cell-content--vertical-center">
 									<i
 										class="material-icons"
-										:class="{ preview_playlist_controls: track.preview, disabled: !track.preview }"
+										:class="{
+											preview_playlist_controls: track.preview,
+											'cursor-pointer': track.preview,
+											disabled: !track.preview
+										}"
 										v-on="{ click: track.preview ? playPausePreview : false }"
 										:data-preview="track.preview"
 										:title="$t('globals.play_hint')"
@@ -109,7 +113,11 @@
 							<i
 								v-if="track.preview_url"
 								@click="playPausePreview"
-								:class="'material-icons' + (track.preview_url ? ' preview_playlist_controls' : '')"
+								class="material-icons"
+								:class="{
+									preview_playlist_controls: track.preview_url,
+									'cursor-pointer': track.preview_url
+								}"
 								:data-preview="track.preview_url"
 								:title="$t('globals.play_hint')"
 							>
@@ -132,11 +140,11 @@
 		</table>
 		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px">{{ label }}</span>
 		<footer>
-			<button class="btn btn-primary mr-2" @click.stop="addToQueue" :data-link="link">
+			<button class="mr-2 btn btn-primary" @click.stop="addToQueue" :data-link="link">
 				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${type}`, 1) })}` }}
 			</button>
-			<button class="btn btn-primary flex items-center" @click.stop="addToQueue" :data-link="selectedLinks()">
-				{{ $t('tracklist.downloadSelection') }}<i class="material-icons ml-2">file_download</i>
+			<button class="flex items-center btn btn-primary" @click.stop="addToQueue" :data-link="selectedLinks()">
+				{{ $t('tracklist.downloadSelection') }}<i class="ml-2 material-icons">file_download</i>
 			</button>
 		</footer>
 	</div>

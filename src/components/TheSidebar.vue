@@ -64,6 +64,8 @@
 </style>
 
 <script>
+import { socket } from '@/utils/socket'
+
 export default {
 	data() {
 		return {
@@ -152,6 +154,16 @@ export default {
 			if (!linkInSidebar) return
 
 			this.activeTablink = linkInSidebar.name
+		})
+
+		/* === Add update notification near info === */
+		updateNotification = document.createElement('span')
+		updateNotification.id = "update-notification"
+		updateNotification.className = "hide"
+		document.getElementById("main_about_tablink").append(updateNotification)
+
+		socket.on('updateAvailable', function() {
+			document.getElementById("update-notification").classList.remove("hide")
 		})
 	},
 	methods: {

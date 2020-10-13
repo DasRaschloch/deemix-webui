@@ -13,7 +13,7 @@
 				<router-view
 					v-if="!$route.meta.notKeepAlive"
 					v-show="!loading"
-					class="-mt-16"
+					:class="{ '-mt-16': showBackButton }"
 					:key="$route.fullPath"
 					:perform-scrolled-search="performScrolledSearch"
 				></router-view>
@@ -22,7 +22,7 @@
 			<router-view
 				v-if="$route.meta.notKeepAlive"
 				v-show="!loading"
-				class="-mt-16"
+				:class="{ '-mt-16': showBackButton }"
 				:key="$route.fullPath"
 				:perform-scrolled-search="performScrolledSearch"
 			></router-view>

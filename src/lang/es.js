@@ -9,22 +9,22 @@ const es = {
 		download_hint: 'Descargar',
 		play_hint: 'Reproducir',
 		toggle_download_tab_hint: 'Expandir/Colapsar',
-		clean_queue_hint: 'Limpiar terminados',
-		cancel_queue_hint: 'Cancelar todos',
-		open_downloads_folder: 'Abrir carpeta de descargas',
+		clean_queue_hint: 'Limpieza terminada',
+		cancel_queue_hint: 'Cancelar todo',
+		open_downloads_folder: 'Abrir la carpeta de descargas',
 		cut: 'cortar',
 		copy: 'copiar',
-		copyLink: 'copiar link',
-		copyImageLink: 'copiar link de la imagen',
-		copyDeezerLink: 'copiar link de Deezer',
+		copyLink: 'copiar vinculo',
+		copyImageLink: 'copiar el vínculo de la imagen',
+		copyDeezerLink: 'copiar el vínculo de Deezer',
 		paste: 'pegar',
 		listTabs: {
 			empty: '',
-			all: 'todos',
-			top_result: 'mejores resultados',
+			all: 'todo',
+			top_result: 'mejor resultado',
 			album: 'álbum | álbumes',
 			artist: 'artista | artistas',
-			single: 'sencillo | sencillos',
+			single: 'single | singles',
 			title: 'título | títulos',
 			track: 'pista | pistas',
 			trackN: '0 pistas | {n} pista | {n} pistas',
@@ -33,7 +33,7 @@ const es = {
 			compile: 'compilación | compilaciones',
 			ep: 'ep | eps',
 			more: 'Más álbumes',
-			featured: 'Apareció en',
+			featured: 'Aparece en',
 			spotifyPlaylist: 'lista de reproducción spotify | listas de reproducción spotify',
 			releaseDate: 'fecha de publicación',
 			error: 'error'
@@ -56,7 +56,7 @@ const es = {
 		subtitles: {
 			bugReports: '¿Hay algo que no funcione en Deemix? ¡Díganoslo!',
 			contributing: '¿Quieres contribuir a este proyecto? ¡Puedes hacerlo de diferentes maneras!',
-			donations: '¿Quiere contribuir monetariamente? ¡Podrías hacer una donación!'
+			donations: '¿Quiere contribuir monetariamente? ¡Puedes hacer una donación!'
 		},
 		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
 		thanks: `Gracias a <strong>rtonno</strong>, <strong>uhwot</strong> y <strong>lollilol</strong> por ayudarme con este proyecto, a <strong>BasCurtiz</strong> y <strong>scarvimane</strong> por hacer el icono.`,
@@ -81,18 +81,18 @@ const es = {
 		lincensedUnder: `Esta obra está autorizada bajo una <a rel="licencia" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU Licencia Pública General 3.0</a>.`
 	},
 	charts: {
-		title: 'Tablas',
+		title: 'Listas',
 		changeCountry: 'Cambiar país',
-		download: 'Descargar la tabla'
+		download: 'Descargar la lista'
 	},
 	errors: {
 		title: 'Errores para {name}',
 		ids: {
 			invalidURL: 'No se reconoce la URL',
-			unsupportedURL: 'La URL no está soportada aún',
-			ISRCnotOnDeezer: 'Pista ISRC no está disponible en Deezer',
+			unsupportedURL: 'La URL aún no está soportada',
+			ISRCnotOnDeezer: 'La pista ISRC no está disponible en Deezer',
 			notYourPrivatePlaylist: 'No puedes descargar otras listas de reproducción privadas.',
-			spotifyDisabled: 'Funciones de Spotify no está configurado correctamente.',
+			spotifyDisabled: 'Las funciones de Spotify no está configurado correctamente.',
 			trackNotOnDeezer: '¡No se encontró la pista en Deezer!',
 			albumNotOnDeezer: '¡El álbum no se encuentra en Deezer!',
 			notOnDeezer: '¡Pista no disponible en Deezer!',
@@ -118,7 +118,7 @@ const es = {
 		openSettings: 'Abrir la configuración',
 		sections: {
 			popularPlaylists: 'Listas de reproducción populares',
-			popularAlbums: 'Los álbumes más transmitidos'
+			popularAlbums: 'Los álbumes más stremeados'
 		}
 	},
 	linkAnalyzer: {
@@ -144,8 +144,8 @@ const es = {
 	search: {
 		startSearching: '¡Comienza a buscar!',
 		description: 'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
-		fans: '{n} fanáticos',
-		noResults: 'No hay resultados',
+		fans: '{n} fans',
+		noResults: 'Ningun resultado',
 		noResultsTrack: 'No se encontraron pistas',
 		noResultsAlbum: 'No se encontraron álbumes',
 		noResultsArtist: 'No se encontraron artistas',
@@ -154,7 +154,7 @@ const es = {
 	searchbar: 'Busca lo que quieras (o simplemente pega un enlace)',
 	downloads: 'descargas',
 	toasts: {
-		restoringQueue: 'Restaurando cola de descarga...',
+		restoringQueue: 'Restaurando la cola de descarga...',
 		queueRestored: '¡Cola de descarga restaurada!',
 		addedToQueue: '{item} añadidos a la cola',
 		addedMoreToQueue: '{n} elementos añadidos a la cola',
@@ -169,8 +169,8 @@ const es = {
 		loggedOut: 'Desconectado',
 		cancellingCurrentItem: 'Cancelando el elemento actual.',
 		currentItemCancelled: 'El elemento actual se ha cancelado.',
-		startAddingArtist: 'Añadiendo {artist} álbumes a la cola',
-		finishAddingArtist: 'Añadido {artist} álbumes a la cola',
+		startAddingArtist: 'Añadiendo los álbumes de {artist} a la cola',
+		finishAddingArtist: 'Se ha añadido los álbumes de {artist} a la cola',
 		startConvertingSpotifyPlaylist: 'Convertir las pistas de Spotify en pistas de Deezer',
 		finishConvertingSpotifyPlaylist: 'Lista de reproducción de Spotify convertida',
 		loginNeededToDownload: '¡Necesitas iniciar sesión para descargar títulos!',
@@ -180,18 +180,18 @@ const es = {
 		title: 'Configuración',
 		languages: 'Idiomas',
 		login: {
-			title: 'Ingresa',
+			title: 'Iniciar Sesión',
 			loggedIn: 'Usted está conectado como {nombre de usuario}',
 			arl: {
 				question: '¿Cómo consigo mi propio ARL?',
 				update: 'Actualiza la ARL'
 			},
-			logout: 'Cerrar sesión',
-			login: 'Ingresa a través de deezer.com'
+			logout: 'Cerrar Sesión',
+			login: 'Inicia sesión a través de deezer.com'
 		},
 		appearance: {
 			title: 'Apariencia',
-			slimDownloadTab: 'Pestaña de descargas delgada'
+			slimDownloadTab: 'Pestaña de descargas fina'
 		},
 		downloadPath: {
 			title: 'Ruta de descarga'
@@ -230,11 +230,11 @@ const es = {
 				1: 'MP3 128kbps'
 			},
 			overwriteFile: {
-				title: '¿Desea que sobreescriba los archivos?',
+				title: '¿Desea que se sobreescriban los archivos?',
 				y: 'Sí, sobrescribir el archivo',
 				n: 'No, no sobrescribir el archivo',
 				t: 'Sobrescribir sólo las etiquetas',
-				b: 'No, mantener los dos archivos y agrega un número al archivo duplicado',
+				b: 'No, mantener los dos archivos y agregar un número al archivo duplicado',
 				e: 'No, y no mirar las extensiones'
 			},
 			fallbackBitrate: 'La solución alternativa de bitrate',
@@ -242,28 +242,28 @@ const es = {
 			logErrors: 'Crear archivos de registro de errores',
 			logSearched: 'Crear archivos de registro para las pistas buscadas',
 			createM3U8File: 'Crear archivo de la lista de reproducción',
-			syncedLyrics: 'Crear archivos .lyr (letras sincronizadas)',
+			syncedLyrics: 'Crear archivos .lyr (lyrics sincronizadas)',
 			playlistFilenameTemplate: 'Plantilla de nombres de archivos de la lista de reproducción',
 			saveDownloadQueue: 'Guardar la cola de descarga al cerrar la aplicación'
 		},
 		covers: {
-			title: 'Cubiertas de álbumes',
-			saveArtwork: 'Guardar las cubiertas',
+			title: 'Portadas de álbumes',
+			saveArtwork: 'Guardar las portadas',
 			coverImageTemplate: 'Plantilla de nombres de portada',
 			saveArtworkArtist: 'Guardar imagen de artista',
 			artistImageTemplate: 'Plantilla de imagen de artista',
-			localArtworkSize: 'El tamaño de la imagen local',
-			embeddedArtworkSize: 'El tamaño de la imagen incorporada',
+			localArtworkSize: 'El tamaño de la portada local',
+			embeddedArtworkSize: 'El tamaño de la portada incorporada',
 			localArtworkFormat: {
-				title: '¿Qué formato quieres que tenga la imagen de arte local?',
+				title: '¿Qué formato quieres que tenga la portada local?',
 				jpg: 'Una imagen jpeg',
 				png: 'Una imagen png',
 				both: 'Ambos, jpeg y png'
 			},
 			jpegImageQuality: 'Calidad de la imagen JPEG',
 			embeddedArtworkPNG: 'Guardar las imágenes incrustadas como PNG',
-			embeddedPNGWarning: 'Las PNG no están oficialmente soportadas por Deezer y puede encontrar errores.',
-			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, tú podrías encontrar inconvenientes',
+			embeddedPNGWarning: 'Las PNG no están oficialmente soportadas por Deezer y puedes encontrar errores.',
+			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, puede que encuentres inconvenientes',
 			coverDescriptionUTF8: 'Guardar la descripción de la portada usando UTF8 (arregla la portada de iTunes)'
 		},
 		tags: {
@@ -275,29 +275,29 @@ const es = {
 			trackNumber: 'Número de pista',
 			trackTotal: 'Total de pistas',
 			discNumber: 'Número del disco',
-			discTotal: 'Discos totales',
+			discTotal: 'Total del disco',
 			albumArtist: 'Artista del álbum',
 			genre: 'Género',
 			year: 'Año',
 			date: 'Fecha',
 			explicit: 'Letras explícitas',
 			isrc: 'ISRC',
-			length: 'Longitud de la pista',
+			length: 'Duración de la pista',
 			barcode: 'Código de barras del álbum (UPC)',
 			bpm: 'BPM',
 			replayGain: 'Ganancia de la reproducción',
 			label: 'Etiqueta del álbum',
-			lyrics: 'Letras no sincronizadas',
-			syncedLyrics: 'Letra sincronizada',
+			lyrics: 'Lyrics no sincronizadas',
+			syncedLyrics: 'Lyrics sincronizadas',
 			copyright: 'Derechos de autor',
 			composer: 'Compositor',
 			involvedPeople: 'Personas involucradas'
 		},
 		other: {
-			title: 'Otros',
+			title: 'Otro',
 			savePlaylistAsCompilation: 'Guardar las listas de reproducción como una compilación',
 			useNullSeparator: 'Usar separador nulo',
-			saveID3v1: 'Guarda ID3v1 también',
+			saveID3v1: 'Guarda la ID3v1 también',
 			multiArtistSeparator: {
 				title: '¿Cómo le gustaría separar a sus artistas?',
 				nothing: 'Guardar sólo el artista principal',
@@ -306,7 +306,7 @@ const es = {
 				using: 'Usar "{separator}"'
 			},
 			singleAlbumArtist: 'Guardar sólo el artista principal del álbum',
-			albumVariousArtists: 'Mantén "Various Artists" en los artistas del álbum',
+			albumVariousArtists: 'Mantener "Various Artists" en los artistas del álbum',
 			removeAlbumVersion: 'Eliminar "Album Version" del título de la pista',
 			removeDuplicateArtists: 'Eliminar las combinaciones de artistas',
 			dateFormat: {
@@ -318,29 +318,29 @@ const es = {
 			featuredToTitle: {
 				title: '¿Qué debo hacer con los artistas destacados?',
 				0: 'Nada',
-				1: 'Quítalo del título',
-				3: 'Quítalo del título y del título del álbum',
-				2: 'Muévalo al título'
+				1: 'Quitarlo del título',
+				3: 'Quitarlo del título y del título del álbum',
+				2: 'Moverlo al título'
 			},
 			titleCasing: 'Capitalizar título',
 			artistCasing: 'Capitalizar artista',
 			casing: {
-				nothing: 'Manténgase sin cambios',
+				nothing: 'Manténer sin cambios',
 				lower: 'minúsculas',
 				upper: 'MAYÚSCULAS',
 				start: 'Al Principio De Cada Palabra',
-				sentence: 'Como una oración'
+				sentence: 'Como una frase'
 			},
 			previewVolume: 'Volumen de previsualización',
 			executeCommand: {
 				title: 'Comando a ejecutar después de la descarga',
-				description: 'Deje en blanco para no hacer nada'
+				description: 'Dejar en blanco para no hacer nada'
 			}
 		},
 		spotify: {
 			title: 'Funciones de Spotify',
 			clientID: 'ID del cliente de Spotify',
-			clientSecret: 'Cliente secreto de Spotify',
+			clientSecret: 'Cliente Secreto Spotify',
 			username: 'Nombre de usuario de Spotify'
 		},
 		reset: 'Restablecer el valor por defecto',

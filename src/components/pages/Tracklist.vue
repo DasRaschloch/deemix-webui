@@ -1,16 +1,16 @@
 <template>
-	<div class="main_tabcontent fixed_footer image_header" ref="root">
+	<div class="relative fixed_footer image_header" ref="root">
 		<header
 			:style="{
 				'background-image':
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
-			<h1 class="inline-flex">
+			<h1 class="inline-flex m-0 text-5xl">
 				{{ title }} <i v-if="explicit" class="material-icons explicit_icon explicit_icon--right">explicit</i>
 			</h1>
 
-			<h2>
+			<h2 class="m-0 mb-3 text-lg">
 				<p v-if="metadata">{{ metadata }}</p>
 				<p v-if="release_date">{{ release_date }}</p>
 			</h2>
@@ -149,12 +149,6 @@
 		</footer>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-.main_tabcontent {
-	position: relative;
-}
-</style>
 
 <script>
 import { isEmpty } from 'lodash-es'

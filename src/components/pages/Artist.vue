@@ -1,5 +1,5 @@
 <template>
-	<div id="artist_tab" class="main_tabcontent image_header" ref="root">
+	<div id="artist_tab" class="relative image_header" ref="root">
 		<header
 			class="inline-flex"
 			:style="{
@@ -7,18 +7,19 @@
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
-			<h1>{{ title }}</h1>
+			<h1 class="m-0">{{ title }}</h1>
+
 			<div role="button" aria-label="download" @click.stop="addToQueue" :data-link="link" class="fab right">
 				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
 			</div>
 		</header>
 
-		<div class="tab">
+		<div class="my-4">
 			<button
 				v-for="(item, name) in body"
 				:key="name"
-				class="btn btn-primary"
-				:class="{ active: name === currentTab }"
+				class="mr-2 btn bg-background-main"
+				:class="{ 'btn-primary': name === currentTab }"
 				:href="'#artist_' + name"
 				@click="changeTab(name)"
 			>
@@ -69,12 +70,6 @@
 		</table>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-.main_tabcontent {
-	position: relative;
-}
-</style>
 
 <script>
 import { isEmpty, orderBy } from 'lodash-es'

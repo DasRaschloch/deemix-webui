@@ -1,6 +1,6 @@
 <template>
-	<div id="analyzer_tab" class="main_tabcontent image_header" ref="root">
-		<h2 class="page_heading page_heading--capitalize">{{ $t('sidebar.linkAnalyzer') }}</h2>
+	<div id="analyzer_tab" class="image_header" ref="root">
+		<h1 class="mb-8 text-5xl capitalize">{{ $t('sidebar.linkAnalyzer') }}</h1>
 
 		<div v-if="link === ''">
 			<p>
@@ -24,8 +24,8 @@
 				}"
 			>
 				<div>
-					<h1>{{ title }}</h1>
-					<h2 v-if="type === 'track'">
+					<h1 class="m-0">{{ title }}</h1>
+					<h2 v-if="type === 'track'" class="m-0 mb-3 text-lg">
 						<i18n path="globals.by" tag="span">
 							<router-link
 								tag="span"
@@ -48,7 +48,7 @@
 							</router-link>
 						</i18n>
 					</h2>
-					<h2 v-else-if="type === 'album'">
+					<h2 v-else-if="type === 'album'" class="m-0 mb-3 text-lg">
 						<i18n path="globals.by" tag="span">
 							<router-link
 								tag="span"

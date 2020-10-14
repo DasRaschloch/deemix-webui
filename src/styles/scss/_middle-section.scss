@@ -1,11 +1,3 @@
-#search {
-	.search__icon {
-		i {
-			@include remove-selection-background;
-		}
-	}
-}
-
 #container {
 	--container-width: 95%;
 

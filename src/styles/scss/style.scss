@@ -26,19 +26,12 @@ body {
 
 @import './globals/globals';
 @import './globals/tables';
-@import './globals/typography';
 
-@import './tabs/about-tab';
-@import './tabs/charts-tab';
 @import './tabs/download-tab';
-@import './tabs/favorites-tab';
-@import './tabs/home-tab';
 @import './tabs/search-tab';
 @import './tabs/settings-tab';
 @import './tabs/tabs';
 
 @import './middle-section';
-@import './progressbar';
 @import './sidebar';
 @import './stackedTabs';
-@import './toasts';

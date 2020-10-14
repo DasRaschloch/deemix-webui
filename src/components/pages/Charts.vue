@@ -1,40 +1,25 @@
 <template>
-	<div id="charts_tab" class="main_tabcontent" ref="root">
-		<h2 class="page_heading">{{ $t('charts.title') }}</h2>
-		<div v-if="country === ''" id="charts_selection">
-			<div class="release_grid charts_grid">
-				<template v-for="release in countries">
-					<div
-						role="button"
-						:aria-label="release.title"
-						v-if="release.title === 'Worldwide'"
-						class="release clickable"
-						@click="getTrackList"
-						:data-title="release.title"
-						:data-id="release.id"
-						:key="release.id"
-					>
-						<img class="rounded coverart" :src="release.picture_medium" />
-					</div>
-				</template>
+	<div>
+		<h1 class="mb-8 text-5xl">{{ $t('charts.title') }}</h1>
 
-				<template v-for="release in countries">
-					<div
-						role="button"
-						:aria-label="release.title"
-						v-if="release.title !== 'Worldwide'"
-						class="release clickable"
-						@click="getTrackList"
-						:data-title="release.title"
-						:data-id="release.id"
-						:key="release.id"
-					>
-						<img class="rounded coverart" :src="release.picture_medium" />
-					</div>
-				</template>
+		<div v-if="country === ''">
+			<div class="release_grid charts_grid">
+				<div
+					v-for="release in countries"
+					role="button"
+					:aria-label="release.title"
+					class="w-40 h-40 release clickable"
+					@click="getTrackList"
+					:data-title="release.title"
+					:data-id="release.id"
+					:key="release.id"
+				>
+					<img class="w-full rounded coverart" :src="release.picture_medium" />
+				</div>
 			</div>
 		</div>
-		<div v-else id="charts_table">
+
+		<div v-else>
 			<button class="btn btn-primary" @click="onChangeCountry">{{ $t('charts.changeCountry') }}</button>
 			<button class="btn btn-primary" @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
 				{{ $t('charts.download') }}
@@ -118,13 +103,32 @@ export default {
 			chart: []
 		}
 	},
+	computed: {
+		worldwideRelease() {
+			let worldwideRelease = this.countries.filter(country => {
+				return country.title === 'Worldwide'
+			})
+
+			return worldwideRelease[0]
+		}
+	},
 	async created() {
 		socket.on('setChartTracks', this.setTracklist)
 		this.$on('hook:destroyed', () => {
 			socket.off('setChartTracks')
 		})
 
-		const chartsData = await getChartsData()
+		let chartsData = await getChartsData()
+		let worldwideChart
+
+		chartsData = chartsData.filter(item => {
+			if (item.title === 'Worldwide') {
+				worldwideChart = item
+			}
+
+			return item.title !== 'Worldwide'
+		})
+		chartsData.unshift(worldwideChart)
 
 		this.initCharts(chartsData)
 	},
@@ -183,6 +187,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-</style>

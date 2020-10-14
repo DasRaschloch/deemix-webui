@@ -37,7 +37,8 @@ module.exports = {
 					900: 'hsl(0, 0%, 90%)',
 					930: 'hsl(0, 0%, 93%)' // Remove maybe
 				},
-				primary: 'var(--primary-color)',
+				// primary: 'var(--primary-color)',
+				primary: 'hsl(210, 100%, 52%)',
 				background: {
 					main: 'var(--main-background)',
 					secondary: 'var(--secondary-background)'

@@ -44,6 +44,10 @@ $searchbar-height: 45px;
 		i {
 			font-size: $icon-dimension;
 			color: var(--foreground);
+
+			&::selection {
+				background: none;
+			}
 		}
 	}
 

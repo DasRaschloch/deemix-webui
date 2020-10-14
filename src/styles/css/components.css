@@ -1,6 +1,7 @@
 @layer components {
+	/* Button */
 	.btn {
-		@apply text-grayscale-900 relative border border-transparent border-solid rounded font-semibold text-sm py-0 px-2 h-8 uppercase;
+		@apply relative h-8 px-2 py-0 text-sm font-semibold uppercase border border-transparent border-solid rounded text-grayscale-900;
 
 		font-family: inherit;
 		transition: transform 50ms ease-in-out;
@@ -11,11 +12,11 @@
 	}
 
 	.btn[disabled] {
-		@apply bg-gray-600 text-gray-300 opacity-75 cursor-not-allowed;
+		@apply text-gray-300 bg-gray-600 opacity-75 cursor-not-allowed;
 	}
 
 	.btn-only-icon {
-		@apply w-12 py-0 px-1 flex justify-center items-center;
+		@apply flex items-center justify-center w-12 px-1 py-0;
 
 		min-width: 24px;
 	}
@@ -26,5 +27,23 @@
 
 	.btn-primary:hover {
 		@apply bg-blue-600 border-foreground;
+	}
+
+	/* Section tabs */
+	.section-tabs {
+		@apply flex mt-4 mb-6 list-none cursor-pointer;
+	}
+
+	.section-tabs__tab {
+		@apply flex-1 p-3 text-xl text-center capitalize border-t-4 rounded-b border-foreground bg-background-main;
+	}
+
+	.section-tabs__tab.active {
+		@apply text-primary border-primary bg-background-main;
+	}
+
+	.section-tabs__tab:hover {
+		@apply text-primary border-primary bg-background-secondary;
+		@apply bg-opacity-25;
 	}
 }

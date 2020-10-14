@@ -1,6 +1,6 @@
 <template>
-	<div id="settings_tab" class="main_tabcontent fixed_footer" ref="root">
-		<h2 class="page_heading">{{ $t('settings.title') }}</h2>
+	<div id="settings_tab" class="fixed_footer" ref="root">
+		<h1 class="mb-8 text-5xl">{{ $t('settings.title') }}</h1>
 
 		<div id="logged_in_info" v-if="isLoggedIn" ref="loggedInInfo">
 			<img id="settings_picture" :src="pictureHref" alt="Profile Picture" ref="userpicture" class="circle" />
@@ -31,7 +31,7 @@
 					ref="loginInput"
 					placeholder="ARL"
 				/>
-				<button id="settings_btn_copyArl" class="btn btn-primary btn-only-icon ml-2" @click="copyARLtoClipboard">
+				<button id="settings_btn_copyArl" class="ml-2 btn btn-primary btn-only-icon" @click="copyARLtoClipboard">
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
@@ -83,7 +83,7 @@
 				<button
 					id="select_downloads_folder"
 					v-if="clientMode"
-					class="btn btn-primary btn-only-icon ml-2"
+					class="ml-2 btn btn-primary btn-only-icon"
 					@click="selectDownloadFolder"
 				>
 					<i class="material-icons">folder</i>
@@ -618,7 +618,7 @@
 		</div>
 
 		<footer>
-			<button class="btn btn-primary mr-2" @click="resetSettings">{{ $t('settings.reset') }}</button>
+			<button class="mr-2 btn btn-primary" @click="resetSettings">{{ $t('settings.reset') }}</button>
 			<button class="btn btn-primary" @click="saveSettings">{{ $t('settings.save') }}</button>
 		</footer>
 	</div>

@@ -1,9 +1,12 @@
 #download_tab_container {
-	height: 100%;
-	background-color: var(--panels-background);
-	color: var(--panels-text);
-	display: block;
-	flex-direction: column;
+	#queue_buttons {
+		position: absolute;
+		top: 0;
+		right: 0;
+		opacity: 1;
+		visibility: visible;
+		transition: all 250ms ease-in-out;
+	}
 
 	&.tab_hidden {
 		width: 32px;
@@ -12,24 +15,13 @@
 			margin-left: 4px;
 
 			&::before {
-				font-family: 'Material Icons';
-				font-style: normal;
-				font-weight: 400;
 				content: 'chevron_left';
 			}
-		}
-
-		#download_tab_drag_handler {
-			display: none;
 		}
 
 		#queue_buttons {
 			opacity: 0;
 			visibility: hidden;
-		}
-
-		#download_list {
-			display: none;
 		}
 
 		&::after {
@@ -54,51 +46,4 @@
 		font-weight: 400;
 		content: 'chevron_right';
 	}
-}
-
-.download_bar_icon {
-	cursor: pointer;
-	font-size: 24px;
-	margin: 4px;
-}
-
-#download_list {
-	width: 100%;
-	height: calc(100% - 32px);
-	padding: 0px 8px 0px 28px;
-	overflow-y: scroll;
-
-	&::-webkit-scrollbar {
-		width: 10px;
-	}
-
-	&::-webkit-scrollbar-track {
-		background: var(--panels-background);
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background: var(--panels-scroll);
-		border-radius: 4px;
-		width: 6px;
-		padding: 0px 2px;
-	}
-}
-
-#download_tab_container {
-	#queue_buttons {
-		position: absolute;
-		top: 0;
-		right: 0;
-		opacity: 1;
-		visibility: visible;
-		transition: all 250ms ease-in-out;
-	}
-}
-
-#download_tab_drag_handler {
-	width: 15px;
-	height: 100%;
-	position: absolute;
-	background-color: hsl(0, 0%, 20%);
-	cursor: ew-resize;
 }

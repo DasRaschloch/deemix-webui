@@ -1,16 +1,16 @@
 <template>
-	<div id="home_tab" class="main_tabcontent" ref="root">
-		<h2 class="page_heading">{{ $t('globals.welcome') }}</h2>
+	<div id="home_tab">
+		<h1 class="mb-8 text-5xl">{{ $t('globals.welcome') }}</h1>
 
-		<section class="home_section" ref="notLogged" v-if="!isLoggedIn">
-			<p id="home_not_logged_text">{{ $t('home.needTologin') }}</p>
+		<section class="py-6 border-0 border-t border-solid border-grayscale-500" ref="notLogged" v-if="!isLoggedIn">
+			<p id="home_not_logged_text" class="mb-4">{{ $t('home.needTologin') }}</p>
 			<router-link tag="button" name="button" :to="{ name: 'Settings' }" class="btn btn-primary">
 				{{ $t('home.openSettings') }}
 			</router-link>
 		</section>
 
-		<section v-if="playlists.length" class="home_section">
-			<h3 class="section_heading">{{ $t('home.sections.popularPlaylists') }}</h3>
+		<section v-if="playlists.length" class="py-6 border-0 border-t border-solid border-grayscale-500">
+			<h2 class="mb-6 text-3xl">{{ $t('home.sections.popularPlaylists') }}</h2>
 			<div class="release_grid">
 				<router-link
 					tag="div"
@@ -47,8 +47,8 @@
 			</div>
 		</section>
 
-		<section v-if="albums.length" class="home_section">
-			<h3 class="section_heading">{{ $t('home.sections.popularAlbums') }}</h3>
+		<section v-if="albums.length" class="py-6 border-0 border-t border-solid border-grayscale-500">
+			<h2 class="mb-6 text-3xl">{{ $t('home.sections.popularAlbums') }}</h2>
 			<div class="release_grid">
 				<router-link
 					tag="div"

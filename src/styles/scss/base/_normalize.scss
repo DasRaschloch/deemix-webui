@@ -37,6 +37,16 @@ button,
 	-webkit-appearance: button;
 }
 
+input[type='text'],
+input[type='password'],
+input[type='number'],
+input[type='search'],
+input[type='checkbox'],
+select {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
 [type='number']::-webkit-inner-spin-button,
 [type='number']::-webkit-outer-spin-button {
 	height: auto;
@@ -45,4 +55,11 @@ button,
 button,
 [role='button'] {
 	cursor: pointer;
+}
+
+*,
+::before,
+::after {
+	border-width: 0;
+	border-style: solid;
 }

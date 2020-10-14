@@ -1,6 +1,7 @@
 <template>
-	<div id="about_tab" class="main_tabcontent" ref="root">
-		<h2 class="page_heading">{{ $t('sidebar.about') }}</h2>
+	<div id="about_tab" ref="root">
+		<h1 class="mb-8 text-5xl capitalize">{{ $t('sidebar.about') }}</h1>
+
 		<ul>
 			<li>
 				{{ $t('about.updates.currentVersion') }}:

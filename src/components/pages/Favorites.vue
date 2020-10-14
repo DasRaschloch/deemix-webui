@@ -1,20 +1,20 @@
 <template>
-	<div class="main_tabcontent">
-		<h2 class="page_heading">
+	<div>
+		<h1 class="mb-8 text-5xl">
 			{{ $t('favorites.title') }}
 			<div
 				@click="reloadTabs"
-				class="clickable reload-button reload-button--inline"
+				class="inline-block clickable reload-button"
 				ref="reloadButton"
 				role="button"
 				aria-label="reload"
 			>
 				<i class="material-icons">sync</i>
 			</div>
-		</h2>
+		</h1>
 
-		<div class="section-tabs">
-			<div
+		<ul class="section-tabs">
+			<li
 				class="section-tabs__tab favorites_tablinks"
 				:class="{ active: activeTab === tab }"
 				@click="activeTab = tab"
@@ -22,8 +22,8 @@
 				:key="tab"
 			>
 				{{ $tc(`globals.listTabs.${tab}`, 2) }}
-			</div>
-		</div>
+			</li>
+		</ul>
 
 		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
 			{{ $t('globals.downloadAll', { thing: $tc(`globals.listTabs.${activeTab}`, 2) }) }}
@@ -226,6 +226,14 @@
 
 	&--active {
 		display: block;
+	}
+}
+
+.reload-button {
+	&.spin {
+		i {
+			animation: spin 500ms infinite ease-out reverse;
+		}
 	}
 }
 </style>

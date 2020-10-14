@@ -1,16 +1,23 @@
 <template>
 	<div
 		id="download_tab_container"
-		class="tab_hidden"
+		class="block tab_hidden bg-panels-bg text-panels-text"
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
 		:data-label="$t('downloads')"
 		aria-label="downloads"
 	>
-		<div id="download_tab_drag_handler" @mousedown.prevent="startDrag" ref="dragHandler"></div>
+		<!-- Drag Handler -->
+		<div
+			v-show="isExpanded"
+			class="absolute w-4 h-full bg-grayscale-200"
+			@mousedown.prevent="startDrag"
+			style="cursor: ew-resize"
+		></div>
+
 		<i
 			id="toggle_download_tab"
-			class="material-icons download_bar_icon"
+			class="m-1 text-2xl cursor-pointer material-icons"
 			@click.prevent="toggleDownloadTab"
 			ref="toggler"
 			:title="$t('globals.toggle_download_tab_hint')"
@@ -18,20 +25,25 @@
 		<div id="queue_buttons">
 			<i
 				v-if="clientMode"
-				class="material-icons download_bar_icon"
+				class="m-1 text-2xl cursor-pointer material-icons"
 				:title="$t('globals.open_downloads_folder')"
 				@click="openDownloadsFolder"
 			>
 				folder_open
 			</i>
-			<i class="material-icons download_bar_icon" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">
+			<i class="m-1 text-2xl cursor-pointer material-icons" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">
 				clear_all
 			</i>
-			<i class="material-icons download_bar_icon" @click="cancelQueue" :title="$t('globals.cancel_queue_hint')">
+			<i
+				class="m-1 text-2xl cursor-pointer material-icons"
+				@click="cancelQueue"
+				:title="$t('globals.cancel_queue_hint')"
+			>
 				delete_sweep
 			</i>
 		</div>
-		<div id="download_list" ref="list">
+
+		<div v-show="isExpanded" id="download_list" class="w-full pr-2" ref="list">
 			<QueueItem
 				v-for="item in queueList"
 				:queue-item="item"
@@ -46,6 +58,27 @@
 <style lang="scss" scoped>
 #download_tab_container {
 	height: 100vh;
+}
+
+#download_list {
+	height: calc(100% - 32px);
+	padding-left: 28px;
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--panels-background);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--panels-scroll);
+		border-radius: 4px;
+		width: 6px;
+		padding: 0px 2px;
+	}
 }
 </style>
 
@@ -68,8 +101,8 @@ export default {
 			cachedTabWidth: parseInt(localStorage.getItem('downloadTabWidth')) || 300,
 			queue: [],
 			queueList: {},
-			queueComplete: []
-			// clientMode: window.clientMode
+			queueComplete: [],
+			isExpanded: localStorage.getItem('downloadTabOpen') === 'true'
 		}
 	},
 	computed: {
@@ -273,12 +306,13 @@ export default {
 
 			// Toggle returns a Boolean based on the action it performed
 			let isHidden = this.$refs.container.classList.toggle('tab_hidden')
+			this.isExpanded = !isHidden
 
-			if (!isHidden) {
+			if (this.isExpanded) {
 				this.setTabWidth(this.cachedTabWidth)
 			}
 
-			localStorage.setItem('downloadTabOpen', !isHidden)
+			localStorage.setItem('downloadTabOpen', this.isExpanded)
 		},
 		cleanQueue() {
 			socket.emit('removeFinishedDownloads')

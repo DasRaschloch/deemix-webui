@@ -184,7 +184,9 @@ const it = {
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
 		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
-		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.'
+		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.',
+		startGeneratingItems: 'Elaborando {n} oggetti...',
+		finishGeneratingItems: '{n} oggetti generati.'
 	},
 	settings: {
 		title: 'Impostazioni',

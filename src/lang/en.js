@@ -180,7 +180,9 @@ const en = {
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
 		loginNeededToDownload: 'You need to log in to download tracks!',
-		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.'
+		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.',
+		startGeneratingItems: 'Processing {n} items...',
+		finishGeneratingItems: 'Generated {n} items.'
 	},
 	settings: {
 		title: 'Settings',

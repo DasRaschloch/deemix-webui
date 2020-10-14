@@ -175,9 +175,9 @@ socket.on('errorMessage', function(error) {
 
 socket.on('queueError', function(queueItem) {
 	if (queueItem.errid) {
-		toast(i18n.t(`errors.ids.${queueItem.errid}`), 'error')
+		toast(queueItem.link+ " - " +i18n.t(`errors.ids.${queueItem.errid}`), 'error')
 	} else {
-		toast(queueItem.error, 'error')
+		toast(queueItem.link+ " - " +queueItem.error, 'error')
 	}
 })
 
@@ -187,4 +187,12 @@ socket.on('alreadyInQueue', function(data) {
 
 socket.on('loginNeededToDownload', function(data) {
 	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
+})
+
+socket.on('startGeneratingItems', function(data) {
+	toast(i18n.t('toasts.startGeneratingItems', { n: data.total }), 'loading', false, 'batch_' + data.uuid)
+})
+
+socket.on('finishGeneratingItems', function(data) {
+	toast(i18n.t('toasts.finishGeneratingItems', { n: data.total }), 'done', true, 'batch_' + data.uuid)
 })

@@ -3,8 +3,10 @@
 		<div class="search__icon">
 			<i class="material-icons">search</i>
 		</div>
+
 		<input
 			id="searchbar"
+			class="w-full"
 			autocomplete="off"
 			type="search"
 			name="searchbar"

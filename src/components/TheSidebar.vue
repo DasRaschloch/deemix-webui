@@ -1,18 +1,29 @@
 <template>
-	<aside id="sidebar" role="navigation" aria-label="sidebar">
+	<aside
+		id="sidebar"
+		class="top-0 left-0 flex flex-col w-12 h-full absoluteZ bg-panels-bg text-panels-text"
+		role="navigation"
+		aria-label="sidebar"
+	>
 		<router-link
+			tag="a"
 			v-for="link in links"
 			:key="link.id"
-			tag="a"
-			class="main_tablinks"
+			class="relative flex items-center h-16 no-underline main_tablinks"
 			:id="link.id"
 			:class="{ active: activeTablink === link.name }"
 			:aria-label="link.ariaLabel"
 			:to="{ name: link.routerName }"
 			@click.native="activeTablink = link.name"
+			style="transition: all 500ms; color: inherit"
 		>
-			<i class="material-icons side_icon">{{ link.icon }}</i>
-			<span class="main_tablinks_text">{{ $t(link.label) }}</span>
+			<i class="p-2 text-3xl transition-all duration-500 material-icons side_icon">{{ link.icon }}</i>
+			<span
+				class="ml-5 overflow-hidden capitalize whitespace-no-wrap transition-all duration-75 ease-in-out delay-200 opacity-0 main_tablinks_text"
+				style="letter-spacing: 1.3px"
+			>
+				{{ $t(link.label) }}
+			</span>
 			<span
 				v-if="link.name === 'about' && updateAvailable"
 				id="update-notification"
@@ -20,13 +31,15 @@
 			></span>
 		</router-link>
 
-		<span id="theme_selector" class="main_tablinks" role="link" aria-label="theme selector">
-			<i class="material-icons side_icon side_icon--theme">palette</i>
-			<div id="theme_togglers">
+		<span class="flex h-12 mt-5" role="link" aria-label="theme selector">
+			<i class="p-2 text-3xl transition-all duration-500 cursor-default material-icons side_icon side_icon--theme">
+				palette
+			</i>
+			<div id="theme_togglers" class="relative flex items-center w-full justify-evenly">
 				<div
 					v-for="theme of themes"
 					:key="theme"
-					class="theme_toggler"
+					class="w-6 h-6 border rounded-full cursor-pointer theme_toggler border-grayscale-500"
 					:class="[{ 'theme_toggler--active': activeTheme === theme }, `theme_toggler--${theme}`]"
 					@click="changeTheme(theme)"
 				></div>

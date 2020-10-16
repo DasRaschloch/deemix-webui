@@ -2,130 +2,53 @@ $sidebar-timing: 125ms;
 $sidebar-delay: 75ms;
 
 #sidebar {
-	display: flex;
-	flex-direction: column;
-	width: $sidebar-width;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	background-color: var(--panels-background);
-	color: var(--panels-text);
-	transition: width $sidebar-timing ease-in-out $sidebar-delay;
-	z-index: 999;
+	// transition: width $sidebar-timing ease-in-out $sidebar-delay;
+	// z-index: 999;
+	width: 15.625rem;
+	height: 100vh;
 
-	&:hover {
-		width: 200px;
-	}
+	// &:hover {
+	// 	width: 12.5rem;
+	// }
 
 	.main_tablinks {
-		transition: all 500ms;
-		text-decoration: none;
-		color: inherit;
+		// &.active {
+		// 	@apply bg-primary;
+		// }
 
-		&.active {
-			background-color: var(--primary-color);
+		&:hover {
+			// background-color: var(--sidebar-link-bg);
 		}
+	}
 
-		&:not(#theme_selector) {
-			display: flex;
-			align-items: center;
-			height: 55px;
-			cursor: pointer;
+	// &:hover {
+	.main_tablinks {
+		&.active,
+		&:hover {
+			background: var(--sidebar-link-bg);
 
-			&:hover {
-				background-color: var(--sidebar-link-bg);
-
-				.side_icon {
-					color: var(--primary-color);
-				}
+			.side_icon {
+				color: var(--primary-color);
 			}
 		}
 	}
 
 	.main_tablinks_text {
-		margin-left: 20px;
-		opacity: 0;
-		overflow: hidden;
-		text-transform: capitalize;
-		letter-spacing: 1.3px;
-		white-space: nowrap;
-		transition: all 50ms ease-in-out 200ms;
-	}
-
-	.side_icon {
-		font-size: 30px;
-		padding: 9px;
-		transition: all 500ms;
-
-		&--theme {
-			cursor: default;
-		}
-
-		@include remove-selection-background;
-	}
-
-	&:hover {
-		.main_tablinks {
-			&:hover {
-				background: var(--sidebar-link-bg-20);
-				filter: grayscale(0) opacity(1);
-			}
-
-			&.active {
-				background: var(--sidebar-link-bg);
-				filter: grayscale(1);
-
-				// Fix for purple theme in which grayscale shows incoherent color
-				html[data-theme='purple'] & {
-					background: var(--sidebar-link-bg-20);
-					filter: grayscale(0);
-				}
-
-				&:hover {
-					background: var(--sidebar-link-bg-20);
-					filter: grayscale(0);
-				}
-			}
-		}
-
-		.main_tablinks_text {
-			opacity: 1;
-		}
-
-		#theme_togglers {
-			opacity: 1;
-		}
-	}
-
-	/* Update Notification */
-	#main_about_tablink {
-		position: relative;
-	}
-
-	/* Theme selector */
-	#theme_selector {
-		margin-top: 20px;
-		display: flex;
-		height: 50px;
+		@apply opacity-100;
 	}
 
 	#theme_togglers {
-		position: relative;
-		display: flex;
-		justify-content: space-evenly;
-		align-items: center;
-		width: 100%;
-		opacity: 0;
+		@apply opacity-100;
+	}
+	// }
+
+	#theme_togglers {
+		// opacity: 0;
 		transition: all $sidebar-timing ease-in-out $sidebar-delay;
 	}
 
 	.theme_toggler {
-		width: 25px;
-		height: 25px;
-		border-radius: 1000px;
-		border: 1px solid theme('colors.grayscale.500');
-		cursor: pointer;
+		// @apply w-6 h-6 rounded-full border border-grayscale-500 cursor-pointer;
 		transition: border 200ms ease-in-out;
 
 		&--active {
@@ -133,7 +56,7 @@ $sidebar-delay: 75ms;
 		}
 
 		&--light {
-			background: white;
+			@apply bg-white;
 		}
 
 		&--dark {

@@ -1,8 +1,7 @@
 <template>
 	<div>
-		<TheSidebar />
-
 		<div class="app-container">
+			<TheSidebar />
 			<div class="content-container">
 				<TheSearchBar />
 				<TheContent />
@@ -20,7 +19,7 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style>
 .app-container {
 	display: flex;
 }
@@ -29,7 +28,7 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	margin-left: 48px;
+	/* margin-left: 48px; */
 }
 </style>
 

@@ -1,7 +1,7 @@
 input[type='text'],
 input[type='password'],
-input[type='number'],
-input[type='search'] {
+input[type='number']/* ,
+input[type='search'] */ {
 	// -webkit-appearance: none;
 	// appearance: none;
 	width: calc(100% - 16px);
@@ -292,6 +292,7 @@ a {
 }
 
 .material-icons {
+	@apply select-none;
 	$sizes: 18, 24, 36, 48;
 
 	@each $size in $sizes {

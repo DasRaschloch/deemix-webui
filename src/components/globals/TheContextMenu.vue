@@ -224,7 +224,7 @@ export default {
 	left: 0;
 	min-width: 100px;
 	border-radius: 7px;
-	background: var(--foreground-inverted);
+	background: var(--secondary-background);
 	box-shadow: 4px 10px 18px 0px hsla(0, 0%, 0%, 0.15);
 	overflow: hidden;
 	z-index: 10000;

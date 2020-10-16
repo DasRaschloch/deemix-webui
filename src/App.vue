@@ -2,10 +2,12 @@
 	<div>
 		<div class="app-container">
 			<TheSidebar />
+
 			<div class="content-container">
 				<TheSearchBar />
 				<TheContent />
 			</div>
+
 			<TheDownloadBar />
 		</div>
 

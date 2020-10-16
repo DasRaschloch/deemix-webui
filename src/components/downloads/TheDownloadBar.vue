@@ -1,7 +1,7 @@
 <template>
 	<div
 		id="download_tab_container"
-		class="block tab_hidden bg-panels-bg text-panels-text"
+		class="block tab_hidden bg-panels-bg text-foreground"
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
 		:data-label="$t('downloads')"

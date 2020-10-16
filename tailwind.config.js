@@ -23,9 +23,7 @@ module.exports = {
 				grayscale: {
 					80: 'hsl(0, 0%, 8%)', // Remove maybe
 					100: 'hsl(0, 0%, 10%)',
-					140: 'hsl(0, 0%, 14%)', // Remove maybe
 					200: 'hsl(0, 0%, 20%)',
-					240: 'hsl(0, 0%, 24%)', // Remove maybe
 					300: 'hsl(0, 0%, 30%)',
 					400: 'hsl(0, 0%, 40%)',
 					500: 'hsl(0, 0%, 50%)',
@@ -37,19 +35,14 @@ module.exports = {
 					900: 'hsl(0, 0%, 90%)',
 					930: 'hsl(0, 0%, 93%)' // Remove maybe
 				},
-				// primary: 'var(--primary-color)',
 				primary: 'hsl(210, 100%, 52%)',
 				background: {
 					main: 'var(--main-background)',
 					secondary: 'var(--secondary-background)'
 				},
-				foreground: {
-					default: 'var(--foreground)',
-					inverted: 'var(--foreground-inverted)'
-				},
+				foreground: 'var(--foreground)',
 				panels: {
-					bg: 'var(--panels-background)',
-					text: 'var(--panels-text)'
+					bg: 'var(--panels-background)'
 				}
 			}
 		}

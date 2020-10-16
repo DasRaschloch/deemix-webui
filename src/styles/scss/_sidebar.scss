@@ -2,53 +2,23 @@ $sidebar-timing: 125ms;
 $sidebar-delay: 75ms;
 
 #sidebar {
-	// transition: width $sidebar-timing ease-in-out $sidebar-delay;
-	// z-index: 999;
 	width: 15.625rem;
 	height: 100vh;
 
-	// &:hover {
-	// 	width: 12.5rem;
-	// }
-
 	.main_tablinks {
-		// &.active {
-		// 	@apply bg-primary;
-		// }
+		@apply text-foreground;
 
-		&:hover {
-			// background-color: var(--sidebar-link-bg);
-		}
-	}
-
-	// &:hover {
-	.main_tablinks {
 		&.active,
 		&:hover {
 			background: var(--sidebar-link-bg);
 
 			.side_icon {
-				color: var(--primary-color);
+				@apply text-primary;
 			}
 		}
 	}
 
-	.main_tablinks_text {
-		@apply opacity-100;
-	}
-
-	#theme_togglers {
-		@apply opacity-100;
-	}
-	// }
-
-	#theme_togglers {
-		// opacity: 0;
-		transition: all $sidebar-timing ease-in-out $sidebar-delay;
-	}
-
 	.theme_toggler {
-		// @apply w-6 h-6 rounded-full border border-grayscale-500 cursor-pointer;
 		transition: border 200ms ease-in-out;
 
 		&--active {
@@ -60,7 +30,7 @@ $sidebar-delay: 75ms;
 		}
 
 		&--dark {
-			background: hsl(0, 0%, 8%);
+			@apply bg-grayscale-80;
 		}
 
 		&--purple {

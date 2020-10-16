@@ -1,7 +1,7 @@
 <template>
 	<aside
 		id="sidebar"
-		class="top-0 left-0 flex flex-col w-12 h-full absoluteZ bg-panels-bg text-panels-text"
+		class="top-0 left-0 flex flex-col w-12 h-full absoluteZ bg-panels-bg text-foreground"
 		role="navigation"
 		aria-label="sidebar"
 	>
@@ -15,13 +15,10 @@
 			:aria-label="link.ariaLabel"
 			:to="{ name: link.routerName }"
 			@click.native="activeTablink = link.name"
-			style="transition: all 500ms; color: inherit"
 		>
-			<i class="p-2 text-3xl transition-all duration-500 material-icons side_icon">{{ link.icon }}</i>
-			<span
-				class="ml-5 overflow-hidden capitalize whitespace-no-wrap transition-all duration-75 ease-in-out delay-200 opacity-0 main_tablinks_text"
-				style="letter-spacing: 1.3px"
-			>
+			<!-- style="color: inherit" -->
+			<i class="p-2 text-3xl material-icons side_icon">{{ link.icon }}</i>
+			<span class="ml-5 overflow-hidden capitalize whitespace-no-wrap main_tablinks_text" style="letter-spacing: 1.3px">
 				{{ $t(link.label) }}
 			</span>
 			<span

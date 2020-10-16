@@ -16,13 +16,9 @@
 	--main-background: theme('colors.white');
 	--secondary-background: theme('colors.grayscale.930');
 	--foreground: theme('colors.grayscale.200');
-	--foreground-inverted: theme('colors.grayscale.930');
-	--panels-background: hsl(210, 3%, 14%);
-	--panels-text: theme('colors.white');
-
-	--sidebar-link-bg: theme('colors.grayscale.240');
-
-	--icon-hover: var(--primary-color);
+	--panels-background: hsl(216, 4%, 78%);
+	// --sidebar-link-bg: theme('colors.grayscale.600');
+	--sidebar-link-bg: var(--main-background); // hover bg color icons left panel
 
 	--table-bg: theme('colors.white');
 	--table-zebra: theme('colors.grayscale.900');
@@ -33,13 +29,9 @@
 	--main-background: hsl(240, 10%, 8%);
 	--secondary-background: hsl(240, 12%, 16%); // e.g. search bar bg
 	--foreground: theme('colors.grayscale.930'); // primary text + icons in main + search
-	--foreground-inverted: hsl(240, 12%, 16%); // copy link when inactive
 	--panels-background: hsl(240, 15%, 12%); // panel left + right bg
-	--panels-text: theme('colors.white'); // icons + text colors in panels
-
-	--sidebar-link-bg: hsl(240, 10%, 22%); // hover bg color icons left panel
-
-	--icon-hover: hsl(210, 100%, 52%); // e.g. hover color on icons like download-button
+	// --sidebar-link-bg: hsl(240, 10%, 22%); // hover bg color icons left panel
+	--sidebar-link-bg: var(--main-background); // hover bg color icons left panel
 
 	--table-bg: hsl(240, 10%, 8%); // e.g. results table bg 1st row
 	--table-zebra: hsl(240, 15%, 11%); // e.g. results table bg 2nd alternate
@@ -50,13 +42,9 @@
 	--main-background: hsl(261, 74%, 6%);
 	--secondary-background: hsl(257, 61%, 10%);
 	--foreground: theme('colors.grayscale.930');
-	--foreground-inverted: hsl(258, 62%, 8%);
 	--panels-background: hsl(257, 70%, 9%);
-	--panels-text: theme('colors.white');
-
-	--sidebar-link-bg: hsl(257, 70%, 17%);
-
-	--icon-hover: hsl(186, 44%, 54%);
+	// --sidebar-link-bg: hsl(257, 70%, 17%);
+	--sidebar-link-bg: var(--main-background); // hover bg color icons left panel
 
 	--table-bg: hsl(261, 74%, 6%);
 	--table-zebra: hsl(257, 61%, 10%);

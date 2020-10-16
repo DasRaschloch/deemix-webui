@@ -230,7 +230,7 @@ export default {
 				backgroundColor = 'hsl(33, 100%, 47%)'
 			} else {
 				// Green
-				backgroundColor = 'hsl(120, 100%, 40%)'
+				backgroundColor = 'hsl(150, 76%, 34%)'
 			}
 
 			if (this.allFailed) {

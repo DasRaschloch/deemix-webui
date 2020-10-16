@@ -3,8 +3,8 @@
 	--panels-scroll: hsl(180, 2%, 17%);
 	--tag-background: hsl(210, 100%, 38%);
 	--tag-text: theme('colors.white');
-	--toast-background: hsla(0, 0%, 0%, 0.85);
-	--toast-secondary: hsla(0, 0%, 100%, 0.15);
+	--toast-background: hsla(240, 12%, 16%, 0.85);
+	--toast-secondary: hsla(240, 12%, 16%, 0.15);
 	--toast-text: hsla(0, 0%, 100%, 0.85);
 
 	--primary-color: hsl(210, 100%, 52%); // will remove variable
@@ -31,21 +31,21 @@
 }
 
 :root[data-theme='dark'] {
-	--main-background: theme('colors.grayscale.80');
-	--secondary-background: theme('colors.grayscale.140');
-	--foreground: theme('colors.grayscale.930');
-	--foreground-inverted: theme('colors.grayscale.200');
-	--panels-background: theme('colors.grayscale.100');
-	--panels-text: theme('colors.white');
+	--main-background: hsl(240, 10%, 8%);
+	--secondary-background: hsl(240, 12%, 16%); // e.g. search bar bg
+	--foreground: theme('colors.grayscale.930'); // primary text + icons in main + search
+	--foreground-inverted: hsl(240, 12%, 16%); // copy link when inactive
+	--panels-background: hsl(240, 15%, 12%); // panel left + right bg
+	--panels-text: theme('colors.white'); // icons + text colors in panels
 
-	--sidebar-link-bg: theme('colors.grayscale.240');
-	--sidebar-link-bg-20: hsla(0, 0%, 24%, 0.2);
+	--sidebar-link-bg: hsl(240, 10%, 22%); // hover bg color icons left panel
+	--sidebar-link-bg-20: hsla(240, 10%, 22%, 1); // same value but with opacity at 20% when tab selected bg
 
-	--icon-hover: var(--primary-color);
+	--icon-hover: hsl(210, 100%, 52%); // e.g. hover color on icons like download-button
 
-	--table-bg: theme('colors.grayscale.80');
-	--table-zebra: theme('colors.grayscale.140');
-	--table-highlight: theme('colors.grayscale.200');
+	--table-bg: hsl(240, 10%, 8%); // e.g. results table bg 1st row
+	--table-zebra: hsl(240, 15%, 11%); // e.g. results table bg 2nd alternate
+	--table-highlight: hsl(240, 10%, 22%); // e.g. hover bg color on table selection
 }
 
 :root[data-theme='purple'] {

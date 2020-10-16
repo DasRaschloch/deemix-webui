@@ -16,7 +16,7 @@
 			<span
 				v-if="link.name === 'about' && updateAvailable"
 				id="update-notification"
-				class="bg-red-600 w-3 h-3 rounded-full"
+				class="w-3 h-3 bg-red-600 rounded-full"
 			></span>
 		</router-link>
 
@@ -58,7 +58,7 @@
 }
 
 #network-status.online i.material-icons {
-	color: hsl(151, 100%, 31%);
+	color: hsl(150, 76%, 34%);
 }
 
 #network-status.offline i.material-icons svg {

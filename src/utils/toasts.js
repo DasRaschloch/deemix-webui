@@ -1,6 +1,16 @@
 import Toastify from 'toastify-js'
+import 'toastify-js/src/toastify.css'
+import '@/styles/css/toasts.css'
 
 import { socket } from '@/utils/socket'
+
+const sharedOptions = {
+	gravity: 'bottom',
+	position: 'left',
+	offset: {
+		x: '14rem'
+	}
+}
 
 let toastsWithId = {}
 
@@ -56,10 +66,9 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 		}
 
 		let toastObj = Toastify({
+			...sharedOptions,
 			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
 			duration: dismiss ? 3000 : 0,
-			gravity: 'bottom',
-			position: 'left',
 			className: dismiss ? 'dismissable' : '',
 			onClick: function() {
 				let dismissable = true

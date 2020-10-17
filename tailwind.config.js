@@ -47,7 +47,9 @@ module.exports = {
 			}
 		}
 	},
-	variants: {},
+	variants: {
+		textColor: ({ after }) => after(['group-hover'])
+	},
 	corePlugins: {
 		preflight: false
 	},

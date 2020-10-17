@@ -1,7 +1,7 @@
 <template>
 	<aside
 		id="sidebar"
-		class="top-0 left-0 flex flex-col w-12 h-full absoluteZ bg-panels-bg text-foreground"
+		class="top-0 left-0 flex flex-col w-64 h-screen bg-panels-bg text-foreground"
 		role="navigation"
 		aria-label="sidebar"
 	>
@@ -9,15 +9,19 @@
 			tag="a"
 			v-for="link in links"
 			:key="link.id"
-			class="relative flex items-center h-16 no-underline main_tablinks"
+			class="relative flex items-center h-16 no-underline group main_tablinks hover:bg-background-main text-foreground"
 			:id="link.id"
-			:class="{ active: activeTablink === link.name }"
+			:class="{ 'bg-background-main': activeTablink === link.name }"
 			:aria-label="link.ariaLabel"
 			:to="{ name: link.routerName }"
 			@click.native="activeTablink = link.name"
 		>
-			<!-- style="color: inherit" -->
-			<i class="p-2 text-3xl material-icons side_icon">{{ link.icon }}</i>
+			<i
+				class="p-2 text-3xl material-icons side_icon group-hover:text-primary"
+				:class="{ 'text-primary': activeTablink === link.name }"
+			>
+				{{ link.icon }}
+			</i>
 			<span class="ml-5 overflow-hidden capitalize whitespace-no-wrap main_tablinks_text" style="letter-spacing: 1.3px">
 				{{ $t(link.label) }}
 			</span>
@@ -30,7 +34,7 @@
 
 		<span class="flex h-12 mt-5" role="link" aria-label="theme selector">
 			<i class="p-2 text-3xl transition-all duration-500 cursor-default material-icons side_icon side_icon--theme">
-				palette
+				brush
 			</i>
 			<div id="theme_togglers" class="relative flex items-center w-full justify-evenly">
 				<div
@@ -57,7 +61,7 @@
 	</aside>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 #network-status {
 	display: flex;
 	justify-content: center;
@@ -81,6 +85,26 @@
 	position: absolute;
 	left: 30px;
 	top: 12px;
+}
+
+.theme_toggler {
+	transition: border 200ms ease-in-out;
+
+	&--active {
+		border-width: 3px;
+	}
+
+	&--light {
+		background-color: #fff;
+	}
+
+	&--dark {
+		background-color: hsl(0, 0%, 8%);
+	}
+
+	&--purple {
+		background: hsl(261, 85%, 37%);
+	}
 }
 </style>
 

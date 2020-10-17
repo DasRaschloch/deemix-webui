@@ -1,9 +1,8 @@
-@import './base/base';
-
 @import '~tailwindcss/base';
 @import '~tailwindcss/components';
 @import '~tailwindcss/utilities';
 
+@import './base/base';
 @import './base/variables';
 
 html {
@@ -21,7 +20,6 @@ body {
 }
 
 @import './base/normalize';
-@import './base/mixins';
 @import './base/animations';
 
 @import './globals/globals';
@@ -33,5 +31,4 @@ body {
 @import './tabs/tabs';
 
 @import './middle-section';
-@import './sidebar';
 @import './stackedTabs';

@@ -32,7 +32,7 @@
 			></span>
 		</router-link>
 
-		<span class="flex h-12 mt-5" role="link" aria-label="theme selector">
+		<span id="theme_selector" class="flex h-12 mt-5" role="link" aria-label="theme selector">
 			<i class="p-2 text-3xl transition-all duration-500 cursor-default material-icons side_icon side_icon--theme">
 				brush
 			</i>
@@ -62,6 +62,17 @@
 </template>
 
 <style lang="scss" scoped>
+#sidebar.slim{
+	width: 46px;
+}
+#sidebar.slim .main_tablinks_text{
+	display: none;
+}
+#sidebar.slim #theme_selector, #sidebar.slim #theme_togglers{
+	display: inline-grid;
+	grid-gap: 8px;
+}
+
 #network-status {
 	display: flex;
 	justify-content: center;

@@ -1,13 +1,14 @@
 <template>
-	<div
+	<section
 		id="download_tab_container"
-		class="block tab_hidden bg-panels-bg text-foreground"
+		class="block bg-panels-bg text-foreground h-screen"
+		:class="{ 'tab-hidden': !isExpanded, 'w-8': !isExpanded }"
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
 		:data-label="$t('downloads')"
 		aria-label="downloads"
 	>
-		<!-- Drag Handler -->
+		<!-- Drag handler -->
 		<div
 			v-show="isExpanded"
 			class="absolute w-4 h-full bg-grayscale-200"
@@ -15,14 +16,21 @@
 			style="cursor: ew-resize"
 		></div>
 
+		<!-- Bar toggler -->
 		<i
 			id="toggle_download_tab"
 			class="m-1 text-2xl cursor-pointer material-icons"
+			:class="{ 'ml-1': !isExpanded, 'ml-5': isExpanded }"
 			@click.prevent="toggleDownloadTab"
 			ref="toggler"
 			:title="$t('globals.toggle_download_tab_hint')"
 		></i>
-		<div id="queue_buttons">
+
+		<!-- Queue buttons -->
+		<div
+			class="absolute top-0 right-0 transition-all duration-200 ease-in-out"
+			:class="{ 'opacity-0 invisible': !isExpanded, 'opacity-100 visible': isExpanded }"
+		>
 			<i
 				v-if="clientMode"
 				class="m-1 text-2xl cursor-pointer material-icons"
@@ -52,12 +60,37 @@
 				@remove-item="onRemoveItem"
 			/>
 		</div>
-	</div>
+	</section>
 </template>
 
 <style lang="scss" scoped>
-#download_tab_container {
-	height: 100vh;
+#toggle_download_tab {
+	width: 25px;
+	height: 25px;
+
+	&::before {
+		font-family: 'Material Icons';
+		font-style: normal;
+		font-weight: 400;
+		content: 'chevron_right';
+	}
+}
+
+#download_tab_container.tab-hidden {
+	#toggle_download_tab {
+		&::before {
+			content: 'chevron_left';
+		}
+	}
+
+	&::after {
+		content: attr(data-label);
+		display: flex;
+		align-items: center;
+		text-transform: capitalize;
+		writing-mode: vertical-rl;
+		line-height: 2rem;
+	}
 }
 
 #download_list {
@@ -139,9 +172,7 @@ export default {
 			this.$refs.list.classList.add('slim')
 		}
 
-		if ('true' === localStorage.getItem('downloadTabOpen')) {
-			this.$refs.container.classList.remove('tab_hidden')
-
+		if (this.isExpanded) {
 			this.setTabWidth(this.cachedTabWidth)
 		}
 
@@ -305,8 +336,7 @@ export default {
 			this.$refs.container.style.transition = 'all 250ms ease-in-out'
 
 			// Toggle returns a Boolean based on the action it performed
-			let isHidden = this.$refs.container.classList.toggle('tab_hidden')
-			this.isExpanded = !isHidden
+			this.isExpanded = !this.isExpanded
 
 			if (this.isExpanded) {
 				this.setTabWidth(this.cachedTabWidth)

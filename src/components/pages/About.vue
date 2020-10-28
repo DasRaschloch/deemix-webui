@@ -125,12 +125,12 @@ i {
 	vertical-align: middle;
 }
 
-i /deep/ svg {
+i::v-deep svg {
 	fill: white;
 	width: 20px;
 }
 
-.ethereum /deep/ svg {
+.ethereum::v-deep svg {
 	fill: var(--foreground);
 }
 

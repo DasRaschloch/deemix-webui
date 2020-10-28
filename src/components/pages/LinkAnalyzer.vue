@@ -1,5 +1,5 @@
 <template>
-	<div id="analyzer_tab" class="image_header" ref="root">
+	<div id="analyzer_tab" class="image-header" ref="root">
 		<h1 class="mb-8 text-5xl capitalize">{{ $t('sidebar.linkAnalyzer') }}</h1>
 
 		<div v-if="link === ''">

@@ -1,5 +1,5 @@
 <template>
-	<div id="artist_tab" class="relative image_header" ref="root">
+	<div id="artist_tab" class="relative image-header" ref="root">
 		<header
 			class="inline-flex"
 			:style="{

@@ -22,7 +22,9 @@
 		</div>
 	</div>
 </template>
-<style>
+<style lang="scss">
+@import '../../styles/scss/base/_variables.scss';
+
 .smallmodal {
 	position: fixed;
 	z-index: 1250;
@@ -36,12 +38,22 @@
 }
 
 .smallmodal-content {
+	--modal-content-width: 95%;
+
 	background-color: transparent;
 	margin: auto;
 	width: var(--modal-content-width);
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+
+	@media only screen and (min-width: $small) {
+		--modal-content-width: 85%;
+	}
+
+	@media only screen and (min-width: $medium) {
+		--modal-content-width: 70%;
+	}
 }
 
 .smallmodal-content button {

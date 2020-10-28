@@ -1,5 +1,5 @@
 <template>
-	<div class="relative fixed_footer image_header" ref="root">
+	<div class="relative fixed_footer image-header" ref="root">
 		<header
 			:style="{
 				'background-image':

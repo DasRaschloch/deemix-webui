@@ -46,4 +46,11 @@
 		@apply text-primary border-primary bg-background-secondary;
 		@apply bg-opacity-25;
 	}
+
+	/* Image header */
+	.image-header header {
+		@apply bg-cover pt-56 px-6 pb-2 rounded-t-lg;
+
+		background-position: 0% 35%;
+	}
 }

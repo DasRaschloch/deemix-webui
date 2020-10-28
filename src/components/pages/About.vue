@@ -19,9 +19,9 @@
 
 		<h2>{{ $t('about.titles.usefulLinks') }}</h2>
 		<ul class="no-dots">
-			<li>
+			<!-- <li>
 				<a href="https://deemix.app" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="https://codeberg.org/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>

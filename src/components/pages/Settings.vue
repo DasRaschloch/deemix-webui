@@ -1,5 +1,5 @@
 <template>
-	<div id="settings_tab" class="fixed_footer" ref="root">
+	<div id="settings_tab" class="fixed-footer " ref="root">
 		<h1 class="mb-8 text-5xl">{{ $t('settings.title') }}</h1>
 
 		<div id="logged_in_info" v-if="isLoggedIn" ref="loggedInInfo">
@@ -617,7 +617,7 @@
 			</div>
 		</div>
 
-		<footer>
+		<footer class="bg-background-main">
 			<button class="mr-2 btn btn-primary" @click="resetSettings">{{ $t('settings.reset') }}</button>
 			<button class="btn btn-primary" @click="saveSettings">{{ $t('settings.save') }}</button>
 		</footer>

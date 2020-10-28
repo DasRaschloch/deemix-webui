@@ -11,7 +11,11 @@
 			<TheDownloadBar />
 		</div>
 
-		<BaseLoadingPlaceholder id="start_app_placeholder" text="Connecting to the server..." />
+		<BaseLoadingPlaceholder
+			:hidden="isSocketConnected"
+			text="Connecting to the server..."
+			additionalClasses="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50"
+		/>
 
 		<TheTrackPreview />
 		<TheQualityModal />
@@ -30,12 +34,11 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	/* margin-left: 48px; */
 }
 </style>
 
 <script>
-import TheDownloadBar from '@components/downloads/TheDownloadBar.vue'
+import { socket } from '@/utils/socket'
 
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import TheContextMenu from '@components/globals/TheContextMenu.vue'
@@ -46,8 +49,14 @@ import ConfirmModal from '@components/globals/ConfirmModal.vue'
 import TheSidebar from '@components/TheSidebar.vue'
 import TheSearchBar from '@components/TheSearchBar.vue'
 import TheContent from '@components/TheContent.vue'
+import TheDownloadBar from '@components/downloads/TheDownloadBar.vue'
 
 export default {
+	data() {
+		return {
+			isSocketConnected: false
+		}
+	},
 	components: {
 		TheSidebar,
 		TheSearchBar,
@@ -58,6 +67,11 @@ export default {
 		TheContextMenu,
 		TheContent,
 		ConfirmModal
+	},
+	mounted() {
+		socket.on('connect', () => {
+			this.isSocketConnected = true
+		})
 	}
 }
 </script>

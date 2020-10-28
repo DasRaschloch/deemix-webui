@@ -68,9 +68,9 @@
 					@contextmenu.prevent="openQualityModal"
 					@click.stop="addToQueue"
 					:data-link="link"
-					class="fab right"
+					class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center right"
 				>
-					<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+					<i class="material-icons text-4xl" :title="$t('globals.download_hint')">get_app</i>
 				</div>
 			</header>
 			<table class="table">

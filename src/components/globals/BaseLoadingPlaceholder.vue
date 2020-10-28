@@ -1,6 +1,12 @@
 <template functional>
-	<div :id="props.id" class="loading_placeholder" :class="{ 'loading_placeholder--hidden': props.hidden }">
-		<span class="loading_placeholder__text">{{ props.text }}</span>
+	<div
+		:id="props.id"
+		class="flex justify-center items-center flex-col flex-1 h-full"
+		:class="props.additionalClasses"
+		v-show="!props.hidden"
+	>
+		<span class="mb-5">{{ props.text }}</span>
+
 		<div class="lds-ring">
 			<div></div>
 			<div></div>
@@ -70,6 +76,10 @@ export default {
 			type: Boolean,
 			required: false,
 			default: false
+		},
+		additionalClasses: {
+			type: String,
+			required: false
 		}
 	}
 }

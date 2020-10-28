@@ -214,6 +214,19 @@
 		</div>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.tag {
+	background-color: var(--tag-background);
+	border-radius: 2px;
+	color: var(--tag-text);
+	display: inline-block;
+	font-size: 10px;
+	padding: 3px 6px;
+	text-transform: capitalize;
+}
+</style>
+
 <script>
 import { convertDuration } from '@/utils/utils'
 import { upperCaseFirstLowerCaseRest } from '@/utils/texts'

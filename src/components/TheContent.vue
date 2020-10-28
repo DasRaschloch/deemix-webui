@@ -6,7 +6,7 @@
 		aria-label="main content"
 	>
 		<div id="container">
-			<BaseLoadingPlaceholder id="search_placeholder" text="Searching..." :hidden="!loading" />
+			<BaseLoadingPlaceholder text="Searching..." :hidden="!loading" />
 			<BackButton v-if="showBackButton" class="sticky -ml-20" style="top: 1rem" />
 
 			<keep-alive>

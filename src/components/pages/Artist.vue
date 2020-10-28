@@ -9,8 +9,14 @@
 		>
 			<h1 class="m-0">{{ title }}</h1>
 
-			<div role="button" aria-label="download" @click.stop="addToQueue" :data-link="link" class="fab right">
-				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+			<div
+				role="button"
+				aria-label="download"
+				@click.stop="addToQueue"
+				:data-link="link"
+				class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center right"
+			>
+				<i class="material-icons text-4xl" :title="$t('globals.download_hint')">get_app</i>
 			</div>
 		</header>
 

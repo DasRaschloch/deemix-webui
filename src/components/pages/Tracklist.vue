@@ -1,5 +1,5 @@
 <template>
-	<div class="relative fixed_footer image-header" ref="root">
+	<div class="relative fixed-footer bg-background-main image-header" ref="root">
 		<header
 			:style="{
 				'background-image':
@@ -139,7 +139,7 @@
 			</tbody>
 		</table>
 		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px">{{ label }}</span>
-		<footer>
+		<footer class="bg-background-main">
 			<button class="mr-2 btn btn-primary" @click.stop="addToQueue" :data-link="link">
 				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${type}`, 1) })}` }}
 			</button>

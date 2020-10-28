@@ -22,7 +22,8 @@
 						<a
 							href="#"
 							@click="playPausePreview"
-							:class="'rounded' + (track.preview ? ' single-cover' : '')"
+							class="rounded"
+							:class="{ 'single-cover': !!track.preview }"
 							:data-preview="track.preview"
 						>
 							<PreviewControls v-if="track.preview" />

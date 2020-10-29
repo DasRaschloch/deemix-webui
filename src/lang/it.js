@@ -203,7 +203,8 @@ const it = {
 		},
 		appearance: {
 			title: 'Aspetto',
-			slimDownloadTab: 'Tab dei download slim'
+			slimDownloadTab: 'Tab dei download slim',
+			slimSidebar: 'Sidebar slim'
 		},
 		downloadPath: {
 			title: 'Cartella di download'

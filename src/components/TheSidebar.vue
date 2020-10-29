@@ -4,6 +4,7 @@
 		class="top-0 left-0 flex flex-col w-64 h-screen bg-panels-bg text-foreground"
 		role="navigation"
 		aria-label="sidebar"
+		ref="sidebar"
 	>
 		<router-link
 			tag="a"
@@ -217,6 +218,11 @@ export default {
 		socket.on('updateAvailable', () => {
 			this.updateAvailable = true
 		})
+
+		// Check if download tab has slim entries
+		if ('true' === localStorage.getItem('slimSidebar')) {
+			this.$refs.sidebar.classList.add('slim')
+		}
 	},
 	methods: {
 		changeTheme(newTheme) {

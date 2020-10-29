@@ -199,7 +199,8 @@ const en = {
 		},
 		appearance: {
 			title: 'Appearance',
-			slimDownloadTab: 'Slim download tab'
+			slimDownloadTab: 'Slim download tab',
+			slimSidebar: 'Slim Sidebar'
 		},
 		downloadPath: {
 			title: 'Download Path'

@@ -72,6 +72,10 @@
 				<input type="checkbox" v-model="changeSlimDownloads" />
 				<span class="checkbox_text">{{ $t('settings.appearance.slimDownloadTab') }}</span>
 			</label>
+			<label class="with_checkbox">
+				<input type="checkbox" v-model="changeSlimSidebar" />
+				<span class="checkbox_text">{{ $t('settings.appearance.slimSidebar') }}</span>
+			</label>
 		</div>
 
 		<div class="settings-group">
@@ -683,6 +687,7 @@ export default {
 			lastUser: '',
 			spotifyUser: '',
 			slimDownloads: false,
+			slimSidebar: false,
 			previewVolume: window.vol,
 			accountNum: 0,
 			accounts: []
@@ -706,6 +711,16 @@ export default {
 				this.slimDownloads = wantSlimDownloads
 				document.getElementById('download_list').classList.toggle('slim', wantSlimDownloads)
 				localStorage.setItem('slimDownloads', wantSlimDownloads)
+			}
+		},
+		changeSlimSidebar: {
+			get() {
+				return this.slimSidebar
+			},
+			set(wantSlimSidebar) {
+				this.slimSidebar = wantSlimSidebar
+				document.getElementById('sidebar').classList.toggle('slim', wantSlimSidebar)
+				localStorage.setItem('slimSidebar', wantSlimSidebar)
 			}
 		},
 		pictureHref() {
@@ -734,6 +749,7 @@ export default {
 		}
 
 		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
+		this.changeSlimSidebar = 'true' === localStorage.getItem('slimSidebar')
 
 		let volume = parseInt(localStorage.getItem('previewVolume'))
 

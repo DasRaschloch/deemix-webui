@@ -199,7 +199,8 @@ const fr = {
 		},
 		appearance: {
 			title: 'Apparence',
-			slimDownloadTab: 'Onglet de téléchargement compact'
+			slimDownloadTab: 'Onglet de téléchargement compact',
+			slimSidebar: 'Barre latérale compacte'
 		},
 		downloadPath: {
 			title: 'Emplacement De Téléchargement'
@@ -299,7 +300,8 @@ const fr = {
 			syncedLyrics: 'Paroles Synchronisées',
 			copyright: "Droits d'Auteur (Copyright)",
 			composer: 'Compositeur',
-			involvedPeople: 'Personnes Impliquées'
+			involvedPeople: 'Personnes Impliquées',
+			source: 'ID de la source et de la piste'
 		},
 		other: {
 			title: 'Autre',

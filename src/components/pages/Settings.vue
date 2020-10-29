@@ -393,13 +393,13 @@
 						<input type="checkbox" v-model="settings.tags.date" />
 						<span class="checkbox_text">{{ $t('settings.tags.date') }}</span>
 					</label>
-				</div>
-
-				<div class="settings-container__half">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.explicit" />
 						<span class="checkbox_text">{{ $t('settings.tags.explicit') }}</span>
 					</label>
+				</div>
+
+				<div class="settings-container__half">
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.isrc" />
 						<span class="checkbox_text">{{ $t('settings.tags.isrc') }}</span>
@@ -443,6 +443,10 @@
 					<label class="with_checkbox">
 						<input type="checkbox" v-model="settings.tags.involvedPeople" />
 						<span class="checkbox_text">{{ $t('settings.tags.involvedPeople') }}</span>
+					</label>
+					<label class="with_checkbox">
+						<input type="checkbox" v-model="settings.tags.source" />
+						<span class="checkbox_text">{{ $t('settings.tags.source') }}</span>
 					</label>
 				</div>
 			</div>

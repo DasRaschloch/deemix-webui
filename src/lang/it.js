@@ -305,7 +305,8 @@ const it = {
 			syncedLyrics: 'Testo Sincronizzato',
 			copyright: 'Copyright',
 			composer: 'Compositori',
-			involvedPeople: 'Persone Coinvolte'
+			involvedPeople: 'Persone Coinvolte',
+			source: 'Sorgente e ID brano'
 		},
 		other: {
 			title: 'Altro',

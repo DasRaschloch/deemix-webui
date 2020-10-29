@@ -300,7 +300,8 @@ const en = {
 			syncedLyrics: 'Synchronized Lyrics',
 			copyright: 'Copyright',
 			composer: 'Composer',
-			involvedPeople: 'Involved People'
+			involvedPeople: 'Involved People',
+			source: 'Source and song ID'
 		},
 		other: {
 			title: 'Other',

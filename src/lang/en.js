@@ -4,7 +4,7 @@ const en = {
 		back: 'back',
 		loading: 'loading',
 		download: 'Download {thing}',
-		downloadAll: 'Download all {thing}',
+		downloadAll: 'Download all {things}',
 		by: 'by {artist}',
 		in: 'in {album}',
 		download_hint: 'Download',
@@ -39,6 +39,12 @@ const en = {
 			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
 			error: 'error'
+		},
+		listTabsArticle:{
+			playlist: 'the playlist | the playlists',
+			album: 'the album | the albums',
+			artist: 'the artist | the artists',
+			track: 'the track | the tracks',
 		}
 	},
 	about: {

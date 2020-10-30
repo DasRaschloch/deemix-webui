@@ -4,7 +4,7 @@ const it = {
 		back: 'indietro',
 		loading: 'caricamento',
 		download: 'Scarica {thing}',
-		downloadAll: 'Scarica ogni {thing}',
+		downloadAll: 'Scarica tutti {thingsArticle}',
 		by: 'di {artist}',
 		in: 'in {album}',
 		download_hint: 'Scarica',
@@ -39,6 +39,12 @@ const it = {
 			releaseDate: 'data di uscita',
 			error: 'errore',
 			empty: ''
+		},
+		listTabsArticle:{
+			playlist: 'la playlist | le playlist',
+			album: `l'album | gli album`,
+			artist: `l'artista | gli artisti`,
+			track: 'il brano | i brani',
 		}
 	},
 	about: {

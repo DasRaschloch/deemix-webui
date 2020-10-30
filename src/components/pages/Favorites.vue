@@ -26,7 +26,7 @@
 		</ul>
 
 		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
-			{{ $t('globals.downloadAll', { thing: $tc(`globals.listTabs.${activeTab}`, 2) }) }}
+			{{ $t('globals.downloadAll', { things: $tc(`globals.listTabs.${activeTab}`, 2), thingsArticle: $tc(`globals.listTabsArticle.${activeTab}`, 2) }) }}
 		</button>
 
 		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'playlist' }">

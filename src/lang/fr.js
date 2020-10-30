@@ -4,7 +4,7 @@ const fr = {
 		back: 'retour',
 		loading: 'chargement en cours',
 		download: 'Télécharger {thing}',
-		downloadAll: "Télécharger l'intégralité des {thing}",
+		downloadAll: "Télécharger l'intégralité des {things}",
 		by: 'par {artist}',
 		in: 'dans {album}',
 		download_hint: 'Télécharger',

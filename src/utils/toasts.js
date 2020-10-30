@@ -6,10 +6,7 @@ import { socket } from '@/utils/socket'
 
 const sharedOptions = {
 	gravity: 'bottom',
-	position: 'left',
-	offset: {
-		x: '14rem'
-	}
+	position: 'left'
 }
 
 let toastsWithId = {}
@@ -87,6 +84,9 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 						delete toastsWithId[id]
 					}
 				}
+			},
+			offset: {
+				x: 'true' === localStorage.getItem('slimSidebar') ? '3rem': '14rem'
 			}
 		}).showToast()
 		if (id) {

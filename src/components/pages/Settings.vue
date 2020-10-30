@@ -724,6 +724,10 @@ export default {
 			set(wantSlimSidebar) {
 				this.slimSidebar = wantSlimSidebar
 				document.getElementById('sidebar').classList.toggle('slim', wantSlimSidebar)
+				// Moves all toast messages when the option changes
+				Array.from(document.getElementsByClassName('toastify')).forEach((toast)=>{
+					toast.style.transform = `translate(${wantSlimSidebar ? '3rem' : '14rem'}, 0)`;
+				})
 				localStorage.setItem('slimSidebar', wantSlimSidebar)
 			}
 		},

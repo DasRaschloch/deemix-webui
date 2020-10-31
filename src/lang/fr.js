@@ -27,7 +27,6 @@ const fr = {
 			single: 'single | singles',
 			title: 'titre | titres',
 			track: 'piste | pistes',
-			trackN: '0 piste | {n} piste | {n} pistes',
 			releaseN: '0 sortie | {n} sortie | {n} sorties',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
@@ -37,7 +36,11 @@ const fr = {
 			featured: 'Apparaît dans',
 			spotifyPlaylist: 'playlist spotify | playlists spotify',
 			releaseDate: 'date de sortie',
-			error: 'erreur'
+			error: 'erreur',
+			trackN: '0 piste | {n} piste | {n} pistes',
+			albumN: '0 album | {n} album | {n} albums',
+			artistN: '0 artiste | {n} artiste | {n} artistes',
+			playlistN: '0 playlist | {n} playlist | {n} playlists'
 		}
 	},
 	about: {

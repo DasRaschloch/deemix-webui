@@ -26,7 +26,9 @@
 		</ul>
 
 		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
-			{{ $t('globals.downloadAll', { things: $tc(`globals.listTabs.${activeTab}`, 2), thingsArticle: $tc(`globals.listTabsArticle.${activeTab}`, 2) }) }}
+			{{
+				$t('globals.download', { thing: $tc(`globals.listTabs.${activeTab}N`, getTabLenght() )})
+			}}
 		</button>
 
 		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'playlist' }">
@@ -386,6 +388,12 @@ export default {
 			}
 
 			return toDownload
+		},
+		getTabLenght(tab = this.activeTab) {
+			let total = this[`${tab}s`].length
+			// TODO: Add Spotify playlists to downlaod queue as well
+			//if (tab === "playlist") total += this.spotifyPlaylists.length
+			return total
 		},
 		getLovedTracksPlaylist() {
 			let lovedTracks = this.playlists.filter(playlist => {

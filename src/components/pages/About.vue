@@ -23,10 +23,10 @@
 				<a href="https://deemix.app" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li> -->
 			<li>
-				<a href="https://codeberg.org/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
+				<a href="https://git.fuwafuwa.moe/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>
 			<li>
-				<a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">💻 {{ $t('about.officialWebuiRepo') }}</a>
+				<a href="https://git.fuwafuwa.moe/RemixDev/deemix-webui" target="_blank">💻 {{ $t('about.officialWebuiRepo') }}</a>
 			</li>
 			<li>
 				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>

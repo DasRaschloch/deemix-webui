@@ -2,55 +2,55 @@ input[type='text'],
 input[type='password'],
 input[type='number'] {
 	appearance: none;
-	width: calc(100% - 16px);
+	margin-bottom: 8px;
 	border: 0px solid black;
-	line-height: 36px;
-	padding: 0px 8px;
 	border-radius: 4px;
 	background-color: var(--secondary-background);
+	padding: 0px 8px;
+	width: calc(100% - 16px);
+	line-height: 36px;
 	color: var(--foreground);
-	margin-bottom: 8px;
 }
 
 input[type='checkbox'] {
 	appearance: none;
-	background-color: none;
-	border: 2px solid gray;
-	opacity: 0.5;
-	border-radius: 2px;
-	padding: 7px;
-	margin: 3px;
 	display: inline-block;
 	position: relative;
+	opacity: 0.5;
+	margin: 3px;
+	border: 2px solid gray;
+	border-radius: 2px;
+	background-color: none;
+	padding: 7px;
 
 	&:checked {
 		opacity: 1;
+		margin: 3px;
+		border: 0px solid var(--primary-color);
+		border-radius: 2px;
 		background-color: var(--primary-color);
 		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='18' viewBox='3 3 18 18' width='18'%3E%3Cpath fill='%23ffffff' d='M 10,17 5,12 6.41,10.59 10,14.17 17.59,6.58 19,8 Z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
 		background-position: center center;
-		border: 0px solid var(--primary-color);
-		border-radius: 2px;
 		padding: 9px;
-		margin: 3px;
 		color: var(--primary-text);
 	}
 }
 
 select {
 	appearance: none;
-	width: 100%;
+	margin-bottom: 8px;
 	border: 0px solid black;
-	line-height: 36px;
-	padding: 0px 40px 0px 8px;
 	border-radius: 4px;
+	background-clip: border-box;
 	background-color: var(--secondary-background);
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath style='fill%3A%23000000%3Bfill-opacity%3A0.25' d='M7 10l5 5 5-5z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+	background-position: calc(100% - 8px) center;
 	background-repeat: no-repeat;
 	background-size: 24px;
-	background-position: calc(100% - 8px) center;
-	background-clip: border-box;
+	padding: 0px 40px 0px 8px;
+	width: 100%;
+	line-height: 36px;
 	color: var(--foreground);
-	margin-bottom: 8px;
 }
 
 p {
@@ -67,27 +67,9 @@ img {
 	}
 }
 
-i {
-	&.disabled {
-		opacity: 0.5;
-		cursor: default;
-	}
-
-	&.explicit_icon {
-		color: hsl(240, 5%, 59%);
-		margin-right: $explicit-separator;
-		margin-left: -3px;
-
-		&.explicit_icon--right {
-			margin-left: $explicit-separator;
-			margin-right: 0px;
-		}
-	}
-}
-
 .single-cover {
-	position: relative;
 	display: inline-block;
+	position: relative;
 	color: white;
 }
 
@@ -105,61 +87,42 @@ i {
 	cursor: pointer !important;
 }
 
-.table--tracklist .clickable:hover,
-.table--charts .clickable:hover {
-	text-decoration: underline;
-}
-
-.with_checkbox {
-	display: flex;
-	align-items: center;
-
-	[type='checkbox'] {
-		cursor: pointer;
-	}
-
-	.checkbox_text {
-		margin-left: 10px;
-		cursor: pointer;
-		user-select: none;
-	}
-}
-
 .coverart {
 	background-color: var(--secondary-background);
 }
 
+// ? Maybe make a component?
 .cover_container {
 	position: relative;
 
 	.coverart {
-		opacity: 1;
 		display: block;
+		backface-visibility: hidden;
+		transition: 0.5s ease;
+		opacity: 1;
 		width: 100%;
 		height: auto;
-		transition: 0.5s ease;
-		backface-visibility: hidden;
 	}
 
 	.download_overlay {
-		transition: 0.5s ease;
-		opacity: 0;
 		position: absolute;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		text-align: center;
-		background-color: #000000;
-		border-radius: 50%;
-		min-width: 32px;
-		padding: 0px;
-		height: 44px;
+		transition: 0.5s ease;
+		opacity: 0;
 		border: 0px;
+		border-radius: 50%;
+		background-color: #000000;
+		padding: 0px;
+		min-width: 32px;
+		height: 44px;
+		text-align: center;
 
 		i {
-			color: white;
-			padding: 10px;
 			cursor: pointer;
+			padding: 10px;
+			color: white;
 		}
 
 		&:focus {
@@ -176,47 +139,5 @@ i {
 			opacity: 1;
 			border: 0px;
 		}
-	}
-}
-
-// TODO Remove
-.inline-flex {
-	display: flex;
-	align-items: center;
-
-	.right {
-		margin-left: auto;
-	}
-}
-
-// TODO Remove
-.right {
-	float: right;
-}
-
-.hide {
-	display: none !important;
-}
-
-.changing-theme {
-	transition: all 200ms ease-in-out;
-}
-
-[v-cloak] {
-	display: none;
-}
-
-.material-icons {
-	@apply select-none;
-	$sizes: 18, 24, 36, 48;
-
-	@each $size in $sizes {
-		&.md-#{$size} {
-			font-size: $size * 1px;
-		}
-	}
-
-	&.mirrored {
-		transform: scaleX(-1);
 	}
 }

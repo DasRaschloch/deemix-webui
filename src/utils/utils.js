@@ -95,6 +95,28 @@ export function copyToClipboard(text) {
 	ghostInput.remove()
 }
 
+export function getProperty(obj, ...props) {
+	for (const prop of props) {
+		// Example: this.is.an.example
+		let hasDotNotation = /\./.test(prop)
+
+		// Searching the properties in the object
+		let valueToTest = hasDotNotation
+			? prop.split('.').reduce((o, i) => {
+					if (o) {
+						return o[i]
+					}
+			  }, obj)
+			: obj[prop]
+
+		if (!!valueToTest) {
+			return valueToTest
+		}
+	}
+
+	return null
+}
+
 export default {
 	isValidURL,
 	convertDuration,

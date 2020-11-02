@@ -1,5 +1,5 @@
 <template>
-	<div id="settings_tab" class="fixed-footer " ref="root">
+	<div id="settings_tab" class="fixed-footer" ref="root">
 		<h1 class="mb-8 text-5xl">{{ $t('settings.title') }}</h1>
 
 		<div id="logged_in_info" v-if="isLoggedIn" ref="loggedInInfo">
@@ -22,7 +22,7 @@
 			<h3 class="settings-group__header settings-group__header--with-icon">
 				<i class="material-icons">person</i>{{ $t('settings.login.title') }}
 			</h3>
-			<div class="inline-flex">
+			<div class="flex items-center">
 				<input
 					autocomplete="off"
 					type="password"
@@ -68,11 +68,11 @@
 			<h3 class="settings-group__header settings-group__header--with-icon">
 				<i class="material-icons">web</i>{{ $t('settings.appearance.title') }}
 			</h3>
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="changeSlimDownloads" />
 				<span class="checkbox_text">{{ $t('settings.appearance.slimDownloadTab') }}</span>
 			</label>
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="changeSlimSidebar" />
 				<span class="checkbox_text">{{ $t('settings.appearance.slimSidebar') }}</span>
 			</label>
@@ -82,7 +82,7 @@
 			<h3 class="settings-group__header settings-group__header--with-icon">
 				<i class="material-icons">folder</i>{{ $t('settings.downloadPath.title') }}
 			</h3>
-			<div class="inline-flex">
+			<div class="flex items-center">
 				<input autocomplete="off" type="text" v-model="settings.downloadLocation" />
 				<button
 					id="select_downloads_folder"
@@ -116,7 +116,7 @@
 			</h3>
 			<div class="settings-container">
 				<div class="settings-container__third">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.createPlaylistFolder" />
 						<span class="checkbox_text">{{ $t('settings.folders.createPlaylistFolder') }}</span>
 					</label>
@@ -126,7 +126,7 @@
 					</div>
 				</div>
 				<div class="settings-container__third">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.createArtistFolder" />
 						<span class="checkbox_text">{{ $t('settings.folders.createArtistFolder') }}</span>
 					</label>
@@ -137,7 +137,7 @@
 					</div>
 				</div>
 				<div class="settings-container__third">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.createAlbumFolder" />
 						<span class="checkbox_text">{{ $t('settings.folders.createAlbumFolder') }}</span>
 					</label>
@@ -149,17 +149,17 @@
 				</div>
 			</div>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.createCDFolder" />
 				<span class="checkbox_text">{{ $t('settings.folders.createCDFolder') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.createStructurePlaylist" />
 				<span class="checkbox_text">{{ $t('settings.folders.createStructurePlaylist') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.createSingleFolder" />
 				<span class="checkbox_text">{{ $t('settings.folders.createSingleFolder') }}</span>
 			</label>
@@ -172,7 +172,7 @@
 
 			<div class="settings-container">
 				<div class="settings-container__third settings-container__third--only-checkbox">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.padTracks" />
 						<span class="checkbox_text">{{ $t('settings.trackTitles.padTracks') }}</span>
 					</label>
@@ -224,34 +224,34 @@
 
 			<div class="settings-container">
 				<div class="settings-container__third settings-container__third--only-checkbox">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.fallbackBitrate" />
 						<span class="checkbox_text">{{ $t('settings.downloads.fallbackBitrate') }}</span>
 					</label>
 
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.fallbackSearch" />
 						<span class="checkbox_text">{{ $t('settings.downloads.fallbackSearch') }}</span>
 					</label>
 				</div>
 				<div class="settings-container__third settings-container__third--only-checkbox">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.logErrors" />
 						<span class="checkbox_text">{{ $t('settings.downloads.logErrors') }}</span>
 					</label>
 
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.logSearched" />
 						<span class="checkbox_text">{{ $t('settings.downloads.logSearched') }}</span>
 					</label>
 				</div>
 				<div class="settings-container__third settings-container__third--only-checkbox">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.syncedLyrics" />
 						<span class="checkbox_text">{{ $t('settings.downloads.syncedLyrics') }}</span>
 					</label>
 
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.createM3U8File" />
 						<span class="checkbox_text">{{ $t('settings.downloads.createM3U8File') }}</span>
 					</label>
@@ -263,7 +263,7 @@
 				<input type="text" v-model="settings.playlistFilenameTemplate" />
 			</div>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.saveDownloadQueue" />
 				<span class="checkbox_text">{{ $t('settings.downloads.saveDownloadQueue') }}</span>
 			</label>
@@ -274,7 +274,7 @@
 				<i class="material-icons">album</i>{{ $t('settings.covers.title') }}
 			</h3>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.saveArtwork" />
 				<span class="checkbox_text">{{ $t('settings.covers.saveArtwork') }}</span>
 			</label>
@@ -284,7 +284,7 @@
 				<input type="text" v-model="settings.coverImageTemplate" />
 			</div>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.saveArtworkArtist" />
 				<span class="checkbox_text">{{ $t('settings.covers.saveArtworkArtist') }}</span>
 			</label>
@@ -319,7 +319,7 @@
 				</select>
 			</div>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.embeddedArtworkPNG" />
 				<span class="checkbox_text">{{ $t('settings.covers.embeddedArtworkPNG') }}</span>
 			</label>
@@ -327,7 +327,7 @@
 				⚠️ {{ $t('settings.covers.embeddedPNGWarning') }}
 			</p>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.tags.coverDescriptionUTF8" />
 				<span class="checkbox_text">{{ $t('settings.covers.coverDescriptionUTF8') }}</span>
 			</label>
@@ -345,106 +345,106 @@
 
 			<div class="settings-container">
 				<div class="settings-container__half">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.title" />
 						<span class="checkbox_text">{{ $t('settings.tags.title') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.artist" />
 						<span class="checkbox_text">{{ $t('settings.tags.artist') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.album" />
 						<span class="checkbox_text">{{ $t('settings.tags.album') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.cover" />
 						<span class="checkbox_text">{{ $t('settings.tags.cover') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.trackNumber" />
 						<span class="checkbox_text">{{ $t('settings.tags.trackNumber') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.trackTotal" />
 						<span class="checkbox_text">{{ $t('settings.tags.trackTotal') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.discNumber" />
 						<span class="checkbox_text">{{ $t('settings.tags.discNumber') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.discTotal" />
 						<span class="checkbox_text">{{ $t('settings.tags.discTotal') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.albumArtist" />
 						<span class="checkbox_text">{{ $t('settings.tags.albumArtist') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.genre" />
 						<span class="checkbox_text">{{ $t('settings.tags.genre') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.year" />
 						<span class="checkbox_text">{{ $t('settings.tags.year') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.date" />
 						<span class="checkbox_text">{{ $t('settings.tags.date') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.explicit" />
 						<span class="checkbox_text">{{ $t('settings.tags.explicit') }}</span>
 					</label>
 				</div>
 
 				<div class="settings-container__half">
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.isrc" />
 						<span class="checkbox_text">{{ $t('settings.tags.isrc') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.length" />
 						<span class="checkbox_text">{{ $t('settings.tags.length') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.barcode" />
 						<span class="checkbox_text">{{ $t('settings.tags.barcode') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.bpm" />
 						<span class="checkbox_text">{{ $t('settings.tags.bpm') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.replayGain" />
 						<span class="checkbox_text">{{ $t('settings.tags.replayGain') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.label" />
 						<span class="checkbox_text">{{ $t('settings.tags.label') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.lyrics" />
 						<span class="checkbox_text">{{ $t('settings.tags.lyrics') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.syncedLyrics" />
 						<span class="checkbox_text">{{ $t('settings.tags.syncedLyrics') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.copyright" />
 						<span class="checkbox_text">{{ $t('settings.tags.copyright') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.composer" />
 						<span class="checkbox_text">{{ $t('settings.tags.composer') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.involvedPeople" />
 						<span class="checkbox_text">{{ $t('settings.tags.involvedPeople') }}</span>
 					</label>
-					<label class="with_checkbox">
+					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.source" />
 						<span class="checkbox_text">{{ $t('settings.tags.source') }}</span>
 					</label>
@@ -457,17 +457,17 @@
 				<i class="material-icons">list</i>{{ $t('settings.other.title') }}
 			</h3>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation" />
 				<span class="checkbox_text">{{ $t('settings.other.savePlaylistAsCompilation') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.tags.useNullSeparator" />
 				<span class="checkbox_text">{{ $t('settings.other.useNullSeparator') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.tags.saveID3v1" />
 				<span class="checkbox_text">{{ $t('settings.other.saveID3v1') }}</span>
 			</label>
@@ -488,22 +488,22 @@
 				</select>
 			</div>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.tags.singleAlbumArtist" />
 				<span class="checkbox_text">{{ $t('settings.other.singleAlbumArtist') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.albumVariousArtists" />
 				<span class="checkbox_text">{{ $t('settings.other.albumVariousArtists') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.removeAlbumVersion" />
 				<span class="checkbox_text">{{ $t('settings.other.removeAlbumVersion') }}</span>
 			</label>
 
-			<label class="with_checkbox">
+			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.removeDuplicateArtists" />
 				<span class="checkbox_text">{{ $t('settings.other.removeDuplicateArtists') }}</span>
 			</label>
@@ -643,7 +643,7 @@
 
 .locale-flag {
 	width: 60px;
-	display: inline-flex;
+	display: flex items-center;
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
@@ -724,10 +724,6 @@ export default {
 			set(wantSlimSidebar) {
 				this.slimSidebar = wantSlimSidebar
 				document.getElementById('sidebar').classList.toggle('slim', wantSlimSidebar)
-				// Moves all toast messages when the option changes
-				Array.from(document.getElementsByClassName('toastify')).forEach((toast)=>{
-					toast.style.transform = `translate(${wantSlimSidebar ? '3rem' : '14rem'}, 0)`;
-				})
 				localStorage.setItem('slimSidebar', wantSlimSidebar)
 			}
 		},

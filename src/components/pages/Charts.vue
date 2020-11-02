@@ -27,7 +27,7 @@
 			<table class="table table--charts">
 				<tbody>
 					<tr v-for="track in chart" class="track_row">
-						<td class="top-tracks-position" :class="{ first: track.position === 1 }">
+						<td class="p-3 text-center cursor-default" :class="{ first: track.position === 1 }">
 							{{ track.position }}
 						</td>
 						<td class="table__icon table__icon--big">

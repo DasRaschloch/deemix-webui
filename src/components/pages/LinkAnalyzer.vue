@@ -17,7 +17,7 @@
 
 		<div v-else>
 			<header
-				class="inline-flex"
+				class="flex items-center"
 				:style="{
 					'background-image':
 						'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
@@ -68,7 +68,7 @@
 					@contextmenu.prevent="openQualityModal"
 					@click.stop="addToQueue"
 					:data-link="link"
-					class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center right"
+					class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center ml-auto"
 				>
 					<i class="material-icons text-4xl" :title="$t('globals.download_hint')">get_app</i>
 				</div>
@@ -121,10 +121,11 @@
 			</table>
 
 			<div v-if="type == 'album'">
-				<router-link tag="button" :to="{ name: 'Album', params: { id } }">
+				<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Album', params: { id } }">
 					{{ $t('linkAnalyzer.table.tracklist') }}
 				</router-link>
 			</div>
+
 			<div v-if="countries.length">
 				<p v-for="country in countries">{{ country[0] }} - {{ country[1] }}</p>
 			</div>

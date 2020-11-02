@@ -1,7 +1,7 @@
 <template>
 	<div id="artist_tab" class="relative image-header" ref="root">
 		<header
-			class="inline-flex"
+			class="flex items-center"
 			:style="{
 				'background-image':
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
@@ -14,7 +14,7 @@
 				aria-label="download"
 				@click.stop="addToQueue"
 				:data-link="link"
-				class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center right"
+				class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center ml-auto"
 			>
 				<i class="material-icons text-4xl" :title="$t('globals.download_hint')">get_app</i>
 			</div>
@@ -54,13 +54,13 @@
 			</thead>
 			<tbody>
 				<tr v-for="release in showTable" :key="release.id">
-					<router-link tag="td" class="inline-flex clickable" :to="{ name: 'Album', params: { id: release.id } }">
+					<router-link tag="td" class="flex items-center clickable" :to="{ name: 'Album', params: { id: release.id } }">
 						<img
 							class="rounded coverart"
 							:src="release.cover_small"
 							style="margin-right: 16px; width: 56px; height: 56px"
 						/>
-						<i v-if="release.explicit_lyrics" class="material-icons explicit_icon"> explicit </i>
+						<i v-if="release.explicit_lyrics" class="material-icons explicit-icon"> explicit </i>
 						{{ release.title }}
 						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color: #ff7300">
 							fiber_new

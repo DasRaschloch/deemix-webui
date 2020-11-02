@@ -6,8 +6,8 @@
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
 			}"
 		>
-			<h1 class="inline-flex m-0 text-5xl">
-				{{ title }} <i v-if="explicit" class="material-icons explicit_icon explicit_icon--right">explicit</i>
+			<h1 class="flex items-center m-0 text-5xl">
+				{{ title }} <i v-if="explicit" class="material-icons explicit-icon explicit-icon--right">explicit</i>
 			</h1>
 
 			<h2 class="m-0 mb-3 text-lg">
@@ -60,7 +60,7 @@
 							</td>
 							<td class="table__cell--large table__cell--with-icon">
 								<div class="table__cell-content table__cell-content--vertical-center">
-									<i v-if="track.explicit_lyrics" class="material-icons explicit_icon"> explicit </i>
+									<i v-if="track.explicit_lyrics" class="material-icons explicit-icon"> explicit </i>
 									{{
 										track.title +
 										(track.title_version && track.title.indexOf(track.title_version) == -1
@@ -126,8 +126,8 @@
 							<i v-else class="material-icons disabled">play_arrow</i>
 						</td>
 						<td>{{ i + 1 }}</td>
-						<td class="inline-flex">
-							<i v-if="track.explicit" class="material-icons explicit_icon">explicit</i>
+						<td class="flex items-center">
+							<i v-if="track.explicit" class="material-icons explicit-icon">explicit</i>
 							{{ track.name }}
 						</td>
 						<td>{{ track.artists[0].name }}</td>

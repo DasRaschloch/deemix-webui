@@ -26,9 +26,7 @@
 		</ul>
 
 		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
-			{{
-				$t('globals.download', { thing: $tc(`globals.listTabs.${activeTab}N`, getTabLenght() )})
-			}}
+			{{ $t('globals.downloadAll', { thing: $tc(`globals.listTabs.${activeTab}`, 2) }) }}
 		</button>
 
 		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'playlist' }">
@@ -166,7 +164,7 @@
 			</div>
 			<table v-if="tracks.length > 0" class="table">
 				<tr v-for="track in tracks" class="track_row">
-					<td class="top-tracks-position" :class="{ first: track.position === 1 }">
+					<td class="p-3 text-center cursor-default" :class="{ first: track.position === 1 }">
 						{{ track.position }}
 					</td>
 					<td>
@@ -388,12 +386,6 @@ export default {
 			}
 
 			return toDownload
-		},
-		getTabLenght(tab = this.activeTab) {
-			let total = this[`${tab}s`].length
-			// TODO: Add Spotify playlists to downlaod queue as well
-			//if (tab === "playlist") total += this.spotifyPlaylists.length
-			return total
 		},
 		getLovedTracksPlaylist() {
 			let lovedTracks = this.playlists.filter(playlist => {

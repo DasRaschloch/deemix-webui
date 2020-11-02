@@ -168,7 +168,8 @@ export default {
 				}
 			} else {
 				if (isShowingSearch && sameAsLastSearch) {
-					this.$root.$emit('mainSearch:updateResults', term)
+					// ? Has this any sense since we're not performing any call?
+					// this.$root.$emit('mainSearch:updateResults', term)
 					return
 				}
 

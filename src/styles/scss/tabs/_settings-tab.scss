@@ -78,6 +78,21 @@
 	}
 }
 
+.with-checkbox {
+	display: flex;
+	align-items: center;
+
+	[type='checkbox'] {
+		cursor: pointer;
+	}
+
+	.checkbox_text {
+		margin-left: 10px;
+		cursor: pointer;
+		user-select: none;
+	}
+}
+
 /* Input group */
 .input_group {
 	margin-bottom: 25px;
@@ -86,7 +101,7 @@
 		margin-bottom: 7px;
 	}
 
-	.with_checkbox + & {
+	.with-checkbox + & {
 		margin-top: 10px;
 	}
 }

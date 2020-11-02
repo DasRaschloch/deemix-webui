@@ -1,11 +1,10 @@
 <template functional>
 	<div
-		:id="props.id"
 		class="flex justify-center items-center flex-col flex-1 h-full"
 		:class="props.additionalClasses"
 		v-show="!props.hidden"
 	>
-		<span class="mb-5">{{ props.text }}</span>
+		<span class="mb-5">{{ props.text || 'Loading...' }}</span>
 
 		<div class="lds-ring">
 			<div></div>
@@ -60,27 +59,3 @@
 }
 </style>
 
-<script>
-export default {
-	props: {
-		text: {
-			type: String,
-			required: false,
-			default: 'Loading...'
-		},
-		id: {
-			type: String,
-			required: false
-		},
-		hidden: {
-			type: Boolean,
-			required: false,
-			default: false
-		},
-		additionalClasses: {
-			type: String,
-			required: false
-		}
-	}
-}
-</script>

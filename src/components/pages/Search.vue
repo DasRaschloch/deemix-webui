@@ -21,7 +21,8 @@
 			<keep-alive>
 				<component
 					:is="currentTab.component"
-					:results="results"
+					:viewInfo="getViewInfo()"
+					want-headers
 					@add-to-queue="addToQueue"
 					@change-search-tab="changeSearchTab"
 				></component>
@@ -43,9 +44,19 @@ import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
 
+import { reduceSearchResults, formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
+
+const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
+
 export default {
 	components: {
 		BaseLoadingPlaceholder
+	},
+	props: {
+		performScrolledSearch: {
+			type: Boolean,
+			required: false
+		}
 	},
 	data() {
 		const $t = this.$t.bind(this)
@@ -54,33 +65,45 @@ export default {
 		return {
 			currentTab: {
 				name: '',
-				component: {}
+				searchType: '',
+				component: {},
+				viewInfo: '',
+				formatFunc: () => {}
 			},
 			tabs: [
 				{
 					name: $t('globals.listTabs.all'),
 					searchType: 'all',
-					component: ResultsAll
+					component: ResultsAll,
+					viewInfo: 'allTab'
 				},
 				{
 					name: $tc('globals.listTabs.track', 2),
 					searchType: 'track',
-					component: ResultsTracks
+					component: ResultsTracks,
+					viewInfo: 'trackTab',
+					formatFunc: formatSingleTrack
 				},
 				{
 					name: $tc('globals.listTabs.album', 2),
 					searchType: 'album',
-					component: ResultsAlbums
+					component: ResultsAlbums,
+					viewInfo: 'albumTab',
+					formatFunc: formatAlbums
 				},
 				{
 					name: $tc('globals.listTabs.artist', 2),
 					searchType: 'artist',
-					component: ResultsArtists
+					component: ResultsArtists,
+					viewInfo: 'artistTab',
+					formatFunc: formatArtist
 				},
 				{
 					name: $tc('globals.listTabs.playlist', 2),
 					searchType: 'playlist',
-					component: ResultsPlaylists
+					component: ResultsPlaylists,
+					viewInfo: 'playlistTab',
+					formatFunc: formatPlaylist
 				}
 			],
 			results: {
@@ -88,35 +111,23 @@ export default {
 				allTab: {
 					ORDER: [],
 					TOP_RESULT: [],
-					ALBUM: {},
-					ARTIST: {},
-					TRACK: {},
-					PLAYLIST: {}
+					ALBUM: {
+						hasLoaded: false
+					},
+					ARTIST: {
+						hasLoaded: false
+					},
+					TRACK: {
+						hasLoaded: false
+					},
+					PLAYLIST: {
+						hasLoaded: false
+					}
 				},
-				trackTab: {
-					data: [],
-					next: 0,
-					total: 0,
-					loaded: false
-				},
-				albumTab: {
-					data: [],
-					next: 0,
-					total: 0,
-					loaded: false
-				},
-				artistTab: {
-					data: [],
-					next: 0,
-					total: 0,
-					loaded: false
-				},
-				playlistTab: {
-					data: [],
-					next: 0,
-					total: 0,
-					loaded: false
-				}
+				trackTab: { ...resetObj },
+				albumTab: { ...resetObj },
+				artistTab: { ...resetObj },
+				playlistTab: { ...resetObj }
 			}
 		}
 	},
@@ -125,87 +136,82 @@ export default {
 			return this.results.query !== ''
 		},
 		loadedTabs() {
-			const loaded = []
+			const tabsLoaded = []
 
 			for (const resultKey in this.results) {
 				if (this.results.hasOwnProperty(resultKey)) {
-					const result = this.results[resultKey]
+					const currentResult = this.results[resultKey]
 
-					if (result.loaded) {
-						loaded.push(resultKey.replace(/Tab/g, ''))
+					if (currentResult.hasLoaded) {
+						tabsLoaded.push(resultKey.replace(/Tab/g, ''))
 					}
 				}
 			}
 
-			return loaded
-		}
-	},
-	props: {
-		performScrolledSearch: {
-			type: Boolean,
-			required: false
+			return tabsLoaded
 		}
 	},
 	created() {
 		this.currentTab = this.tabs[0]
 	},
 	mounted() {
-		EventBus.$on('mainSearch:checkLoadMoreContent', this.checkLoadMoreContent)
-		this.$root.$on('mainSearch:showNewResults', this.checkIfShowNewResults)
+		this.$root.$on('mainSearch:showNewResults', this.checkIfPerformNewMainSearch)
 		this.$root.$on('mainSearch:updateResults', this.checkIfUpdateResults)
 
-		socket.on('mainSearch', this.handleMainSearch)
+		socket.on('mainSearch', this.saveMainSearchResult)
 		socket.on('search', this.handleSearch)
 	},
 	methods: {
-		changeSearchTab(sectionName) {
-			sectionName = sectionName.toLowerCase()
+		numberWithDots,
+		convertDuration,
+		addToQueue(e) {
+			sendAddToQueue(e.currentTarget.dataset.link)
+		},
+		getViewInfo() {
+			if (this.currentTab.searchType === 'all') {
+				return this.results.allTab
+			}
 
-			let newTab = this.tabs.find(tab => {
-				return tab.searchType === sectionName
+			return reduceSearchResults(this.results[this.currentTab.viewInfo], this.currentTab.formatFunc)
+		},
+		changeSearchTab(tabName) {
+			tabName = tabName.toLowerCase()
+
+			const newTab = this.tabs.find(tab => {
+				return tab.searchType === tabName
 			})
 
 			if (!newTab) {
-				console.error(`No tab ${sectionName} found`)
+				console.error(`No tab ${tabName} found`)
 				return
 			}
 
 			window.scrollTo(0, 0)
 			this.currentTab = newTab
 		},
-		checkIfShowNewResults(term, mainSelected) {
-			let needToPerformNewSearch = term !== this.results.query /* || mainSelected == 'search_tab' */
+		checkIfPerformNewMainSearch(searchTerm) {
+			let needToPerformNewMainSearch = searchTerm !== this.results.query
 
-			if (needToPerformNewSearch) {
-				this.showNewResults(term)
+			if (needToPerformNewMainSearch) {
+				this.performNewMainSearch(searchTerm)
 			}
 		},
-		checkIfUpdateResults(term) {
-			let needToUpdateSearch = term === this.results.query && this.currentTab.searchType !== 'all'
-
-			if (needToUpdateSearch) {
-				let resetObj = { data: [], next: 0, total: 0, loaded: false }
-				this.results[this.currentTab.searchType + 'Tab'] = { ...resetObj }
-				this.search(this.currentTab.searchType)
-			}
-		},
-		showNewResults(term) {
+		performNewMainSearch(term) {
 			socket.emit('mainSearch', { term })
 
 			// Showing loading placeholder
 			this.$root.$emit('updateSearchLoadingState', true)
 			this.currentTab = this.tabs[0]
 		},
-		checkLoadMoreContent(searchSelected) {
-			if (this.results[searchSelected.split('_')[0] + 'Tab'].data.length !== 0) return
+		// ! Updates search only if the search term is the same as before AND we're not in the ALL tab. Wtf
+		checkIfUpdateResults(term) {
+			let needToUpdateSearch = term === this.results.query && this.currentTab.searchType !== 'all'
 
-			this.search(searchSelected.split('_')[0])
+			if (needToUpdateSearch) {
+				this.results[this.currentTab.searchType + 'Tab'] = { ...resetObj }
+				this.search(this.currentTab.searchType)
+			}
 		},
-		addToQueue(e) {
-			sendAddToQueue(e.currentTarget.dataset.link)
-		},
-		numberWithDots,
-		convertDuration,
 		search(type) {
 			socket.emit('search', {
 				term: this.results.query,
@@ -217,29 +223,34 @@ export default {
 		scrolledSearch() {
 			if (this.currentTab.searchType === 'all') return
 
-			let currentTab = `${this.currentTab.searchType}Tab`
+			const currentTabKey = `${this.currentTab.searchType}Tab`
+			const needToPerformScrolledSearch = this.results[currentTabKey].next < this.results[currentTabKey].total
 
-			if (this.results[currentTab].next < this.results[currentTab].total) {
+			if (needToPerformScrolledSearch) {
 				this.search(this.currentTab.searchType)
 			}
 		},
-		handleMainSearch(result) {
-			// Hiding loading placeholder
+		saveMainSearchResult(searchResult) {
+			// Hide loading placeholder
 			this.$root.$emit('updateSearchLoadingState', false)
 
-			let resetObj = { data: [], next: 0, total: 0, loaded: false }
+			this.results.query = searchResult.QUERY
 
-			this.results.allTab = result
+			this.results.allTab = searchResult
+			this.results.allTab.TRACK.hasLoaded = true
+			this.results.allTab.ALBUM.hasLoaded = true
+			this.results.allTab.ARTIST.hasLoaded = true
+			this.results.allTab.PLAYLIST.hasLoaded = true
+
 			this.results.trackTab = { ...resetObj }
 			this.results.albumTab = { ...resetObj }
 			this.results.artistTab = { ...resetObj }
 			this.results.playlistTab = { ...resetObj }
-			this.results.query = result.QUERY
 		},
 		handleSearch(result) {
-			const { next: nextResult, total, type, data } = result
+			const { next: nextResult, total, type, data: newData } = result
 
-			let currentTab = type + 'Tab'
+			const currentTabKey = type + 'Tab'
 			let next = 0
 
 			if (nextResult) {
@@ -248,16 +259,16 @@ export default {
 				next = total
 			}
 
-			if (this.results[currentTab].total != total) {
-				this.results[currentTab].total = total
+			if (this.results[currentTabKey].total !== total) {
+				this.results[currentTabKey].total = total
 			}
 
-			if (this.results[currentTab].next != next) {
-				this.results[currentTab].next = next
-				this.results[currentTab].data = this.results[currentTab].data.concat(data)
+			if (this.results[currentTabKey].next !== next) {
+				this.results[currentTabKey].next = next
+				this.results[currentTabKey].data = this.results[currentTabKey].data.concat(newData)
 			}
 
-			this.results[currentTab].loaded = true
+			this.results[currentTabKey].hasLoaded = true
 		},
 		isTabLoaded(tab) {
 			return this.loadedTabs.indexOf(tab.searchType) !== -1 || tab.searchType === 'all'

@@ -228,9 +228,7 @@ $table-border-radius: 3px;
 	}
 }
 
-// @todo Remove
-.top-tracks-position {
-	padding: 12px;
-	text-align: center;
-	cursor: default;
+.table--tracklist .clickable:hover,
+.table--charts .clickable:hover {
+	text-decoration: underline;
 }

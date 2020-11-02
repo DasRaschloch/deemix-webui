@@ -5,8 +5,12 @@ window.vol = {
 	preview_max_volume: 100
 }
 
+import '@/styles/css/material-icons.css'
+import '@/styles/css/OpenSans.css'
+
 import '@/styles/scss/style.scss'
 import '@/styles/css/components.css'
+import '@/styles/css/helpers.css'
 
 import App from '@/App.vue'
 import i18n from '@/plugins/i18n'
@@ -174,9 +178,9 @@ socket.on('errorMessage', function(error) {
 
 socket.on('queueError', function(queueItem) {
 	if (queueItem.errid) {
-		toast(queueItem.link+ " - " +i18n.t(`errors.ids.${queueItem.errid}`), 'error')
+		toast(queueItem.link + ' - ' + i18n.t(`errors.ids.${queueItem.errid}`), 'error')
 	} else {
-		toast(queueItem.link+ " - " +queueItem.error, 'error')
+		toast(queueItem.link + ' - ' + queueItem.error, 'error')
 	}
 })
 

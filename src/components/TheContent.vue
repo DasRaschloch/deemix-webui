@@ -31,8 +31,6 @@
 </template>
 
 <style lang="scss">
-@import '../styles/scss/base/_variables.scss';
-// src/components/TheContent.vue
 #container {
 	--container-width: 95%;
 
@@ -41,11 +39,11 @@
 	width: var(--container-width);
 	transform: scale(1);
 
-	@media only screen and (min-width: $small) {
+	@media only screen and (min-width: 601px) {
 		--container-width: 85%;
 	}
 
-	@media only screen and (min-width: $medium) {
+	@media only screen and (min-width: 993px) {
 		--container-width: 70%;
 	}
 }

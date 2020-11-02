@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div id="app">
 		<div class="app-container">
 			<TheSidebar />
 
@@ -12,8 +12,8 @@
 		</div>
 
 		<BaseLoadingPlaceholder
-			:hidden="isSocketConnected"
 			text="Connecting to the server..."
+			:hidden="isSocketConnected"
 			additionalClasses="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50"
 		/>
 
@@ -44,7 +44,7 @@ import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.v
 import TheContextMenu from '@components/globals/TheContextMenu.vue'
 import TheTrackPreview from '@components/globals/TheTrackPreview.vue'
 import TheQualityModal from '@components/globals/TheQualityModal.vue'
-import ConfirmModal from '@components/globals/ConfirmModal.vue'
+// import ConfirmModal from '@components/globals/ConfirmModal.vue'
 
 import TheSidebar from '@components/TheSidebar.vue'
 import TheSearchBar from '@components/TheSearchBar.vue'
@@ -65,8 +65,8 @@ export default {
 		TheQualityModal,
 		BaseLoadingPlaceholder,
 		TheContextMenu,
-		TheContent,
-		ConfirmModal
+		TheContent
+		// ConfirmModal
 	},
 	mounted() {
 		socket.on('connect', () => {

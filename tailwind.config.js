@@ -48,7 +48,8 @@ module.exports = {
 		}
 	},
 	variants: {
-		textColor: ({ after }) => after(['group-hover'])
+		textColor: ({ after }) => after(['group-hover']),
+		borderWidth: ['responsive', 'first', 'hover', 'focus']
 	},
 	corePlugins: {
 		preflight: false

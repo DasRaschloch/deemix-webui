@@ -4,6 +4,7 @@ const en = {
 		back: 'back',
 		loading: 'loading',
 		download: 'Download {thing}',
+		downloadAll: 'Download all {thing}',
 		by: 'by {artist}',
 		in: 'in {album}',
 		download_hint: 'Download',
@@ -27,6 +28,7 @@ const en = {
 			single: 'single | singles',
 			title: 'title | titles',
 			track: 'track | tracks',
+			trackN: '0 tracks | {n} track | {n} tracks',
 			releaseN: '0 releases | {n} release | {n} releases',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
@@ -36,11 +38,7 @@ const en = {
 			featured: 'Featured in',
 			spotifyPlaylist: 'spotify playlist | spotify playlists',
 			releaseDate: 'release date',
-			error: 'error',
-			trackN: '0 tracks | {n} track | {n} tracks',
-			albumN: '0 albums | {n} album | {n} albums',
-			artistN: '0 artists | {n} artist | {n} artists',
-			playlistN: '0 playlists | {n} playlist | {n} playlists',
+			error: 'error'
 		}
 	},
 	about: {

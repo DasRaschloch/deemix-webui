@@ -4,6 +4,7 @@ const fr = {
 		back: 'retour',
 		loading: 'chargement en cours',
 		download: 'Télécharger {thing}',
+		downloadAll: "Télécharger l'intégralité des {thing}",
 		by: 'par {artist}',
 		in: 'dans {album}',
 		download_hint: 'Télécharger',
@@ -27,6 +28,7 @@ const fr = {
 			single: 'single | singles',
 			title: 'titre | titres',
 			track: 'piste | pistes',
+			trackN: '0 piste | {n} piste | {n} pistes',
 			releaseN: '0 sortie | {n} sortie | {n} sorties',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
@@ -36,11 +38,7 @@ const fr = {
 			featured: 'Apparaît dans',
 			spotifyPlaylist: 'playlist spotify | playlists spotify',
 			releaseDate: 'date de sortie',
-			error: 'erreur',
-			trackN: '0 piste | {n} piste | {n} pistes',
-			albumN: '0 album | {n} album | {n} albums',
-			artistN: '0 artiste | {n} artiste | {n} artistes',
-			playlistN: '0 playlist | {n} playlist | {n} playlists'
+			error: 'erreur'
 		}
 	},
 	about: {
@@ -201,8 +199,7 @@ const fr = {
 		},
 		appearance: {
 			title: 'Apparence',
-			slimDownloadTab: 'Onglet de téléchargement compact',
-			slimSidebar: 'Barre latérale compacte'
+			slimDownloadTab: 'Onglet de téléchargement compact'
 		},
 		downloadPath: {
 			title: 'Emplacement De Téléchargement'
@@ -302,8 +299,7 @@ const fr = {
 			syncedLyrics: 'Paroles Synchronisées',
 			copyright: "Droits d'Auteur (Copyright)",
 			composer: 'Compositeur',
-			involvedPeople: 'Personnes Impliquées',
-			source: 'ID de la source et de la piste'
+			involvedPeople: 'Personnes Impliquées'
 		},
 		other: {
 			title: 'Autre',

@@ -4,7 +4,7 @@
 
 		<section class="py-6 border-0 border-t border-solid border-grayscale-500" ref="notLogged" v-if="!isLoggedIn">
 			<p id="home_not_logged_text" class="mb-4">{{ $t('home.needTologin') }}</p>
-			<router-link tag="button" name="button" :to="{ name: 'Settings' }" class="btn btn-primary">
+			<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Settings' }">
 				{{ $t('home.openSettings') }}
 			</router-link>
 		</section>

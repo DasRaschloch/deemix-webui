@@ -23,8 +23,6 @@
 	</div>
 </template>
 <style lang="scss">
-@import '../../styles/scss/base/_variables.scss';
-
 .smallmodal {
 	position: fixed;
 	z-index: 1250;
@@ -47,11 +45,11 @@
 	top: 50%;
 	transform: translateY(-50%);
 
-	@media only screen and (min-width: $small) {
+	@media only screen and (min-width: 601px) {
 		--modal-content-width: 85%;
 	}
 
-	@media only screen and (min-width: $medium) {
+	@media only screen and (min-width: 993px) {
 		--modal-content-width: 70%;
 	}
 }

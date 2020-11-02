@@ -25,3 +25,22 @@
 	font-feature-settings: 'liga';
 	-webkit-font-smoothing: antialiased;
 }
+
+.material-icons.explicit-icon {
+	margin-right: 0.3125em;
+	margin-left: -3px;
+	color: hsl(240, 5%, 59%);
+}
+
+.material-icons.explicit-icon.explicit-icon--right {
+	margin-right: 0px;
+	margin-left: 0.3125em;
+}
+
+.material-icons.disabled {
+	@apply opacity-50 cursor-default;
+}
+
+.material-icons.mirrored {
+	transform: scaleX(-1);
+}

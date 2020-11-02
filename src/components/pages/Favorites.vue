@@ -34,15 +34,11 @@
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
 			<div class="release_grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
-				<router-link
-					tag="div"
-					v-for="release in playlists"
-					:key="release.id"
-					class="release clickable"
-					:to="{ name: 'Playlist', params: { id: release.id } }"
-				>
-					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
-					<p class="primary-text">{{ release.title }}</p>
+				<div class="release" v-for="release in playlists" :key="release.id">
+					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Playlist', params: { id: release.id } }">
+						<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
+						<p class="primary-text">{{ release.title }}</p>
+					</router-link>
 
 					<p class="secondary-text">
 						{{
@@ -52,17 +48,13 @@
 							)}`
 						}}
 					</p>
-				</router-link>
+				</div>
 
-				<router-link
-					tag="div"
-					v-for="release in spotifyPlaylists"
-					:key="release.id"
-					class="release clickable"
-					:to="{ name: 'Spotify Playlist', params: { id: release.id } }"
-				>
-					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
-					<p class="primary-text">{{ release.title }}</p>
+				<div class="release" v-for="release in spotifyPlaylists" :key="release.id">
+					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Spotify Playlist', params: { id: release.id } }">
+						<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
+						<p class="primary-text">{{ release.title }}</p>
+					</router-link>
 
 					<p class="secondary-text">
 						{{
@@ -72,7 +64,7 @@
 							)}`
 						}}
 					</p>
-				</router-link>
+				</div>
 			</div>
 		</div>
 

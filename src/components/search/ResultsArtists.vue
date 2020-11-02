@@ -17,13 +17,13 @@
 							@click.stop="$emit('add-to-queue', $event)"
 						/>
 
-						<span class="mb-1 transition-colors duration-200 ease-in-out hover:text-primary">
+						<span class="primary-text">
 							{{ release.artistName }}
 						</span>
 					</router-link>
 
 					<!-- TODO Fix, depending on the tab there are albums number or fans number -->
-					<!-- <p class="mb-1 text-sm opacity-75">{{ $tc('globals.listTabs.releaseN', release.artistAlbumsNumber) }}</p> -->
+					<!-- <p class="secondary-text">{{ $tc('globals.listTabs.releaseN', release.artistAlbumsNumber) }}</p> -->
 				</div>
 			</div>
 		</template>

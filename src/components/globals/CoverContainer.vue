@@ -1,19 +1,64 @@
 <template>
-	<div class="cover_container">
-		<img aria-hidden="true" class="coverart" :class="{ rounded: isRounded, circle: isCircle }" :src="cover" />
+	<div class="relative cover_container group">
+		<img
+			aria-hidden="true"
+			class="block w-full opacity-100 coverart"
+			:class="{ rounded: isRounded, circle: isCircle }"
+			:src="cover"
+		/>
 
 		<button
 			role="button"
 			aria-label="download"
 			v-on="$listeners"
 			:data-link="link"
-			class="bg-black download_overlay hover:bg-primary"
+			class="absolute p-0 text-center bg-black border-0 rounded-full opacity-0 download_overlay hover:bg-primary"
 			tabindex="0"
 		>
-			<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+			<i class="text-white cursor-pointer material-icons" :title="$t('globals.download_hint')">get_app</i>
 		</button>
 	</div>
 </template>
+
+<style lang="scss" scoped>
+.cover_container {
+	.coverart {
+		backface-visibility: hidden;
+		transition: 0.5s ease;
+		height: auto;
+	}
+
+	.download_overlay {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: 0.5s ease;
+		opacity: 0;
+		min-width: 2rem;
+		height: 2.75rem;
+		text-align: center;
+
+		i {
+			padding: 0.625rem;
+		}
+
+		&:focus {
+			opacity: 1;
+		}
+	}
+
+	&:hover {
+		.coverart {
+			opacity: 0.75;
+		}
+
+		.download_overlay {
+			opacity: 1;
+			border: 0px;
+		}
+	}
+}
+</style>
 
 <script>
 export default {

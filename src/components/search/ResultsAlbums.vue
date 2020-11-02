@@ -17,13 +17,19 @@
 							@click.stop="$emit('add-to-queue', $event)"
 						/>
 
-						<span class="mb-1 transition-colors duration-200 ease-in-out hover:text-primary">
-							<i v-if="release.isAlbumExplicit" class="material-icons explicit-icon">explicit</i>
+						<span class="primary-text">
+							<i
+								v-if="release.isAlbumExplicit"
+								class="material-icons explicit-icon"
+								style="font-size: 1.0625rem !important"
+							>
+								explicit
+							</i>
 							{{ release.albumTitle }}
 						</span>
 					</router-link>
 
-					<p class="mb-1 text-sm opacity-75">
+					<p class="secondary-text">
 						{{
 							$t('globals.by', { artist: release.artistName }) +
 							' - ' +

@@ -16,12 +16,12 @@
 							@click.stop="$emit('add-to-queue', $event)"
 						/>
 
-						<span class="mb-1 transition-colors duration-200 ease-in-out hover:text-primary">
+						<span class="primary-text">
 							{{ playlist.playlistTitle }}
 						</span>
 					</router-link>
 
-					<p class="mb-1 text-sm opacity-75">
+					<p class="secondary-text">
 						{{
 							`${$t('globals.by', { artist: playlist.artistName })} - ${$tc(
 								'globals.listTabs.trackN',

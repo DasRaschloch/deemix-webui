@@ -54,7 +54,7 @@
 				<span
 					v-for="locale in locales"
 					:key="locale"
-					class="locale-flag"
+					class="flex items-center locale-flag"
 					:class="{ 'locale-flag--current': currentLocale === locale }"
 					@click="changeLocale(locale)"
 					v-html="flags[locale]"
@@ -643,9 +643,7 @@
 
 .locale-flag {
 	width: 60px;
-	display: flex items-center;
 	justify-content: center;
-	align-items: center;
 	cursor: pointer;
 
 	&:not(:last-child) {

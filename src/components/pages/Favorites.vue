@@ -41,20 +41,9 @@
 					class="release clickable"
 					:to="{ name: 'Playlist', params: { id: release.id } }"
 				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<button
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
+					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
+
 					<p class="secondary-text">
 						{{
 							`${$t('globals.by', { artist: release.creator.name })} - ${$tc(
@@ -64,6 +53,7 @@
 						}}
 					</p>
 				</router-link>
+
 				<router-link
 					tag="div"
 					v-for="release in spotifyPlaylists"
@@ -71,20 +61,9 @@
 					class="release clickable"
 					:to="{ name: 'Spotify Playlist', params: { id: release.id } }"
 				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<button
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
+					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
+
 					<p class="secondary-text">
 						{{
 							`${$t('globals.by', { artist: release.creator.name })} - ${$tc(
@@ -109,22 +88,11 @@
 					:key="release.id"
 					:to="{ name: 'Album', params: { id: release.id } }"
 				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
-						<button
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
+					<CoverContainer is-rounded :cover="release.cover_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 				</router-link>
+
+				<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 			</div>
 		</div>
 
@@ -140,19 +108,7 @@
 					:key="release.id"
 					:to="{ name: 'Artist', params: { id: release.id } }"
 				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="circle coverart" :src="release.picture_medium" />
-						<button
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
+					<CoverContainer is-circle :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.name }}</p>
 				</router-link>
 			</div>
@@ -180,7 +136,7 @@
 							<img class="rounded coverart" :src="track.album.cover_small" />
 						</a>
 					</td>
-					<td class="table__cell--large breakline">
+					<td class="table__cell--large">
 						{{
 							track.title +
 							(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
@@ -188,14 +144,14 @@
 					</td>
 					<router-link
 						tag="td"
-						class="table__cell table__cell--medium table__cell--center breakline clickable"
+						class="table__cell table__cell--medium table__cell--center clickable"
 						:to="{ name: 'Artist', params: { id: track.artist.id } }"
 					>
 						{{ track.artist.name }}
 					</router-link>
 					<router-link
 						tag="td"
-						class="table__cell--medium table__cell--center breakline clickable"
+						class="table__cell--medium table__cell--center clickable"
 						:to="{ name: 'Album', params: { id: track.album.id } }"
 					>
 						{{ track.album.title }}
@@ -204,14 +160,19 @@
 						{{ convertDuration(track.duration) }}
 					</td>
 					<td
-						class="table__cell--download clickable"
+						class="cursor-pointer group"
 						@click.stop="addToQueue"
 						:data-link="track.link"
 						role="button"
 						aria-label="download"
 					>
 						<div class="table__cell-content table__cell-content--vertical-center">
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+							<i
+								class="transition-colors duration-150 ease-in-out material-icons group-hover:text-primary"
+								:title="$t('globals.download_hint')"
+							>
+								get_app
+							</i>
 						</div>
 					</td>
 				</tr>
@@ -247,10 +208,12 @@ import { getFavoritesData } from '@/data/favorites'
 
 import EventBus from '@/utils/EventBus'
 import PreviewControls from '@components/globals/PreviewControls.vue'
+import CoverContainer from '@components/globals/CoverContainer.vue'
 
 export default {
 	components: {
-		PreviewControls
+		PreviewControls,
+		CoverContainer
 	},
 	data() {
 		return {

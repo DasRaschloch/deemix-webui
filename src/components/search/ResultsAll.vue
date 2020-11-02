@@ -8,69 +8,59 @@
 			<section
 				v-for="section in viewInfo.ORDER"
 				:key="section"
-				class="float-none py-5 border-grayscale-500 border-t first:border-t-0"
+				class="float-none py-5 border-t border-grayscale-500 first:border-t-0"
 			>
-				<h2
-					@click="$emit('change-search-tab', section)"
-					class="mb-6 capitalize"
-					:class="{
-						'text-4xl text-center': section === 'TOP_RESULT',
-						'inline-block cursor-pointer text-3xl hover:text-primary transition-colors duration-200 ease-in-out':
-							section !== 'TOP_RESULT'
-					}"
-				>
-					{{ $tc(`globals.listTabs.${section.toLowerCase()}`, 2) }}
-				</h2>
+				<template v-if="checkSectionResults(section)">
+					<h2
+						@click="$emit('change-search-tab', section)"
+						class="mb-6 capitalize"
+						:class="{
+							'text-4xl text-center': section === 'TOP_RESULT',
+							'inline-block cursor-pointer text-3xl hover:text-primary transition-colors duration-200 ease-in-out':
+								section !== 'TOP_RESULT'
+						}"
+					>
+						{{ $tc(`globals.listTabs.${section.toLowerCase()}`, 2) }}
+					</h2>
 
-				<TopResult
-					v-if="section === 'TOP_RESULT'"
-					:info="viewInfo.TOP_RESULT[0]"
-					@add-to-queue="$emit('add-to-queue', $event)"
-				/>
+					<TopResult
+						v-if="section === 'TOP_RESULT'"
+						:info="viewInfo.TOP_RESULT[0]"
+						@add-to-queue="$emit('add-to-queue', $event)"
+					/>
 
-				<ResultsTracks
-					v-else-if="section === 'TRACK'"
-					:viewInfo="formatSearchResults(viewInfo.TRACK, formatSingleTrack)"
-					:itemsToShow="6"
-					@add-to-queue="$emit('add-to-queue', $event)"
-				/>
+					<ResultsTracks
+						v-else-if="section === 'TRACK'"
+						:viewInfo="formatSearchResults(viewInfo.TRACK, formatSingleTrack)"
+						:itemsToShow="6"
+						@add-to-queue="$emit('add-to-queue', $event)"
+					/>
 
-				<ResultsAlbums
-					v-else-if="section == 'ALBUM'"
-					:viewInfo="formatSearchResults(viewInfo.ALBUM, formatAlbums)"
-					:itemsToShow="6"
-					@add-to-queue="$emit('add-to-queue', $event)"
-				/>
+					<ResultsAlbums
+						v-else-if="section == 'ALBUM'"
+						:viewInfo="formatSearchResults(viewInfo.ALBUM, formatAlbums)"
+						:itemsToShow="6"
+						@add-to-queue="$emit('add-to-queue', $event)"
+					/>
 
-				<ResultsPlaylists
-					v-else-if="section == 'PLAYLIST'"
-					:viewInfo="formatSearchResults(viewInfo.PLAYLIST, formatPlaylist)"
-					:itemsToShow="6"
-					@add-to-queue="$emit('add-to-queue', $event)"
-				/>
+					<ResultsPlaylists
+						v-else-if="section == 'PLAYLIST'"
+						:viewInfo="formatSearchResults(viewInfo.PLAYLIST, formatPlaylist)"
+						:itemsToShow="6"
+						@add-to-queue="$emit('add-to-queue', $event)"
+					/>
 
-				<ResultsArtists
-					v-else-if="section === 'ARTIST'"
-					:viewInfo="formatSearchResults(viewInfo.ARTIST, formatArtist)"
-					:itemsToShow="6"
-					@add-to-queue="$emit('add-to-queue', $event)"
-				/>
+					<ResultsArtists
+						v-else-if="section === 'ARTIST'"
+						:viewInfo="formatSearchResults(viewInfo.ARTIST, formatArtist)"
+						:itemsToShow="6"
+						@add-to-queue="$emit('add-to-queue', $event)"
+					/>
+				</template>
 			</section>
 		</template>
 	</section>
 </template>
-
-<style scoped>
-.tag {
-	background-color: var(--tag-background);
-	border-radius: 2px;
-	color: var(--tag-text);
-	display: inline-block;
-	font-size: 10px;
-	padding: 3px 6px;
-	text-transform: capitalize;
-}
-</style>
 
 <script>
 import { convertDuration } from '@/utils/utils'
@@ -110,21 +100,6 @@ export default {
 			)
 
 			return !noResultsPresent
-		},
-		fansNumber() {
-			let number
-
-			try {
-				number = this.$n(this.viewInfo.TOP_RESULT[0].nb_fan)
-			} catch (error) {
-				number = this.$n(this.viewInfo.TOP_RESULT[0].nb_fan, { locale: 'en' })
-			}
-
-			return this.viewInfo.TOP_RESULT[0].type == 'artist'
-				? this.$t('search.fans', { n: number })
-				: this.$t('globals.by', { artist: this.viewInfo.TOP_RESULT[0].artist }) +
-						' - ' +
-						this.$tc('globals.listTabs.trackN', this.viewInfo.TOP_RESULT[0].nb_song)
 		}
 	},
 	methods: {
@@ -134,7 +109,14 @@ export default {
 		formatSingleTrack,
 		formatAlbums,
 		formatArtist,
-		formatPlaylist
+		formatPlaylist,
+		checkSectionResults(section) {
+			if (section === 'TOP_RESULT') {
+				return !!this.viewInfo.TOP_RESULT[0]
+			} else {
+				return !!this.viewInfo[section].data[0]
+			}
+		}
 	}
 }
 </script>

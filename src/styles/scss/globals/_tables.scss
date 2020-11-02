@@ -34,7 +34,6 @@ $table-border-radius: 3px;
 
 	th {
 		.sortable {
-			-webkit-user-select: none;
 			user-select: none;
 		}
 
@@ -78,19 +77,6 @@ $table-border-radius: 3px;
 
 		thead {
 			border-bottom: 2px solid var(--table-highlight);
-		}
-
-		th {
-			padding-bottom: 10px;
-			height: 45px;
-		}
-
-		td {
-			height: 35px;
-
-			&.breakline {
-				word-break: break-word;
-			}
 		}
 
 		tr {
@@ -189,20 +175,6 @@ $table-border-radius: 3px;
 
 		&--right {
 			text-align: right;
-		}
-
-		&--download {
-			cursor: pointer;
-
-			i.material-icons {
-				transition: color 175ms ease-in-out;
-			}
-
-			&:hover {
-				i.material-icons {
-					@apply text-primary;
-				}
-			}
 		}
 	}
 

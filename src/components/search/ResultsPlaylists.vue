@@ -7,28 +7,21 @@
 				<h1>{{ $t('search.noResultsPlaylist') }}</h1>
 			</div>
 			<div class="release_grid" v-else>
-				<router-link
-					tag="div"
-					v-for="playlist in viewInfo.data.slice(0, itemsToShow)"
-					class="release clickable"
-					:key="playlist.playlistID"
-					:to="{ name: 'Playlist', params: { id: playlist.playlistID } }"
-				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="playlist.playlistPictureMedium" />
-						<button
-							role="button"
-							aria-label="download"
+				<div class="w-40 release" v-for="playlist in viewInfo.data.slice(0, itemsToShow)" :key="playlist.playlistID">
+					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Playlist', params: { id: playlist.playlistID } }">
+						<CoverContainer
+							is-rounded
+							:cover="playlist.playlistPictureMedium"
+							:link="playlist.playlistLink"
 							@click.stop="$emit('add-to-queue', $event)"
-							:data-link="playlist.playlistLink"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
-					<p class="primary-text">{{ playlist.playlistTitle }}</p>
-					<p class="secondary-text">
+						/>
+
+						<span class="mb-1 transition-colors duration-200 ease-in-out hover:text-primary">
+							{{ playlist.playlistTitle }}
+						</span>
+					</router-link>
+
+					<p class="mb-1 text-sm opacity-75">
 						{{
 							`${$t('globals.by', { artist: playlist.artistName })} - ${$tc(
 								'globals.listTabs.trackN',
@@ -36,7 +29,7 @@
 							)}`
 						}}
 					</p>
-				</router-link>
+				</div>
 			</div>
 		</template>
 	</section>
@@ -44,10 +37,12 @@
 
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
+import CoverContainer from '@components/globals/CoverContainer.vue'
 
 export default {
 	components: {
-		BaseLoadingPlaceholder
+		BaseLoadingPlaceholder,
+		CoverContainer
 	},
 	props: {
 		viewInfo: {

@@ -21,19 +21,7 @@
 					@keyup.enter.native="$router.push({ name: 'Playlist', params: { id: release.id } })"
 					tabindex="0"
 				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.picture_medium" />
-						<button
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
+					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">
 						{{
@@ -60,19 +48,7 @@
 					:data-id="release.id"
 					tabindex="0"
 				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.cover_medium" />
-						<button
-							role="button"
-							aria-label="download"
-							@click.stop="addToQueue"
-							:data-link="release.link"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
+					<CoverContainer is-rounded :cover="release.cover_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
 					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 				</router-link>
@@ -87,7 +63,12 @@ import { mapGetters } from 'vuex'
 import { sendAddToQueue } from '@/utils/downloads'
 import { getHomeData } from '@/data/home'
 
+import CoverContainer from '@components/globals/CoverContainer.vue'
+
 export default {
+	components: {
+		CoverContainer
+	},
 	data() {
 		return {
 			playlists: [],

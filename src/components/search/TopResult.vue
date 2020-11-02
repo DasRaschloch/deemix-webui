@@ -1,54 +1,42 @@
 <template>
-	<router-link
-		tag="div"
-		class="top_result cursor-pointer flex items-center flex-col"
-		:to="{ name: upperCaseFirstLowerCaseRest($attrs.info.type), params: { id: $attrs.info.id } }"
-	>
-		<div class="cover_container">
-			<img
-				aria-hidden="true"
-				class="coverart"
-				:src="$attrs.info.picture"
-				:class="$attrs.info.type == 'artist' ? 'circle' : 'rounded'"
+	<div class="flex flex-col items-center justify-center">
+		<router-link
+			tag="div"
+			class="cursor-pointer"
+			:to="{ name: upperCaseFirstLowerCaseRest($attrs.info.type), params: { id: $attrs.info.id } }"
+		>
+			<CoverContainer
+				class="w-40 h-40"
+				:is-rounded="$attrs.info.type !== 'artist'"
+				:is-circle="$attrs.info.type === 'artist'"
+				:cover="$attrs.info.picture"
+				:link="$attrs.info.link"
+				@click.stop="$emit('add-to-queue', $event)"
 			/>
 
-			<button
-				role="button"
-				aria-label="download"
-				@click.stop="$emit('add-to-queue', $event)"
-				:data-link="$attrs.info.link"
-				class="download_overlay"
-				tabindex="0"
-			>
-				<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-			</button>
-		</div>
-		<div class="info_box">
-			<p class="primary-text">{{ $attrs.info.title }}</p>
-			<p class="secondary-text">
-				{{ fansNumber }}
+			<p class="mt-4 mb-1 text-xl text-center transition-colors duration-200 ease-in-out hover:text-primary">
+				{{ $attrs.info.title }}
 			</p>
-			<span class="tag">{{ $tc(`globals.listTabs.${$attrs.info.type}`, 1) }}</span>
-		</div>
-	</router-link>
+		</router-link>
+
+		<p class="mb-3 text-center secondary-text">
+			{{ fansNumber }}
+		</p>
+		<span class="p-1 px-2 text-xs text-center capitalize bg-primary rounded-xl">
+			{{ $tc(`globals.listTabs.${$attrs.info.type}`, 1) }}
+		</span>
+	</div>
 </template>
 
-<style scoped>
-.tag {
-	background-color: var(--tag-background);
-	border-radius: 2px;
-	color: var(--tag-text);
-	display: inline-block;
-	font-size: 10px;
-	padding: 3px 6px;
-	text-transform: capitalize;
-}
-</style>
 
 <script>
 import { upperCaseFirstLowerCaseRest } from '@/utils/texts'
+import CoverContainer from '@components/globals/CoverContainer.vue'
 
 export default {
+	components: {
+		CoverContainer
+	},
 	methods: {
 		upperCaseFirstLowerCaseRest
 	},

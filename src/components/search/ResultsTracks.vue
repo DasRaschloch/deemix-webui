@@ -7,16 +7,16 @@
 				<h1>{{ $t('search.noResultsTrack') }}</h1>
 			</div>
 
-			<table v-else class="table table--tracks">
+			<table v-else class="table w-full table--tracks">
 				<thead v-if="wantHeaders">
 					<tr class="capitalize">
-						<th colspan="2">{{ $tc('globals.listTabs.title', 1) }}</th>
-						<th>{{ $tc('globals.listTabs.artist', 1) }}</th>
-						<th>{{ $tc('globals.listTabs.album', 1) }}</th>
-						<th>
+						<th class="h-12 pb-3" colspan="2">{{ $tc('globals.listTabs.title', 1) }}</th>
+						<th class="h-12 pb-3">{{ $tc('globals.listTabs.artist', 1) }}</th>
+						<th class="h-12 pb-3">{{ $tc('globals.listTabs.album', 1) }}</th>
+						<th class="h-12 pb-3">
 							<i class="material-icons">timer</i>
 						</th>
-						<th style="width: 3.5rem"></th>
+						<th class="h-12 pb-3" style="width: 3.5rem"></th>
 					</tr>
 				</thead>
 
@@ -25,7 +25,7 @@
 						<td class="table__icon table__icon--big">
 							<a
 								href="#"
-								@click="playPausePreview"
+								@click="playPausePreview($event)"
 								class="rounded"
 								:class="{ 'single-cover': !!track.trackPreview }"
 								:data-preview="track.trackPreview"
@@ -35,37 +35,50 @@
 								<img class="rounded coverart" :src="track.albumPicture" />
 							</a>
 						</td>
-						<td class="table__cell table__cell--large breakline">
-							<div class="table__cell-content table__cell-content--vertical-center">
+
+						<td class="table__cell table__cell--large">
+							<div class="break-words table__cell-content table__cell-content--vertical-center">
 								<i v-if="track.isTrackExplicit" class="material-icons explicit-icon">explicit</i>
-								{{ getTitle(track) }}
+								{{ formatTitle(track) }}
 							</div>
 						</td>
+
 						<router-link
 							tag="td"
-							class="table__cell table__cell--medium table__cell--center breakline clickable"
+							class="break-words table__cell table__cell--medium table__cell--center"
 							:to="{ name: 'Artist', params: { id: track.artistID } }"
 						>
-							{{ track.artistName }}
+							<span class="cursor-pointer hover:underline">
+								{{ track.artistName }}
+							</span>
 						</router-link>
+
 						<router-link
 							tag="td"
-							class="table__cell table__cell--medium table__cell--center breakline clickable"
+							class="break-words table__cell table__cell--medium table__cell--center"
 							:to="{ name: 'Album', params: { id: track.albumID } }"
 						>
-							{{ track.albumTitle }}
+							<span class="cursor-pointer hover:underline">
+								{{ track.albumTitle }}
+							</span>
 						</router-link>
+
 						<td class="table__cell table__cell--small table__cell--center">
 							{{ convertDuration(track.trackDuration) }}
 						</td>
+
 						<td
-							class="table__cell--download table__cell--center clickable"
+							class="cursor-pointer table__cell--center group"
 							@click.stop="$emit('add-to-queue', $event)"
 							:data-link="track.trackLink"
-							role="button"
 							aria-label="download"
 						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+							<i
+								class="transition-colors duration-150 ease-in-out material-icons group-hover:text-primary"
+								:title="$t('globals.download_hint')"
+							>
+								get_app
+							</i>
 						</td>
 					</tr>
 				</tbody>
@@ -80,6 +93,8 @@ import PreviewControls from '@components/globals/PreviewControls.vue'
 
 import EventBus from '@/utils/EventBus'
 import { convertDuration } from '@/utils/utils'
+
+import { formatTitle } from '@/data/search'
 
 export default {
 	components: {
@@ -113,13 +128,9 @@ export default {
 	},
 	methods: {
 		convertDuration,
+		formatTitle,
 		playPausePreview(e) {
 			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
-		getTitle(track) {
-			const hasTitleVersion = track.trackTitleVersion && track.trackTitle.indexOf(track.trackTitleVersion) === -1
-
-			return `${track.trackTitle}${hasTitleVersion ? ` ${track.trackTitleVersion}` : ''}`
 		}
 	}
 }

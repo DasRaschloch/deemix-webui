@@ -42,7 +42,7 @@
 								<img class="rounded coverart" :src="track.album.cover_small" />
 							</a>
 						</td>
-						<td class="table__cell--large breakline">
+						<td class="table__cell--large">
 							{{
 								track.title +
 								(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : '')
@@ -50,14 +50,14 @@
 						</td>
 						<router-link
 							tag="td"
-							class="table__cell table__cell--medium table__cell--center breakline clickable"
+							class="table__cell table__cell--medium table__cell--center clickable"
 							:to="{ name: 'Artist', params: { id: track.artist.id } }"
 						>
 							{{ track.artist.name }}
 						</router-link>
 						<router-link
 							tag="td"
-							class="table__cell--medium table__cell--center breakline clickable"
+							class="table__cell--medium table__cell--center clickable"
 							:to="{ name: 'Album', params: { id: track.album.id } }"
 						>
 							{{ track.album.title }}
@@ -66,13 +66,18 @@
 							{{ convertDuration(track.duration) }}
 						</td>
 						<td
-							class="table__cell--download"
+							class="cursor-pointer group"
 							@click.stop="addToQueue"
 							:data-link="track.link"
 							role="button"
 							aria-label="download"
 						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
+							<i
+								class="transition-colors duration-150 ease-in-out material-icons group-hover:text-primary"
+								:title="$t('globals.download_hint')"
+							>
+								get_app
+							</i>
 						</td>
 					</tr>
 				</tbody>

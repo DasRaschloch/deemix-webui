@@ -8,29 +8,23 @@
 			</div>
 
 			<div v-else class="release_grid">
-				<router-link
-					tag="div"
-					v-for="release in viewInfo.data.slice(0, itemsToShow)"
-					class="release clickable"
-					:key="release.artistID"
-					:to="{ name: 'Artist', params: { id: release.artistID } }"
-				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="circle coverart" :src="release.artistPictureMedium" />
-						<button
-							role="button"
-							aria-label="download"
+				<div class="w-40 release" v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.artistID">
+					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Artist', params: { id: release.artistID } }">
+						<CoverContainer
+							is-circle
+							:cover="release.artistPictureMedium"
+							:link="release.artistLink"
 							@click.stop="$emit('add-to-queue', $event)"
-							:data-link="release.artistLink"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
-					<p class="primary-text">{{ release.artistName }}</p>
-					<p class="secondary-text">{{ $tc('globals.listTabs.releaseN', release.artistAlbumsNumber) }}</p>
-				</router-link>
+						/>
+
+						<span class="mb-1 transition-colors duration-200 ease-in-out hover:text-primary">
+							{{ release.artistName }}
+						</span>
+					</router-link>
+
+					<!-- TODO Fix, depending on the tab there are albums number or fans number -->
+					<!-- <p class="mb-1 text-sm opacity-75">{{ $tc('globals.listTabs.releaseN', release.artistAlbumsNumber) }}</p> -->
+				</div>
 			</div>
 		</template>
 	</section>
@@ -38,10 +32,12 @@
 
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
+import CoverContainer from '@components/globals/CoverContainer.vue'
 
 export default {
 	components: {
-		BaseLoadingPlaceholder
+		BaseLoadingPlaceholder,
+		CoverContainer
 	},
 	props: {
 		viewInfo: {

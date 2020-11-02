@@ -106,6 +106,7 @@ export function formatArtist(artist) {
 			getProperty(artist, 'picture_medium') ||
 			`https://e-cdns-images.dzcdn.net/images/artist/${artist.ART_PICTURE}/156x156-000000-80-0-0.jpg`,
 		artistLink: getProperty(artist, 'link') || `https://deezer.com/artist/${artist.ART_ID}`,
+		// TODO Fix
 		artistAlbumsNumber: getProperty(artist, 'nb_album', 'NB_FAN')
 	}
 }
@@ -126,4 +127,10 @@ export function formatPlaylist(playlist) {
 		/* Artist */
 		artistName: getProperty(playlist, 'user.name')
 	}
+}
+
+export function formatTitle(track) {
+	const hasTitleVersion = track.trackTitleVersion && track.trackTitle.indexOf(track.trackTitleVersion) === -1
+
+	return `${track.trackTitle}${hasTitleVersion ? ` ${track.trackTitleVersion}` : ''}`
 }

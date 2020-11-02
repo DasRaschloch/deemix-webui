@@ -8,38 +8,29 @@
 			</div>
 
 			<div class="release_grid" v-else>
-				<router-link
-					tag="div"
-					v-for="release in viewInfo.data.slice(0, itemsToShow)"
-					:key="release.albumID"
-					class="release clickable"
-					:to="{ name: 'Album', params: { id: release.albumID } }"
-				>
-					<div class="cover_container">
-						<img aria-hidden="true" class="rounded coverart" :src="release.albumCoverMedium" />
-						<button
-							role="button"
-							aria-label="download"
+				<div class="w-40 release" v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.albumID">
+					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Album', params: { id: release.albumID } }">
+						<CoverContainer
+							is-rounded
+							:cover="release.albumCoverMedium"
+							:link="release.albumLink"
 							@click.stop="$emit('add-to-queue', $event)"
-							:data-link="release.albumLink"
-							class="download_overlay"
-							tabindex="0"
-						>
-							<i class="material-icons" :title="$t('globals.download_hint')">get_app</i>
-						</button>
-					</div>
-					<p class="primary-text flex items-center">
-						<i v-if="release.isAlbumExplicit" class="material-icons explicit-icon">explicit</i>
-						{{ release.albumTitle }}
-					</p>
-					<p class="secondary-text">
+						/>
+
+						<span class="mb-1 transition-colors duration-200 ease-in-out hover:text-primary">
+							<i v-if="release.isAlbumExplicit" class="material-icons explicit-icon">explicit</i>
+							{{ release.albumTitle }}
+						</span>
+					</router-link>
+
+					<p class="mb-1 text-sm opacity-75">
 						{{
 							$t('globals.by', { artist: release.artistName }) +
 							' - ' +
 							$tc('globals.listTabs.trackN', release.albumTracks)
 						}}
 					</p>
-				</router-link>
+				</div>
 			</div>
 		</template>
 	</section>
@@ -47,8 +38,13 @@
 
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
+import CoverContainer from '@components/globals/CoverContainer.vue'
 
 export default {
+	components: {
+		BaseLoadingPlaceholder,
+		CoverContainer
+	},
 	props: {
 		viewInfo: {
 			validator: function (value) {
@@ -73,9 +69,6 @@ export default {
 		isLoading() {
 			return !this.viewInfo || !this.viewInfo.hasLoaded
 		}
-	},
-	components: {
-		BaseLoadingPlaceholder
 	}
 }
 </script>

@@ -26,7 +26,6 @@ const it = {
 			single: 'singolo | singoli',
 			title: 'titolo | titoli',
 			track: 'brano | brani',
-			trackN: '0 brani | {n} brano | {n} brani',
 			releaseN: '0 dischi | {n} disco | {n} dischi',
 			playlist: 'playlist',
 			compile: 'compilation',
@@ -37,7 +36,11 @@ const it = {
 			spotifyPlaylist: 'playlist spotify',
 			releaseDate: 'data di uscita',
 			error: 'errore',
-			empty: ''
+			empty: '',
+			trackN: '0 brani | {n} brano | {n} brani',
+			albumN: '{n} album',
+			artistN: '0 artisti | {n} artista | {n} artisti',
+			playlistN: '{n} playlist'
 		}
 	},
 	about: {

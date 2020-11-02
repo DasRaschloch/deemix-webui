@@ -82,9 +82,8 @@
 				>
 					<CoverContainer is-rounded :cover="release.cover_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
+					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 				</router-link>
-
-				<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
 			</div>
 		</div>
 

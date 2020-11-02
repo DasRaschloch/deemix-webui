@@ -44,7 +44,7 @@ import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
 
-import { reduceSearchResults, formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
+import { formatSearchResults, formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
 
@@ -172,7 +172,7 @@ export default {
 				return this.results.allTab
 			}
 
-			return reduceSearchResults(this.results[this.currentTab.viewInfo], this.currentTab.formatFunc)
+			return formatSearchResults(this.results[this.currentTab.viewInfo], this.currentTab.formatFunc)
 		},
 		changeSearchTab(tabName) {
 			tabName = tabName.toLowerCase()

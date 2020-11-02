@@ -109,7 +109,7 @@ export function getProperty(obj, ...props) {
 			  }, obj)
 			: obj[prop]
 
-		if (!!valueToTest) {
+		if ('undefined' !== typeof valueToTest) {
 			return valueToTest
 		}
 	}

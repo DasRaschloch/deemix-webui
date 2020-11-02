@@ -22,7 +22,7 @@ import { getProperty } from '@/utils/utils'
  * @param		{Formatter}	formatFunc
  * @returns	{null|ReducedSearchResult}
  */
-export function reduceSearchResults(rawObj, formatFunc) {
+export function formatSearchResults(rawObj, formatFunc) {
 	if (!rawObj.hasLoaded) {
 		return null
 	} else {
@@ -46,6 +46,12 @@ export function reduceSearchResults(rawObj, formatFunc) {
  * @param {FormattedData}	track
  */
 export function formatSingleTrack(track) {
+	let isTrackExplicit = getProperty(track, 'explicit_lyrics', 'EXPLICIT_LYRICS')
+
+	if (typeof isTrackExplicit === 'string') {
+		isTrackExplicit = isTrackExplicit !== '0'
+	}
+
 	return {
 		/* Track */
 		trackTitle: getProperty(track, 'title', 'SNG_TITLE'),
@@ -53,7 +59,7 @@ export function formatSingleTrack(track) {
 		trackPreview: getProperty(track, 'preview'),
 		trackDuration: getProperty(track, 'duration', 'DURATION'),
 		trackLink: getProperty(track, 'link') || `https://www.deezer.com/track/${track.SNG_ID}`,
-		isTrackExplicit: getProperty(track, 'explicit_lyrics', 'EXPLICIT_LYRICS'),
+		isTrackExplicit,
 
 		/* Artist */
 		artistID: getProperty(track, 'artist.id', 'ART_ID'),
@@ -69,6 +75,12 @@ export function formatSingleTrack(track) {
 }
 
 export function formatAlbums(album) {
+	let isAlbumExplicit = getProperty(album, 'explicit_lyrics', 'EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS')
+
+	if ('number' === typeof isAlbumExplicit) {
+		isAlbumExplicit = isAlbumExplicit === 1
+	}
+
 	return {
 		/* Album */
 		albumID: getProperty(album, 'id', 'ALB_ID'),
@@ -78,7 +90,7 @@ export function formatAlbums(album) {
 			`https://e-cdns-images.dzcdn.net/images/cover/${album.ALB_PICTURE}/156x156-000000-80-0-0.jpg`,
 		albumLink: getProperty(album, 'link') || `https://deezer.com/album/${album.ALB_ID}`,
 		albumTracks: getProperty(album, 'nb_tracks', 'NUMBER_TRACK'),
-		isAlbumExplicit: getProperty(album, 'explicit_lyrics', 'EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS'),
+		isAlbumExplicit,
 
 		/* Artist */
 		artistName: getProperty(album, 'artist.name', 'ART_NAME')

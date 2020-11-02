@@ -4,7 +4,6 @@ const fr = {
 		back: 'retour',
 		loading: 'chargement en cours',
 		download: 'Télécharger {thing}',
-		downloadAll: "Télécharger l'intégralité des {thing}",
 		by: 'par {artist}',
 		in: 'dans {album}',
 		download_hint: 'Télécharger',
@@ -28,7 +27,6 @@ const fr = {
 			single: 'single | singles',
 			title: 'titre | titres',
 			track: 'piste | pistes',
-			trackN: '0 piste | {n} piste | {n} pistes',
 			releaseN: '0 sortie | {n} sortie | {n} sorties',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
@@ -38,7 +36,11 @@ const fr = {
 			featured: 'Apparaît dans',
 			spotifyPlaylist: 'playlist spotify | playlists spotify',
 			releaseDate: 'date de sortie',
-			error: 'erreur'
+			error: 'erreur',
+			trackN: '0 piste | {n} piste | {n} pistes',
+			albumN: '0 album | {n} album | {n} albums',
+			artistN: '0 artiste | {n} artiste | {n} artistes',
+			playlistN: '0 playlist | {n} playlist | {n} playlists'
 		}
 	},
 	about: {
@@ -60,8 +62,10 @@ const fr = {
 			contributing: 'Vous souhaitez contribuer à ce projet ? Vous pouvez le faire de différentes manières !',
 			donations: 'Vous souhaitez contribuer financièrement ? Vous pouvez faire un don !'
 		},
-		usesLibrary: 'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
-		thanks: "Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour la création de l'icône.",
+		usesLibrary:
+			'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
+		thanks:
+			"Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour la création de l'icône.",
 		upToDate: `Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal d'informations</a> sur Telegram.`,
 		officialWebsite: 'Site Officiel',
 		officialRepo: 'Répertoire De Dépôt Officiel De La Bibliothèque',
@@ -69,17 +73,24 @@ const fr = {
 		officialSubreddit: 'Subreddit Officiel',
 		newsChannel: "Canal d'Informations",
 		questions: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Ensuite, si la solution ne s'y trouve pas, vous pouvez publier un message dans le subreddit en décrivant votre problème.`,
-		beforeReporting: "Avant de signaler un bug, assurez-vous que vous utilisez la version la plus récente de l'application. Vérifiez que vous souhaitez nous rapporter un bug et non quelque chose qui ne fonctionne pas uniquement de votre côté.",
-		beSure: "Assurez-vous que le bug soit reproductible sur d'autres appareils mais aussi de <strong>NE PAS</strong> signaler un bug si celui-ci a déjà été recensé.",
+		beforeReporting:
+			"Avant de signaler un bug, assurez-vous que vous utilisez la version la plus récente de l'application. Vérifiez que vous souhaitez nous rapporter un bug et non quelque chose qui ne fonctionne pas uniquement de votre côté.",
+		beSure:
+			"Assurez-vous que le bug soit reproductible sur d'autres appareils mais aussi de <strong>NE PAS</strong> signaler un bug si celui-ci a déjà été recensé.",
 		duplicateReports: "Les rapports de bug répétitifs seront supprimés, merci d'en prendre bonne note.",
-		dontOpenIssues: "<strong>NE PAS</strong> rapporter de problème s'il ne s'agit que de simples questions. Un subreddit existe pour ces questions.",
+		dontOpenIssues:
+			"<strong>NE PAS</strong> rapporter de problème s'il ne s'agit que de simples questions. Un subreddit existe pour ces questions.",
 		newUI: `Si vous maîtrisez python, vous pouvez essayer de créer une nouvelle interface utilisateur pour l'application à l'aide de la bibliothèque de base, ou corriger des bugs dans la bibliothèque à l'aide d'une demande de fusion de branches (pull request) sur le <a href="https://codeberg.org/RemixDev/deemix" target="_blank">répertoire de dépôt</a>.`,
-		acceptFeatures: "J'accepte également les nouvelles fonctionnalités, mais pas de choses complexes, dans la mesure où elles peuvent être implémentées directement dans l'application et non dans la bibliothèque.",
-		otherLanguages: "Si vous maîtrisez un autre langage de programmation, vous pouvez essayer de transposer deemix dans ce dernier !",
-		understandingCode: "Vous avez besoin d'aide pour comprendre le code ? Il suffit de contacter RemixDev sur Telegram ou Reddit.",
+		acceptFeatures:
+			"J'accepte également les nouvelles fonctionnalités, mais pas de choses complexes, dans la mesure où elles peuvent être implémentées directement dans l'application et non dans la bibliothèque.",
+		otherLanguages:
+			'Si vous maîtrisez un autre langage de programmation, vous pouvez essayer de transposer deemix dans ce dernier !',
+		understandingCode:
+			"Vous avez besoin d'aide pour comprendre le code ? Il suffit de contacter RemixDev sur Telegram ou Reddit.",
 		contributeWebUI: `Si vous vous y connaissez en Vue.js (JavaScript), HTML ou CSS, vous pouvez contribuer à la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
-		itsFree: "N'oubliez pas que <strong>ce projet est libre</strong> et qu'il est important de <strong>soutenir vos artistes préférés</strong> avant de supporter les développeurs.",
-		notObligated: "Ne vous sentez pas obligé de faire un don, vous êtes tout de même apprécié !",
+		itsFree:
+			"N'oubliez pas que <strong>ce projet est libre</strong> et qu'il est important de <strong>soutenir vos artistes préférés</strong> avant de supporter les développeurs.",
+		notObligated: 'Ne vous sentez pas obligé de faire un don, vous êtes tout de même apprécié !',
 		lincensedUnder: `Ce projet s'inscrit dans le cadre de la
 			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Licence publique générale GNU, version 3</a>.`
 	},
@@ -105,7 +116,8 @@ const fr = {
 			wrongBitrateNoAlternative: "La piste est introuvable au débit souhaité et aucune alternative n'a été trouvée !",
 			no360RA: 'La piste est indisponible au format Reality Audio 360.',
 			notAvailable: 'La piste est indisponible sur les serveurs de Deezer !',
-			notAvailableNoAlternative: "La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
+			notAvailableNoAlternative:
+				"La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
 			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !",
 			albumDoesntExists: "Aucun album n'existe pour cette piste, impossible de collecter les informations nécessaires"
 		}
@@ -126,7 +138,8 @@ const fr = {
 		}
 	},
 	linkAnalyzer: {
-		info: "Vous pouvez utiliser cette section pour obtenir davantage d'informations sur le lien que vous essayez de télécharger.",
+		info:
+			"Vous pouvez utiliser cette section pour obtenir davantage d'informations sur le lien que vous essayez de télécharger.",
 		useful:
 			"C'est utile si vous essayez, par exemple, de télécharger des pistes indisponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles.",
 		linkNotSupported: "Ce lien n'est pas encore pris en charge",
@@ -224,9 +237,10 @@ const fr = {
 		},
 		trackTitles: {
 			title: 'Titres des pistes',
-			padTracks: "Longueur uniforme des numéros de piste (ajoute automatiquement des zéros devant le numéro initial de la piste)",
+			padTracks:
+				'Longueur uniforme des numéros de piste (ajoute automatiquement des zéros devant le numéro initial de la piste)',
 			paddingSize: 'Nombre de zéros à ajouter en permanence devant le numéro initial de la piste',
-			illegalCharacterReplacer: "Substitut aux caractères non autorisés (dans les noms de fichiers et de dossiers)"
+			illegalCharacterReplacer: 'Substitut aux caractères non autorisés (dans les noms de fichiers et de dossiers)'
 		},
 		downloads: {
 			title: 'Téléchargements',
@@ -270,8 +284,10 @@ const fr = {
 			},
 			jpegImageQuality: "Qualité de l'image JPEG",
 			embeddedArtworkPNG: "Enregistrer l'illustration incorporée aux fichiers audio en tant que PNG",
-			embeddedPNGWarning: 'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes.',
-			imageSizeWarning: "Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes.",
+			embeddedPNGWarning:
+				'Les images PNG ne sont pas officiellement utilisées par Deezer et pourraient causer des problèmes.',
+			imageSizeWarning:
+				"Toute valeur supérieure à x1200 n'est pas officiellement supportée par Deezer, vous pourriez donc rencontrer des problèmes.",
 			coverDescriptionUTF8: 'Enregistrer la description de la pochette au format UTF8 (iTunes Cover Fix)'
 		},
 		tags: {

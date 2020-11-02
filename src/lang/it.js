@@ -4,7 +4,6 @@ const it = {
 		back: 'indietro',
 		loading: 'caricamento',
 		download: 'Scarica {thing}',
-		downloadAll: 'Scarica ogni {thing}',
 		by: 'di {artist}',
 		in: 'in {album}',
 		download_hint: 'Scarica',

@@ -54,7 +54,7 @@
 				<span
 					v-for="locale in locales"
 					:key="locale"
-					class="flex items-center locale-flag"
+					class="inline-flex items-center locale-flag"
 					:class="{ 'locale-flag--current': currentLocale === locale }"
 					@click="changeLocale(locale)"
 					v-html="flags[locale]"
@@ -723,8 +723,8 @@ export default {
 				this.slimSidebar = wantSlimSidebar
 				document.getElementById('sidebar').classList.toggle('slim', wantSlimSidebar)
 				// Moves all toast messages when the option changes
-				Array.from(document.getElementsByClassName('toastify')).forEach((toast)=>{
-					toast.style.transform = `translate(${wantSlimSidebar ? '3rem' : '14rem'}, 0)`;
+				Array.from(document.getElementsByClassName('toastify')).forEach(toast => {
+					toast.style.transform = `translate(${wantSlimSidebar ? '3rem' : '14rem'}, 0)`
 				})
 				localStorage.setItem('slimSidebar', wantSlimSidebar)
 			}

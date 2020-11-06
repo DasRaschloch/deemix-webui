@@ -37,7 +37,10 @@ const ru = {
 			featured: 'Представлено в',
 			spotifyPlaylist: 'плейлист spotify | плейлисты spotify | плейлисты spotify',
 			releaseDate: 'Дата выхода',
-			error: 'ошибка'
+			error: 'ошибка',
+			albumN: '{n} альбом | {n} альбома | {n} альбомов',
+			artistN: '{n} исполнитель | {n} исполнителя | {n} исполнителей',
+			playlistN: '{n} плейлист | {n} плейлиста | {n} плейлистов'
 		}
 	},
 	about: {
@@ -105,7 +108,8 @@ const ru = {
 			no360RA: 'Трек недоступен в формате Reality Audio 360.',
 			notAvailable: "Трек недоступен на серверах Deezer!",
 			notAvailableNoAlternative: "Трек недоступен на серверах Deezer. Альтернатив не найдено!",
-			noSpaceLeft: "На устройстве не осталось свободного места!"
+			noSpaceLeft: "На устройстве не осталось свободного места!",
+			albumDoesntExists: "Альбома не существует, информация не получена"
 		}
 	},
 	favorites: {
@@ -175,7 +179,10 @@ const ru = {
 		finishAddingArtist: 'Альбомы {artist} добавлены в очередь',
 		startConvertingSpotifyPlaylist: 'Добавление плейлиста Spotify в очередь',
 		finishConvertingSpotifyPlaylist: 'Spotify плейлист добавлен в очередь',
-		loginNeededToDownload: 'Войдите в аккаунт, чтобы скачивать треки!'
+		loginNeededToDownload: 'Войдите в аккаунт, чтобы скачивать треки!',
+		deezerNotAvailable: 'Deezer недоступен в вашей стране. Используйте VPN.',
+		startGeneratingItems: 'Обработка {n} загрузок...',
+		finishGeneratingItems: 'Обработано {n} загрузок.'
 	},
 	settings: {
 		title: 'Настройки',
@@ -192,7 +199,8 @@ const ru = {
 		},
 		appearance: {
 			title: 'Внешний вид',
-			slimDownloadTab: 'Компактная вкладка с загрузками'
+			slimDownloadTab: 'Компактная вкладка с загрузками',
+			slimSidebar: 'Компактная левая панель'
 		},
 		downloadPath: {
 			title: 'Путь для сохранения'
@@ -264,7 +272,8 @@ const ru = {
 			jpegImageQuality: 'Качество JPEG',
 			embeddedArtworkPNG: 'Сохранять вложенную обложку в PNG',
 			embeddedPNGWarning: 'PNG официально не поддерживается в Deezer. Могут быть баги',
-			imageSizeWarning: 'Обложки с разрешением выше x1200 не поддерживаются в Deezer. Могут быть проблемы'
+			imageSizeWarning: 'Обложки с разрешением выше x1200 не поддерживаются в Deezer. Могут быть проблемы',
+			coverDescriptionUTF8: 'Сохранять описание обложки в UTF8 (iTunes Fix)'
 		},
 		tags: {
 			head: 'Какие теги сохранять',
@@ -291,7 +300,8 @@ const ru = {
 			syncedLyrics: 'Синхрон. текст песни',
 			copyright: 'Права (копирайт)',
 			composer: 'Композитор',
-			involvedPeople: 'Вовлечённые люди'
+			involvedPeople: 'Вовлечённые люди',
+			source: 'Источник и ID песни'
 		},
 		other: {
 			title: 'Разное',

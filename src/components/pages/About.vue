@@ -14,7 +14,9 @@
 		<ul>
 			<li v-html="$t('about.usesLibrary')"></li>
 			<li v-html="$t('about.thanks')"></li>
-			<li v-html="$t('about.upToDate')"></li>
+			<i18n path="about.upToDate.text" tag="li">
+				<a place="newsChannel" href="https://t.me/RemixDevNews" target="_blank">{{ $t('about.upToDate.newsChannel') }}</a>
+			</i18n>
 		</ul>
 
 		<h2>{{ $t('about.titles.usefulLinks') }}</h2>
@@ -45,7 +47,9 @@
 			</span>
 		</h2>
 		<ul>
-			<li v-html="$t('about.questions')"></li>
+			<i18n path="about.questions.text" tag="li">
+				<a place="subreddit" href="https://www.reddit.com/r/deemix" target="_blank">{{ $t('about.questions.subreddit') }}</a>
+			</i18n>
 			<li>
 				{{ $t('about.beforeReporting') }}
 			</li>
@@ -63,11 +67,15 @@
 			</span>
 		</h2>
 		<ul>
-			<li v-html="$t('about.newUI')"></li>
+			<i18n path="about.newUI.text" tag="li">
+				<a place="repo" href="https://git.fuwafuwa.moe/RemixDev/deemix" target="_blank">{{ $t('about.newUI.repo') }}</a>
+			</i18n>
 			<li>
 				{{ $t('about.acceptFeatures') }}
 			</li>
-			<li v-html="$t('about.contributeWebUI')"></li>
+			<i18n path="about.contributeWebUI.text" tag="li">
+				<a place="webui" href="https://git.fuwafuwa.moe/RemixDev/deemix-webui" target="_blank">{{ $t('about.contributeWebUI.webui') }}</a>
+			</i18n>
 			<li>
 				{{ $t('about.otherLanguages') }}
 			</li>
@@ -110,7 +118,9 @@
 				/>
 			</a>
 		</p>
-		<p v-html="$t('about.lincensedUnder')"></p>
+		<i18n path="about.lincensedUnder.text" tag="p">
+			<a place="gpl3" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">{{ $t('about.lincensedUnder.gpl3') }}</a>
+		</i18n>
 	</div>
 </template>
 

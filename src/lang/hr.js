@@ -45,28 +45,40 @@ const hr = {
 		},
 		usesLibrary: 'Ova aplikacija koristi <strong>deemix</strong> biblioteku, koju možeš koristiti i ti kako bi napravio svoj UI za demix.',
 		thanks: `Hvala <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> što su mi pomogli s ovim projektom te <strong>BasCurtiz</strong> i <strong>scarvimane</strong> što su napravili ikonu.`,
-		upToDate: `Ostani u tijeku s nadogradnjama prateći <a href="https://t.me/RemixDevNews" target="_blank">kanal s novostima</a> na Telegramu.`,
+		upToDate: {
+			text: `Ostani u tijeku s nadogradnjama prateći {newsChannel} na Telegramu.`,
+			newsChannel: 'kanal s novostima'
+		},
 		officialWebsite: 'Službena web stranica',
 		officialRepo: 'Službeni repozitorij biblioteke',
 		officialWebuiRepo: 'Službeni WebUI repozitorij',
 		officialSubreddit: 'Službeni subreddit',
 		newsChannel: 'Kanal s novostima',
-		questions: `Ukoliko imate pitanja o aplikaciji, prvo potražite riješenje na <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Tada, ako ne pronađete ništa, možete objaviti svoj problem na subredditu.`,
+		questions: {
+			text: `Ukoliko imate pitanja o aplikaciji, prvo potražite riješenje na {subreddit}. Tada, ako ne pronađete ništa, možete objaviti svoj problem na subredditu.`,
+			subreddit: 'subreddit'
+		},
 		beforeReporting: `Prije prijavljivanja greške provjerite imate li instaliranu zadnju verziju aplikacije i da to što želite prijaviti je ustvari pogreška, a ne nešto što samo vama ne radi.`,
 		beSure: `Provjerite može li se pogreška reproducirati i na drugim uređajima i također <strong>NEMOJTE</strong> prijavljivati grešku ako je već prijavljena.`,
 		duplicateReports: 'Duplicirane prijave o greški bit će zatvorene, tako da pripazite na to.',
 		dontOpenIssues: `<strong>NEMOJTE</strong> otvarati issue za postavljanje pitanja, za to postoji subreddit.`,
-		newUI: `Ako ste vješti u pythonu možete probati napraviti novi UI za aplikaciju koristeći osnovnu biblioteku ili ispraviti pogrešku u biblioteci sa pull zahtjevom na <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repozitoriju</a>.`,
+		newUI: {
+			text: `Ako ste vješti u pythonu možete probati napraviti novi UI za aplikaciju koristeći osnovnu biblioteku ili ispraviti pogrešku u biblioteci sa pull zahtjevom na {repo}.`,
+			repo: 'repozitoriju'
+		},
 		acceptFeatures: `Prihavaćam i značajke, ali bez kompleksnih stvari, jer one mogu biti implementirane direktno u aplikaciji, a ne u biblioteci.`,
 		otherLanguages: `Ako ste vješti u drugom programskom jezikumožete probati portati deemix u drugi programski jezik!`,
 		understandingCode: `Trebate pomoć s razumijevanjem koda? Samo potraži RemixDev na Telegramu ili Redditu.`,
-		contributeWebUI: `Ako znaš Vue.js (JavaScript), HTML ili CSS možete doprinijeti za <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `Ako znaš Vue.js (JavaScript), HTML ili CSS možete doprinijeti za {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree: `Trebate zapamtiti da je ovo <strong>besplatni projekt</strong> i <strong>trebali biste podržati autore koje volite</strong> prije podržavanja developera.`,
 		notObligated: `Nemojte se osjećati obveznim darivati, svejedno vas cijenim!`,
-		lincensedUnder: `Ovaj rad licenciran je unutar
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+		lincensedUnder: {
+			text: `Ovaj rad licenciran je unutar {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Ljestvice',

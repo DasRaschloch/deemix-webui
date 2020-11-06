@@ -45,28 +45,20 @@ const ar = {
 		},
 		usesLibrary: 'هذا البرنامج يستخدم مكتبة <strong>ديمكس</strong> والتي يمكنك استخدامها لإنشاء واجهة مستخدم خاصة بك لديمكس.',
 		thanks: `شكرا لـ <strong>rtonno</strong>, و <strong>uhwot</strong> و <strong>lollilol</strong> لمساعدتي في هذا المشروع و لـ <strong>BasCurtiz</strong> و <strong>scarvimane</strong> لصنع الايقونة.`,
-		upToDate: `تابع اخر التحديثات في قناة الاخبار على تلكرام <a href="https://t.me/RemixDevNews" target="_blank"></a>.`,
 		officialWebsite: 'الموقع الرسمي',
 		officialRepo: 'مستودع المكتبة الرسمي',
 		officialWebuiRepo: 'مستودع واجهة الويب الرسمي',
 		officialSubreddit: 'السب ريدت الرسمي',
 		newsChannel: 'قناة الاخبار',
-		questions: `إذا كانت لديك أسئلة أو مشاكل في التطبيق ، فابحث عن حل في السب ريدت اولاً <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> بعد ذلك ، إذا لم تعثر على أي شيء ، يمكنك نشرمشكلتك على السب ريدت .`,
 		beforeReporting: `قبل ان تبلغ عن خطأ، تأكد من أنك تشغل أحدث إصدار من التطبيق وأن ما تريد الإبلاغ عنه هو في الواقع خطأ وليس مشكلة من جهتك.`,
 		beSure: `تأكد من أن الخطأ يمكن إعادة إنتاجه على أجهزة أخرى و ايضاً <strong>لا</strong> تبلغ علة خطأ تم التبليغ عنه سابقاً.`,
 		duplicateReports: 'سيتم إغلاق تقارير الأخطاء المكررة ، لذلك ترقب ذلك.',
 		dontOpenIssues: `<strong>DO NOT</strong> open issues for asking questions, there is a subreddit for that.`,
-		newUI: `If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
 		acceptFeatures: `أقبل اقتراحات الميزات أيضًا ، ولكن لا أشياء معقدة ، فقط اشياء يمكنني تنفيذها مباشرة في التطبيق وليس في المكتبة.`,
 		otherLanguages: `إذا كنت تجيد لغة برمجة أخرى ، يمكنك محاولة تحويل ديمكس إلى لغات برمجة أخرى!`,
 		understandingCode: `أنت بحاجة إلى مساعدة في فهم الكود؟ فقط اتصل بـ RemixDev على تيليكرام او ريديت.`,
-		contributeWebUI: `If you know Vue.js (JavaScript), HTML or CSS you could contribute to the <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
 		itsFree: `يجب ان تتذكر ان <strong>هذا هو مشروع مجاني</strong> <strong>و عليك دعم الفنانين المفضلين لك قبل ان تدعم مطورين البرنامج</strong>.`,
 		notObligated: `لا تشعر بالالتزام بالتبرع ، لكني أقدر ذلك على أي حال!`,
-		lincensedUnder: `This work is licensed under the
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
 	},
 	charts: {
 		title: 'قائمة الجداول',

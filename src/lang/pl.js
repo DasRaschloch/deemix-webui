@@ -61,26 +61,40 @@ const pl = {
         },
         usesLibrary: 'Ten program używa biblioteki <strong>deemix</strong>, której możesz użyć do stworzenia własnego interfejsu użytkownika',
         thanks: `Podziękowania dla <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> za pomoc w tym projekcie oraz dla <strong>BasCurtiz</strong> i <strong>scarvimane</strong> za stworzenie ikony.`,
-        upToDate: `Bądź na bieżąco z aktualizacjami dołączając do <a href="https://t.me/RemixDevNews" target="_blank">kanału wiadomości</a> na Telegramie.`,
+        upToDate: {
+    			text: `Bądź na bieżąco z aktualizacjami dołączając do {newsChannel} na Telegramie.`,
+    			newsChannel: 'kanału wiadomości'
+    		},
         officialWebsite: 'Oficjalna strona',
         officialRepo: 'Oficjalne repozytorium biblioteki',
         officialWebuiRepo: 'Oficjalne repozytorium WebUI',
         officialSubreddit: 'Oficjalny subreddit',
         newsChannel: 'Kanał wiadomości',
-        questions: `Jeżeli masz pytania lub problemy związane z aplikacją, szukaj odpowiedzi na <a href="https://www.reddit.com/r/deemix" target="_blank">subreddicie</a>. Jeżeli niczego nie znajdziesz, stwórz post na subreddicie.`,
+        questions: {
+    			text: `Jeżeli masz pytania lub problemy związane z aplikacją, szukaj odpowiedzi na {subreddit}. Jeżeli niczego nie znajdziesz, stwórz post na subreddicie.`,
+    			subreddit: 'subreddicie'
+    		},
         beforeReporting: `Przed zgłaszaniem błędu upewnij się, że masz najnowszą wersje aplikacji i to, co chcesz zgłosić jest błędem, a nie usterką z twojej strony.`,
         beSure: `Upewnij się, że błąd można odtworzyć na innych urządzeniach i <strong>NIE ZGŁASZAJ</strong> błędów, które zostały już zgłoszone`,
         duplicateReports: 'Identyczne zgłoszenia błędów będą zamykane, więc zwróć na to uwagę.',
         dontOpenIssues: `<strong>NIE OTWIERAJ</strong> zgłoszeń do zadawania pytań, od tego jest subreddit.`,
-        newUI: `Jeżeli dobrze znasz Pythona, możesz spróbować stworzyć nowy interfejs dla aplikacji używając bazowej biblioteki lub naprawiać błędy w bibliotece tworząc pull request w <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repozytorium</a>.`,
+        newUI: {
+    			text: `Jeżeli dobrze znasz Pythona, możesz spróbować stworzyć nowy interfejs dla aplikacji używając bazowej biblioteki lub naprawiać błędy w bibliotece tworząc pull request w {repo}.`,
+    			repo: 'repozytorium'
+    		},
         acceptFeatures: `Przyjmuję nowe funkcje, ale nic złożonego, co mogłoby być zaimplementowane w aplikacji, a nie w bibliotece.`,
         otherLanguages: `Jeżeli dobrze znasz inny język programowania, możesz spróbować przeportować deemix do innych języków!`,
         understandingCode: `Potrzebujesz pomocy w zrozumieniu kodu? Zapytaj RemixDev na Telegramie lub Reddicie.`,
-        contributeWebUI: `Jeżeli znasz Vue.js (JavaScript), HTML lub CSS, możesz pomóc w <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+        contributeWebUI: {
+    			text: `Jeżeli znasz Vue.js (JavaScript), HTML lub CSS, możesz pomóc w {webui}.`,
+    			webui: 'WebUI'
+    		},
         itsFree: `Pamiętaj, że <strong>ten projekt jest darmowy</strong> i <strong>powinieneś wspierać artystów</strong> przed twórcami aplikacji.`,
         notObligated: `Nie czuj potrzeby płacenia, i tak cię doceniam!`,
-        lincensedUnder: `Ten projekt jest chroniony licencją
-            <a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
+        lincensedUnder: {
+    			text: `Ten projekt jest chroniony licencją {gpl3}.`,
+    			gpl3: 'GNU General Public License 3.0'
+    		}
     },
     charts: {
         title: 'Wykresy',

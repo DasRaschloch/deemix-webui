@@ -66,13 +66,19 @@ const fr = {
 			'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
 		thanks:
 			"Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour la création de l'icône.",
-		upToDate: `Restez informé des mises à jour en suivant le <a href="https://t.me/RemixDevNews" target="_blank">canal d'informations</a> sur Telegram.`,
+		upToDate: {
+			text: `Restez informé des mises à jour en suivant le {newsChannel} sur Telegram.`,
+			newsChannel: "canal d'informations"
+		},
 		officialWebsite: 'Site Officiel',
 		officialRepo: 'Répertoire De Dépôt Officiel De La Bibliothèque',
 		officialWebuiRepo: 'Répertoire De Dépôt Officiel De La WebUI',
 		officialSubreddit: 'Subreddit Officiel',
 		newsChannel: "Canal d'Informations",
-		questions: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Ensuite, si la solution ne s'y trouve pas, vous pouvez publier un message dans le subreddit en décrivant votre problème.`,
+		questions: {
+			text: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le {subreddit}. Ensuite, si la solution ne s'y trouve pas, vous pouvez publier un message dans le subreddit en décrivant votre problème.`,
+			subreddit: 'subreddit'
+		},
 		beforeReporting:
 			"Avant de signaler un bug, assurez-vous que vous utilisez la version la plus récente de l'application. Vérifiez que vous souhaitez nous rapporter un bug et non quelque chose qui ne fonctionne pas uniquement de votre côté.",
 		beSure:
@@ -80,19 +86,27 @@ const fr = {
 		duplicateReports: "Les rapports de bug répétitifs seront supprimés, merci d'en prendre bonne note.",
 		dontOpenIssues:
 			"<strong>NE PAS</strong> rapporter de problème s'il ne s'agit que de simples questions. Un subreddit existe pour ces questions.",
-		newUI: `Si vous maîtrisez python, vous pouvez essayer de créer une nouvelle interface utilisateur pour l'application à l'aide de la bibliothèque de base, ou corriger des bugs dans la bibliothèque à l'aide d'une demande de fusion de branches (pull request) sur le <a href="https://codeberg.org/RemixDev/deemix" target="_blank">répertoire de dépôt</a>.`,
+		newUI: {
+			text: `Si vous maîtrisez python, vous pouvez essayer de créer une nouvelle interface utilisateur pour l'application à l'aide de la bibliothèque de base, ou corriger des bugs dans la bibliothèque à l'aide d'une demande de fusion de branches (pull request) sur le {repo}.`,
+			repo: 'répertoire de dépôt'
+		},
 		acceptFeatures:
 			"J'accepte également les nouvelles fonctionnalités, mais pas de choses complexes, dans la mesure où elles peuvent être implémentées directement dans l'application et non dans la bibliothèque.",
 		otherLanguages:
 			'Si vous maîtrisez un autre langage de programmation, vous pouvez essayer de transposer deemix dans ce dernier !',
 		understandingCode:
 			"Vous avez besoin d'aide pour comprendre le code ? Il suffit de contacter RemixDev sur Telegram ou Reddit.",
-		contributeWebUI: `Si vous vous y connaissez en Vue.js (JavaScript), HTML ou CSS, vous pouvez contribuer à la <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `Si vous vous y connaissez en Vue.js (JavaScript), HTML ou CSS, vous pouvez contribuer à la {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree:
 			"N'oubliez pas que <strong>ce projet est libre</strong> et qu'il est important de <strong>soutenir vos artistes préférés</strong> avant de supporter les développeurs.",
 		notObligated: 'Ne vous sentez pas obligé de faire un don, vous êtes tout de même apprécié !',
-		lincensedUnder: `Ce projet s'inscrit dans le cadre de la
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">Licence publique générale GNU, version 3</a>.`
+		lincensedUnder: {
+			text: `Ce projet s'inscrit dans le cadre de la {gpl3}.`,
+			gpl3: 'Licence publique générale GNU, version 3'
+		}
 	},
 	charts: {
 		title: 'Classements',

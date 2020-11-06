@@ -61,26 +61,40 @@ const zh_tw = {
 		},
 		usesLibrary: '本程式基於 <strong>deemix</strong> 函示庫。您可以使用該函示庫來製作自己的前端。',
 		thanks: `感謝 <strong>rtonno</strong>、<strong>uhwot</strong> 及 <strong>lollilol</strong> 對於本專案的貢獻，另外也感謝 <strong>BasCurtiz</strong> 及 <strong>scarvimane</strong> 幫忙製作本專案的圖示`,
-		upToDate: `您可於 Telegram 上關注<a href="https://t.me/RemixDevNews" target="_blank">最新消息頻道</a>以取得最新動態。`,
+		upToDate: {
+			text: `您可於 Telegram 上關注{newsChannel}以取得最新動態。`,
+			newsChannel: '最新消息頻道'
+		},
 		officialWebsite: '官方網站',
 		officialRepo: '官方函示版本庫',
 		officialWebuiRepo: '官方 WebUI 版本庫',
 		officialSubreddit: '官方 Subreddit',
 		newsChannel: '最新消息頻道',
-		questions: `如果您對本程式有疑問或問題，請先在<a href="https://www.reddit.com/r/deemix" target="_blank"> subreddit </a>上搜尋解決方案。如果找不到任何解決方法，則可以在我們的 subreddit 上發布與您問題相關的文章。`,
+		questions: {
+			text: `如果您對本程式有疑問或問題，請先在{subreddit}上搜尋解決方案。如果找不到任何解決方法，則可以在我們的 subreddit 上發布與您問題相關的文章。`,
+			subreddit: ' subreddit '
+		},
 		beforeReporting: `在報告錯誤之前，請確保您正在運行最新版本的程式，並且要報告的內容真的是一個錯誤，而不僅是您自己遇到的問題。`,
 		beSure: `請確保您所想回報的錯誤可在其他台裝置上再現的，並且<strong>請勿</strong>回報已知錯誤。`,
 		duplicateReports: '請注意，重複的錯誤報告將被移除。',
 		dontOpenIssues: `<strong>請勿</strong>透過本版本庫的 Issues 問問題，我們開 subreddit 是有原因的。`,
-		newUI: `如果您精通 Python，則可以嘗試使用我們的函示庫來建立新的 UI，或者透過<a href ="https://codeberg.org/RemixDev/ deemix" target ="_ blank">我們的版本庫</a>提出錯誤相關的 PR。`,
+		newUI: {
+			text: `如果您精通 Python，則可以嘗試使用我們的函示庫來建立新的 UI，或者透過{repo}提出錯誤相關的 PR。`,
+			repo: '我們的版本庫'
+		},
 		acceptFeatures: `我也歡迎你提交新的功能－但前提是這個功能不能過於複雜－過於複雜的功能，應被新增至程式內而非函示庫內。`,
 		otherLanguages: `如果您精通其他程式語言，你也可以嘗試將 deemix 移植到其他程式語言中！`,
 		understandingCode: `你需要幫助了解本專案的程式碼嗎？只需在 Telegram 或 Reddit 上按一下 RemixDev。`,
-		contributeWebUI: `如果你熟悉 Vue.js（JavaScript）、HTML 或 CSS，你也可以參與 <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a> 前端的貢獻。`,
+		contributeWebUI: {
+			text: `如果你熟悉 Vue.js（JavaScript）、HTML 或 CSS，你也可以參與 {webui} 前端的貢獻。`,
+			webui: 'WebUI'
+		},
 		itsFree: `記得，<strong>這是一個免費的專案</strong>，<strong>在支持開發人員之前，應該先支持你喜歡的歌手或藝人</ strong>。`,
 		notObligated: `別認為你有義務捐款，無論如何我們都感謝您！`,
-		lincensedUnder: `本作品使用 
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a> 許可授權。`
+		lincensedUnder: {
+			text: `本作品使用 {gpl3} 許可授權。`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: '排行榜',

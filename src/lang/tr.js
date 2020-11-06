@@ -46,28 +46,40 @@ const tr = {
 		usesLibrary:
 			'<strong>deemix</strong> kendi kullanıcı arabiriminizi oluşturabileceğiniz, kendine özgü kütüphanesini kullanıyor.',
 		thanks: ` <strong>rtonno</strong>, <strong>uhwot</strong> ve <strong>lollilol</strong>'a bu projeye yaptığı katkılardan ve <strong>BasCurtiz</strong> ile <strong>scarvimane</strong>'e ikonlardan dolayı teşekkür ederim.`,
-		upToDate: `Telegramdaki haber kanalını takip ederek <a href="https://t.me/RemixDevNews" target="_blank"></a>güncellemelerden haberdar olun.`,
+		upToDate: {
+			text: `{newsChannel} takip ederek güncellemelerden haberdar olun.`,
+			newsChannel: 'Telegramdaki haber kanalını'
+		},
 		officialWebsite: 'İlgili İnternet Sitemiz',
 		officialRepo: 'İlgili Kütüphanemiz',
 		officialWebuiRepo: 'İlgili Web Kullanıcı Arayüzü Kütüphanemiz.',
 		officialSubreddit: 'İlgili Subreddit adresimiz',
 		newsChannel: 'Haber Kanalı',
-		questions: `Eğer uygulama ile ilgili sorularınız veya bir probleminiz varsa,ilk önce <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit adresinden </a> sorununuzu arayın. Eğer bir şey bulamazsanız, sorununuz ile ilgili bir gönderi paylaşabilirsiniz.`,
+		questions: {
+			text: `Eğer uygulama ile ilgili sorularınız veya bir probleminiz varsa,ilk önce {subreddit} sorununuzu arayın. Eğer bir şey bulamazsanız, sorununuz ile ilgili bir gönderi paylaşabilirsiniz.`,
+			subreddit: 'subreddit adresinden'
+		},
 		beforeReporting: `Bir hatayı bildirmeden önce, uygulamanın son sürümünde olduğunuza veya sorunun sizden kaynaklı olmayıp bir hata olduğuna emin olduktan sonra emin olun.`,
 		beSure: `Hatanın başka cihazlarda da olduğunu doğrulayın ve <strong>Bildirilen</strong> bir hatayı tekrar bildirmeyin.`,
 		duplicateReports: 'Birbirinin aynısı olan hata bildirileri kapatılacaktır, o yüzden dikkatli olun.',
 		dontOpenIssues: `<strong>Soru sormak</strong> için hata bildirisi yollamayın, bunun için bir subreddit adresimiz var.`,
-		newUI: `Eğer Phython kullanmakta iyiysen, ana kütüphaneyi kullanan bir kullanıcı arayüzü yapmayı deneyebilir, veya kütüphanedeki hataları düzeltmek için <a href="https://codeberg.org/RemixDev/deemix" target="_blank">deposuna değişiklik isteği yollayabilirsin.</a>.`,
+		newUI: {
+			text: `Eğer Phython kullanmakta iyiysen, ana kütüphaneyi kullanan bir kullanıcı arayüzü yapmayı deneyebilir, veya kütüphanedeki hataları düzeltmek için {repo}.`,
+			repo: 'deposuna değişiklik isteği yollayabilirsin'
+		},
 		acceptFeatures: `Yeni özellikleri de kabul ediyorum, fakat karışık şeyleri kütüphaneye değil uygulamaya eklendiği için kabul edemiyorum.`,
 		otherLanguages: `Eğer diğer programlama dillerinde kendine güveniyorsan, deemix'i farklı dillere port etmeye çalışabilirsin!`,
 		understandingCode: `Kodu anlamak için yardım mı lazım? Reddit üzerinden veya Telegramdan RemixDev'e ulaş.`,
-		contributeWebUI: `Eğer Vue.js (JavaScript), HTML veya CSS biliyorsan, <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">Web Kullanıcı Arayüzüne katkıda bulanabilirsin</a>.`,
+		contributeWebUI: {
+			text: `Eğer Vue.js (JavaScript), HTML veya CSS biliyorsan, {webui}.`,
+			webui: 'Web Kullanıcı Arayüzüne katkıda bulanabilirsin'
+		},
 		itsFree: `Bunun <strong>ücretsiz bir proje olduğunu</strong> ve <strong>geliştiricilerden önce</strong> sevdiğiniz sanatçıları desteklemeniz gerektiğini unutmayın.`,
 		notObligated: `Kendinizi bağış yapmak zorunda hissetmeyin!, Sizi her halinizle seviyorum!`,
-		lincensedUnder: `Bu çalışma lisanslıdır:
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+		lincensedUnder: {
+			text: `Bu çalışma lisanslıdır: {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Grafikler',

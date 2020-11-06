@@ -61,26 +61,40 @@ const ph = {
 		},
 		usesLibrary: 'Ang app na ito ay gumagamit ng library galing sa <strong>deemix</strong>, na kung saan ay pwede mong gamitin para gumawa ng sarili mong UI ng deemix.',
 		thanks: `Salamat kay <strong>rtonno</strong>, <strong>uhwot</strong> at <strong>lollilol</strong> sa pagtulong sa akin para sa proyektong ito at kay <strong>BasCurtiz</strong> at <strong>scarvimane</strong> sa paggawa ng icon.`,
-		upToDate: `Huwag magpapahuli sa mga update patungkol dito sa pamamagitan ng pagsali sa <a href="https://t.me/RemixDevNews" target="_blank">news channel</a> sa Telegram.`,
+		upToDate: {
+			text: `Huwag magpapahuli sa mga update patungkol dito sa pamamagitan ng pagsali sa {newsChannel} sa Telegram.`,
+			newsChannel: 'news channel'
+		},
 		officialWebsite: 'Opisyal na Website',
 		officialRepo: 'Opisyal na Library Repository',
 		officialWebuiRepo: 'Opisyal na Repository ng WebUI',
 		officialSubreddit: 'Opisyal na Subreddit',
 		newsChannel: 'News Channel',
-		questions: `Kung may tanong ka o problema sa app, maghanap ka muna ng solusiyon sa <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a>. Ngayon, kung wala ka talagang mahanap ay pwede kang mag-post patungkol sa iyong isyu doon sa subreddit.`,
+		questions: {
+			text: `Kung may tanong ka o problema sa app, maghanap ka muna ng solusiyon sa {subreddit}. Ngayon, kung wala ka talagang mahanap ay pwede kang mag-post patungkol sa iyong isyu doon sa subreddit.`,
+			subreddit: 'subreddit'
+		},
 		beforeReporting: `Bago ka magreport ng bug, siguraduhing pinakabagong version ang ginagamit mo at ang ire-report mo ay talagang bug at hindi dahil sa pagkakamali mo lang ng paggamit.`,
 		beSure: `Siguraduhing nangyayari rin ang bug sa iba't ibang plataporma at tsaka <strong>HUWAG</strong> mo nang i-report ang bug kung ito ay naipa-alam na ng iba.`,
 		duplicateReports: 'Isasara namin ang mga magkaparehong report sa bug, kaya alamin mo muna.',
 		dontOpenIssues: `<strong>HUWAG</strong> kayong magbubukas ng isyu kung magtatanong lang kayo, meron tayong subreddit para diyan.`,
-		newUI: `Kung ikaw ay maraming alam sa python, subukan mong gumawa ng bagong UI gamit ng base library, o kaya ayusin ang mga bug sa library sa pamamagitan ng pag-pull ng request sa <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
+		newUI: {
+			text: `Kung ikaw ay maraming alam sa python, subukan mong gumawa ng bagong UI gamit ng base library, o kaya ayusin ang mga bug sa library sa pamamagitan ng pag-pull ng request sa {repo}.`,
+			repo: 'repo'
+		},
 		acceptFeatures: `Tumatangggap din ako ng mga feature, basta hindi komplikado, dahil diretso ko itong nilalagay sa app at hindi sa library.`,
 		otherLanguages: `Kung ikaw ay maraming alam sa ibang programming language, maaari mo ring subukan i-port ang deemix sa iba't ibang programming language!`,
 		understandingCode: `Kailangan mo ba ng tulong para maintindihan ang code? Bisitahin si RemixDev sa Telegram o sa Reddit.`,
-		contributeWebUI: `Kung may alam ka sa Vue.js (JavaScript), HTML o kaya CSS, maaari kang sumali at tumulong dito sa <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `Kung may alam ka sa Vue.js (JavaScript), HTML o kaya CSS, maaari kang sumali at tumulong dito sa {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree: `Lagi mong tandaang <strong>ang proyektong ito ay libre</strong> at <strong>suportuhanmuna ang minamahal ninyong mga artist</strong> bago ang mga developer.`,
 		notObligated: `Huwag mong pilitin ang sarili para mag-donate, Naiintindihan ka namin!`,
-		lincensedUnder: `Ang aktibidad na ito ay lisensiyado sa
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
+		lincensedUnder: {
+			text: `Ang aktibidad na ito ay lisensiyado sa {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Mga Chart',

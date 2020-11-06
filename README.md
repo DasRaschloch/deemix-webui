@@ -5,9 +5,9 @@ If you are a web developer and want to contribute to this project, please read t
 
 ## Related projects
 
-- [deemix](https://codeberg.org/RemixDev/deemix)
-- [deemix-pyweb](https://codeberg.org/RemixDev/deemix-pyweb)
-- [deemix-tools](https://codeberg.org/RemixDev/deemix-tools)
+- [deemix](https://git.fuwafuwa.moe/RemixDev/deemix)
+- [deemix-pyweb](https://git.fuwafuwa.moe/RemixDev/deemix-pyweb)
+- [deemix-tools](https://git.fuwafuwa.moe/RemixDev/deemix-tools)
 
 # "Hidden" features
 

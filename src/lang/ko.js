@@ -54,26 +54,40 @@ const ko = {
 		},
 		usesLibrary: '이 프로그램은 <strong>deemix</strong> 라이브러리를 사용합니다, 해당 라이브러리로 자신만의 deemix를 만들 수 있습니다.',
 		thanks: `이 프로젝트를 도와준 <strong>rtonno</strong>, <strong>uhwot</strong> 그리고 <strong>lollilol</strong>님과 아이콘을 만들어준 <strong>BasCurtiz</strong> 그리고 <strong>scarvimane</strong>님에게 감사를.`,
-		upToDate: `새로운 업데이트 소식을 듣고 싶으면 텔레그램 <a href="https://t.me/RemixDevNews" target="_blank">새소식 정보통</a>을 참고하세요.`,
+		upToDate: {
+			text: `새로운 업데이트 소식을 듣고 싶으면 텔레그램 {newsChannel}을 참고하세요.`,
+			newsChannel: '새소식 정보통'
+		},
 		officialWebsite: '공식 웹사이트',
 		officialRepo: '공식 라이브러리 저장소',
 		officialWebuiRepo: '공식 WebUI 저장소',
 		officialSubreddit: '공식 서브레딧',
 		newsChannel: '새 소식 알리미',
-		questions: `프로그램에 대한 질문이나 문제에 관한 것은, 먼저 <a href="https://www.reddit.com/r/deemix" target="_blank">서브레딧</a>에서 답변을 검색해보세요. 그리고, 서브레딧에서 답변을 찾기 못한 경우에 다음 순서를 이용해주세요.`,
+		questions: {
+			text: `프로그램에 대한 질문이나 문제에 관한 것은, 먼저 {subreddit}에서 답변을 검색해보세요. 그리고, 서브레딧에서 답변을 찾기 못한 경우에 다음 순서를 이용해주세요.`,
+			subreddit: '서브레딧'
+		},
 		beforeReporting: `버그 제보를 하기 전에 먼저 최신 버전의 프로그램을 실행하고 있는지, 제보하고자 하는 것이 버그이지 오로지 당신의 목적을 이루기 위한 요구가 아님을 확인해주세요.`,
 		beSure: `해당 버그가 다른 장치에서도 재현이 가능한지 확인하고 이미 제보된 버그의 경우에는 중복해서 <strong>보고하지 마세요</strong>.`,
 		duplicateReports: '중복된 버그 제보의 경우는 해당 요청을 닫을 것이니, 두 눈 뜨고 지켜보세요.',
 		dontOpenIssues: `질문에 관한 것은 이슈를 <strong>열지 마세요</strong>, 서브레딧이 있습니다.`,
-		newUI: `만약 당신이 파이썬에 능통하고 기본적인 라이브러리를 이용하여 새로운 UI를 만들었거나, 라이브러리의 버그를 수정하였다면 <a href="https://codeberg.org/RemixDev/deemix" target="_blank">저장소</a>에 풀 리퀘스트 해주세요.`,
+		newUI: {
+			text: `만약 당신이 파이썬에 능통하고 기본적인 라이브러리를 이용하여 새로운 UI를 만들었거나, 라이브러리의 버그를 수정하였다면 {repo}에 풀 리퀘스트 해주세요.`,
+			repo: '저장소'
+		},
 		acceptFeatures: `복잡하지 않은 기능 추가도 받습니다, 라이브러리가 아닌 앱에서 직접 구현할 수 있는 것으로요.`,
 		otherLanguages: `당신이 다른 프로그램 언어에 능통하면, 이 deemix 프로그램을 다른 프로그래밍 언어로 포팅할 수도 있습니다!`,
 		understandingCode: `코드를 이해하는 데 도움이 필요합니까? 위에 있는 RemixDev, 텔레그램, 서브레딧 링크를 누르세요.`,
-		contributeWebUI: `만약 당신이 Vue.js (JavaScript), HTML 또는 CSS 개발자라면 <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>에 도움을 주세요.`,
+		contributeWebUI: {
+			text: `만약 당신이 Vue.js (JavaScript), HTML 또는 CSS 개발자라면 {webui}에 도움을 주세요.`,
+			webui: 'WebUI'
+		},
 		itsFree: `사용하기 전에 이 프로그램이 <strong>무료 프로젝트</strong>이고 개발자를 지원하기 전에 <strong>예술가들</strong>을 먼저 지원해야 함을 기억하세요.`,
 		notObligated: `기부는 프로젝트를 지속할 수 있는 동력이 됩니다!`,
-		lincensedUnder: `이 작업이 요구하고 있는 라이센스는 아래와 같습니다<br>
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
+		lincensedUnder: {
+			text: `이 작업이 요구하고 있는 라이센스는 아래와 같습니다 {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: '차트',

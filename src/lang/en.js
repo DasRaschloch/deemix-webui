@@ -64,26 +64,40 @@ const en = {
 		},
 		usesLibrary: 'This app uses the <strong>deemix</strong> library, which you can use to make your own UI for deemix.',
 		thanks: `Thanks to <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> for helping me with this project and to <strong>BasCurtiz</strong> and <strong>scarvimane</strong> for making the icon.`,
-		upToDate: `Stay up to date with the updates by following the <a href="https://t.me/RemixDevNews" target="_blank">news channel</a> on Telegram.`,
+		upToDate: {
+			text: `Stay up to date with the updates by following the {newsChannel} on Telegram.`,
+			newsChannel: 'news channel'
+		},
 		officialWebsite: 'Official Website',
 		officialRepo: 'Official Library Repository',
 		officialWebuiRepo: 'Official WebUI Repository',
 		officialSubreddit: 'Official Subreddit',
 		newsChannel: 'News Channel',
-		questions: `If you have questions or problems with the app, search for a solution on the <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
+		questions: {
+			text: `If you have questions or problems with the app, search for a solution on the {subreddit} first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
+			subreddit: 'subreddit'
+		},
 		beforeReporting: `Before reporting a bug make sure you're running the latest version of the app and that what you want to report is actually a bug and not something that's wrong only on your end.`,
 		beSure: `Make sure the bug is reproducible on other machines and also <strong>DO NOT</strong> report a bug if it's already been reported.`,
 		duplicateReports: 'Duplicate bug reports will be closed, so keep an eye out on that.',
 		dontOpenIssues: `<strong>DO NOT</strong> open issues for asking questions, there is a subreddit for that.`,
-		newUI: `If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the library with a pull request on the <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
+		newUI: {
+			text: `If you're fluent in python you could try to make a new UI for the app using the base library, or fix bugs in the library with a pull request on the {repo}.`,
+			repo: 'repo'
+		},
 		acceptFeatures: `I accept features as well, but no complex things, as they can be implementend directly in the app and not the library.`,
 		otherLanguages: `If you're fluent in another programming language you could try to port deemix into other programming languages!`,
 		understandingCode: `You need help understanding the code? Just hit RemixDev up on Telegram or Reddit.`,
-		contributeWebUI: `If you know Vue.js (JavaScript), HTML or CSS you could contribute to the <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `If you know Vue.js (JavaScript), HTML or CSS you could contribute to the {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree: `You should remember that <strong>this is a free project</strong> and <strong>you should support the artists you love</strong> before supporting the developers.`,
 		notObligated: `Don't feel obligated to donate, I appreciate you anyway!`,
-		lincensedUnder: `This work is licensed under the
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
+		lincensedUnder: {
+			text: `This work is licensed under the {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Charts',

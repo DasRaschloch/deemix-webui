@@ -65,28 +65,40 @@ const it = {
 		usesLibrary:
 			'Questa app utilizza la libreria <strong>deemix</strong>, che puoi utilizzare per creare la tua Interfaccia Utente per deemix.',
 		thanks: `Un ringraziamento a <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> per l'aiuto che mi stanno dando in questo progetto e a <strong>BasCurtiz</strong> e <strong>scarvimane</strong> per aver creato l'icona.`,
-		upToDate: `Rimani al passo con gli ultimi aggiornamenti seguendo il <a href="https://t.me/RemixDevNews" target="_blank">canale delle news</a> su Telegram.`,
+		upToDate: {
+			text: `Rimani al passo con gli ultimi aggiornamenti seguendo il {newsChannel} su Telegram.`,
+			newsChannel: 'canale delle news'
+		},
 		officialWebsite: 'Sito Ufficiale',
 		officialRepo: 'Repository Ufficiale della Libreria',
 		officialWebuiRepo: `Repository Ufficiale dell'Interfaccia Web`,
 		officialSubreddit: 'Subreddit Ufficiale',
 		newsChannel: 'Canale delle news',
-		questions: `Se dovessi avere domande o problemi con l'app, cerca prima una soluzione nel <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit ufficiale</a>. Se non trovi nulla, puoi postare li il tuo problema.`,
+		questions: {
+			text: `Se dovessi avere domande o problemi con l'app, cerca prima una soluzione nel {subreddit}. Se non trovi nulla, puoi postare li il tuo problema.`,
+			subreddit: 'subreddit ufficiale'
+		},
 		beforeReporting: `Prima di segnalare un problema controlla che quella che stai usando sia l'ultima versione dell'app e che ciò che vuoi segnalare sia effettivamente un problema e non qualcosa che non funziona solamente a te.`,
 		beSure: `Assicurati che il problema sia riproducibile su altri PC e <strong>NON</strong> segnalare un problema che è già stato segnalato.`,
 		duplicateReports: 'Le segnalazioni doppie verranno chiuse, tienilo presente.',
 		dontOpenIssues: `<strong>NON</strong> aprire issues per porre domande, per quello esiste un subreddit.`,
-		newUI: `Se te la cavi in python puoi provare a creare una nuova Interfaccia Utente per l'app usando la libreria base, oppure puoi correggere dei problemi nella libreria con una pull request nella <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo</a>.`,
+		newUI: {
+			text: `Se te la cavi in python puoi provare a creare una nuova Interfaccia Utente per l'app usando la libreria base, oppure puoi correggere dei problemi nella libreria con una pull request nella {repo}.`,
+			repo: 'repo'
+		},
 		acceptFeatures: `Accetto anche funzionalità, ma non cose complesse, dato che possono essere implementate direttamente nell'app invece che nella libreria.`,
 		otherLanguages: `Se te la cavi in altri linguaggi di programmazione, puoi provare a scrivere deemix in quei linguaggi!`,
 		understandingCode: `Serve aiuto per capire il codice? Scrivi a RemixDev su Telegram o Reddit`,
-		contributeWebUI: `Se te la cavi con Vue.js (JavaScript), HTML o CSS, puoi contribuire alla <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `Se te la cavi con Vue.js (JavaScript), HTML o CSS, puoi contribuire alla {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree: `Ricordati che <strong>questo è un progetto gratuito</strong> e che <strong>dovresti supportare gli artisti che ami</strong> prima di supportare gli sviluppatori.`,
 		notObligated: `Non sentirti obbligato a donare, mi stai simpatico lo stesso!`,
-		lincensedUnder: `Questo lavoro è sotto la licenza
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+		lincensedUnder: {
+			text: `Questo progetto è sotto la licenza {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Classifiche',

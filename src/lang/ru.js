@@ -64,26 +64,40 @@ const ru = {
 		},
 		usesLibrary: 'Приложение использует библиотеку <strong>deemix</strong>, с помощью которой вы можете разработать собственный UI для deemix.',
 		thanks: `Спасибо <strong>rtonno</strong>, <strong>uhwot</strong> и <strong>lollilol</strong> за помощь с этим проектом, а также <strong>BasCurtiz</strong> и <strong>scarvimane</strong> за иконку.`,
-		upToDate: `Следите за последними обновлениями на <a href="https://t.me/RemixDevNews" target="_blank">канале</a> в Telegram.`,
+		upToDate: {
+			text: `Следите за последними обновлениями на {newsChannel} в Telegram.`,
+			newsChannel: 'канале'
+		},
 		officialWebsite: 'Официальный сайт',
 		officialRepo: 'Официальный репозиторий библиотеки',
 		officialWebuiRepo: 'Официальный репозиторий WebUI',
 		officialSubreddit: 'Официальный сабреддит',
 		newsChannel: 'Канал новостей',
-		questions: `Если у вас возникли вопросы или проблемы с приложением, поищите решение на <a href="https://www.reddit.com/r/deemix" target="_blank">сабреддите</a>. Если не нашли решение, можете создать новый пост и описать вашу проблему.`,
+		questions: {
+			text: `Если у вас возникли вопросы или проблемы с приложением, поищите решение на {subreddit}. Если не нашли решение, можете создать новый пост и описать вашу проблему.`,
+			subreddit: 'сабреддите'
+		},
 		beforeReporting: `Перед тем, как сообщать об ошибках, убедитесь, что вы используете последнюю версию приложения и что проблема не на вашей стороне.`,
 		beSure: `Убедитесь, что ошибка возникает и на других устройствах. Также <strong>НЕ</strong> сообщайте об ошибке, если про неё уже известно.`,
 		duplicateReports: 'Повторные сообщения об ошибках рассматриваться не будут.',
 		dontOpenIssues: `<strong>НЕ</strong> используйте репозиторий для вопросов автору, для этого есть сабреддит.`,
-		newUI: `Если вы хорошо знаете python, то можете сделать новый UI для приложения с использованием базовой библиотеки или пофиксить в ней баги и сделать pull request в <a href="https://codeberg.org/RemixDev/deemix" target="_blank">репозитории</a>.`,
+		newUI: {
+			text: `Если вы хорошо знаете python, то можете сделать новый UI для приложения с использованием базовой библиотеки или пофиксить в ней баги и сделать pull request в {repo}.`,
+			repo: 'репозитории'
+		},
 		acceptFeatures: `Можете предложить новые функции, но не слишком сложные, так как они будут добавлены в приложение, а не в саму библиотеку.`,
 		otherLanguages: `Если вы хорошо знаете другой язык программирования, можете портировать на нём deemix!`,
 		understandingCode: `Не можете разобраться в коде? Свяжитесь с RemixDev в Telegram или на Reddit.`,
-		contributeWebUI: `Если вы знаете Vue.js (JavaScript), HTML или CSS, можете внести вклад в развитие <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `Если вы знаете Vue.js (JavaScript), HTML или CSS, можете внести вклад в развитие {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree: `Помните, что это <strong>бесплатное приложение</strong> и вам следует <strong>поддерживать понравившихся исполнителей</strong> прежде, чем поддерживать разработчиков.`,
 		notObligated: `Вы не обязаны делать пожертвования, я всё равно вас ценю!`,
-		lincensedUnder: `Проект распространяется под лицензией
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">GNU General Public License 3.0</a>.`
+		lincensedUnder: {
+			text: `Проект распространяется под лицензией {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Чарты',

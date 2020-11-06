@@ -45,28 +45,40 @@ const vn = {
 		},
 		usesLibrary: 'Ứng dụng này sử dụng thư viện <strong>deemix</strong>, bạn có thể dùng nó để tạo một UI riêng cho deemix.',
 		thanks: `Cảm ơn <strong>rtonno</strong>, <strong>uhwot</strong> và <strong>lollilol</strong> đã giúp tôi với dự án này và <strong>BasCurtiz</strong> và <strong>scarvimane</strong> với việc thiết kế biểu tượng.`,
-		upToDate: `Cập nhật app bằng cách theo dõi <a href="https://t.me/RemixDevNews" target="_blank">kênh tin tức</a> trên Telegram.`,
+		upToDate: {
+			text: `Cập nhật app bằng cách theo dõi {newsChannel} trên Telegram.`,
+			newsChannel: 'kênh tin tức'
+		},
 		officialWebsite: 'Website chính thức',
 		officialRepo: 'Repo thư viện chính thức',
 		officialWebuiRepo: 'Repo WebUI chính thức',
 		officialSubreddit: 'Subreddit chính thức',
 		newsChannel: 'Kênh tin tức',
-		questions: `Nếu bạn có câu hỏi hoặc vấn đề về ứng dụng này, xin hãy tìm giải pháp trên <a href="https://www.reddit.com/r/deemix" target="_blank">subreddit</a> trước. Sau đó, nếu bạn không tìm được gì thì bạn có thể tạo một bài đăng về vấn đề của bạn trên subreddit dó.`,
+		questions: {
+			text: `Nếu bạn có câu hỏi hoặc vấn đề về ứng dụng này, xin hãy tìm giải pháp trên {subreddit} trước. Sau đó, nếu bạn không tìm được gì thì bạn có thể tạo một bài đăng về vấn đề của bạn trên subreddit dó.`,
+			subreddit: 'subreddit'
+		},
 		beforeReporting: `Trước khi báo lỗi hãy đảm bảo bạn đang sử dụng phiên bản mới nhất của ứng dụng và lỗi bạn đang gặp không phải là do bạn.`,
 		beSure: `Hãy đảm bảo là lỗi này vẫn có thể xảy ra trên các thiết bị khác và <strong>XIN ĐỪNG</strong> báo lỗi đã được báo rồi.`,
 		duplicateReports: 'Những bản báo lỗi trùng nhau sẽ bị đóng, xin bạn hãy để ý điều này.',
 		dontOpenIssues: `<strong>XIN ĐỪNG</strong> mở vấn đề để hỏi, bạn có thể dùng subreddit trên cho việc đó.`,
-		newUI: `Nếu bạn thành thạo với python bạn có thể tạo một UI mới bằng cách sử dụng thư viện gốc, hoặc sửa lỗi trong thư viện đó với một pull request trên <a href="https://codeberg.org/RemixDev/deemix" target="_blank">repo này</a>.`,
+		newUI: {
+			text: `Nếu bạn thành thạo với python bạn có thể tạo một UI mới bằng cách sử dụng thư viện gốc, hoặc sửa lỗi trong thư viện đó với một pull request trên {repo}.`,
+			repo: 'repo này'
+		},
 		acceptFeatures: `Tôi có chấp nhận yêu cầu về tính năng mới nhưng không quá phức tạp bởi vì chúng có thể được triển khai trực tiếp vào ứng dụng thay vì vào thư viện.`,
 		otherLanguages: `Nếu bạn thành thạo với một ngôn ngữ khác, bạn có thể port deemix sang ngôn ngữ đó!`,
 		understandingCode: `Bạn muốn hiểu code của deemix? Xin hãy liên lạc RemixDev trên Telegram hoặc Reddit.`,
-		contributeWebUI: `Nếu bạn biết Vue.js (JavaScript), HTML hoặc CSS, bạn có thể góp phần phát triển <a href="https://codeberg.org/RemixDev/deemix-webui" target="_blank">WebUI</a>.`,
+		contributeWebUI: {
+			text: `Nếu bạn biết Vue.js (JavaScript), HTML hoặc CSS, bạn có thể góp phần phát triển {webui}.`,
+			webui: 'WebUI'
+		},
 		itsFree: `Bạn nên nhớ rằng <strong>đây là một dự án phi lợi nhuận</strong> và <strong>bạn nên ủng hộ những Nghệ sĩ yêu thích của bạn</strong> trước khi ủng hộ nhà phát triển.`,
 		notObligated: `Đừng nghĩ rằng bạn phải đóng góp tiền, tôi vẫn sẽ rất biết ơn bạn!`,
-		lincensedUnder: `Dự án này được cấp phép bởi
-			<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank"
-				>GNU General Public License 3.0</a
-			>.`
+		lincensedUnder: {
+			text: `Dự án này được cấp phép bởi {gpl3}.`,
+			gpl3: 'GNU General Public License 3.0'
+		}
 	},
 	charts: {
 		title: 'Bảng xếp hạng',

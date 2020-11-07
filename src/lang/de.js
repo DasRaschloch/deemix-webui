@@ -282,7 +282,7 @@ const de = {
 			involvedPeople: 'Mitwirkende Personen'
 		},
 		other: {
-			title: 'Sonsitge',
+			title: 'Sonstige',
 			savePlaylistAsCompilation: 'Speichere Playlist als Zusammenstellung',
 			useNullSeparator: 'Verwende Nulltrennzeichen',
 			saveID3v1: 'Speichere ID3v1 ebenfalls',

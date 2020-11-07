@@ -5,6 +5,8 @@ import EventBus from '@/utils/EventBus'
 
 // Pages
 import About from '@components/pages/About.vue'
+import InfoArl from '@components/pages/InfoArl.vue'
+import InfoSpotifyFeatures from '@components/pages/InfoSpotifyFeatures.vue'
 import Artist from '@components/pages/Artist.vue'
 import Charts from '@components/pages/Charts.vue'
 import Errors from '@components/pages/Errors.vue'
@@ -81,6 +83,16 @@ const routes = [
 		path: '/about',
 		name: 'About',
 		component: About
+	},
+	{
+		path: '/arl',
+		name: 'ARL',
+		component: InfoArl
+	},
+	{
+		path: '/info-spotify',
+		name: 'Spotify Features',
+		component: InfoSpotifyFeatures
 	},
 	{
 		path: '/settings',

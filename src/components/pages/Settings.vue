@@ -35,10 +35,11 @@
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
-			<!-- <a href="https://git.fuwafuwa.moe/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank"> -->
-			<a href="#">
+
+			<RouterLink :to="{ name: 'ARL' }">
 				{{ $t('settings.login.arl.question') }}
-			</a>
+			</RouterLink>
+
 			<a id="settings_btn_applogin" v-if="clientMode" href="#" @click="appLogin">
 				{{ $t('settings.login.login') }}
 			</a>
@@ -606,10 +607,9 @@
 				</svg>
 				{{ $t('settings.spotify.title') }}
 			</h3>
-			<!-- <a href="https://git.fuwafuwa.moe/RemixDev/deemix/wiki/Enabling-Spotify-Features" target="_blank"> -->
-			<a href="#">
+			<RouterLink :to="{ name: 'Spotify Features' }">
 				{{ $t('settings.spotify.question') }}
-			</a>
+			</RouterLink>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.spotify.clientID') }}</p>

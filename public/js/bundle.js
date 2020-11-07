@@ -26784,6 +26784,124 @@ var __vue_staticRenderFns__$b = [function () {var _vm=this;var _h=_vm.$createEle
     __vue_module_identifier__$a,
     __vue_create_injector__$a);
 
+//
+//
+//
+//
+//
+//
+//
+//
+
+var script$a = {};
+
+/* script */
+            const __vue_script__$a = script$a;
+            
+/* template */
+var __vue_render__$c = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('settings.login.arl.question')))]),_vm._v(" "),_c('p')])};
+var __vue_staticRenderFns__$c = [];
+
+  /* style */
+  const __vue_inject_styles__$c = undefined;
+  /* scoped */
+  const __vue_scope_id__$c = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$c = false;
+  /* component normalizer */
+  function __vue_normalize__$c(
+    template, style, script,
+    scope, functional, moduleIdentifier,
+    createInjector, createInjectorSSR
+  ) {
+    const component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "InfoArl.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component
+  }
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var InfoArl = __vue_normalize__$c(
+    { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
+    __vue_inject_styles__$c,
+    __vue_script__$a,
+    __vue_scope_id__$c,
+    __vue_is_functional_template__$c);
+
+//
+//
+//
+//
+//
+//
+
+var script$b = {};
+
+/* script */
+            const __vue_script__$b = script$b;
+            
+/* template */
+var __vue_render__$d = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('settings.spotify.question')))])])};
+var __vue_staticRenderFns__$d = [];
+
+  /* style */
+  const __vue_inject_styles__$d = undefined;
+  /* scoped */
+  const __vue_scope_id__$d = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$d = false;
+  /* component normalizer */
+  function __vue_normalize__$d(
+    template, style, script,
+    scope, functional, moduleIdentifier,
+    createInjector, createInjectorSSR
+  ) {
+    const component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "InfoSpotifyFeatures.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component
+  }
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var InfoSpotifyFeatures = __vue_normalize__$d(
+    { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
+    __vue_inject_styles__$d,
+    __vue_script__$b,
+    __vue_scope_id__$d,
+    __vue_is_functional_template__$d);
+
 /** Detect free variable `global` from Node.js. */
 var freeGlobal = typeof global == 'object' && global && global.Object === Object && global;
 
@@ -29754,7 +29872,7 @@ function orderBy(collection, iteratees, orders, guard) {
 
 //
 
-var script$a = {
+var script$c = {
 	data() {
 		return {
 			currentTab: '',
@@ -29855,10 +29973,10 @@ var script$a = {
 };
 
 /* script */
-            const __vue_script__$a = script$a;
+            const __vue_script__$c = script$c;
             
 /* template */
-var __vue_render__$c = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"relative image-header",attrs:{"id":"artist_tab"}},[_c('header',{staticClass:"flex items-center",style:({
+var __vue_render__$e = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"relative image-header",attrs:{"id":"artist_tab"}},[_c('header',{staticClass:"flex items-center",style:({
 			'background-image':
 				'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + _vm.image + '\')'
 		})},[_c('h1',{staticClass:"m-0"},[_vm._v(_vm._s(_vm.title))]),_vm._v(" "),_c('div',{staticClass:"rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center ml-auto",attrs:{"role":"button","aria-label":"download","data-link":_vm.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_c('i',{staticClass:"material-icons text-4xl",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("get_app")])])]),_vm._v(" "),_c('div',{staticClass:"my-4"},_vm._l((_vm.body),function(item,name){return _c('button',{key:name,staticClass:"mr-2 btn bg-background-main",class:{ 'btn-primary': name === _vm.currentTab },attrs:{"href":'#artist_' + name},on:{"click":function($event){return _vm.changeTab(name)}}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$tc(("globals.listTabs." + name), 2))+"\n\t\t")])}),0),_vm._v(" "),_c('table',{staticClass:"table"},[_c('thead',[_c('tr',_vm._l((_vm.head),function(data){return _c('th',{class:{
@@ -29867,16 +29985,16 @@ var __vue_render__$c = function () {var _vm=this;var _h=_vm.$createElement;var _
 						sortable: data.sortKey,
 						clickable: data.sortKey
 					},style:({ width: data.width ? data.width : 'auto' }),on:{"click":function($event){data.sortKey ? _vm.sortBy(data.sortKey) : null;}}},[_vm._v("\n\t\t\t\t\t"+_vm._s(data.title)+"\n\t\t\t\t")])}),0)]),_vm._v(" "),_c('tbody',_vm._l((_vm.showTable),function(release){return _c('tr',{key:release.id},[_c('router-link',{staticClass:"flex items-center clickable",attrs:{"tag":"td","to":{ name: 'Album', params: { id: release.id } }}},[_c('img',{staticClass:"rounded coverart",staticStyle:{"margin-right":"16px","width":"56px","height":"56px"},attrs:{"src":release.cover_small}}),_vm._v(" "),(release.explicit_lyrics)?_c('i',{staticClass:"material-icons explicit-icon"},[_vm._v(" explicit ")]):_vm._e(),_vm._v("\n\t\t\t\t\t"+_vm._s(release.title)+"\n\t\t\t\t\t"),(_vm.checkNewRelease(release.release_date))?_c('i',{staticClass:"material-icons",staticStyle:{"color":"#ff7300"}},[_vm._v("\n\t\t\t\t\t\tfiber_new\n\t\t\t\t\t")]):_vm._e()]),_vm._v(" "),_c('td',[_vm._v(_vm._s(release.release_date))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(release.nb_song))]),_vm._v(" "),_c('td',{staticClass:"clickable",attrs:{"data-link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_c('i',{staticClass:"material-icons",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v(" file_download ")])])],1)}),0)])])};
-var __vue_staticRenderFns__$c = [];
+var __vue_staticRenderFns__$e = [];
 
   /* style */
-  const __vue_inject_styles__$c = undefined;
+  const __vue_inject_styles__$e = undefined;
   /* scoped */
-  const __vue_scope_id__$c = undefined;
+  const __vue_scope_id__$e = undefined;
   /* functional template */
-  const __vue_is_functional_template__$c = false;
+  const __vue_is_functional_template__$e = false;
   /* component normalizer */
-  function __vue_normalize__$c(
+  function __vue_normalize__$e(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -29904,12 +30022,12 @@ var __vue_staticRenderFns__$c = [];
   
 
   
-  var Artist = __vue_normalize__$c(
-    { render: __vue_render__$c, staticRenderFns: __vue_staticRenderFns__$c },
-    __vue_inject_styles__$c,
-    __vue_script__$a,
-    __vue_scope_id__$c,
-    __vue_is_functional_template__$c);
+  var Artist = __vue_normalize__$e(
+    { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
+    __vue_inject_styles__$e,
+    __vue_script__$c,
+    __vue_scope_id__$e,
+    __vue_is_functional_template__$e);
 
 let chartsData = {};
 let cached$1 = false;
@@ -29934,7 +30052,7 @@ function getChartsData() {
 
 //
 
-var script$b = {
+var script$d = {
 	methods: {
 		previewMouseEnter(e) {
 			EventBus.$emit('trackPreview:previewMouseEnter', e);
@@ -29946,20 +30064,20 @@ var script$b = {
 };
 
 /* script */
-            const __vue_script__$b = script$b;
+            const __vue_script__$d = script$d;
             
 /* template */
-var __vue_render__$d = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i',{staticClass:"absolute top-0 right-0 flex items-center justify-center w-full h-full text-center transition-opacity duration-200 ease-in-out bg-black bg-opacity-50 rounded opacity-0 material-icons preview_controls",attrs:{"title":_vm.$t('globals.play_hint')},on:{"mouseenter":_vm.previewMouseEnter,"mouseleave":_vm.previewMouseLeave}},[_vm._v("\n\tplay_arrow\n")])};
-var __vue_staticRenderFns__$d = [];
+var __vue_render__$f = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('i',{staticClass:"absolute top-0 right-0 flex items-center justify-center w-full h-full text-center transition-opacity duration-200 ease-in-out bg-black bg-opacity-50 rounded opacity-0 material-icons preview_controls",attrs:{"title":_vm.$t('globals.play_hint')},on:{"mouseenter":_vm.previewMouseEnter,"mouseleave":_vm.previewMouseLeave}},[_vm._v("\n\tplay_arrow\n")])};
+var __vue_staticRenderFns__$f = [];
 
   /* style */
-  const __vue_inject_styles__$d = undefined;
+  const __vue_inject_styles__$f = undefined;
   /* scoped */
-  const __vue_scope_id__$d = undefined;
+  const __vue_scope_id__$f = undefined;
   /* functional template */
-  const __vue_is_functional_template__$d = false;
+  const __vue_is_functional_template__$f = false;
   /* component normalizer */
-  function __vue_normalize__$d(
+  function __vue_normalize__$f(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -29987,16 +30105,16 @@ var __vue_staticRenderFns__$d = [];
   
 
   
-  var PreviewControls = __vue_normalize__$d(
-    { render: __vue_render__$d, staticRenderFns: __vue_staticRenderFns__$d },
-    __vue_inject_styles__$d,
-    __vue_script__$b,
-    __vue_scope_id__$d,
-    __vue_is_functional_template__$d);
+  var PreviewControls = __vue_normalize__$f(
+    { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
+    __vue_inject_styles__$f,
+    __vue_script__$d,
+    __vue_scope_id__$f,
+    __vue_is_functional_template__$f);
 
 //
 
-var script$c = {
+var script$e = {
 	components: {
 		PreviewControls
 	},
@@ -30093,21 +30211,21 @@ var script$c = {
 };
 
 /* script */
-            const __vue_script__$c = script$c;
+            const __vue_script__$e = script$e;
             
 /* template */
-var __vue_render__$e = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('charts.title')))]),_vm._v(" "),(_vm.country === '')?_c('div',[_c('div',{staticClass:"release_grid charts_grid"},_vm._l((_vm.countries),function(release){return _c('div',{key:release.id,staticClass:"w-40 h-40 release clickable",attrs:{"role":"button","aria-label":release.title,"data-title":release.title,"data-id":release.id},on:{"click":_vm.getTrackList}},[_c('img',{staticClass:"w-full rounded coverart",attrs:{"src":release.picture_medium}})])}),0)]):_c('div',[_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.onChangeCountry}},[_vm._v(_vm._s(_vm.$t('charts.changeCountry')))]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",attrs:{"data-link":'https://www.deezer.com/playlist/' + _vm.id},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('charts.download'))+"\n\t\t")]),_vm._v(" "),_c('table',{staticClass:"table table--charts"},[_c('tbody',_vm._l((_vm.chart),function(track){return _c('tr',{staticClass:"track_row"},[_c('td',{staticClass:"p-3 text-center cursor-default",class:{ first: track.position === 1 }},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.position)+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"table__icon table__icon--big"},[_c('a',{staticClass:"rounded",class:{ 'single-cover': track.preview },attrs:{"href":"#","data-preview":track.preview},on:{"click":_vm.playPausePreview}},[(track.preview)?_c('PreviewControls'):_vm._e(),_vm._v(" "),_c('img',{staticClass:"rounded coverart",attrs:{"src":track.album.cover_small}})],1)]),_vm._v(" "),_c('td',{staticClass:"table__cell--large"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.title +
+var __vue_render__$g = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('charts.title')))]),_vm._v(" "),(_vm.country === '')?_c('div',[_c('div',{staticClass:"release_grid charts_grid"},_vm._l((_vm.countries),function(release){return _c('div',{key:release.id,staticClass:"w-40 h-40 release clickable",attrs:{"role":"button","aria-label":release.title,"data-title":release.title,"data-id":release.id},on:{"click":_vm.getTrackList}},[_c('img',{staticClass:"w-full rounded coverart",attrs:{"src":release.picture_medium}})])}),0)]):_c('div',[_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.onChangeCountry}},[_vm._v(_vm._s(_vm.$t('charts.changeCountry')))]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",attrs:{"data-link":'https://www.deezer.com/playlist/' + _vm.id},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('charts.download'))+"\n\t\t")]),_vm._v(" "),_c('table',{staticClass:"table table--charts"},[_c('tbody',_vm._l((_vm.chart),function(track){return _c('tr',{staticClass:"track_row"},[_c('td',{staticClass:"p-3 text-center cursor-default",class:{ first: track.position === 1 }},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.position)+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"table__icon table__icon--big"},[_c('a',{staticClass:"rounded",class:{ 'single-cover': track.preview },attrs:{"href":"#","data-preview":track.preview},on:{"click":_vm.playPausePreview}},[(track.preview)?_c('PreviewControls'):_vm._e(),_vm._v(" "),_c('img',{staticClass:"rounded coverart",attrs:{"src":track.album.cover_small}})],1)]),_vm._v(" "),_c('td',{staticClass:"table__cell--large"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.title +
 							(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : ''))+"\n\t\t\t\t\t")]),_vm._v(" "),_c('router-link',{staticClass:"table__cell table__cell--medium table__cell--center clickable",attrs:{"tag":"td","to":{ name: 'Artist', params: { id: track.artist.id } }}},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.artist.name)+"\n\t\t\t\t\t")]),_vm._v(" "),_c('router-link',{staticClass:"table__cell--medium table__cell--center clickable",attrs:{"tag":"td","to":{ name: 'Album', params: { id: track.album.id } }}},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.album.title)+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"table__cell--small table__cell--center"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.convertDuration(track.duration))+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"cursor-pointer group",attrs:{"data-link":track.link,"role":"button","aria-label":"download"},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_c('i',{staticClass:"transition-colors duration-150 ease-in-out material-icons group-hover:text-primary",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("\n\t\t\t\t\t\t\tget_app\n\t\t\t\t\t\t")])])],1)}),0)])])])};
-var __vue_staticRenderFns__$e = [];
+var __vue_staticRenderFns__$g = [];
 
   /* style */
-  const __vue_inject_styles__$e = undefined;
+  const __vue_inject_styles__$g = undefined;
   /* scoped */
-  const __vue_scope_id__$e = undefined;
+  const __vue_scope_id__$g = undefined;
   /* functional template */
-  const __vue_is_functional_template__$e = false;
+  const __vue_is_functional_template__$g = false;
   /* component normalizer */
-  function __vue_normalize__$e(
+  function __vue_normalize__$g(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -30135,16 +30253,16 @@ var __vue_staticRenderFns__$e = [];
   
 
   
-  var Charts = __vue_normalize__$e(
-    { render: __vue_render__$e, staticRenderFns: __vue_staticRenderFns__$e },
-    __vue_inject_styles__$e,
-    __vue_script__$c,
-    __vue_scope_id__$e,
-    __vue_is_functional_template__$e);
+  var Charts = __vue_normalize__$g(
+    { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
+    __vue_inject_styles__$g,
+    __vue_script__$e,
+    __vue_scope_id__$g,
+    __vue_is_functional_template__$g);
 
 //
 
-var script$d = {
+var script$f = {
 	computed: {
 		...mapGetters(['getErrors']),
 		title() {
@@ -30157,20 +30275,20 @@ var script$d = {
 };
 
 /* script */
-            const __vue_script__$d = script$d;
+            const __vue_script__$f = script$f;
             
 /* template */
-var __vue_render__$f = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('errors.title', { name: _vm.title })))]),_vm._v(" "),_c('table',{staticClass:"table table--tracklist"},[_c('tr',[_c('th',[_vm._v("ID")]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.artist', 1)))]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.title', 1)))]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.error', 1)))])]),_vm._v(" "),_vm._l((_vm.errors),function(error){return _c('tr',{key:error.data.id},[_c('td',[_vm._v(_vm._s(error.data.id))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(error.data.artist))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(error.data.title))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(error.errid ? _vm.$t(("errors.ids." + (error.errid))) : error.message))])])})],2)])};
-var __vue_staticRenderFns__$f = [];
+var __vue_render__$h = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('errors.title', { name: _vm.title })))]),_vm._v(" "),_c('table',{staticClass:"table table--tracklist"},[_c('tr',[_c('th',[_vm._v("ID")]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.artist', 1)))]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.title', 1)))]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.error', 1)))])]),_vm._v(" "),_vm._l((_vm.errors),function(error){return _c('tr',{key:error.data.id},[_c('td',[_vm._v(_vm._s(error.data.id))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(error.data.artist))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(error.data.title))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(error.errid ? _vm.$t(("errors.ids." + (error.errid))) : error.message))])])})],2)])};
+var __vue_staticRenderFns__$h = [];
 
   /* style */
-  const __vue_inject_styles__$f = undefined;
+  const __vue_inject_styles__$h = undefined;
   /* scoped */
-  const __vue_scope_id__$f = undefined;
+  const __vue_scope_id__$h = undefined;
   /* functional template */
-  const __vue_is_functional_template__$f = false;
+  const __vue_is_functional_template__$h = false;
   /* component normalizer */
-  function __vue_normalize__$f(
+  function __vue_normalize__$h(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -30198,12 +30316,12 @@ var __vue_staticRenderFns__$f = [];
   
 
   
-  var Errors = __vue_normalize__$f(
-    { render: __vue_render__$f, staticRenderFns: __vue_staticRenderFns__$f },
-    __vue_inject_styles__$f,
-    __vue_script__$d,
-    __vue_scope_id__$f,
-    __vue_is_functional_template__$f);
+  var Errors = __vue_normalize__$h(
+    { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
+    __vue_inject_styles__$h,
+    __vue_script__$f,
+    __vue_scope_id__$h,
+    __vue_is_functional_template__$h);
 
 let favoritesData = {};
 let cached$2 = false;
@@ -30289,7 +30407,7 @@ function getFavoritesData() {
 //
 //
 
-var script$e = {
+var script$g = {
 	inheritAttrs: false,
 	props: {
 		cover: {
@@ -30312,26 +30430,26 @@ var script$e = {
 };
 
 /* script */
-            const __vue_script__$e = script$e;
+            const __vue_script__$g = script$g;
             
 /* template */
-var __vue_render__$g = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"relative cover_container group"},[_c('img',{staticClass:"block w-full opacity-100 coverart",class:{ rounded: _vm.isRounded, circle: _vm.isCircle },attrs:{"aria-hidden":"true","src":_vm.cover}}),_vm._v(" "),_c('button',_vm._g({staticClass:"absolute p-0 text-center bg-black border-0 rounded-full opacity-0 download_overlay hover:bg-primary",attrs:{"role":"button","aria-label":"download","data-link":_vm.link,"tabindex":"0"}},_vm.$listeners),[_c('i',{staticClass:"text-white cursor-pointer material-icons",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("get_app")])])])};
-var __vue_staticRenderFns__$g = [];
+var __vue_render__$i = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"relative cover_container group"},[_c('img',{staticClass:"block w-full opacity-100 coverart",class:{ rounded: _vm.isRounded, circle: _vm.isCircle },attrs:{"aria-hidden":"true","src":_vm.cover}}),_vm._v(" "),_c('button',_vm._g({staticClass:"absolute p-0 text-center bg-black border-0 rounded-full opacity-0 download_overlay hover:bg-primary",attrs:{"role":"button","aria-label":"download","data-link":_vm.link,"tabindex":"0"}},_vm.$listeners),[_c('i',{staticClass:"text-white cursor-pointer material-icons",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("get_app")])])])};
+var __vue_staticRenderFns__$i = [];
 
   /* style */
-  const __vue_inject_styles__$g = function (inject) {
+  const __vue_inject_styles__$i = function (inject) {
     if (!inject) return
     inject("data-v-8544a9ca_0", { source: ".cover_container .coverart[data-v-8544a9ca]{backface-visibility:hidden;transition:.5s ease;height:auto}.cover_container .download_overlay[data-v-8544a9ca]{top:50%;left:50%;transform:translate(-50%,-50%);transition:.5s ease;opacity:0;min-width:2rem;height:2.75rem;text-align:center}.cover_container .download_overlay i[data-v-8544a9ca]{padding:.625rem}.cover_container .download_overlay[data-v-8544a9ca]:focus{opacity:1}.cover_container:hover .coverart[data-v-8544a9ca]{opacity:.75}.cover_container:hover .download_overlay[data-v-8544a9ca]{opacity:1;border:0}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$g = "data-v-8544a9ca";
+  const __vue_scope_id__$i = "data-v-8544a9ca";
   /* module identifier */
   const __vue_module_identifier__$b = undefined;
   /* functional template */
-  const __vue_is_functional_template__$g = false;
+  const __vue_is_functional_template__$i = false;
   /* component normalizer */
-  function __vue_normalize__$g(
+  function __vue_normalize__$i(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -30449,18 +30567,18 @@ var __vue_staticRenderFns__$g = [];
   
 
   
-  var CoverContainer = __vue_normalize__$g(
-    { render: __vue_render__$g, staticRenderFns: __vue_staticRenderFns__$g },
-    __vue_inject_styles__$g,
-    __vue_script__$e,
-    __vue_scope_id__$g,
-    __vue_is_functional_template__$g,
+  var CoverContainer = __vue_normalize__$i(
+    { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
+    __vue_inject_styles__$i,
+    __vue_script__$g,
+    __vue_scope_id__$i,
+    __vue_is_functional_template__$i,
     __vue_module_identifier__$b,
     __vue_create_injector__$b);
 
 //
 
-var script$f = {
+var script$h = {
 	components: {
 		PreviewControls,
 		CoverContainer
@@ -30618,10 +30736,10 @@ var script$f = {
 };
 
 /* script */
-            const __vue_script__$f = script$f;
+            const __vue_script__$h = script$h;
             
 /* template */
-var __vue_render__$h = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v("\n\t\t"+_vm._s(_vm.$t('favorites.title'))+"\n\t\t"),_c('div',{ref:"reloadButton",staticClass:"inline-block clickable reload-button",attrs:{"role":"button","aria-label":"reload"},on:{"click":_vm.reloadTabs}},[_c('i',{staticClass:"material-icons"},[_vm._v("sync")])])]),_vm._v(" "),_c('ul',{staticClass:"section-tabs"},_vm._l((_vm.tabs),function(tab){return _c('li',{key:tab,staticClass:"section-tabs__tab favorites_tablinks",class:{ active: _vm.activeTab === tab },on:{"click":function($event){_vm.activeTab = tab;}}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$tc(("globals.listTabs." + tab), 2))+"\n\t\t")])}),0),_vm._v(" "),(!_vm.activeTabEmpty)?_c('button',{staticClass:"btn btn-primary",staticStyle:{"margin-bottom":"2rem"},on:{"click":_vm.downloadAllOfType}},[_vm._v("\n\t\t"+_vm._s(_vm.$t('globals.download', { thing: _vm.$tc(("globals.listTabs." + _vm.activeTab + "N"), _vm.getTabLenght()) }))+"\n\t")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"favorites_tabcontent",class:{ 'favorites_tabcontent--active': _vm.activeTab === 'playlist' }},[(_vm.playlists.length == 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('favorites.noPlaylists')))])]):_vm._e(),_vm._v(" "),(_vm.playlists.length > 0 || _vm.spotifyPlaylists > 0)?_c('div',{staticClass:"release_grid"},[_vm._l((_vm.playlists),function(release){return _c('div',{key:release.id,staticClass:"release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Playlist', params: { id: release.id } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.picture_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: release.creator.name })) + " - " + (_vm.$tc(
+var __vue_render__$j = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v("\n\t\t"+_vm._s(_vm.$t('favorites.title'))+"\n\t\t"),_c('div',{ref:"reloadButton",staticClass:"inline-block clickable reload-button",attrs:{"role":"button","aria-label":"reload"},on:{"click":_vm.reloadTabs}},[_c('i',{staticClass:"material-icons"},[_vm._v("sync")])])]),_vm._v(" "),_c('ul',{staticClass:"section-tabs"},_vm._l((_vm.tabs),function(tab){return _c('li',{key:tab,staticClass:"section-tabs__tab favorites_tablinks",class:{ active: _vm.activeTab === tab },on:{"click":function($event){_vm.activeTab = tab;}}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$tc(("globals.listTabs." + tab), 2))+"\n\t\t")])}),0),_vm._v(" "),(!_vm.activeTabEmpty)?_c('button',{staticClass:"btn btn-primary",staticStyle:{"margin-bottom":"2rem"},on:{"click":_vm.downloadAllOfType}},[_vm._v("\n\t\t"+_vm._s(_vm.$t('globals.download', { thing: _vm.$tc(("globals.listTabs." + _vm.activeTab + "N"), _vm.getTabLenght()) }))+"\n\t")]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"favorites_tabcontent",class:{ 'favorites_tabcontent--active': _vm.activeTab === 'playlist' }},[(_vm.playlists.length == 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('favorites.noPlaylists')))])]):_vm._e(),_vm._v(" "),(_vm.playlists.length > 0 || _vm.spotifyPlaylists > 0)?_c('div',{staticClass:"release_grid"},[_vm._l((_vm.playlists),function(release){return _c('div',{key:release.id,staticClass:"release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Playlist', params: { id: release.id } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.picture_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: release.creator.name })) + " - " + (_vm.$tc(
 							'globals.listTabs.trackN',
 							release.nb_tracks
 						))))+"\n\t\t\t\t")])],1)}),_vm._v(" "),_vm._l((_vm.spotifyPlaylists),function(release){return _c('div',{key:release.id,staticClass:"release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Spotify Playlist', params: { id: release.id } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.picture_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: release.creator.name })) + " - " + (_vm.$tc(
@@ -30629,22 +30747,22 @@ var __vue_render__$h = function () {var _vm=this;var _h=_vm.$createElement;var _
 							release.nb_tracks
 						))))+"\n\t\t\t\t")])],1)})],2):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"favorites_tabcontent",class:{ 'favorites_tabcontent--active': _vm.activeTab === 'album' }},[(_vm.albums.length == 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('favorites.noAlbums')))])]):_vm._e(),_vm._v(" "),(_vm.albums.length > 0)?_c('div',{staticClass:"release_grid"},_vm._l((_vm.albums),function(release){return _c('router-link',{key:release.id,staticClass:"release clickable",attrs:{"tag":"div","to":{ name: 'Album', params: { id: release.id } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.cover_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))]),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v(_vm._s(("" + (_vm.$t('globals.by', { artist: release.artist.name })))))])],1)}),1):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"favorites_tabcontent",class:{ 'favorites_tabcontent--active': _vm.activeTab === 'artist' }},[(_vm.artists.length == 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('favorites.noArtists')))])]):_vm._e(),_vm._v(" "),(_vm.artists.length > 0)?_c('div',{staticClass:"release_grid"},_vm._l((_vm.artists),function(release){return _c('router-link',{key:release.id,staticClass:"release clickable",attrs:{"tag":"div","to":{ name: 'Artist', params: { id: release.id } }}},[_c('CoverContainer',{attrs:{"is-circle":"","cover":release.picture_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.name))])],1)}),1):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"favorites_tabcontent",class:{ 'favorites_tabcontent--active': _vm.activeTab === 'track' }},[(_vm.tracks.length == 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('favorites.noTracks')))])]):_vm._e(),_vm._v(" "),(_vm.tracks.length > 0)?_c('table',{staticClass:"table"},_vm._l((_vm.tracks),function(track){return _c('tr',{staticClass:"track_row"},[_c('td',{staticClass:"p-3 text-center cursor-default",class:{ first: track.position === 1 }},[_vm._v("\n\t\t\t\t\t"+_vm._s(track.position)+"\n\t\t\t\t")]),_vm._v(" "),_c('td',[_c('a',{staticClass:"rounded",class:{ 'single-cover': !!track.preview },attrs:{"href":"#","data-preview":track.preview},on:{"click":_vm.playPausePreview}},[(track.preview)?_c('PreviewControls'):_vm._e(),_vm._v(" "),_c('img',{staticClass:"rounded coverart",attrs:{"src":track.album.cover_small}})],1)]),_vm._v(" "),_c('td',{staticClass:"table__cell--large"},[_vm._v("\n\t\t\t\t\t"+_vm._s(track.title +
 						(track.title_version && track.title.indexOf(track.title_version) == -1 ? ' ' + track.title_version : ''))+"\n\t\t\t\t")]),_vm._v(" "),_c('router-link',{staticClass:"table__cell table__cell--medium table__cell--center clickable",attrs:{"tag":"td","to":{ name: 'Artist', params: { id: track.artist.id } }}},[_vm._v("\n\t\t\t\t\t"+_vm._s(track.artist.name)+"\n\t\t\t\t")]),_vm._v(" "),_c('router-link',{staticClass:"table__cell--medium table__cell--center clickable",attrs:{"tag":"td","to":{ name: 'Album', params: { id: track.album.id } }}},[_vm._v("\n\t\t\t\t\t"+_vm._s(track.album.title)+"\n\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"table__cell--small"},[_vm._v("\n\t\t\t\t\t"+_vm._s(_vm.convertDuration(track.duration))+"\n\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"cursor-pointer group",attrs:{"data-link":track.link,"role":"button","aria-label":"download"},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_c('div',{staticClass:"table__cell-content table__cell-content--vertical-center"},[_c('i',{staticClass:"transition-colors duration-150 ease-in-out material-icons group-hover:text-primary",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("\n\t\t\t\t\t\t\tget_app\n\t\t\t\t\t\t")])])])],1)}),0):_vm._e()])])};
-var __vue_staticRenderFns__$h = [];
+var __vue_staticRenderFns__$j = [];
 
   /* style */
-  const __vue_inject_styles__$h = function (inject) {
+  const __vue_inject_styles__$j = function (inject) {
     if (!inject) return
     inject("data-v-3a9da4b6_0", { source: ".favorites_tabcontent[data-v-3a9da4b6]{display:none}.favorites_tabcontent--active[data-v-3a9da4b6]{display:block}.reload-button.spin i[data-v-3a9da4b6]{animation:spin .5s infinite ease-out reverse}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$h = "data-v-3a9da4b6";
+  const __vue_scope_id__$j = "data-v-3a9da4b6";
   /* module identifier */
   const __vue_module_identifier__$c = undefined;
   /* functional template */
-  const __vue_is_functional_template__$h = false;
+  const __vue_is_functional_template__$j = false;
   /* component normalizer */
-  function __vue_normalize__$h(
+  function __vue_normalize__$j(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -30762,12 +30880,12 @@ var __vue_staticRenderFns__$h = [];
   
 
   
-  var Favorites = __vue_normalize__$h(
-    { render: __vue_render__$h, staticRenderFns: __vue_staticRenderFns__$h },
-    __vue_inject_styles__$h,
-    __vue_script__$f,
-    __vue_scope_id__$h,
-    __vue_is_functional_template__$h,
+  var Favorites = __vue_normalize__$j(
+    { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
+    __vue_inject_styles__$j,
+    __vue_script__$h,
+    __vue_scope_id__$j,
+    __vue_is_functional_template__$j,
     __vue_module_identifier__$c,
     __vue_create_injector__$c);
 
@@ -30794,7 +30912,7 @@ function getHomeData() {
 
 //
 
-var script$g = {
+var script$i = {
 	components: {
 		CoverContainer
 	},
@@ -30829,23 +30947,23 @@ var script$g = {
 };
 
 /* script */
-            const __vue_script__$g = script$g;
+            const __vue_script__$i = script$i;
             
 /* template */
-var __vue_render__$i = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home_tab"}},[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('globals.welcome')))]),_vm._v(" "),(!_vm.isLoggedIn)?_c('section',{ref:"notLogged",staticClass:"py-6 border-0 border-t border-solid border-grayscale-500"},[_c('p',{staticClass:"mb-4",attrs:{"id":"home_not_logged_text"}},[_vm._v(_vm._s(_vm.$t('home.needTologin')))]),_vm._v(" "),_c('router-link',{staticClass:"btn btn-primary",attrs:{"tag":"button","name":"button","to":{ name: 'Settings' }}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('home.openSettings'))+"\n\t\t")])],1):_vm._e(),_vm._v(" "),(_vm.playlists.length)?_c('section',{staticClass:"py-6 border-0 border-t border-solid border-grayscale-500"},[_c('h2',{staticClass:"mb-6 text-3xl"},[_vm._v(_vm._s(_vm.$t('home.sections.popularPlaylists')))]),_vm._v(" "),_c('div',{staticClass:"release_grid"},_vm._l((_vm.playlists),function(release){return _c('router-link',{key:release.id,staticClass:"release clickable",attrs:{"tag":"div","to":{ name: 'Playlist', params: { id: release.id } },"tabindex":"0"},nativeOn:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.$router.push({ name: 'Playlist', params: { id: release.id } })}}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.picture_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))]),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: release.user.name })) + " - " + (_vm.$tc(
+var __vue_render__$k = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"home_tab"}},[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('globals.welcome')))]),_vm._v(" "),(!_vm.isLoggedIn)?_c('section',{ref:"notLogged",staticClass:"py-6 border-0 border-t border-solid border-grayscale-500"},[_c('p',{staticClass:"mb-4",attrs:{"id":"home_not_logged_text"}},[_vm._v(_vm._s(_vm.$t('home.needTologin')))]),_vm._v(" "),_c('router-link',{staticClass:"btn btn-primary",attrs:{"tag":"button","name":"button","to":{ name: 'Settings' }}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('home.openSettings'))+"\n\t\t")])],1):_vm._e(),_vm._v(" "),(_vm.playlists.length)?_c('section',{staticClass:"py-6 border-0 border-t border-solid border-grayscale-500"},[_c('h2',{staticClass:"mb-6 text-3xl"},[_vm._v(_vm._s(_vm.$t('home.sections.popularPlaylists')))]),_vm._v(" "),_c('div',{staticClass:"release_grid"},_vm._l((_vm.playlists),function(release){return _c('router-link',{key:release.id,staticClass:"release clickable",attrs:{"tag":"div","to":{ name: 'Playlist', params: { id: release.id } },"tabindex":"0"},nativeOn:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.$router.push({ name: 'Playlist', params: { id: release.id } })}}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.picture_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))]),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: release.user.name })) + " - " + (_vm.$tc(
 							'globals.listTabs.trackN',
 							release.nb_tracks
 						))))+"\n\t\t\t\t")])],1)}),1)]):_vm._e(),_vm._v(" "),(_vm.albums.length)?_c('section',{staticClass:"py-6 border-0 border-t border-solid border-grayscale-500"},[_c('h2',{staticClass:"mb-6 text-3xl"},[_vm._v(_vm._s(_vm.$t('home.sections.popularAlbums')))]),_vm._v(" "),_c('div',{staticClass:"release_grid"},_vm._l((_vm.albums),function(release){return _c('router-link',{key:release.id,staticClass:"release clickable",attrs:{"tag":"div","to":{ name: 'Album', params: { id: release.id } },"data-id":release.id,"tabindex":"0"},nativeOn:{"keyup":function($event){if(!$event.type.indexOf('key')&&_vm._k($event.keyCode,"enter",13,$event.key,"Enter")){ return null; }return _vm.$router.push({ name: 'Album', params: { id: release.id } })}}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.cover_medium,"link":release.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}}),_vm._v(" "),_c('p',{staticClass:"primary-text"},[_vm._v(_vm._s(release.title))]),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v(_vm._s(("" + (_vm.$t('globals.by', { artist: release.artist.name })))))])],1)}),1)]):_vm._e()])};
-var __vue_staticRenderFns__$i = [];
+var __vue_staticRenderFns__$k = [];
 
   /* style */
-  const __vue_inject_styles__$i = undefined;
+  const __vue_inject_styles__$k = undefined;
   /* scoped */
-  const __vue_scope_id__$i = undefined;
+  const __vue_scope_id__$k = undefined;
   /* functional template */
-  const __vue_is_functional_template__$i = false;
+  const __vue_is_functional_template__$k = false;
   /* component normalizer */
-  function __vue_normalize__$i(
+  function __vue_normalize__$k(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -30873,12 +30991,12 @@ var __vue_staticRenderFns__$i = [];
   
 
   
-  var Home = __vue_normalize__$i(
-    { render: __vue_render__$i, staticRenderFns: __vue_staticRenderFns__$i },
-    __vue_inject_styles__$i,
-    __vue_script__$g,
-    __vue_scope_id__$i,
-    __vue_is_functional_template__$i);
+  var Home = __vue_normalize__$k(
+    { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
+    __vue_inject_styles__$k,
+    __vue_script__$i,
+    __vue_scope_id__$k,
+    __vue_is_functional_template__$k);
 
 const COUNTRIES = {
 	AF: 'Afghanistan',
@@ -31134,7 +31252,7 @@ const COUNTRIES = {
 
 //
 
-var script$h = {
+var script$j = {
 	data() {
 		return {
 			link: '',
@@ -31213,23 +31331,23 @@ var script$h = {
 };
 
 /* script */
-            const __vue_script__$h = script$h;
+            const __vue_script__$j = script$j;
             
 /* template */
-var __vue_render__$j = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"image-header",attrs:{"id":"analyzer_tab"}},[_c('h1',{staticClass:"mb-8 text-5xl capitalize"},[_vm._v(_vm._s(_vm.$t('sidebar.linkAnalyzer')))]),_vm._v(" "),(_vm.link === '')?_c('div',[_c('p',[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('linkAnalyzer.info'))+"\n\t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('linkAnalyzer.useful'))+"\n\t\t")])]):(_vm.link === 'error')?_c('div',[_c('h2',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.linkNotSupported')))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.linkNotSupportedYet')))])]):_c('div',[_c('header',{staticClass:"flex items-center",style:({
+var __vue_render__$l = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"image-header",attrs:{"id":"analyzer_tab"}},[_c('h1',{staticClass:"mb-8 text-5xl capitalize"},[_vm._v(_vm._s(_vm.$t('sidebar.linkAnalyzer')))]),_vm._v(" "),(_vm.link === '')?_c('div',[_c('p',[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('linkAnalyzer.info'))+"\n\t\t")]),_vm._v(" "),_c('p',[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('linkAnalyzer.useful'))+"\n\t\t")])]):(_vm.link === 'error')?_c('div',[_c('h2',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.linkNotSupported')))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.linkNotSupportedYet')))])]):_c('div',[_c('header',{staticClass:"flex items-center",style:({
 				'background-image':
 					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + _vm.image + '\')'
 			})},[_c('div',[_c('h1',{staticClass:"m-0"},[_vm._v(_vm._s(_vm.title))]),_vm._v(" "),(_vm.type === 'track')?_c('h2',{staticClass:"m-0 mb-3 text-lg"},[_c('i18n',{attrs:{"path":"globals.by","tag":"span"}},[_c('router-link',{staticClass:"clickable",attrs:{"tag":"span","place":"artist","to":{ name: 'Artist', params: { id: _vm.data.artist.id } }}},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(_vm.data.artist.name)+"\n\t\t\t\t\t\t")])],1),_vm._v("\n\t\t\t\t\t•\n\t\t\t\t\t"),_c('i18n',{attrs:{"path":"globals.in","tag":"span"}},[_c('router-link',{staticClass:"clickable",attrs:{"tag":"span","place":"album","to":{ name: 'Album', params: { id: _vm.data.album.id } }}},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(_vm.data.album.title)+"\n\t\t\t\t\t\t")])],1)],1):(_vm.type === 'album')?_c('h2',{staticClass:"m-0 mb-3 text-lg"},[_c('i18n',{attrs:{"path":"globals.by","tag":"span"}},[_c('router-link',{staticClass:"clickable",attrs:{"tag":"span","place":"artist","to":{ name: 'Artist', params: { id: _vm.data.artist.id } }}},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(_vm.data.artist.name)+"\n\t\t\t\t\t\t")])],1),_vm._v("\n\t\t\t\t\t"+_vm._s((" • " + (_vm.$tc('globals.listTabs.trackN', _vm.data.nb_tracks))))+"\n\t\t\t\t")],1):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center ml-auto",attrs:{"role":"button","aria-label":"download","data-link":_vm.link},on:{"contextmenu":function($event){$event.preventDefault();return _vm.openQualityModal($event)},"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_c('i',{staticClass:"material-icons text-4xl",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("get_app")])])]),_vm._v(" "),_c('table',{staticClass:"table"},[(_vm.data.id)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.id')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.id))])]):_vm._e(),_vm._v(" "),(_vm.data.isrc)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.isrc')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.isrc))])]):_vm._e(),_vm._v(" "),(_vm.data.upc)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.upc')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.upc))])]):_vm._e(),_vm._v(" "),(_vm.data.duration)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.duration')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.convertDuration(_vm.data.duration)))])]):_vm._e(),_vm._v(" "),(_vm.data.disk_number)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.diskNumber')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.disk_number))])]):_vm._e(),_vm._v(" "),(_vm.data.track_position)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.trackNumber')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.track_position))])]):_vm._e(),_vm._v(" "),(_vm.data.release_date)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.releaseDate')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.release_date))])]):_vm._e(),_vm._v(" "),(_vm.data.bpm)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.bpm')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.bpm))])]):_vm._e(),_vm._v(" "),(_vm.data.label)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.label')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.label))])]):_vm._e(),_vm._v(" "),(_vm.data.record_type)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.recordType')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.$tc(("globals.listTabs." + (_vm.data.record_type)), 1)))])]):_vm._e(),_vm._v(" "),(_vm.data.genres && _vm.data.genres.data.length)?_c('tr',[_c('td',[_vm._v(_vm._s(_vm.$t('linkAnalyzer.table.genres')))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.data.genres.data.map(function (x) { return x.name; }).join('; ')))])]):_vm._e()]),_vm._v(" "),(_vm.type == 'album')?_c('div',[_c('router-link',{staticClass:"btn btn-primary",attrs:{"tag":"button","name":"button","to":{ name: 'Album', params: { id: _vm.id } }}},[_vm._v("\n\t\t\t\t"+_vm._s(_vm.$t('linkAnalyzer.table.tracklist'))+"\n\t\t\t")])],1):_vm._e(),_vm._v(" "),(_vm.countries.length)?_c('div',_vm._l((_vm.countries),function(country){return _c('p',[_vm._v(_vm._s(country[0])+" - "+_vm._s(country[1]))])}),0):_vm._e()])])};
-var __vue_staticRenderFns__$j = [];
+var __vue_staticRenderFns__$l = [];
 
   /* style */
-  const __vue_inject_styles__$j = undefined;
+  const __vue_inject_styles__$l = undefined;
   /* scoped */
-  const __vue_scope_id__$j = undefined;
+  const __vue_scope_id__$l = undefined;
   /* functional template */
-  const __vue_is_functional_template__$j = false;
+  const __vue_is_functional_template__$l = false;
   /* component normalizer */
-  function __vue_normalize__$j(
+  function __vue_normalize__$l(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -31257,12 +31375,12 @@ var __vue_staticRenderFns__$j = [];
   
 
   
-  var LinkAnalyzer = __vue_normalize__$j(
-    { render: __vue_render__$j, staticRenderFns: __vue_staticRenderFns__$j },
-    __vue_inject_styles__$j,
-    __vue_script__$h,
-    __vue_scope_id__$j,
-    __vue_is_functional_template__$j);
+  var LinkAnalyzer = __vue_normalize__$l(
+    { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
+    __vue_inject_styles__$l,
+    __vue_script__$j,
+    __vue_scope_id__$l,
+    __vue_is_functional_template__$l);
 
 /**
  * @param {string}	text
@@ -31271,7 +31389,7 @@ const upperCaseFirstLowerCaseRest = text => text.charAt(0).toUpperCase() + text.
 
 //
 
-var script$i = {
+var script$k = {
 	components: {
 		CoverContainer
 	},
@@ -31298,20 +31416,20 @@ var script$i = {
 };
 
 /* script */
-            const __vue_script__$i = script$i;
+            const __vue_script__$k = script$k;
             
 /* template */
-var __vue_render__$k = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"flex flex-col items-center justify-center"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: _vm.upperCaseFirstLowerCaseRest(_vm.$attrs.info.type), params: { id: _vm.$attrs.info.id } }}},[_c('CoverContainer',{staticClass:"w-40 h-40",attrs:{"is-rounded":_vm.$attrs.info.type !== 'artist',"is-circle":_vm.$attrs.info.type === 'artist',"cover":_vm.$attrs.info.picture,"link":_vm.$attrs.info.link},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('p',{staticClass:"mt-4 mb-1 text-xl text-center transition-colors duration-200 ease-in-out hover:text-primary"},[_vm._v("\n\t\t\t"+_vm._s(_vm.$attrs.info.title)+"\n\t\t")])],1),_vm._v(" "),_c('p',{staticClass:"mb-3 text-center secondary-text"},[_vm._v("\n\t\t"+_vm._s(_vm.fansNumber)+"\n\t")]),_vm._v(" "),_c('span',{staticClass:"p-1 px-2 text-xs text-center capitalize bg-primary rounded-xl"},[_vm._v("\n\t\t"+_vm._s(_vm.$tc(("globals.listTabs." + (_vm.$attrs.info.type)), 1))+"\n\t")])],1)};
-var __vue_staticRenderFns__$k = [];
+var __vue_render__$m = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"flex flex-col items-center justify-center"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: _vm.upperCaseFirstLowerCaseRest(_vm.$attrs.info.type), params: { id: _vm.$attrs.info.id } }}},[_c('CoverContainer',{staticClass:"w-40 h-40",attrs:{"is-rounded":_vm.$attrs.info.type !== 'artist',"is-circle":_vm.$attrs.info.type === 'artist',"cover":_vm.$attrs.info.picture,"link":_vm.$attrs.info.link},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('p',{staticClass:"mt-4 mb-1 text-xl text-center transition-colors duration-200 ease-in-out hover:text-primary"},[_vm._v("\n\t\t\t"+_vm._s(_vm.$attrs.info.title)+"\n\t\t")])],1),_vm._v(" "),_c('p',{staticClass:"mb-3 text-center secondary-text"},[_vm._v("\n\t\t"+_vm._s(_vm.fansNumber)+"\n\t")]),_vm._v(" "),_c('span',{staticClass:"p-1 px-2 text-xs text-center capitalize bg-primary rounded-xl"},[_vm._v("\n\t\t"+_vm._s(_vm.$tc(("globals.listTabs." + (_vm.$attrs.info.type)), 1))+"\n\t")])],1)};
+var __vue_staticRenderFns__$m = [];
 
   /* style */
-  const __vue_inject_styles__$k = undefined;
+  const __vue_inject_styles__$m = undefined;
   /* scoped */
-  const __vue_scope_id__$k = undefined;
+  const __vue_scope_id__$m = undefined;
   /* functional template */
-  const __vue_is_functional_template__$k = false;
+  const __vue_is_functional_template__$m = false;
   /* component normalizer */
-  function __vue_normalize__$k(
+  function __vue_normalize__$m(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -31339,12 +31457,12 @@ var __vue_staticRenderFns__$k = [];
   
 
   
-  var TopResult = __vue_normalize__$k(
-    { render: __vue_render__$k, staticRenderFns: __vue_staticRenderFns__$k },
-    __vue_inject_styles__$k,
-    __vue_script__$i,
-    __vue_scope_id__$k,
-    __vue_is_functional_template__$k);
+  var TopResult = __vue_normalize__$m(
+    { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
+    __vue_inject_styles__$m,
+    __vue_script__$k,
+    __vue_scope_id__$m,
+    __vue_is_functional_template__$m);
 
 /**
  * @typedef		{object}				ReducedSearchResult
@@ -31483,7 +31601,7 @@ function formatTitle(track) {
 
 //
 
-var script$j = {
+var script$l = {
 	components: {
 		BaseLoadingPlaceholder,
 		PreviewControls
@@ -31523,20 +31641,20 @@ var script$j = {
 };
 
 /* script */
-            const __vue_script__$j = script$j;
+            const __vue_script__$l = script$l;
             
 /* template */
-var __vue_render__$l = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsTrack')))])]):_c('table',{staticClass:"table w-full table--tracks"},[(_vm.wantHeaders)?_c('thead',[_c('tr',{staticClass:"capitalize"},[_c('th',{staticClass:"h-12 pb-3",attrs:{"colspan":"2"}},[_vm._v(_vm._s(_vm.$tc('globals.listTabs.title', 1)))]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3"},[_vm._v(_vm._s(_vm.$tc('globals.listTabs.artist', 1)))]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3"},[_vm._v(_vm._s(_vm.$tc('globals.listTabs.album', 1)))]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3"},[_c('i',{staticClass:"material-icons"},[_vm._v("timer")])]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3",staticStyle:{"width":"3.5rem"}})])]):_vm._e(),_vm._v(" "),_c('tbody',_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(track){return _c('tr',{key:track.trackLink},[_c('td',{staticClass:"table__icon table__icon--big"},[_c('a',{staticClass:"rounded",class:{ 'single-cover': !!track.trackPreview },attrs:{"href":"#","data-preview":track.trackPreview},on:{"click":function($event){return _vm.playPausePreview($event)}}},[(track.trackPreview)?_c('PreviewControls'):_vm._e(),_vm._v(" "),_c('img',{staticClass:"rounded coverart",attrs:{"src":track.albumPicture}})],1)]),_vm._v(" "),_c('td',{staticClass:"table__cell table__cell--large"},[_c('div',{staticClass:"break-words table__cell-content table__cell-content--vertical-center"},[(track.isTrackExplicit)?_c('i',{staticClass:"material-icons explicit-icon"},[_vm._v("explicit")]):_vm._e(),_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(_vm.formatTitle(track))+"\n\t\t\t\t\t\t")])]),_vm._v(" "),_c('router-link',{staticClass:"break-words table__cell table__cell--medium table__cell--center",attrs:{"tag":"td","to":{ name: 'Artist', params: { id: track.artistID } }}},[_c('span',{staticClass:"cursor-pointer hover:underline"},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(track.artistName)+"\n\t\t\t\t\t\t")])]),_vm._v(" "),_c('router-link',{staticClass:"break-words table__cell table__cell--medium table__cell--center",attrs:{"tag":"td","to":{ name: 'Album', params: { id: track.albumID } }}},[_c('span',{staticClass:"cursor-pointer hover:underline"},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(track.albumTitle)+"\n\t\t\t\t\t\t")])]),_vm._v(" "),_c('td',{staticClass:"table__cell table__cell--small table__cell--center"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.convertDuration(track.trackDuration))+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"cursor-pointer table__cell--center group",attrs:{"data-link":track.trackLink,"aria-label":"download"},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}},[_c('i',{staticClass:"transition-colors duration-150 ease-in-out material-icons group-hover:text-primary",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("\n\t\t\t\t\t\t\tget_app\n\t\t\t\t\t\t")])])],1)}),0)])]],2)};
-var __vue_staticRenderFns__$l = [];
+var __vue_render__$n = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsTrack')))])]):_c('table',{staticClass:"table w-full table--tracks"},[(_vm.wantHeaders)?_c('thead',[_c('tr',{staticClass:"capitalize"},[_c('th',{staticClass:"h-12 pb-3",attrs:{"colspan":"2"}},[_vm._v(_vm._s(_vm.$tc('globals.listTabs.title', 1)))]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3"},[_vm._v(_vm._s(_vm.$tc('globals.listTabs.artist', 1)))]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3"},[_vm._v(_vm._s(_vm.$tc('globals.listTabs.album', 1)))]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3"},[_c('i',{staticClass:"material-icons"},[_vm._v("timer")])]),_vm._v(" "),_c('th',{staticClass:"h-12 pb-3",staticStyle:{"width":"3.5rem"}})])]):_vm._e(),_vm._v(" "),_c('tbody',_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(track){return _c('tr',{key:track.trackLink},[_c('td',{staticClass:"table__icon table__icon--big"},[_c('a',{staticClass:"rounded",class:{ 'single-cover': !!track.trackPreview },attrs:{"href":"#","data-preview":track.trackPreview},on:{"click":function($event){return _vm.playPausePreview($event)}}},[(track.trackPreview)?_c('PreviewControls'):_vm._e(),_vm._v(" "),_c('img',{staticClass:"rounded coverart",attrs:{"src":track.albumPicture}})],1)]),_vm._v(" "),_c('td',{staticClass:"table__cell table__cell--large"},[_c('div',{staticClass:"break-words table__cell-content table__cell-content--vertical-center"},[(track.isTrackExplicit)?_c('i',{staticClass:"material-icons explicit-icon"},[_vm._v("explicit")]):_vm._e(),_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(_vm.formatTitle(track))+"\n\t\t\t\t\t\t")])]),_vm._v(" "),_c('router-link',{staticClass:"break-words table__cell table__cell--medium table__cell--center",attrs:{"tag":"td","to":{ name: 'Artist', params: { id: track.artistID } }}},[_c('span',{staticClass:"cursor-pointer hover:underline"},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(track.artistName)+"\n\t\t\t\t\t\t")])]),_vm._v(" "),_c('router-link',{staticClass:"break-words table__cell table__cell--medium table__cell--center",attrs:{"tag":"td","to":{ name: 'Album', params: { id: track.albumID } }}},[_c('span',{staticClass:"cursor-pointer hover:underline"},[_vm._v("\n\t\t\t\t\t\t\t"+_vm._s(track.albumTitle)+"\n\t\t\t\t\t\t")])]),_vm._v(" "),_c('td',{staticClass:"table__cell table__cell--small table__cell--center"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(_vm.convertDuration(track.trackDuration))+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',{staticClass:"cursor-pointer table__cell--center group",attrs:{"data-link":track.trackLink,"aria-label":"download"},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}},[_c('i',{staticClass:"transition-colors duration-150 ease-in-out material-icons group-hover:text-primary",attrs:{"title":_vm.$t('globals.download_hint')}},[_vm._v("\n\t\t\t\t\t\t\tget_app\n\t\t\t\t\t\t")])])],1)}),0)])]],2)};
+var __vue_staticRenderFns__$n = [];
 
   /* style */
-  const __vue_inject_styles__$l = undefined;
+  const __vue_inject_styles__$n = undefined;
   /* scoped */
-  const __vue_scope_id__$l = undefined;
+  const __vue_scope_id__$n = undefined;
   /* functional template */
-  const __vue_is_functional_template__$l = false;
+  const __vue_is_functional_template__$n = false;
   /* component normalizer */
-  function __vue_normalize__$l(
+  function __vue_normalize__$n(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -31564,175 +31682,7 @@ var __vue_staticRenderFns__$l = [];
   
 
   
-  var ResultsTracks = __vue_normalize__$l(
-    { render: __vue_render__$l, staticRenderFns: __vue_staticRenderFns__$l },
-    __vue_inject_styles__$l,
-    __vue_script__$j,
-    __vue_scope_id__$l,
-    __vue_is_functional_template__$l);
-
-//
-
-var script$k = {
-	components: {
-		BaseLoadingPlaceholder,
-		CoverContainer
-	},
-	props: {
-		viewInfo: {
-			validator: function (value) {
-				let isNull = Object.is(value, null);
-				let isObject = Object.prototype.toString.call(value) === '[object Object]';
-
-				return isNull || isObject
-			},
-			required: true
-		},
-		itemsToShow: {
-			type: Number,
-			required: false
-		},
-		wantHeaders: {
-			type: Boolean,
-			required: false,
-			default: false
-		}
-	},
-	computed: {
-		isLoading() {
-			return !this.viewInfo || !this.viewInfo.hasLoaded
-		}
-	}
-};
-
-/* script */
-            const __vue_script__$k = script$k;
-            
-/* template */
-var __vue_render__$m = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsAlbum')))])]):_c('div',{staticClass:"release_grid"},_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(release){return _c('div',{key:release.albumID,staticClass:"w-40 release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Album', params: { id: release.albumID } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.albumCoverMedium,"link":release.albumLink},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('span',{staticClass:"primary-text"},[(release.isAlbumExplicit)?_c('i',{staticClass:"material-icons explicit-icon",staticStyle:{"font-size":"1.0625rem !important"}},[_vm._v("\n\t\t\t\t\t\t\texplicit\n\t\t\t\t\t\t")]):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(release.albumTitle)+"\n\t\t\t\t\t")])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(_vm.$t('globals.by', { artist: release.artistName }) +
-						' - ' +
-						_vm.$tc('globals.listTabs.trackN', release.albumTracks))+"\n\t\t\t\t")])],1)}),0)]],2)};
-var __vue_staticRenderFns__$m = [];
-
-  /* style */
-  const __vue_inject_styles__$m = undefined;
-  /* scoped */
-  const __vue_scope_id__$m = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$m = false;
-  /* component normalizer */
-  function __vue_normalize__$m(
-    template, style, script,
-    scope, functional, moduleIdentifier,
-    createInjector, createInjectorSSR
-  ) {
-    const component = (typeof script === 'function' ? script.options : script) || {};
-
-    // For security concerns, we use only base name in production mode.
-    component.__file = "ResultsAlbums.vue";
-
-    if (!component.render) {
-      component.render = template.render;
-      component.staticRenderFns = template.staticRenderFns;
-      component._compiled = true;
-
-      if (functional) component.functional = true;
-    }
-
-    component._scopeId = scope;
-
-    return component
-  }
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var ResultsAlbums = __vue_normalize__$m(
-    { render: __vue_render__$m, staticRenderFns: __vue_staticRenderFns__$m },
-    __vue_inject_styles__$m,
-    __vue_script__$k,
-    __vue_scope_id__$m,
-    __vue_is_functional_template__$m);
-
-//
-
-var script$l = {
-	components: {
-		BaseLoadingPlaceholder,
-		CoverContainer
-	},
-	props: {
-		viewInfo: {
-			validator: function (value) {
-				let isNull = Object.is(value, null);
-				let isObject = Object.prototype.toString.call(value) === '[object Object]';
-
-				return isNull || isObject
-			},
-			required: true
-		},
-		itemsToShow: {
-			type: Number,
-			required: false
-		},
-		wantHeaders: {
-			type: Boolean,
-			required: false,
-			default: false
-		}
-	},
-	computed: {
-		isLoading() {
-			return !this.viewInfo || !this.viewInfo.hasLoaded
-		}
-	}
-};
-
-/* script */
-            const __vue_script__$l = script$l;
-            
-/* template */
-var __vue_render__$n = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsArtist')))])]):_c('div',{staticClass:"release_grid"},_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(release){return _c('div',{key:release.artistID,staticClass:"w-40 release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Artist', params: { id: release.artistID } }}},[_c('CoverContainer',{attrs:{"is-circle":"","cover":release.artistPictureMedium,"link":release.artistLink},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('span',{staticClass:"primary-text"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(release.artistName)+"\n\t\t\t\t\t")])],1)],1)}),0)]],2)};
-var __vue_staticRenderFns__$n = [];
-
-  /* style */
-  const __vue_inject_styles__$n = undefined;
-  /* scoped */
-  const __vue_scope_id__$n = undefined;
-  /* functional template */
-  const __vue_is_functional_template__$n = false;
-  /* component normalizer */
-  function __vue_normalize__$n(
-    template, style, script,
-    scope, functional, moduleIdentifier,
-    createInjector, createInjectorSSR
-  ) {
-    const component = (typeof script === 'function' ? script.options : script) || {};
-
-    // For security concerns, we use only base name in production mode.
-    component.__file = "ResultsArtists.vue";
-
-    if (!component.render) {
-      component.render = template.render;
-      component.staticRenderFns = template.staticRenderFns;
-      component._compiled = true;
-
-      if (functional) component.functional = true;
-    }
-
-    component._scopeId = scope;
-
-    return component
-  }
-  /* style inject */
-  
-  /* style inject SSR */
-  
-
-  
-  var ResultsArtists = __vue_normalize__$n(
+  var ResultsTracks = __vue_normalize__$n(
     { render: __vue_render__$n, staticRenderFns: __vue_staticRenderFns__$n },
     __vue_inject_styles__$n,
     __vue_script__$l,
@@ -31777,10 +31727,9 @@ var script$m = {
             const __vue_script__$m = script$m;
             
 /* template */
-var __vue_render__$o = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsPlaylist')))])]):_c('div',{staticClass:"release_grid"},_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(playlist){return _c('div',{key:playlist.playlistID,staticClass:"w-40 release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Playlist', params: { id: playlist.playlistID } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":playlist.playlistPictureMedium,"link":playlist.playlistLink},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('span',{staticClass:"primary-text"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(playlist.playlistTitle)+"\n\t\t\t\t\t")])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: playlist.artistName })) + " - " + (_vm.$tc(
-							'globals.listTabs.trackN',
-							playlist.playlistTracksNumber
-						))))+"\n\t\t\t\t")])],1)}),0)]],2)};
+var __vue_render__$o = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsAlbum')))])]):_c('div',{staticClass:"release_grid"},_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(release){return _c('div',{key:release.albumID,staticClass:"w-40 release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Album', params: { id: release.albumID } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":release.albumCoverMedium,"link":release.albumLink},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('span',{staticClass:"primary-text"},[(release.isAlbumExplicit)?_c('i',{staticClass:"material-icons explicit-icon",staticStyle:{"font-size":"1.0625rem !important"}},[_vm._v("\n\t\t\t\t\t\t\texplicit\n\t\t\t\t\t\t")]):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(release.albumTitle)+"\n\t\t\t\t\t")])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(_vm.$t('globals.by', { artist: release.artistName }) +
+						' - ' +
+						_vm.$tc('globals.listTabs.trackN', release.albumTracks))+"\n\t\t\t\t")])],1)}),0)]],2)};
 var __vue_staticRenderFns__$o = [];
 
   /* style */
@@ -31791,6 +31740,175 @@ var __vue_staticRenderFns__$o = [];
   const __vue_is_functional_template__$o = false;
   /* component normalizer */
   function __vue_normalize__$o(
+    template, style, script,
+    scope, functional, moduleIdentifier,
+    createInjector, createInjectorSSR
+  ) {
+    const component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "ResultsAlbums.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component
+  }
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var ResultsAlbums = __vue_normalize__$o(
+    { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
+    __vue_inject_styles__$o,
+    __vue_script__$m,
+    __vue_scope_id__$o,
+    __vue_is_functional_template__$o);
+
+//
+
+var script$n = {
+	components: {
+		BaseLoadingPlaceholder,
+		CoverContainer
+	},
+	props: {
+		viewInfo: {
+			validator: function (value) {
+				let isNull = Object.is(value, null);
+				let isObject = Object.prototype.toString.call(value) === '[object Object]';
+
+				return isNull || isObject
+			},
+			required: true
+		},
+		itemsToShow: {
+			type: Number,
+			required: false
+		},
+		wantHeaders: {
+			type: Boolean,
+			required: false,
+			default: false
+		}
+	},
+	computed: {
+		isLoading() {
+			return !this.viewInfo || !this.viewInfo.hasLoaded
+		}
+	}
+};
+
+/* script */
+            const __vue_script__$n = script$n;
+            
+/* template */
+var __vue_render__$p = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsArtist')))])]):_c('div',{staticClass:"release_grid"},_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(release){return _c('div',{key:release.artistID,staticClass:"w-40 release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Artist', params: { id: release.artistID } }}},[_c('CoverContainer',{attrs:{"is-circle":"","cover":release.artistPictureMedium,"link":release.artistLink},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('span',{staticClass:"primary-text"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(release.artistName)+"\n\t\t\t\t\t")])],1)],1)}),0)]],2)};
+var __vue_staticRenderFns__$p = [];
+
+  /* style */
+  const __vue_inject_styles__$p = undefined;
+  /* scoped */
+  const __vue_scope_id__$p = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$p = false;
+  /* component normalizer */
+  function __vue_normalize__$p(
+    template, style, script,
+    scope, functional, moduleIdentifier,
+    createInjector, createInjectorSSR
+  ) {
+    const component = (typeof script === 'function' ? script.options : script) || {};
+
+    // For security concerns, we use only base name in production mode.
+    component.__file = "ResultsArtists.vue";
+
+    if (!component.render) {
+      component.render = template.render;
+      component.staticRenderFns = template.staticRenderFns;
+      component._compiled = true;
+
+      if (functional) component.functional = true;
+    }
+
+    component._scopeId = scope;
+
+    return component
+  }
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var ResultsArtists = __vue_normalize__$p(
+    { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
+    __vue_inject_styles__$p,
+    __vue_script__$n,
+    __vue_scope_id__$p,
+    __vue_is_functional_template__$p);
+
+//
+
+var script$o = {
+	components: {
+		BaseLoadingPlaceholder,
+		CoverContainer
+	},
+	props: {
+		viewInfo: {
+			validator: function (value) {
+				let isNull = Object.is(value, null);
+				let isObject = Object.prototype.toString.call(value) === '[object Object]';
+
+				return isNull || isObject
+			},
+			required: true
+		},
+		itemsToShow: {
+			type: Number,
+			required: false
+		},
+		wantHeaders: {
+			type: Boolean,
+			required: false,
+			default: false
+		}
+	},
+	computed: {
+		isLoading() {
+			return !this.viewInfo || !this.viewInfo.hasLoaded
+		}
+	}
+};
+
+/* script */
+            const __vue_script__$o = script$o;
+            
+/* template */
+var __vue_render__$q = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.isLoading)?_c('BaseLoadingPlaceholder'):[(_vm.viewInfo.data.length === 0)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResultsPlaylist')))])]):_c('div',{staticClass:"release_grid"},_vm._l((_vm.viewInfo.data.slice(0, _vm.itemsToShow)),function(playlist){return _c('div',{key:playlist.playlistID,staticClass:"w-40 release"},[_c('router-link',{staticClass:"cursor-pointer",attrs:{"tag":"div","to":{ name: 'Playlist', params: { id: playlist.playlistID } }}},[_c('CoverContainer',{attrs:{"is-rounded":"","cover":playlist.playlistPictureMedium,"link":playlist.playlistLink},on:{"click":function($event){$event.stopPropagation();return _vm.$emit('add-to-queue', $event)}}}),_vm._v(" "),_c('span',{staticClass:"primary-text"},[_vm._v("\n\t\t\t\t\t\t"+_vm._s(playlist.playlistTitle)+"\n\t\t\t\t\t")])],1),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('globals.by', { artist: playlist.artistName })) + " - " + (_vm.$tc(
+							'globals.listTabs.trackN',
+							playlist.playlistTracksNumber
+						))))+"\n\t\t\t\t")])],1)}),0)]],2)};
+var __vue_staticRenderFns__$q = [];
+
+  /* style */
+  const __vue_inject_styles__$q = undefined;
+  /* scoped */
+  const __vue_scope_id__$q = undefined;
+  /* functional template */
+  const __vue_is_functional_template__$q = false;
+  /* component normalizer */
+  function __vue_normalize__$q(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -31818,16 +31936,16 @@ var __vue_staticRenderFns__$o = [];
   
 
   
-  var ResultsPlaylists = __vue_normalize__$o(
-    { render: __vue_render__$o, staticRenderFns: __vue_staticRenderFns__$o },
-    __vue_inject_styles__$o,
-    __vue_script__$m,
-    __vue_scope_id__$o,
-    __vue_is_functional_template__$o);
+  var ResultsPlaylists = __vue_normalize__$q(
+    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
+    __vue_inject_styles__$q,
+    __vue_script__$o,
+    __vue_scope_id__$q,
+    __vue_is_functional_template__$q);
 
 //
 
-var script$n = {
+var script$p = {
 	components: {
 		TopResult,
 		ResultsTracks,
@@ -31875,24 +31993,24 @@ var script$n = {
 };
 
 /* script */
-            const __vue_script__$n = script$n;
+            const __vue_script__$p = script$p;
             
 /* template */
-var __vue_render__$p = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(!_vm.thereAreResults)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResults')))])]):_vm._l((_vm.viewInfo.ORDER),function(section){return _c('section',{key:section,staticClass:"float-none py-5 border-t border-grayscale-500 first:border-t-0"},[(_vm.checkSectionResults(section))?[_c('h2',{staticClass:"mb-6 capitalize",class:{
+var __vue_render__$r = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(!_vm.thereAreResults)?_c('div',[_c('h1',[_vm._v(_vm._s(_vm.$t('search.noResults')))])]):_vm._l((_vm.viewInfo.ORDER),function(section){return _c('section',{key:section,staticClass:"float-none py-5 border-t border-grayscale-500 first:border-t-0"},[(_vm.checkSectionResults(section))?[_c('h2',{staticClass:"mb-6 capitalize",class:{
 						'text-4xl text-center': section === 'TOP_RESULT',
 						'inline-block cursor-pointer text-3xl hover:text-primary transition-colors duration-200 ease-in-out':
 							section !== 'TOP_RESULT'
 					},on:{"click":function($event){return _vm.$emit('change-search-tab', section)}}},[_vm._v("\n\t\t\t\t\t"+_vm._s(_vm.$tc(("globals.listTabs." + (section.toLowerCase())), 2))+"\n\t\t\t\t")]),_vm._v(" "),(section === 'TOP_RESULT')?_c('TopResult',{attrs:{"info":_vm.viewInfo.TOP_RESULT[0]},on:{"add-to-queue":function($event){return _vm.$emit('add-to-queue', $event)}}}):(section === 'TRACK')?_c('ResultsTracks',{attrs:{"viewInfo":_vm.formatSearchResults(_vm.viewInfo.TRACK, _vm.formatSingleTrack),"itemsToShow":6},on:{"add-to-queue":function($event){return _vm.$emit('add-to-queue', $event)}}}):(section == 'ALBUM')?_c('ResultsAlbums',{attrs:{"viewInfo":_vm.formatSearchResults(_vm.viewInfo.ALBUM, _vm.formatAlbums),"itemsToShow":6},on:{"add-to-queue":function($event){return _vm.$emit('add-to-queue', $event)}}}):(section == 'PLAYLIST')?_c('ResultsPlaylists',{attrs:{"viewInfo":_vm.formatSearchResults(_vm.viewInfo.PLAYLIST, _vm.formatPlaylist),"itemsToShow":6},on:{"add-to-queue":function($event){return _vm.$emit('add-to-queue', $event)}}}):(section === 'ARTIST')?_c('ResultsArtists',{attrs:{"viewInfo":_vm.formatSearchResults(_vm.viewInfo.ARTIST, _vm.formatArtist),"itemsToShow":6},on:{"add-to-queue":function($event){return _vm.$emit('add-to-queue', $event)}}}):_vm._e()]:_vm._e()],2)})],2)};
-var __vue_staticRenderFns__$p = [];
+var __vue_staticRenderFns__$r = [];
 
   /* style */
-  const __vue_inject_styles__$p = undefined;
+  const __vue_inject_styles__$r = undefined;
   /* scoped */
-  const __vue_scope_id__$p = undefined;
+  const __vue_scope_id__$r = undefined;
   /* functional template */
-  const __vue_is_functional_template__$p = false;
+  const __vue_is_functional_template__$r = false;
   /* component normalizer */
-  function __vue_normalize__$p(
+  function __vue_normalize__$r(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -31920,18 +32038,18 @@ var __vue_staticRenderFns__$p = [];
   
 
   
-  var ResultsAll = __vue_normalize__$p(
-    { render: __vue_render__$p, staticRenderFns: __vue_staticRenderFns__$p },
-    __vue_inject_styles__$p,
-    __vue_script__$n,
-    __vue_scope_id__$p,
-    __vue_is_functional_template__$p);
+  var ResultsAll = __vue_normalize__$r(
+    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
+    __vue_inject_styles__$r,
+    __vue_script__$p,
+    __vue_scope_id__$r,
+    __vue_is_functional_template__$r);
 
 //
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false };
 
-var script$o = {
+var script$q = {
 	components: {
 		BaseLoadingPlaceholder
 	},
@@ -32172,20 +32290,20 @@ var script$o = {
 };
 
 /* script */
-            const __vue_script__$o = script$o;
+            const __vue_script__$q = script$q;
             
 /* template */
-var __vue_render__$q = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",attrs:{"id":"search_tab"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.showSearchTab),expression:"!showSearchTab"}]},[_c('h2',[_vm._v(_vm._s(_vm.$t('search.startSearching')))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('search.description')))])]),_vm._v(" "),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showSearchTab),expression:"showSearchTab"}]},[_c('ul',{staticClass:"section-tabs"},_vm._l((_vm.tabs),function(tab){return _c('li',{key:tab.name,staticClass:"section-tabs__tab",class:{ active: _vm.currentTab.name === tab.name },on:{"click":function($event){_vm.currentTab = tab;}}},[_vm._v("\n\t\t\t\t"+_vm._s(tab.name)+"\n\t\t\t")])}),0),_vm._v(" "),_c('keep-alive',[_c(_vm.currentTab.component,{tag:"component",attrs:{"viewInfo":_vm.getViewInfo(),"want-headers":""},on:{"add-to-queue":_vm.addToQueue,"change-search-tab":_vm.changeSearchTab}})],1)],1)])};
-var __vue_staticRenderFns__$q = [];
+var __vue_render__$s = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",attrs:{"id":"search_tab"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(!_vm.showSearchTab),expression:"!showSearchTab"}]},[_c('h2',[_vm._v(_vm._s(_vm.$t('search.startSearching')))]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('search.description')))])]),_vm._v(" "),_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.showSearchTab),expression:"showSearchTab"}]},[_c('ul',{staticClass:"section-tabs"},_vm._l((_vm.tabs),function(tab){return _c('li',{key:tab.name,staticClass:"section-tabs__tab",class:{ active: _vm.currentTab.name === tab.name },on:{"click":function($event){_vm.currentTab = tab;}}},[_vm._v("\n\t\t\t\t"+_vm._s(tab.name)+"\n\t\t\t")])}),0),_vm._v(" "),_c('keep-alive',[_c(_vm.currentTab.component,{tag:"component",attrs:{"viewInfo":_vm.getViewInfo(),"want-headers":""},on:{"add-to-queue":_vm.addToQueue,"change-search-tab":_vm.changeSearchTab}})],1)],1)])};
+var __vue_staticRenderFns__$s = [];
 
   /* style */
-  const __vue_inject_styles__$q = undefined;
+  const __vue_inject_styles__$s = undefined;
   /* scoped */
-  const __vue_scope_id__$q = undefined;
+  const __vue_scope_id__$s = undefined;
   /* functional template */
-  const __vue_is_functional_template__$q = false;
+  const __vue_is_functional_template__$s = false;
   /* component normalizer */
-  function __vue_normalize__$q(
+  function __vue_normalize__$s(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -32213,12 +32331,12 @@ var __vue_staticRenderFns__$q = [];
   
 
   
-  var Search = __vue_normalize__$q(
-    { render: __vue_render__$q, staticRenderFns: __vue_staticRenderFns__$q },
-    __vue_inject_styles__$q,
-    __vue_script__$o,
-    __vue_scope_id__$q,
-    __vue_is_functional_template__$q);
+  var Search = __vue_normalize__$s(
+    { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
+    __vue_inject_styles__$s,
+    __vue_script__$q,
+    __vue_scope_id__$s,
+    __vue_is_functional_template__$s);
 
 let settingsData = {};
 let defaultSettingsData = {};
@@ -32298,7 +32416,7 @@ const flags$1 = {
 
 //
 
-var script$p = {
+var script$r = {
 	data() {
 		return {
 			flags: flags$1,
@@ -32515,10 +32633,10 @@ var script$p = {
 };
 
 /* script */
-            const __vue_script__$p = script$p;
+            const __vue_script__$r = script$r;
             
 /* template */
-var __vue_render__$r = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"fixed-footer",attrs:{"id":"settings_tab"}},[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('settings.title')))]),_vm._v(" "),(_vm.isLoggedIn)?_c('div',{ref:"loggedInInfo",attrs:{"id":"logged_in_info"}},[_c('img',{ref:"userpicture",staticClass:"circle",attrs:{"id":"settings_picture","src":_vm.pictureHref,"alt":"Profile Picture"}}),_vm._v(" "),_c('i18n',{attrs:{"path":"settings.login.loggedIn","tag":"p"}},[_c('strong',{ref:"username",attrs:{"place":"username","id":"settings_username"}},[_vm._v(_vm._s(_vm.user.name || 'not logged'))])]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",attrs:{"id":"settings_btn_logout"},on:{"click":_vm.logout}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.logout'))+"\n\t\t")]),_vm._v(" "),(_vm.accounts.length)?_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.accountNum),expression:"accountNum"}],attrs:{"id":"family_account"},on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.accountNum=$event.target.multiple ? $$selectedVal : $$selectedVal[0];},_vm.changeAccount]}},_vm._l((_vm.accounts),function(account,i){return _c('option',{key:account,domProps:{"value":i.toString()}},[_vm._v(_vm._s(account.BLOG_NAME))])}),0):_vm._e()],1):_vm._e(),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("person")]),_vm._v(_vm._s(_vm.$t('settings.login.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"flex items-center"},[_c('input',{ref:"loginInput",attrs:{"autocomplete":"off","type":"password","id":"login_input_arl","placeholder":"ARL"},domProps:{"value":_vm.arl}}),_vm._v(" "),_c('button',{staticClass:"ml-2 btn btn-primary btn-only-icon",attrs:{"id":"settings_btn_copyArl"},on:{"click":_vm.copyARLtoClipboard}},[_c('i',{staticClass:"material-icons"},[_vm._v("assignment")])])]),_vm._v(" "),_c('a',{attrs:{"href":"#"}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.arl.question'))+"\n\t\t")]),_vm._v(" "),(_vm.clientMode)?_c('a',{attrs:{"id":"settings_btn_applogin","href":"#"},on:{"click":_vm.appLogin}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.login'))+"\n\t\t")]):_vm._e(),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",staticStyle:{"width":"100%"},attrs:{"id":"settings_btn_updateArl"},on:{"click":_vm.login}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.arl.update'))+"\n\t\t")])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("language")]),_vm._v(_vm._s(_vm.$t('settings.languages'))+"\n\t\t")]),_vm._v(" "),_c('div',_vm._l((_vm.locales),function(locale){return _c('span',{key:locale,staticClass:"inline-flex items-center locale-flag",class:{ 'locale-flag--current': _vm.currentLocale === locale },attrs:{"title":locale},domProps:{"innerHTML":_vm._s(_vm.flags[locale])},on:{"click":function($event){return _vm.changeLocale(locale)}}})}),0)]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("web")]),_vm._v(_vm._s(_vm.$t('settings.appearance.title'))+"\n\t\t")]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.changeSlimDownloads),expression:"changeSlimDownloads"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.changeSlimDownloads)?_vm._i(_vm.changeSlimDownloads,null)>-1:(_vm.changeSlimDownloads)},on:{"change":function($event){var $$a=_vm.changeSlimDownloads,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.changeSlimDownloads=$$a.concat([$$v]));}else {$$i>-1&&(_vm.changeSlimDownloads=$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else {_vm.changeSlimDownloads=$$c;}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.appearance.slimDownloadTab')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.changeSlimSidebar),expression:"changeSlimSidebar"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.changeSlimSidebar)?_vm._i(_vm.changeSlimSidebar,null)>-1:(_vm.changeSlimSidebar)},on:{"change":function($event){var $$a=_vm.changeSlimSidebar,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.changeSlimSidebar=$$a.concat([$$v]));}else {$$i>-1&&(_vm.changeSlimSidebar=$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else {_vm.changeSlimSidebar=$$c;}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.appearance.slimSidebar')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("folder")]),_vm._v(_vm._s(_vm.$t('settings.downloadPath.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"flex items-center"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.downloadLocation),expression:"settings.downloadLocation"}],attrs:{"autocomplete":"off","type":"text"},domProps:{"value":(_vm.settings.downloadLocation)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "downloadLocation", $event.target.value);}}}),_vm._v(" "),(_vm.clientMode)?_c('button',{staticClass:"ml-2 btn btn-primary btn-only-icon",attrs:{"id":"select_downloads_folder"},on:{"click":_vm.selectDownloadFolder}},[_c('i',{staticClass:"material-icons"},[_vm._v("folder")])]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("font_download")]),_vm._v(_vm._s(_vm.$t('settings.templates.title'))+"\n\t\t")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('settings.templates.tracknameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tracknameTemplate),expression:"settings.tracknameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.tracknameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "tracknameTemplate", $event.target.value);}}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('settings.templates.albumTracknameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.albumTracknameTemplate),expression:"settings.albumTracknameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.albumTracknameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "albumTracknameTemplate", $event.target.value);}}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('settings.templates.playlistTracknameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.playlistTracknameTemplate),expression:"settings.playlistTracknameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.playlistTracknameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "playlistTracknameTemplate", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("create_new_folder")]),_vm._v(_vm._s(_vm.$t('settings.folders.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__third"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createPlaylistFolder),expression:"settings.createPlaylistFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createPlaylistFolder)?_vm._i(_vm.settings.createPlaylistFolder,null)>-1:(_vm.settings.createPlaylistFolder)},on:{"change":function($event){var $$a=_vm.settings.createPlaylistFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createPlaylistFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createPlaylistFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createPlaylistFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createPlaylistFolder')))])]),_vm._v(" "),(_vm.settings.createPlaylistFolder)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.playlistNameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.playlistNameTemplate),expression:"settings.playlistNameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.playlistNameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "playlistNameTemplate", $event.target.value);}}})]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createArtistFolder),expression:"settings.createArtistFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createArtistFolder)?_vm._i(_vm.settings.createArtistFolder,null)>-1:(_vm.settings.createArtistFolder)},on:{"change":function($event){var $$a=_vm.settings.createArtistFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createArtistFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createArtistFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createArtistFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createArtistFolder')))])]),_vm._v(" "),(_vm.settings.createArtistFolder)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.artistNameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.artistNameTemplate),expression:"settings.artistNameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.artistNameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "artistNameTemplate", $event.target.value);}}})]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createAlbumFolder),expression:"settings.createAlbumFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createAlbumFolder)?_vm._i(_vm.settings.createAlbumFolder,null)>-1:(_vm.settings.createAlbumFolder)},on:{"change":function($event){var $$a=_vm.settings.createAlbumFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createAlbumFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createAlbumFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createAlbumFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createAlbumFolder')))])]),_vm._v(" "),(_vm.settings.createAlbumFolder)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.albumNameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.albumNameTemplate),expression:"settings.albumNameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.albumNameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "albumNameTemplate", $event.target.value);}}})]):_vm._e()])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createCDFolder),expression:"settings.createCDFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createCDFolder)?_vm._i(_vm.settings.createCDFolder,null)>-1:(_vm.settings.createCDFolder)},on:{"change":function($event){var $$a=_vm.settings.createCDFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createCDFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createCDFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createCDFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createCDFolder')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createStructurePlaylist),expression:"settings.createStructurePlaylist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createStructurePlaylist)?_vm._i(_vm.settings.createStructurePlaylist,null)>-1:(_vm.settings.createStructurePlaylist)},on:{"change":function($event){var $$a=_vm.settings.createStructurePlaylist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createStructurePlaylist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createStructurePlaylist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createStructurePlaylist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createStructurePlaylist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createSingleFolder),expression:"settings.createSingleFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createSingleFolder)?_vm._i(_vm.settings.createSingleFolder,null)>-1:(_vm.settings.createSingleFolder)},on:{"change":function($event){var $$a=_vm.settings.createSingleFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createSingleFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createSingleFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createSingleFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createSingleFolder')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("title")]),_vm._v(_vm._s(_vm.$t('settings.trackTitles.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.padTracks),expression:"settings.padTracks"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.padTracks)?_vm._i(_vm.settings.padTracks,null)>-1:(_vm.settings.padTracks)},on:{"change":function($event){var $$a=_vm.settings.padTracks,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "padTracks", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "padTracks", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "padTracks", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.trackTitles.padTracks')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.trackTitles.paddingSize')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.paddingSize),expression:"settings.paddingSize"}],attrs:{"max":"10","type":"number"},domProps:{"value":(_vm.settings.paddingSize)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "paddingSize", $event.target.value);}}})])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.trackTitles.illegalCharacterReplacer')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.illegalCharacterReplacer),expression:"settings.illegalCharacterReplacer"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.illegalCharacterReplacer)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "illegalCharacterReplacer", $event.target.value);}}})])])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("get_app")]),_vm._v(_vm._s(_vm.$t('settings.downloads.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.queueConcurrency')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.queueConcurrency),expression:"settings.queueConcurrency",modifiers:{"number":true}}],attrs:{"type":"number","min":"1"},domProps:{"value":(_vm.settings.queueConcurrency)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "queueConcurrency", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}})]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.maxBitrate),expression:"settings.maxBitrate"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "maxBitrate", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"9"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.9')))]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.3')))]),_vm._v(" "),_c('option',{attrs:{"value":"1"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.1')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.overwriteFile),expression:"settings.overwriteFile"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "overwriteFile", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"y"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.y')))]),_vm._v(" "),_c('option',{attrs:{"value":"n"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.n')))]),_vm._v(" "),_c('option',{attrs:{"value":"e"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.e')))]),_vm._v(" "),_c('option',{attrs:{"value":"b"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.b')))]),_vm._v(" "),_c('option',{attrs:{"value":"t"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.t')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.fallbackBitrate),expression:"settings.fallbackBitrate"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.fallbackBitrate)?_vm._i(_vm.settings.fallbackBitrate,null)>-1:(_vm.settings.fallbackBitrate)},on:{"change":function($event){var $$a=_vm.settings.fallbackBitrate,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "fallbackBitrate", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "fallbackBitrate", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "fallbackBitrate", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.fallbackBitrate')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.fallbackSearch),expression:"settings.fallbackSearch"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.fallbackSearch)?_vm._i(_vm.settings.fallbackSearch,null)>-1:(_vm.settings.fallbackSearch)},on:{"change":function($event){var $$a=_vm.settings.fallbackSearch,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "fallbackSearch", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "fallbackSearch", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "fallbackSearch", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.fallbackSearch')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.logErrors),expression:"settings.logErrors"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.logErrors)?_vm._i(_vm.settings.logErrors,null)>-1:(_vm.settings.logErrors)},on:{"change":function($event){var $$a=_vm.settings.logErrors,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "logErrors", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "logErrors", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "logErrors", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.logErrors')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.logSearched),expression:"settings.logSearched"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.logSearched)?_vm._i(_vm.settings.logSearched,null)>-1:(_vm.settings.logSearched)},on:{"change":function($event){var $$a=_vm.settings.logSearched,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "logSearched", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "logSearched", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "logSearched", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.logSearched')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.syncedLyrics),expression:"settings.syncedLyrics"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.syncedLyrics)?_vm._i(_vm.settings.syncedLyrics,null)>-1:(_vm.settings.syncedLyrics)},on:{"change":function($event){var $$a=_vm.settings.syncedLyrics,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "syncedLyrics", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "syncedLyrics", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "syncedLyrics", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.syncedLyrics')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createM3U8File),expression:"settings.createM3U8File"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createM3U8File)?_vm._i(_vm.settings.createM3U8File,null)>-1:(_vm.settings.createM3U8File)},on:{"change":function($event){var $$a=_vm.settings.createM3U8File,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createM3U8File", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createM3U8File", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createM3U8File", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.createM3U8File')))])])])]),_vm._v(" "),(_vm.settings.createM3U8File)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.playlistFilenameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.playlistFilenameTemplate),expression:"settings.playlistFilenameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.playlistFilenameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "playlistFilenameTemplate", $event.target.value);}}})]):_vm._e(),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.saveDownloadQueue),expression:"settings.saveDownloadQueue"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.saveDownloadQueue)?_vm._i(_vm.settings.saveDownloadQueue,null)>-1:(_vm.settings.saveDownloadQueue)},on:{"change":function($event){var $$a=_vm.settings.saveDownloadQueue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "saveDownloadQueue", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "saveDownloadQueue", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "saveDownloadQueue", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.saveDownloadQueue')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("album")]),_vm._v(_vm._s(_vm.$t('settings.covers.title'))+"\n\t\t")]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.saveArtwork),expression:"settings.saveArtwork"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.saveArtwork)?_vm._i(_vm.settings.saveArtwork,null)>-1:(_vm.settings.saveArtwork)},on:{"change":function($event){var $$a=_vm.settings.saveArtwork,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "saveArtwork", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "saveArtwork", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "saveArtwork", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.saveArtwork')))])]),_vm._v(" "),(_vm.settings.saveArtwork)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.coverImageTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.coverImageTemplate),expression:"settings.coverImageTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.coverImageTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "coverImageTemplate", $event.target.value);}}})]):_vm._e(),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.saveArtworkArtist),expression:"settings.saveArtworkArtist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.saveArtworkArtist)?_vm._i(_vm.settings.saveArtworkArtist,null)>-1:(_vm.settings.saveArtworkArtist)},on:{"change":function($event){var $$a=_vm.settings.saveArtworkArtist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "saveArtworkArtist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "saveArtworkArtist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "saveArtworkArtist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.saveArtworkArtist')))])]),_vm._v(" "),(_vm.settings.saveArtworkArtist)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.artistImageTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.artistImageTemplate),expression:"settings.artistImageTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.artistImageTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "artistImageTemplate", $event.target.value);}}})]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkSize')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.localArtworkSize),expression:"settings.localArtworkSize",modifiers:{"number":true}}],attrs:{"type":"number","min":"100","max":"10000","step":"100"},domProps:{"value":(_vm.settings.localArtworkSize)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "localArtworkSize", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}}),_vm._v(" "),(_vm.settings.localArtworkSize > 1200)?_c('p',{staticClass:"input_group_text",staticStyle:{"opacity":"0.75","color":"#ffcc22"}},[_vm._v("\n\t\t\t\t⚠️ "+_vm._s(_vm.$t('settings.covers.imageSizeWarning'))+"\n\t\t\t")]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.embeddedArtworkSize')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.embeddedArtworkSize),expression:"settings.embeddedArtworkSize",modifiers:{"number":true}}],attrs:{"type":"number","min":"100","max":"10000","step":"100"},domProps:{"value":(_vm.settings.embeddedArtworkSize)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "embeddedArtworkSize", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}}),_vm._v(" "),(_vm.settings.embeddedArtworkSize > 1200)?_c('p',{staticClass:"input_group_text",staticStyle:{"opacity":"0.75","color":"#ffcc22"}},[_vm._v("\n\t\t\t\t⚠️ "+_vm._s(_vm.$t('settings.covers.imageSizeWarning'))+"\n\t\t\t")]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.localArtworkFormat),expression:"settings.localArtworkFormat"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "localArtworkFormat", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"jpg"}},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.jpg')))]),_vm._v(" "),_c('option',{attrs:{"value":"png"}},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.png')))]),_vm._v(" "),_c('option',{attrs:{"value":"jpg,png"}},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.both')))])])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.embeddedArtworkPNG),expression:"settings.embeddedArtworkPNG"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.embeddedArtworkPNG)?_vm._i(_vm.settings.embeddedArtworkPNG,null)>-1:(_vm.settings.embeddedArtworkPNG)},on:{"change":function($event){var $$a=_vm.settings.embeddedArtworkPNG,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "embeddedArtworkPNG", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "embeddedArtworkPNG", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "embeddedArtworkPNG", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.embeddedArtworkPNG')))])]),_vm._v(" "),(_vm.settings.embeddedArtworkPNG)?_c('p',{staticStyle:{"opacity":"0.75","color":"#ffcc22"}},[_vm._v("\n\t\t\t⚠️ "+_vm._s(_vm.$t('settings.covers.embeddedPNGWarning'))+"\n\t\t")]):_vm._e(),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.coverDescriptionUTF8),expression:"settings.tags.coverDescriptionUTF8"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.coverDescriptionUTF8)?_vm._i(_vm.settings.tags.coverDescriptionUTF8,null)>-1:(_vm.settings.tags.coverDescriptionUTF8)},on:{"change":function($event){var $$a=_vm.settings.tags.coverDescriptionUTF8,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "coverDescriptionUTF8", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "coverDescriptionUTF8", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "coverDescriptionUTF8", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.coverDescriptionUTF8')))])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.jpegImageQuality')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.jpegImageQuality),expression:"settings.jpegImageQuality",modifiers:{"number":true}}],attrs:{"type":"number","min":"1","max":"100"},domProps:{"value":(_vm.settings.jpegImageQuality)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "jpegImageQuality", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}})])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons",staticStyle:{"width":"1em","height":"1em"}},[_vm._v("bookmarks")]),_vm._v(_vm._s(_vm.$t('settings.tags.head'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__half"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.title),expression:"settings.tags.title"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.title)?_vm._i(_vm.settings.tags.title,null)>-1:(_vm.settings.tags.title)},on:{"change":function($event){var $$a=_vm.settings.tags.title,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "title", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "title", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "title", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.title')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.artist),expression:"settings.tags.artist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.artist)?_vm._i(_vm.settings.tags.artist,null)>-1:(_vm.settings.tags.artist)},on:{"change":function($event){var $$a=_vm.settings.tags.artist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "artist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "artist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "artist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.artist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.album),expression:"settings.tags.album"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.album)?_vm._i(_vm.settings.tags.album,null)>-1:(_vm.settings.tags.album)},on:{"change":function($event){var $$a=_vm.settings.tags.album,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "album", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "album", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "album", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.album')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.cover),expression:"settings.tags.cover"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.cover)?_vm._i(_vm.settings.tags.cover,null)>-1:(_vm.settings.tags.cover)},on:{"change":function($event){var $$a=_vm.settings.tags.cover,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "cover", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "cover", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "cover", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.cover')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.trackNumber),expression:"settings.tags.trackNumber"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.trackNumber)?_vm._i(_vm.settings.tags.trackNumber,null)>-1:(_vm.settings.tags.trackNumber)},on:{"change":function($event){var $$a=_vm.settings.tags.trackNumber,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "trackNumber", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "trackNumber", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "trackNumber", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.trackNumber')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.trackTotal),expression:"settings.tags.trackTotal"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.trackTotal)?_vm._i(_vm.settings.tags.trackTotal,null)>-1:(_vm.settings.tags.trackTotal)},on:{"change":function($event){var $$a=_vm.settings.tags.trackTotal,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "trackTotal", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "trackTotal", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "trackTotal", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.trackTotal')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.discNumber),expression:"settings.tags.discNumber"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.discNumber)?_vm._i(_vm.settings.tags.discNumber,null)>-1:(_vm.settings.tags.discNumber)},on:{"change":function($event){var $$a=_vm.settings.tags.discNumber,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "discNumber", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "discNumber", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "discNumber", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.discNumber')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.discTotal),expression:"settings.tags.discTotal"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.discTotal)?_vm._i(_vm.settings.tags.discTotal,null)>-1:(_vm.settings.tags.discTotal)},on:{"change":function($event){var $$a=_vm.settings.tags.discTotal,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "discTotal", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "discTotal", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "discTotal", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.discTotal')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.albumArtist),expression:"settings.tags.albumArtist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.albumArtist)?_vm._i(_vm.settings.tags.albumArtist,null)>-1:(_vm.settings.tags.albumArtist)},on:{"change":function($event){var $$a=_vm.settings.tags.albumArtist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "albumArtist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "albumArtist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "albumArtist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.albumArtist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.genre),expression:"settings.tags.genre"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.genre)?_vm._i(_vm.settings.tags.genre,null)>-1:(_vm.settings.tags.genre)},on:{"change":function($event){var $$a=_vm.settings.tags.genre,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "genre", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "genre", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "genre", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.genre')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.year),expression:"settings.tags.year"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.year)?_vm._i(_vm.settings.tags.year,null)>-1:(_vm.settings.tags.year)},on:{"change":function($event){var $$a=_vm.settings.tags.year,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "year", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "year", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "year", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.year')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.date),expression:"settings.tags.date"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.date)?_vm._i(_vm.settings.tags.date,null)>-1:(_vm.settings.tags.date)},on:{"change":function($event){var $$a=_vm.settings.tags.date,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "date", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "date", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "date", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.date')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.explicit),expression:"settings.tags.explicit"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.explicit)?_vm._i(_vm.settings.tags.explicit,null)>-1:(_vm.settings.tags.explicit)},on:{"change":function($event){var $$a=_vm.settings.tags.explicit,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "explicit", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "explicit", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "explicit", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.explicit')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__half"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.isrc),expression:"settings.tags.isrc"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.isrc)?_vm._i(_vm.settings.tags.isrc,null)>-1:(_vm.settings.tags.isrc)},on:{"change":function($event){var $$a=_vm.settings.tags.isrc,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "isrc", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "isrc", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "isrc", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.isrc')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.length),expression:"settings.tags.length"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.length)?_vm._i(_vm.settings.tags.length,null)>-1:(_vm.settings.tags.length)},on:{"change":function($event){var $$a=_vm.settings.tags.length,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "length", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "length", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "length", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.length')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.barcode),expression:"settings.tags.barcode"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.barcode)?_vm._i(_vm.settings.tags.barcode,null)>-1:(_vm.settings.tags.barcode)},on:{"change":function($event){var $$a=_vm.settings.tags.barcode,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "barcode", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "barcode", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "barcode", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.barcode')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.bpm),expression:"settings.tags.bpm"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.bpm)?_vm._i(_vm.settings.tags.bpm,null)>-1:(_vm.settings.tags.bpm)},on:{"change":function($event){var $$a=_vm.settings.tags.bpm,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "bpm", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "bpm", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "bpm", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.bpm')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.replayGain),expression:"settings.tags.replayGain"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.replayGain)?_vm._i(_vm.settings.tags.replayGain,null)>-1:(_vm.settings.tags.replayGain)},on:{"change":function($event){var $$a=_vm.settings.tags.replayGain,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "replayGain", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "replayGain", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "replayGain", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.replayGain')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.label),expression:"settings.tags.label"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.label)?_vm._i(_vm.settings.tags.label,null)>-1:(_vm.settings.tags.label)},on:{"change":function($event){var $$a=_vm.settings.tags.label,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "label", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "label", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "label", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.label')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.lyrics),expression:"settings.tags.lyrics"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.lyrics)?_vm._i(_vm.settings.tags.lyrics,null)>-1:(_vm.settings.tags.lyrics)},on:{"change":function($event){var $$a=_vm.settings.tags.lyrics,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "lyrics", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "lyrics", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "lyrics", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.lyrics')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.syncedLyrics),expression:"settings.tags.syncedLyrics"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.syncedLyrics)?_vm._i(_vm.settings.tags.syncedLyrics,null)>-1:(_vm.settings.tags.syncedLyrics)},on:{"change":function($event){var $$a=_vm.settings.tags.syncedLyrics,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "syncedLyrics", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "syncedLyrics", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "syncedLyrics", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.syncedLyrics')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.copyright),expression:"settings.tags.copyright"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.copyright)?_vm._i(_vm.settings.tags.copyright,null)>-1:(_vm.settings.tags.copyright)},on:{"change":function($event){var $$a=_vm.settings.tags.copyright,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "copyright", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "copyright", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "copyright", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.copyright')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.composer),expression:"settings.tags.composer"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.composer)?_vm._i(_vm.settings.tags.composer,null)>-1:(_vm.settings.tags.composer)},on:{"change":function($event){var $$a=_vm.settings.tags.composer,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "composer", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "composer", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "composer", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.composer')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.involvedPeople),expression:"settings.tags.involvedPeople"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.involvedPeople)?_vm._i(_vm.settings.tags.involvedPeople,null)>-1:(_vm.settings.tags.involvedPeople)},on:{"change":function($event){var $$a=_vm.settings.tags.involvedPeople,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "involvedPeople", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "involvedPeople", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "involvedPeople", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.involvedPeople')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.source),expression:"settings.tags.source"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.source)?_vm._i(_vm.settings.tags.source,null)>-1:(_vm.settings.tags.source)},on:{"change":function($event){var $$a=_vm.settings.tags.source,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "source", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "source", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "source", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.source')))])])])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("list")]),_vm._v(_vm._s(_vm.$t('settings.other.title'))+"\n\t\t")]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.savePlaylistAsCompilation),expression:"settings.tags.savePlaylistAsCompilation"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.savePlaylistAsCompilation)?_vm._i(_vm.settings.tags.savePlaylistAsCompilation,null)>-1:(_vm.settings.tags.savePlaylistAsCompilation)},on:{"change":function($event){var $$a=_vm.settings.tags.savePlaylistAsCompilation,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "savePlaylistAsCompilation", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "savePlaylistAsCompilation", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "savePlaylistAsCompilation", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.savePlaylistAsCompilation')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.useNullSeparator),expression:"settings.tags.useNullSeparator"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.useNullSeparator)?_vm._i(_vm.settings.tags.useNullSeparator,null)>-1:(_vm.settings.tags.useNullSeparator)},on:{"change":function($event){var $$a=_vm.settings.tags.useNullSeparator,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "useNullSeparator", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "useNullSeparator", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "useNullSeparator", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.useNullSeparator')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.saveID3v1),expression:"settings.tags.saveID3v1"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.saveID3v1)?_vm._i(_vm.settings.tags.saveID3v1,null)>-1:(_vm.settings.tags.saveID3v1)},on:{"change":function($event){var $$a=_vm.settings.tags.saveID3v1,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "saveID3v1", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "saveID3v1", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "saveID3v1", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.saveID3v1')))])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.multiArtistSeparator),expression:"settings.tags.multiArtistSeparator"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings.tags, "multiArtistSeparator", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"nothing"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.nothing')))]),_vm._v(" "),_c('option',{attrs:{"value":"default"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.default')))]),_vm._v(" "),_c('option',{attrs:{"value":"andFeat"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.andFeat')))]),_vm._v(" "),_c('option',{attrs:{"value":" & "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ' & ' })))]),_vm._v(" "),_c('option',{attrs:{"value":","}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ',' })))]),_vm._v(" "),_c('option',{attrs:{"value":", "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ', ' })))]),_vm._v(" "),_c('option',{attrs:{"value":"/"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: '/' })))]),_vm._v(" "),_c('option',{attrs:{"value":" / "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ' / ' })))]),_vm._v(" "),_c('option',{attrs:{"value":";"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ';' })))]),_vm._v(" "),_c('option',{attrs:{"value":"; "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: '; ' })))])])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.singleAlbumArtist),expression:"settings.tags.singleAlbumArtist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.singleAlbumArtist)?_vm._i(_vm.settings.tags.singleAlbumArtist,null)>-1:(_vm.settings.tags.singleAlbumArtist)},on:{"change":function($event){var $$a=_vm.settings.tags.singleAlbumArtist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "singleAlbumArtist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "singleAlbumArtist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "singleAlbumArtist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.singleAlbumArtist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.albumVariousArtists),expression:"settings.albumVariousArtists"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.albumVariousArtists)?_vm._i(_vm.settings.albumVariousArtists,null)>-1:(_vm.settings.albumVariousArtists)},on:{"change":function($event){var $$a=_vm.settings.albumVariousArtists,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "albumVariousArtists", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "albumVariousArtists", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "albumVariousArtists", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.albumVariousArtists')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.removeAlbumVersion),expression:"settings.removeAlbumVersion"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.removeAlbumVersion)?_vm._i(_vm.settings.removeAlbumVersion,null)>-1:(_vm.settings.removeAlbumVersion)},on:{"change":function($event){var $$a=_vm.settings.removeAlbumVersion,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "removeAlbumVersion", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "removeAlbumVersion", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "removeAlbumVersion", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.removeAlbumVersion')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.removeDuplicateArtists),expression:"settings.removeDuplicateArtists"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.removeDuplicateArtists)?_vm._i(_vm.settings.removeDuplicateArtists,null)>-1:(_vm.settings.removeDuplicateArtists)},on:{"change":function($event){var $$a=_vm.settings.removeDuplicateArtists,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "removeDuplicateArtists", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "removeDuplicateArtists", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "removeDuplicateArtists", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.removeDuplicateArtists')))])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.dateFormat.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.dateFormat),expression:"settings.dateFormat"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "dateFormat", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"Y-M-D"}},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('settings.other.dateFormat.year')) + "-" + (_vm.$t('settings.other.dateFormat.month')) + "-" + (_vm.$t(
+var __vue_render__$t = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"fixed-footer",attrs:{"id":"settings_tab"}},[_c('h1',{staticClass:"mb-8 text-5xl"},[_vm._v(_vm._s(_vm.$t('settings.title')))]),_vm._v(" "),(_vm.isLoggedIn)?_c('div',{ref:"loggedInInfo",attrs:{"id":"logged_in_info"}},[_c('img',{ref:"userpicture",staticClass:"circle",attrs:{"id":"settings_picture","src":_vm.pictureHref,"alt":"Profile Picture"}}),_vm._v(" "),_c('i18n',{attrs:{"path":"settings.login.loggedIn","tag":"p"}},[_c('strong',{ref:"username",attrs:{"place":"username","id":"settings_username"}},[_vm._v(_vm._s(_vm.user.name || 'not logged'))])]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",attrs:{"id":"settings_btn_logout"},on:{"click":_vm.logout}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.logout'))+"\n\t\t")]),_vm._v(" "),(_vm.accounts.length)?_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.accountNum),expression:"accountNum"}],attrs:{"id":"family_account"},on:{"change":[function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.accountNum=$event.target.multiple ? $$selectedVal : $$selectedVal[0];},_vm.changeAccount]}},_vm._l((_vm.accounts),function(account,i){return _c('option',{key:account,domProps:{"value":i.toString()}},[_vm._v(_vm._s(account.BLOG_NAME))])}),0):_vm._e()],1):_vm._e(),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("person")]),_vm._v(_vm._s(_vm.$t('settings.login.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"flex items-center"},[_c('input',{ref:"loginInput",attrs:{"autocomplete":"off","type":"password","id":"login_input_arl","placeholder":"ARL"},domProps:{"value":_vm.arl}}),_vm._v(" "),_c('button',{staticClass:"ml-2 btn btn-primary btn-only-icon",attrs:{"id":"settings_btn_copyArl"},on:{"click":_vm.copyARLtoClipboard}},[_c('i',{staticClass:"material-icons"},[_vm._v("assignment")])])]),_vm._v(" "),_c('RouterLink',{attrs:{"to":{ name: 'ARL' }}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.arl.question'))+"\n\t\t")]),_vm._v(" "),(_vm.clientMode)?_c('a',{attrs:{"id":"settings_btn_applogin","href":"#"},on:{"click":_vm.appLogin}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.login'))+"\n\t\t")]):_vm._e(),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",staticStyle:{"width":"100%"},attrs:{"id":"settings_btn_updateArl"},on:{"click":_vm.login}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.login.arl.update'))+"\n\t\t")])],1),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("language")]),_vm._v(_vm._s(_vm.$t('settings.languages'))+"\n\t\t")]),_vm._v(" "),_c('div',_vm._l((_vm.locales),function(locale){return _c('span',{key:locale,staticClass:"inline-flex items-center locale-flag",class:{ 'locale-flag--current': _vm.currentLocale === locale },attrs:{"title":locale},domProps:{"innerHTML":_vm._s(_vm.flags[locale])},on:{"click":function($event){return _vm.changeLocale(locale)}}})}),0)]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("web")]),_vm._v(_vm._s(_vm.$t('settings.appearance.title'))+"\n\t\t")]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.changeSlimDownloads),expression:"changeSlimDownloads"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.changeSlimDownloads)?_vm._i(_vm.changeSlimDownloads,null)>-1:(_vm.changeSlimDownloads)},on:{"change":function($event){var $$a=_vm.changeSlimDownloads,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.changeSlimDownloads=$$a.concat([$$v]));}else {$$i>-1&&(_vm.changeSlimDownloads=$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else {_vm.changeSlimDownloads=$$c;}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.appearance.slimDownloadTab')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.changeSlimSidebar),expression:"changeSlimSidebar"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.changeSlimSidebar)?_vm._i(_vm.changeSlimSidebar,null)>-1:(_vm.changeSlimSidebar)},on:{"change":function($event){var $$a=_vm.changeSlimSidebar,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.changeSlimSidebar=$$a.concat([$$v]));}else {$$i>-1&&(_vm.changeSlimSidebar=$$a.slice(0,$$i).concat($$a.slice($$i+1)));}}else {_vm.changeSlimSidebar=$$c;}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.appearance.slimSidebar')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("folder")]),_vm._v(_vm._s(_vm.$t('settings.downloadPath.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"flex items-center"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.downloadLocation),expression:"settings.downloadLocation"}],attrs:{"autocomplete":"off","type":"text"},domProps:{"value":(_vm.settings.downloadLocation)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "downloadLocation", $event.target.value);}}}),_vm._v(" "),(_vm.clientMode)?_c('button',{staticClass:"ml-2 btn btn-primary btn-only-icon",attrs:{"id":"select_downloads_folder"},on:{"click":_vm.selectDownloadFolder}},[_c('i',{staticClass:"material-icons"},[_vm._v("folder")])]):_vm._e()])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("font_download")]),_vm._v(_vm._s(_vm.$t('settings.templates.title'))+"\n\t\t")]),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('settings.templates.tracknameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tracknameTemplate),expression:"settings.tracknameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.tracknameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "tracknameTemplate", $event.target.value);}}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('settings.templates.albumTracknameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.albumTracknameTemplate),expression:"settings.albumTracknameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.albumTracknameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "albumTracknameTemplate", $event.target.value);}}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(_vm.$t('settings.templates.playlistTracknameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.playlistTracknameTemplate),expression:"settings.playlistTracknameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.playlistTracknameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "playlistTracknameTemplate", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("create_new_folder")]),_vm._v(_vm._s(_vm.$t('settings.folders.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__third"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createPlaylistFolder),expression:"settings.createPlaylistFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createPlaylistFolder)?_vm._i(_vm.settings.createPlaylistFolder,null)>-1:(_vm.settings.createPlaylistFolder)},on:{"change":function($event){var $$a=_vm.settings.createPlaylistFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createPlaylistFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createPlaylistFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createPlaylistFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createPlaylistFolder')))])]),_vm._v(" "),(_vm.settings.createPlaylistFolder)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.playlistNameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.playlistNameTemplate),expression:"settings.playlistNameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.playlistNameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "playlistNameTemplate", $event.target.value);}}})]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createArtistFolder),expression:"settings.createArtistFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createArtistFolder)?_vm._i(_vm.settings.createArtistFolder,null)>-1:(_vm.settings.createArtistFolder)},on:{"change":function($event){var $$a=_vm.settings.createArtistFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createArtistFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createArtistFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createArtistFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createArtistFolder')))])]),_vm._v(" "),(_vm.settings.createArtistFolder)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.artistNameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.artistNameTemplate),expression:"settings.artistNameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.artistNameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "artistNameTemplate", $event.target.value);}}})]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createAlbumFolder),expression:"settings.createAlbumFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createAlbumFolder)?_vm._i(_vm.settings.createAlbumFolder,null)>-1:(_vm.settings.createAlbumFolder)},on:{"change":function($event){var $$a=_vm.settings.createAlbumFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createAlbumFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createAlbumFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createAlbumFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createAlbumFolder')))])]),_vm._v(" "),(_vm.settings.createAlbumFolder)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.albumNameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.albumNameTemplate),expression:"settings.albumNameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.albumNameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "albumNameTemplate", $event.target.value);}}})]):_vm._e()])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createCDFolder),expression:"settings.createCDFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createCDFolder)?_vm._i(_vm.settings.createCDFolder,null)>-1:(_vm.settings.createCDFolder)},on:{"change":function($event){var $$a=_vm.settings.createCDFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createCDFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createCDFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createCDFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createCDFolder')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createStructurePlaylist),expression:"settings.createStructurePlaylist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createStructurePlaylist)?_vm._i(_vm.settings.createStructurePlaylist,null)>-1:(_vm.settings.createStructurePlaylist)},on:{"change":function($event){var $$a=_vm.settings.createStructurePlaylist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createStructurePlaylist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createStructurePlaylist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createStructurePlaylist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createStructurePlaylist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createSingleFolder),expression:"settings.createSingleFolder"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createSingleFolder)?_vm._i(_vm.settings.createSingleFolder,null)>-1:(_vm.settings.createSingleFolder)},on:{"change":function($event){var $$a=_vm.settings.createSingleFolder,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createSingleFolder", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createSingleFolder", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createSingleFolder", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.folders.createSingleFolder')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("title")]),_vm._v(_vm._s(_vm.$t('settings.trackTitles.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.padTracks),expression:"settings.padTracks"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.padTracks)?_vm._i(_vm.settings.padTracks,null)>-1:(_vm.settings.padTracks)},on:{"change":function($event){var $$a=_vm.settings.padTracks,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "padTracks", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "padTracks", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "padTracks", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.trackTitles.padTracks')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.trackTitles.paddingSize')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.paddingSize),expression:"settings.paddingSize"}],attrs:{"max":"10","type":"number"},domProps:{"value":(_vm.settings.paddingSize)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "paddingSize", $event.target.value);}}})])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third"},[_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.trackTitles.illegalCharacterReplacer')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.illegalCharacterReplacer),expression:"settings.illegalCharacterReplacer"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.illegalCharacterReplacer)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "illegalCharacterReplacer", $event.target.value);}}})])])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("get_app")]),_vm._v(_vm._s(_vm.$t('settings.downloads.title'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.queueConcurrency')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.queueConcurrency),expression:"settings.queueConcurrency",modifiers:{"number":true}}],attrs:{"type":"number","min":"1"},domProps:{"value":(_vm.settings.queueConcurrency)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "queueConcurrency", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}})]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.maxBitrate),expression:"settings.maxBitrate"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "maxBitrate", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"9"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.9')))]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.3')))]),_vm._v(" "),_c('option',{attrs:{"value":"1"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.maxBitrate.1')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.overwriteFile),expression:"settings.overwriteFile"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "overwriteFile", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"y"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.y')))]),_vm._v(" "),_c('option',{attrs:{"value":"n"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.n')))]),_vm._v(" "),_c('option',{attrs:{"value":"e"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.e')))]),_vm._v(" "),_c('option',{attrs:{"value":"b"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.b')))]),_vm._v(" "),_c('option',{attrs:{"value":"t"}},[_vm._v(_vm._s(_vm.$t('settings.downloads.overwriteFile.t')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.fallbackBitrate),expression:"settings.fallbackBitrate"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.fallbackBitrate)?_vm._i(_vm.settings.fallbackBitrate,null)>-1:(_vm.settings.fallbackBitrate)},on:{"change":function($event){var $$a=_vm.settings.fallbackBitrate,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "fallbackBitrate", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "fallbackBitrate", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "fallbackBitrate", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.fallbackBitrate')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.fallbackSearch),expression:"settings.fallbackSearch"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.fallbackSearch)?_vm._i(_vm.settings.fallbackSearch,null)>-1:(_vm.settings.fallbackSearch)},on:{"change":function($event){var $$a=_vm.settings.fallbackSearch,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "fallbackSearch", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "fallbackSearch", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "fallbackSearch", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.fallbackSearch')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.logErrors),expression:"settings.logErrors"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.logErrors)?_vm._i(_vm.settings.logErrors,null)>-1:(_vm.settings.logErrors)},on:{"change":function($event){var $$a=_vm.settings.logErrors,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "logErrors", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "logErrors", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "logErrors", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.logErrors')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.logSearched),expression:"settings.logSearched"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.logSearched)?_vm._i(_vm.settings.logSearched,null)>-1:(_vm.settings.logSearched)},on:{"change":function($event){var $$a=_vm.settings.logSearched,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "logSearched", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "logSearched", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "logSearched", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.logSearched')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__third settings-container__third--only-checkbox"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.syncedLyrics),expression:"settings.syncedLyrics"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.syncedLyrics)?_vm._i(_vm.settings.syncedLyrics,null)>-1:(_vm.settings.syncedLyrics)},on:{"change":function($event){var $$a=_vm.settings.syncedLyrics,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "syncedLyrics", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "syncedLyrics", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "syncedLyrics", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.syncedLyrics')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.createM3U8File),expression:"settings.createM3U8File"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.createM3U8File)?_vm._i(_vm.settings.createM3U8File,null)>-1:(_vm.settings.createM3U8File)},on:{"change":function($event){var $$a=_vm.settings.createM3U8File,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "createM3U8File", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "createM3U8File", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "createM3U8File", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.createM3U8File')))])])])]),_vm._v(" "),(_vm.settings.createM3U8File)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.playlistFilenameTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.playlistFilenameTemplate),expression:"settings.playlistFilenameTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.playlistFilenameTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "playlistFilenameTemplate", $event.target.value);}}})]):_vm._e(),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.saveDownloadQueue),expression:"settings.saveDownloadQueue"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.saveDownloadQueue)?_vm._i(_vm.settings.saveDownloadQueue,null)>-1:(_vm.settings.saveDownloadQueue)},on:{"change":function($event){var $$a=_vm.settings.saveDownloadQueue,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "saveDownloadQueue", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "saveDownloadQueue", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "saveDownloadQueue", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.downloads.saveDownloadQueue')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("album")]),_vm._v(_vm._s(_vm.$t('settings.covers.title'))+"\n\t\t")]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.saveArtwork),expression:"settings.saveArtwork"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.saveArtwork)?_vm._i(_vm.settings.saveArtwork,null)>-1:(_vm.settings.saveArtwork)},on:{"change":function($event){var $$a=_vm.settings.saveArtwork,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "saveArtwork", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "saveArtwork", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "saveArtwork", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.saveArtwork')))])]),_vm._v(" "),(_vm.settings.saveArtwork)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.coverImageTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.coverImageTemplate),expression:"settings.coverImageTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.coverImageTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "coverImageTemplate", $event.target.value);}}})]):_vm._e(),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.saveArtworkArtist),expression:"settings.saveArtworkArtist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.saveArtworkArtist)?_vm._i(_vm.settings.saveArtworkArtist,null)>-1:(_vm.settings.saveArtworkArtist)},on:{"change":function($event){var $$a=_vm.settings.saveArtworkArtist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "saveArtworkArtist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "saveArtworkArtist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "saveArtworkArtist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.saveArtworkArtist')))])]),_vm._v(" "),(_vm.settings.saveArtworkArtist)?_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.artistImageTemplate')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.artistImageTemplate),expression:"settings.artistImageTemplate"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.artistImageTemplate)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "artistImageTemplate", $event.target.value);}}})]):_vm._e(),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkSize')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.localArtworkSize),expression:"settings.localArtworkSize",modifiers:{"number":true}}],attrs:{"type":"number","min":"100","max":"10000","step":"100"},domProps:{"value":(_vm.settings.localArtworkSize)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "localArtworkSize", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}}),_vm._v(" "),(_vm.settings.localArtworkSize > 1200)?_c('p',{staticClass:"input_group_text",staticStyle:{"opacity":"0.75","color":"#ffcc22"}},[_vm._v("\n\t\t\t\t⚠️ "+_vm._s(_vm.$t('settings.covers.imageSizeWarning'))+"\n\t\t\t")]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.embeddedArtworkSize')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.embeddedArtworkSize),expression:"settings.embeddedArtworkSize",modifiers:{"number":true}}],attrs:{"type":"number","min":"100","max":"10000","step":"100"},domProps:{"value":(_vm.settings.embeddedArtworkSize)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "embeddedArtworkSize", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}}),_vm._v(" "),(_vm.settings.embeddedArtworkSize > 1200)?_c('p',{staticClass:"input_group_text",staticStyle:{"opacity":"0.75","color":"#ffcc22"}},[_vm._v("\n\t\t\t\t⚠️ "+_vm._s(_vm.$t('settings.covers.imageSizeWarning'))+"\n\t\t\t")]):_vm._e()]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.localArtworkFormat),expression:"settings.localArtworkFormat"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "localArtworkFormat", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"jpg"}},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.jpg')))]),_vm._v(" "),_c('option',{attrs:{"value":"png"}},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.png')))]),_vm._v(" "),_c('option',{attrs:{"value":"jpg,png"}},[_vm._v(_vm._s(_vm.$t('settings.covers.localArtworkFormat.both')))])])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.embeddedArtworkPNG),expression:"settings.embeddedArtworkPNG"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.embeddedArtworkPNG)?_vm._i(_vm.settings.embeddedArtworkPNG,null)>-1:(_vm.settings.embeddedArtworkPNG)},on:{"change":function($event){var $$a=_vm.settings.embeddedArtworkPNG,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "embeddedArtworkPNG", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "embeddedArtworkPNG", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "embeddedArtworkPNG", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.embeddedArtworkPNG')))])]),_vm._v(" "),(_vm.settings.embeddedArtworkPNG)?_c('p',{staticStyle:{"opacity":"0.75","color":"#ffcc22"}},[_vm._v("\n\t\t\t⚠️ "+_vm._s(_vm.$t('settings.covers.embeddedPNGWarning'))+"\n\t\t")]):_vm._e(),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.coverDescriptionUTF8),expression:"settings.tags.coverDescriptionUTF8"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.coverDescriptionUTF8)?_vm._i(_vm.settings.tags.coverDescriptionUTF8,null)>-1:(_vm.settings.tags.coverDescriptionUTF8)},on:{"change":function($event){var $$a=_vm.settings.tags.coverDescriptionUTF8,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "coverDescriptionUTF8", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "coverDescriptionUTF8", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "coverDescriptionUTF8", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.coverDescriptionUTF8')))])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.covers.jpegImageQuality')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.settings.jpegImageQuality),expression:"settings.jpegImageQuality",modifiers:{"number":true}}],attrs:{"type":"number","min":"1","max":"100"},domProps:{"value":(_vm.settings.jpegImageQuality)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "jpegImageQuality", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}})])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons",staticStyle:{"width":"1em","height":"1em"}},[_vm._v("bookmarks")]),_vm._v(_vm._s(_vm.$t('settings.tags.head'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"settings-container"},[_c('div',{staticClass:"settings-container__half"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.title),expression:"settings.tags.title"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.title)?_vm._i(_vm.settings.tags.title,null)>-1:(_vm.settings.tags.title)},on:{"change":function($event){var $$a=_vm.settings.tags.title,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "title", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "title", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "title", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.title')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.artist),expression:"settings.tags.artist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.artist)?_vm._i(_vm.settings.tags.artist,null)>-1:(_vm.settings.tags.artist)},on:{"change":function($event){var $$a=_vm.settings.tags.artist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "artist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "artist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "artist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.artist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.album),expression:"settings.tags.album"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.album)?_vm._i(_vm.settings.tags.album,null)>-1:(_vm.settings.tags.album)},on:{"change":function($event){var $$a=_vm.settings.tags.album,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "album", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "album", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "album", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.album')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.cover),expression:"settings.tags.cover"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.cover)?_vm._i(_vm.settings.tags.cover,null)>-1:(_vm.settings.tags.cover)},on:{"change":function($event){var $$a=_vm.settings.tags.cover,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "cover", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "cover", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "cover", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.cover')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.trackNumber),expression:"settings.tags.trackNumber"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.trackNumber)?_vm._i(_vm.settings.tags.trackNumber,null)>-1:(_vm.settings.tags.trackNumber)},on:{"change":function($event){var $$a=_vm.settings.tags.trackNumber,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "trackNumber", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "trackNumber", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "trackNumber", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.trackNumber')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.trackTotal),expression:"settings.tags.trackTotal"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.trackTotal)?_vm._i(_vm.settings.tags.trackTotal,null)>-1:(_vm.settings.tags.trackTotal)},on:{"change":function($event){var $$a=_vm.settings.tags.trackTotal,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "trackTotal", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "trackTotal", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "trackTotal", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.trackTotal')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.discNumber),expression:"settings.tags.discNumber"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.discNumber)?_vm._i(_vm.settings.tags.discNumber,null)>-1:(_vm.settings.tags.discNumber)},on:{"change":function($event){var $$a=_vm.settings.tags.discNumber,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "discNumber", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "discNumber", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "discNumber", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.discNumber')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.discTotal),expression:"settings.tags.discTotal"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.discTotal)?_vm._i(_vm.settings.tags.discTotal,null)>-1:(_vm.settings.tags.discTotal)},on:{"change":function($event){var $$a=_vm.settings.tags.discTotal,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "discTotal", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "discTotal", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "discTotal", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.discTotal')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.albumArtist),expression:"settings.tags.albumArtist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.albumArtist)?_vm._i(_vm.settings.tags.albumArtist,null)>-1:(_vm.settings.tags.albumArtist)},on:{"change":function($event){var $$a=_vm.settings.tags.albumArtist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "albumArtist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "albumArtist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "albumArtist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.albumArtist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.genre),expression:"settings.tags.genre"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.genre)?_vm._i(_vm.settings.tags.genre,null)>-1:(_vm.settings.tags.genre)},on:{"change":function($event){var $$a=_vm.settings.tags.genre,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "genre", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "genre", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "genre", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.genre')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.year),expression:"settings.tags.year"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.year)?_vm._i(_vm.settings.tags.year,null)>-1:(_vm.settings.tags.year)},on:{"change":function($event){var $$a=_vm.settings.tags.year,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "year", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "year", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "year", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.year')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.date),expression:"settings.tags.date"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.date)?_vm._i(_vm.settings.tags.date,null)>-1:(_vm.settings.tags.date)},on:{"change":function($event){var $$a=_vm.settings.tags.date,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "date", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "date", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "date", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.date')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.explicit),expression:"settings.tags.explicit"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.explicit)?_vm._i(_vm.settings.tags.explicit,null)>-1:(_vm.settings.tags.explicit)},on:{"change":function($event){var $$a=_vm.settings.tags.explicit,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "explicit", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "explicit", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "explicit", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.explicit')))])])]),_vm._v(" "),_c('div',{staticClass:"settings-container__half"},[_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.isrc),expression:"settings.tags.isrc"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.isrc)?_vm._i(_vm.settings.tags.isrc,null)>-1:(_vm.settings.tags.isrc)},on:{"change":function($event){var $$a=_vm.settings.tags.isrc,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "isrc", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "isrc", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "isrc", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.isrc')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.length),expression:"settings.tags.length"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.length)?_vm._i(_vm.settings.tags.length,null)>-1:(_vm.settings.tags.length)},on:{"change":function($event){var $$a=_vm.settings.tags.length,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "length", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "length", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "length", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.length')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.barcode),expression:"settings.tags.barcode"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.barcode)?_vm._i(_vm.settings.tags.barcode,null)>-1:(_vm.settings.tags.barcode)},on:{"change":function($event){var $$a=_vm.settings.tags.barcode,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "barcode", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "barcode", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "barcode", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.barcode')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.bpm),expression:"settings.tags.bpm"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.bpm)?_vm._i(_vm.settings.tags.bpm,null)>-1:(_vm.settings.tags.bpm)},on:{"change":function($event){var $$a=_vm.settings.tags.bpm,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "bpm", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "bpm", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "bpm", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.bpm')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.replayGain),expression:"settings.tags.replayGain"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.replayGain)?_vm._i(_vm.settings.tags.replayGain,null)>-1:(_vm.settings.tags.replayGain)},on:{"change":function($event){var $$a=_vm.settings.tags.replayGain,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "replayGain", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "replayGain", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "replayGain", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.replayGain')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.label),expression:"settings.tags.label"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.label)?_vm._i(_vm.settings.tags.label,null)>-1:(_vm.settings.tags.label)},on:{"change":function($event){var $$a=_vm.settings.tags.label,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "label", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "label", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "label", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.label')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.lyrics),expression:"settings.tags.lyrics"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.lyrics)?_vm._i(_vm.settings.tags.lyrics,null)>-1:(_vm.settings.tags.lyrics)},on:{"change":function($event){var $$a=_vm.settings.tags.lyrics,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "lyrics", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "lyrics", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "lyrics", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.lyrics')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.syncedLyrics),expression:"settings.tags.syncedLyrics"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.syncedLyrics)?_vm._i(_vm.settings.tags.syncedLyrics,null)>-1:(_vm.settings.tags.syncedLyrics)},on:{"change":function($event){var $$a=_vm.settings.tags.syncedLyrics,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "syncedLyrics", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "syncedLyrics", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "syncedLyrics", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.syncedLyrics')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.copyright),expression:"settings.tags.copyright"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.copyright)?_vm._i(_vm.settings.tags.copyright,null)>-1:(_vm.settings.tags.copyright)},on:{"change":function($event){var $$a=_vm.settings.tags.copyright,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "copyright", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "copyright", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "copyright", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.copyright')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.composer),expression:"settings.tags.composer"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.composer)?_vm._i(_vm.settings.tags.composer,null)>-1:(_vm.settings.tags.composer)},on:{"change":function($event){var $$a=_vm.settings.tags.composer,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "composer", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "composer", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "composer", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.composer')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.involvedPeople),expression:"settings.tags.involvedPeople"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.involvedPeople)?_vm._i(_vm.settings.tags.involvedPeople,null)>-1:(_vm.settings.tags.involvedPeople)},on:{"change":function($event){var $$a=_vm.settings.tags.involvedPeople,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "involvedPeople", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "involvedPeople", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "involvedPeople", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.involvedPeople')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.source),expression:"settings.tags.source"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.source)?_vm._i(_vm.settings.tags.source,null)>-1:(_vm.settings.tags.source)},on:{"change":function($event){var $$a=_vm.settings.tags.source,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "source", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "source", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "source", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.tags.source')))])])])])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('i',{staticClass:"material-icons"},[_vm._v("list")]),_vm._v(_vm._s(_vm.$t('settings.other.title'))+"\n\t\t")]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.savePlaylistAsCompilation),expression:"settings.tags.savePlaylistAsCompilation"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.savePlaylistAsCompilation)?_vm._i(_vm.settings.tags.savePlaylistAsCompilation,null)>-1:(_vm.settings.tags.savePlaylistAsCompilation)},on:{"change":function($event){var $$a=_vm.settings.tags.savePlaylistAsCompilation,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "savePlaylistAsCompilation", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "savePlaylistAsCompilation", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "savePlaylistAsCompilation", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.savePlaylistAsCompilation')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.useNullSeparator),expression:"settings.tags.useNullSeparator"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.useNullSeparator)?_vm._i(_vm.settings.tags.useNullSeparator,null)>-1:(_vm.settings.tags.useNullSeparator)},on:{"change":function($event){var $$a=_vm.settings.tags.useNullSeparator,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "useNullSeparator", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "useNullSeparator", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "useNullSeparator", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.useNullSeparator')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.saveID3v1),expression:"settings.tags.saveID3v1"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.saveID3v1)?_vm._i(_vm.settings.tags.saveID3v1,null)>-1:(_vm.settings.tags.saveID3v1)},on:{"change":function($event){var $$a=_vm.settings.tags.saveID3v1,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "saveID3v1", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "saveID3v1", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "saveID3v1", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.saveID3v1')))])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.multiArtistSeparator),expression:"settings.tags.multiArtistSeparator"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings.tags, "multiArtistSeparator", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"nothing"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.nothing')))]),_vm._v(" "),_c('option',{attrs:{"value":"default"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.default')))]),_vm._v(" "),_c('option',{attrs:{"value":"andFeat"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.andFeat')))]),_vm._v(" "),_c('option',{attrs:{"value":" & "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ' & ' })))]),_vm._v(" "),_c('option',{attrs:{"value":","}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ',' })))]),_vm._v(" "),_c('option',{attrs:{"value":", "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ', ' })))]),_vm._v(" "),_c('option',{attrs:{"value":"/"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: '/' })))]),_vm._v(" "),_c('option',{attrs:{"value":" / "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ' / ' })))]),_vm._v(" "),_c('option',{attrs:{"value":";"}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: ';' })))]),_vm._v(" "),_c('option',{attrs:{"value":"; "}},[_vm._v(_vm._s(_vm.$t('settings.other.multiArtistSeparator.using', { separator: '; ' })))])])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.tags.singleAlbumArtist),expression:"settings.tags.singleAlbumArtist"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.tags.singleAlbumArtist)?_vm._i(_vm.settings.tags.singleAlbumArtist,null)>-1:(_vm.settings.tags.singleAlbumArtist)},on:{"change":function($event){var $$a=_vm.settings.tags.singleAlbumArtist,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings.tags, "singleAlbumArtist", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings.tags, "singleAlbumArtist", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings.tags, "singleAlbumArtist", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.singleAlbumArtist')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.albumVariousArtists),expression:"settings.albumVariousArtists"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.albumVariousArtists)?_vm._i(_vm.settings.albumVariousArtists,null)>-1:(_vm.settings.albumVariousArtists)},on:{"change":function($event){var $$a=_vm.settings.albumVariousArtists,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "albumVariousArtists", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "albumVariousArtists", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "albumVariousArtists", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.albumVariousArtists')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.removeAlbumVersion),expression:"settings.removeAlbumVersion"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.removeAlbumVersion)?_vm._i(_vm.settings.removeAlbumVersion,null)>-1:(_vm.settings.removeAlbumVersion)},on:{"change":function($event){var $$a=_vm.settings.removeAlbumVersion,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "removeAlbumVersion", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "removeAlbumVersion", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "removeAlbumVersion", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.removeAlbumVersion')))])]),_vm._v(" "),_c('label',{staticClass:"with-checkbox"},[_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.removeDuplicateArtists),expression:"settings.removeDuplicateArtists"}],attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(_vm.settings.removeDuplicateArtists)?_vm._i(_vm.settings.removeDuplicateArtists,null)>-1:(_vm.settings.removeDuplicateArtists)},on:{"change":function($event){var $$a=_vm.settings.removeDuplicateArtists,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(_vm.settings, "removeDuplicateArtists", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(_vm.settings, "removeDuplicateArtists", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(_vm.settings, "removeDuplicateArtists", $$c);}}}}),_vm._v(" "),_c('span',{staticClass:"checkbox_text"},[_vm._v(_vm._s(_vm.$t('settings.other.removeDuplicateArtists')))])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.dateFormat.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.dateFormat),expression:"settings.dateFormat"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "dateFormat", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"Y-M-D"}},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('settings.other.dateFormat.year')) + "-" + (_vm.$t('settings.other.dateFormat.month')) + "-" + (_vm.$t(
 							'settings.other.dateFormat.day'
 						))))+"\n\t\t\t\t")]),_vm._v(" "),_c('option',{attrs:{"value":"Y-D-M"}},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('settings.other.dateFormat.year')) + "-" + (_vm.$t('settings.other.dateFormat.day')) + "-" + (_vm.$t(
 							'settings.other.dateFormat.month'
@@ -32526,23 +32644,23 @@ var __vue_render__$r = function () {var _vm=this;var _h=_vm.$createElement;var _
 							'settings.other.dateFormat.year'
 						))))+"\n\t\t\t\t")]),_vm._v(" "),_c('option',{attrs:{"value":"M-D-Y"}},[_vm._v("\n\t\t\t\t\t"+_vm._s(((_vm.$t('settings.other.dateFormat.month')) + "-" + (_vm.$t('settings.other.dateFormat.day')) + "-" + (_vm.$t(
 							'settings.other.dateFormat.year'
-						))))+"\n\t\t\t\t")]),_vm._v(" "),_c('option',{attrs:{"value":"Y"}},[_vm._v(_vm._s(_vm.$t('settings.other.dateFormat.year')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.featuredToTitle),expression:"settings.featuredToTitle"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "featuredToTitle", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"0"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.0')))]),_vm._v(" "),_c('option',{attrs:{"value":"1"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.1')))]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.3')))]),_vm._v(" "),_c('option',{attrs:{"value":"2"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.2')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.titleCasing')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.titleCasing),expression:"settings.titleCasing"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "titleCasing", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"nothing"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.nothing')))]),_vm._v(" "),_c('option',{attrs:{"value":"lower"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.lower')))]),_vm._v(" "),_c('option',{attrs:{"value":"upper"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.upper')))]),_vm._v(" "),_c('option',{attrs:{"value":"start"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.start')))]),_vm._v(" "),_c('option',{attrs:{"value":"sentence"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.sentence')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.artistCasing')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.artistCasing),expression:"settings.artistCasing"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "artistCasing", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"nothing"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.nothing')))]),_vm._v(" "),_c('option',{attrs:{"value":"lower"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.lower')))]),_vm._v(" "),_c('option',{attrs:{"value":"upper"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.upper')))]),_vm._v(" "),_c('option',{attrs:{"value":"start"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.start')))]),_vm._v(" "),_c('option',{attrs:{"value":"sentence"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.sentence')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.previewVolume')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.previewVolume.preview_max_volume),expression:"previewVolume.preview_max_volume",modifiers:{"number":true}}],staticClass:"slider",attrs:{"type":"range","min":"0","max":"100","step":"1"},domProps:{"value":(_vm.previewVolume.preview_max_volume)},on:{"change":_vm.updateMaxVolume,"__r":function($event){_vm.$set(_vm.previewVolume, "preview_max_volume", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}}),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.previewVolume.preview_max_volume)+"%")])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.executeCommand.title')))]),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v(_vm._s(_vm.$t('settings.other.executeCommand.description')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.executeCommand),expression:"settings.executeCommand"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.executeCommand)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "executeCommand", $event.target.value);}}})])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('svg',{attrs:{"id":"spotify_icon","enable-background":"new 0 0 24 24","viewBox":"0 0 24 24","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"m12 24c6.624 0 12-5.376 12-12s-5.376-12-12-12-12 5.376-12 12 5.376 12 12 12zm4.872-6.344v.001c-.807 0-3.356-2.828-10.52-1.36-.189.049-.436.126-.576.126-.915 0-1.09-1.369-.106-1.578 3.963-.875 8.013-.798 11.467 1.268.824.526.474 1.543-.265 1.543zm1.303-3.173c-.113-.03-.08.069-.597-.203-3.025-1.79-7.533-2.512-11.545-1.423-.232.063-.358.126-.576.126-1.071 0-1.355-1.611-.188-1.94 4.716-1.325 9.775-.552 13.297 1.543.392.232.547.533.547.953-.005.522-.411.944-.938.944zm-13.627-7.485c4.523-1.324 11.368-.906 15.624 1.578 1.091.629.662 2.22-.498 2.22l-.001-.001c-.252 0-.407-.063-.625-.189-3.443-2.056-9.604-2.549-13.59-1.436-.175.048-.393.125-.625.125-.639 0-1.127-.499-1.127-1.142 0-.657.407-1.029.842-1.155z"}})]),_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.spotify.title'))+"\n\t\t")]),_vm._v(" "),_c('a',{attrs:{"href":"#"}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.spotify.question'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.spotify.clientID')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.spotifyFeatures.clientId),expression:"spotifyFeatures.clientId"}],attrs:{"type":"text"},domProps:{"value":(_vm.spotifyFeatures.clientId)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.spotifyFeatures, "clientId", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.spotify.clientSecret')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.spotifyFeatures.clientSecret),expression:"spotifyFeatures.clientSecret"}],attrs:{"type":"password"},domProps:{"value":(_vm.spotifyFeatures.clientSecret)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.spotifyFeatures, "clientSecret", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.spotify.username')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.spotifyUser),expression:"spotifyUser"}],attrs:{"type":"text"},domProps:{"value":(_vm.spotifyUser)},on:{"input":function($event){if($event.target.composing){ return; }_vm.spotifyUser=$event.target.value;}}})])]),_vm._v(" "),_c('footer',{staticClass:"bg-background-main"},[_c('button',{staticClass:"mr-2 btn btn-primary",on:{"click":_vm.resetSettings}},[_vm._v(_vm._s(_vm.$t('settings.reset')))]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.saveSettings}},[_vm._v(_vm._s(_vm.$t('settings.save')))])])])};
-var __vue_staticRenderFns__$r = [];
+						))))+"\n\t\t\t\t")]),_vm._v(" "),_c('option',{attrs:{"value":"Y"}},[_vm._v(_vm._s(_vm.$t('settings.other.dateFormat.year')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.title')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.featuredToTitle),expression:"settings.featuredToTitle"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "featuredToTitle", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"0"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.0')))]),_vm._v(" "),_c('option',{attrs:{"value":"1"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.1')))]),_vm._v(" "),_c('option',{attrs:{"value":"3"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.3')))]),_vm._v(" "),_c('option',{attrs:{"value":"2"}},[_vm._v(_vm._s(_vm.$t('settings.other.featuredToTitle.2')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.titleCasing')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.titleCasing),expression:"settings.titleCasing"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "titleCasing", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"nothing"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.nothing')))]),_vm._v(" "),_c('option',{attrs:{"value":"lower"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.lower')))]),_vm._v(" "),_c('option',{attrs:{"value":"upper"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.upper')))]),_vm._v(" "),_c('option',{attrs:{"value":"start"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.start')))]),_vm._v(" "),_c('option',{attrs:{"value":"sentence"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.sentence')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.artistCasing')))]),_vm._v(" "),_c('select',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.artistCasing),expression:"settings.artistCasing"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(_vm.settings, "artistCasing", $event.target.multiple ? $$selectedVal : $$selectedVal[0]);}}},[_c('option',{attrs:{"value":"nothing"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.nothing')))]),_vm._v(" "),_c('option',{attrs:{"value":"lower"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.lower')))]),_vm._v(" "),_c('option',{attrs:{"value":"upper"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.upper')))]),_vm._v(" "),_c('option',{attrs:{"value":"start"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.start')))]),_vm._v(" "),_c('option',{attrs:{"value":"sentence"}},[_vm._v(_vm._s(_vm.$t('settings.other.casing.sentence')))])])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.previewVolume')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model.number",value:(_vm.previewVolume.preview_max_volume),expression:"previewVolume.preview_max_volume",modifiers:{"number":true}}],staticClass:"slider",attrs:{"type":"range","min":"0","max":"100","step":"1"},domProps:{"value":(_vm.previewVolume.preview_max_volume)},on:{"change":_vm.updateMaxVolume,"__r":function($event){_vm.$set(_vm.previewVolume, "preview_max_volume", _vm._n($event.target.value));},"blur":function($event){return _vm.$forceUpdate()}}}),_vm._v(" "),_c('span',[_vm._v(_vm._s(_vm.previewVolume.preview_max_volume)+"%")])]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.other.executeCommand.title')))]),_vm._v(" "),_c('p',{staticClass:"secondary-text"},[_vm._v(_vm._s(_vm.$t('settings.other.executeCommand.description')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.settings.executeCommand),expression:"settings.executeCommand"}],attrs:{"type":"text"},domProps:{"value":(_vm.settings.executeCommand)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.settings, "executeCommand", $event.target.value);}}})])]),_vm._v(" "),_c('div',{staticClass:"settings-group"},[_c('h3',{staticClass:"settings-group__header settings-group__header--with-icon"},[_c('svg',{attrs:{"id":"spotify_icon","enable-background":"new 0 0 24 24","viewBox":"0 0 24 24","xmlns":"http://www.w3.org/2000/svg"}},[_c('path',{attrs:{"d":"m12 24c6.624 0 12-5.376 12-12s-5.376-12-12-12-12 5.376-12 12 5.376 12 12 12zm4.872-6.344v.001c-.807 0-3.356-2.828-10.52-1.36-.189.049-.436.126-.576.126-.915 0-1.09-1.369-.106-1.578 3.963-.875 8.013-.798 11.467 1.268.824.526.474 1.543-.265 1.543zm1.303-3.173c-.113-.03-.08.069-.597-.203-3.025-1.79-7.533-2.512-11.545-1.423-.232.063-.358.126-.576.126-1.071 0-1.355-1.611-.188-1.94 4.716-1.325 9.775-.552 13.297 1.543.392.232.547.533.547.953-.005.522-.411.944-.938.944zm-13.627-7.485c4.523-1.324 11.368-.906 15.624 1.578 1.091.629.662 2.22-.498 2.22l-.001-.001c-.252 0-.407-.063-.625-.189-3.443-2.056-9.604-2.549-13.59-1.436-.175.048-.393.125-.625.125-.639 0-1.127-.499-1.127-1.142 0-.657.407-1.029.842-1.155z"}})]),_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.spotify.title'))+"\n\t\t")]),_vm._v(" "),_c('RouterLink',{attrs:{"to":{ name: 'Spotify Features' }}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('settings.spotify.question'))+"\n\t\t")]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.spotify.clientID')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.spotifyFeatures.clientId),expression:"spotifyFeatures.clientId"}],attrs:{"type":"text"},domProps:{"value":(_vm.spotifyFeatures.clientId)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.spotifyFeatures, "clientId", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.spotify.clientSecret')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.spotifyFeatures.clientSecret),expression:"spotifyFeatures.clientSecret"}],attrs:{"type":"password"},domProps:{"value":(_vm.spotifyFeatures.clientSecret)},on:{"input":function($event){if($event.target.composing){ return; }_vm.$set(_vm.spotifyFeatures, "clientSecret", $event.target.value);}}})]),_vm._v(" "),_c('div',{staticClass:"input_group"},[_c('p',{staticClass:"input_group_text"},[_vm._v(_vm._s(_vm.$t('settings.spotify.username')))]),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.spotifyUser),expression:"spotifyUser"}],attrs:{"type":"text"},domProps:{"value":(_vm.spotifyUser)},on:{"input":function($event){if($event.target.composing){ return; }_vm.spotifyUser=$event.target.value;}}})])],1),_vm._v(" "),_c('footer',{staticClass:"bg-background-main"},[_c('button',{staticClass:"mr-2 btn btn-primary",on:{"click":_vm.resetSettings}},[_vm._v(_vm._s(_vm.$t('settings.reset')))]),_vm._v(" "),_c('button',{staticClass:"btn btn-primary",on:{"click":_vm.saveSettings}},[_vm._v(_vm._s(_vm.$t('settings.save')))])])])};
+var __vue_staticRenderFns__$t = [];
 
   /* style */
-  const __vue_inject_styles__$r = function (inject) {
+  const __vue_inject_styles__$t = function (inject) {
     if (!inject) return
-    inject("data-v-6c973f3c_0", { source: "#logged_in_info{height:250px;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center}.locale-flag{width:60px;justify-content:center;cursor:pointer}.locale-flag:not(:last-child){margin-right:10px}.locale-flag.locale-flag--current svg{filter:brightness(1)}.locale-flag svg{width:40px!important;height:40px!important;filter:brightness(.5)}", map: undefined, media: undefined });
+    inject("data-v-13fa3fa0_0", { source: "#logged_in_info{height:250px;display:flex;flex-direction:column;justify-content:space-evenly;align-items:center}.locale-flag{width:60px;justify-content:center;cursor:pointer}.locale-flag:not(:last-child){margin-right:10px}.locale-flag.locale-flag--current svg{filter:brightness(1)}.locale-flag svg{width:40px!important;height:40px!important;filter:brightness(.5)}", map: undefined, media: undefined });
 
   };
   /* scoped */
-  const __vue_scope_id__$r = undefined;
+  const __vue_scope_id__$t = undefined;
   /* module identifier */
   const __vue_module_identifier__$d = undefined;
   /* functional template */
-  const __vue_is_functional_template__$r = false;
+  const __vue_is_functional_template__$t = false;
   /* component normalizer */
-  function __vue_normalize__$r(
+  function __vue_normalize__$t(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -32660,18 +32778,18 @@ var __vue_staticRenderFns__$r = [];
   
 
   
-  var Settings = __vue_normalize__$r(
-    { render: __vue_render__$r, staticRenderFns: __vue_staticRenderFns__$r },
-    __vue_inject_styles__$r,
-    __vue_script__$p,
-    __vue_scope_id__$r,
-    __vue_is_functional_template__$r,
+  var Settings = __vue_normalize__$t(
+    { render: __vue_render__$t, staticRenderFns: __vue_staticRenderFns__$t },
+    __vue_inject_styles__$t,
+    __vue_script__$r,
+    __vue_scope_id__$t,
+    __vue_is_functional_template__$t,
     __vue_module_identifier__$d,
     __vue_create_injector__$d);
 
 //
 
-var script$q = {
+var script$s = {
 	data() {
 		return {
 			title: '',
@@ -32824,10 +32942,10 @@ var script$q = {
 };
 
 /* script */
-            const __vue_script__$q = script$q;
+            const __vue_script__$s = script$s;
             
 /* template */
-var __vue_render__$s = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"relative fixed-footer bg-background-main image-header"},[_c('header',{style:({
+var __vue_render__$u = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"root",staticClass:"relative fixed-footer bg-background-main image-header"},[_c('header',{style:({
 			'background-image':
 				'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + _vm.image + '\')'
 		})},[_c('h1',{staticClass:"flex items-center m-0 text-5xl"},[_vm._v("\n\t\t\t"+_vm._s(_vm.title)+" "),(_vm.explicit)?_c('i',{staticClass:"material-icons explicit-icon explicit-icon--right"},[_vm._v("explicit")]):_vm._e()]),_vm._v(" "),_c('h2',{staticClass:"m-0 mb-3 text-lg"},[(_vm.metadata)?_c('p',[_vm._v(_vm._s(_vm.metadata))]):_vm._e(),_vm._v(" "),(_vm.release_date)?_c('p',[_vm._v(_vm._s(_vm.release_date))]):_vm._e()])]),_vm._v(" "),_c('table',{staticClass:"table table--tracklist"},[_c('thead',[_c('tr',[_vm._m(0),_vm._v(" "),_c('th',[_vm._v("#")]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.title', 1)))]),_vm._v(" "),_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.artist', 1)))]),_vm._v(" "),(_vm.type === 'playlist')?_c('th',[_vm._v(_vm._s(_vm.$tc('globals.listTabs.album', 1)))]):_vm._e(),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('th',{staticClass:"table__icon table__cell--center clickable"},[_c('input',{staticClass:"selectAll",attrs:{"type":"checkbox"},on:{"click":_vm.toggleAll}})])])]),_vm._v(" "),_c('tbody',[(_vm.type !== 'spotifyPlaylist')?[_vm._l((_vm.body),function(track,index){return [(track.type == 'track')?_c('tr',{on:{"click":function($event){return _vm.selectRow(index, track)}}},[_c('td',{staticClass:"table__cell--x-small table__cell--center"},[_c('div',{staticClass:"table__cell-content table__cell-content--vertical-center"},[_c('i',_vm._g({staticClass:"material-icons",class:{
@@ -32841,16 +32959,16 @@ var __vue_render__$s = function () {var _vm=this;var _h=_vm.$createElement;var _
 								preview_playlist_controls: track.preview_url,
 								'cursor-pointer': track.preview_url
 							},attrs:{"data-preview":track.preview_url,"title":_vm.$t('globals.play_hint')},on:{"click":_vm.playPausePreview}},[_vm._v("\n\t\t\t\t\t\t\tplay_arrow\n\t\t\t\t\t\t")]):_c('i',{staticClass:"material-icons disabled"},[_vm._v("play_arrow")])]),_vm._v(" "),_c('td',[_vm._v(_vm._s(i + 1))]),_vm._v(" "),_c('td',{staticClass:"flex items-center"},[(track.explicit)?_c('i',{staticClass:"material-icons explicit-icon"},[_vm._v("explicit")]):_vm._e(),_vm._v("\n\t\t\t\t\t\t"+_vm._s(track.name)+"\n\t\t\t\t\t")]),_vm._v(" "),_c('td',[_vm._v(_vm._s(track.artists[0].name))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(track.album.name))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(_vm.convertDuration(Math.floor(track.duration_ms / 1000))))]),_vm._v(" "),_c('td',[_c('input',{directives:[{name:"model",rawName:"v-model",value:(track.selected),expression:"track.selected"}],staticClass:"clickable",attrs:{"type":"checkbox"},domProps:{"checked":Array.isArray(track.selected)?_vm._i(track.selected,null)>-1:(track.selected)},on:{"change":function($event){var $$a=track.selected,$$el=$event.target,$$c=$$el.checked?(true):(false);if(Array.isArray($$a)){var $$v=null,$$i=_vm._i($$a,$$v);if($$el.checked){$$i<0&&(_vm.$set(track, "selected", $$a.concat([$$v])));}else {$$i>-1&&(_vm.$set(track, "selected", $$a.slice(0,$$i).concat($$a.slice($$i+1))));}}else {_vm.$set(track, "selected", $$c);}}}})])])})],2)]),_vm._v(" "),(_vm.label)?_c('span',{staticStyle:{"opacity":"0.4","margin-top":"8px","display":"inline-block","font-size":"13px"}},[_vm._v(_vm._s(_vm.label))]):_vm._e(),_vm._v(" "),_c('footer',{staticClass:"bg-background-main"},[_c('button',{staticClass:"mr-2 btn btn-primary",attrs:{"data-link":_vm.link},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_vm._v("\n\t\t\t"+_vm._s(("" + (_vm.$t('globals.download', { thing: _vm.$tc(("globals.listTabs." + _vm.type), 1) }))))+"\n\t\t")]),_vm._v(" "),_c('button',{staticClass:"flex items-center btn btn-primary",attrs:{"data-link":_vm.selectedLinks()},on:{"click":function($event){$event.stopPropagation();return _vm.addToQueue($event)}}},[_vm._v("\n\t\t\t"+_vm._s(_vm.$t('tracklist.downloadSelection'))),_c('i',{staticClass:"ml-2 material-icons"},[_vm._v("file_download")])])])])};
-var __vue_staticRenderFns__$s = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('th',[_c('i',{staticClass:"material-icons"},[_vm._v("music_note")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('th',[_c('i',{staticClass:"material-icons"},[_vm._v("timer")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('td',[_c('div',{staticClass:"table__cell-content table__cell-content--vertical-center",staticStyle:{"opacity":"0.54"}},[_c('i',{staticClass:"material-icons"},[_vm._v("album")])])])}];
+var __vue_staticRenderFns__$u = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('th',[_c('i',{staticClass:"material-icons"},[_vm._v("music_note")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('th',[_c('i',{staticClass:"material-icons"},[_vm._v("timer")])])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('td',[_c('div',{staticClass:"table__cell-content table__cell-content--vertical-center",staticStyle:{"opacity":"0.54"}},[_c('i',{staticClass:"material-icons"},[_vm._v("album")])])])}];
 
   /* style */
-  const __vue_inject_styles__$s = undefined;
+  const __vue_inject_styles__$u = undefined;
   /* scoped */
-  const __vue_scope_id__$s = undefined;
+  const __vue_scope_id__$u = undefined;
   /* functional template */
-  const __vue_is_functional_template__$s = false;
+  const __vue_is_functional_template__$u = false;
   /* component normalizer */
-  function __vue_normalize__$s(
+  function __vue_normalize__$u(
     template, style, script,
     scope, functional, moduleIdentifier,
     createInjector, createInjectorSSR
@@ -32878,12 +32996,12 @@ var __vue_staticRenderFns__$s = [function () {var _vm=this;var _h=_vm.$createEle
   
 
   
-  var Tracklist = __vue_normalize__$s(
-    { render: __vue_render__$s, staticRenderFns: __vue_staticRenderFns__$s },
-    __vue_inject_styles__$s,
-    __vue_script__$q,
-    __vue_scope_id__$s,
-    __vue_is_functional_template__$s);
+  var Tracklist = __vue_normalize__$u(
+    { render: __vue_render__$u, staticRenderFns: __vue_staticRenderFns__$u },
+    __vue_inject_styles__$u,
+    __vue_script__$s,
+    __vue_scope_id__$u,
+    __vue_is_functional_template__$u);
 
 Vue.use(VueRouter);
 
@@ -32951,6 +33069,16 @@ const routes = [
 		path: '/about',
 		name: 'About',
 		component: About
+	},
+	{
+		path: '/arl',
+		name: 'ARL',
+		component: InfoArl
+	},
+	{
+		path: '/info-spotify',
+		name: 'Spotify Features',
+		component: InfoSpotifyFeatures
 	},
 	{
 		path: '/settings',

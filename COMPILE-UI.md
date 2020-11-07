@@ -34,7 +34,7 @@ By simply running
 $ npm run dev
 ```
 
-P.S.: You need to be inside the [deemix-pyweb](https://git.fuwafuwa.moe/RemixDev/deemix-pyweb) repo to have the server working correctly.
+P.S.: You need to be inside the [deemix-pyweb](https://git.rip/RemixDev/deemix-pyweb) repo to have the server working correctly.
 
 you will have 2 tasks running at the same time:
 - the server

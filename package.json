@@ -1,10 +1,10 @@
 {
 	"name": "deemix-webui",
 	"version": "1.2.1",
-	"homepage": "https://git.fuwafuwa.moe/RemixDev/deemix-webui/src/master/README.md",
+	"homepage": "https://git.rip/RemixDev/deemix-webui/src/master/README.md",
 	"repository": {
 		"type": "git",
-		"url": "https://git.fuwafuwa.moe/RemixDev/deemix-webui"
+		"url": "https://git.rip/RemixDev/deemix-webui"
 	},
 	"scripts": {
 		"clean": "rimraf public/css/style.css public/css/style.css.map public/js/bundle.js public/js/bundle.js.map",

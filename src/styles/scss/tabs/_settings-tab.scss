@@ -1,59 +1,23 @@
-#settings_picture {
-	width: 125px;
-	height: 125px;
-}
-
-#log_info {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-
-#open_login_prompt {
-	margin: 8px 0px;
-}
-
-.inline-flex input {
-	margin-bottom: 0px;
-}
-
-#spotify_icon {
-	width: 24px;
-	height: 24px;
-	fill: #1db954;
-	margin-right: 15px;
-}
-
-/* Settings group */
 .settings-group {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
+	@apply flex flex-col justify-center pt-5 pb-5;
 	border-top: 1px solid theme('colors.grayscale.500'); /* Need less opacity */
-	padding-top: 20px;
-	padding-bottom: 20px;
 
 	> * {
-		margin-bottom: 15px;
+		margin-bottom: 1rem;
 	}
 }
 
-/* Settings group header */
 .settings-group__header {
+	display: inline-flex;
+	align-items: center;
+	margin-bottom: 1.5625rem;
 	font-size: 1.5rem;
-	margin-bottom: 25px;
 
-	&.settings-group__header--with-icon {
-		display: inline-flex;
-		align-items: center;
-
-		i.material-icons {
-			margin-right: 15px;
-		}
+	i.material-icons {
+		margin-right: 15px;
 	}
 }
 
-/* Settings container */
 .settings-container {
 	display: flex;
 
@@ -67,8 +31,8 @@
 		&--only-checkbox {
 			display: flex;
 			flex-direction: column;
-			justify-content: center;
 			align-items: start;
+			justify-content: center;
 		}
 	}
 

@@ -33,7 +33,7 @@
 			<div v-if="playlists.length == 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
-			<div class="release_grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
+			<div class="release-grid" v-if="playlists.length > 0 || spotifyPlaylists > 0">
 				<div class="release" v-for="release in playlists" :key="release.id">
 					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Playlist', params: { id: release.id } }">
 						<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
@@ -72,7 +72,7 @@
 			<div v-if="albums.length == 0">
 				<h1>{{ $t('favorites.noAlbums') }}</h1>
 			</div>
-			<div class="release_grid" v-if="albums.length > 0">
+			<div class="release-grid" v-if="albums.length > 0">
 				<router-link
 					tag="div"
 					class="release clickable"
@@ -91,7 +91,7 @@
 			<div v-if="artists.length == 0">
 				<h1>{{ $t('favorites.noArtists') }}</h1>
 			</div>
-			<div class="release_grid" v-if="artists.length > 0">
+			<div class="release-grid" v-if="artists.length > 0">
 				<router-link
 					tag="div"
 					class="release clickable"
@@ -115,17 +115,14 @@
 						{{ track.position }}
 					</td>
 					<td>
-						<a
-							href="#"
-							class="rounded"
-							:class="{ 'single-cover': !!track.preview }"
+						<span
+							class="relative inline-block rounded cursor-pointer"
 							@click="playPausePreview"
 							:data-preview="track.preview"
 						>
 							<PreviewControls v-if="track.preview" />
-
 							<img class="rounded coverart" :src="track.album.cover_small" />
-						</a>
+						</span>
 					</td>
 					<td class="table__cell--large">
 						{{

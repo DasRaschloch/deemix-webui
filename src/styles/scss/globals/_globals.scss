@@ -53,33 +53,9 @@ select {
 	color: var(--foreground);
 }
 
-p {
-	word-break: break-word;
-}
-
-img {
-	&.rounded {
-		border-radius: 5px;
-	}
-
-	&.circle {
-		border-radius: 50%;
-	}
-}
-
-.single-cover {
-	display: inline-block;
-	position: relative;
-	color: white;
-}
-
 @layer base {
 	a {
 		color: dodgerblue;
-
-		// &:visited {
-		// 	color: dodgerblue;
-		// }
 	}
 }
 

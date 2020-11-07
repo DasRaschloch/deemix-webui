@@ -1,9 +1,9 @@
 <template>
-	<div class="relative cover_container group">
+	<div class="relative cover-container group">
 		<img
 			aria-hidden="true"
 			class="block w-full opacity-100 coverart"
-			:class="{ rounded: isRounded, circle: isCircle }"
+			:class="{ rounded: isRounded, 'rounded-full': isCircle }"
 			:src="cover"
 		/>
 
@@ -21,7 +21,11 @@
 </template>
 
 <style lang="scss" scoped>
-.cover_container {
+.cover-container {
+	width: 156px;
+	height: 156px;
+	margin-bottom: 10px;
+
 	.coverart {
 		backface-visibility: hidden;
 		transition: 0.5s ease;

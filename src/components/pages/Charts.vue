@@ -3,7 +3,7 @@
 		<h1 class="mb-8 text-5xl">{{ $t('charts.title') }}</h1>
 
 		<div v-if="country === ''">
-			<div class="release_grid charts_grid">
+			<div class="release-grid">
 				<div
 					v-for="release in countries"
 					role="button"
@@ -31,16 +31,14 @@
 							{{ track.position }}
 						</td>
 						<td class="table__icon table__icon--big">
-							<a
-								href="#"
+							<span
 								@click="playPausePreview"
-								class="rounded"
-								:class="{ 'single-cover': track.preview }"
+								class="relative inline-block rounded cursor-pointer"
 								:data-preview="track.preview"
 							>
 								<PreviewControls v-if="track.preview" />
 								<img class="rounded coverart" :src="track.album.cover_small" />
-							</a>
+							</span>
 						</td>
 						<td class="table__cell--large">
 							{{

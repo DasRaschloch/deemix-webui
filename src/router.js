@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { socket } from '@/utils/socket'
-import EventBus from '@/utils/EventBus'
 
 // Pages
 import About from '@components/pages/About.vue'
@@ -85,7 +84,7 @@ const routes = [
 		component: About
 	},
 	{
-		path: '/arl',
+		path: '/info-arl',
 		name: 'ARL',
 		component: InfoArl
 	},

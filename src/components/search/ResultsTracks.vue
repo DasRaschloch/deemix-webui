@@ -23,17 +23,15 @@
 				<tbody>
 					<tr v-for="track in viewInfo.data.slice(0, itemsToShow)" :key="track.trackLink">
 						<td class="table__icon table__icon--big">
-							<a
-								href="#"
+							<span
 								@click="playPausePreview($event)"
-								class="rounded"
-								:class="{ 'single-cover': !!track.trackPreview }"
+								class="relative inline-block rounded cursor-pointer"
 								:data-preview="track.trackPreview"
 							>
 								<PreviewControls v-if="track.trackPreview" />
 
 								<img class="rounded coverart" :src="track.albumPicture" />
-							</a>
+							</span>
 						</td>
 
 						<td class="table__cell table__cell--large">

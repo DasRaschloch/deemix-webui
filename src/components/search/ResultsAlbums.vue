@@ -7,7 +7,7 @@
 				<h1>{{ $t('search.noResultsAlbum') }}</h1>
 			</div>
 
-			<div class="release_grid" v-else>
+			<div class="release-grid" v-else>
 				<div class="w-40 release" v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.albumID">
 					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Album', params: { id: release.albumID } }">
 						<CoverContainer

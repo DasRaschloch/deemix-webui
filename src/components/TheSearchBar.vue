@@ -100,7 +100,6 @@ input[type='search']::-webkit-search-cancel-button {
 <script>
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
-import EventBus from '@/utils/EventBus'
 import { socket } from '@/utils/socket'
 
 export default {
@@ -159,7 +158,6 @@ export default {
 					this.$root.$emit('QualityModal:open', term)
 				} else {
 					if (isShowingAnalyzer) {
-						// EventBus.$emit('linkAnalyzerTab:reset')
 						socket.emit('analyzeLink', term)
 					} else {
 						// ? Open downloads tab ?

@@ -1,15 +1,21 @@
 <template>
-	<div id="settings_tab" class="fixed-footer" ref="root">
+	<div class="fixed-footer" ref="root">
 		<h1 class="mb-8 text-5xl">{{ $t('settings.title') }}</h1>
 
 		<div id="logged_in_info" v-if="isLoggedIn" ref="loggedInInfo">
-			<img id="settings_picture" :src="pictureHref" alt="Profile Picture" ref="userpicture" class="circle" />
+			<img
+				id="settings_picture"
+				class="w-32 h-32 rounded-full"
+				:src="pictureHref"
+				alt="Profile Picture"
+				ref="userpicture"
+			/>
 
 			<i18n path="settings.login.loggedIn" tag="p">
 				<strong place="username" id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
 			</i18n>
 
-			<button class="btn btn-primary" id="settings_btn_logout" @click="logout">
+			<button class="btn btn-primary" @click="logout">
 				{{ $t('settings.login.logout') }}
 			</button>
 
@@ -18,10 +24,26 @@
 			</select>
 		</div>
 
+		<!-- <BaseAccordion>
+			<template v-slot:title>
+				<h3 class="inline-flex items-center text-2xl">
+					<i class="mr-4 material-icons">web</i>
+					{{ $t('settings.appearance.title') }}
+				</h3>
+			</template>
+
+			<label class="with-checkbox">
+				<input type="checkbox" v-model="changeSlimDownloads" />
+				<span class="checkbox_text">{{ $t('settings.appearance.slimDownloadTab') }}</span>
+			</label>
+			<label class="with-checkbox">
+				<input type="checkbox" v-model="changeSlimSidebar" />
+				<span class="checkbox_text">{{ $t('settings.appearance.slimSidebar') }}</span>
+			</label>
+		</BaseAccordion> -->
+
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">person</i>{{ $t('settings.login.title') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">person</i>{{ $t('settings.login.title') }}</h3>
 			<div class="flex items-center">
 				<input
 					autocomplete="off"
@@ -31,7 +53,7 @@
 					ref="loginInput"
 					placeholder="ARL"
 				/>
-				<button id="settings_btn_copyArl" class="ml-2 btn btn-primary btn-only-icon" @click="copyARLtoClipboard">
+				<button class="ml-2 btn btn-primary btn-only-icon" @click="copyARLtoClipboard">
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
@@ -40,18 +62,16 @@
 				{{ $t('settings.login.arl.question') }}
 			</RouterLink>
 
-			<a id="settings_btn_applogin" v-if="clientMode" href="#" @click="appLogin">
+			<a v-if="clientMode" href="#" @click="appLogin">
 				{{ $t('settings.login.login') }}
 			</a>
-			<button class="btn btn-primary" id="settings_btn_updateArl" @click="login" style="width: 100%">
+			<button class="btn btn-primary" @click="login" style="width: 100%">
 				{{ $t('settings.login.arl.update') }}
 			</button>
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">language</i>{{ $t('settings.languages') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">language</i>{{ $t('settings.languages') }}</h3>
 			<div>
 				<span
 					v-for="locale in locales"
@@ -67,9 +87,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">web</i>{{ $t('settings.appearance.title') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">web</i>{{ $t('settings.appearance.title') }}</h3>
 			<label class="with-checkbox">
 				<input type="checkbox" v-model="changeSlimDownloads" />
 				<span class="checkbox_text">{{ $t('settings.appearance.slimDownloadTab') }}</span>
@@ -81,24 +99,19 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
+			<h3 class="settings-group__header">
 				<i class="material-icons">folder</i>{{ $t('settings.downloadPath.title') }}
 			</h3>
 			<div class="flex items-center">
 				<input autocomplete="off" type="text" v-model="settings.downloadLocation" />
-				<button
-					id="select_downloads_folder"
-					v-if="clientMode"
-					class="ml-2 btn btn-primary btn-only-icon"
-					@click="selectDownloadFolder"
-				>
+				<button v-if="clientMode" class="ml-2 btn btn-primary btn-only-icon" @click="selectDownloadFolder">
 					<i class="material-icons">folder</i>
 				</button>
 			</div>
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
+			<h3 class="settings-group__header">
 				<i class="material-icons">font_download</i>{{ $t('settings.templates.title') }}
 			</h3>
 
@@ -113,7 +126,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
+			<h3 class="settings-group__header">
 				<i class="material-icons">create_new_folder</i>{{ $t('settings.folders.title') }}
 			</h3>
 			<div class="settings-container">
@@ -168,9 +181,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">title</i>{{ $t('settings.trackTitles.title') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">title</i>{{ $t('settings.trackTitles.title') }}</h3>
 
 			<div class="settings-container">
 				<div class="settings-container__third settings-container__third--only-checkbox">
@@ -195,9 +206,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">get_app</i>{{ $t('settings.downloads.title') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">get_app</i>{{ $t('settings.downloads.title') }}</h3>
 
 			<div class="input_group">
 				<p class="input_group_text">{{ $t('settings.downloads.queueConcurrency') }}</p>
@@ -272,9 +281,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">album</i>{{ $t('settings.covers.title') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">album</i>{{ $t('settings.covers.title') }}</h3>
 
 			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.saveArtwork" />
@@ -341,7 +348,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
+			<h3 class="settings-group__header">
 				<i class="material-icons" style="width: 1em; height: 1em">bookmarks</i>{{ $t('settings.tags.head') }}
 			</h3>
 
@@ -455,9 +462,7 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<i class="material-icons">list</i>{{ $t('settings.other.title') }}
-			</h3>
+			<h3 class="settings-group__header"><i class="material-icons">list</i>{{ $t('settings.other.title') }}</h3>
 
 			<label class="with-checkbox">
 				<input type="checkbox" v-model="settings.tags.savePlaylistAsCompilation" />
@@ -599,8 +604,14 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header settings-group__header--with-icon">
-				<svg id="spotify_icon" enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+			<h3 class="settings-group__header">
+				<svg
+					class="w-6 h-6 mr-4"
+					style="fill: #1db954"
+					enable-background="new 0 0 24 24"
+					viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg"
+				>
 					<path
 						d="m12 24c6.624 0 12-5.376 12-12s-5.376-12-12-12-12 5.376-12 12 5.376 12 12 12zm4.872-6.344v.001c-.807 0-3.356-2.828-10.52-1.36-.189.049-.436.126-.576.126-.915 0-1.09-1.369-.106-1.578 3.963-.875 8.013-.798 11.467 1.268.824.526.474 1.543-.265 1.543zm1.303-3.173c-.113-.03-.08.069-.597-.203-3.025-1.79-7.533-2.512-11.545-1.423-.232.063-.358.126-.576.126-1.071 0-1.355-1.611-.188-1.94 4.716-1.325 9.775-.552 13.297 1.543.392.232.547.533.547.953-.005.522-.411.944-.938.944zm-13.627-7.485c4.523-1.324 11.368-.906 15.624 1.578 1.091.629.662 2.22-.498 2.22l-.001-.001c-.252 0-.407-.063-.625-.189-3.443-2.056-9.604-2.549-13.59-1.436-.175.048-.393.125-.625.125-.639 0-1.127-.499-1.127-1.142 0-.657.407-1.029.842-1.155z"
 					/>
@@ -675,7 +686,12 @@ import { toast } from '@/utils/toasts'
 import { socket } from '@/utils/socket'
 import { flags } from '@/utils/flags'
 
+import BaseAccordion from '@/components/globals/BaseAccordion.vue'
+
 export default {
+	components: {
+		BaseAccordion
+	},
 	data() {
 		return {
 			flags,

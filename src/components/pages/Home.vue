@@ -11,7 +11,7 @@
 
 		<section v-if="playlists.length" class="py-6 border-0 border-t border-solid border-grayscale-500">
 			<h2 class="mb-6 text-3xl">{{ $t('home.sections.popularPlaylists') }}</h2>
-			<div class="release_grid">
+			<div class="release-grid">
 				<router-link
 					tag="div"
 					v-for="release in playlists"
@@ -37,7 +37,7 @@
 
 		<section v-if="albums.length" class="py-6 border-0 border-t border-solid border-grayscale-500">
 			<h2 class="mb-6 text-3xl">{{ $t('home.sections.popularAlbums') }}</h2>
-			<div class="release_grid">
+			<div class="release-grid">
 				<router-link
 					tag="div"
 					v-for="release in albums"

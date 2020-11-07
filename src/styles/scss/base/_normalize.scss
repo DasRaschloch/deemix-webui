@@ -57,6 +57,10 @@ button,
 	cursor: pointer;
 }
 
+p {
+	word-break: break-word;
+}
+
 *,
 ::before,
 ::after {

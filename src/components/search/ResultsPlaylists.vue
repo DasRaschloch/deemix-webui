@@ -6,7 +6,7 @@
 			<div v-if="viewInfo.data.length === 0">
 				<h1>{{ $t('search.noResultsPlaylist') }}</h1>
 			</div>
-			<div class="release_grid" v-else>
+			<div class="release-grid" v-else>
 				<div class="w-40 release" v-for="playlist in viewInfo.data.slice(0, itemsToShow)" :key="playlist.playlistID">
 					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Playlist', params: { id: playlist.playlistID } }">
 						<CoverContainer

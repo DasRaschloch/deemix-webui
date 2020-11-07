@@ -15,7 +15,9 @@
 			<li v-html="$t('about.usesLibrary')"></li>
 			<li v-html="$t('about.thanks')"></li>
 			<i18n path="about.upToDate.text" tag="li">
-				<a place="newsChannel" href="https://t.me/RemixDevNews" target="_blank">{{ $t('about.upToDate.newsChannel') }}</a>
+				<a place="newsChannel" href="https://t.me/RemixDevNews" target="_blank">{{
+					$t('about.upToDate.newsChannel')
+				}}</a>
 			</i18n>
 		</ul>
 
@@ -24,14 +26,14 @@
 			<!-- <li>
 				<a href="https://deemix.app" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li> -->
-			<li>
-				<a href="https://git.fuwafuwa.moe/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
-			</li>
-			<li>
-				<a href="https://git.fuwafuwa.moe/RemixDev/deemix-webui" target="_blank">
+			<!-- <li>
+				<a href="" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
+			</li> -->
+			<!-- <li>
+				<a href="" target="_blank">
 					💻 {{ $t('about.officialWebuiRepo') }}
 				</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>
 			</li>
@@ -48,7 +50,9 @@
 		</h2>
 		<ul>
 			<i18n path="about.questions.text" tag="li">
-				<a place="subreddit" href="https://www.reddit.com/r/deemix" target="_blank">{{ $t('about.questions.subreddit') }}</a>
+				<a place="subreddit" href="https://www.reddit.com/r/deemix" target="_blank">{{
+					$t('about.questions.subreddit')
+				}}</a>
 			</i18n>
 			<li>
 				{{ $t('about.beforeReporting') }}
@@ -68,13 +72,13 @@
 		</h2>
 		<ul>
 			<i18n path="about.newUI.text" tag="li">
-				<a place="repo" href="https://git.fuwafuwa.moe/RemixDev/deemix" target="_blank">{{ $t('about.newUI.repo') }}</a>
+				<span place="repo">{{ $t('about.newUI.repo') }}</span>
 			</i18n>
 			<li>
 				{{ $t('about.acceptFeatures') }}
 			</li>
 			<i18n path="about.contributeWebUI.text" tag="li">
-				<a place="webui" href="https://git.fuwafuwa.moe/RemixDev/deemix-webui" target="_blank">{{ $t('about.contributeWebUI.webui') }}</a>
+				<span place="webui">{{ $t('about.contributeWebUI.webui') }}</span>
 			</i18n>
 			<li>
 				{{ $t('about.otherLanguages') }}
@@ -119,7 +123,9 @@
 			</a>
 		</p>
 		<i18n path="about.lincensedUnder.text" tag="p">
-			<a place="gpl3" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">{{ $t('about.lincensedUnder.gpl3') }}</a>
+			<a place="gpl3" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">{{
+				$t('about.lincensedUnder.gpl3')
+			}}</a>
 		</i18n>
 	</div>
 </template>

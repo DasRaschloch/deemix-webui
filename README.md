@@ -3,12 +3,6 @@
 This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that.
 If you are a web developer and want to contribute to this project, please read the [COMPILE-UI](COMPILE-UI.md) file.
 
-## Related projects
-
-- [deemix](https://git.rip/RemixDev/deemix)
-- [deemix-pyweb](https://git.rip/RemixDev/deemix-pyweb)
-- [deemix-tools](https://git.rip/RemixDev/deemix-tools)
-
 # "Hidden" features
 
 - `CTRL+SHIFT+Backspace` deletes all the search bar content

@@ -35,7 +35,8 @@
 					<i class="material-icons">assignment</i>
 				</button>
 			</div>
-			<a href="https://git.fuwafuwa.moe/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank">
+			<!-- <a href="https://git.fuwafuwa.moe/RemixDev/deemix/wiki/Getting-your-own-ARL" target="_blank"> -->
+			<a href="#">
 				{{ $t('settings.login.arl.question') }}
 			</a>
 			<a id="settings_btn_applogin" v-if="clientMode" href="#" @click="appLogin">
@@ -605,7 +606,8 @@
 				</svg>
 				{{ $t('settings.spotify.title') }}
 			</h3>
-			<a href="https://git.fuwafuwa.moe/RemixDev/deemix/wiki/Enabling-Spotify-Features" target="_blank">
+			<!-- <a href="https://git.fuwafuwa.moe/RemixDev/deemix/wiki/Enabling-Spotify-Features" target="_blank"> -->
+			<a href="#">
 				{{ $t('settings.spotify.question') }}
 			</a>
 

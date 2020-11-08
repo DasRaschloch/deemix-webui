@@ -45,7 +45,8 @@ const it = {
 	},
 	about: {
 		updates: {
-			currentVersion: 'Versione corrente',
+			currentVersion: 'Versione attuale',
+			currentWebuiVersion: 'Versione WebUI attuale',
 			versionNotAvailable: 'N/A',
 			updateAvailable: `Non stai usando l'ultima versione disponibile: {version}`,
 			deemixVersion: 'Versione libreria deemix'

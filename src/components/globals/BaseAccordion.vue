@@ -1,13 +1,12 @@
 <template functional>
-	<details :class="{ 'with-arrow': props.withArrow }">
-		<summary class="mb-6 cursor-pointer">
+	<details :class="[data.staticClass, { 'with-arrow': props.withArrow }]">
+		<summary class="cursor-pointer">
 			<slot name="title">Setting</slot>
 		</summary>
 
-		<slot name="default">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos distinctio sint culpa, recusandae vel fugit esse hic
-			tenetur autem. Debitis.
-		</slot>
+		<div class="my-5 space-y-5">
+			<slot name="default"></slot>
+		</div>
 	</details>
 </template>
 
@@ -18,6 +17,7 @@ details > summary::-webkit-details-marker {
 
 details.with-arrow > summary::-webkit-details-marker {
 	display: initial;
+	vertical-align: super;
 }
 </style>
 
@@ -26,7 +26,7 @@ export default {
 	props: {
 		withArrow: {
 			type: Boolean,
-			default: false
+			default: true
 		}
 	}
 }

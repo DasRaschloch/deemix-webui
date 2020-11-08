@@ -7,6 +7,7 @@ import vue from 'rollup-plugin-vue'
 import svg from 'rollup-plugin-svg'
 import postcss from 'rollup-plugin-postcss'
 import esbuild from 'rollup-plugin-esbuild'
+import { version } from './package.json'
 
 const isProduction = !process.env.ROLLUP_WATCH
 process.env.NODE_ENV = isProduction ? 'production' : 'development'
@@ -39,7 +40,8 @@ export default {
 		}),
 		// Needed for Vue imports
 		replace({
-			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+			__VER__: JSON.stringify(version)
 		}),
 		resolve(), // Tells Rollup how to find imported modules in node_modules
 		commonjs(), // Converts imported modules to ES modules, if necessary

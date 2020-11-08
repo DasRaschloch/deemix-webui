@@ -1,8 +1,12 @@
 <template>
-	<div id="about_tab" ref="root">
+	<div id="about_tab">
 		<h1 class="mb-8 text-5xl capitalize">{{ $t('sidebar.about') }}</h1>
 
 		<ul>
+			<li>
+				{{ $t('about.updates.currentWebuiVersion') }}:
+				<span>{{ __VER__ || $t('about.updates.versionNotAvailable') }}</span>
+			</li>
 			<li>
 				{{ $t('about.updates.currentVersion') }}:
 				<span>{{ current || $t('about.updates.versionNotAvailable') }}</span>

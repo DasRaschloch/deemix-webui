@@ -1,20 +1,12 @@
 .settings-group {
-	@apply flex flex-col justify-center pt-5 pb-5;
-	border-top: 1px solid theme('colors.grayscale.500'); /* Need less opacity */
-
-	> * {
-		margin-bottom: 1rem;
-	}
+	@apply border-t border-grayscale-500;
 }
 
 .settings-group__header {
-	display: inline-flex;
-	align-items: center;
-	margin-bottom: 1.5625rem;
-	font-size: 1.5rem;
+	@apply inline-flex items-center py-8 text-2xl;
 
 	i.material-icons {
-		margin-right: 15px;
+		@apply mr-4;
 	}
 }
 
@@ -38,7 +30,7 @@
 
 	&__half > *,
 	&__third > * {
-		margin-bottom: 15px;
+		@apply mb-4;
 	}
 }
 
@@ -50,7 +42,7 @@
 		cursor: pointer;
 	}
 
-	.checkbox_text {
+	.checkbox-text {
 		margin-left: 10px;
 		cursor: pointer;
 		user-select: none;
@@ -58,14 +50,8 @@
 }
 
 /* Input group */
-.input_group {
-	margin-bottom: 25px;
-
-	.input_group_text {
-		margin-bottom: 7px;
-	}
-
-	.with-checkbox + & {
-		margin-top: 10px;
+.input-group {
+	.input-group-text {
+		@apply mb-2;
 	}
 }

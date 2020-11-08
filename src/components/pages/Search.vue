@@ -1,5 +1,5 @@
 <template>
-	<div id="search_tab" ref="root">
+	<div id="search_tab">
 		<div v-show="!showSearchTab">
 			<h2>{{ $t('search.startSearching') }}</h2>
 			<p>{{ $t('search.description') }}</p>

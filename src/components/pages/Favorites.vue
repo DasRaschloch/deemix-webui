@@ -15,11 +15,11 @@
 
 		<ul class="section-tabs">
 			<li
+				v-for="tab in tabs"
+				:key="tab"
 				class="section-tabs__tab favorites_tablinks"
 				:class="{ active: activeTab === tab }"
 				@click="activeTab = tab"
-				v-for="tab in tabs"
-				:key="tab"
 			>
 				{{ $tc(`globals.listTabs.${tab}`, 2) }}
 			</li>

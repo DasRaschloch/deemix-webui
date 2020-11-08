@@ -1,5 +1,5 @@
 <template>
-	<div id="analyzer_tab" class="image-header" ref="root">
+	<div id="analyzer_tab" class="image-header">
 		<h1 class="mb-8 text-5xl capitalize">{{ $t('sidebar.linkAnalyzer') }}</h1>
 
 		<div v-if="link === ''">
@@ -68,9 +68,9 @@
 					@contextmenu.prevent="openQualityModal"
 					@click.stop="addToQueue"
 					:data-link="link"
-					class="rounded-full bg-primary text-grayscale-870 cursor-pointer w-16 h-16 grid place-items-center ml-auto"
+					class="grid w-16 h-16 ml-auto rounded-full cursor-pointer bg-primary text-grayscale-870 place-items-center"
 				>
-					<i class="material-icons text-4xl" :title="$t('globals.download_hint')">get_app</i>
+					<i class="text-4xl material-icons" :title="$t('globals.download_hint')">get_app</i>
 				</div>
 			</header>
 			<table class="table">

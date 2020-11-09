@@ -46,6 +46,7 @@ const fr = {
 	about: {
 		updates: {
 			currentVersion: 'Version Actuelle',
+			currentWebuiVersion: 'Version Actuelle De La WebUI',
 			versionNotAvailable: 'N/A',
 			updateAvailable: "Vous n'utilisez pas la dernière version disponible : {version}",
 			deemixVersion: 'Version de la bibliothèque deemix'

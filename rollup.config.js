@@ -6,7 +6,7 @@ import analyze from 'rollup-plugin-analyzer'
 import vue from 'rollup-plugin-vue'
 import svg from 'rollup-plugin-svg'
 import postcss from 'rollup-plugin-postcss'
-import esbuild from 'rollup-plugin-esbuild'
+import { terser } from 'rollup-plugin-terser'
 import { version } from './package.json'
 
 const isProduction = !process.env.ROLLUP_WATCH
@@ -48,11 +48,7 @@ export default {
 		svg(),
 		vue(),
 		postcss(),
-		esbuild({
-			sourceMap: false,
-			minify: isProduction,
-			target: 'es2015'
-		}),
+		isProduction && terser(), // Minifies only in production
 		isProduction && analyze({ showExports: true, limit: 15 }) // Show useful information about bundles, only in production
 	]
 }

@@ -14,12 +14,12 @@ $table-border-radius: 3px;
 	}
 
 	tr {
-		background: var(--table-bg);
 		transition: background-color 175ms ease-in-out;
+		background: var(--table-bg);
 
 		&:nth-child(even) {
-			background: var(--table-zebra);
 			transition: background-color 175ms ease-in-out;
+			background: var(--table-zebra);
 		}
 
 		&:not(:last-child) {
@@ -40,9 +40,9 @@ $table-border-radius: 3px;
 		.sort-asc,
 		.sort-desc {
 			&::after {
-				font-size: 0.7em;
 				padding-left: 3px;
 				line-height: 0.7em;
+				font-size: 0.7em;
 			}
 		}
 
@@ -114,8 +114,8 @@ $table-border-radius: 3px;
 		}
 
 		th {
-			height: 45px;
 			padding: $vertical-separator 10px;
+			height: 45px;
 
 			&:first-child {
 				padding: $vertical-separator 10px $vertical-separator 20px;

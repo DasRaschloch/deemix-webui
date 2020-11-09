@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
 	future: {
 		removeDeprecatedGapUtilities: true,
@@ -21,7 +23,6 @@ module.exports = {
 		extend: {
 			colors: {
 				grayscale: {
-					80: 'hsl(0, 0%, 8%)', // Remove maybe
 					100: 'hsl(0, 0%, 10%)',
 					200: 'hsl(0, 0%, 20%)',
 					300: 'hsl(0, 0%, 30%)',
@@ -44,6 +45,9 @@ module.exports = {
 				panels: {
 					bg: 'var(--panels-background)'
 				}
+			},
+			fontFamily: {
+				sans: ['Open Sans', ...defaultTheme.fontFamily.sans]
 			}
 		}
 	},

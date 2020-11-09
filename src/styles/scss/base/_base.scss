@@ -1,4 +1,6 @@
 :root {
+	font-size: 16px;
+
 	--main-scroll: theme('colors.grayscale.300');
 	--panels-scroll: hsl(180, 2%, 17%);
 	--toast-background: hsla(240, 12%, 16%, 0.85);
@@ -41,18 +43,4 @@
 	--table-bg: hsl(261, 74%, 6%);
 	--table-zebra: hsl(257, 61%, 10%);
 	--table-highlight: hsl(257, 66%, 27%);
-}
-
-html {
-	height: 100vh;
-}
-
-body {
-	margin: 0px;
-	width: 100%;
-	height: 100%;
-	font-family: 'Open Sans', 'sans-serif';
-	overflow: hidden;
-	background: var(--main-background);
-	color: var(--foreground);
 }

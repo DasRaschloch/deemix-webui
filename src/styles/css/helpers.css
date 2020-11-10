@@ -16,3 +16,17 @@
 	/* ? Why? */
 	background-color: var(--secondary-background);
 }
+
+.release {
+	display: inline-block;
+	width: 156px;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

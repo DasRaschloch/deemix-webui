@@ -24,7 +24,8 @@ export function isValidURL(text) {
 		if (
 			lowerCaseText.indexOf('deezer.com') >= 0 ||
 			lowerCaseText.indexOf('deezer.page.link') >= 0 ||
-			lowerCaseText.indexOf('open.spotify.com') >= 0
+			lowerCaseText.indexOf('open.spotify.com') >= 0 ||
+			lowerCaseText.indexOf('link.tospotify.com') >= 0
 		) {
 			return true
 		}

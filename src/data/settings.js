@@ -33,7 +33,7 @@ export function getInitialPreviewVolume() {
 	let volume = parseInt(localStorage.getItem('previewVolume'))
 
 	if (isNaN(volume)) {
-		volume = 80
+		volume = 80 // Default
 		localStorage.setItem('previewVolume', volume.toString())
 	}
 

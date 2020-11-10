@@ -48,18 +48,6 @@
 				></div>
 			</div>
 		</span>
-		<div id="network-status" :class="{ online: appOnline, offline: !appOnline }">
-			<i v-if="appOnline" class="material-icons">wifi</i>
-			<i v-else class="material-icons">
-				<!-- wifi_off icon not working, maybe need to include it? -->
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-					<path d="M24 .01c0-.01 0-.01 0 0L0 0v24h24V.01zM0 0h24v24H0V0zm0 0h24v24H0V0z" fill="none" />
-					<path
-						d="M22.99 9C19.15 5.16 13.8 3.76 8.84 4.78l2.52 2.52c3.47-.17 6.99 1.05 9.63 3.7l2-2zm-4 4c-1.29-1.29-2.84-2.13-4.49-2.56l3.53 3.53.96-.97zM2 3.05L5.07 6.1C3.6 6.82 2.22 7.78 1 9l1.99 2c1.24-1.24 2.67-2.16 4.2-2.77l2.24 2.24C7.81 10.89 6.27 11.73 5 13v.01L6.99 15c1.36-1.36 3.14-2.04 4.92-2.06L18.98 20l1.27-1.26L3.29 1.79 2 3.05zM9 17l3 3 3-3c-1.65-1.66-4.34-1.66-6 0z"
-					/>
-				</svg>
-			</i>
-		</div>
 	</aside>
 </template>
 
@@ -76,25 +64,6 @@
 #sidebar.slim #theme_togglers {
 	display: inline-grid;
 	grid-gap: 8px;
-}
-
-#network-status {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: relative;
-	margin-top: auto;
-	bottom: 0;
-}
-
-#network-status.online i.material-icons {
-	color: hsl(150, 76%, 34%);
-}
-
-#network-status.offline i.material-icons svg {
-	fill: red;
-	width: 1em;
-	height: 1em;
 }
 
 #update-notification {
@@ -131,7 +100,6 @@ import { mapGetters } from 'vuex'
 export default {
 	data() {
 		return {
-			appOnline: null,
 			activeTheme: 'light',
 			themes: ['purple', 'dark', 'light'],
 			activeTablink: 'home',
@@ -202,17 +170,6 @@ export default {
 		})
 	},
 	mounted() {
-		/* === Online status handling === */
-		this.appOnline = navigator.onLine
-
-		window.addEventListener('online', () => {
-			this.appOnline = true
-		})
-
-		window.addEventListener('offline', () => {
-			this.appOnline = false
-		})
-
 		/* === Current theme handling === */
 		this.activeTheme = localStorage.getItem('selectedTheme') || 'dark'
 
@@ -228,11 +185,6 @@ export default {
 		socket.on('updateAvailable', () => {
 			this.updateAvailable = true
 		})
-
-		// Check if download tab has slim entries
-		if ('true' === localStorage.getItem('slimSidebar')) {
-			this.$refs.sidebar.classList.add('slim')
-		}
 	},
 	methods: {
 		changeTheme(newTheme) {

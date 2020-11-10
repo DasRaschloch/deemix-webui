@@ -1,5 +1,3 @@
-import { getInitialPreviewVolume, checkInitialSlimDownloads, checkInitialSlimSidebar } from '@/data/settings'
-
 /**
  * @typedef		{object}	AppInfo
  * @property	{string}	currentCommit
@@ -10,6 +8,8 @@ import { getInitialPreviewVolume, checkInitialSlimDownloads, checkInitialSlimSid
  * @property	{boolean}	hasSlimDownloads
  * @property	{boolean}	hasSlimSidebar
  */
+
+import { getInitialPreviewVolume, checkInitialSlimDownloads, checkInitialSlimSidebar } from '@/data/settings'
 
 /**
  * @returns	{AppInfo}

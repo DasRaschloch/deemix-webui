@@ -832,12 +832,14 @@ export default {
 		this.defaultSettings = defaultSettingsData
 		this.initSettings(settingsData, spotifyCredentials)
 
+		// TODO Move in store
 		let storedAccountNum = localStorage.getItem('accountNum')
 
 		if (storedAccountNum) {
 			this.accountNum = storedAccountNum
 		}
 
+		// TODO Move in store
 		let spotifyUser = localStorage.getItem('spotifyUser')
 
 		if (spotifyUser) {

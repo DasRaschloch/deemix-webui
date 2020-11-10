@@ -44,6 +44,10 @@ const en = {
 		}
 	},
 	about: {
+		appStatus: {
+			online: 'app online',
+			offline: 'app offline'
+		},
 		updates: {
 			currentVersion: 'Current Version',
 			currentWebuiVersion: 'Current WebUI Version',

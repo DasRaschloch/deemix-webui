@@ -2,6 +2,12 @@
 	<div id="about_tab">
 		<h1 class="mb-8 text-5xl capitalize">{{ $t('sidebar.about') }}</h1>
 
+		<div class="inline-flex px-4 py-2 mb-8 rounded-full" :class="{ 'bg-green-500': isOnline, 'bg-red-500': !isOnline }">
+			<span class="text-sm uppercase-first-letter">
+				{{ $t(`about.appStatus.${isOnline ? 'online' : 'offline'}`) }}
+			</span>
+		</div>
+
 		<ul>
 			<li>
 				{{ $t('about.updates.currentWebuiVersion') }}:
@@ -28,7 +34,7 @@
 		<h2>{{ $t('about.titles.usefulLinks') }}</h2>
 		<ul class="no-dots">
 			<!-- <li>
-				<a href="https://deemix.app" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
+				<a href="" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li> -->
 			<!-- <li>
 				<a href="" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
@@ -225,37 +231,44 @@ ul {
 </style>
 
 <script>
-import { socket } from '@/utils/socket'
+import { defineComponent, ref, reactive, toRefs, onMounted, computed } from '@vue/composition-api'
+
+import { useOnline } from '@/use/online'
+
 import paypal from '@/assets/paypal.svg'
 import ethereum from '@/assets/ethereum.svg'
-import { mapGetters } from 'vuex'
 
-export default {
-	data() {
-		return {
-			paypal,
-			ethereum,
+export default defineComponent({
+	setup(props, ctx) {
+		const state = reactive({
 			current: null,
 			latest: null,
 			updateAvailable: false,
 			deemixVersion: null
-		}
-	},
-	computed: {
-		...mapGetters(['getAppInfo'])
-	},
-	methods: {
-		initUpdate(data) {
-			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = data
+		})
+		const { isOnline } = useOnline()
 
-			this.current = currentCommit
-			this.latest = latestCommit
-			this.updateAvailable = updateAvailable
-			this.deemixVersion = deemixVersion
+		function initUpdate(appInfo) {
+			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = appInfo
+
+			state.current = currentCommit
+			state.latest = latestCommit
+			state.updateAvailable = updateAvailable
+			state.deemixVersion = deemixVersion
 		}
-	},
-	mounted() {
-		this.initUpdate(this.getAppInfo)
+
+		const getAppInfo = computed(() => ctx.root.$store.getters.getAppInfo)
+
+		onMounted(() => {
+			initUpdate(getAppInfo.value)
+		})
+
+		return {
+			...toRefs(state),
+			paypal,
+			ethereum,
+			isOnline
+		}
 	}
-}
+})
 </script>

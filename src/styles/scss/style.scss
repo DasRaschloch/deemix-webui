@@ -3,12 +3,8 @@
 @import '~tailwindcss/utilities';
 
 @import './base/base';
-@import './base/normalize';
 @import './base/animations';
 
-@import './globals/globals';
 @import './globals/tables';
 
-@import './tabs/release-grid';
-@import './tabs/settings-tab';
 @import './tabs/tabs';

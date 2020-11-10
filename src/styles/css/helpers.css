@@ -1,7 +1,18 @@
 .changing-theme {
+	/* Applied to ALL elements when changing theme */
 	transition: all 200ms ease-in-out;
 }
 
 [v-cloak] {
+	/* Attribute removed after that a component finished loading */
 	display: none;
+}
+
+.clickable {
+	cursor: pointer !important;
+}
+
+.coverart {
+	/* ? Why? */
+	background-color: var(--secondary-background);
 }

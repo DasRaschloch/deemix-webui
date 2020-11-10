@@ -49,13 +49,20 @@
 
 	/* Image header */
 	.image-header header {
-		@apply bg-cover pt-56 px-6 pb-2 rounded-t-lg;
+		@apply px-6 pt-56 pb-2 bg-cover rounded-t-lg;
 
 		background-position: 0% 35%;
 	}
 
 	/* Fixed footer */
 	.fixed-footer footer {
-		@apply sticky items-center flex flex-row justify-end bottom-0 h-16 w-full mt-6;
+		@apply sticky bottom-0 flex flex-row items-center justify-end w-full h-16 mt-6;
+	}
+
+	/* Release grid */
+	.release-grid {
+		@apply grid gap-4;
+
+		grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
 	}
 }

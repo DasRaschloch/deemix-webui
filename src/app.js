@@ -9,6 +9,8 @@ import '@/styles/vendor/material-icons.css'
 import '@/styles/vendor/OpenSans.css'
 
 import '@/styles/scss/style.scss'
+import '@/styles/css/normalize.css'
+import '@/styles/css/base.css'
 import '@/styles/css/components.css'
 import '@/styles/css/helpers.css'
 import '@/styles/css/typography.css'

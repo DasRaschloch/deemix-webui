@@ -130,7 +130,7 @@
 				</h3>
 			</template>
 
-			<div class="settings-container">
+			<div class="space-x-5 settings-container">
 				<div class="settings-container__third">
 					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.createPlaylistFolder" />
@@ -188,7 +188,7 @@
 				</h3>
 			</template>
 
-			<div class="settings-container">
+			<div class="space-x-5 settings-container">
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.padTracks" />
@@ -286,7 +286,7 @@
 				</h3>
 			</template>
 
-			<div class="settings-container">
+			<div class="space-x-5 settings-container">
 				<div class="settings-container__half">
 					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.tags.title" />
@@ -427,7 +427,7 @@
 				</select>
 			</div>
 
-			<div class="settings-container">
+			<div class="space-x-5 settings-container">
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with-checkbox">
 						<input type="checkbox" v-model="settings.fallbackBitrate" />
@@ -663,7 +663,7 @@
 	</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #logged_in_info {
 	height: 250px;
 	display: flex;
@@ -687,10 +687,73 @@
 		}
 	}
 
-	svg {
+	&::v-deep svg {
 		width: 40px !important;
 		height: 40px !important;
 		filter: brightness(0.5);
+	}
+}
+
+.settings-group {
+	border-top-width: 1px;
+	border-color: hsl(0, 0%, 50%);
+}
+
+.settings-group__header {
+	display: inline-flex;
+	align-items: center;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	font-size: 1.5rem;
+
+	i.material-icons {
+		margin-right: 1rem;
+	}
+}
+
+.settings-container {
+	display: flex;
+
+	&__half {
+		width: 50%;
+	}
+
+	&__third {
+		width: 33%;
+
+		&--only-checkbox {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			justify-content: center;
+		}
+	}
+
+	&__half > *,
+	&__third > * {
+		margin-bottom: 1rem;
+	}
+}
+
+.with-checkbox {
+	display: flex;
+	align-items: center;
+
+	[type='checkbox'] {
+		cursor: pointer;
+	}
+
+	.checkbox-text {
+		margin-left: 10px;
+		cursor: pointer;
+		user-select: none;
+	}
+}
+
+/* Input group */
+.input-group {
+	.input-group-text {
+		margin-bottom: 0.5rem;
 	}
 }
 </style>

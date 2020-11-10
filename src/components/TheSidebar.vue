@@ -1,18 +1,16 @@
 <template>
 	<aside
 		id="sidebar"
-		class="top-0 left-0 flex flex-col w-64 h-screen bg-panels-bg text-foreground"
-		:class="{ slim: isSlim }"
+		class="top-0 left-0 flex flex-col h-screen bg-panels-bg text-foreground"
+		:class="{ 'w-12': isSlim, 'w-64': !isSlim }"
 		role="navigation"
 		aria-label="sidebar"
-		ref="sidebar"
 	>
 		<router-link
 			tag="a"
 			v-for="link in links"
-			:key="link.id"
+			:key="link.name"
 			class="relative flex items-center h-16 no-underline group main_tablinks hover:bg-background-main text-foreground"
-			:id="link.id"
 			:class="{ 'bg-background-main': activeTablink === link.name }"
 			:aria-label="link.ariaLabel"
 			:to="{ name: link.routerName }"
@@ -24,50 +22,49 @@
 			>
 				{{ link.icon }}
 			</i>
-			<span class="ml-5 overflow-hidden capitalize whitespace-no-wrap main_tablinks_text" style="letter-spacing: 1.3px">
+			<span
+				class="ml-5 overflow-hidden capitalize whitespace-no-wrap main-tablinks-text"
+				:class="{ hidden: isSlim }"
+				style="letter-spacing: 1.3px"
+			>
 				{{ $t(link.label) }}
 			</span>
 			<span
 				v-if="link.name === 'about' && updateAvailable"
 				id="update-notification"
-				class="w-3 h-3 bg-red-600 rounded-full"
+				class="absolute w-3 h-3 bg-red-600 rounded-full"
 			></span>
 		</router-link>
 
-		<span id="theme_selector" class="flex h-12 mt-5" role="link" aria-label="theme selector">
+		<span
+			id="theme_selector"
+			class="flex h-12 mt-5"
+			role="link"
+			aria-label="theme selector"
+			:class="{ 'inline-grid gap-2': isSlim }"
+		>
 			<i class="p-2 text-3xl transition-all duration-500 cursor-default material-icons side_icon side_icon--theme">
 				brush
 			</i>
-			<div id="theme_togglers" class="relative flex items-center w-full justify-evenly">
+			<div
+				id="theme_togglers"
+				class="relative flex items-center w-full justify-evenly"
+				:class="{ 'inline-grid gap-2': isSlim }"
+			>
 				<div
-					v-for="theme of themes"
+					v-for="theme of THEMES"
 					:key="theme"
-					class="w-6 h-6 border rounded-full cursor-pointer theme_toggler border-grayscale-500"
-					:class="[{ 'theme_toggler--active': activeTheme === theme }, `theme_toggler--${theme}`]"
-					@click="changeTheme(theme)"
-				></div>
+					class="w-6 h-6 border rounded-full cursor-pointer theme_toggler border-grayscale-500 gap"
+					:class="[{ 'theme_toggler--active': currentTheme === theme }, `theme_toggler--${theme}`]"
+					@click="currentTheme = theme"
+				/>
 			</div>
 		</span>
 	</aside>
 </template>
 
 <style lang="scss" scoped>
-#sidebar.slim {
-	width: 46px;
-}
-
-#sidebar.slim .main_tablinks_text {
-	display: none;
-}
-
-#sidebar.slim #theme_selector,
-#sidebar.slim #theme_togglers {
-	display: inline-grid;
-	grid-gap: 8px;
-}
-
 #update-notification {
-	position: absolute;
 	left: 30px;
 	top: 12px;
 }
@@ -94,121 +91,40 @@
 </style>
 
 <script>
-import { socket } from '@/utils/socket'
-import { mapGetters } from 'vuex'
+import { computed, defineComponent, reactive, toRefs } from '@vue/composition-api'
 
-export default {
-	data() {
-		return {
-			activeTheme: 'light',
-			themes: ['purple', 'dark', 'light'],
+import { links } from '@/data/sidebar'
+import { socket } from '@/utils/socket'
+import { useTheme } from '@/use/theme'
+
+export default defineComponent({
+	setup(props, ctx) {
+		const state = reactive({
 			activeTablink: 'home',
 			updateAvailable: false,
-			links: [
-				{
-					id: 'main_home_tablink',
-					name: 'home',
-					ariaLabel: 'home',
-					routerName: 'Home',
-					icon: 'home',
-					label: 'sidebar.home'
-				},
-				{
-					id: 'main_search_tablink',
-					name: 'search',
-					ariaLabel: 'search',
-					routerName: 'Search',
-					icon: 'search',
-					label: 'sidebar.search'
-				},
-				{
-					id: 'main_charts_tablink',
-					name: 'charts',
-					ariaLabel: 'charts',
-					routerName: 'Charts',
-					icon: 'show_chart',
-					label: 'sidebar.charts'
-				},
-				{
-					id: 'main_favorites_tablink',
-					name: 'favorites',
-					ariaLabel: 'favorites',
-					routerName: 'Favorites',
-					icon: 'star',
-					label: 'sidebar.favorites'
-				},
-				{
-					id: 'main_analyzer_tablink',
-					name: 'analyzer',
-					ariaLabel: 'link analyzer',
-					routerName: 'Link Analyzer',
-					icon: 'link',
-					label: 'sidebar.linkAnalyzer'
-				},
-				{
-					id: 'main_settings_tablink',
-					name: 'settings',
-					ariaLabel: 'settings',
-					routerName: 'Settings',
-					icon: 'settings',
-					label: 'sidebar.settings'
-				},
-				{
-					id: 'main_about_tablink',
-					name: 'about',
-					ariaLabel: 'info',
-					routerName: 'About',
-					icon: 'info',
-					label: 'sidebar.about'
-				}
-			]
-		}
-	},
-	computed: {
-		...mapGetters({
-			isSlim: 'getSlimSidebar'
+			links
 		})
-	},
-	mounted() {
-		/* === Current theme handling === */
-		this.activeTheme = localStorage.getItem('selectedTheme') || 'dark'
-
-		this.$router.afterEach((to, from) => {
-			const linkInSidebar = this.links.find(link => link.routerName === to.name)
-
-			if (!linkInSidebar) return
-
-			this.activeTablink = linkInSidebar.name
-		})
+		const { THEMES, currentTheme } = useTheme()
 
 		/* === Add update notification near info === */
 		socket.on('updateAvailable', () => {
-			this.updateAvailable = true
+			state.updateAvailable = true
 		})
-	},
-	methods: {
-		changeTheme(newTheme) {
-			if (newTheme === this.activeTheme) return
 
-			this.activeTheme = newTheme
-			document.documentElement.setAttribute('data-theme', newTheme)
-			localStorage.setItem('selectedTheme', newTheme)
+		ctx.root.$router.afterEach((to, from) => {
+			const linkInSidebar = state.links.find(link => link.routerName === to.name)
 
-			// Animating everything to have a smoother theme switch
-			const allElements = document.querySelectorAll('*')
+			if (!linkInSidebar) return
 
-			allElements.forEach(el => {
-				el.classList.add('changing-theme')
-			})
+			state.activeTablink = linkInSidebar.name
+		})
 
-			document.documentElement.addEventListener('transitionend', function transitionHandler() {
-				allElements.forEach(el => {
-					el.classList.remove('changing-theme')
-				})
-
-				document.documentElement.removeEventListener('transitionend', transitionHandler)
-			})
+		return {
+			...toRefs(state),
+			THEMES,
+			currentTheme,
+			isSlim: computed(() => ctx.root.$store.getters.getSlimSidebar)
 		}
 	}
-}
+})
 </script>

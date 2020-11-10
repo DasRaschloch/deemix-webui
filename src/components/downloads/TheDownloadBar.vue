@@ -1,7 +1,7 @@
 <template>
 	<section
 		id="download_tab_container"
-		class="block bg-panels-bg text-foreground h-screen"
+		class="block h-screen bg-panels-bg text-foreground"
 		:class="{ 'tab-hidden': !isExpanded, 'w-8': !isExpanded }"
 		@transitionend="$refs.container.style.transition = ''"
 		ref="container"
@@ -51,7 +51,7 @@
 			</i>
 		</div>
 
-		<div v-show="isExpanded" id="download_list" class="w-full pr-2" ref="list">
+		<div v-show="isExpanded" id="download_list" class="w-full pr-2" :class="{ slim: isSlim }" ref="list">
 			<QueueItem
 				v-for="item in queueList"
 				:queue-item="item"
@@ -140,7 +140,8 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			clientMode: 'getClientMode'
+			clientMode: 'getClientMode',
+			isSlim: 'getSlimDownloads'
 		})
 	},
 	created() {

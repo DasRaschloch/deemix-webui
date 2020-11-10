@@ -60,8 +60,8 @@
 		<div class="settings-group">
 			<h3 class="settings-group__header"><i class="material-icons">language</i>{{ $t('settings.languages') }}</h3>
 
-			<div class="my-5">
-				<span
+			<ul class="my-5">
+				<li
 					v-for="locale in locales"
 					:key="locale"
 					class="inline-flex items-center locale-flag"
@@ -70,7 +70,7 @@
 					v-html="flags[locale]"
 					:title="locale"
 				/>
-			</div>
+			</ul>
 		</div>
 
 		<BaseAccordion class="settings-group">
@@ -82,11 +82,11 @@
 			</template>
 
 			<label class="with-checkbox">
-				<input type="checkbox" v-model="changeSlimDownloads" />
+				<input type="checkbox" v-model="modelSlimDownloads" />
 				<span class="checkbox-text">{{ $t('settings.appearance.slimDownloadTab') }}</span>
 			</label>
 			<label class="mb-4 with-checkbox">
-				<input type="checkbox" v-model="changeSlimSidebar" />
+				<input type="checkbox" v-model="modelSlimSidebar" />
 				<span class="checkbox-text">{{ $t('settings.appearance.slimSidebar') }}</span>
 			</label>
 		</BaseAccordion>
@@ -780,8 +780,6 @@ export default {
 			defaultSettings: {},
 			lastUser: '',
 			spotifyUser: '',
-			slimDownloads: false,
-			slimSidebar: false,
 			accountNum: 0,
 			accounts: []
 		}
@@ -792,8 +790,13 @@ export default {
 			user: 'getUser',
 			isLoggedIn: 'isLoggedIn',
 			clientMode: 'getClientMode',
-			previewVolume: 'getPreviewVolume'
+			previewVolume: 'getPreviewVolume',
+			hasSlimDownloads: 'getSlimDownloads',
+			hasSlimSidebar: 'getSlimSidebar'
 		}),
+		needToWait() {
+			return Object.keys(this.getSettings).length === 0
+		},
 		modelVolume: {
 			get() {
 				return this.previewVolume
@@ -802,31 +805,20 @@ export default {
 				this.setPreviewVolume(value)
 			}, 20)
 		},
-		needToWait() {
-			return Object.keys(this.getSettings).length === 0
-		},
-		changeSlimDownloads: {
+		modelSlimDownloads: {
 			get() {
-				return this.slimDownloads
+				return this.hasSlimDownloads
 			},
 			set(wantSlimDownloads) {
-				this.slimDownloads = wantSlimDownloads
-				document.getElementById('download_list').classList.toggle('slim', wantSlimDownloads)
-				localStorage.setItem('slimDownloads', wantSlimDownloads)
+				this.setSlimDownloads(wantSlimDownloads)
 			}
 		},
-		changeSlimSidebar: {
+		modelSlimSidebar: {
 			get() {
-				return this.slimSidebar
+				return this.hasSlimSidebar
 			},
 			set(wantSlimSidebar) {
-				this.slimSidebar = wantSlimSidebar
-				document.getElementById('sidebar').classList.toggle('slim', wantSlimSidebar)
-				// Moves all toast messages when the option changes
-				Array.from(document.getElementsByClassName('toastify')).forEach(toast => {
-					toast.style.transform = `translate(${wantSlimSidebar ? '3rem' : '14rem'}, 0)`
-				})
-				localStorage.setItem('slimSidebar', wantSlimSidebar)
+				this.setSlimSidebar(wantSlimSidebar)
 			}
 		},
 		pictureHref() {
@@ -854,18 +846,6 @@ export default {
 			socket.emit('update_userSpotifyPlaylists', spotifyUser)
 		}
 
-		this.changeSlimDownloads = 'true' === localStorage.getItem('slimDownloads')
-		this.changeSlimSidebar = 'true' === localStorage.getItem('slimSidebar')
-
-		let volume = parseInt(localStorage.getItem('previewVolume'))
-
-		if (isNaN(volume)) {
-			volume = 80
-			localStorage.setItem('previewVolume', volume)
-		}
-
-		this.setPreviewVolume(volume)
-
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
@@ -883,7 +863,9 @@ export default {
 	methods: {
 		...mapActions({
 			dispatchARL: 'setARL',
-			setPreviewVolume: 'setPreviewVolume'
+			setPreviewVolume: 'setPreviewVolume',
+			setSlimDownloads: 'setSlimDownloads',
+			setSlimSidebar: 'setSlimSidebar'
 		}),
 		revertSettings() {
 			this.settings = JSON.parse(JSON.stringify(this.lastSettings))
@@ -907,12 +889,6 @@ export default {
 			this.$i18n.locale = newLocale
 			this.currentLocale = newLocale
 			localStorage.setItem('locale', newLocale)
-		},
-		/**
-		 * @deprecated
-		 */
-		updateMaxVolume() {
-			localStorage.setItem('previewVolume', this.previewVolume)
 		},
 		saveSettings() {
 			this.lastSettings = JSON.parse(JSON.stringify(this.settings))

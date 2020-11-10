@@ -25,3 +25,31 @@ export function getSettingsData() {
 		})
 	}
 }
+
+/**
+ * @returns	{number}
+ */
+export function getInitialPreviewVolume() {
+	let volume = parseInt(localStorage.getItem('previewVolume'))
+
+	if (isNaN(volume)) {
+		volume = 80
+		localStorage.setItem('previewVolume', volume.toString())
+	}
+
+	return volume
+}
+
+/**
+ * @returns	{boolean}
+ */
+export function checkInitialSlimDownloads() {
+	return 'true' === localStorage.getItem('slimDownloads')
+}
+
+/**
+ * @returns	{boolean}
+ */
+export function checkInitialSlimSidebar() {
+	return 'true' === localStorage.getItem('slimSidebar')
+}

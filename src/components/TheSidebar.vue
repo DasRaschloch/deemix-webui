@@ -2,6 +2,7 @@
 	<aside
 		id="sidebar"
 		class="top-0 left-0 flex flex-col w-64 h-screen bg-panels-bg text-foreground"
+		:class="{ slim: isSlim }"
 		role="navigation"
 		aria-label="sidebar"
 		ref="sidebar"
@@ -63,13 +64,16 @@
 </template>
 
 <style lang="scss" scoped>
-#sidebar.slim{
+#sidebar.slim {
 	width: 46px;
 }
-#sidebar.slim .main_tablinks_text{
+
+#sidebar.slim .main_tablinks_text {
 	display: none;
 }
-#sidebar.slim #theme_selector, #sidebar.slim #theme_togglers{
+
+#sidebar.slim #theme_selector,
+#sidebar.slim #theme_togglers {
 	display: inline-grid;
 	grid-gap: 8px;
 }
@@ -122,6 +126,7 @@
 
 <script>
 import { socket } from '@/utils/socket'
+import { mapGetters } from 'vuex'
 
 export default {
 	data() {
@@ -190,6 +195,11 @@ export default {
 				}
 			]
 		}
+	},
+	computed: {
+		...mapGetters({
+			isSlim: 'getSlimSidebar'
+		})
 	},
 	mounted() {
 		/* === Online status handling === */

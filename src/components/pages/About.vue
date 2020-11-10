@@ -242,7 +242,7 @@ export default {
 		}
 	},
 	computed: {
-		...mapGetters(['getAboutInfo'])
+		...mapGetters(['getAppInfo'])
 	},
 	methods: {
 		initUpdate(data) {
@@ -255,7 +255,7 @@ export default {
 		}
 	},
 	mounted() {
-		this.initUpdate(this.getAboutInfo)
+		this.initUpdate(this.getAppInfo)
 	}
 }
 </script>

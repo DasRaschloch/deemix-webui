@@ -599,16 +599,8 @@
 
 			<div class="input-group">
 				<p class="input-group-text">{{ $t('settings.other.previewVolume') }}</p>
-				<input
-					type="range"
-					@change="updateMaxVolume"
-					min="0"
-					max="100"
-					step="1"
-					class="slider"
-					v-model.number="previewVolume.preview_max_volume"
-				/>
-				<span>{{ previewVolume.preview_max_volume }}%</span>
+				<input type="range" min="0" max="100" step="1" class="slider" v-model.number="modelVolume" />
+				<span>{{ previewVolume }}%</span>
 			</div>
 
 			<div class="input-group">
@@ -760,6 +752,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import { debounce } from 'lodash-es'
 
 import { getSettingsData } from '@/data/settings'
 
@@ -789,7 +782,6 @@ export default {
 			spotifyUser: '',
 			slimDownloads: false,
 			slimSidebar: false,
-			previewVolume: window.vol,
 			accountNum: 0,
 			accounts: []
 		}
@@ -799,8 +791,17 @@ export default {
 			arl: 'getARL',
 			user: 'getUser',
 			isLoggedIn: 'isLoggedIn',
-			clientMode: 'getClientMode'
+			clientMode: 'getClientMode',
+			previewVolume: 'getPreviewVolume'
 		}),
+		modelVolume: {
+			get() {
+				return this.previewVolume
+			},
+			set: debounce(function (value) {
+				this.setPreviewVolume(value)
+			}, 20)
+		},
 		needToWait() {
 			return Object.keys(this.getSettings).length === 0
 		},
@@ -863,7 +864,7 @@ export default {
 			localStorage.setItem('previewVolume', volume)
 		}
 
-		window.vol.preview_max_volume = volume
+		this.setPreviewVolume(volume)
 
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
@@ -881,7 +882,8 @@ export default {
 	},
 	methods: {
 		...mapActions({
-			dispatchARL: 'setARL'
+			dispatchARL: 'setARL',
+			setPreviewVolume: 'setPreviewVolume'
 		}),
 		revertSettings() {
 			this.settings = JSON.parse(JSON.stringify(this.lastSettings))
@@ -906,8 +908,11 @@ export default {
 			this.currentLocale = newLocale
 			localStorage.setItem('locale', newLocale)
 		},
+		/**
+		 * @deprecated
+		 */
 		updateMaxVolume() {
-			localStorage.setItem('previewVolume', this.previewVolume.preview_max_volume)
+			localStorage.setItem('previewVolume', this.previewVolume)
 		},
 		saveSettings() {
 			this.lastSettings = JSON.parse(JSON.stringify(this.settings))

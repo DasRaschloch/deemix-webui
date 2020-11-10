@@ -8,11 +8,17 @@
 import EventBus from '@/utils/EventBus'
 
 import { adjustVolume } from '@/utils/adjust-volume'
+import { mapGetters } from 'vuex'
 
 export default {
 	data: () => ({
 		previewStopped: false
 	}),
+	computed: {
+		...mapGetters({
+			previewVolume: 'getPreviewVolume'
+		})
+	},
 	mounted() {
 		this.$refs.preview.volume = 1
 
@@ -31,7 +37,7 @@ export default {
 
 			this.previewStopped = false
 
-			await adjustVolume(this.$refs.preview, window.vol.preview_max_volume / 100, { duration: 500 })
+			await adjustVolume(this.$refs.preview, this.previewVolume / 100, { duration: 500 })
 		},
 		async onTimeUpdate() {
 			// Prevents first time entering in this function
@@ -77,7 +83,7 @@ export default {
 
 					icon.innerText = 'pause'
 
-					await adjustVolume(this.$refs.preview, window.vol.preview_max_volume / 100, { duration: 500 })
+					await adjustVolume(this.$refs.preview, this.previewVolume / 100, { duration: 500 })
 				} else {
 					this.previewStopped = true
 

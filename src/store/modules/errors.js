@@ -1,4 +1,4 @@
-const state = {
+const state = () => ({
 	artist: '',
 	bitrate: '',
 	cover: '',
@@ -12,7 +12,7 @@ const state = {
 	title: '',
 	type: '',
 	uuid: ''
-}
+})
 
 const actions = {
 	setErrors({ commit }, payload) {

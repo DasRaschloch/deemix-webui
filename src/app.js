@@ -1,10 +1,5 @@
 import Vue from 'vue'
 
-// Object is needed for vue change detection
-window.vol = {
-	preview_max_volume: 100
-}
-
 import '@/styles/vendor/material-icons.css'
 import '@/styles/vendor/OpenSans.css'
 

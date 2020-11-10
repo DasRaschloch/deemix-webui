@@ -1,15 +1,13 @@
-const getDefaultState = () => {
-	return {
-		arl: localStorage.getItem('arl') || '',
-		status: null,
-		user: {
-			id: null,
-			name: '',
-			picture: ''
-		},
-		clientMode: false
-	}
-}
+const getDefaultState = () => ({
+	arl: localStorage.getItem('arl') || '',
+	status: null,
+	user: {
+		id: null,
+		name: '',
+		picture: ''
+	},
+	clientMode: false
+})
 
 const state = getDefaultState()
 

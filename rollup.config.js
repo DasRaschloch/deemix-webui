@@ -6,7 +6,7 @@ import analyze from 'rollup-plugin-analyzer'
 import vue from 'rollup-plugin-vue'
 import svg from 'rollup-plugin-svg'
 import postcss from 'rollup-plugin-postcss'
-import { terser } from 'rollup-plugin-terser'
+
 import { version } from './package.json'
 
 const isProduction = !process.env.ROLLUP_WATCH
@@ -16,7 +16,7 @@ export default {
 	input: 'src/app.js',
 	output: [
 		{
-			file: 'public/js/bundle.js',
+			file: isProduction ? 'public/js/bundle.temp.js' : 'public/js/bundle.js',
 			format: 'module',
 			sourcemap: !isProduction
 		}
@@ -48,7 +48,6 @@ export default {
 		svg(),
 		vue(),
 		postcss(),
-		isProduction && terser(), // Minifies only in production
-		isProduction && analyze({ showExports: true, limit: 15 }) // Show useful information about bundles, only in production
+		isProduction && analyze({ summaryOnly: true, limit: 15 }) // Show useful information about bundles, only in production
 	]
 }

@@ -25,9 +25,11 @@
 			<li v-html="$t('about.usesLibrary')"></li>
 			<li v-html="$t('about.thanks')"></li>
 			<i18n path="about.upToDate.text" tag="li">
-				<a place="newsChannel" href="https://t.me/RemixDevNews" target="_blank">{{
-					$t('about.upToDate.newsChannel')
-				}}</a>
+				<template #newsChannel>
+					<a href="https://t.me/RemixDevNews" target="_blank">{{
+						$t('about.upToDate.newsChannel')
+					}}</a>
+				</template>
 			</i18n>
 		</ul>
 
@@ -60,9 +62,11 @@
 		</h2>
 		<ul>
 			<i18n path="about.questions.text" tag="li">
-				<a place="subreddit" href="https://www.reddit.com/r/deemix" target="_blank">{{
-					$t('about.questions.subreddit')
-				}}</a>
+				<template #subreddit>
+					<a href="https://www.reddit.com/r/deemix" target="_blank">{{
+						$t('about.questions.subreddit')
+					}}</a>
+				</template>
 			</i18n>
 			<li>
 				{{ $t('about.beforeReporting') }}
@@ -82,13 +86,17 @@
 		</h2>
 		<ul>
 			<i18n path="about.newUI.text" tag="li">
-				<span place="repo">{{ $t('about.newUI.repo') }}</span>
+				<template #repo>
+					<span>{{ $t('about.newUI.repo') }}</span>
+				</template>
 			</i18n>
 			<li>
 				{{ $t('about.acceptFeatures') }}
 			</li>
 			<i18n path="about.contributeWebUI.text" tag="li">
-				<span place="webui">{{ $t('about.contributeWebUI.webui') }}</span>
+				<template #webui>
+					<span>{{ $t('about.contributeWebUI.webui') }}</span>
+				</template>
 			</i18n>
 			<li>
 				{{ $t('about.otherLanguages') }}
@@ -133,9 +141,11 @@
 			</a>
 		</p>
 		<i18n path="about.lincensedUnder.text" tag="p">
-			<a place="gpl3" rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">{{
-				$t('about.lincensedUnder.gpl3')
-			}}</a>
+			<template #gpl3>
+				<a rel="license" href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank">{{
+					$t('about.lincensedUnder.gpl3')
+				}}</a>
+			</template>
 		</i18n>
 	</div>
 </template>

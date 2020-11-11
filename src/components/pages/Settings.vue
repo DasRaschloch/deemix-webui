@@ -12,7 +12,9 @@
 			/>
 
 			<i18n path="settings.login.loggedIn" tag="p">
-				<strong place="username" id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
+				<template #username>
+					<strong id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
+				</template>
 			</i18n>
 
 			<button class="btn btn-primary" @click="logout">

@@ -27,19 +27,34 @@ const ko = {
 			single: '싱글 | 싱글',
 			title: '제목 | 제목',
 			track: '트랙 | 트랙',
-			trackN: '0 트랙 | {n} 트랙 | {n} 트랙',
 			releaseN: '0 발매 | {n} 발매 | {n} 발매',
 			playlist: '재생목록 | 재생목록',
 			compile: '편찬물 | 편찬물',
 			ep: 'ep | eps',
+			bundle: '번들 | 번들',
 			more: '더 많은 앨범',
 			featured: '특집',
 			spotifyPlaylist: '스포티파이 재생목록 | 스포티파이 재생목록',
 			releaseDate: '발매일자',
-			error: '오류'
+			error: '오류',
+			trackN: '0 트랙 | {n} 트랙 | {n} 트랙',
+			albumN: '0 앨범 | {n} 앨범 | {n} 앨범',
+			artistN: '0 아티스트 | {n} 아티스트 | {n} 아티스트',
+			playlistN: '0 재생목록 | {n} 재생목록 | {n} 재생목록'
 		}
 	},
 	about: {
+		appStatus: {
+			online: '프로그램 온라인',
+			offline: '프로그램 오프라인'
+		},
+		updates: {
+			currentVersion: '현재 버전',
+			currentWebuiVersion: '현재 WebUI 버전',
+			versionNotAvailable: 'N/A',
+			updateAvailable: `최신버전으로 업데이트 할 수 있습니다: {version}`,
+			deemixVersion: 'deemix lib 버전'
+		},
 		titles: {
 			usefulLinks: '유용한 링크',
 			bugReports: '버그 제보',
@@ -184,7 +199,9 @@ const ko = {
 		startConvertingSpotifyPlaylist: '스포티파이 트랙을 Deezer 트랙으로 전환 중입니다',
 		finishConvertingSpotifyPlaylist: '스프토파이 재생 목록이 전환되었습니다',
 		loginNeededToDownload: '트랙을 다운로드하려면 로그인이 필요합니다!',
-		deezerNotAvailable: 'Deezer 사이트는 현재 귀하의 국가에서 사용이 불가능합니다. VPN을 사용하세요.'
+		deezerNotAvailable: 'Deezer 사이트는 현재 귀하의 국가에서 사용이 불가능합니다. VPN을 사용하세요.',
+		startGeneratingItems: '{n}개의 항목 진행중...',
+		finishGeneratingItems: '{n}개의 항목 생성.'
 	},
 	settings: {
 		title: '설정',
@@ -201,7 +218,8 @@ const ko = {
 		},
 		appearance: {
 			title: '외관',
-			slimDownloadTab: '얇은 다운로드 탭'
+			slimDownloadTab: '얇은 다운로드 탭',
+			slimSidebar: '얇은 사이드바'
 		},
 		downloadPath: {
 			title: '다운로드 경로'
@@ -300,7 +318,8 @@ const ko = {
 			lyrics: '비동기 가사',
 			copyright: '저작권',
 			composer: '작곡가',
-			involvedPeople: '관련있는 사람들'
+			involvedPeople: '관련있는 사람들',
+			source: '소스와 음악 ID'
 		},
 		other: {
 			title: '기타',

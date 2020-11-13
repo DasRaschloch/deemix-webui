@@ -2,7 +2,8 @@
 	<aside
 		id="sidebar"
 		class="top-0 left-0 flex flex-col h-screen bg-panels-bg text-foreground"
-		:class="{ 'w-12': isSlim, 'w-64': !isSlim }"
+		:class="{ 'w-12': isSlim }"
+		:style="{ minWidth: isSlim ? null : '14rem' }"
 		role="navigation"
 		aria-label="sidebar"
 	>

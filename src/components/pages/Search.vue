@@ -44,7 +44,8 @@ import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
 import EventBus from '@/utils/EventBus'
 
-import { formatSearchResults, formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
+import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
+import { standardizeData } from '@/data/standardize'
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
 
@@ -172,7 +173,7 @@ export default {
 				return this.results.allTab
 			}
 
-			return formatSearchResults(this.results[this.currentTab.viewInfo], this.currentTab.formatFunc)
+			return standardizeData(this.results[this.currentTab.viewInfo], this.currentTab.formatFunc)
 		},
 		changeSearchTab(tabName) {
 			tabName = tabName.toLowerCase()

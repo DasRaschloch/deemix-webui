@@ -1,43 +1,36 @@
 <template>
-	<div id="artist_tab" class="relative image-header">
-		<header
-			class="flex items-center"
-			:style="{
-				'background-image':
-					'linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(\'' + image + '\')'
-			}"
-		>
-			<h1 class="m-0">{{ title }}</h1>
+	<div class="relative image-header">
+		<header class="flex items-center" :style="headerStyle">
+			<h1 class="m-0">{{ artistName }}</h1>
 
 			<div
-				role="button"
-				aria-label="download"
-				@click.stop="addToQueue"
-				:data-link="link"
 				class="grid w-16 h-16 ml-auto rounded-full cursor-pointer bg-primary text-grayscale-870 place-items-center"
+				@click.stop="sendAddToQueue(downloadLink)"
+				aria-label="download"
+				role="button"
 			>
 				<i class="text-4xl material-icons" :title="$t('globals.download_hint')">get_app</i>
 			</div>
 		</header>
 
-		<div class="my-4">
-			<button
-				v-for="(item, name) in body"
+		<ul class="my-8 section-tabs">
+			<li
+				v-for="(item, name) in artistReleases"
 				:key="name"
-				class="mr-2 btn bg-background-main"
-				:class="{ 'btn-primary': name === currentTab }"
-				:href="'#artist_' + name"
+				class="section-tabs__tab"
 				@click="changeTab(name)"
+				:class="{ active: currentTab === name }"
 			>
 				{{ $tc(`globals.listTabs.${name}`, 2) }}
-			</button>
-		</div>
+			</li>
+		</ul>
 
 		<table class="table">
 			<thead>
 				<tr>
 					<th
 						v-for="data in head"
+						:key="data.title"
 						@click="data.sortKey ? sortBy(data.sortKey) : null"
 						:style="{ width: data.width ? data.width : 'auto' }"
 						:class="{
@@ -53,22 +46,24 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="release in showTable" :key="release.id">
-					<router-link tag="td" class="flex items-center clickable" :to="{ name: 'Album', params: { id: release.id } }">
+				<tr v-for="release in showTable">
+					<router-link
+						tag="td"
+						class="flex items-center clickable"
+						:to="{ name: 'Album', params: { id: release.releaseID } }"
+					>
 						<img
 							class="rounded coverart"
-							:src="release.cover_small"
+							:src="release.releaseCover"
 							style="margin-right: 16px; width: 56px; height: 56px"
 						/>
-						<i v-if="release.explicit_lyrics" class="material-icons explicit-icon"> explicit </i>
-						{{ release.title }}
-						<i v-if="checkNewRelease(release.release_date)" class="material-icons" style="color: #ff7300">
-							fiber_new
-						</i>
+						<i v-if="release.isReleaseExplicit" class="material-icons explicit-icon">explicit</i>
+						{{ release.releaseTitle }}
+						<i v-if="checkNewRelease(release.releaseDate)" class="material-icons" style="color: #ff7300">fiber_new</i>
 					</router-link>
-					<td>{{ release.release_date }}</td>
-					<td>{{ release.nb_song }}</td>
-					<td @click.stop="addToQueue" :data-link="release.link" class="clickable">
+					<td>{{ release.releaseDate }}</td>
+					<td>{{ release.releaseTracksNumber }}</td>
+					<td @click.stop="sendAddToQueue(release.releaseLink)" class="clickable">
 						<i class="material-icons" :title="$t('globals.download_hint')"> file_download </i>
 					</td>
 				</tr>
@@ -78,65 +73,99 @@
 </template>
 
 <script>
-import { isEmpty, orderBy } from 'lodash-es'
+import { orderBy } from 'lodash-es'
+
 import { socket } from '@/utils/socket'
-import Downloads from '@/utils/downloads'
+import { sendAddToQueue } from '@/utils/downloads'
 import EventBus from '@/utils/EventBus'
+import { formatArtistData } from '@/data/artist'
+import { standardizeData } from '@/data/standardize'
+import { ref, reactive, computed, onMounted, toRefs, onDeactivated } from '@vue/composition-api'
 
 export default {
-	data() {
-		return {
+	setup() {
+		const state = reactive({
 			currentTab: '',
-			sortKey: 'release_date',
+			sortKey: 'releaseDate',
 			sortOrder: 'desc',
-			title: '',
-			image: '',
-			type: '',
-			link: '',
-			head: null,
-			body: null
-		}
-	},
-	computed: {
-		showTable() {
-			if (this.body) {
-				if (this.sortKey == 'nb_song')
-					return orderBy(
-						this.body[this.currentTab],
-						function (o) {
-							return new Number(o.nb_song)
-						},
-						this.sortOrder
-					)
-				else return orderBy(this.body[this.currentTab], this.sortKey, this.sortOrder)
-			} else return []
-		}
-	},
-	mounted() {
-		socket.on('show_artist', this.showArtist)
+			artistReleases: {},
+			artistID: '',
+			artistName: '',
+			artistPicture: ''
+		})
 
-		EventBus.$on('artistTab:updateSelected', this.updateSelected)
-		EventBus.$on('artistTab:changeTab', this.changeTab)
+		const currentRelease = computed(() => state.artistReleases[state.currentTab])
+
+		const setupData = data => {
+			const {
+				data: [{ artistID, artistName, artistPictureXL, artistReleases }]
+			} = standardizeData({ data: [data], hasLoaded: true }, formatArtistData)
+
+			Object.assign(state, {
+				artistID,
+				artistName,
+				artistPicture: artistPictureXL,
+				artistReleases
+			})
+
+			// ? Is it not granted that it's always 'all' ?
+			state.currentTab = Object.keys(artistReleases)[0]
+		}
+
+		const reset = () => {
+			state.currentTab = ''
+			state.sortKey = 'releaseDate'
+			state.sortOrder = 'desc'
+		}
+
+		onDeactivated(reset)
+
+		onMounted(() => {
+			socket.on('show_artist', setupData)
+		})
+
+		const showTable = computed(() => {
+			if (Object.keys(state.artistReleases).length !== 0) {
+				let sortKey = state.sortKey
+
+				if (sortKey == 'releaseTracksNumber') {
+					sortKey = o => new Number(o.releaseTracksNumber)
+				}
+
+				return orderBy(currentRelease.value, sortKey, state.sortOrder)
+			}
+
+			return []
+		})
+
+		return {
+			...toRefs(state),
+			downloadLink: computed(() => `https://www.deezer.com/artist/${state.artistID}`),
+			headerStyle: computed(() => ({
+				backgroundImage: `linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(${state.artistPicture})`
+			})),
+			showTable,
+			sendAddToQueue,
+			currentRelease
+		}
+	},
+	data() {
+		const $t = this.$t.bind(this)
+		const $tc = this.$tc.bind(this)
+
+		return {
+			head: [
+				{ title: $tc('globals.listTabs.title', 1), sortKey: 'releaseTitle' },
+				{ title: $t('globals.listTabs.releaseDate'), sortKey: 'releaseDate' },
+				{ title: $tc('globals.listTabs.track', 2), sortKey: 'releaseTracksNumber' },
+				{ title: '', width: '32px' }
+			]
+		}
 	},
 	methods: {
-		reset() {
-			this.title = 'Loading...'
-			this.image = ''
-			this.type = ''
-			this.currentTab = ''
-			this.sortKey = 'release_date'
-			this.sortOrder = 'desc'
-			this.link = ''
-			this.head = []
-			this.body = null
-		},
-		addToQueue(e) {
-			e.stopPropagation()
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
-		},
 		sortBy(key) {
-			if (key == this.sortKey) {
-				this.sortOrder = this.sortOrder == 'asc' ? 'desc' : 'asc'
+			if (key === this.sortKey) {
+				this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc'
 			} else {
 				this.sortKey = key
 				this.sortOrder = 'asc'
@@ -145,9 +174,6 @@ export default {
 		changeTab(tab) {
 			this.currentTab = tab
 		},
-		updateSelected() {
-			// Last tab opened logic
-		},
 		checkNewRelease(date) {
 			let g1 = new Date()
 			let g2 = new Date(date)
@@ -155,30 +181,6 @@ export default {
 			g1.setHours(0, 0, 0, 0)
 
 			return g1.getTime() <= g2.getTime()
-		},
-		showArtist(data) {
-			this.reset()
-
-			const { name, picture_xl, id, releases } = data
-
-			this.title = name
-			this.image = picture_xl
-			this.type = 'Artist'
-			this.link = `https://www.deezer.com/artist/${id}`
-			if (this.currentTab === '') this.currentTab = Object.keys(releases)[0]
-			this.sortKey = 'release_date'
-			this.sortOrder = 'desc'
-			this.head = [
-				{ title: this.$tc('globals.listTabs.title', 1), sortKey: 'title' },
-				{ title: this.$t('globals.listTabs.releaseDate'), sortKey: 'release_date' },
-				{ title: this.$tc('globals.listTabs.track', 2), sortKey: 'nb_song' },
-				{ title: '', width: '32px' }
-			]
-			if (isEmpty(releases)) {
-				this.body = null
-			} else {
-				this.body = releases
-			}
 		}
 	}
 }

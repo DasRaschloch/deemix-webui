@@ -31,28 +31,28 @@
 
 					<ResultsTracks
 						v-else-if="section === 'TRACK'"
-						:viewInfo="formatSearchResults(viewInfo.TRACK, formatSingleTrack)"
+						:viewInfo="standardizeData(viewInfo.TRACK, formatSingleTrack)"
 						:itemsToShow="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsAlbums
 						v-else-if="section == 'ALBUM'"
-						:viewInfo="formatSearchResults(viewInfo.ALBUM, formatAlbums)"
+						:viewInfo="standardizeData(viewInfo.ALBUM, formatAlbums)"
 						:itemsToShow="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsPlaylists
 						v-else-if="section == 'PLAYLIST'"
-						:viewInfo="formatSearchResults(viewInfo.PLAYLIST, formatPlaylist)"
+						:viewInfo="standardizeData(viewInfo.PLAYLIST, formatPlaylist)"
 						:itemsToShow="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsArtists
 						v-else-if="section === 'ARTIST'"
-						:viewInfo="formatSearchResults(viewInfo.ARTIST, formatArtist)"
+						:viewInfo="standardizeData(viewInfo.ARTIST, formatArtist)"
 						:itemsToShow="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
@@ -71,7 +71,8 @@ import ResultsAlbums from '@components/search/ResultsAlbums.vue'
 import ResultsArtists from '@components/search/ResultsArtists.vue'
 import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
 
-import { formatSearchResults, formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
+import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
+import { standardizeData } from '@/data/standardize'
 
 export default {
 	components: {
@@ -105,7 +106,7 @@ export default {
 	methods: {
 		convertDuration,
 		upperCaseFirstLowerCaseRest,
-		formatSearchResults,
+		standardizeData,
 		formatSingleTrack,
 		formatAlbums,
 		formatArtist,

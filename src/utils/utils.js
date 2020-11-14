@@ -96,7 +96,7 @@ export function copyToClipboard(text) {
 	ghostInput.remove()
 }
 
-export function getProperty(obj, ...props) {
+export function getPropertyWithFallback(obj, ...props) {
 	for (const prop of props) {
 		// Example: this.is.an.example
 		let hasDotNotation = /\./.test(prop)

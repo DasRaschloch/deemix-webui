@@ -17,7 +17,7 @@
 			<li
 				v-for="(item, name) in artistReleases"
 				:key="name"
-				class="section-tabs__tab"
+				class="section-tabs__tab uppercase-first-letter"
 				@click="changeTab(name)"
 				:class="{ active: currentTab === name }"
 			>
@@ -33,6 +33,7 @@
 						:key="data.title"
 						@click="data.sortKey ? sortBy(data.sortKey) : null"
 						:style="{ width: data.width ? data.width : 'auto' }"
+						class="uppercase-first-letter"
 						:class="{
 							'sort-asc': data.sortKey == sortKey && sortOrder == 'asc',
 							'sort-desc': data.sortKey == sortKey && sortOrder == 'desc',
@@ -46,8 +47,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr v-for="release in showTable">
-					<router-link
+				<tr v-for="release in sortedData" :key="release.releaseID">
+					<RouterLink
 						tag="td"
 						class="flex items-center clickable"
 						:to="{ name: 'Album', params: { id: release.releaseID } }"
@@ -57,12 +58,17 @@
 							:src="release.releaseCover"
 							style="margin-right: 16px; width: 56px; height: 56px"
 						/>
-						<i v-if="release.isReleaseExplicit" class="material-icons explicit-icon">explicit</i>
+						<i v-if="release.isReleaseExplicit" class="material-icons title-icon title-icon--explicit">explicit</i>
 						{{ release.releaseTitle }}
-						<i v-if="checkNewRelease(release.releaseDate)" class="material-icons" style="color: #ff7300">fiber_new</i>
-					</router-link>
-					<td>{{ release.releaseDate }}</td>
-					<td>{{ release.releaseTracksNumber }}</td>
+						<i
+							v-if="checkNewRelease(release.releaseDate)"
+							class="material-icons title-icon title-icon--new title-icon--right"
+						>
+							fiber_new
+						</i>
+					</RouterLink>
+					<td class="text-center">{{ release.releaseDate }}</td>
+					<td class="text-center">{{ release.releaseTracksNumber }}</td>
 					<td @click.stop="sendAddToQueue(release.releaseLink)" class="clickable">
 						<i class="material-icons" :title="$t('globals.download_hint')"> file_download </i>
 					</td>
@@ -73,80 +79,75 @@
 </template>
 
 <script>
+import { defineComponent, ref, unref, reactive, computed, onMounted, toRefs } from '@vue/composition-api'
 import { orderBy } from 'lodash-es'
 
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
-import EventBus from '@/utils/EventBus'
-import { formatArtistData } from '@/data/artist'
+import { checkNewRelease } from '@/utils/dates'
+import { formatArtistData, getArtistData } from '@/data/artist'
 import { standardizeData } from '@/data/standardize'
-import { ref, reactive, computed, onMounted, toRefs, onDeactivated } from '@vue/composition-api'
 
-export default {
-	setup() {
+export default defineComponent({
+	setup(props, ctx) {
 		const state = reactive({
 			currentTab: '',
 			sortKey: 'releaseDate',
 			sortOrder: 'desc',
 			artistReleases: {},
-			artistID: '',
 			artistName: '',
-			artistPicture: ''
+			artistPicture: '',
+			currentRelease: computed(() => state.artistReleases[state.currentTab])
 		})
 
-		const currentRelease = computed(() => state.artistReleases[state.currentTab])
+		const artistID = computed(() => ctx.root.$router.currentRoute.params.id)
+		const hasDataLoaded = ref(false)
 
-		const setupData = data => {
-			const {
-				data: [{ artistID, artistName, artistPictureXL, artistReleases }]
-			} = standardizeData({ data: [data], hasLoaded: true }, formatArtistData)
+		getArtistData(unref(artistID))
+			.then(artistData => {
+				hasDataLoaded.value = true
 
-			Object.assign(state, {
-				artistID,
-				artistName,
-				artistPicture: artistPictureXL,
-				artistReleases
+				const {
+					data: [{ artistName, artistPictureXL, artistReleases }]
+				} = standardizeData({ data: [artistData], hasLoaded: unref(hasDataLoaded) }, formatArtistData)
+
+				Object.assign(state, {
+					artistName,
+					artistPicture: artistPictureXL,
+					artistReleases,
+					currentTab: Object.keys(artistReleases)[0]
+				})
 			})
+			.catch(err => console.error(err))
 
-			// ? Is it not granted that it's always 'all' ?
-			state.currentTab = Object.keys(artistReleases)[0]
-		}
-
-		const reset = () => {
-			state.currentTab = ''
-			state.sortKey = 'releaseDate'
-			state.sortOrder = 'desc'
-		}
-
-		onDeactivated(reset)
-
-		onMounted(() => {
-			socket.on('show_artist', setupData)
-		})
-
-		const showTable = computed(() => {
-			if (Object.keys(state.artistReleases).length !== 0) {
-				let sortKey = state.sortKey
-
-				if (sortKey == 'releaseTracksNumber') {
-					sortKey = o => new Number(o.releaseTracksNumber)
-				}
-
-				return orderBy(currentRelease.value, sortKey, state.sortOrder)
+		const sortedData = computed(() => {
+			if (!unref(hasDataLoaded)) {
+				return []
 			}
 
-			return []
+			let sortKey = state.sortKey
+
+			if (sortKey === 'releaseTracksNumber') {
+				sortKey = o => new Number(o.releaseTracksNumber)
+			}
+
+			return orderBy(state.currentRelease, sortKey, state.sortOrder)
 		})
+
+		const changeTab = newTab => {
+			state.currentTab = newTab
+		}
 
 		return {
 			...toRefs(state),
-			downloadLink: computed(() => `https://www.deezer.com/artist/${state.artistID}`),
+			downloadLink: computed(() => `https://www.deezer.com/artist/${unref(artistID)}`),
 			headerStyle: computed(() => ({
 				backgroundImage: `linear-gradient(to bottom, transparent 0%, var(--main-background) 100%), url(${state.artistPicture})`
 			})),
-			showTable,
+			sortedData,
 			sendAddToQueue,
-			currentRelease
+			checkNewRelease,
+			changeTab
 		}
 	},
 	data() {
@@ -170,19 +171,8 @@ export default {
 				this.sortKey = key
 				this.sortOrder = 'asc'
 			}
-		},
-		changeTab(tab) {
-			this.currentTab = tab
-		},
-		checkNewRelease(date) {
-			let g1 = new Date()
-			let g2 = new Date(date)
-			g2.setDate(g2.getDate() + 3)
-			g1.setHours(0, 0, 0, 0)
-
-			return g1.getTime() <= g2.getTime()
 		}
 	}
-}
+})
 </script>
 

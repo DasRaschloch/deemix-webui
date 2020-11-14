@@ -1,8 +1,8 @@
+import { socket } from '@/utils/socket'
 import { getPropertyWithFallback } from '@/utils/utils'
 
 export function formatArtistData(artistData) {
 	return {
-		artistID: getPropertyWithFallback(artistData, 'id'),
 		artistName: getPropertyWithFallback(artistData, 'name'),
 		artistPictureXL: getPropertyWithFallback(artistData, 'picture_xl'),
 		artistReleases: formatArtistReleases(getPropertyWithFallback(artistData, 'releases'))
@@ -32,4 +32,28 @@ function formatArtistReleases(artistReleases) {
 	}
 
 	return formattedReleases
+}
+
+let artistData = {}
+let cached = false
+
+export function getArtistData(artistID) {
+	if (cached) {
+		return artistData
+	} else {
+		socket.emit('getTracklist', {
+			type: 'artist',
+			id: artistID
+		})
+
+		return new Promise((resolve, reject) => {
+			socket.on('show_artist', data => {
+				artistData = data
+				// cached = true
+
+				socket.off('show_artist')
+				resolve(data)
+			})
+		})
+	}
 }

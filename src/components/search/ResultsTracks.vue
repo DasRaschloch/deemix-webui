@@ -36,7 +36,7 @@
 
 						<td class="table__cell table__cell--large">
 							<div class="break-words table__cell-content table__cell-content--vertical-center">
-								<i v-if="track.isTrackExplicit" class="material-icons explicit-icon">explicit</i>
+								<i v-if="track.isTrackExplicit" class="material-icons title-icon">explicit</i>
 								{{ formatTitle(track) }}
 							</div>
 						</td>

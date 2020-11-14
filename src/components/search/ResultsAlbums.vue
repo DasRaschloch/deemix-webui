@@ -20,7 +20,7 @@
 						<span class="primary-text">
 							<i
 								v-if="release.isAlbumExplicit"
-								class="material-icons explicit-icon"
+								class="material-icons title-icon"
 								style="font-size: 1.0625rem !important"
 							>
 								explicit

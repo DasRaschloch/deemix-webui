@@ -7,7 +7,7 @@
 			}"
 		>
 			<h1 class="flex items-center m-0 text-5xl">
-				{{ title }} <i v-if="explicit" class="material-icons explicit-icon explicit-icon--right">explicit</i>
+				{{ title }} <i v-if="explicit" class="material-icons title-icon title-icon--right">explicit</i>
 			</h1>
 
 			<h2 class="m-0 mb-3 text-lg">
@@ -60,7 +60,7 @@
 							</td>
 							<td class="table__cell--large table__cell--with-icon">
 								<div class="table__cell-content table__cell-content--vertical-center">
-									<i v-if="track.explicit_lyrics" class="material-icons explicit-icon"> explicit </i>
+									<i v-if="track.explicit_lyrics" class="material-icons title-icon"> explicit </i>
 									{{
 										track.title +
 										(track.title_version && track.title.indexOf(track.title_version) == -1
@@ -127,7 +127,7 @@
 						</td>
 						<td>{{ i + 1 }}</td>
 						<td class="flex items-center">
-							<i v-if="track.explicit" class="material-icons explicit-icon">explicit</i>
+							<i v-if="track.explicit" class="material-icons title-icon">explicit</i>
 							{{ track.name }}
 						</td>
 						<td>{{ track.artists[0].name }}</td>

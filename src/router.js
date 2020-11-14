@@ -35,7 +35,10 @@ const routes = [
 	{
 		path: '/artist/:id',
 		name: 'Artist',
-		component: Artist
+		component: Artist,
+		meta: {
+			notKeepAlive: true
+		}
 	},
 	{
 		path: '/album/:id',
@@ -123,12 +126,6 @@ router.beforeEach((to, from, next) => {
 	let getTracklistParams = null
 
 	switch (to.name) {
-		case 'Artist':
-			getTracklistParams = {
-				type: 'artist',
-				id: to.params.id
-			}
-			break
 		case 'Tracklist':
 			getTracklistParams = {
 				type: to.params.type,

@@ -17,7 +17,7 @@
 			<BaseTab
 				v-for="(item, name) in artistReleases"
 				:key="name"
-				@click="changeTab(name)"
+				@click="currentTab = name"
 				:class="{ active: currentTab === name }"
 			>
 				{{ $tc(`globals.listTabs.${name}`, 2) }}
@@ -34,8 +34,8 @@
 						:style="{ width: data.width ? data.width : 'auto' }"
 						class="uppercase-first-letter"
 						:class="{
-							'sort-asc': data.sortKey == sortKey && sortOrder == 'asc',
-							'sort-desc': data.sortKey == sortKey && sortOrder == 'desc',
+							'sort-asc': data.sortKey === sortKey && sortOrder == 'asc',
+							'sort-desc': data.sortKey === sortKey && sortOrder == 'desc',
 							sortable: data.sortKey,
 							clickable: data.sortKey
 						}"
@@ -52,24 +52,24 @@
 						class="flex items-center clickable"
 						:to="{ name: 'Album', params: { id: release.releaseID } }"
 					>
-						<img
-							class="rounded coverart"
-							:src="release.releaseCover"
-							style="margin-right: 16px; width: 56px; height: 56px"
-						/>
+						<img class="mr-4 rounded coverart" :src="release.releaseCover" style="width: 56px; height: 56px" />
 						<i v-if="release.isReleaseExplicit" class="material-icons title-icon title-icon--explicit">explicit</i>
-						{{ release.releaseTitle }}
+						<span class="hover:text-primary">{{ release.releaseTitle }}</span>
 						<i
 							v-if="checkNewRelease(release.releaseDate)"
-							class="material-icons title-icon title-icon--new title-icon--right"
+							class="material-icons title-icon title-icon--right title-icon--new"
 						>
 							fiber_new
 						</i>
 					</RouterLink>
 					<td class="text-center">{{ release.releaseDate }}</td>
 					<td class="text-center">{{ release.releaseTracksNumber }}</td>
-					<td @click.stop="sendAddToQueue(release.releaseLink)" class="clickable">
-						<i class="material-icons" :title="$t('globals.download_hint')"> file_download </i>
+					<td
+						@click.stop="sendAddToQueue(release.releaseLink)"
+						:data-cm-link="release.releaseLink"
+						class="w-8 cursor-pointer"
+					>
+						<i class="material-icons hover:text-primary" :title="$t('globals.download_hint')">file_download</i>
 					</td>
 				</tr>
 			</tbody>
@@ -112,9 +112,13 @@ export default defineComponent({
 			.then(artistData => {
 				hasDataLoaded.value = true
 
+				const rawData = {
+					data: [artistData],
+					hasLoaded: unref(hasDataLoaded)
+				}
 				const {
 					data: [{ artistName, artistPictureXL, artistReleases }]
-				} = standardizeData({ data: [artistData], hasLoaded: unref(hasDataLoaded) }, formatArtistData)
+				} = standardizeData(rawData, formatArtistData)
 
 				Object.assign(state, {
 					artistName,
@@ -139,10 +143,6 @@ export default defineComponent({
 			return orderBy(state.currentRelease, sortKey, state.sortOrder)
 		})
 
-		const changeTab = newTab => {
-			state.currentTab = newTab
-		}
-
 		return {
 			...toRefs(state),
 			downloadLink: computed(() => `https://www.deezer.com/artist/${unref(artistID)}`),
@@ -151,8 +151,7 @@ export default defineComponent({
 			})),
 			sortedData,
 			sendAddToQueue,
-			checkNewRelease,
-			changeTab
+			checkNewRelease
 		}
 	},
 	data() {
@@ -164,7 +163,8 @@ export default defineComponent({
 				{ title: $tc('globals.listTabs.title', 1), sortKey: 'releaseTitle' },
 				{ title: $t('globals.listTabs.releaseDate'), sortKey: 'releaseDate' },
 				{ title: $tc('globals.listTabs.track', 2), sortKey: 'releaseTracksNumber' },
-				{ title: '', width: '32px' }
+				// { title: '', width: '32px' }
+				{ title: '', width: null }
 			]
 		}
 	},

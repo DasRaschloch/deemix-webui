@@ -136,6 +136,11 @@ export default {
 					deezerLink = path[i].dataset.link
 					break
 				}
+
+				if (path[i].matches('[data-cm-link]')) {
+					deezerLink = path[i].dataset.cmLink
+					break
+				}
 			}
 
 			const isLink = elementClicked.matches('a')

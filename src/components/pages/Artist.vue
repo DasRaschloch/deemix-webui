@@ -13,17 +13,16 @@
 			</div>
 		</header>
 
-		<ul class="my-8 section-tabs">
-			<li
+		<BaseTabs>
+			<BaseTab
 				v-for="(item, name) in artistReleases"
 				:key="name"
-				class="section-tabs__tab uppercase-first-letter"
 				@click="changeTab(name)"
 				:class="{ active: currentTab === name }"
 			>
 				{{ $tc(`globals.listTabs.${name}`, 2) }}
-			</li>
-		</ul>
+			</BaseTab>
+		</BaseTabs>
 
 		<table class="table">
 			<thead>
@@ -82,6 +81,8 @@
 import { defineComponent, ref, unref, reactive, computed, onMounted, toRefs } from '@vue/composition-api'
 import { orderBy } from 'lodash-es'
 
+import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
+
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { checkNewRelease } from '@/utils/dates'
@@ -89,6 +90,10 @@ import { formatArtistData, getArtistData } from '@/data/artist'
 import { standardizeData } from '@/data/standardize'
 
 export default defineComponent({
+	components: {
+		BaseTabs,
+		BaseTab
+	},
 	setup(props, ctx) {
 		const state = reactive({
 			currentTab: '',

@@ -34,26 +34,16 @@ function formatArtistReleases(artistReleases) {
 	return formattedReleases
 }
 
-let artistData = {}
-let cached = false
-
 export function getArtistData(artistID) {
-	if (cached) {
-		return artistData
-	} else {
-		socket.emit('getTracklist', {
-			type: 'artist',
-			id: artistID
-		})
+	socket.emit('getTracklist', {
+		type: 'artist',
+		id: artistID
+	})
 
-		return new Promise((resolve, reject) => {
-			socket.on('show_artist', data => {
-				artistData = data
-				// cached = true
-
-				socket.off('show_artist')
-				resolve(data)
-			})
+	return new Promise((resolve, reject) => {
+		socket.on('show_artist', data => {
+			socket.off('show_artist')
+			resolve(data)
 		})
-	}
+	})
 }

@@ -13,17 +13,11 @@
 			</div>
 		</h1>
 
-		<ul class="section-tabs">
-			<li
-				v-for="tab in tabs"
-				:key="tab"
-				class="section-tabs__tab favorites_tablinks"
-				:class="{ active: activeTab === tab }"
-				@click="activeTab = tab"
-			>
+		<BaseTabs>
+			<BaseTab v-for="tab in tabs" :key="tab" :class="{ active: activeTab === tab }" @click="activeTab = tab">
 				{{ $tc(`globals.listTabs.${tab}`, 2) }}
-			</li>
-		</ul>
+			</BaseTab>
+		</BaseTabs>
 
 		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
 			{{ $t('globals.download', { thing: $tc(`globals.listTabs.${activeTab}N`, getTabLenght()) }) }}
@@ -197,11 +191,14 @@ import { getFavoritesData } from '@/data/favorites'
 import EventBus from '@/utils/EventBus'
 import PreviewControls from '@components/globals/PreviewControls.vue'
 import CoverContainer from '@components/globals/CoverContainer.vue'
+import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
 
 export default {
 	components: {
 		PreviewControls,
-		CoverContainer
+		CoverContainer,
+		BaseTabs,
+		BaseTab
 	},
 	data() {
 		return {

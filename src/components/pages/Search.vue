@@ -6,17 +6,16 @@
 		</div>
 
 		<div v-show="showSearchTab">
-			<ul class="section-tabs">
-				<li
-					class="section-tabs__tab"
+			<BaseTabs>
+				<BaseTab
 					v-for="tab in tabs"
 					:key="tab.name"
 					@click="currentTab = tab"
 					:class="{ active: currentTab.name === tab.name }"
 				>
 					{{ tab.name }}
-				</li>
-			</ul>
+				</BaseTab>
+			</BaseTabs>
 
 			<keep-alive>
 				<component
@@ -38,6 +37,7 @@ import ResultsAlbums from '@components/search/ResultsAlbums.vue'
 import ResultsArtists from '@components/search/ResultsArtists.vue'
 import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
 import ResultsTracks from '@components/search/ResultsTracks.vue'
+import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
 
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -51,7 +51,9 @@ const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
 
 export default {
 	components: {
-		BaseLoadingPlaceholder
+		BaseLoadingPlaceholder,
+		BaseTabs,
+		BaseTab
 	},
 	props: {
 		performScrolledSearch: {

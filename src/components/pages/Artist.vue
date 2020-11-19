@@ -50,6 +50,7 @@
 					<RouterLink
 						tag="td"
 						class="flex items-center clickable"
+						:data-cm-link="release.releaseLink"
 						:to="{ name: 'Album', params: { id: release.releaseID } }"
 					>
 						<img class="mr-4 rounded coverart" :src="release.releaseCover" style="width: 56px; height: 56px" />
@@ -62,8 +63,8 @@
 							fiber_new
 						</i>
 					</RouterLink>
-					<td class="text-center">{{ release.releaseDate }}</td>
-					<td class="text-center">{{ release.releaseTracksNumber }}</td>
+					<td class="w-32 text-center xl:w-40">{{ release.releaseDate }}</td>
+					<td class="w-20 text-center xl:w-32">{{ release.releaseTracksNumber }}</td>
 					<td
 						@click.stop="sendAddToQueue(release.releaseLink)"
 						:data-cm-link="release.releaseLink"

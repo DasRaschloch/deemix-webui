@@ -25,6 +25,7 @@ function formatArtistReleases(artistReleases) {
 					releaseDate: getPropertyWithFallback(release, 'release_date'),
 					releaseTracksNumber: getPropertyWithFallback(release, 'nb_song'),
 					releaseLink: getPropertyWithFallback(release, 'link'),
+					releaseType: getPropertyWithFallback(release, 'type'),
 					isReleaseExplicit: getPropertyWithFallback(release, 'explicit_lyrics')
 				})
 			}

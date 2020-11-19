@@ -55,7 +55,12 @@
 					>
 						<img class="mr-4 rounded coverart" :src="release.releaseCover" style="width: 56px; height: 56px" />
 						<i v-if="release.isReleaseExplicit" class="material-icons title-icon title-icon--explicit">explicit</i>
-						<span class="hover:text-primary">{{ release.releaseTitle }}</span>
+						<div>
+							<span class="flex hover:text-primary">{{ release.releaseTitle }}</span>
+							<!-- <span v-show="currentTab === 'all'" class="flex text-xs opacity-50 uppercase-first-letter">
+								{{ release.releaseType }}
+							</span> -->
+						</div>
 						<i
 							v-if="checkNewRelease(release.releaseDate)"
 							class="material-icons title-icon title-icon--right title-icon--new"
@@ -79,7 +84,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, unref, reactive, computed, onMounted, toRefs } from '@vue/composition-api'
+import { defineComponent, ref, unref, reactive, computed, onMounted, toRefs, watch } from '@vue/composition-api'
 import { orderBy } from 'lodash-es'
 
 import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'

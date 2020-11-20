@@ -29,7 +29,7 @@ export function formatSingleTrack(track) {
 		/* Track */
 		trackTitle: getPropertyWithFallback(track, 'title', 'SNG_TITLE'),
 		trackTitleVersion: getPropertyWithFallback(track, 'title_version', 'VERSION'),
-		trackPreview: getPropertyWithFallback(track, 'preview'),
+		trackPreview: getPropertyWithFallback(track, 'preview', 'MEDIA.0.HREF'),
 		trackDuration: getPropertyWithFallback(track, 'duration', 'DURATION'),
 		trackLink: getPropertyWithFallback(track, 'link') || `https://www.deezer.com/track/${track.SNG_ID}`,
 		isTrackExplicit,
@@ -43,7 +43,7 @@ export function formatSingleTrack(track) {
 		albumTitle: getPropertyWithFallback(track, 'album.title', 'ALB_TITLE'),
 		albumPicture:
 			getPropertyWithFallback(track, 'album.cover_small') ||
-			`https://e-cdns-images.dzcdn.net/images/cover/${track.ALB_PICTURE}/32x32-000000-80-0-0.jpg`
+			`https://e-cdns-images.dzcdn.net/images/cover/${track.ALB_PICTURE}/56x56-000000-80-0-0.jpg`
 	}
 }
 

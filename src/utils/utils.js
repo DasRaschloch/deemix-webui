@@ -96,6 +96,11 @@ export function copyToClipboard(text) {
 	ghostInput.remove()
 }
 
+/**
+ * @param		{object|array}	obj
+ * @param		{...any}				props
+ * @returns	{any|null}			property requested
+ */
 export function getPropertyWithFallback(obj, ...props) {
 	for (const prop of props) {
 		// Example: this.is.an.example

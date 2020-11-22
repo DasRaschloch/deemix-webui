@@ -10,16 +10,12 @@
 </template>
 
 <script>
-import EventBus from '@/utils/EventBus'
+import { previewMouseEnter, previewMouseLeave } from '@components/globals/TheTrackPreview.vue'
 
 export default {
 	methods: {
-		previewMouseEnter(e) {
-			EventBus.$emit('trackPreview:previewMouseEnter', e)
-		},
-		previewMouseLeave(e) {
-			EventBus.$emit('trackPreview:previewMouseLeave', e)
-		}
+		previewMouseEnter,
+		previewMouseLeave
 	}
 }
 </script>

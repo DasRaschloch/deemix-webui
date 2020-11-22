@@ -188,9 +188,9 @@ import { convertDuration } from '@/utils/utils'
 import { toast } from '@/utils/toasts'
 import { getFavoritesData } from '@/data/favorites'
 
-import EventBus from '@/utils/EventBus'
 import PreviewControls from '@components/globals/PreviewControls.vue'
 import CoverContainer from '@components/globals/CoverContainer.vue'
+import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
 
 export default {
@@ -244,9 +244,7 @@ export default {
 		})
 	},
 	methods: {
-		playPausePreview(e) {
-			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
+		playPausePreview,
 		convertDuration,
 		downloadAllOfType() {
 			try {

@@ -5,10 +5,22 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import EventBus from '@/utils/EventBus'
 
 import { adjustVolume } from '@/utils/adjust-volume'
-import { mapGetters } from 'vuex'
+
+export function playPausePreview(event) {
+	EventBus.$emit('trackPreview:playPausePreview', event)
+}
+
+export function previewMouseEnter(event) {
+	EventBus.$emit('trackPreview:previewMouseEnter', event)
+}
+
+export function previewMouseLeave(event) {
+	EventBus.$emit('trackPreview:previewMouseLeave', event)
+}
 
 export default {
 	data: () => ({

@@ -88,8 +88,8 @@
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import PreviewControls from '@components/globals/PreviewControls.vue'
+import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 
-import EventBus from '@/utils/EventBus'
 import { convertDuration } from '@/utils/utils'
 
 import { formatTitle } from '@/data/search'
@@ -127,9 +127,7 @@ export default {
 	methods: {
 		convertDuration,
 		formatTitle,
-		playPausePreview(e) {
-			EventBus.$emit('trackPreview:playPausePreview', e)
-		}
+		playPausePreview
 	}
 }
 </script>

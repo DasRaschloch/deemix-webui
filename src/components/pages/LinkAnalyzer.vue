@@ -137,7 +137,6 @@
 import { socket } from '@/utils/socket'
 import { convertDuration } from '@/utils/utils'
 import { COUNTRIES } from '@/utils/countries'
-import EventBus from '@/utils/EventBus'
 import { sendAddToQueue } from '@/utils/downloads'
 
 export default {
@@ -210,8 +209,6 @@ export default {
 		}
 	},
 	mounted() {
-		EventBus.$on('linkAnalyzerTab:reset', this.reset)
-
 		socket.on('analyze_track', this.showTrack)
 		socket.on('analyze_album', this.showAlbum)
 		socket.on('analyze_notSupported', this.notSupported)

@@ -91,8 +91,8 @@ import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 import { getChartsData } from '@/data/charts'
 
-import EventBus from '@/utils/EventBus'
 import PreviewControls from '@components/globals/PreviewControls.vue'
+import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 
 export default {
 	components: {
@@ -137,9 +137,7 @@ export default {
 	},
 	methods: {
 		convertDuration,
-		playPausePreview(e) {
-			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
+		playPausePreview,
 		addToQueue(e) {
 			e.stopPropagation()
 			sendAddToQueue(e.currentTarget.dataset.link)

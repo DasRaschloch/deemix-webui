@@ -155,7 +155,7 @@ import { isEmpty } from 'lodash-es'
 import { socket } from '@/utils/socket'
 import Downloads from '@/utils/downloads'
 import Utils from '@/utils/utils'
-import EventBus from '@/utils/EventBus'
+import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 
 export default {
 	data() {
@@ -172,16 +172,12 @@ export default {
 		}
 	},
 	mounted() {
-		EventBus.$on('tracklistTab:selectRow', this.selectRow)
-
 		socket.on('show_album', this.showAlbum)
 		socket.on('show_playlist', this.showPlaylist)
 		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
 	},
 	methods: {
-		playPausePreview(e) {
-			EventBus.$emit('trackPreview:playPausePreview', e)
-		},
+		playPausePreview,
 		reset() {
 			this.title = 'Loading...'
 			this.image = ''

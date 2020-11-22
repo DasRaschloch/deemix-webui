@@ -42,7 +42,6 @@ import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
-import EventBus from '@/utils/EventBus'
 
 import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
 import { standardizeData } from '@/data/standardize'

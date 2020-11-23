@@ -14,7 +14,7 @@
 			:placeholder="$t('searchbar')"
 			autofocus
 			ref="searchbar"
-			@keyup="handleSearchBarKeyup($event)"
+			@keyup="performSearch($event)"
 		/>
 		<!-- @keyup.enter.exact="onEnter"
 			@keyup.ctrl.enter="onCTRLEnter" -->
@@ -98,14 +98,15 @@ input[type='search']::-webkit-search-cancel-button {
 </style>
 
 <script>
+import { defineComponent, ref } from '@vue/composition-api'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
 import { socket } from '@/utils/socket'
 
-export default {
-	data() {
+export default defineComponent({
+	setup() {
 		return {
-			lastTextSearch: ''
+			lastTextSearch: ref('')
 		}
 	},
 	created() {
@@ -132,52 +133,49 @@ export default {
 		})
 	},
 	methods: {
-		test() {
-			console.log('test passato')
-		},
-		async handleSearchBarKeyup(keyEvent) {
+		async performSearch(keyEvent) {
 			let isEnterPressed = keyEvent.keyCode === 13
 
-			// If not enter do nothing
 			if (!isEnterPressed) return
 
 			let term = this.$refs.searchbar.value
 			let isEmptySearch = term === ''
 
-			// If empty do nothing
 			if (isEmptySearch) return
 
 			let isSearchingURL = isValidURL(term)
 			let isCtrlPressed = keyEvent.ctrlKey
 			let isShowingAnalyzer = this.$route.name === 'Link Analyzer'
 			let isShowingSearch = this.$route.name === 'Search'
-			let sameAsLastSearch = term === this.lastTextSearch
+			let isSameAsLastSearch = term === this.lastTextSearch
 
 			if (isSearchingURL) {
 				if (isCtrlPressed) {
 					this.$root.$emit('QualityModal:open', term)
-				} else {
-					if (isShowingAnalyzer) {
-						socket.emit('analyzeLink', term)
-					} else {
-						// ? Open downloads tab ?
-						sendAddToQueue(term)
-					}
-				}
-			} else {
-				if (isShowingSearch && sameAsLastSearch) {
-					// ? Has this any sense since we're not performing any call?
-					// this.$root.$emit('mainSearch:updateResults', term)
 					return
 				}
 
+				if (isShowingAnalyzer) {
+					socket.emit('analyzeLink', term)
+					return
+				}
+
+				// ? Open downloads tab maybe?
+				sendAddToQueue(term)
+			} else {
+				// The user is searching a normal string
+				if (isShowingSearch && isSameAsLastSearch) return
+
 				if (!isShowingSearch) {
 					await this.$router.push({
-						name: 'Search'
+						name: 'Search',
+						query: {
+							term
+						}
 					})
 				}
 
-				if (!sameAsLastSearch) {
+				if (!isSameAsLastSearch) {
 					this.$root.$emit('updateSearchLoadingState', true)
 					this.lastTextSearch = term
 				}
@@ -186,7 +184,7 @@ export default {
 			}
 		}
 	}
-}
+})
 </script>
 
 

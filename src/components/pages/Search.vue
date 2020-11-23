@@ -10,7 +10,7 @@
 				<BaseTab
 					v-for="tab in tabs"
 					:key="tab.name"
-					@click="currentTab = tab"
+					@click="changeSearchTab(tab.searchType)"
 					:class="{ active: currentTab.name === tab.name }"
 				>
 					{{ tab.name }}
@@ -45,10 +45,12 @@ import { numberWithDots, convertDuration } from '@/utils/utils'
 
 import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
 import { standardizeData } from '@/data/standardize'
+import { computed, defineComponent, reactive, ref, toRefs, watch, watchEffect } from '@vue/composition-api'
+import { useMainSearch } from '@/use/main-search'
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
 
-export default {
+export default defineComponent({
 	components: {
 		BaseLoadingPlaceholder,
 		BaseTabs,
@@ -60,11 +62,8 @@ export default {
 			required: false
 		}
 	},
-	data() {
-		const $t = this.$t.bind(this)
-		const $tc = this.$tc.bind(this)
-
-		return {
+	setup(props, ctx) {
+		const state = reactive({
 			currentTab: {
 				name: '',
 				searchType: '',
@@ -72,6 +71,69 @@ export default {
 				viewInfo: '',
 				formatFunc: () => {}
 			},
+			results: {
+				query: '',
+				allTab: {
+					ORDER: [],
+					TOP_RESULT: [],
+					ALBUM: {
+						hasLoaded: false
+					},
+					ARTIST: {
+						hasLoaded: false
+					},
+					TRACK: {
+						hasLoaded: false
+					},
+					PLAYLIST: {
+						hasLoaded: false
+					}
+				},
+				trackTab: { ...resetObj },
+				albumTab: { ...resetObj },
+				artistTab: { ...resetObj },
+				playlistTab: { ...resetObj }
+			}
+		})
+		const { searchResult, performSearch } = useMainSearch()
+
+		watch(searchResult, newValue => {
+			console.log('show main search results watcher')
+			// Hide loading placeholder
+			ctx.root.$emit('updateSearchLoadingState', false)
+
+			state.results.query = searchResult.QUERY
+
+			state.results.allTab = searchResult
+			state.results.allTab.TRACK.hasLoaded = true
+			state.results.allTab.ALBUM.hasLoaded = true
+			state.results.allTab.ARTIST.hasLoaded = true
+			state.results.allTab.PLAYLIST.hasLoaded = true
+
+			state.results.trackTab = { ...resetObj }
+			state.results.albumTab = { ...resetObj }
+			state.results.artistTab = { ...resetObj }
+			state.results.playlistTab = { ...resetObj }
+		})
+
+		return {
+			...toRefs(state),
+			searchResult,
+			performSearch
+		}
+	},
+	data() {
+		const $t = this.$t.bind(this)
+		const $tc = this.$tc.bind(this)
+
+		return {
+			// currentTab: {
+			// 	name: '',
+			// 	searchType: '',
+			// 	component: {},
+			// 	viewInfo: '',
+			// 	formatFunc: () => {}
+			// },
 			tabs: [
 				{
 					name: $t('globals.listTabs.all'),
@@ -107,30 +169,30 @@ export default {
 					viewInfo: 'playlistTab',
 					formatFunc: formatPlaylist
 				}
-			],
-			results: {
-				query: '',
-				allTab: {
-					ORDER: [],
-					TOP_RESULT: [],
-					ALBUM: {
-						hasLoaded: false
-					},
-					ARTIST: {
-						hasLoaded: false
-					},
-					TRACK: {
-						hasLoaded: false
-					},
-					PLAYLIST: {
-						hasLoaded: false
-					}
-				},
-				trackTab: { ...resetObj },
-				albumTab: { ...resetObj },
-				artistTab: { ...resetObj },
-				playlistTab: { ...resetObj }
-			}
+			]
+			// results: {
+			// 	query: '',
+			// 	allTab: {
+			// 		ORDER: [],
+			// 		TOP_RESULT: [],
+			// 		ALBUM: {
+			// 			hasLoaded: false
+			// 		},
+			// 		ARTIST: {
+			// 			hasLoaded: false
+			// 		},
+			// 		TRACK: {
+			// 			hasLoaded: false
+			// 		},
+			// 		PLAYLIST: {
+			// 			hasLoaded: false
+			// 		}
+			// 	},
+			// 	trackTab: { ...resetObj },
+			// 	albumTab: { ...resetObj },
+			// 	artistTab: { ...resetObj },
+			// 	playlistTab: { ...resetObj }
+			// }
 		}
 	},
 	computed: {
@@ -158,7 +220,6 @@ export default {
 	},
 	mounted() {
 		this.$root.$on('mainSearch:showNewResults', this.checkIfPerformNewMainSearch)
-		this.$root.$on('mainSearch:updateResults', this.checkIfUpdateResults)
 
 		socket.on('mainSearch', this.saveMainSearchResult)
 		socket.on('search', this.handleSearch)
@@ -190,12 +251,17 @@ export default {
 
 			window.scrollTo(0, 0)
 			this.currentTab = newTab
+			// this.lastTab = newTab
 		},
 		checkIfPerformNewMainSearch(searchTerm) {
-			let needToPerformNewMainSearch = searchTerm !== this.results.query
+			const hasTermChanged = searchTerm !== this.results.query
 
-			if (needToPerformNewMainSearch) {
-				this.performNewMainSearch(searchTerm)
+			if (hasTermChanged) {
+				// this.performNewMainSearch(searchTerm)
+				this.$root.$emit('updateSearchLoadingState', true)
+				this.performSearch(searchTerm)
+				this.currentTab = this.tabs[0]
+				// this.currentTab = this.lastTab
 			}
 		},
 		performNewMainSearch(term) {
@@ -204,15 +270,6 @@ export default {
 			// Showing loading placeholder
 			this.$root.$emit('updateSearchLoadingState', true)
 			this.currentTab = this.tabs[0]
-		},
-		// ! Updates search only if the search term is the same as before AND we're not in the ALL tab. Wtf
-		checkIfUpdateResults(term) {
-			let needToUpdateSearch = term === this.results.query && this.currentTab.searchType !== 'all'
-
-			if (needToUpdateSearch) {
-				this.results[this.currentTab.searchType + 'Tab'] = { ...resetObj }
-				this.search(this.currentTab.searchType)
-			}
 		},
 		search(type) {
 			socket.emit('search', {
@@ -233,6 +290,8 @@ export default {
 			}
 		},
 		saveMainSearchResult(searchResult) {
+			console.log('show main search results')
+			return
 			// Hide loading placeholder
 			this.$root.$emit('updateSearchLoadingState', false)
 
@@ -287,8 +346,17 @@ export default {
 
 			this.search(newTab.searchType)
 		}
+	},
+	beforeRouteEnter(to, from, next) {
+		next(vm => {
+			vm.checkIfPerformNewMainSearch(to.query.term)
+		})
+	},
+	beforeRouteUpdate(to, from, next) {
+		this.checkIfPerformNewMainSearch(to.query.term)
+		next()
 	}
-}
+})
 </script>
 
 <style>

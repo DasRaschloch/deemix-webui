@@ -1,11 +1,11 @@
 <template>
 	<div id="search_tab">
-		<div v-show="!showSearchTab">
+		<div v-show="isQueryEmpty">
 			<h2>{{ $t('search.startSearching') }}</h2>
 			<p>{{ $t('search.description') }}</p>
 		</div>
 
-		<div v-show="showSearchTab">
+		<div v-show="!isQueryEmpty">
 			<BaseTabs>
 				<BaseTab
 					v-for="tab in tabs"
@@ -47,8 +47,11 @@ import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@
 import { standardizeData } from '@/data/standardize'
 import { computed, defineComponent, reactive, ref, toRefs, watch, watchEffect } from '@vue/composition-api'
 import { useMainSearch } from '@/use/main-search'
+import { useSearch } from '@/use/search'
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
+
+const lastTab = ref(null)
 
 export default defineComponent({
 	components: {
@@ -93,18 +96,76 @@ export default defineComponent({
 				albumTab: { ...resetObj },
 				artistTab: { ...resetObj },
 				playlistTab: { ...resetObj }
-			}
+			},
+			tabs: [
+				{
+					name: ctx.root.$i18n.t('globals.listTabs.all'),
+					searchType: 'all',
+					component: ResultsAll,
+					viewInfo: 'allTab'
+				},
+				{
+					name: ctx.root.$i18n.tc('globals.listTabs.track', 2),
+					searchType: 'track',
+					component: ResultsTracks,
+					viewInfo: 'trackTab',
+					formatFunc: formatSingleTrack
+				},
+				{
+					name: ctx.root.$i18n.tc('globals.listTabs.album', 2),
+					searchType: 'album',
+					component: ResultsAlbums,
+					viewInfo: 'albumTab',
+					formatFunc: formatAlbums
+				},
+				{
+					name: ctx.root.$i18n.tc('globals.listTabs.artist', 2),
+					searchType: 'artist',
+					component: ResultsArtists,
+					viewInfo: 'artistTab',
+					formatFunc: formatArtist
+				},
+				{
+					name: ctx.root.$i18n.tc('globals.listTabs.playlist', 2),
+					searchType: 'playlist',
+					component: ResultsPlaylists,
+					viewInfo: 'playlistTab',
+					formatFunc: formatPlaylist
+				}
+			]
 		})
-		const { searchResult, performSearch } = useMainSearch()
+		const { searchResult, performMainSearch } = useMainSearch()
+		const { result, performSearch } = useSearch()
+		const isQueryEmpty = computed(() => state.results.query === '')
+		const searchedTerm = computed(() => ctx.root.$route.query.term)
+		console.log('onSetup')
 
+		/*
+			Search cases:
+				- same term
+					- from search  (component is already rendered) -> do nothing
+						- handled in TheSearchBar ✅
+					- from another tab (component is not rendered yet) -> don't perform new search, show previous results (stored in the ref searchResult) and all tab
+						- handling in beforeRouteEnter ✅, but need to know that we already have the values ❌
+				- different term
+					- from search (component is already rendered) -> show new results and keep the tab
+						- handling in beforeRouteUpdate ❌, but need to keep the tab, therefore perform a Search or a Main Search according to last tab ❌
+					- from another tab (component is not rendered yet) -> show new results and show all tab
+						- handling in beforeRouteEnter ✅, no need to know that we already have the values ✅
+		*/
+
+		if (searchedTerm.value) {
+			performMainSearch(searchedTerm.value)
+		}
+
+		// Main search watcher
 		watch(searchResult, newValue => {
-			console.log('show main search results watcher')
 			// Hide loading placeholder
 			ctx.root.$emit('updateSearchLoadingState', false)
 
-			state.results.query = searchResult.QUERY
+			state.results.query = newValue.QUERY
 
-			state.results.allTab = searchResult
+			state.results.allTab = newValue
 			state.results.allTab.TRACK.hasLoaded = true
 			state.results.allTab.ALBUM.hasLoaded = true
 			state.results.allTab.ARTIST.hasLoaded = true
@@ -114,96 +175,61 @@ export default defineComponent({
 			state.results.albumTab = { ...resetObj }
 			state.results.artistTab = { ...resetObj }
 			state.results.playlistTab = { ...resetObj }
+
+			if (lastTab.value && lastTab.value.searchType !== 'all') {
+				state.currentTab = lastTab.value
+
+				performSearch({
+					term: newValue.QUERY,
+					type: state.currentTab.searchType
+					// start: state.results[`${state.currentTab.searchType}Tab`].next
+				})
+			} else {
+				state.currentTab = state.tabs.find(tab => tab.searchType === 'all')
+			}
 		})
+
+		// Search watcher
+		watch(result, newValue => {
+			const { next: nextResult, total, type, data: newData } = newValue
+
+			const currentTabKey = type + 'Tab'
+			let next = total
+
+			if (nextResult) {
+				next = parseInt(nextResult.match(/index=(\d*)/)[1])
+			} /* else {
+				next = total
+			} */
+
+			if (state.results[currentTabKey].total !== total) {
+				state.results[currentTabKey].total = total
+			}
+
+			if (state.results[currentTabKey].next !== next) {
+				state.results[currentTabKey].next = next
+				state.results[currentTabKey].data = state.results[currentTabKey].data.concat(newData)
+			}
+
+			state.results[currentTabKey].hasLoaded = true
+		})
+
+		state.currentTab = state.tabs.find(tab => tab.searchType === 'all')
 
 		return {
 			...toRefs(state),
+			isQueryEmpty,
 			searchResult,
+			performMainSearch,
 			performSearch
 		}
 	},
-	data() {
-		const $t = this.$t.bind(this)
-		const $tc = this.$tc.bind(this)
-
-		return {
-			// currentTab: {
-			// 	name: '',
-			// 	searchType: '',
-			// 	component: {},
-			// 	viewInfo: '',
-			// 	formatFunc: () => {}
-			// },
-			tabs: [
-				{
-					name: $t('globals.listTabs.all'),
-					searchType: 'all',
-					component: ResultsAll,
-					viewInfo: 'allTab'
-				},
-				{
-					name: $tc('globals.listTabs.track', 2),
-					searchType: 'track',
-					component: ResultsTracks,
-					viewInfo: 'trackTab',
-					formatFunc: formatSingleTrack
-				},
-				{
-					name: $tc('globals.listTabs.album', 2),
-					searchType: 'album',
-					component: ResultsAlbums,
-					viewInfo: 'albumTab',
-					formatFunc: formatAlbums
-				},
-				{
-					name: $tc('globals.listTabs.artist', 2),
-					searchType: 'artist',
-					component: ResultsArtists,
-					viewInfo: 'artistTab',
-					formatFunc: formatArtist
-				},
-				{
-					name: $tc('globals.listTabs.playlist', 2),
-					searchType: 'playlist',
-					component: ResultsPlaylists,
-					viewInfo: 'playlistTab',
-					formatFunc: formatPlaylist
-				}
-			]
-			// results: {
-			// 	query: '',
-			// 	allTab: {
-			// 		ORDER: [],
-			// 		TOP_RESULT: [],
-			// 		ALBUM: {
-			// 			hasLoaded: false
-			// 		},
-			// 		ARTIST: {
-			// 			hasLoaded: false
-			// 		},
-			// 		TRACK: {
-			// 			hasLoaded: false
-			// 		},
-			// 		PLAYLIST: {
-			// 			hasLoaded: false
-			// 		}
-			// 	},
-			// 	trackTab: { ...resetObj },
-			// 	albumTab: { ...resetObj },
-			// 	artistTab: { ...resetObj },
-			// 	playlistTab: { ...resetObj }
-			// }
-		}
-	},
 	computed: {
-		showSearchTab() {
-			return this.results.query !== ''
-		},
 		loadedTabs() {
 			const tabsLoaded = []
 
 			for (const resultKey in this.results) {
-				if (this.results.hasOwnProperty(resultKey)) {
+				if (this.results.hasOwnProperty(resultKey) && resultKey !== 'query') {
 					const currentResult = this.results[resultKey]
 
 					if (currentResult.hasLoaded) {
@@ -214,15 +240,6 @@ export default defineComponent({
 
 			return tabsLoaded
 		}
-	},
-	created() {
-		this.currentTab = this.tabs[0]
-	},
-	mounted() {
-		this.$root.$on('mainSearch:showNewResults', this.checkIfPerformNewMainSearch)
-
-		socket.on('mainSearch', this.saveMainSearchResult)
-		socket.on('search', this.handleSearch)
 	},
 	methods: {
 		numberWithDots,
@@ -251,33 +268,7 @@ export default defineComponent({
 
 			window.scrollTo(0, 0)
 			this.currentTab = newTab
-			// this.lastTab = newTab
-		},
-		checkIfPerformNewMainSearch(searchTerm) {
-			const hasTermChanged = searchTerm !== this.results.query
-
-			if (hasTermChanged) {
-				// this.performNewMainSearch(searchTerm)
-				this.$root.$emit('updateSearchLoadingState', true)
-				this.performSearch(searchTerm)
-				this.currentTab = this.tabs[0]
-				// this.currentTab = this.lastTab
-			}
-		},
-		performNewMainSearch(term) {
-			socket.emit('mainSearch', { term })
-
-			// Showing loading placeholder
-			this.$root.$emit('updateSearchLoadingState', true)
-			this.currentTab = this.tabs[0]
-		},
-		search(type) {
-			socket.emit('search', {
-				term: this.results.query,
-				type,
-				start: this.results[`${type}Tab`].next,
-				nb: 30
-			})
+			lastTab.value = newTab
 		},
 		scrolledSearch() {
 			if (this.currentTab.searchType === 'all') return
@@ -286,50 +277,12 @@ export default defineComponent({
 			const needToPerformScrolledSearch = this.results[currentTabKey].next < this.results[currentTabKey].total
 
 			if (needToPerformScrolledSearch) {
-				this.search(this.currentTab.searchType)
+				this.performSearch({
+					term: this.results.query,
+					type: this.currentTab.searchType,
+					start: this.results[`${this.currentTab.searchType}Tab`].next
+				})
 			}
-		},
-		saveMainSearchResult(searchResult) {
-			console.log('show main search results')
-			return
-			// Hide loading placeholder
-			this.$root.$emit('updateSearchLoadingState', false)
-
-			this.results.query = searchResult.QUERY
-
-			this.results.allTab = searchResult
-			this.results.allTab.TRACK.hasLoaded = true
-			this.results.allTab.ALBUM.hasLoaded = true
-			this.results.allTab.ARTIST.hasLoaded = true
-			this.results.allTab.PLAYLIST.hasLoaded = true
-
-			this.results.trackTab = { ...resetObj }
-			this.results.albumTab = { ...resetObj }
-			this.results.artistTab = { ...resetObj }
-			this.results.playlistTab = { ...resetObj }
-		},
-		handleSearch(result) {
-			const { next: nextResult, total, type, data: newData } = result
-
-			const currentTabKey = type + 'Tab'
-			let next = 0
-
-			if (nextResult) {
-				next = parseInt(nextResult.match(/index=(\d*)/)[1])
-			} else {
-				next = total
-			}
-
-			if (this.results[currentTabKey].total !== total) {
-				this.results[currentTabKey].total = total
-			}
-
-			if (this.results[currentTabKey].next !== next) {
-				this.results[currentTabKey].next = next
-				this.results[currentTabKey].data = this.results[currentTabKey].data.concat(newData)
-			}
-
-			this.results[currentTabKey].hasLoaded = true
 		},
 		isTabLoaded(tab) {
 			return this.loadedTabs.indexOf(tab.searchType) !== -1 || tab.searchType === 'all'
@@ -342,20 +295,32 @@ export default defineComponent({
 			this.scrolledSearch(needToSearch)
 		},
 		currentTab(newTab) {
+			console.log('watch current tab')
 			if (this.isTabLoaded(newTab)) return
 
-			this.search(newTab.searchType)
+			this.performSearch({
+				term: this.results.query,
+				type: newTab.searchType,
+				start: this.results[`${newTab.searchType}Tab`].next
+			})
 		}
-	},
-	beforeRouteEnter(to, from, next) {
-		next(vm => {
-			vm.checkIfPerformNewMainSearch(to.query.term)
-		})
-	},
-	beforeRouteUpdate(to, from, next) {
-		this.checkIfPerformNewMainSearch(to.query.term)
-		next()
 	}
+	// beforeRouteUpdate(to, from, next) {
+	// 	console.log('beforeRouteUpdate', from)
+	// 	// this.$root.$emit('updateSearchLoadingState', true)
+
+	// 	// this.performMainSearch(to.query.term)
+
+	// 	// if (this.currentTab.searchType !== 'all') {
+	// 	// 	this.performSearch({
+	// 	// 		term: to.query.term,
+	// 	// 		type: this.currentTab.searchType,
+	// 	// 		start: this.results[`${this.currentTab.searchType}Tab`].next
+	// 	// 	})
+	// 	// }
+
+	// 	next()
+	// }
 })
 </script>
 

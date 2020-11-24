@@ -4,11 +4,9 @@ import { socket } from '@/utils/socket'
 const searchResult = ref({})
 const lastTermSearched = ref(null)
 
-function performSearch(searchTerm) {
+function performMainSearch(searchTerm) {
 	if (searchTerm === lastTermSearched.value) return
 
-	// TODO Handle multiple, subsequent calls
-	// TODO Caching
 	socket.emit('mainSearch', { term: searchTerm })
 
 	socket.on('mainSearch', data => {
@@ -22,26 +20,6 @@ function performSearch(searchTerm) {
 export function useMainSearch() {
 	return {
 		searchResult,
-		performSearch
+		performMainSearch
 	}
 }
-
-// socket.on('mainSearch', saveMainSearchResult)
-
-// saveMainSearchResult(searchResult) {
-// 	// Hide loading placeholder
-// 	this.$root.$emit('updateSearchLoadingState', false)
-
-// 	this.results.query = searchResult.QUERY
-
-// 	this.results.allTab = searchResult
-// 	this.results.allTab.TRACK.hasLoaded = true
-// 	this.results.allTab.ALBUM.hasLoaded = true
-// 	this.results.allTab.ARTIST.hasLoaded = true
-// 	this.results.allTab.PLAYLIST.hasLoaded = true
-
-// 	this.results.trackTab = { ...resetObj }
-// 	this.results.albumTab = { ...resetObj }
-// 	this.results.artistTab = { ...resetObj }
-// 	this.results.playlistTab = { ...resetObj }
-// },

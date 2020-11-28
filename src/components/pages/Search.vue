@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, reactive, ref, toRefs, watch, watchEffect } from '@vue/composition-api'
+import { computed, onMounted, reactive, ref, toRefs, watch, defineComponent } from '@vue/composition-api'
 
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import ResultsAll from '@components/search/ResultsAll.vue'
@@ -142,29 +142,23 @@ export default defineComponent({
 		const isQueryEmpty = computed(() => state.results.query === '')
 		const searchedTerm = computed(() => ctx.root.$route.query.term)
 		const isSearching = ref(false)
-		console.log('onSetup')
+		const isMainSearchCached = computed(() => Object.keys(searchResult.value).length !== 0)
+		console.log('onSetup', lastTab.value)
 
-		/*
-			Search cases:
-				- same term
-					- from search  (component is already rendered) -> do nothing
-						- handled in TheSearchBar ✅
-					- from another tab (component is not rendered yet) -> don't perform new search, show previous results (stored in the ref searchResult) and all tab
-						- handling in beforeRouteEnter ✅, but need to know that we already have the values ❌
-				- different term
-					- from search (component is already rendered) -> show new results and keep the tab
-						- handling in beforeRouteUpdate ❌, but need to keep the tab, therefore perform a Search or a Main Search according to last tab ❌
-					- from another tab (component is not rendered yet) -> show new results and show all tab
-						- handling in beforeRouteEnter ✅, no need to know that we already have the values ✅
-		*/
+		if (isMainSearchCached.value) {
+			console.log('main search cached!')
+			onMounted(() => {
+				handleMainSearch(searchResult.value)
+			})
+		}
 
-		if (searchedTerm.value) {
+		if (searchedTerm.value && !isMainSearchCached.value) {
+			console.log('need to perform main search')
 			performMainSearch(searchedTerm.value)
 			isSearching.value = true
 		}
 
-		// Main search watcher
-		watch(searchResult, newValue => {
+		function handleMainSearch(newValue) {
 			// Hide loading placeholder
 			isSearching.value = false
 
@@ -182,17 +176,21 @@ export default defineComponent({
 			// state.results.playlistTab = { ...resetObj }
 
 			if (lastTab.value && lastTab.value.searchType !== 'all') {
+				console.log('in main search, set last tab')
 				state.currentTab = lastTab.value
 
 				performSearch({
 					term: newValue.QUERY,
 					type: state.currentTab.searchType
-					// start: state.results[`${state.currentTab.searchType}Tab`].next
 				})
 			} else {
+				console.log('in main search, all tab')
 				state.currentTab = state.tabs.find(tab => tab.searchType === 'all')
 			}
-		})
+		}
+
+		// Main search watcher
+		watch(searchResult, handleMainSearch)
 
 		// Search watcher
 		watch(result, newValue => {
@@ -300,8 +298,8 @@ export default defineComponent({
 
 			this.scrolledSearch(needToSearch)
 		},
-		currentTab(newTab) {
-			console.log('watch current tab')
+		currentTab(newTab, old) {
+			console.log('watch current tab %s -> %s', old.searchType, newTab.searchType)
 			if (this.isTabLoaded(newTab)) return
 
 			this.performSearch({
@@ -311,23 +309,10 @@ export default defineComponent({
 			})
 		}
 	}
-	// beforeRouteUpdate(to, from, next) {
-	// 	console.log('beforeRouteUpdate', from)
-
-	// 	// this.performMainSearch(to.query.term)
-
-	// 	// if (this.currentTab.searchType !== 'all') {
-	// 	// 	this.performSearch({
-	// 	// 		term: to.query.term,
-	// 	// 		type: this.currentTab.searchType,
-	// 	// 		start: this.results[`${this.currentTab.searchType}Tab`].next
-	// 	// 	})
-	// 	// }
-
-	// 	next()
-	// }
 })
 </script>
 
 <style>
 </style>
+
+

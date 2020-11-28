@@ -4,7 +4,6 @@ import { socket } from '@/utils/socket'
 const searchResult = ref({})
 
 function performMainSearch(searchTerm) {
-	console.log('Perform main search')
 	socket.emit('mainSearch', { term: searchTerm })
 
 	socket.on('mainSearch', data => {

@@ -34,6 +34,7 @@
 
 <script>
 import { computed, onMounted, reactive, ref, toRefs, watch, defineComponent } from '@vue/composition-api'
+import { uniqWith } from 'lodash-es'
 
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import ResultsAll from '@components/search/ResultsAll.vue'
@@ -139,22 +140,19 @@ export default defineComponent({
 		})
 		const { searchResult, performMainSearch } = useMainSearch()
 		const { result, performSearch } = useSearch()
-		const isQueryEmpty = computed(() => state.results.query === '')
 		const searchedTerm = computed(() => ctx.root.$route.query.term)
+		const isQueryEmpty = computed(() => state.results.query === '')
 		const isSearching = ref(false)
 		const isMainSearchCached = computed(() => Object.keys(searchResult.value).length !== 0)
-		const isNewQuery = computed(() => searchResult.value.QUERY !== searchedTerm.value)
-		console.log('onSetup', lastTab.value)
+		const isNewSearch = computed(() => searchResult.value.QUERY !== searchedTerm.value)
 
-		if (isMainSearchCached.value && !isNewQuery.value) {
-			console.log('main search cached!')
+		if (isMainSearchCached.value && !isNewSearch.value) {
 			onMounted(() => {
 				handleMainSearch(searchResult.value)
 			})
 		}
 
-		if (searchedTerm.value && (!isMainSearchCached.value || isNewQuery.value)) {
-			console.log('need to perform main search')
+		if (searchedTerm.value && (!isMainSearchCached.value || isNewSearch.value)) {
 			performMainSearch(searchedTerm.value)
 			isSearching.value = true
 		}
@@ -171,13 +169,7 @@ export default defineComponent({
 			state.results.allTab.ARTIST.hasLoaded = true
 			state.results.allTab.PLAYLIST.hasLoaded = true
 
-			// state.results.trackTab = { ...resetObj }
-			// state.results.albumTab = { ...resetObj }
-			// state.results.artistTab = { ...resetObj }
-			// state.results.playlistTab = { ...resetObj }
-
 			if (lastTab.value && lastTab.value.searchType !== 'all') {
-				console.log('in main search, set last tab')
 				state.currentTab = lastTab.value
 
 				performSearch({
@@ -185,7 +177,6 @@ export default defineComponent({
 					type: state.currentTab.searchType
 				})
 			} else {
-				console.log('in main search, all tab')
 				state.currentTab = state.tabs.find(tab => tab.searchType === 'all')
 			}
 		}
@@ -197,14 +188,15 @@ export default defineComponent({
 		watch(result, newValue => {
 			const { next: nextResult, total, type, data: newData } = newValue
 
-			const currentTabKey = type + 'Tab'
+			const currentTabKey = `${type}Tab`
 			let next = total
+
+			// console.log({ currentTabKey, test: state.currentTab.searchType })
 
 			if (nextResult) {
 				next = parseInt(nextResult.match(/index=(\d*)/)[1])
-			} /* else {
-				next = total
-			} */
+			}
+			// console.log({ next, total, type, newData })
 
 			if (state.results[currentTabKey].total !== total) {
 				state.results[currentTabKey].total = total
@@ -212,7 +204,14 @@ export default defineComponent({
 
 			if (state.results[currentTabKey].next !== next) {
 				state.results[currentTabKey].next = next
-				state.results[currentTabKey].data = state.results[currentTabKey].data.concat(newData)
+
+				// Preventing duplicate entries by filtering them by ID
+				const rawData = state.results[currentTabKey].data.concat(newData)
+				const filteredData = uniqWith(rawData, (obj1, obj2) => {
+					return obj1.id === obj2.id
+				})
+
+				state.results[currentTabKey].data = filteredData
 			}
 
 			state.results[currentTabKey].hasLoaded = true
@@ -226,11 +225,7 @@ export default defineComponent({
 			isQueryEmpty,
 			searchResult,
 			performMainSearch,
-			performSearch,
-			// Remove
-			isNewQuery,
-			searchedTerm,
-			isMainSearchCached
+			performSearch
 		}
 	},
 	computed: {
@@ -304,7 +299,6 @@ export default defineComponent({
 			this.scrolledSearch(needToSearch)
 		},
 		currentTab(newTab, old) {
-			console.log('watch current tab %s -> %s', old.searchType, newTab.searchType)
 			if (this.isTabLoaded(newTab)) return
 
 			this.performSearch({

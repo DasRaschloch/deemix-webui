@@ -143,16 +143,17 @@ export default defineComponent({
 		const searchedTerm = computed(() => ctx.root.$route.query.term)
 		const isSearching = ref(false)
 		const isMainSearchCached = computed(() => Object.keys(searchResult.value).length !== 0)
+		const isNewQuery = computed(() => searchResult.value.QUERY !== searchedTerm.value)
 		console.log('onSetup', lastTab.value)
 
-		if (isMainSearchCached.value) {
+		if (isMainSearchCached.value && !isNewQuery.value) {
 			console.log('main search cached!')
 			onMounted(() => {
 				handleMainSearch(searchResult.value)
 			})
 		}
 
-		if (searchedTerm.value && !isMainSearchCached.value) {
+		if (searchedTerm.value && (!isMainSearchCached.value || isNewQuery.value)) {
 			console.log('need to perform main search')
 			performMainSearch(searchedTerm.value)
 			isSearching.value = true
@@ -225,7 +226,11 @@ export default defineComponent({
 			isQueryEmpty,
 			searchResult,
 			performMainSearch,
-			performSearch
+			performSearch,
+			// Remove
+			isNewQuery,
+			searchedTerm,
+			isMainSearchCached
 		}
 	},
 	computed: {

@@ -390,10 +390,12 @@ const fr = {
 			question: 'Comment activer les Fonctionnalités Spotify ?'
 		},
 		reset: 'Rétablir les valeurs par défaut',
+		resetMessage: 'Souhaitez-vous vraiment rétablir les paramètres par défaut ?',
 		save: 'Sauvegarder',
 		toasts: {
 			init: 'Paramètres chargés !',
 			update: 'Paramètres mis à jour !',
+			reset: 'Paramètres réinitialisés à leur valeur par défaut !',
 			ARLcopied: 'ARL copié dans le presse-papier'
 		}
 	},

@@ -22,6 +22,10 @@
 	width: 156px;
 }
 
+.spin {
+	animation: spin 500ms infinite ease-out reverse;
+}
+
 @keyframes spin {
 	0% {
 		transform: rotate(0deg);

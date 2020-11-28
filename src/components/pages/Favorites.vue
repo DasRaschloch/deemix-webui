@@ -3,13 +3,13 @@
 		<h1 class="mb-8 text-5xl">
 			{{ $t('favorites.title') }}
 			<div
-				@click="reloadTabs"
-				class="inline-block clickable reload-button"
+				@click="refreshFavorites"
+				class="inline-block clickable"
 				ref="reloadButton"
 				role="button"
 				aria-label="reload"
 			>
-				<i class="material-icons">sync</i>
+				<i class="material-icons" :class="{ spin: isRefreshingFavorites }">sync</i>
 			</div>
 		</h1>
 
@@ -20,10 +20,10 @@
 		</BaseTabs>
 
 		<button class="btn btn-primary" v-if="!activeTabEmpty" style="margin-bottom: 2rem" @click="downloadAllOfType">
-			{{ $t('globals.download', { thing: $tc(`globals.listTabs.${activeTab}N`, getTabLenght()) }) }}
+			{{ $t('globals.download', { thing: $tc(`globals.listTabs.${activeTab}N`, getTabLength()) }) }}
 		</button>
 
-		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'playlist' }">
+		<div v-show="activeTab === 'playlist'">
 			<div v-if="playlists.length == 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 
-		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'album' }">
+		<div v-show="activeTab === 'album'">
 			<div v-if="albums.length == 0">
 				<h1>{{ $t('favorites.noAlbums') }}</h1>
 			</div>
@@ -81,7 +81,7 @@
 			</div>
 		</div>
 
-		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'artist' }">
+		<div v-show="activeTab === 'artist'">
 			<div v-if="artists.length == 0">
 				<h1>{{ $t('favorites.noArtists') }}</h1>
 			</div>
@@ -99,7 +99,7 @@
 			</div>
 		</div>
 
-		<div class="favorites_tabcontent" :class="{ 'favorites_tabcontent--active': activeTab === 'track' }">
+		<div v-show="activeTab === 'track'">
 			<div v-if="tracks.length == 0">
 				<h1>{{ $t('favorites.noTracks') }}</h1>
 			</div>
@@ -163,85 +163,69 @@
 	</div>
 </template>
 
-<style lang="scss" scoped>
-.favorites_tabcontent {
-	display: none;
-
-	&--active {
-		display: block;
-	}
-}
-
-.reload-button {
-	&.spin {
-		i {
-			animation: spin 500ms infinite ease-out reverse;
-		}
-	}
-}
-</style>
-
 <script>
-import { socket } from '@/utils/socket'
-import { sendAddToQueue, aggregateDownloadLinks } from '@/utils/downloads'
-import { convertDuration } from '@/utils/utils'
-import { toast } from '@/utils/toasts'
-import { getFavoritesData } from '@/data/favorites'
+import { defineComponent, onMounted, reactive, toRefs, watchEffect, ref, computed, watch } from '@vue/composition-api'
 
 import PreviewControls from '@components/globals/PreviewControls.vue'
 import CoverContainer from '@components/globals/CoverContainer.vue'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
 
-export default {
+import { sendAddToQueue, aggregateDownloadLinks } from '@/utils/downloads'
+import { convertDuration } from '@/utils/utils'
+import { toast } from '@/utils/toasts'
+import { useFavorites } from '@/use/favorites'
+
+export default defineComponent({
 	components: {
 		PreviewControls,
 		CoverContainer,
 		BaseTabs,
 		BaseTab
 	},
-	data() {
-		return {
-			tracks: [],
-			albums: [],
-			artists: [],
-			playlists: [],
-			spotifyPlaylists: [],
+	setup(props, ctx) {
+		const state = reactive({
 			activeTab: 'playlist',
 			tabs: ['playlist', 'album', 'artist', 'track']
+		})
+		const {
+			favoriteArtists,
+			favoriteAlbums,
+			favoriteSpotifyPlaylists,
+			favoritePlaylists,
+			favoriteTracks,
+			isRefreshingFavorites,
+			refreshFavorites
+		} = useFavorites()
+		const reloadButton = computed(() => ctx.refs.reloadButton)
+
+		watch(isRefreshingFavorites, (newVal, oldVal) => {
+			// If oldVal is true and newOne is false, it means that a refreshing has just terminated
+			// because isRefreshingFavorites represents the status of the refresh functionality
+			const isRefreshingTerminated = oldVal && !newVal
+
+			if (!isRefreshingTerminated) return
+
+			toast(ctx.root.$t('toasts.refreshFavs'), 'done', true)
+		})
+
+		return {
+			...toRefs(state),
+			tracks: favoriteTracks,
+			albums: favoriteAlbums,
+			artists: favoriteArtists,
+			playlists: favoritePlaylists,
+			spotifyPlaylists: favoriteSpotifyPlaylists,
+			refreshFavorites,
+			isRefreshingFavorites
 		}
 	},
 	computed: {
 		activeTabEmpty() {
 			let toCheck = this.getActiveRelease()
 
-			return toCheck.length === 0
+			return toCheck?.length === 0
 		}
-	},
-	async created() {
-		const favoritesData = await getFavoritesData()
-
-		// TODO Change with isLoggedIn vuex getter
-		if (Object.entries(favoritesData).length === 0) return
-
-		this.setFavorites(favoritesData)
-	},
-	mounted() {
-		socket.on('updated_userFavorites', this.updated_userFavorites)
-		socket.on('updated_userSpotifyPlaylists', this.updated_userSpotifyPlaylists)
-		socket.on('updated_userPlaylists', this.updated_userPlaylists)
-		socket.on('updated_userAlbums', this.updated_userAlbums)
-		socket.on('updated_userArtist', this.updated_userArtist)
-		socket.on('updated_userTracks', this.updated_userTracks)
-
-		this.$on('hook:destroyed', () => {
-			socket.off('updated_userFavorites')
-			socket.off('updated_userSpotifyPlaylists')
-			socket.off('updated_userPlaylists')
-			socket.off('updated_userAlbums')
-			socket.off('updated_userArtist')
-			socket.off('updated_userTracks')
-		})
 	},
 	methods: {
 		playPausePreview,
@@ -264,54 +248,9 @@ export default {
 		addToQueue(e) {
 			sendAddToQueue(e.currentTarget.dataset.link)
 		},
-		updated_userSpotifyPlaylists(data) {
-			this.spotifyPlaylists = data
-		},
-		updated_userPlaylists(data) {
-			this.playlists = data
-		},
-		updated_userAlbums(data) {
-			this.albums = data
-		},
-		updated_userArtist(data) {
-			this.artists = data
-		},
-		updated_userTracks(data) {
-			this.tracks = data
-		},
-		reloadTabs() {
-			this.$refs.reloadButton.classList.add('spin')
-
-			socket.emit('update_userFavorites')
-
-			if (localStorage.getItem('spotifyUser')) {
-				socket.emit('update_userSpotifyPlaylists', localStorage.getItem('spotifyUser'))
-			}
-		},
-		updated_userFavorites(data) {
-			this.setFavorites(data)
-
-			// Removing animation class only when the animation has completed an iteration
-			// Prevents animation ugly stutter
-			this.$refs.reloadButton.addEventListener(
-				'animationiteration',
-				() => {
-					this.$refs.reloadButton.classList.remove('spin')
-					toast(this.$t('toasts.refreshFavs'), 'done', true)
-				},
-				{ once: true }
-			)
-		},
-		setFavorites(data) {
-			const { tracks, albums, artists, playlists } = data
-
-			this.tracks = tracks
-			this.albums = albums
-			this.artists = artists
-			this.playlists = playlists
-		},
 		getActiveRelease(tab = this.activeTab) {
 			let toDownload
+			// console.log({ tab, play: this.playlists })
 
 			switch (tab) {
 				case 'playlist':
@@ -333,11 +272,11 @@ export default {
 
 			return toDownload
 		},
-		getTabLenght(tab = this.activeTab) {
-			let total = this[`${tab}s`].length
+		getTabLength(tab = this.activeTab) {
+			let total = this[`${tab}s`]?.length
 			// TODO: Add Spotify playlists to downlaod queue as well
 			//if (tab === "playlist") total += this.spotifyPlaylists.length
-			return total
+			return total || 0
 		},
 		getLovedTracksPlaylist() {
 			let lovedTracks = this.playlists.filter(playlist => {
@@ -351,5 +290,5 @@ export default {
 			}
 		}
 	}
-}
+})
 </script>

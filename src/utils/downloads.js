@@ -19,7 +19,3 @@ export function aggregateDownloadLinks(releases) {
 
 	return links.join(';')
 }
-
-// export default {
-// 	sendAddToQueue
-// }

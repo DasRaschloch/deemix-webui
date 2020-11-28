@@ -6,10 +6,17 @@ const getDefaultState = () => ({
 		name: '',
 		picture: ''
 	},
+	spotifyUser: {
+		id: localStorage.getItem('spotifyUser'),
+		name: null,
+		picture: null
+	},
 	clientMode: false
 })
 
-const state = getDefaultState()
+const state = () => {
+	return getDefaultState()
+}
 
 const actions = {
 	login({ commit, dispatch }, payload) {
@@ -51,8 +58,11 @@ const actions = {
 const getters = {
 	getARL: state => state.arl,
 	getUser: state => state.user,
+	getSpotifyUser: state => state.spotifyUser,
 	getClientMode: state => state.clientMode,
-	isLoggedIn: state => !!state.arl
+
+	isLoggedIn: state => !!state.arl,
+	isLoggedWithSpotify: state => !!state.spotifyUser.id
 }
 
 const mutations = {

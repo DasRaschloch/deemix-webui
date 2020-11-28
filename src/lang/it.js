@@ -379,10 +379,12 @@ const it = {
 			question: 'Come attivo le Spotify Features?'
 		},
 		reset: 'Reimposta Default',
+		resetMessage: 'Sei sicuro di voler tornare alle impostazioni di default?',
 		save: 'Salva',
 		toasts: {
 			init: 'Impostazioni caricate!',
 			update: 'Impostazioni aggiornate!',
+			reset: 'Impostazioni di default ripristinate!',
 			ARLcopied: 'ARL copiato negli appunti'
 		}
 	},

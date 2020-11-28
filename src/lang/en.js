@@ -376,10 +376,12 @@ const en = {
 			question: 'How do I enable Spotify Features?'
 		},
 		reset: 'Reset to Default',
+		resetMessage: 'Are you sure you want to go back to default settings?',
 		save: 'Save',
 		toasts: {
 			init: 'Settings loaded!',
 			update: 'Settings updated!',
+			reset: 'Settings reset to default!',
 			ARLcopied: 'ARL copied to clipboard'
 		}
 	},

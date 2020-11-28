@@ -46,13 +46,14 @@
 					</button>
 				</div>
 
-				<RouterLink :to="{ name: 'ARL' }">
+				<RouterLink :to="{ name: 'ARL' }" class="block">
 					{{ $t('settings.login.arl.question') }}
 				</RouterLink>
 
-				<a v-if="clientMode" href="#" @click="appLogin">
+				<a v-if="clientMode" href="#" class="block" @click="appLogin">
 					{{ $t('settings.login.login') }}
 				</a>
+
 				<button class="btn btn-primary" @click="login" style="width: 100%">
 					{{ $t('settings.login.arl.update') }}
 				</button>
@@ -651,7 +652,7 @@
 		</BaseAccordion>
 
 		<footer class="bg-background-main">
-			<button class="mr-2 btn btn-primary" @click="resetSettings">{{ $t('settings.reset') }}</button>
+			<button class="mr-2 btn btn-primary" @click="resetToDefault">{{ $t('settings.reset') }}</button>
 			<button class="btn btn-primary" @click="saveSettings">{{ $t('settings.save') }}</button>
 		</footer>
 	</div>
@@ -967,8 +968,13 @@ export default {
 
 			toast(this.$t('settings.toasts.update'), 'settings')
 		},
-		resetSettings() {
+		resetToDefault() {
+			const wantsToReset = confirm(this.$t('settings.resetMessage'))
+
+			if (!wantsToReset) return
+
 			this.settings = JSON.parse(JSON.stringify(this.defaultSettings))
+			toast(this.$t('settings.toasts.reset'), 'settings')
 		}
 	}
 }

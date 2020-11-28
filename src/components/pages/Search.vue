@@ -1,11 +1,13 @@
 <template>
 	<div id="search_tab">
-		<div v-show="isQueryEmpty">
+		<div v-show="isQueryEmpty && !isSearching">
 			<h2>{{ $t('search.startSearching') }}</h2>
 			<p>{{ $t('search.description') }}</p>
 		</div>
 
-		<div v-show="!isQueryEmpty">
+		<BaseLoadingPlaceholder text="Searching..." :hidden="!isSearching" />
+
+		<div v-show="!isQueryEmpty && !isSearching">
 			<BaseTabs>
 				<BaseTab
 					v-for="tab in tabs"
@@ -31,6 +33,8 @@
 </template>
 
 <script>
+import { computed, defineComponent, reactive, ref, toRefs, watch, watchEffect } from '@vue/composition-api'
+
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import ResultsAll from '@components/search/ResultsAll.vue'
 import ResultsAlbums from '@components/search/ResultsAlbums.vue'
@@ -45,7 +49,6 @@ import { numberWithDots, convertDuration } from '@/utils/utils'
 
 import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
 import { standardizeData } from '@/data/standardize'
-import { computed, defineComponent, reactive, ref, toRefs, watch, watchEffect } from '@vue/composition-api'
 import { useMainSearch } from '@/use/main-search'
 import { useSearch } from '@/use/search'
 
@@ -138,6 +141,7 @@ export default defineComponent({
 		const { result, performSearch } = useSearch()
 		const isQueryEmpty = computed(() => state.results.query === '')
 		const searchedTerm = computed(() => ctx.root.$route.query.term)
+		const isSearching = ref(false)
 		console.log('onSetup')
 
 		/*
@@ -156,12 +160,13 @@ export default defineComponent({
 
 		if (searchedTerm.value) {
 			performMainSearch(searchedTerm.value)
+			isSearching.value = true
 		}
 
 		// Main search watcher
 		watch(searchResult, newValue => {
 			// Hide loading placeholder
-			ctx.root.$emit('updateSearchLoadingState', false)
+			isSearching.value = false
 
 			state.results.query = newValue.QUERY
 
@@ -171,10 +176,10 @@ export default defineComponent({
 			state.results.allTab.ARTIST.hasLoaded = true
 			state.results.allTab.PLAYLIST.hasLoaded = true
 
-			state.results.trackTab = { ...resetObj }
-			state.results.albumTab = { ...resetObj }
-			state.results.artistTab = { ...resetObj }
-			state.results.playlistTab = { ...resetObj }
+			// state.results.trackTab = { ...resetObj }
+			// state.results.albumTab = { ...resetObj }
+			// state.results.artistTab = { ...resetObj }
+			// state.results.playlistTab = { ...resetObj }
 
 			if (lastTab.value && lastTab.value.searchType !== 'all') {
 				state.currentTab = lastTab.value
@@ -218,6 +223,7 @@ export default defineComponent({
 
 		return {
 			...toRefs(state),
+			isSearching,
 			isQueryEmpty,
 			searchResult,
 			performMainSearch,
@@ -307,7 +313,6 @@ export default defineComponent({
 	}
 	// beforeRouteUpdate(to, from, next) {
 	// 	console.log('beforeRouteUpdate', from)
-	// 	// this.$root.$emit('updateSearchLoadingState', true)
 
 	// 	// this.performMainSearch(to.query.term)
 

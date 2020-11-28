@@ -6,13 +6,11 @@
 		aria-label="main content"
 	>
 		<div id="container">
-			<BaseLoadingPlaceholder text="Searching..." :hidden="!loading" />
 			<BackButton v-if="showBackButton" class="sticky -ml-20" style="top: 1rem" />
 
 			<keep-alive>
 				<router-view
 					v-if="!$route.meta.notKeepAlive"
-					v-show="!loading"
 					:class="{ '-mt-16': showBackButton }"
 					:key="$route.fullPath"
 					:perform-scrolled-search="performScrolledSearch"
@@ -21,7 +19,6 @@
 
 			<router-view
 				v-if="$route.meta.notKeepAlive"
-				v-show="!loading"
 				:class="{ '-mt-16': showBackButton }"
 				:key="$route.fullPath"
 				:perform-scrolled-search="performScrolledSearch"
@@ -75,17 +72,14 @@ main::-webkit-scrollbar-thumb {
 
 <script>
 import { debounce } from '@/utils/utils'
-import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import BackButton from '@components/globals/BackButton.vue'
 
 export default {
 	components: {
-		BaseLoadingPlaceholder,
 		BackButton
 	},
 	data: () => ({
-		performScrolledSearch: false,
-		loading: false
+		performScrolledSearch: false
 	}),
 	computed: {
 		showBackButton() {
@@ -93,10 +87,6 @@ export default {
 		}
 	},
 	mounted() {
-		this.$root.$on('updateSearchLoadingState', loading => {
-			this.loading = loading
-		})
-
 		this.$router.beforeEach((to, from, next) => {
 			this.$refs.content.scrollTo(0, 0)
 			next()

@@ -166,9 +166,13 @@ export default defineComponent({
 				// The user is searching a normal string
 				if (isShowingSearch && isSameAsLastSearch) return
 
-				if (!isSameAsLastSearch) {
-					this.$root.$emit('updateSearchLoadingState', true)
-				}
+				/*
+				isShowing 		isSame
+				false 				false			Loading
+				false 				true			Loading (because component Search is not loaded)
+				true 					false			Loading
+				true 					true			Never
+				*/
 
 				this.lastTextSearch = term
 				await this.$router.push({

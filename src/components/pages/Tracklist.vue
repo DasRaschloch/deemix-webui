@@ -153,7 +153,7 @@
 <script>
 import { isEmpty } from 'lodash-es'
 import { socket } from '@/utils/socket'
-import Downloads from '@/utils/downloads'
+import { sendAddToQueue } from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 
@@ -189,7 +189,7 @@ export default {
 			this.body = []
 		},
 		addToQueue(e) {
-			Downloads.sendAddToQueue(e.currentTarget.dataset.link)
+			sendAddToQueue(e.currentTarget.dataset.link)
 		},
 		toggleAll(e) {
 			this.body.forEach(item => {

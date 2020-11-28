@@ -60,7 +60,7 @@
 }
 </style>
 <script>
-import Downloads from '@/utils/downloads'
+import { sendAddToQueue } from '@/utils/downloads'
 
 export default {
 	data: () => ({
@@ -80,7 +80,7 @@ export default {
 			// If true, the click did not happen on a button but outside
 			if (!target.matches('.quality-button')) return
 
-			Downloads.sendAddToQueue(this.url, target.dataset.qualityValue)
+			sendAddToQueue(this.url, target.dataset.qualityValue)
 		},
 		openModal(link) {
 			this.url = link

@@ -8,6 +8,7 @@
 				@click.stop="sendAddToQueue(downloadLink)"
 				aria-label="download"
 				role="button"
+				:data-cm-link="downloadLink"
 			>
 				<i class="text-4xl material-icons" :title="$t('globals.download_hint')">get_app</i>
 			</div>
@@ -188,4 +189,3 @@ export default defineComponent({
 	}
 })
 </script>
-

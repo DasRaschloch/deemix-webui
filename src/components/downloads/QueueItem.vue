@@ -278,6 +278,7 @@ export default {
 
 			if (this.queueItem.status === 'converting') {
 				width = 100 - this.queueItem.conversion
+				backgroundColor = 'hsl(46, 100%, 50%)'
 			}
 
 			return {

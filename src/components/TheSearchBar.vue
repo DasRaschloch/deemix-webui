@@ -151,7 +151,7 @@ export default defineComponent({
 
 			if (isSearchingURL) {
 				if (isCtrlPressed) {
-					this.$root.$emit('QualityModal:open', term)
+					this.$root.$emit('ContextMenu:searchbar', term)
 					return
 				}
 
@@ -186,5 +186,3 @@ export default defineComponent({
 	}
 })
 </script>
-
-

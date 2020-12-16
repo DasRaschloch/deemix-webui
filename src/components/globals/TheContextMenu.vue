@@ -118,10 +118,24 @@ export default {
 		}
 	},
 	mounted() {
+		this.$root.$on('ContextMenu:searchbar', this.showSearchbarMenu)
 		document.body.addEventListener('contextmenu', this.showMenu)
 		document.body.addEventListener('click', this.hideMenu)
 	},
 	methods: {
+		showSearchbarMenu(url) {
+			console.log(url)
+			let searchbar = document.getElementById("searchbar")
+			searchbar.dataset.cmLink = url
+			let contextMenuEvent = {
+				pageX: 115,
+				pageY: 57,
+				target: searchbar,
+				dummy: true
+			}
+			this.showMenu(contextMenuEvent)
+			delete searchbar.dataset.cmLink
+		},
 		showMenu(contextMenuEvent) {
 			const { pageX, pageY, target: elementClicked } = contextMenuEvent
 			const path = generatePath(elementClicked)
@@ -145,11 +159,12 @@ export default {
 
 			const isLink = elementClicked.matches('a')
 			const isImage = elementClicked.matches('img')
+			const isSearchbar = elementClicked.matches('input#searchbar')
 			const hasDeezerLink = !!deezerLink
 
 			if (!isLink && !isImage && !hasDeezerLink) return
 
-			contextMenuEvent.preventDefault()
+			if (!contextMenuEvent.dummy) contextMenuEvent.preventDefault()
 			this.menuOpen = true
 			this.positionMenu(pageX, pageY)
 
@@ -168,7 +183,7 @@ export default {
 			if (deezerLink) {
 				// Show 'Copy Deezer Link' option
 				this.deezerHref = deezerLink
-				this.showDeezerOptions()
+				this.showDeezerOptions(isSearchbar)
 			}
 		},
 		hideMenu() {
@@ -211,8 +226,8 @@ export default {
 				}
 			})
 		},
-		showDeezerOptions() {
-			this.options.copyDeezerLink.show = true
+		showDeezerOptions(isSearchbar) {
+			if (!isSearchbar) this.options.copyDeezerLink.show = true
 
 			downloadQualities.forEach(quality => {
 				this.options[quality.objName].show = true

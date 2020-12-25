@@ -68,7 +68,7 @@ const ko = {
 			donations: '금전적으로 지원하고 싶다고요? 후원하세요!'
 		},
 		usesLibrary: '이 프로그램은 <strong>deemix</strong> 라이브러리를 사용합니다, 해당 라이브러리로 자신만의 deemix를 만들 수 있습니다.',
-		thanks: `이 프로젝트를 도와준 <strong>rtonno</strong>, <strong>uhwot</strong> 그리고 <strong>lollilol</strong>님과 아이콘을 만들어준 <strong>BasCurtiz</strong> 그리고 <strong>scarvimane</strong>님에게 감사를.`,
+		thanks: `이 프로젝트를 도와준 <strong>rtonno</strong>, <strong>uhwot</strong> 그리고 <strong>lollilol</strong>님과 아이콘을 만들어준 <strong>BasCurtiz</strong> 님에게 감사를.`,
 		upToDate: {
 			text: `새로운 업데이트 소식을 듣고 싶으면 텔레그램 {newsChannel}을 참고하세요.`,
 			newsChannel: '새소식 정보통'

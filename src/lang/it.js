@@ -69,7 +69,7 @@ const it = {
 		},
 		usesLibrary:
 			'Questa app utilizza la libreria <strong>deemix</strong>, che puoi utilizzare per creare la tua Interfaccia Utente per deemix.',
-		thanks: `Un ringraziamento a <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> per l'aiuto che mi stanno dando in questo progetto e a <strong>BasCurtiz</strong> e <strong>scarvimane</strong> per aver creato l'icona.`,
+		thanks: `Un ringraziamento a <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> per l'aiuto che mi stanno dando in questo progetto e a <strong>BasCurtiz</strong> per aver creato l'icona.`,
 		upToDate: {
 			text: `Rimani al passo con gli ultimi aggiornamenti seguendo il {newsChannel} su Telegram.`,
 			newsChannel: 'canale delle news'

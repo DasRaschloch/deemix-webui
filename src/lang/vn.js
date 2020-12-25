@@ -44,7 +44,7 @@ const vn = {
 			donations: 'Bạn muốn ủng hộ kinh phí? Bạn có thể quyên góp tại đây!'
 		},
 		usesLibrary: 'Ứng dụng này sử dụng thư viện <strong>deemix</strong>, bạn có thể dùng nó để tạo một UI riêng cho deemix.',
-		thanks: `Cảm ơn <strong>rtonno</strong>, <strong>uhwot</strong> và <strong>lollilol</strong> đã giúp tôi với dự án này và <strong>BasCurtiz</strong> và <strong>scarvimane</strong> với việc thiết kế biểu tượng.`,
+		thanks: `Cảm ơn <strong>rtonno</strong>, <strong>uhwot</strong> và <strong>lollilol</strong> đã giúp tôi với dự án này và <strong>BasCurtiz</strong> với việc thiết kế biểu tượng.`,
 		upToDate: {
 			text: `Cập nhật app bằng cách theo dõi {newsChannel} trên Telegram.`,
 			newsChannel: 'kênh tin tức'

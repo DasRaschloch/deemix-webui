@@ -60,7 +60,7 @@ const ph = {
 			donations: 'Gusto mo bang tumulong sa pamamagitan ng pera? Pwede kang magbigay ng donasiyon!'
 		},
 		usesLibrary: 'Ang app na ito ay gumagamit ng library galing sa <strong>deemix</strong>, na kung saan ay pwede mong gamitin para gumawa ng sarili mong UI ng deemix.',
-		thanks: `Salamat kay <strong>rtonno</strong>, <strong>uhwot</strong> at <strong>lollilol</strong> sa pagtulong sa akin para sa proyektong ito at kay <strong>BasCurtiz</strong> at <strong>scarvimane</strong> sa paggawa ng icon.`,
+		thanks: `Salamat kay <strong>rtonno</strong>, <strong>uhwot</strong> at <strong>lollilol</strong> sa pagtulong sa akin para sa proyektong ito at kay <strong>BasCurtiz</strong> sa paggawa ng icon.`,
 		upToDate: {
 			text: `Huwag magpapahuli sa mga update patungkol dito sa pamamagitan ng pagsali sa {newsChannel} sa Telegram.`,
 			newsChannel: 'news channel'

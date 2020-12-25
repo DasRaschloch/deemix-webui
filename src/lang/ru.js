@@ -63,7 +63,7 @@ const ru = {
 			donations: 'Хотите поддержать материально? Можно сделать пожертвование!'
 		},
 		usesLibrary: 'Приложение использует библиотеку <strong>deemix</strong>, с помощью которой вы можете разработать собственный UI для deemix.',
-		thanks: `Спасибо <strong>rtonno</strong>, <strong>uhwot</strong> и <strong>lollilol</strong> за помощь с этим проектом, а также <strong>BasCurtiz</strong> и <strong>scarvimane</strong> за иконку.`,
+		thanks: `Спасибо <strong>rtonno</strong>, <strong>uhwot</strong> и <strong>lollilol</strong> за помощь с этим проектом, а также <strong>BasCurtiz</strong> за иконку.`,
 		upToDate: {
 			text: `Следите за последними обновлениями на {newsChannel} в Telegram.`,
 			newsChannel: 'канале'

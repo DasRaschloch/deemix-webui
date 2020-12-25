@@ -45,7 +45,7 @@ const tr = {
 		},
 		usesLibrary:
 			'<strong>deemix</strong> kendi kullanıcı arabiriminizi oluşturabileceğiniz, kendine özgü kütüphanesini kullanıyor.',
-		thanks: ` <strong>rtonno</strong>, <strong>uhwot</strong> ve <strong>lollilol</strong>'a bu projeye yaptığı katkılardan ve <strong>BasCurtiz</strong> ile <strong>scarvimane</strong>'e ikonlardan dolayı teşekkür ederim.`,
+		thanks: ` <strong>rtonno</strong>, <strong>uhwot</strong> ve <strong>lollilol</strong>'a bu projeye yaptığı katkılardan ve <strong>BasCurtiz</strong>'e ikonlardan dolayı teşekkür ederim.`,
 		upToDate: {
 			text: `{newsChannel} takip ederek güncellemelerden haberdar olun.`,
 			newsChannel: 'Telegramdaki haber kanalını'

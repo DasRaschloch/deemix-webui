@@ -44,7 +44,7 @@ const ar = {
 			donations: 'تريد المساهمة مادياً؟ يمكنك التبرع'
 		},
 		usesLibrary: 'هذا البرنامج يستخدم مكتبة <strong>ديمكس</strong> والتي يمكنك استخدامها لإنشاء واجهة مستخدم خاصة بك لديمكس.',
-		thanks: `شكرا لـ <strong>rtonno</strong>, و <strong>uhwot</strong> و <strong>lollilol</strong> لمساعدتي في هذا المشروع و لـ <strong>BasCurtiz</strong> و <strong>scarvimane</strong> لصنع الايقونة.`,
+		thanks: `شكرا لـ <strong>rtonno</strong>, و <strong>uhwot</strong> و <strong>lollilol</strong> لمساعدتي في هذا المشروع و لـ <strong>BasCurtiz</strong> لصنع الايقونة.`,
 		officialWebsite: 'الموقع الرسمي',
 		officialRepo: 'مستودع المكتبة الرسمي',
 		officialWebuiRepo: 'مستودع واجهة الويب الرسمي',

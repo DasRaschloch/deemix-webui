@@ -60,7 +60,7 @@ const pl = {
             donations: 'Chcesz pomóc finansowo? Możesz nas wesprzeć!'
         },
         usesLibrary: 'Ten program używa biblioteki <strong>deemix</strong>, której możesz użyć do stworzenia własnego interfejsu użytkownika',
-        thanks: `Podziękowania dla <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> za pomoc w tym projekcie oraz dla <strong>BasCurtiz</strong> i <strong>scarvimane</strong> za stworzenie ikony.`,
+        thanks: `Podziękowania dla <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> za pomoc w tym projekcie oraz dla <strong>BasCurtiz</strong> za stworzenie ikony.`,
         upToDate: {
     			text: `Bądź na bieżąco z aktualizacjami dołączając do {newsChannel} na Telegramie.`,
     			newsChannel: 'kanału wiadomości'

@@ -60,7 +60,7 @@ const zh_tw = {
 			donations: '您想要捐款嗎？可以贊助我們！'
 		},
 		usesLibrary: '本程式基於 <strong>deemix</strong> 函示庫。您可以使用該函示庫來製作自己的前端。',
-		thanks: `感謝 <strong>rtonno</strong>、<strong>uhwot</strong> 及 <strong>lollilol</strong> 對於本專案的貢獻，另外也感謝 <strong>BasCurtiz</strong> 及 <strong>scarvimane</strong> 幫忙製作本專案的圖示`,
+		thanks: `感謝 <strong>rtonno</strong>、<strong>uhwot</strong> 及 <strong>lollilol</strong> 對於本專案的貢獻，另外也感謝 <strong>BasCurtiz</strong> 幫忙製作本專案的圖示`,
 		upToDate: {
 			text: `您可於 Telegram 上關注{newsChannel}以取得最新動態。`,
 			newsChannel: '最新消息頻道'

@@ -44,7 +44,7 @@ const hr = {
 			donations: 'Želiš doprijeniti odmah? Možeš donirati!'
 		},
 		usesLibrary: 'Ova aplikacija koristi <strong>deemix</strong> biblioteku, koju možeš koristiti i ti kako bi napravio svoj UI za demix.',
-		thanks: `Hvala <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> što su mi pomogli s ovim projektom te <strong>BasCurtiz</strong> i <strong>scarvimane</strong> što su napravili ikonu.`,
+		thanks: `Hvala <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> što su mi pomogli s ovim projektom te <strong>BasCurtiz</strong> što su napravili ikonu.`,
 		upToDate: {
 			text: `Ostani u tijeku s nadogradnjama prateći {newsChannel} na Telegramu.`,
 			newsChannel: 'kanal s novostima'

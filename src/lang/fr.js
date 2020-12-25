@@ -70,7 +70,7 @@ const fr = {
 		usesLibrary:
 			'Cette application utilise la bibliothèque <strong>deemix</strong>, que vous pouvez exploiter afin de créer votre propre interface utilisateur pour deemix.',
 		thanks:
-			"Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> et <strong>scarvimane</strong> pour la création de l'icône.",
+			"Merci à <strong>rtonno</strong>, <strong>uhwot</strong> et <strong>lollilol</strong> de m'avoir aidé dans ce projet ainsi qu'à <strong>BasCurtiz</strong> pour la création de l'icône.",
 		upToDate: {
 			text: `Restez informé des mises à jour en suivant le {newsChannel} sur Telegram.`,
 			newsChannel: "canal d'informations"

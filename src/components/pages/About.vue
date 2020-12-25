@@ -38,14 +38,14 @@
 			<!-- <li>
 				<a href="" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li> -->
-			<!-- <li>
-				<a href="" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
-			</li> -->
-			<!-- <li>
-				<a href="" target="_blank">
+			<li>
+				<a href="https://git.rip/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
+			</li>
+			<li>
+				<a href="https://git.rip/RemixDev/deemix-webui" target="_blank">
 					💻 {{ $t('about.officialWebuiRepo') }}
 				</a>
-			</li> -->
+			</li>
 			<li>
 				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>
 			</li>

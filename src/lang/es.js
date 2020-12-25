@@ -59,7 +59,7 @@ const es = {
 			donations: '¿Quiere contribuir monetariamente? ¡Puedes hacer una donación!'
 		},
 		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
-		thanks: `Gracias a <strong>rtonno</strong>, <strong>uhwot</strong> y <strong>lollilol</strong> por ayudarme con este proyecto, a <strong>BasCurtiz</strong> y <strong>scarvimane</strong> por hacer el icono.`,
+		thanks: `Gracias a <strong>rtonno</strong>, <strong>uhwot</strong> y <strong>lollilol</strong> por ayudarme con este proyecto, a <strong>BasCurtiz</strong> por hacer el icono.`,
 		upToDate: {
 			text: `Mantente al día con las actualizaciones siguiendo el {newsChannel} en Telegram.`,
 			newsChannel: 'canal de noticias'

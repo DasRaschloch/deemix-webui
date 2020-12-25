@@ -45,7 +45,7 @@
 		},
 		usesLibrary:
 			'Esse app usa a biblioteca do <strong>deemix</strong>, no qual você pode usar para criar sua própria UI para o deemix',
-		thanks: `Agradecimentos para <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> por ajudar neste projeto, e para <strong>BasCurtiz</strong> e <strong>scarvimane</strong> por fazerem o ícone`,
+		thanks: `Agradecimentos para <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> por ajudar neste projeto, e para <strong>BasCurtiz</strong> por fazerem o ícone`,
 		upToDate: {
 			text: `Para mais novidades siga o {newsChannel} no Telegram.`,
 			newsChannel: 'news channel'

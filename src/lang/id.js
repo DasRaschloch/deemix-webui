@@ -44,7 +44,7 @@ const id = {
 			donations: 'Mau kontribusi secara finansial? Kamu bisa beri donasi!'
 		},
 		usesLibrary: 'Aplikasi ini menggunakan pustaka <strong>deemix</strong>, yang bisa kamu gunakan untuk membuat UI deemix milikmu sendiri.',
-		thanks: `Terima kasih kepada <strong>rtonno</strong>, <strong>uhwot</strong> dan <strong>lollilol</strong> yang telah membantuku dalam proyek ini, serta kepada <strong>BasCurtiz</strong> dan <strong>scarvimane</strong> yang telah membuat ikon.`,
+		thanks: `Terima kasih kepada <strong>rtonno</strong>, <strong>uhwot</strong> dan <strong>lollilol</strong> yang telah membantuku dalam proyek ini, serta kepada <strong>BasCurtiz</strong> yang telah membuat ikon.`,
 		upToDate: {
 			text: `Ikuti {newsChannel} di Telegram agar tidak ketinggalan berita terbaru.`,
 			newsChannel: 'kanal berita deemix'

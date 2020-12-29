@@ -27,7 +27,6 @@ const zh_tw = {
 			single: '單曲',
 			title: '標題|標題',
 			track: '歌曲|歌曲',
-			trackN: '0 首歌曲| {n} 首歌曲| {n} 首歌曲',
 			releaseN: '0 發行| {n} 發行| {n} 發行',
 			playlist: '播放清單|播放清單',
 			compile: '合輯|合輯',
@@ -37,12 +36,21 @@ const zh_tw = {
 			featured: '出現於',
 			spotifyPlaylist: 'Spotify 播放清單 | Spotify 播放清單',
 			releaseDate: '發布日期',
-			error: '錯誤'
+			error: '錯誤',
+			trackN: '0 首歌曲| {n} 首歌曲| {n} 首歌曲',
+			albumN: '0 個專輯 | {n} 個專輯 | {n} 個專輯',
+			artistN: '0 個藝人 | {n} 個藝人 | {n} 個藝人',
+			playlistN: '0 個播放清單 | {n} 個播放清單 | {n} 個播放清單'
 		}
 	},
 	about: {
+		appStatus: {
+			online: '上線中',
+			offline: '離線中'
+		},
 		updates: {
 			currentVersion: '目前版本',
+			currentWebuiVersion: '目前前端版本',
 			versionNotAvailable: 'N/A',
 			updateAvailable: `您尚未更新至最新版本：{version}`,
 			deemixVersion: 'deemix 函示庫版本'
@@ -140,7 +148,8 @@ const zh_tw = {
 	},
 	linkAnalyzer: {
 		info: '您可以透過此工具取得您所想下載的連結的相關資訊。',
-		useful: "比如，當您所想下載的歌曲無法在您的國家播放，且您想知道哪些國家可以播放此歌曲時，您可使用此工具。",
+		useful:
+			"比如，當您所想下載的歌曲無法在您的國家播放，且您想知道哪些國家可以播放此歌曲時，您可使用此工具。",
 		linkNotSupported: '尚未支援此連結',
 		linkNotSupportedYet: '我們似乎尚未支援此連結，請改用其他連結。',
 		table: {
@@ -160,7 +169,8 @@ const zh_tw = {
 	},
 	search: {
 		startSearching: '開始搜尋！',
-		description: '您可以搜索歌曲名稱、專輯、藝人、播放清單...等等。您也可以直接貼上 Deezer 網址。',
+		description:
+			'您可以搜索歌曲名稱、專輯、藝人、播放清單...等等。您也可以直接貼上 Deezer 網址。',
 		fans: '{n} 個粉絲',
 		noResults: '無搜尋結果',
 		noResultsTrack: '找不到歌曲',
@@ -191,7 +201,9 @@ const zh_tw = {
 		startConvertingSpotifyPlaylist: '將 Spotify 歌曲轉換為 Deezer 歌曲中',
 		finishConvertingSpotifyPlaylist: '已轉換 Spotify 播放清單',
 		loginNeededToDownload: '您需要登入才能下載歌曲！',
-		deezerNotAvailable: 'Deezer 在您所在的國家/地區無法使用。請您使用 VPN。'
+		deezerNotAvailable: 'Deezer 在您所在的國家/地區無法使用。請您使用 VPN。',
+		startGeneratingItems: '生成 {n} 個項目中...',
+		finishGeneratingItems: '已生成 {n} 個項目.'
 	},
 	settings: {
 		title: '設定',
@@ -208,7 +220,8 @@ const zh_tw = {
 		},
 		appearance: {
 			title: '外觀',
-			slimDownloadTab: '薄型下載分頁'
+			slimDownloadTab: '薄型下載分頁',
+			slimSidebar: '薄型測欄'
 		},
 		downloadPath: {
 			title: '下載目錄'
@@ -308,7 +321,8 @@ const zh_tw = {
 			syncedLyrics: '同步歌詞',
 			copyright: '版權',
 			composer: '作曲家',
-			involvedPeople: '相關藝人'
+			involvedPeople: '相關藝人',
+			source: '來源歌曲 ID'
 		},
 		other: {
 			title: '其他',
@@ -362,10 +376,12 @@ const zh_tw = {
 			question: '如何啟用 Spotify 功能？'
 		},
 		reset: '重設至預設',
+		resetMessage: '你確定要重設所有設定嗎？',
 		save: '儲存',
 		toasts: {
 			init: '已載入設定！',
 			update: '已更新設定！',
+			reset: '已重設設定！',
 			ARLcopied: '已複製 ARL 到剪貼簿中'
 		}
 	},

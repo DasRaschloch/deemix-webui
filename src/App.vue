@@ -12,7 +12,7 @@
 		</div>
 
 		<BaseLoadingPlaceholder
-			text="Connecting to the server..."
+			text="Connecting to local server..."
 			:hidden="isSocketConnected"
 			additionalClasses="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50"
 		/>

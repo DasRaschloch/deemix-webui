@@ -21,9 +21,9 @@
 				{{ $t('settings.login.logout') }}
 			</button>
 
-			<select v-if="accounts.length" id="family_account" v-model="accountNum" @change="changeAccount">
+			<select v-if="accounts.length > 1" id="family_account" v-model="accountNum" @change="changeAccount">
 				<option v-for="(account, i) in accounts" :key="account" :value="i.toString()">
-					{{ account.BLOG_NAME }}
+					{{ account.name }}
 				</option>
 			</select>
 		</div>

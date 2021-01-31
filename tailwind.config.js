@@ -53,40 +53,12 @@ module.exports = {
 	},
 	variants: {
 		textColor: ({ after }) => after(['group-hover']),
+		margin: ({ before }) => before(['first']),
 		borderWidth: ['responsive', 'first', 'hover', 'focus'],
 		cursor: ['responsive', 'hover']
 	},
 	corePlugins: {
 		preflight: false
 	},
-	plugins: [outlinesPlugin()]
-}
-
-function outlinesPlugin() {
-	return ({ addUtilities, theme }) => {
-		// https://github.com/tailwindlabs/discuss/issues/196
-		let newUtilities = {}
-		const boxShadowPrefix = '0 0 0 3px'
-		const colors = theme('colors')
-
-		Object.keys(colors).forEach(color => {
-			const colorData = colors[color]
-
-			if (typeof colorData === 'string') {
-				newUtilities[`.outline-${color}`] = {
-					boxShadow: `${boxShadowPrefix} ${colorData}`
-				}
-			} else {
-				Object.keys(colorData).forEach(colorVariation => {
-					newUtilities[`.outline-${color}-${colorVariation}`] = {
-						boxShadow: `${boxShadowPrefix} ${colorData[colorVariation]}`
-					}
-				})
-			}
-		})
-
-		addUtilities(newUtilities, {
-			variants: ['focus']
-		})
-	}
+	plugins: []
 }

@@ -229,8 +229,11 @@ const en = {
 		templates: {
 			title: 'Templates',
 			tracknameTemplate: 'Trackname template',
+			tracknameAvailableVariables: 'Available trackname variables',
 			albumTracknameTemplate: 'Album track template',
-			playlistTracknameTemplate: 'Playlist track template'
+			albumTracknameAvailableVariables: 'Available album track variables',
+			playlistTracknameTemplate: 'Playlist track template',
+			playlistTracknameAvailableVariables: 'Available playlist track variables'
 		},
 		folders: {
 			title: 'Folders',

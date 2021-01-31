@@ -1,5 +1,5 @@
 <template functional>
-	<details :class="[data.staticClass, { 'with-arrow': props.withArrow }]">
+	<details :class="[data.staticClass, { 'with-arrow': props.withArrow }]" :style="data.staticStyle">
 		<summary class="cursor-pointer">
 			<slot name="title">Setting</slot>
 		</summary>
@@ -17,7 +17,7 @@ details > summary::-webkit-details-marker {
 
 details.with-arrow > summary::-webkit-details-marker {
 	display: initial;
-	vertical-align: super;
+	vertical-align: var(--arrow-v-align, super);
 }
 </style>
 

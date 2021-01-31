@@ -231,8 +231,11 @@ const it = {
 		templates: {
 			title: 'Template',
 			tracknameTemplate: 'Template nome brano',
+			tracknameAvailableVariables: 'Variabili nome brano disponibili',
 			albumTracknameTemplate: 'Template nome brano negli Album',
-			playlistTracknameTemplate: 'Template nome brano nelle Playlist'
+			albumTracknameAvailableVariables: 'Variabili nome brano negli Album disponibili',
+			playlistTracknameTemplate: 'Template nome brano nelle Playlist',
+			playlistTracknameAvailableVariables: 'Variabili nome brano nelle Playlist disponibili'
 		},
 		folders: {
 			title: 'Cartelle',

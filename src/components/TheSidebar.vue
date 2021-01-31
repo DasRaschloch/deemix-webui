@@ -1,7 +1,7 @@
 <template>
 	<aside
 		id="sidebar"
-		:class="{ 'w-12': isSlim }"
+		:class="{ 'slim-sidebar w-12': isSlim }"
 		:style="{ minWidth: isSlim ? null : '14rem' }"
 		aria-label="sidebar"
 		class="top-0 left-0 flex flex-col h-screen bg-panels-bg text-foreground"
@@ -69,6 +69,14 @@
 .deemix-icon-container {
 	display: grid;
 	place-content: center;
+
+	.slim-sidebar & {
+		margin: 0.5rem 0;
+
+		&::v-deep svg {
+			height: 30px;
+		}
+	}
 
 	&::v-deep svg {
 		height: 75px;

@@ -29,6 +29,10 @@ export default {
 					replacement: 'vue/dist/vue.esm'
 				},
 				{
+					find: 'socket.io-client',
+					replacement: 'socket.io-client/dist/socket.io.min'
+				},
+				{
 					find: '@',
 					replacement: __dirname + '/src'
 				},

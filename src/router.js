@@ -20,7 +20,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
-		path: '/',
+		path: window.location.pathname,
 		name: 'Home',
 		component: Home,
 		meta: {
@@ -28,12 +28,12 @@ const routes = [
 		}
 	},
 	{
-		path: '/tracklist/:type/:id',
+		path: 'tracklist/:type/:id',
 		name: 'Tracklist',
 		component: Tracklist
 	},
 	{
-		path: '/artist/:id',
+		path: 'artist/:id',
 		name: 'Artist',
 		component: Artist,
 		meta: {
@@ -41,22 +41,22 @@ const routes = [
 		}
 	},
 	{
-		path: '/album/:id',
+		path: 'album/:id',
 		name: 'Album',
 		component: Tracklist
 	},
 	{
-		path: '/playlist/:id',
+		path: 'playlist/:id',
 		name: 'Playlist',
 		component: Tracklist
 	},
 	{
-		path: '/spotify-playlist/:id',
+		path: 'spotify-playlist/:id',
 		name: 'Spotify Playlist',
 		component: Tracklist
 	},
 	{
-		path: '/charts',
+		path: 'charts',
 		name: 'Charts',
 		component: Charts,
 		meta: {
@@ -64,7 +64,7 @@ const routes = [
 		}
 	},
 	{
-		path: '/favorites',
+		path: 'favorites',
 		name: 'Favorites',
 		component: Favorites,
 		meta: {
@@ -72,37 +72,37 @@ const routes = [
 		}
 	},
 	{
-		path: '/errors',
+		path: 'errors',
 		name: 'Errors',
 		component: Errors
 	},
 	{
-		path: '/link-analyzer',
+		path: 'link-analyzer',
 		name: 'Link Analyzer',
 		component: LinkAnalyzer
 	},
 	{
-		path: '/about',
+		path: 'about',
 		name: 'About',
 		component: About
 	},
 	{
-		path: '/info-arl',
+		path: 'info-arl',
 		name: 'ARL',
 		component: InfoArl
 	},
 	{
-		path: '/info-spotify',
+		path: 'info-spotify',
 		name: 'Spotify Features',
 		component: InfoSpotifyFeatures
 	},
 	{
-		path: '/settings',
+		path: 'settings',
 		name: 'Settings',
 		component: Settings
 	},
 	{
-		path: '/search',
+		path: 'search',
 		name: 'Search',
 		component: Search,
 		meta: {

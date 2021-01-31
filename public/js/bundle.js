@@ -15,11 +15,11 @@
 
   font-weight: 400;
 
-  src: url('../../fonts/icons/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: url('fonts//icons/MaterialIcons-Regular.eot'); /* For IE6-8 */
 
-  src: url('../../fonts/icons/MaterialIcons-Regular.woff2') format('woff2'),
-		url('../../fonts/icons/MaterialIcons-Regular.woff') format('woff'),
-		url('../../fonts/icons/MaterialIcons-Regular.ttf') format('truetype');
+  src: url('fonts//icons/MaterialIcons-Regular.woff2') format('woff2'),
+		url('fonts//icons/MaterialIcons-Regular.woff') format('woff'),
+		url('fonts//icons/MaterialIcons-Regular.ttf') format('truetype');
 }
 
 .material-icons {
@@ -75,7 +75,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hmIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hmIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -91,7 +91,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hvIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hvIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -107,7 +107,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hnIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hnIqOjjg.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -123,7 +123,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hoIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hoIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -139,7 +139,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hkIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hkIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -155,7 +155,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hlIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hlIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -171,7 +171,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWyV9hrIqM.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWyV9hrIqM.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -187,7 +187,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0Udc1UAw.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0Udc1UAw.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -203,7 +203,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0ddc1UAw.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0ddc1UAw.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -219,7 +219,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0Vdc1UAw.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0Vdc1UAw.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -235,7 +235,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0adc1UAw.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0adc1UAw.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -251,7 +251,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0Wdc1UAw.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0Wdc1UAw.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -267,7 +267,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0Xdc1UAw.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0Xdc1UAw.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -283,7 +283,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem6YaGs126MiZpBA-UFUK0Zdc0.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem6YaGs126MiZpBA-UFUK0Zdc0.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -299,7 +299,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhmIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhmIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -315,7 +315,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhvIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhvIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -331,7 +331,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhnIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhnIqOjjg.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -347,7 +347,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhoIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhoIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -363,7 +363,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhkIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhkIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -379,7 +379,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhlIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhlIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -395,7 +395,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKXGUdhrIqM.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKXGUdhrIqM.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -411,7 +411,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhmIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhmIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -427,7 +427,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhvIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhvIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -443,7 +443,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhnIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhnIqOjjg.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -459,7 +459,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhoIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhoIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -475,7 +475,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhkIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhkIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -491,7 +491,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhlIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhlIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -507,7 +507,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKWiUNhrIqM.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKWiUNhrIqM.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -523,7 +523,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hmIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hmIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -539,7 +539,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hvIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hvIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -555,7 +555,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hnIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hnIqOjjg.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -571,7 +571,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hoIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hoIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -587,7 +587,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hkIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hkIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -603,7 +603,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hlIqOjjg.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hlIqOjjg.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -619,7 +619,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/memnYaGs126MiZpBA-UFUKW-U9hrIqM.woff2') format('woff2');
+  src: url('fonts//OpenSans/memnYaGs126MiZpBA-UFUKW-U9hrIqM.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -635,7 +635,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OX-hpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OX-hpOqc.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -651,7 +651,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OVuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OVuhpOqc.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -667,7 +667,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OXuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OXuhpOqc.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -683,7 +683,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OUehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OUehpOqc.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -699,7 +699,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OXehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OXehpOqc.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -715,7 +715,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OXOhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OXOhpOqc.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -731,7 +731,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN_r8OUuhp.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -747,7 +747,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFWJ0bbck.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFWJ0bbck.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -763,7 +763,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFUZ0bbck.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFUZ0bbck.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -779,7 +779,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFWZ0bbck.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFWZ0bbck.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -795,7 +795,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFVp0bbck.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFVp0bbck.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -811,7 +811,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFWp0bbck.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFWp0bbck.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -827,7 +827,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFW50bbck.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFW50bbck.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -843,7 +843,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem8YaGs126MiZpBA-UFVZ0b.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem8YaGs126MiZpBA-UFVZ0b.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -859,7 +859,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOX-hpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOX-hpOqc.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -875,7 +875,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOVuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOVuhpOqc.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -891,7 +891,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOXuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOXuhpOqc.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -907,7 +907,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOUehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOUehpOqc.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -923,7 +923,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOXehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOXehpOqc.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -939,7 +939,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOXOhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOXOhpOqc.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -955,7 +955,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UNirkOUuhp.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UNirkOUuhp.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -971,7 +971,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOX-hpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOX-hpOqc.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -987,7 +987,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOVuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOVuhpOqc.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -1003,7 +1003,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOXuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOXuhpOqc.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -1019,7 +1019,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOUehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOUehpOqc.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -1035,7 +1035,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOXehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOXehpOqc.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -1051,7 +1051,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOXOhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOXOhpOqc.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -1067,7 +1067,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN7rgOUuhp.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -1083,7 +1083,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOX-hpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOX-hpOqc.woff2') format('woff2');
 
   unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
@@ -1099,7 +1099,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOVuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOVuhpOqc.woff2') format('woff2');
 
   unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
@@ -1115,7 +1115,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOXuhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOXuhpOqc.woff2') format('woff2');
 
   unicode-range: U+1F00-1FFF;
 }
@@ -1131,7 +1131,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOUehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOUehpOqc.woff2') format('woff2');
 
   unicode-range: U+0370-03FF;
 }
@@ -1147,7 +1147,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOXehpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOXehpOqc.woff2') format('woff2');
 
   unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
 }
@@ -1163,7 +1163,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOXOhpOqc.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOXOhpOqc.woff2') format('woff2');
 
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -1179,7 +1179,7 @@
 
   font-display: swap;
 
-  src: url('../../fonts/OpenSans/mem5YaGs126MiZpBA-UN8rsOUuhp.woff2') format('woff2');
+  src: url('fonts//OpenSans/mem5YaGs126MiZpBA-UN8rsOUuhp.woff2') format('woff2');
 
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -2457,7 +2457,7 @@ a {
  * vuex v3.6.0
  * (c) 2020 Evan You
  * @license MIT
- */function applyMixin(e){var n=Number(e.version.split(".")[0]);if(n>=2)e.mixin({beforeCreate:i});else{var a=e.prototype._init;e.prototype._init=function(r){r===void 0&&(r={}),r.init=r.init?[i].concat(r.init):i,a.call(this,r)}}function i(){var r=this.$options;r.store?this.$store=typeof r.store=="function"?r.store():r.store:r.parent&&r.parent.$store&&(this.$store=r.parent.$store)}}var target$2=typeof window!="undefined"?window:typeof global!="undefined"?global:{},devtoolHook=target$2.__VUE_DEVTOOLS_GLOBAL_HOOK__;function devtoolPlugin(e){if(!devtoolHook)return;e._devtoolHook=devtoolHook,devtoolHook.emit("vuex:init",e),devtoolHook.on("vuex:travel-to-state",function(n){e.replaceState(n)}),e.subscribe(function(n,a){devtoolHook.emit("vuex:mutation",n,a)},{prepend:!0}),e.subscribeAction(function(n,a){devtoolHook.emit("vuex:action",n,a)},{prepend:!0})}function find(e,n){return e.filter(n)[0]}function deepCopy(e,n){if(n===void 0&&(n=[]),e===null||typeof e!="object")return e;var a=find(n,function(r){return r.original===e});if(a)return a.copy;var i=Array.isArray(e)?[]:{};return n.push({original:e,copy:i}),Object.keys(e).forEach(function(r){i[r]=deepCopy(e[r],n)}),i}function forEachValue(e,n){Object.keys(e).forEach(function(a){return n(e[a],a)})}function isObject$1(e){return e!==null&&typeof e=="object"}function isPromise$1(e){return e&&typeof e.then=="function"}function partial(e,n){return function(){return e(n)}}var Module=function(n,a){this.runtime=a,this._children=Object.create(null),this._rawModule=n;var i=n.state;this.state=(typeof i=="function"?i():i)||{}},prototypeAccessors$1={namespaced:{configurable:!0}};prototypeAccessors$1.namespaced.get=function(){return!!this._rawModule.namespaced},Module.prototype.addChild=function(n,a){this._children[n]=a},Module.prototype.removeChild=function(n){delete this._children[n]},Module.prototype.getChild=function(n){return this._children[n]},Module.prototype.hasChild=function(n){return n in this._children},Module.prototype.update=function(n){this._rawModule.namespaced=n.namespaced,n.actions&&(this._rawModule.actions=n.actions),n.mutations&&(this._rawModule.mutations=n.mutations),n.getters&&(this._rawModule.getters=n.getters)},Module.prototype.forEachChild=function(n){forEachValue(this._children,n)},Module.prototype.forEachGetter=function(n){this._rawModule.getters&&forEachValue(this._rawModule.getters,n)},Module.prototype.forEachAction=function(n){this._rawModule.actions&&forEachValue(this._rawModule.actions,n)},Module.prototype.forEachMutation=function(n){this._rawModule.mutations&&forEachValue(this._rawModule.mutations,n)},Object.defineProperties(Module.prototype,prototypeAccessors$1);var ModuleCollection=function(n){this.register([],n,!1)};ModuleCollection.prototype.get=function(n){return n.reduce(function(a,i){return a.getChild(i)},this.root)},ModuleCollection.prototype.getNamespace=function(n){var a=this.root;return n.reduce(function(i,r){return a=a.getChild(r),i+(a.namespaced?r+"/":"")},"")},ModuleCollection.prototype.update=function(n){update([],this.root,n)},ModuleCollection.prototype.register=function(n,a,i){var r=this;i===void 0&&(i=!0);var s=new Module(a,i);if(n.length===0)this.root=s;else{var l=this.get(n.slice(0,-1));l.addChild(n[n.length-1],s)}a.modules&&forEachValue(a.modules,function(c,o){r.register(n.concat(o),c,i)})},ModuleCollection.prototype.unregister=function(n){var a=this.get(n.slice(0,-1)),i=n[n.length-1],r=a.getChild(i);if(!r)return;if(!r.runtime)return;a.removeChild(i)},ModuleCollection.prototype.isRegistered=function(n){var a=this.get(n.slice(0,-1)),i=n[n.length-1];return a?a.hasChild(i):!1};function update(e,n,a){if(n.update(a),a.modules)for(var i in a.modules){if(!n.getChild(i))return;update(e.concat(i),n.getChild(i),a.modules[i])}}var Vue$1,Store=function(n){var a=this;n===void 0&&(n={}),!Vue$1&&typeof window!="undefined"&&window.Vue&&install(window.Vue);var i=n.plugins;i===void 0&&(i=[]);var r=n.strict;r===void 0&&(r=!1),this._committing=!1,this._actions=Object.create(null),this._actionSubscribers=[],this._mutations=Object.create(null),this._wrappedGetters=Object.create(null),this._modules=new ModuleCollection(n),this._modulesNamespaceMap=Object.create(null),this._subscribers=[],this._watcherVM=new Vue$1,this._makeLocalGettersCache=Object.create(null);var s=this,l=this,c=l.dispatch,o=l.commit;this.dispatch=function(m,h){return c.call(s,m,h)},this.commit=function(m,h,v){return o.call(s,m,h,v)},this.strict=r;var d=this._modules.root.state;installModule(this,d,[],this._modules.root),resetStoreVM(this,d),i.forEach(function(f){return f(a)});var u=n.devtools!==void 0?n.devtools:Vue$1.config.devtools;u&&devtoolPlugin(this)},prototypeAccessors$1$1={state:{configurable:!0}};prototypeAccessors$1$1.state.get=function(){return this._vm._data.$$state},prototypeAccessors$1$1.state.set=function(e){},Store.prototype.commit=function(n,a,i){var r=this,s=unifyObjectStyle(n,a,i),l=s.type,c=s.payload,o={type:l,payload:c},d=this._mutations[l];if(!d)return;this._withCommit(function(){d.forEach(function(f){f(c)})}),this._subscribers.slice().forEach(function(u){return u(o,r.state)})},Store.prototype.dispatch=function(n,a){var i=this,r=unifyObjectStyle(n,a),s=r.type,l=r.payload,c={type:s,payload:l},o=this._actions[s];if(!o)return;try{this._actionSubscribers.slice().filter(function(u){return u.before}).forEach(function(u){return u.before(c,i.state)})}catch(u){}var d=o.length>1?Promise.all(o.map(function(u){return u(l)})):o[0](l);return new Promise(function(u,f){d.then(function(m){try{i._actionSubscribers.filter(function(h){return h.after}).forEach(function(h){return h.after(c,i.state)})}catch(h){}u(m)},function(m){try{i._actionSubscribers.filter(function(h){return h.error}).forEach(function(h){return h.error(c,i.state,m)})}catch(h){}f(m)})})},Store.prototype.subscribe=function(n,a){return genericSubscribe(n,this._subscribers,a)},Store.prototype.subscribeAction=function(n,a){var i=typeof n=="function"?{before:n}:n;return genericSubscribe(i,this._actionSubscribers,a)},Store.prototype.watch=function(n,a,i){var r=this;return this._watcherVM.$watch(function(){return n(r.state,r.getters)},a,i)},Store.prototype.replaceState=function(n){var a=this;this._withCommit(function(){a._vm._data.$$state=n})},Store.prototype.registerModule=function(n,a,i){i===void 0&&(i={}),typeof n=="string"&&(n=[n]),this._modules.register(n,a),installModule(this,this.state,n,this._modules.get(n),i.preserveState),resetStoreVM(this,this.state)},Store.prototype.unregisterModule=function(n){var a=this;typeof n=="string"&&(n=[n]),this._modules.unregister(n),this._withCommit(function(){var i=getNestedState(a.state,n.slice(0,-1));Vue$1.delete(i,n[n.length-1])}),resetStore(this)},Store.prototype.hasModule=function(n){return typeof n=="string"&&(n=[n]),this._modules.isRegistered(n)},Store.prototype.hotUpdate=function(n){this._modules.update(n),resetStore(this,!0)},Store.prototype._withCommit=function(n){var a=this._committing;this._committing=!0,n(),this._committing=a},Object.defineProperties(Store.prototype,prototypeAccessors$1$1);function genericSubscribe(e,n,a){return n.indexOf(e)<0&&(a&&a.prepend?n.unshift(e):n.push(e)),function(){var i=n.indexOf(e);i>-1&&n.splice(i,1)}}function resetStore(e,n){e._actions=Object.create(null),e._mutations=Object.create(null),e._wrappedGetters=Object.create(null),e._modulesNamespaceMap=Object.create(null);var a=e.state;installModule(e,a,[],e._modules.root,!0),resetStoreVM(e,a,n)}function resetStoreVM(e,n,a){var i=e._vm;e.getters={},e._makeLocalGettersCache=Object.create(null);var r=e._wrappedGetters,s={};forEachValue(r,function(c,o){s[o]=partial(c,e),Object.defineProperty(e.getters,o,{get:function(){return e._vm[o]},enumerable:!0})});var l=Vue$1.config.silent;Vue$1.config.silent=!0,e._vm=new Vue$1({data:{$$state:n},computed:s}),Vue$1.config.silent=l,e.strict&&enableStrictMode(e),i&&(a&&e._withCommit(function(){i._data.$$state=null}),Vue$1.nextTick(function(){return i.$destroy()}))}function installModule(e,n,a,i,r){var s=!a.length,l=e._modules.getNamespace(a);if(i.namespaced&&(e._modulesNamespaceMap[l]&&!1&&console.error("[vuex] duplicate namespace "+l+" for the namespaced module "+a.join("/")),e._modulesNamespaceMap[l]=i),!s&&!r){var c=getNestedState(n,a.slice(0,-1)),o=a[a.length-1];e._withCommit(function(){Vue$1.set(c,o,i.state)})}var d=i.context=makeLocalContext(e,l,a);i.forEachMutation(function(u,f){var m=l+f;registerMutation(e,m,u,d)}),i.forEachAction(function(u,f){var m=u.root?f:l+f,h=u.handler||u;registerAction(e,m,h,d)}),i.forEachGetter(function(u,f){var m=l+f;registerGetter(e,m,u,d)}),i.forEachChild(function(u,f){installModule(e,n,a.concat(f),u,r)})}function makeLocalContext(e,n,a){var i=n==="",r={dispatch:i?e.dispatch:function(s,l,c){var o=unifyObjectStyle(s,l,c),d=o.payload,u=o.options,f=o.type;return(!u||!u.root)&&(f=n+f),e.dispatch(f,d)},commit:i?e.commit:function(s,l,c){var o=unifyObjectStyle(s,l,c),d=o.payload,u=o.options,f=o.type;(!u||!u.root)&&(f=n+f),e.commit(f,d,u)}};return Object.defineProperties(r,{getters:{get:i?function(){return e.getters}:function(){return makeLocalGetters(e,n)}},state:{get:function(){return getNestedState(e.state,a)}}}),r}function makeLocalGetters(e,n){if(!e._makeLocalGettersCache[n]){var a={},i=n.length;Object.keys(e.getters).forEach(function(r){if(r.slice(0,i)!==n)return;var s=r.slice(i);Object.defineProperty(a,s,{get:function(){return e.getters[r]},enumerable:!0})}),e._makeLocalGettersCache[n]=a}return e._makeLocalGettersCache[n]}function registerMutation(e,n,a,i){var r=e._mutations[n]||(e._mutations[n]=[]);r.push(function(l){a.call(e,i.state,l)})}function registerAction(e,n,a,i){var r=e._actions[n]||(e._actions[n]=[]);r.push(function(l){var c=a.call(e,{dispatch:i.dispatch,commit:i.commit,getters:i.getters,state:i.state,rootGetters:e.getters,rootState:e.state},l);return isPromise$1(c)||(c=Promise.resolve(c)),e._devtoolHook?c.catch(function(o){throw e._devtoolHook.emit("vuex:error",o),o}):c})}function registerGetter(e,n,a,i){if(e._wrappedGetters[n])return;e._wrappedGetters[n]=function(s){return a(i.state,i.getters,s.state,s.getters)}}function enableStrictMode(e){e._vm.$watch(function(){return this._data.$$state},function(){},{deep:!0,sync:!0})}function getNestedState(e,n){return n.reduce(function(a,i){return a[i]},e)}function unifyObjectStyle(e,n,a){return isObject$1(e)&&e.type&&(a=n,n=e,e=e.type),{type:e,payload:n,options:a}}function install(e){if(Vue$1&&e===Vue$1)return;Vue$1=e,applyMixin(Vue$1)}var mapState=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;a[r]=function(){var c=this.$store.state,o=this.$store.getters;if(e){var d=getModuleByNamespace(this.$store,"mapState",e);if(!d)return;c=d.context.state,o=d.context.getters}return typeof s=="function"?s.call(this,c,o):c[s]},a[r].vuex=!0}),a}),mapMutations=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;a[r]=function(){for(var c=[],o=arguments.length;o--;)c[o]=arguments[o];var d=this.$store.commit;if(e){var u=getModuleByNamespace(this.$store,"mapMutations",e);if(!u)return;d=u.context.commit}return typeof s=="function"?s.apply(this,[d].concat(c)):d.apply(this.$store,[s].concat(c))}}),a}),mapGetters=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;s=e+s,a[r]=function(){return e&&!getModuleByNamespace(this.$store,"mapGetters",e)?void 0:this.$store.getters[s]},a[r].vuex=!0}),a}),mapActions=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;a[r]=function(){for(var c=[],o=arguments.length;o--;)c[o]=arguments[o];var d=this.$store.dispatch;if(e){var u=getModuleByNamespace(this.$store,"mapActions",e);if(!u)return;d=u.context.dispatch}return typeof s=="function"?s.apply(this,[d].concat(c)):d.apply(this.$store,[s].concat(c))}}),a}),createNamespacedHelpers=function(e){return{mapState:mapState.bind(null,e),mapGetters:mapGetters.bind(null,e),mapMutations:mapMutations.bind(null,e),mapActions:mapActions.bind(null,e)}};function normalizeMap(e){return isValidMap(e)?Array.isArray(e)?e.map(function(n){return{key:n,val:n}}):Object.keys(e).map(function(n){return{key:n,val:e[n]}}):[]}function isValidMap(e){return Array.isArray(e)||isObject$1(e)}function normalizeNamespace(e){return function(n,a){return typeof n!="string"?(a=n,n=""):n.charAt(n.length-1)!=="/"&&(n+="/"),e(n,a)}}function getModuleByNamespace(e,n,a){var i=e._modulesNamespaceMap[a];return i}function createLogger(e){e===void 0&&(e={});var n=e.collapsed;n===void 0&&(n=!0);var a=e.filter;a===void 0&&(a=function(u,f,m){return!0});var i=e.transformer;i===void 0&&(i=function(u){return u});var r=e.mutationTransformer;r===void 0&&(r=function(u){return u});var s=e.actionFilter;s===void 0&&(s=function(u,f){return!0});var l=e.actionTransformer;l===void 0&&(l=function(u){return u});var c=e.logMutations;c===void 0&&(c=!0);var o=e.logActions;o===void 0&&(o=!0);var d=e.logger;return d===void 0&&(d=console),function(u){var f=deepCopy(u.state);if(typeof d=="undefined")return;c&&u.subscribe(function(m,h){var v=deepCopy(h);if(a(m,f,v)){var y=getFormattedTime(),k=r(m),w="mutation "+m.type+y;startMessage(d,w,n),d.log("%c prev state","color: #9E9E9E; font-weight: bold",i(f)),d.log("%c mutation","color: #03A9F4; font-weight: bold",k),d.log("%c next state","color: #4CAF50; font-weight: bold",i(v)),endMessage(d)}f=v}),o&&u.subscribeAction(function(m,h){if(s(m,h)){var v=getFormattedTime(),y=l(m),k="action "+m.type+v;startMessage(d,k,n),d.log("%c action","color: #03A9F4; font-weight: bold",y),endMessage(d)}})}}function startMessage(e,n,a){var i=a?e.groupCollapsed:e.group;try{i.call(e,n)}catch(r){e.log(n)}}function endMessage(e){try{e.groupEnd()}catch(n){e.log("\u2014\u2014 log end \u2014\u2014")}}function getFormattedTime(){var e=new Date;return" @ "+pad(e.getHours(),2)+":"+pad(e.getMinutes(),2)+":"+pad(e.getSeconds(),2)+"."+pad(e.getMilliseconds(),3)}function repeat(e,n){return new Array(n+1).join(e)}function pad(e,n){return repeat("0",n-e.toString().length)+e}var index$2={Store,install,version:"3.6.0",mapState,mapMutations,mapGetters,mapActions,createNamespacedHelpers,createLogger};let settingsData={},defaultSettingsData={},spotifyCredentials={};function getSettingsData(){return socket.emit("get_settings_data"),new Promise((e,n)=>{socket.on("init_settings",(a,i,r)=>{settingsData=a,defaultSettingsData=r,spotifyCredentials=i,socket.off("init_settings"),e({settingsData,defaultSettingsData,spotifyCredentials})})})}function getInitialPreviewVolume(){let e=parseInt(localStorage.getItem("previewVolume"));return isNaN(e)&&(e=80,localStorage.setItem("previewVolume",e.toString())),e}function checkInitialSlimDownloads(){return localStorage.getItem("slimDownloads")==="true"}function checkInitialSlimSidebar(){return localStorage.getItem("slimSidebar")==="true"}const state=()=>({currentCommit:null,latestCommit:null,updateAvailable:!1,deemixVersion:null,previewVolume:getInitialPreviewVolume(),hasSlimDownloads:checkInitialSlimDownloads(),hasSlimSidebar:checkInitialSlimSidebar()}),actions={setAppInfo({commit:e},n){e("SET_CURRENT_COMMIT",n.currentCommit),e("SET_LATEST_COMMIT",n.latestCommit),e("SET_UPDATE_AVAILABLE",n.updateAvailable),e("SET_DEEMIX_VERSION",n.deemixVersion)},setPreviewVolume({commit:e},n){e("SET_PREVIEW_VOLUME",n),localStorage.setItem("previewVolume",n.toString())},setSlimDownloads({commit:e},n){e("SET_SLIM_DOWNLOADS",n),localStorage.setItem("slimDownloads",n.toString())},setSlimSidebar({commit:e},n){e("SET_SLIM_SIDEBAR",n),localStorage.setItem("slimSidebar",n.toString()),Array.from(document.getElementsByClassName("toastify")).forEach(a=>{a.style.transform=`translate(${n?"3rem":"14rem"}, 0)`})}},getters={getAppInfo:e=>e,getPreviewVolume:e=>e.previewVolume,getSlimDownloads:e=>e.hasSlimDownloads,getSlimSidebar:e=>e.hasSlimSidebar},mutations={SET_CURRENT_COMMIT(e,n){e.currentCommit=n},SET_LATEST_COMMIT(e,n){e.latestCommit=n},SET_UPDATE_AVAILABLE(e,n){e.updateAvailable=n},SET_DEEMIX_VERSION(e,n){e.deemixVersion=n},SET_PREVIEW_VOLUME(e,n){e.previewVolume=n},SET_SLIM_DOWNLOADS(e,n){e.hasSlimDownloads=n},SET_SLIM_SIDEBAR(e,n){e.hasSlimSidebar=n}};var appInfo={state,getters,actions,mutations};const getDefaultState=()=>({arl:localStorage.getItem("arl")||"",status:null,user:{id:null,name:"",picture:""},spotifyUser:{id:localStorage.getItem("spotifyUser"),name:null,picture:null},clientMode:!1}),state$1=()=>getDefaultState(),actions$1={login({commit:e,dispatch:n},a){const{arl:i,user:r,status:s}=a;n("setARL",{arl:i}),e("SET_USER",r),e("SET_STATUS",s)},logout({commit:e}){localStorage.removeItem("arl"),e("RESET_LOGIN")},setARL({commit:e},n){let{arl:a,saveOnLocalStorage:i}=n;i=typeof i=="undefined"?!0:i,e("SET_ARL",a),i&&localStorage.setItem("arl",a)},removeARL({commit:e}){e("SET_ARL",""),localStorage.removeItem("arl")},setUser({commit:e},n){e("SET_USER",n)},setClientMode({commit:e},n){e("SET_CLIENT_MODE",n)}},getters$1={getARL:e=>e.arl,getUser:e=>e.user,getSpotifyUser:e=>e.spotifyUser,getClientMode:e=>e.clientMode,isLoggedIn:e=>!!e.arl,isLoggedWithSpotify:e=>!!e.spotifyUser.id},mutations$1={SET_ARL(e,n){e.arl=n},SET_STATUS(e,n){e.status=n},SET_USER(e,n){e.user=n},SET_CLIENT_MODE(e,n){e.clientMode=n},RESET_LOGIN(e){let n=e.clientMode;Object.assign(e,getDefaultState()),e.clientMode=n}};var login={state:state$1,getters:getters$1,actions:actions$1,mutations:mutations$1};const state$2=()=>({artist:"",bitrate:"",cover:"",downloaded:0,errors:[],failed:0,id:"",progress:0,silent:!0,size:0,title:"",type:"",uuid:""}),actions$2={setErrors({commit:e},n){e("SET_ERRORS",n)}},getters$2={getErrors:e=>e},mutations$2={SET_ERRORS(e,n){for(const a in e)if(e.hasOwnProperty(a)){const i=n[a];e[a]=i}}};var errors={state:state$2,getters:getters$2,actions:actions$2,mutations:mutations$2};Vue.use(index$2);var store=new index$2.Store({modules:{appInfo,login,errors},strict:!1});const socket=io.connect(window.location.href);socket.on("init_update",e=>{store.dispatch("setAppInfo",e)});var __vue_render__=function(e,n){var a=n._c;return a("div",{directives:[{name:"show",rawName:"v-show",value:!n.props.hidden,expression:"!props.hidden"}],staticClass:"flex justify-center items-center flex-col flex-1 h-full",class:n.props.additionalClasses},[a("span",{staticClass:"mb-5"},[n._v(n._s(n.props.text||"Loading..."))]),n._v(" "),n._m(0)])},__vue_staticRenderFns__=[function(e,n){var a=n._c;return a("div",{staticClass:"lds-ring"},[a("div"),n._v(" "),a("div"),n._v(" "),a("div"),n._v(" "),a("div")])}];const __vue_inject_styles__=function(e){if(!e)return;e("data-v-07f63f2b_0",{source:".lds-ring[data-v-07f63f2b]{display:inline-block;position:relative;width:80px;height:80px}.lds-ring div[data-v-07f63f2b]{box-sizing:border-box;display:block;position:absolute;width:64px;height:64px;margin:8px;border:8px solid #fff;border-radius:50%;animation:lds-ring-data-v-07f63f2b 1.2s cubic-bezier(.5,0,.5,1) infinite;border-color:#fff transparent transparent transparent}.lds-ring div[data-v-07f63f2b]:nth-child(1){animation-delay:-.45s}.lds-ring div[data-v-07f63f2b]:nth-child(2){animation-delay:-.3s}.lds-ring div[data-v-07f63f2b]:nth-child(3){animation-delay:-.15s}@keyframes lds-ring-data-v-07f63f2b{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}",map:void 0,media:void 0})},__vue_scope_id__="data-v-07f63f2b",__vue_module_identifier__=void 0,__vue_is_functional_template__=!0;function __vue_normalize__(e,n,a,i,r,s,l,c){const o=(typeof a=="function"?a.options:a)||{};o.__file="BaseLoadingPlaceholder.vue",o.render||(o.render=e.render,o.staticRenderFns=e.staticRenderFns,o._compiled=!0,r&&(o.functional=!0)),o._scopeId=i;{let d;if(n&&(d=function(u){n.call(this,l(u))}),d!==void 0)if(o.functional){const u=o.render;o.render=function(m,h){return d.call(h),u(m,h)}}else{const u=o.beforeCreate;o.beforeCreate=u?[].concat(u,d):[d]}}return o}function __vue_create_injector__(){const e=document.head||document.getElementsByTagName("head")[0],n=__vue_create_injector__.styles||(__vue_create_injector__.styles={}),a=typeof navigator!="undefined"&&/msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());return function(r,s){if(document.querySelector('style[data-vue-ssr-id~="'+r+'"]'))return;const l=a?s.media||"default":r,c=n[l]||(n[l]={ids:[],parts:[],element:void 0});if(!c.ids.includes(r)){let o=s.source,d=c.ids.length;if(c.ids.push(r),s.map&&(o+=`
+ */function applyMixin(e){var n=Number(e.version.split(".")[0]);if(n>=2)e.mixin({beforeCreate:i});else{var a=e.prototype._init;e.prototype._init=function(r){r===void 0&&(r={}),r.init=r.init?[i].concat(r.init):i,a.call(this,r)}}function i(){var r=this.$options;r.store?this.$store=typeof r.store=="function"?r.store():r.store:r.parent&&r.parent.$store&&(this.$store=r.parent.$store)}}var target$2=typeof window!="undefined"?window:typeof global!="undefined"?global:{},devtoolHook=target$2.__VUE_DEVTOOLS_GLOBAL_HOOK__;function devtoolPlugin(e){if(!devtoolHook)return;e._devtoolHook=devtoolHook,devtoolHook.emit("vuex:init",e),devtoolHook.on("vuex:travel-to-state",function(n){e.replaceState(n)}),e.subscribe(function(n,a){devtoolHook.emit("vuex:mutation",n,a)},{prepend:!0}),e.subscribeAction(function(n,a){devtoolHook.emit("vuex:action",n,a)},{prepend:!0})}function find(e,n){return e.filter(n)[0]}function deepCopy(e,n){if(n===void 0&&(n=[]),e===null||typeof e!="object")return e;var a=find(n,function(r){return r.original===e});if(a)return a.copy;var i=Array.isArray(e)?[]:{};return n.push({original:e,copy:i}),Object.keys(e).forEach(function(r){i[r]=deepCopy(e[r],n)}),i}function forEachValue(e,n){Object.keys(e).forEach(function(a){return n(e[a],a)})}function isObject$1(e){return e!==null&&typeof e=="object"}function isPromise$1(e){return e&&typeof e.then=="function"}function partial(e,n){return function(){return e(n)}}var Module=function(n,a){this.runtime=a,this._children=Object.create(null),this._rawModule=n;var i=n.state;this.state=(typeof i=="function"?i():i)||{}},prototypeAccessors$1={namespaced:{configurable:!0}};prototypeAccessors$1.namespaced.get=function(){return!!this._rawModule.namespaced},Module.prototype.addChild=function(n,a){this._children[n]=a},Module.prototype.removeChild=function(n){delete this._children[n]},Module.prototype.getChild=function(n){return this._children[n]},Module.prototype.hasChild=function(n){return n in this._children},Module.prototype.update=function(n){this._rawModule.namespaced=n.namespaced,n.actions&&(this._rawModule.actions=n.actions),n.mutations&&(this._rawModule.mutations=n.mutations),n.getters&&(this._rawModule.getters=n.getters)},Module.prototype.forEachChild=function(n){forEachValue(this._children,n)},Module.prototype.forEachGetter=function(n){this._rawModule.getters&&forEachValue(this._rawModule.getters,n)},Module.prototype.forEachAction=function(n){this._rawModule.actions&&forEachValue(this._rawModule.actions,n)},Module.prototype.forEachMutation=function(n){this._rawModule.mutations&&forEachValue(this._rawModule.mutations,n)},Object.defineProperties(Module.prototype,prototypeAccessors$1);var ModuleCollection=function(n){this.register([],n,!1)};ModuleCollection.prototype.get=function(n){return n.reduce(function(a,i){return a.getChild(i)},this.root)},ModuleCollection.prototype.getNamespace=function(n){var a=this.root;return n.reduce(function(i,r){return a=a.getChild(r),i+(a.namespaced?r+"/":"")},"")},ModuleCollection.prototype.update=function(n){update([],this.root,n)},ModuleCollection.prototype.register=function(n,a,i){var r=this;i===void 0&&(i=!0);var s=new Module(a,i);if(n.length===0)this.root=s;else{var l=this.get(n.slice(0,-1));l.addChild(n[n.length-1],s)}a.modules&&forEachValue(a.modules,function(c,o){r.register(n.concat(o),c,i)})},ModuleCollection.prototype.unregister=function(n){var a=this.get(n.slice(0,-1)),i=n[n.length-1],r=a.getChild(i);if(!r)return;if(!r.runtime)return;a.removeChild(i)},ModuleCollection.prototype.isRegistered=function(n){var a=this.get(n.slice(0,-1)),i=n[n.length-1];return a?a.hasChild(i):!1};function update(e,n,a){if(n.update(a),a.modules)for(var i in a.modules){if(!n.getChild(i))return;update(e.concat(i),n.getChild(i),a.modules[i])}}var Vue$1,Store=function(n){var a=this;n===void 0&&(n={}),!Vue$1&&typeof window!="undefined"&&window.Vue&&install(window.Vue);var i=n.plugins;i===void 0&&(i=[]);var r=n.strict;r===void 0&&(r=!1),this._committing=!1,this._actions=Object.create(null),this._actionSubscribers=[],this._mutations=Object.create(null),this._wrappedGetters=Object.create(null),this._modules=new ModuleCollection(n),this._modulesNamespaceMap=Object.create(null),this._subscribers=[],this._watcherVM=new Vue$1,this._makeLocalGettersCache=Object.create(null);var s=this,l=this,c=l.dispatch,o=l.commit;this.dispatch=function(m,h){return c.call(s,m,h)},this.commit=function(m,h,v){return o.call(s,m,h,v)},this.strict=r;var d=this._modules.root.state;installModule(this,d,[],this._modules.root),resetStoreVM(this,d),i.forEach(function(f){return f(a)});var u=n.devtools!==void 0?n.devtools:Vue$1.config.devtools;u&&devtoolPlugin(this)},prototypeAccessors$1$1={state:{configurable:!0}};prototypeAccessors$1$1.state.get=function(){return this._vm._data.$$state},prototypeAccessors$1$1.state.set=function(e){},Store.prototype.commit=function(n,a,i){var r=this,s=unifyObjectStyle(n,a,i),l=s.type,c=s.payload,o={type:l,payload:c},d=this._mutations[l];if(!d)return;this._withCommit(function(){d.forEach(function(f){f(c)})}),this._subscribers.slice().forEach(function(u){return u(o,r.state)})},Store.prototype.dispatch=function(n,a){var i=this,r=unifyObjectStyle(n,a),s=r.type,l=r.payload,c={type:s,payload:l},o=this._actions[s];if(!o)return;try{this._actionSubscribers.slice().filter(function(u){return u.before}).forEach(function(u){return u.before(c,i.state)})}catch(u){}var d=o.length>1?Promise.all(o.map(function(u){return u(l)})):o[0](l);return new Promise(function(u,f){d.then(function(m){try{i._actionSubscribers.filter(function(h){return h.after}).forEach(function(h){return h.after(c,i.state)})}catch(h){}u(m)},function(m){try{i._actionSubscribers.filter(function(h){return h.error}).forEach(function(h){return h.error(c,i.state,m)})}catch(h){}f(m)})})},Store.prototype.subscribe=function(n,a){return genericSubscribe(n,this._subscribers,a)},Store.prototype.subscribeAction=function(n,a){var i=typeof n=="function"?{before:n}:n;return genericSubscribe(i,this._actionSubscribers,a)},Store.prototype.watch=function(n,a,i){var r=this;return this._watcherVM.$watch(function(){return n(r.state,r.getters)},a,i)},Store.prototype.replaceState=function(n){var a=this;this._withCommit(function(){a._vm._data.$$state=n})},Store.prototype.registerModule=function(n,a,i){i===void 0&&(i={}),typeof n=="string"&&(n=[n]),this._modules.register(n,a),installModule(this,this.state,n,this._modules.get(n),i.preserveState),resetStoreVM(this,this.state)},Store.prototype.unregisterModule=function(n){var a=this;typeof n=="string"&&(n=[n]),this._modules.unregister(n),this._withCommit(function(){var i=getNestedState(a.state,n.slice(0,-1));Vue$1.delete(i,n[n.length-1])}),resetStore(this)},Store.prototype.hasModule=function(n){return typeof n=="string"&&(n=[n]),this._modules.isRegistered(n)},Store.prototype.hotUpdate=function(n){this._modules.update(n),resetStore(this,!0)},Store.prototype._withCommit=function(n){var a=this._committing;this._committing=!0,n(),this._committing=a},Object.defineProperties(Store.prototype,prototypeAccessors$1$1);function genericSubscribe(e,n,a){return n.indexOf(e)<0&&(a&&a.prepend?n.unshift(e):n.push(e)),function(){var i=n.indexOf(e);i>-1&&n.splice(i,1)}}function resetStore(e,n){e._actions=Object.create(null),e._mutations=Object.create(null),e._wrappedGetters=Object.create(null),e._modulesNamespaceMap=Object.create(null);var a=e.state;installModule(e,a,[],e._modules.root,!0),resetStoreVM(e,a,n)}function resetStoreVM(e,n,a){var i=e._vm;e.getters={},e._makeLocalGettersCache=Object.create(null);var r=e._wrappedGetters,s={};forEachValue(r,function(c,o){s[o]=partial(c,e),Object.defineProperty(e.getters,o,{get:function(){return e._vm[o]},enumerable:!0})});var l=Vue$1.config.silent;Vue$1.config.silent=!0,e._vm=new Vue$1({data:{$$state:n},computed:s}),Vue$1.config.silent=l,e.strict&&enableStrictMode(e),i&&(a&&e._withCommit(function(){i._data.$$state=null}),Vue$1.nextTick(function(){return i.$destroy()}))}function installModule(e,n,a,i,r){var s=!a.length,l=e._modules.getNamespace(a);if(i.namespaced&&(e._modulesNamespaceMap[l]&&!1&&console.error("[vuex] duplicate namespace "+l+" for the namespaced module "+a.join("/")),e._modulesNamespaceMap[l]=i),!s&&!r){var c=getNestedState(n,a.slice(0,-1)),o=a[a.length-1];e._withCommit(function(){Vue$1.set(c,o,i.state)})}var d=i.context=makeLocalContext(e,l,a);i.forEachMutation(function(u,f){var m=l+f;registerMutation(e,m,u,d)}),i.forEachAction(function(u,f){var m=u.root?f:l+f,h=u.handler||u;registerAction(e,m,h,d)}),i.forEachGetter(function(u,f){var m=l+f;registerGetter(e,m,u,d)}),i.forEachChild(function(u,f){installModule(e,n,a.concat(f),u,r)})}function makeLocalContext(e,n,a){var i=n==="",r={dispatch:i?e.dispatch:function(s,l,c){var o=unifyObjectStyle(s,l,c),d=o.payload,u=o.options,f=o.type;return(!u||!u.root)&&(f=n+f),e.dispatch(f,d)},commit:i?e.commit:function(s,l,c){var o=unifyObjectStyle(s,l,c),d=o.payload,u=o.options,f=o.type;(!u||!u.root)&&(f=n+f),e.commit(f,d,u)}};return Object.defineProperties(r,{getters:{get:i?function(){return e.getters}:function(){return makeLocalGetters(e,n)}},state:{get:function(){return getNestedState(e.state,a)}}}),r}function makeLocalGetters(e,n){if(!e._makeLocalGettersCache[n]){var a={},i=n.length;Object.keys(e.getters).forEach(function(r){if(r.slice(0,i)!==n)return;var s=r.slice(i);Object.defineProperty(a,s,{get:function(){return e.getters[r]},enumerable:!0})}),e._makeLocalGettersCache[n]=a}return e._makeLocalGettersCache[n]}function registerMutation(e,n,a,i){var r=e._mutations[n]||(e._mutations[n]=[]);r.push(function(l){a.call(e,i.state,l)})}function registerAction(e,n,a,i){var r=e._actions[n]||(e._actions[n]=[]);r.push(function(l){var c=a.call(e,{dispatch:i.dispatch,commit:i.commit,getters:i.getters,state:i.state,rootGetters:e.getters,rootState:e.state},l);return isPromise$1(c)||(c=Promise.resolve(c)),e._devtoolHook?c.catch(function(o){throw e._devtoolHook.emit("vuex:error",o),o}):c})}function registerGetter(e,n,a,i){if(e._wrappedGetters[n])return;e._wrappedGetters[n]=function(s){return a(i.state,i.getters,s.state,s.getters)}}function enableStrictMode(e){e._vm.$watch(function(){return this._data.$$state},function(){},{deep:!0,sync:!0})}function getNestedState(e,n){return n.reduce(function(a,i){return a[i]},e)}function unifyObjectStyle(e,n,a){return isObject$1(e)&&e.type&&(a=n,n=e,e=e.type),{type:e,payload:n,options:a}}function install(e){if(Vue$1&&e===Vue$1)return;Vue$1=e,applyMixin(Vue$1)}var mapState=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;a[r]=function(){var c=this.$store.state,o=this.$store.getters;if(e){var d=getModuleByNamespace(this.$store,"mapState",e);if(!d)return;c=d.context.state,o=d.context.getters}return typeof s=="function"?s.call(this,c,o):c[s]},a[r].vuex=!0}),a}),mapMutations=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;a[r]=function(){for(var c=[],o=arguments.length;o--;)c[o]=arguments[o];var d=this.$store.commit;if(e){var u=getModuleByNamespace(this.$store,"mapMutations",e);if(!u)return;d=u.context.commit}return typeof s=="function"?s.apply(this,[d].concat(c)):d.apply(this.$store,[s].concat(c))}}),a}),mapGetters=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;s=e+s,a[r]=function(){return e&&!getModuleByNamespace(this.$store,"mapGetters",e)?void 0:this.$store.getters[s]},a[r].vuex=!0}),a}),mapActions=normalizeNamespace(function(e,n){var a={};return normalizeMap(n).forEach(function(i){var r=i.key,s=i.val;a[r]=function(){for(var c=[],o=arguments.length;o--;)c[o]=arguments[o];var d=this.$store.dispatch;if(e){var u=getModuleByNamespace(this.$store,"mapActions",e);if(!u)return;d=u.context.dispatch}return typeof s=="function"?s.apply(this,[d].concat(c)):d.apply(this.$store,[s].concat(c))}}),a}),createNamespacedHelpers=function(e){return{mapState:mapState.bind(null,e),mapGetters:mapGetters.bind(null,e),mapMutations:mapMutations.bind(null,e),mapActions:mapActions.bind(null,e)}};function normalizeMap(e){return isValidMap(e)?Array.isArray(e)?e.map(function(n){return{key:n,val:n}}):Object.keys(e).map(function(n){return{key:n,val:e[n]}}):[]}function isValidMap(e){return Array.isArray(e)||isObject$1(e)}function normalizeNamespace(e){return function(n,a){return typeof n!="string"?(a=n,n=""):n.charAt(n.length-1)!=="/"&&(n+="/"),e(n,a)}}function getModuleByNamespace(e,n,a){var i=e._modulesNamespaceMap[a];return i}function createLogger(e){e===void 0&&(e={});var n=e.collapsed;n===void 0&&(n=!0);var a=e.filter;a===void 0&&(a=function(u,f,m){return!0});var i=e.transformer;i===void 0&&(i=function(u){return u});var r=e.mutationTransformer;r===void 0&&(r=function(u){return u});var s=e.actionFilter;s===void 0&&(s=function(u,f){return!0});var l=e.actionTransformer;l===void 0&&(l=function(u){return u});var c=e.logMutations;c===void 0&&(c=!0);var o=e.logActions;o===void 0&&(o=!0);var d=e.logger;return d===void 0&&(d=console),function(u){var f=deepCopy(u.state);if(typeof d=="undefined")return;c&&u.subscribe(function(m,h){var v=deepCopy(h);if(a(m,f,v)){var y=getFormattedTime(),k=r(m),w="mutation "+m.type+y;startMessage(d,w,n),d.log("%c prev state","color: #9E9E9E; font-weight: bold",i(f)),d.log("%c mutation","color: #03A9F4; font-weight: bold",k),d.log("%c next state","color: #4CAF50; font-weight: bold",i(v)),endMessage(d)}f=v}),o&&u.subscribeAction(function(m,h){if(s(m,h)){var v=getFormattedTime(),y=l(m),k="action "+m.type+v;startMessage(d,k,n),d.log("%c action","color: #03A9F4; font-weight: bold",y),endMessage(d)}})}}function startMessage(e,n,a){var i=a?e.groupCollapsed:e.group;try{i.call(e,n)}catch(r){e.log(n)}}function endMessage(e){try{e.groupEnd()}catch(n){e.log("\u2014\u2014 log end \u2014\u2014")}}function getFormattedTime(){var e=new Date;return" @ "+pad(e.getHours(),2)+":"+pad(e.getMinutes(),2)+":"+pad(e.getSeconds(),2)+"."+pad(e.getMilliseconds(),3)}function repeat(e,n){return new Array(n+1).join(e)}function pad(e,n){return repeat("0",n-e.toString().length)+e}var index$2={Store,install,version:"3.6.0",mapState,mapMutations,mapGetters,mapActions,createNamespacedHelpers,createLogger};let settingsData={},defaultSettingsData={},spotifyCredentials={};function getSettingsData(){return socket.emit("get_settings_data"),new Promise((e,n)=>{socket.on("init_settings",(a,i,r)=>{settingsData=a,defaultSettingsData=r,spotifyCredentials=i,socket.off("init_settings"),e({settingsData,defaultSettingsData,spotifyCredentials})})})}function getInitialPreviewVolume(){let e=parseInt(localStorage.getItem("previewVolume"));return isNaN(e)&&(e=80,localStorage.setItem("previewVolume",e.toString())),e}function checkInitialSlimDownloads(){return localStorage.getItem("slimDownloads")==="true"}function checkInitialSlimSidebar(){return localStorage.getItem("slimSidebar")==="true"}const state=()=>({currentCommit:null,latestCommit:null,updateAvailable:!1,deemixVersion:null,previewVolume:getInitialPreviewVolume(),hasSlimDownloads:checkInitialSlimDownloads(),hasSlimSidebar:checkInitialSlimSidebar()}),actions={setAppInfo({commit:e},n){e("SET_CURRENT_COMMIT",n.currentCommit),e("SET_LATEST_COMMIT",n.latestCommit),e("SET_UPDATE_AVAILABLE",n.updateAvailable),e("SET_DEEMIX_VERSION",n.deemixVersion)},setPreviewVolume({commit:e},n){e("SET_PREVIEW_VOLUME",n),localStorage.setItem("previewVolume",n.toString())},setSlimDownloads({commit:e},n){e("SET_SLIM_DOWNLOADS",n),localStorage.setItem("slimDownloads",n.toString())},setSlimSidebar({commit:e},n){e("SET_SLIM_SIDEBAR",n),localStorage.setItem("slimSidebar",n.toString()),Array.from(document.getElementsByClassName("toastify")).forEach(a=>{a.style.transform=`translate(${n?"3rem":"14rem"}, 0)`})}},getters={getAppInfo:e=>e,getPreviewVolume:e=>e.previewVolume,getSlimDownloads:e=>e.hasSlimDownloads,getSlimSidebar:e=>e.hasSlimSidebar},mutations={SET_CURRENT_COMMIT(e,n){e.currentCommit=n},SET_LATEST_COMMIT(e,n){e.latestCommit=n},SET_UPDATE_AVAILABLE(e,n){e.updateAvailable=n},SET_DEEMIX_VERSION(e,n){e.deemixVersion=n},SET_PREVIEW_VOLUME(e,n){e.previewVolume=n},SET_SLIM_DOWNLOADS(e,n){e.hasSlimDownloads=n},SET_SLIM_SIDEBAR(e,n){e.hasSlimSidebar=n}};var appInfo={state,getters,actions,mutations};const getDefaultState=()=>({arl:localStorage.getItem("arl")||"",status:null,user:{id:null,name:"",picture:""},spotifyUser:{id:localStorage.getItem("spotifyUser"),name:null,picture:null},clientMode:!1}),state$1=()=>getDefaultState(),actions$1={login({commit:e,dispatch:n},a){const{arl:i,user:r,status:s}=a;n("setARL",{arl:i}),e("SET_USER",r),e("SET_STATUS",s)},logout({commit:e}){localStorage.removeItem("arl"),e("RESET_LOGIN")},setARL({commit:e},n){let{arl:a,saveOnLocalStorage:i}=n;i=typeof i=="undefined"?!0:i,e("SET_ARL",a),i&&localStorage.setItem("arl",a)},removeARL({commit:e}){e("SET_ARL",""),localStorage.removeItem("arl")},setUser({commit:e},n){e("SET_USER",n)},setClientMode({commit:e},n){e("SET_CLIENT_MODE",n)}},getters$1={getARL:e=>e.arl,getUser:e=>e.user,getSpotifyUser:e=>e.spotifyUser,getClientMode:e=>e.clientMode,isLoggedIn:e=>!!e.arl,isLoggedWithSpotify:e=>!!e.spotifyUser.id},mutations$1={SET_ARL(e,n){e.arl=n},SET_STATUS(e,n){e.status=n},SET_USER(e,n){e.user=n},SET_CLIENT_MODE(e,n){e.clientMode=n},RESET_LOGIN(e){let n=e.clientMode;Object.assign(e,getDefaultState()),e.clientMode=n}};var login={state:state$1,getters:getters$1,actions:actions$1,mutations:mutations$1};const state$2=()=>({artist:"",bitrate:"",cover:"",downloaded:0,errors:[],failed:0,id:"",progress:0,silent:!0,size:0,title:"",type:"",uuid:""}),actions$2={setErrors({commit:e},n){e("SET_ERRORS",n)}},getters$2={getErrors:e=>e},mutations$2={SET_ERRORS(e,n){for(const a in e)if(e.hasOwnProperty(a)){const i=n[a];e[a]=i}}};var errors={state:state$2,getters:getters$2,actions:actions$2,mutations:mutations$2};Vue.use(index$2);var store=new index$2.Store({modules:{appInfo,login,errors},strict:!1});const socket=io.connect("/");socket.on("init_update",e=>{store.dispatch("setAppInfo",e)});var __vue_render__=function(e,n){var a=n._c;return a("div",{directives:[{name:"show",rawName:"v-show",value:!n.props.hidden,expression:"!props.hidden"}],staticClass:"flex justify-center items-center flex-col flex-1 h-full",class:n.props.additionalClasses},[a("span",{staticClass:"mb-5"},[n._v(n._s(n.props.text||"Loading..."))]),n._v(" "),n._m(0)])},__vue_staticRenderFns__=[function(e,n){var a=n._c;return a("div",{staticClass:"lds-ring"},[a("div"),n._v(" "),a("div"),n._v(" "),a("div"),n._v(" "),a("div")])}];const __vue_inject_styles__=function(e){if(!e)return;e("data-v-07f63f2b_0",{source:".lds-ring[data-v-07f63f2b]{display:inline-block;position:relative;width:80px;height:80px}.lds-ring div[data-v-07f63f2b]{box-sizing:border-box;display:block;position:absolute;width:64px;height:64px;margin:8px;border:8px solid #fff;border-radius:50%;animation:lds-ring-data-v-07f63f2b 1.2s cubic-bezier(.5,0,.5,1) infinite;border-color:#fff transparent transparent transparent}.lds-ring div[data-v-07f63f2b]:nth-child(1){animation-delay:-.45s}.lds-ring div[data-v-07f63f2b]:nth-child(2){animation-delay:-.3s}.lds-ring div[data-v-07f63f2b]:nth-child(3){animation-delay:-.15s}@keyframes lds-ring-data-v-07f63f2b{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}",map:void 0,media:void 0})},__vue_scope_id__="data-v-07f63f2b",__vue_module_identifier__=void 0,__vue_is_functional_template__=!0;function __vue_normalize__(e,n,a,i,r,s,l,c){const o=(typeof a=="function"?a.options:a)||{};o.__file="BaseLoadingPlaceholder.vue",o.render||(o.render=e.render,o.staticRenderFns=e.staticRenderFns,o._compiled=!0,r&&(o.functional=!0)),o._scopeId=i;{let d;if(n&&(d=function(u){n.call(this,l(u))}),d!==void 0)if(o.functional){const u=o.render;o.render=function(m,h){return d.call(h),u(m,h)}}else{const u=o.beforeCreate;o.beforeCreate=u?[].concat(u,d):[d]}}return o}function __vue_create_injector__(){const e=document.head||document.getElementsByTagName("head")[0],n=__vue_create_injector__.styles||(__vue_create_injector__.styles={}),a=typeof navigator!="undefined"&&/msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());return function(r,s){if(document.querySelector('style[data-vue-ssr-id~="'+r+'"]'))return;const l=a?s.media||"default":r,c=n[l]||(n[l]={ids:[],parts:[],element:void 0});if(!c.ids.includes(r)){let o=s.source,d=c.ids.length;if(c.ids.push(r),s.map&&(o+=`
 /*# sourceURL=`+s.map.sources[0]+" */",o+=`
 /*# sourceMappingURL=data:application/json;base64,`+btoa(unescape(encodeURIComponent(JSON.stringify(s.map))))+" */"),a&&(c.element=c.element||document.querySelector("style[data-group="+l+"]")),!c.element){const u=c.element=document.createElement("style");u.type="text/css",s.media&&u.setAttribute("media",s.media),a&&(u.setAttribute("data-group",l),u.setAttribute("data-next-index","0")),e.appendChild(u)}if(a&&(d=parseInt(c.element.getAttribute("data-next-index")),c.element.setAttribute("data-next-index",d+1)),c.element.styleSheet)c.parts.push(o),c.element.styleSheet.cssText=c.parts.filter(Boolean).join(`
 `);else{const u=document.createTextNode(o),f=c.element.childNodes;f[d]&&c.element.removeChild(f[d]),f.length?c.element.insertBefore(u,f[d]):c.element.appendChild(u)}}}}var BaseLoadingPlaceholder=__vue_normalize__({render:__vue_render__,staticRenderFns:__vue_staticRenderFns__},__vue_inject_styles__,{},__vue_scope_id__,__vue_is_functional_template__,__vue_module_identifier__,__vue_create_injector__);function sendAddToQueue(e,n=null){if(!e)throw new Error("No URL given to sendAddToQueue function!");socket.emit("addToQueue",{url:e,bitrate:n},()=>{})}function aggregateDownloadLinks(e){let n=[];return e.forEach(a=>{n.push(a.link)}),n.join(";")}function generatePath(e){if(!e)throw new Error("No element passed to the generatePath function!");let n=[e];for(;(e=e.parentNode)&&e!==document;)n.push(e);return n}function isValidURL(e){let n=e.toLowerCase();if(n.startsWith("http")){if(n.indexOf("deezer.com")>=0||n.indexOf("deezer.page.link")>=0||n.indexOf("open.spotify.com")>=0||n.indexOf("link.tospotify.com")>=0)return!0}else if(n.startsWith("spotify:"))return!0;return!1}function convertDuration(e){let n,a;return n=Math.floor(e/60),a=e-n*60,a<10&&(a="0"+a),n+":"+a}function convertDurationSeparated(e){let n,a,i;return a=Math.floor(e/60),n=Math.floor(a/60),i=e-a*60,a-=n*60,[n,a,i]}function numberWithDots(e){return e.toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")}function debounce(e,n,a){var i;return function(){var r=this,s=arguments,l=function(){i=null,a||e.apply(r,s)},c=a&&!i;clearTimeout(i),i=setTimeout(l,n),c&&e.apply(r,s)}}function copyToClipboard(e){const n=document.createElement("input");document.body.appendChild(n),n.setAttribute("type","text"),n.setAttribute("value",e),n.select(),n.setSelectionRange(0,99999),document.execCommand("copy"),n.remove()}function getPropertyWithFallback(e,...n){for(const a of n){let i=/\./.test(a),r=i?a.split(".").reduce((s,l)=>{if(s)return s[l]},e):e[a];if(typeof r!="undefined")return r}return null}var Utils={isValidURL,convertDuration,convertDurationSeparated,numberWithDots,debounce};const downloadQualities=[{objName:"flac",label:"FLAC",value:9},{objName:"320kbps",label:"MP3 320kbps",value:3},{objName:"128kbps",label:"MP3 128kbps",value:1},{objName:"realityAudioHQ",label:"360 Reality Audio [HQ]",value:15},{objName:"realityAudioMQ",label:"360 Reality Audio [MQ]",value:14},{objName:"realityAudioLQ",label:"360 Reality Audio [LQ]",value:13}];var script={data(){return{menuOpen:!1,xPos:0,yPos:0,deezerHref:"",generalHref:"",imgSrc:""}},computed:{options(){const e={cut:{label:this.$t("globals.cut"),show:!1,position:1,action:()=>{document.execCommand("Cut")}},copy:{label:this.$t("globals.copy"),show:!1,position:2,action:()=>{document.execCommand("Copy")}},copyLink:{label:this.$t("globals.copyLink"),show:!1,position:3,action:()=>{copyToClipboard(this.generalHref)}},copyImageLink:{label:this.$t("globals.copyImageLink"),show:!1,position:4,action:()=>{copyToClipboard(this.imgSrc)}},copyDeezerLink:{label:this.$t("globals.copyDeezerLink"),show:!1,position:5,action:()=>{copyToClipboard(this.deezerHref)}},paste:{label:this.$t("globals.paste"),show:!1,position:6,action:()=>{clipboard in navigator?navigator.clipboard.readText().then(a=>{document.execCommand("insertText",void 0,a)}):document.execCommand("paste")}}};let n=Object.values(e).length+1;return downloadQualities.forEach((a,i)=>{e[a.objName]={label:`${this.$t("globals.download",{thing:a.label})}`,show:!1,position:n+i,action:sendAddToQueue.bind(null,this.deezerHref,a.value)}}),e},sortedOptions(){return Object.values(this.options).sort((e,n)=>e.position<n.position?-1:1)}},mounted(){this.$root.$on("ContextMenu:searchbar",this.showSearchbarMenu),document.body.addEventListener("contextmenu",this.showMenu),document.body.addEventListener("click",this.hideMenu)},methods:{showSearchbarMenu(e){console.log(e);let n=document.getElementById("searchbar");n.dataset.cmLink=e;let a={pageX:115,pageY:57,target:n,dummy:!0};this.showMenu(a),delete n.dataset.cmLink},showMenu(e){const{pageX:n,pageY:a,target:i}=e,r=generatePath(i);let s=null;for(let u=0;u<r.length&&!(r[u]==document);u++){if(r[u].matches("[data-link]")){s=r[u].dataset.link;break}if(r[u].matches("[data-cm-link]")){s=r[u].dataset.cmLink;break}}const l=i.matches("a"),c=i.matches("img"),o=i.matches("input#searchbar"),d=!!s;if(!l&&!c&&!d)return;e.dummy||e.preventDefault(),this.menuOpen=!0,this.positionMenu(n,a),l&&(this.generalHref=i.href,this.options.copyLink.show=!0),c&&(this.imgSrc=i.src,this.options.copyImageLink.show=!0),s&&(this.deezerHref=s,this.showDeezerOptions(o))},hideMenu(){if(!this.menuOpen)return;this.$nextTick().then(()=>{this.menuOpen=!1,this.options.copyLink.show=!1,this.options.copyDeezerLink.show=!1,this.options.copyImageLink.show=!1,downloadQualities.forEach(e=>{this.options[e.objName].show=!1})}).catch(e=>{console.error(e)})},positionMenu(e,n){this.xPos=`${e}px`,this.yPos=`${n}px`,this.$nextTick().then(()=>{const{innerHeight:a,innerWidth:i}=window,r=e+this.$refs.contextMenu.getBoundingClientRect().width,s=n+this.$refs.contextMenu.getBoundingClientRect().height;if(r>i){const l=r-i+15;this.xPos=`${e-l}px`}if(s>a){const l=s-a+15;this.yPos=`${n-l}px`}})},showDeezerOptions(e){e||(this.options.copyDeezerLink.show=!0),downloadQualities.forEach(n=>{this.options[n.objName].show=!0})}}};const __vue_script__=script;var __vue_render__$1=function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("div",{directives:[{name:"show",rawName:"v-show",value:e.menuOpen,expression:"menuOpen"}],ref:"contextMenu",staticClass:"context-menu",style:{top:e.yPos,left:e.xPos}},e._l(e.sortedOptions,function(i){return a("button",{directives:[{name:"show",rawName:"v-show",value:i.show,expression:"option.show"}],key:i.label,staticClass:"btn menu-option",on:{click:function(r){return r.preventDefault(),i.action(r)}}},[a("span",{staticClass:"menu-option__text"},[e._v(e._s(i.label))])])}),0)},__vue_staticRenderFns__$1=[];const __vue_inject_styles__$1=function(e){if(!e)return;e("data-v-17a20187_0",{source:".context-menu[data-v-17a20187]{position:absolute;top:0;left:0;min-width:100px;border-radius:7px;background:var(--secondary-background);box-shadow:4px 10px 18px 0 rgba(0,0,0,.15);overflow:hidden;z-index:10000}.menu-option[data-v-17a20187]{display:flex;align-items:center;width:100%;height:40px;padding-left:10px;padding-right:10px;color:var(--foreground);cursor:pointer}.menu-option[data-v-17a20187]:hover{background:var(--table-highlight);filter:brightness(150%)}.menu-option__text[data-v-17a20187]{text-transform:capitalize}button[data-v-17a20187]{color:var(--primary-text);color:unset;background-color:var(--primary-color);background-color:unset;min-width:unset;position:unset;border:unset;border-radius:unset;font-family:unset;font-weight:unset;font-size:unset;padding:unset;margin-right:unset;height:unset;text-transform:unset;cursor:unset;transition:unset}button[data-v-17a20187]:focus{outline:0}button[data-v-17a20187]:active{background-color:unset;transform:unset}button[data-v-17a20187]:hover{background:unset;border:unset}",map:void 0,media:void 0})},__vue_scope_id__$1="data-v-17a20187",__vue_module_identifier__$1=void 0,__vue_is_functional_template__$1=!1;function __vue_normalize__$1(e,n,a,i,r,s,l,c){const o=(typeof a=="function"?a.options:a)||{};o.__file="TheContextMenu.vue",o.render||(o.render=e.render,o.staticRenderFns=e.staticRenderFns,o._compiled=!0,r&&(o.functional=!0)),o._scopeId=i;{let d;if(n&&(d=function(u){n.call(this,l(u))}),d!==void 0)if(o.functional){const u=o.render;o.render=function(m,h){return d.call(h),u(m,h)}}else{const u=o.beforeCreate;o.beforeCreate=u?[].concat(u,d):[d]}}return o}function __vue_create_injector__$1(){const e=document.head||document.getElementsByTagName("head")[0],n=__vue_create_injector__$1.styles||(__vue_create_injector__$1.styles={}),a=typeof navigator!="undefined"&&/msie [6-9]\\b/.test(navigator.userAgent.toLowerCase());return function(r,s){if(document.querySelector('style[data-vue-ssr-id~="'+r+'"]'))return;const l=a?s.media||"default":r,c=n[l]||(n[l]={ids:[],parts:[],element:void 0});if(!c.ids.includes(r)){let o=s.source,d=c.ids.length;if(c.ids.push(r),s.map&&(o+=`
@@ -4622,4 +4622,4 @@ PERFORMANCE OF THIS SOFTWARE.
 					`)]),e._v(" "),a("td",[e._v(e._s(i.artists[0].name))]),e._v(" "),a("td",[e._v(e._s(i.album.name))]),e._v(" "),a("td",[e._v(e._s(e.convertDuration(Math.floor(i.duration_ms/1e3))))]),e._v(" "),a("td",[a("input",{directives:[{name:"model",rawName:"v-model",value:i.selected,expression:"track.selected"}],staticClass:"clickable",attrs:{type:"checkbox"},domProps:{checked:Array.isArray(i.selected)?e._i(i.selected,null)>-1:i.selected},on:{change:function(s){var l=i.selected,c=s.target,o=!!c.checked;if(Array.isArray(l)){var d=null,u=e._i(l,d);c.checked?u<0&&e.$set(i,"selected",l.concat([d])):u>-1&&e.$set(i,"selected",l.slice(0,u).concat(l.slice(u+1)))}else e.$set(i,"selected",o)}}})])])})],2)]),e._v(" "),e.label?a("span",{staticStyle:{opacity:"0.4","margin-top":"8px",display:"inline-block","font-size":"13px"}},[e._v(e._s(e.label))]):e._e(),e._v(" "),a("footer",{staticClass:"bg-background-main"},[a("button",{staticClass:"mr-2 btn btn-primary",attrs:{"data-link":e.link},on:{click:function(i){return i.stopPropagation(),e.addToQueue(i)}}},[e._v(`
 			`+e._s(""+e.$t("globals.download",{thing:e.$tc("globals.listTabs."+e.type,1)}))+`
 		`)]),e._v(" "),a("button",{staticClass:"flex items-center btn btn-primary",attrs:{"data-link":e.selectedLinks()},on:{click:function(i){return i.stopPropagation(),e.addToQueue(i)}}},[e._v(`
-			`+e._s(e.$t("tracklist.downloadSelection"))),a("i",{staticClass:"ml-2 material-icons"},[e._v("file_download")])])])])},__vue_staticRenderFns__$v=[function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("th",[a("i",{staticClass:"material-icons"},[e._v("music_note")])])},function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("th",[a("i",{staticClass:"material-icons"},[e._v("timer")])])},function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("td",[a("div",{staticClass:"table__cell-content table__cell-content--vertical-center",staticStyle:{opacity:"0.54"}},[a("i",{staticClass:"material-icons"},[e._v("album")])])])}];const __vue_inject_styles__$v=void 0,__vue_scope_id__$v=void 0,__vue_is_functional_template__$v=!1;function __vue_normalize__$v(e,n,a,i,r,s,l,c){const o=(typeof a=="function"?a.options:a)||{};return o.__file="Tracklist.vue",o.render||(o.render=e.render,o.staticRenderFns=e.staticRenderFns,o._compiled=!0,r&&(o.functional=!0)),o._scopeId=i,o}var Tracklist=__vue_normalize__$v({render:__vue_render__$v,staticRenderFns:__vue_staticRenderFns__$v},__vue_inject_styles__$v,__vue_script__$t,__vue_scope_id__$v,__vue_is_functional_template__$v);Vue.use(VueRouter);const routes=[{path:"/",name:"Home",component:Home,meta:{notKeepAlive:!0}},{path:"/tracklist/:type/:id",name:"Tracklist",component:Tracklist},{path:"/artist/:id",name:"Artist",component:Artist,meta:{notKeepAlive:!0}},{path:"/album/:id",name:"Album",component:Tracklist},{path:"/playlist/:id",name:"Playlist",component:Tracklist},{path:"/spotify-playlist/:id",name:"Spotify Playlist",component:Tracklist},{path:"/charts",name:"Charts",component:Charts,meta:{notKeepAlive:!0}},{path:"/favorites",name:"Favorites",component:Favorites,meta:{notKeepAlive:!0}},{path:"/errors",name:"Errors",component:Errors},{path:"/link-analyzer",name:"Link Analyzer",component:LinkAnalyzer},{path:"/about",name:"About",component:About},{path:"/info-arl",name:"ARL",component:InfoArl},{path:"/info-spotify",name:"Spotify Features",component:InfoSpotifyFeatures},{path:"/settings",name:"Settings",component:Settings},{path:"/search",name:"Search",component:Search,meta:{notKeepAlive:!0}},{path:"*",component:Home}],router=new VueRouter({mode:"history",routes,scrollBehavior(e,n,a){return{x:0,y:0}}});router.beforeEach((e,n,a)=>{let i=null;switch(e.name){case"Tracklist":i={type:e.params.type,id:e.params.id};break;case"Album":i={type:"album",id:e.params.id};break;case"Playlist":i={type:"playlist",id:e.params.id};break;case"Spotify Playlist":i={type:"spotifyplaylist",id:e.params.id};break}i&&socket.emit("getTracklist",i),a()});function startApp(){new Vue({store,router,i18n,render:e=>e(App)}).$mount("#app")}function initClient(){store.dispatch("setClientMode",!0),setClientModeKeyBindings()}document.addEventListener("DOMContentLoaded",startApp),window.addEventListener("pywebviewready",initClient),document.addEventListener("paste",e=>{if(e.target.localName==="input")return;let n=e.clipboardData.getData("Text");if(isValidURL(n))router.currentRoute.name==="Link Analyzer"?socket.emit("analyzeLink",n):sendAddToQueue(n);else{let a=document.querySelector("#searchbar");a.select(),a.setSelectionRange(0,99999)}});function setClientModeKeyBindings(){document.addEventListener("keyup",e=>{e.altKey&&e.key==="ArrowLeft"&&router.back(),e.altKey&&e.key==="ArrowRight"&&router.forward()})}socket.on("message",function(e){console.log(e)}),socket.on("logging_in",function(){toast(i18n.t("toasts.loggingIn"),"loading",!1,"login-toast")}),socket.on("init_autologin",function(){let e=localStorage.getItem("arl"),n=localStorage.getItem("accountNum");e&&(e=e.trim(),n!=0?socket.emit("login",e,!0,n):socket.emit("login",e))}),socket.on("logged_in",function(e){const{status:n,user:a}=e;switch(n){case 1:case 3:toast(i18n.t("toasts.loggedIn"),"done",!0,"login-toast"),store.dispatch("login",e);break;case 2:toast(i18n.t("toasts.alreadyLogged"),"done",!0,"login-toast"),store.dispatch("setUser",a);break;case 0:toast(i18n.t("toasts.loginFailed"),"close",!0,"login-toast"),store.dispatch("removeARL");break;case-1:toast(i18n.t("toasts.deezerNotAvailable"),"close",!0,"login-toast");return}}),socket.on("logged_out",function(){toast(i18n.t("toasts.loggedOut"),"done",!0,"login-toast"),store.dispatch("logout")}),socket.on("restoringQueue",function(){toast(i18n.t("toasts.restoringQueue"),"loading",!1,"restoring_queue")}),socket.on("cancellingCurrentItem",function(e){toast(i18n.t("toasts.cancellingCurrentItem"),"loading",!1,"cancelling_"+e)}),socket.on("currentItemCancelled",function(e){toast(i18n.t("toasts.currentItemCancelled"),"done",!0,"cancelling_"+e)}),socket.on("startAddingArtist",function(e){toast(i18n.t("toasts.startAddingArtist",{artist:e.name}),"loading",!1,"artist_"+e.id)}),socket.on("finishAddingArtist",function(e){toast(i18n.t("toasts.finishAddingArtist",{artist:e.name}),"done",!0,"artist_"+e.id)}),socket.on("startConvertingSpotifyPlaylist",function(e){toast(i18n.t("toasts.startConvertingSpotifyPlaylist"),"loading",!1,"spotifyplaylist_"+e)}),socket.on("finishConvertingSpotifyPlaylist",function(e){toast(i18n.t("toasts.finishConvertingSpotifyPlaylist"),"done",!0,"spotifyplaylist_"+e)}),socket.on("errorMessage",function(e){toast(e,"error")}),socket.on("queueError",function(e){e.errid?toast(e.link+" - "+i18n.t(`errors.ids.${e.errid}`),"error"):toast(e.link+" - "+e.error,"error")}),socket.on("alreadyInQueue",function(e){toast(i18n.t("toasts.alreadyInQueue",{item:e.title}),"playlist_add_check")}),socket.on("loginNeededToDownload",function(e){toast(i18n.t("toasts.loginNeededToDownload"),"report")}),socket.on("startGeneratingItems",function(e){toast(i18n.t("toasts.startGeneratingItems",{n:e.total}),"loading",!1,"batch_"+e.uuid)}),socket.on("finishGeneratingItems",function(e){toast(i18n.t("toasts.finishGeneratingItems",{n:e.total}),"done",!0,"batch_"+e.uuid)});
+			`+e._s(e.$t("tracklist.downloadSelection"))),a("i",{staticClass:"ml-2 material-icons"},[e._v("file_download")])])])])},__vue_staticRenderFns__$v=[function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("th",[a("i",{staticClass:"material-icons"},[e._v("music_note")])])},function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("th",[a("i",{staticClass:"material-icons"},[e._v("timer")])])},function(){var e=this,n=e.$createElement,a=e._self._c||n;return a("td",[a("div",{staticClass:"table__cell-content table__cell-content--vertical-center",staticStyle:{opacity:"0.54"}},[a("i",{staticClass:"material-icons"},[e._v("album")])])])}];const __vue_inject_styles__$v=void 0,__vue_scope_id__$v=void 0,__vue_is_functional_template__$v=!1;function __vue_normalize__$v(e,n,a,i,r,s,l,c){const o=(typeof a=="function"?a.options:a)||{};return o.__file="Tracklist.vue",o.render||(o.render=e.render,o.staticRenderFns=e.staticRenderFns,o._compiled=!0,r&&(o.functional=!0)),o._scopeId=i,o}var Tracklist=__vue_normalize__$v({render:__vue_render__$v,staticRenderFns:__vue_staticRenderFns__$v},__vue_inject_styles__$v,__vue_script__$t,__vue_scope_id__$v,__vue_is_functional_template__$v);Vue.use(VueRouter);const routes=[{path:window.location.pathname,name:"Home",component:Home,meta:{notKeepAlive:!0}},{path:"tracklist/:type/:id",name:"Tracklist",component:Tracklist},{path:"artist/:id",name:"Artist",component:Artist,meta:{notKeepAlive:!0}},{path:"album/:id",name:"Album",component:Tracklist},{path:"playlist/:id",name:"Playlist",component:Tracklist},{path:"spotify-playlist/:id",name:"Spotify Playlist",component:Tracklist},{path:"charts",name:"Charts",component:Charts,meta:{notKeepAlive:!0}},{path:"favorites",name:"Favorites",component:Favorites,meta:{notKeepAlive:!0}},{path:"errors",name:"Errors",component:Errors},{path:"link-analyzer",name:"Link Analyzer",component:LinkAnalyzer},{path:"about",name:"About",component:About},{path:"info-arl",name:"ARL",component:InfoArl},{path:"info-spotify",name:"Spotify Features",component:InfoSpotifyFeatures},{path:"settings",name:"Settings",component:Settings},{path:"search",name:"Search",component:Search,meta:{notKeepAlive:!0}},{path:"*",component:Home}],router=new VueRouter({mode:"history",routes,scrollBehavior(e,n,a){return{x:0,y:0}}});router.beforeEach((e,n,a)=>{let i=null;switch(e.name){case"Tracklist":i={type:e.params.type,id:e.params.id};break;case"Album":i={type:"album",id:e.params.id};break;case"Playlist":i={type:"playlist",id:e.params.id};break;case"Spotify Playlist":i={type:"spotifyplaylist",id:e.params.id};break}i&&socket.emit("getTracklist",i),a()});function startApp(){new Vue({store,router,i18n,render:e=>e(App)}).$mount("#app")}function initClient(){store.dispatch("setClientMode",!0),setClientModeKeyBindings()}document.addEventListener("DOMContentLoaded",startApp),window.addEventListener("pywebviewready",initClient),document.addEventListener("paste",e=>{if(e.target.localName==="input")return;let n=e.clipboardData.getData("Text");if(isValidURL(n))router.currentRoute.name==="Link Analyzer"?socket.emit("analyzeLink",n):sendAddToQueue(n);else{let a=document.querySelector("#searchbar");a.select(),a.setSelectionRange(0,99999)}});function setClientModeKeyBindings(){document.addEventListener("keyup",e=>{e.altKey&&e.key==="ArrowLeft"&&router.back(),e.altKey&&e.key==="ArrowRight"&&router.forward()})}socket.on("message",function(e){console.log(e)}),socket.on("logging_in",function(){toast(i18n.t("toasts.loggingIn"),"loading",!1,"login-toast")}),socket.on("init_autologin",function(){let e=localStorage.getItem("arl"),n=localStorage.getItem("accountNum");e&&(e=e.trim(),n!=0?socket.emit("login",e,!0,n):socket.emit("login",e))}),socket.on("logged_in",function(e){const{status:n,user:a}=e;switch(n){case 1:case 3:toast(i18n.t("toasts.loggedIn"),"done",!0,"login-toast"),store.dispatch("login",e);break;case 2:toast(i18n.t("toasts.alreadyLogged"),"done",!0,"login-toast"),store.dispatch("setUser",a);break;case 0:toast(i18n.t("toasts.loginFailed"),"close",!0,"login-toast"),store.dispatch("removeARL");break;case-1:toast(i18n.t("toasts.deezerNotAvailable"),"close",!0,"login-toast");return}}),socket.on("logged_out",function(){toast(i18n.t("toasts.loggedOut"),"done",!0,"login-toast"),store.dispatch("logout")}),socket.on("restoringQueue",function(){toast(i18n.t("toasts.restoringQueue"),"loading",!1,"restoring_queue")}),socket.on("cancellingCurrentItem",function(e){toast(i18n.t("toasts.cancellingCurrentItem"),"loading",!1,"cancelling_"+e)}),socket.on("currentItemCancelled",function(e){toast(i18n.t("toasts.currentItemCancelled"),"done",!0,"cancelling_"+e)}),socket.on("startAddingArtist",function(e){toast(i18n.t("toasts.startAddingArtist",{artist:e.name}),"loading",!1,"artist_"+e.id)}),socket.on("finishAddingArtist",function(e){toast(i18n.t("toasts.finishAddingArtist",{artist:e.name}),"done",!0,"artist_"+e.id)}),socket.on("startConvertingSpotifyPlaylist",function(e){toast(i18n.t("toasts.startConvertingSpotifyPlaylist"),"loading",!1,"spotifyplaylist_"+e)}),socket.on("finishConvertingSpotifyPlaylist",function(e){toast(i18n.t("toasts.finishConvertingSpotifyPlaylist"),"done",!0,"spotifyplaylist_"+e)}),socket.on("errorMessage",function(e){toast(e,"error")}),socket.on("queueError",function(e){e.errid?toast(e.link+" - "+i18n.t(`errors.ids.${e.errid}`),"error"):toast(e.link+" - "+e.error,"error")}),socket.on("alreadyInQueue",function(e){toast(i18n.t("toasts.alreadyInQueue",{item:e.title}),"playlist_add_check")}),socket.on("loginNeededToDownload",function(e){toast(i18n.t("toasts.loginNeededToDownload"),"report")}),socket.on("startGeneratingItems",function(e){toast(i18n.t("toasts.startGeneratingItems",{n:e.total}),"loading",!1,"batch_"+e.uuid)}),socket.on("finishGeneratingItems",function(e){toast(i18n.t("toasts.finishGeneratingItems",{n:e.total}),"done",!0,"batch_"+e.uuid)});

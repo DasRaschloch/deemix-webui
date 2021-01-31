@@ -52,6 +52,7 @@ document.addEventListener('paste', pasteEvent => {
 		if (router.currentRoute.name === 'Link Analyzer') {
 			socket.emit('analyzeLink', pastedText)
 		} else {
+			if (pastedText.indexOf("\n") != -1) pastedText = pastedText.replace(/\n/g, ';');
 			sendAddToQueue(pastedText)
 		}
 	} else {

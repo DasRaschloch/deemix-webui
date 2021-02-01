@@ -240,8 +240,11 @@ const fr = {
 		templates: {
 			title: 'Modèles',
 			tracknameTemplate: 'Modèle pour le nom de piste',
+			tracknameAvailableVariables: 'Variables disponibles pour le nom de piste',
 			albumTracknameTemplate: "Modèle pour le nom de piste de l'album",
-			playlistTracknameTemplate: 'Modèle pour le nom de piste de la playlist'
+			albumTracknameAvailableVariables: "Variables disponibles pour le nom de piste de l'album",
+			playlistTracknameTemplate: 'Modèle pour le nom de piste de la playlist',
+			playlistTracknameAvailableVariables: 'Variables disponibles pour le nom de piste de la playlist'
 		},
 		folders: {
 			title: 'Dossiers',

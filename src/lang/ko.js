@@ -68,7 +68,7 @@ const ko = {
 			donations: '금전적으로 지원하고 싶다고요? 후원하세요!'
 		},
 		usesLibrary: '이 프로그램은 <strong>deemix</strong> 라이브러리를 사용합니다, 해당 라이브러리로 자신만의 deemix를 만들 수 있습니다.',
-		thanks: `이 프로젝트를 도와준 <strong>rtonno</strong>, <strong>uhwot</strong> 그리고 <strong>lollilol</strong>님과 아이콘을 만들어준 <strong>BasCurtiz</strong> 님에게 감사를.`,
+		thanks: `이 프로젝트를 도와준 <strong>rtonno</strong>, <strong>uhwot</strong> 그리고 <strong>lollilol</strong>님과 아이콘을 만들어준 <strong>BasCurtiz</strong> 그리고 <strong>scarvimane</strong>님에게 감사를.`,
 		upToDate: {
 			text: `새로운 업데이트 소식을 듣고 싶으면 텔레그램 {newsChannel}을 참고하세요.`,
 			newsChannel: '새소식 정보통'
@@ -148,9 +148,10 @@ const ko = {
 	},
 	linkAnalyzer: {
 		info: '이 항목에서는 다운로드를 시도할 링크에 대한 더 많은 정보를 찾을 수 있습니다.',
-		linkNotSupported: '해당 링크는 아직 지원하지 않습니다',
 		useful: "접속한 국가에서는 재생할 수 없는 특정 트랙을 다운로드 하기 위해서 가능한 국가를 찾는데 유용하게 쓰입니다.",
+		linkNotSupported: '해당 링크는 아직 지원하지 않습니다',
 		linkNotSupportedYet: '해당 링크는 아직 지원하지 않습니다, 다른 링크로 시도해보세요.',
+																							   
 		table: {
 			id: 'ID',
 			isrc: 'ISRC',
@@ -169,6 +170,7 @@ const ko = {
 	search: {
 		startSearching: '검색을 해보세요!',
 		description: '트랙, 아티스트, 재생목록, Deezer 링크 등으로 검색할 수 있습니다!',
+																												   
 		fans: '{n}명의 팬들',
 		noResults: '결과 없음',
 		noResultsTrack: '발견된 트랙 없음',
@@ -227,8 +229,11 @@ const ko = {
 		templates: {
 			title: '템플릿',
 			tracknameTemplate: '트랙이름 템플릿',
+			tracknameAvailableVariables: '사용가능한 트랙이름 변수 목록',
 			albumTracknameTemplate: '앨범 트랙 템플릿',
-			playlistTracknameTemplate: '재생목록 트랙 템플릿'
+			albumTracknameAvailableVariables: '사용가능한 앨범 트랙 변수 목록',
+			playlistTracknameTemplate: '재생목록 트랙 템플릿',
+			playlistTracknameAvailableVariables: '사용가능한 재생 목록 트랙 변수 목록'
 		},
 		folders: {
 			title: '폴더',
@@ -316,6 +321,7 @@ const ko = {
 			replayGain: '리플레이 게인',
 			label: '앨범 라벨',
 			lyrics: '비동기 가사',
+									   
 			copyright: '저작권',
 			composer: '작곡가',
 			involvedPeople: '관련있는 사람들',
@@ -369,13 +375,16 @@ const ko = {
 			title: '스포티파이 기능',
 			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify 사용자이름'
+			username: 'Spotify 사용자이름',
+			question: '스포티파이 기능들을 사용하려면 어떻게 해야 합니까?'									
 		},
 		reset: '기본 설정으로 초기화',
+		resetMessage: '정말 기본 설정으로 돌아가시겠습니까?',
 		save: '저장',
 		toasts: {
 			init: '설정을 불러왔습니다!',
 			update: '새로운 설정으로 갱신되었습니다!',
+			reset: '설정이 원래대로 초기화 되었습니다!',
 			ARLcopied: 'ARL가 클립보드에 복사되었습니다'
 		}
 	},

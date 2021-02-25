@@ -19,6 +19,7 @@ import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
+import { get } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -86,26 +87,7 @@ socket.on('message', function(msg) {
 	console.log(msg)
 })
 
-socket.on('logging_in', function() {
-	toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
-})
-
-socket.on('init_autologin', function() {
-	let arl = localStorage.getItem('arl')
-	let accountNum = localStorage.getItem('accountNum')
-
-	if (arl) {
-		arl = arl.trim()
-
-		if (accountNum != 0) {
-			socket.emit('login', arl, true, accountNum)
-		} else {
-			socket.emit('login', arl)
-		}
-	}
-})
-
-socket.on('logged_in', function(data) {
+function loggedIn(data){
 	const { status, user } = data
 
 	switch (status) {
@@ -138,6 +120,36 @@ socket.on('logged_in', function(data) {
 		// $('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 		// document.getElementById('home_not_logged_in').classList.remove('hide')
 	}
+}
+
+fetch('connect').then(response => response.json()).then(data => {
+	store.dispatch('setAppInfo', data.update )
+	if (data.autologin) {
+		console.log("Autologin")
+		let arl = localStorage.getItem('arl')
+		let accountNum = localStorage.getItem('accountNum')
+
+		if (arl) {
+			arl = arl.trim()
+			let result
+
+			if (accountNum != 0) {
+				result = get('login', {arl: arl, force:true, child:accountNum || 0})
+			} else {
+				result = get('login', {arl})
+			}
+			result.then(loggedIn)
+		}
+	}
+})
+
+/*
+socket.on('logging_in', function() {
+	toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
+})
+
+socket.on('logged_in', function(data) {
+
 })
 
 socket.on('logged_out', function() {
@@ -145,6 +157,7 @@ socket.on('logged_out', function() {
 
 	store.dispatch('logout')
 })
+*/
 
 socket.on('restoringQueue', function() {
 	toast(i18n.t('toasts.restoringQueue'), 'loading', false, 'restoring_queue')

@@ -92,7 +92,6 @@ import { orderBy } from 'lodash-es'
 
 import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
 
-import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { checkNewRelease } from '@/utils/dates'
 import { formatArtistData, getArtistData } from '@/data/artist'

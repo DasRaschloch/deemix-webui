@@ -69,7 +69,8 @@ export default {
 		// ConfirmModal
 	},
 	mounted() {
-		socket.on('connect', () => {
+		socket.addEventListener('open', (event) => {
+			console.log("Connected to WebSocket")
 			this.isSocketConnected = true
 		})
 	}

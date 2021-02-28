@@ -13,6 +13,7 @@ class CustomSocket extends WebSocket {
 	on(key, callback) {
 		this.addEventListener('message', function(event){
 			let data = JSON.parse(event.data)
+      console.log(data)
 			if (data.key == key) callback(data.data)
 		})
 	}

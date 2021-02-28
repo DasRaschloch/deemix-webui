@@ -1,4 +1,4 @@
-import { socket } from '@/utils/socket'
+import { get } from '@/utils/api'
 
 /**
  * @param	{string}	url
@@ -7,7 +7,7 @@ import { socket } from '@/utils/socket'
 export function sendAddToQueue(url, bitrate = null) {
 	if (!url) throw new Error('No URL given to sendAddToQueue function!')
 
-	socket.emit('addToQueue', { url, bitrate }, () => {})
+	get('addToQueue', { url, bitrate })
 }
 
 export function aggregateDownloadLinks(releases) {

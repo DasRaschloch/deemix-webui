@@ -1,5 +1,3 @@
-import store from '@/store'
-
 let wasEventListenerAdded = false
 
 class CustomSocket extends WebSocket {
@@ -8,7 +6,8 @@ class CustomSocket extends WebSocket {
 	}
 	emit(key, data) {
 		if (this.readyState !== WebSocket.OPEN) return false
-		this.send(JSON.stringify({ key: key, data: data }))
+
+		this.send(JSON.stringify({ key, data }))
 	}
 	on(key, cb) {
 		if (!wasEventListenerAdded) {

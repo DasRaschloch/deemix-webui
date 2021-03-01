@@ -1,4 +1,4 @@
-import { get } from '@/utils/api'
+import { fetchApi } from '@/utils/api'
 
 /**
  * @param	{string}	url
@@ -7,7 +7,7 @@ import { get } from '@/utils/api'
 export function sendAddToQueue(url, bitrate = null) {
 	if (!url) throw new Error('No URL given to sendAddToQueue function!')
 
-	get('addToQueue', { url, bitrate })
+	fetchApi('addToQueue', { url, bitrate })
 }
 
 export function aggregateDownloadLinks(releases) {

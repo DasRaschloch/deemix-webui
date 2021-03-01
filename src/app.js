@@ -19,13 +19,13 @@ import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
-import { get } from '@/utils/api'
+import { fetchApi } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
 
 /* ===== App initialization ===== */
-function startApp() {
+async function startApp() {
 	new Vue({
 		store,
 		router,
@@ -33,29 +33,28 @@ function startApp() {
 		render: h => h(App)
 	}).$mount('#app')
 
-	fetch('connect')
-		.then(response => response.json())
-		.then(data => {
-			store.dispatch('setAppInfo', data.update)
+	const connectResponse = await (await fetch('connect')).json()
 
-			if (data.autologin) {
-				console.log('Autologin')
-				let arl = localStorage.getItem('arl')
-				let accountNum = localStorage.getItem('accountNum')
+	store.dispatch('setAppInfo', connectResponse.update)
 
-				if (arl) {
-					arl = arl.trim()
-					let result
+	if (connectResponse.autologin) {
+		console.info('Autologin successful')
+		let arl = localStorage.getItem('arl')
+		const accountNum = localStorage.getItem('accountNum')
 
-					if (accountNum != 0) {
-						result = get('login', { arl: arl, force: true, child: accountNum || 0 })
-					} else {
-						result = get('login', { arl })
-					}
-					result.then(loggedIn)
-				}
+		if (arl) {
+			arl = arl.trim()
+			let result
+
+			if (accountNum !== 0) {
+				result = fetchApi('login', { arl, force: true, child: accountNum || 0 })
+			} else {
+				result = fetchApi('login', { arl })
 			}
-		})
+
+			result.then(loggedIn)
+		}
+	}
 }
 
 function initClient() {

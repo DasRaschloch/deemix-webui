@@ -1,10 +1,9 @@
-export const get = function(key, data){
-  let url = `/api/${key}`
-  if (data){
-    let query = Object.keys(data)
-               .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k]))
-               .join('&')
-    url += '?'+query
-  }
-  return fetch(url).then(response => response.json())
+export function fetchApi(key, data) {
+	const url = new URL(`${window.location.origin}/api/${key}`)
+
+	Object.keys(data).forEach(key => {
+		url.searchParams.append(key, data[key])
+	})
+
+	return fetch(url.href).then(response => response.json())
 }

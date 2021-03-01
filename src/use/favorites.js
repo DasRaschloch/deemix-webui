@@ -2,6 +2,7 @@ import { ref } from '@vue/composition-api'
 
 import store from '@/store'
 import { socket } from '@/utils/socket'
+import { fetchData } from '@/utils/api'
 
 const favoriteArtists = ref([])
 const favoriteAlbums = ref([])
@@ -15,15 +16,19 @@ if (store.getters.isLoggedIn) {
 	refreshFavorites({ isInitial: true })
 }
 
-function refreshFavorites({ isInitial = false }) {
+async function refreshFavorites({ isInitial = false }) {
 	if (!isInitial) {
 		isRefreshingFavorites.value = true
 	}
 
-	socket.emit('get_favorites_data')
+	const favorites = await fetchData('getFavorites')
+
+	setAllFavorites(favorites)
 
 	if (store.getters.isLoggedWithSpotify) {
-		socket.emit('update_userSpotifyPlaylists', store.getters.getSpotifyUser.id)
+		// TODO
+		const res = await fetchData('getUserSpotifyPlaylists', { spotifyUser: store.getters.getSpotifyUser.id })
+		// socket.emit('update_userSpotifyPlaylists', store.getters.getSpotifyUser.id)
 	}
 }
 
@@ -54,6 +59,7 @@ socket.on('updated_userFavorites', data => {
 	// therefore isRefreshingFavorites is never set to true
 	// isRefreshingFavorites.value = false
 })
+
 socket.on('init_favorites', data => {
 	setAllFavorites(data)
 	isRefreshingFavorites.value = false

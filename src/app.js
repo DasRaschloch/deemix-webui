@@ -38,7 +38,7 @@ async function startApp() {
 	store.dispatch('setAppInfo', connectResponse.update)
 
 	if (connectResponse.autologin) {
-		console.info('Autologin successful')
+		console.info('Autologin')
 		let arl = localStorage.getItem('arl')
 		const accountNum = localStorage.getItem('accountNum')
 
@@ -111,7 +111,6 @@ socket.on('message', function (msg) {
 })
 
 function loggedIn(data) {
-	console.log({ data })
 	const { status, user } = data
 
 	switch (status) {

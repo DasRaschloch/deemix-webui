@@ -15,6 +15,7 @@ import LinkAnalyzer from '@components/pages/LinkAnalyzer.vue'
 import Search from '@components/pages/Search.vue'
 import Settings from '@components/pages/Settings.vue'
 import Tracklist from '@components/pages/Tracklist.vue'
+import { fetchData } from '@/utils/api'
 
 Vue.use(VueRouter)
 
@@ -159,6 +160,7 @@ router.beforeEach((to, from, next) => {
 
 	if (getTracklistParams) {
 		socket.emit('getTracklist', getTracklistParams)
+		fetchData('getTracklist', getTracklistParams)
 	}
 
 	next()

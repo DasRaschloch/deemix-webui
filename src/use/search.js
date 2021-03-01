@@ -1,10 +1,10 @@
 import { ref } from '@vue/composition-api'
-import { fetchApi } from '@/utils/api'
+import { fetchData } from '@/utils/api'
 
 const result = ref({})
 
 function performSearch({ term, type, start = 0, nb = 30 }) {
-	fetchApi('search', {
+	fetchData('search', {
 		term,
 		type,
 		start,

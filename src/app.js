@@ -19,7 +19,7 @@ import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
-import { fetchApi } from '@/utils/api'
+import { fetchData } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -47,12 +47,12 @@ async function startApp() {
 			let result
 
 			if (accountNum !== 0) {
-				result = fetchApi('login', { arl, force: true, child: accountNum || 0 })
+				result = await fetchData('login', { arl, force: true, child: accountNum || 0 })
 			} else {
-				result = fetchApi('login', { arl })
+				result = await fetchData('login', { arl })
 			}
 
-			result.then(loggedIn)
+			loggedIn(result)
 		}
 	}
 }
@@ -111,6 +111,7 @@ socket.on('message', function (msg) {
 })
 
 function loggedIn(data) {
+	console.log({ data })
 	const { status, user } = data
 
 	switch (status) {

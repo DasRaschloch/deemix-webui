@@ -1,8 +1,7 @@
-let wasEventListenerAdded = false
-
 class CustomSocket extends WebSocket {
 	constructor(args) {
 		super(args)
+		this.listeners = {}
 	}
 	emit(key, data) {
 		if (this.readyState !== WebSocket.OPEN) return false
@@ -10,8 +9,9 @@ class CustomSocket extends WebSocket {
 		this.send(JSON.stringify({ key, data }))
 	}
 	on(key, cb) {
-		if (!wasEventListenerAdded) {
-			wasEventListenerAdded = true
+		if (Object.keys(this.listeners).indexOf(key) == -1){
+			console.log('on:', key)
+			this.listeners[key] = cb
 
 			this.addEventListener('message', event => {
 				const messageData = JSON.parse(event.data)
@@ -21,10 +21,14 @@ class CustomSocket extends WebSocket {
 				}
 			})
 		}
+
 	}
-	off() {
-		console.log('off!')
-		// this.removeEventListener('message')
+	off(key) {
+		if (Object.keys(this.listeners).indexOf(key) != -1){
+			console.log('off:', key)
+			this.removeEventListener('message', this.listeners[key])
+			delete this.listeners[key]
+		}
 	}
 }
 

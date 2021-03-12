@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 // Pages
-//import About from '@components/pages/About.vue'
+import About from '@components/pages/About.vue'
 import InfoArl from '@components/pages/InfoArl.vue'
 import InfoSpotifyFeatures from '@components/pages/InfoSpotifyFeatures.vue'
 import Artist from '@components/pages/Artist.vue'
@@ -82,11 +82,11 @@ const routes = [
 		name: 'Link Analyzer',
 		component: LinkAnalyzer
 	},
-	/*{
+	{
 		path: '/about',
 		name: 'About',
 		component: About
-	},*/
+	},
 	{
 		path: '/info-arl',
 		name: 'ARL',

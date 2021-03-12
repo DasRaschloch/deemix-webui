@@ -21,14 +21,17 @@ async function refreshFavorites({ isInitial = false }) {
 		isRefreshingFavorites.value = true
 	}
 
-	const favorites = await fetchData('getFavorites')
+	const favorites = await fetchData('getUserFavorites')
 
 	setAllFavorites(favorites)
 
 	if (store.getters.isLoggedWithSpotify) {
 		// TODO
-		const res = await fetchData('getUserSpotifyPlaylists', { spotifyUser: store.getters.getSpotifyUser.id })
-		// socket.emit('update_userSpotifyPlaylists', store.getters.getSpotifyUser.id)
+		const spotifyPlaylists = await fetchData('getUserSpotifyPlaylists', {
+			spotifyUser: store.getters.getSpotifyUser.id
+		})
+		console.log({ spotifyPlaylists })
+		favoriteSpotifyPlaylists.value = spotifyPlaylists
 	}
 }
 
@@ -47,39 +50,10 @@ export function useFavorites() {
 function setAllFavorites(data) {
 	const { tracks, albums, artists, playlists } = data
 
+	isRefreshingFavorites.value = false
+
 	favoriteArtists.value = artists
 	favoriteAlbums.value = albums
 	favoritePlaylists.value = playlists
 	favoriteTracks.value = tracks
 }
-
-socket.on('updated_userFavorites', data => {
-	setAllFavorites(data)
-	// Commented out because the corresponding emit function is never called at the moment
-	// therefore isRefreshingFavorites is never set to true
-	// isRefreshingFavorites.value = false
-})
-
-socket.on('init_favorites', data => {
-	setAllFavorites(data)
-	isRefreshingFavorites.value = false
-})
-
-socket.on('updated_userSpotifyPlaylists', data => {
-	favoriteSpotifyPlaylists.value = data
-})
-socket.on('updated_userSpotifyPlaylists', data => {
-	favoriteSpotifyPlaylists.value = data
-})
-socket.on('updated_userPlaylists', data => {
-	favoritePlaylists.value = data
-})
-socket.on('updated_userAlbums', data => {
-	favoriteAlbums.value = data
-})
-socket.on('updated_userArtist', data => {
-	favoriteArtists.value = data
-})
-socket.on('updated_userTracks', data => {
-	favoriteTracks.value = data
-})

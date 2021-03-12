@@ -6,38 +6,38 @@
 			<div class="release-grid">
 				<div
 					v-for="release in countries"
-					role="button"
-					:aria-label="release.title"
-					class="w-40 h-40 release clickable"
-					@click="getTrackList"
-					:data-title="release.title"
-					:data-id="release.id"
 					:key="release.id"
+					:aria-label="release.title"
+					:data-id="release.id"
+					:data-title="release.title"
+					class="w-40 h-40 release clickable"
+					role="button"
+					@click="getTrackList"
 				>
-					<img class="w-full rounded coverart" :src="release.picture_medium" />
+					<img :src="release.picture_medium" class="w-full rounded coverart" />
 				</div>
 			</div>
 		</div>
 
 		<div v-else>
 			<button class="btn btn-primary" @click="onChangeCountry">{{ $t('charts.changeCountry') }}</button>
-			<button class="btn btn-primary" @click.stop="addToQueue" :data-link="'https://www.deezer.com/playlist/' + id">
+			<button :data-link="'https://www.deezer.com/playlist/' + id" class="btn btn-primary" @click.stop="addToQueue">
 				{{ $t('charts.download') }}
 			</button>
 			<table class="table table--charts">
 				<tbody>
 					<tr v-for="track in chart" class="track_row">
-						<td class="p-3 text-center cursor-default" :class="{ first: track.position === 1 }">
+						<td :class="{ first: track.position === 1 }" class="p-3 text-center cursor-default">
 							{{ track.position }}
 						</td>
 						<td class="table__icon table__icon--big">
 							<span
-								@click="playPausePreview"
-								class="relative inline-block rounded cursor-pointer"
 								:data-preview="track.preview"
+								class="relative inline-block rounded cursor-pointer"
+								@click="playPausePreview"
 							>
 								<PreviewControls v-if="track.preview" />
-								<img class="rounded coverart" :src="track.album.cover_small" />
+								<img :src="track.album.cover_small" class="rounded coverart" />
 							</span>
 						</td>
 						<td class="table__cell--large">
@@ -47,16 +47,16 @@
 							}}
 						</td>
 						<router-link
-							tag="td"
-							class="table__cell table__cell--medium table__cell--center clickable"
 							:to="{ name: 'Artist', params: { id: track.artist.id } }"
+							class="table__cell table__cell--medium table__cell--center clickable"
+							tag="td"
 						>
 							{{ track.artist.name }}
 						</router-link>
 						<router-link
-							tag="td"
-							class="table__cell--medium table__cell--center clickable"
 							:to="{ name: 'Album', params: { id: track.album.id } }"
+							class="table__cell--medium table__cell--center clickable"
+							tag="td"
 						>
 							{{ track.album.title }}
 						</router-link>
@@ -64,15 +64,15 @@
 							{{ convertDuration(track.duration) }}
 						</td>
 						<td
-							class="cursor-pointer group"
-							@click.stop="addToQueue"
 							:data-link="track.link"
-							role="button"
 							aria-label="download"
+							class="cursor-pointer group"
+							role="button"
+							@click.stop="addToQueue"
 						>
 							<i
-								class="transition-colors duration-150 ease-in-out material-icons group-hover:text-primary"
 								:title="$t('globals.download_hint')"
+								class="transition-colors duration-150 ease-in-out material-icons group-hover:text-primary"
 							>
 								get_app
 							</i>
@@ -85,14 +85,14 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
-import { getChartsData } from '@/data/charts'
+import { getChartsData, getChartTracks } from '@/data/charts'
 
 import PreviewControls from '@components/globals/PreviewControls.vue'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
+import { fetchData } from '@/utils/api'
 
 export default {
 	components: {
@@ -116,12 +116,12 @@ export default {
 		}
 	},
 	async created() {
-		socket.on('setChartTracks', this.setTracklist)
-		this.$on('hook:destroyed', () => {
-			socket.off('setChartTracks')
-		})
+		// socket.on('setChartTracks', this.setTracklist)
+		// this.$on('hook:destroyed', () => {
+		// 	socket.off('setChartTracks')
+		// })
 
-		let chartsData = await getChartsData()
+		let { data: chartsData } = await getChartsData()
 		let worldwideChart
 
 		chartsData = chartsData.filter(item => {
@@ -147,17 +147,13 @@ export default {
 
 			const {
 				currentTarget: {
-					dataset: { title }
-				},
-				currentTarget: {
-					dataset: { id }
+					dataset: { title, id }
 				}
 			} = event
 
 			this.country = title
 			localStorage.setItem('chart', this.country)
 			this.id = id
-			socket.emit('getChartTracks', this.id)
 		},
 		setTracklist(data) {
 			this.chart = data
@@ -183,6 +179,15 @@ export default {
 			} else {
 				this.country = ''
 				localStorage.setItem('chart', this.country)
+			}
+		}
+	},
+	watch: {
+		id(newId) {
+			const isActualChart = newId !== 0
+
+			if (isActualChart) {
+				getChartTracks(newId).then(response => this.setTracklist(response.result))
 			}
 		}
 	}

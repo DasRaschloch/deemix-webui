@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import { computed, defineComponent, reactive, toRefs, watch } from '@vue/composition-api'
+import { defineComponent, reactive, toRefs, watch } from '@vue/composition-api'
 
 import PreviewControls from '@components/globals/PreviewControls.vue'
 import CoverContainer from '@components/globals/CoverContainer.vue'
@@ -197,7 +197,8 @@ export default defineComponent({
 			isRefreshingFavorites,
 			refreshFavorites
 		} = useFavorites()
-		const reloadButton = computed(() => ctx.refs.reloadButton)
+
+		refreshFavorites({ isInitial: true })
 
 		watch(isRefreshingFavorites, (newVal, oldVal) => {
 			// If oldVal is true and newOne is false, it means that a refreshing has just terminated

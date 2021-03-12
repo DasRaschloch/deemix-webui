@@ -1,7 +1,6 @@
 import { ref } from '@vue/composition-api'
 
 import store from '@/store'
-import { socket } from '@/utils/socket'
 import { fetchData } from '@/utils/api'
 
 const favoriteArtists = ref([])
@@ -12,37 +11,21 @@ const favoriteTracks = ref([])
 
 const isRefreshingFavorites = ref(false)
 
-if (store.getters.isLoggedIn) {
-	refreshFavorites({ isInitial: true })
-}
-
-async function refreshFavorites({ isInitial = false }) {
+function refreshFavorites({ isInitial = false }) {
 	if (!isInitial) {
 		isRefreshingFavorites.value = true
 	}
 
-	const favorites = await fetchData('getUserFavorites')
-
-	setAllFavorites(favorites)
+	fetchData('getUserFavorites').then(setAllFavorites).catch(console.error)
 
 	if (store.getters.isLoggedWithSpotify) {
-		// TODO
-		const spotifyPlaylists = await fetchData('getUserSpotifyPlaylists', {
+		fetchData('getUserSpotifyPlaylists', {
 			spotifyUser: store.getters.getSpotifyUser.id
 		})
-		favoriteSpotifyPlaylists.value = spotifyPlaylists
-	}
-}
-
-export function useFavorites() {
-	return {
-		favoriteArtists,
-		favoriteAlbums,
-		favoriteSpotifyPlaylists,
-		favoritePlaylists,
-		favoriteTracks,
-		isRefreshingFavorites,
-		refreshFavorites
+			.then(({ data: spotifyPlaylists }) => {
+				favoriteSpotifyPlaylists.value = spotifyPlaylists
+			})
+			.catch(console.error)
 	}
 }
 
@@ -55,4 +38,16 @@ function setAllFavorites(data) {
 	favoriteAlbums.value = albums
 	favoritePlaylists.value = playlists
 	favoriteTracks.value = tracks
+}
+
+export function useFavorites() {
+	return {
+		favoriteArtists,
+		favoriteAlbums,
+		favoriteSpotifyPlaylists,
+		favoritePlaylists,
+		favoriteTracks,
+		isRefreshingFavorites,
+		refreshFavorites
+	}
 }

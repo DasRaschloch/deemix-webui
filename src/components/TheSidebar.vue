@@ -113,23 +113,20 @@
 import { computed, defineComponent, reactive, toRefs } from '@vue/composition-api'
 
 import { links } from '@/data/sidebar'
-import { socket } from '@/utils/socket'
 import { useTheme } from '@/use/theme'
+
 import deemixIcon from '@/assets/deemix-icon.svg'
 
 export default defineComponent({
 	setup(props, ctx) {
 		const state = reactive({
 			activeTablink: 'home',
-			updateAvailable: false,
 			links
 		})
 		const { THEMES, currentTheme } = useTheme()
 
 		/* === Add update notification near info === */
-		socket.on('updateAvailable', () => {
-			state.updateAvailable = true
-		})
+		const updateAvailable = computed(() => ctx.root.$store.state.appInfo.updateAvailable)
 
 		ctx.root.$router.afterEach((to, from) => {
 			const linkInSidebar = state.links.find(link => link.routerName === to.name)
@@ -141,6 +138,7 @@ export default defineComponent({
 
 		return {
 			...toRefs(state),
+			updateAvailable,
 			THEMES,
 			currentTheme,
 			isSlim: computed(() => ctx.root.$store.getters.getSlimSidebar),

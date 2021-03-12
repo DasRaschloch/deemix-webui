@@ -30,7 +30,6 @@ async function refreshFavorites({ isInitial = false }) {
 		const spotifyPlaylists = await fetchData('getUserSpotifyPlaylists', {
 			spotifyUser: store.getters.getSpotifyUser.id
 		})
-		console.log({ spotifyPlaylists })
 		favoriteSpotifyPlaylists.value = spotifyPlaylists
 	}
 }

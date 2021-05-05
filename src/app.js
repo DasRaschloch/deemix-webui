@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
+import '@/plugins/composition-api'
+
 import '@/styles/vendor/material-icons.css'
 import '@/styles/vendor/OpenSans.css'
 

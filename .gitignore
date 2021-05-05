@@ -3,7 +3,6 @@ __pycache__
 
 .DS_Store
 node_modules
-package-lock.json
 
 # pyinstaller build dirs
 /dist

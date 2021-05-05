@@ -14,7 +14,7 @@
 		"build": "npm-run-all --sequential clean build:js minify clean-temp"
 	},
 	"dependencies": {
-		"@vue/composition-api": "^1.0.0-beta.21",
+		"@vue/composition-api": "1.0.0-beta.21",
 		"flag-icon-css": "^3.5.0",
 		"lodash-es": "^4.17.15",
 		"svg-country-flags": "^1.2.9",
@@ -38,7 +38,7 @@
 		"rollup-plugin-analyzer": "^3.3.0",
 		"rollup-plugin-postcss": "^3.1.8",
 		"rollup-plugin-svg": "^2.0.0",
-		"rollup-plugin-vue": "^4.2.0",
+		"rollup-plugin-vue": "4.2.0",
 		"sass": "^1.30.0",
 		"tailwindcss": "^1.9.6",
 		"vue-template-compiler": "^2.6.12"

@@ -1,22 +1,17 @@
-import { socket } from '@/utils/socket'
+import { fetchData } from '@/utils/api'
 
 let homeData = {}
 let cached = false
 
-export function getHomeData() {
+export async function getHomeData() {
 	if (cached) {
 		return homeData
 	} else {
-		socket.emit('get_home_data')
+		const data = await fetchData('getHome')
 
-		return new Promise((resolve, reject) => {
-			socket.on('init_home', data => {
-				homeData = data
-				cached = true
+		homeData = data
+		cached = true
 
-				socket.off('init_home')
-				resolve(data)
-			})
-		})
+		return data
 	}
 }

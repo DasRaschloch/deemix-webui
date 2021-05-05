@@ -7,5 +7,6 @@
 	"trailingComma": "none",
 	"printWidth": 120,
 	"arrowParens": "avoid",
-	"vueIndentScriptAndStyle": false
+	"vueIndentScriptAndStyle": false,
+	"endOfLine": "lf"
 }

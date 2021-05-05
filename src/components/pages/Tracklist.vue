@@ -1,5 +1,5 @@
 <template>
-	<div class="relative fixed-footer bg-background-main image-header" ref="root">
+	<div ref="root" class="relative fixed-footer bg-background-main image-header">
 		<header
 			:style="{
 				'background-image':
@@ -30,7 +30,7 @@
 						<i class="material-icons">timer</i>
 					</th>
 					<th class="table__icon table__cell--center clickable">
-						<input @click="toggleAll" class="selectAll" type="checkbox" />
+						<input class="selectAll" type="checkbox" @click="toggleAll" />
 					</th>
 				</tr>
 			</thead>
@@ -41,15 +41,15 @@
 							<td class="table__cell--x-small table__cell--center">
 								<div class="table__cell-content table__cell-content--vertical-center">
 									<i
-										class="material-icons"
+										v-on="{ click: track.preview ? playPausePreview : false }"
 										:class="{
 											preview_playlist_controls: track.preview,
 											'cursor-pointer': track.preview,
 											disabled: !track.preview
 										}"
-										v-on="{ click: track.preview ? playPausePreview : false }"
 										:data-preview="track.preview"
 										:title="$t('globals.play_hint')"
+										class="material-icons"
 									>
 										play_arrow
 									</i>
@@ -70,28 +70,28 @@
 								</div>
 							</td>
 							<router-link
-								tag="td"
-								class="table__cell--medium table__cell--center clickable"
 								:to="{ name: 'Artist', params: { id: track.artist.id } }"
+								class="table__cell--medium table__cell--center clickable"
+								tag="td"
 							>
 								{{ track.artist.name }}
 							</router-link>
 							<router-link
-								tag="td"
 								v-if="type === 'playlist'"
-								class="table__cell--medium table__cell--center clickable"
 								:to="{ name: 'Album', params: { id: track.album.id } }"
+								class="table__cell--medium table__cell--center clickable"
+								tag="td"
 							>
 								{{ track.album.title }}
 							</router-link>
 							<td
-								class="table__cell--center"
 								:class="{ 'table__cell--small': type === 'album', 'table__cell--x-small': type === 'playlist' }"
+								class="table__cell--center"
 							>
 								{{ convertDuration(track.duration) }}
 							</td>
 							<td class="table__icon table__cell--center">
-								<input class="clickable" type="checkbox" v-model="track.selected" />
+								<input v-model="track.selected" class="clickable" type="checkbox" />
 							</td>
 						</tr>
 						<tr v-else-if="track.type == 'disc_separator'" class="table__row-no-highlight" style="opacity: 0.54">
@@ -112,14 +112,14 @@
 						<td>
 							<i
 								v-if="track.preview_url"
-								@click="playPausePreview"
-								class="material-icons"
 								:class="{
 									preview_playlist_controls: track.preview_url,
 									'cursor-pointer': track.preview_url
 								}"
 								:data-preview="track.preview_url"
 								:title="$t('globals.play_hint')"
+								class="material-icons"
+								@click="playPausePreview"
 							>
 								play_arrow
 							</i>
@@ -133,17 +133,17 @@
 						<td>{{ track.artists[0].name }}</td>
 						<td>{{ track.album.name }}</td>
 						<td>{{ convertDuration(Math.floor(track.duration_ms / 1000)) }}</td>
-						<td><input class="clickable" type="checkbox" v-model="track.selected" /></td>
+						<td><input v-model="track.selected" class="clickable" type="checkbox" /></td>
 					</tr>
 				</template>
 			</tbody>
 		</table>
 		<span v-if="label" style="opacity: 0.4; margin-top: 8px; display: inline-block; font-size: 13px">{{ label }}</span>
 		<footer class="bg-background-main">
-			<button class="mr-2 btn btn-primary" @click.stop="addToQueue" :data-link="link">
+			<button :data-link="link" class="mr-2 btn btn-primary" @click.stop="addToQueue">
 				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${type}`, 1) })}` }}
 			</button>
-			<button class="flex items-center btn btn-primary" @click.stop="addToQueue" :data-link="selectedLinks()">
+			<button :data-link="selectedLinks()" class="flex items-center btn btn-primary" @click.stop="addToQueue">
 				{{ $t('tracklist.downloadSelection') }}<i class="ml-2 material-icons">file_download</i>
 			</button>
 		</footer>
@@ -156,6 +156,7 @@ import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	data() {
@@ -172,9 +173,9 @@ export default {
 		}
 	},
 	mounted() {
-		socket.on('show_album', this.showAlbum)
-		socket.on('show_playlist', this.showPlaylist)
-		socket.on('show_spotifyplaylist', this.showSpotifyPlaylist)
+		EventBus.$on('showAlbum', this.showAlbum)
+		EventBus.$on('showPlaylist', this.showPlaylist)
+		EventBus.$on('showSpotifyPlaylist', this.showSpotifyPlaylist)
 	},
 	methods: {
 		playPausePreview,
@@ -193,17 +194,17 @@ export default {
 		},
 		toggleAll(e) {
 			this.body.forEach(item => {
-				if (item.type == 'track') {
+				if (item.type === 'track') {
 					item.selected = e.currentTarget.checked
 				}
 			})
 		},
 		selectedLinks() {
-			var selected = []
+			const selected = []
 			if (this.body) {
 				this.body.forEach(item => {
-					if (item.type == 'track' && item.selected)
-						selected.push(this.type == 'spotifyPlaylist' ? item.uri : item.link)
+					if (item.type === 'track' && item.selected)
+						selected.push(this.type === 'spotifyPlaylist' ? item.uri : item.link)
 				})
 			}
 			return selected.join(';')
@@ -305,4 +306,3 @@ export default {
 	}
 }
 </script>
-

@@ -19,18 +19,42 @@ import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
+import { fetchData } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
 
 /* ===== App initialization ===== */
-function startApp() {
+async function startApp() {
 	new Vue({
 		store,
 		router,
 		i18n,
 		render: h => h(App)
 	}).$mount('#app')
+
+	const connectResponse = await (await fetch('connect')).json()
+
+	store.dispatch('setAppInfo', connectResponse.update)
+
+	if (connectResponse.autologin) {
+		console.info('Autologin')
+		let arl = localStorage.getItem('arl')
+		const accountNum = localStorage.getItem('accountNum')
+
+		if (arl) {
+			arl = arl.trim()
+			let result
+
+			if (accountNum !== 0) {
+				result = await fetchData('login', { arl, force: true, child: accountNum || 0 })
+			} else {
+				result = await fetchData('login', { arl })
+			}
+
+			loggedIn(result)
+		}
+	}
 }
 
 function initClient() {
@@ -52,7 +76,7 @@ document.addEventListener('paste', pasteEvent => {
 		if (router.currentRoute.name === 'Link Analyzer') {
 			socket.emit('analyzeLink', pastedText)
 		} else {
-			if (pastedText.indexOf("\n") != -1) pastedText = pastedText.replace(/\n/g, ';');
+			if (pastedText.indexOf('\n') != -1) pastedText = pastedText.replace(/\n/g, ';')
 			sendAddToQueue(pastedText)
 		}
 	} else {
@@ -82,30 +106,11 @@ function setClientModeKeyBindings() {
 /* ===== Socketio listeners ===== */
 
 // Debug messages for socketio
-socket.on('message', function(msg) {
+socket.on('message', function (msg) {
 	console.log(msg)
 })
 
-socket.on('logging_in', function() {
-	toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
-})
-
-socket.on('init_autologin', function() {
-	let arl = localStorage.getItem('arl')
-	let accountNum = localStorage.getItem('accountNum')
-
-	if (arl) {
-		arl = arl.trim()
-
-		if (accountNum != 0) {
-			socket.emit('login', arl, true, accountNum)
-		} else {
-			socket.emit('login', arl)
-		}
-	}
-})
-
-socket.on('logged_in', function(data) {
+function loggedIn(data) {
 	const { status, user } = data
 
 	switch (status) {
@@ -138,6 +143,15 @@ socket.on('logged_in', function(data) {
 		// $('#settings_picture').attr('src', `https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg`)
 		// document.getElementById('home_not_logged_in').classList.remove('hide')
 	}
+}
+
+/*
+socket.on('logging_in', function() {
+	toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
+})
+
+socket.on('logged_in', function(data) {
+
 })
 
 socket.on('logged_out', function() {
@@ -145,40 +159,41 @@ socket.on('logged_out', function() {
 
 	store.dispatch('logout')
 })
+*/
 
-socket.on('restoringQueue', function() {
+socket.on('restoringQueue', function () {
 	toast(i18n.t('toasts.restoringQueue'), 'loading', false, 'restoring_queue')
 })
 
-socket.on('cancellingCurrentItem', function(uuid) {
+socket.on('cancellingCurrentItem', function (uuid) {
 	toast(i18n.t('toasts.cancellingCurrentItem'), 'loading', false, 'cancelling_' + uuid)
 })
 
-socket.on('currentItemCancelled', function(uuid) {
+socket.on('currentItemCancelled', function (uuid) {
 	toast(i18n.t('toasts.currentItemCancelled'), 'done', true, 'cancelling_' + uuid)
 })
 
-socket.on('startAddingArtist', function(data) {
+socket.on('startAddingArtist', function (data) {
 	toast(i18n.t('toasts.startAddingArtist', { artist: data.name }), 'loading', false, 'artist_' + data.id)
 })
 
-socket.on('finishAddingArtist', function(data) {
+socket.on('finishAddingArtist', function (data) {
 	toast(i18n.t('toasts.finishAddingArtist', { artist: data.name }), 'done', true, 'artist_' + data.id)
 })
 
-socket.on('startConvertingSpotifyPlaylist', function(id) {
+socket.on('startConvertingSpotifyPlaylist', function (id) {
 	toast(i18n.t('toasts.startConvertingSpotifyPlaylist'), 'loading', false, 'spotifyplaylist_' + id)
 })
 
-socket.on('finishConvertingSpotifyPlaylist', function(id) {
+socket.on('finishConvertingSpotifyPlaylist', function (id) {
 	toast(i18n.t('toasts.finishConvertingSpotifyPlaylist'), 'done', true, 'spotifyplaylist_' + id)
 })
 
-socket.on('errorMessage', function(error) {
+socket.on('errorMessage', function (error) {
 	toast(error, 'error')
 })
 
-socket.on('queueError', function(queueItem) {
+socket.on('queueError', function (queueItem) {
 	if (queueItem.errid) {
 		toast(queueItem.link + ' - ' + i18n.t(`errors.ids.${queueItem.errid}`), 'error')
 	} else {
@@ -186,18 +201,18 @@ socket.on('queueError', function(queueItem) {
 	}
 })
 
-socket.on('alreadyInQueue', function(data) {
+socket.on('alreadyInQueue', function (data) {
 	toast(i18n.t('toasts.alreadyInQueue', { item: data.title }), 'playlist_add_check')
 })
 
-socket.on('loginNeededToDownload', function(data) {
+socket.on('loginNeededToDownload', function (data) {
 	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
 })
 
-socket.on('startGeneratingItems', function(data) {
+socket.on('startGeneratingItems', function (data) {
 	toast(i18n.t('toasts.startGeneratingItems', { n: data.total }), 'loading', false, 'batch_' + data.uuid)
 })
 
-socket.on('finishGeneratingItems', function(data) {
+socket.on('finishGeneratingItems', function (data) {
 	toast(i18n.t('toasts.finishGeneratingItems', { n: data.total }), 'done', true, 'batch_' + data.uuid)
 })

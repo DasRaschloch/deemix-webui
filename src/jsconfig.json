@@ -7,8 +7,5 @@
 			"@components/*": ["./components/*"]
 		}
 	},
-	"typeAcquisition": {
-		"include": ["socket.io-client"]
-	},
 	"exclude": ["assets/**/*", "styles/**/*"]
 }

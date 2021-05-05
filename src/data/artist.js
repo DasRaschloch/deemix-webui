@@ -1,5 +1,5 @@
-import { socket } from '@/utils/socket'
 import { getPropertyWithFallback } from '@/utils/utils'
+import { fetchData } from '@/utils/api'
 
 export function formatArtistData(artistData) {
 	return {
@@ -36,15 +36,8 @@ function formatArtistReleases(artistReleases) {
 }
 
 export function getArtistData(artistID) {
-	socket.emit('getTracklist', {
+	return fetchData('getTracklist', {
 		type: 'artist',
 		id: artistID
-	})
-
-	return new Promise((resolve, reject) => {
-		socket.on('show_artist', data => {
-			socket.off('show_artist')
-			resolve(data)
-		})
 	})
 }

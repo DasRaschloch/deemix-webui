@@ -1,20 +1,16 @@
 import { ref } from '@vue/composition-api'
-import { socket } from '@/utils/socket'
+import { fetchData } from '@/utils/api'
 
 const result = ref({})
 
 function performSearch({ term, type, start = 0, nb = 30 }) {
-	socket.emit('search', {
+	fetchData('search', {
 		term,
 		type,
 		start,
 		nb
-	})
-
-	socket.on('search', data => {
+	}).then(data => {
 		result.value = data
-
-		socket.off('search')
 	})
 }
 

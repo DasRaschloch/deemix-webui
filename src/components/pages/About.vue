@@ -26,9 +26,7 @@
 			<li v-html="$t('about.thanks')"></li>
 			<i18n path="about.upToDate.text" tag="li">
 				<template #newsChannel>
-					<a href="https://t.me/RemixDevNews" target="_blank">{{
-						$t('about.upToDate.newsChannel')
-					}}</a>
+					<a href="https://t.me/RemixDevNews" target="_blank">{{ $t('about.upToDate.newsChannel') }}</a>
 				</template>
 			</i18n>
 		</ul>
@@ -42,9 +40,7 @@
 				<a href="https://git.rip/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>
 			<li>
-				<a href="https://git.rip/RemixDev/deemix-webui" target="_blank">
-					💻 {{ $t('about.officialWebuiRepo') }}
-				</a>
+				<a href="https://git.rip/RemixDev/deemix-webui" target="_blank"> 💻 {{ $t('about.officialWebuiRepo') }} </a>
 			</li>
 			<li>
 				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>
@@ -63,9 +59,7 @@
 		<ul>
 			<i18n path="about.questions.text" tag="li">
 				<template #subreddit>
-					<a href="https://www.reddit.com/r/deemix" target="_blank">{{
-						$t('about.questions.subreddit')
-					}}</a>
+					<a href="https://www.reddit.com/r/deemix" target="_blank">{{ $t('about.questions.subreddit') }}</a>
 				</template>
 			</i18n>
 			<li>
@@ -241,7 +235,7 @@ ul {
 </style>
 
 <script>
-import { defineComponent, ref, reactive, toRefs, onMounted, computed } from '@vue/composition-api'
+import { computed, defineComponent, onMounted, reactive, toRefs } from '@vue/composition-api'
 
 import { useOnline } from '@/use/online'
 

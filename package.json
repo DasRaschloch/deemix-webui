@@ -17,7 +17,6 @@
 		"@vue/composition-api": "^1.0.0-beta.21",
 		"flag-icon-css": "^3.5.0",
 		"lodash-es": "^4.17.15",
-		"socket.io-client": "^3.1.0",
 		"svg-country-flags": "^1.2.9",
 		"toastify-js": "^1.9.3",
 		"vue": "^2.6.12",

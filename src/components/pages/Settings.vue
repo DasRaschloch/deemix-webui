@@ -783,6 +783,7 @@ import { copyToClipboard } from '@/utils/utils'
 
 import BaseAccordion from '@/components/globals/BaseAccordion.vue'
 import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
+import { fetchData, sendToServer } from '@/utils/api'
 
 export default {
 	components: {
@@ -825,7 +826,7 @@ export default {
 			get() {
 				return this.previewVolume
 			},
-			set: debounce(function(value) {
+			set: debounce(function (value) {
 				this.setPreviewVolume(value)
 			}, 20)
 		},
@@ -949,16 +950,17 @@ export default {
 			this.lastCredentials = JSON.parse(JSON.stringify(credentials))
 			this.spotifyFeatures = JSON.parse(JSON.stringify(credentials))
 		},
-		loggedInViaDeezer(arl) {
+		async loggedInViaDeezer(arl) {
 			this.dispatchARL({ arl })
-			socket.emit('login', arl, true, this.accountNum)
 			// this.login()
+			// const res = await fetchData('login', { arl, force: true, child: this.accountNum })
 		},
-		login() {
+		async login() {
 			let newArl = this.$refs.loginInput.value.trim()
 
 			if (newArl && newArl !== this.arl) {
-				socket.emit('login', newArl, true, this.accountNum)
+				const res = await fetchData('login', { arl: newArl, force: true, child: this.accountNum })
+				this.loggedInViaDeezer(res.arl)
 			}
 		},
 		appLogin(e) {
@@ -969,9 +971,7 @@ export default {
 		},
 		accountChanged(user, accountNum) {
 			this.$refs.username.innerText = user.name
-			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${
-				user.picture
-			}/125x125-000000-80-0-0.jpg`
+			this.$refs.userpicture.src = `https://e-cdns-images.dzcdn.net/images/user/${user.picture}/125x125-000000-80-0-0.jpg`
 			this.accountNum = accountNum
 
 			localStorage.setItem('accountNum', this.accountNum)

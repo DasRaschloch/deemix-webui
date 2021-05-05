@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { socket } from '@/utils/socket'
 
 // Pages
 import About from '@components/pages/About.vue'
@@ -15,6 +14,8 @@ import LinkAnalyzer from '@components/pages/LinkAnalyzer.vue'
 import Search from '@components/pages/Search.vue'
 import Settings from '@components/pages/Settings.vue'
 import Tracklist from '@components/pages/Tracklist.vue'
+import { fetchData } from '@/utils/api'
+import EventBus from '@/utils/EventBus'
 
 Vue.use(VueRouter)
 
@@ -125,44 +126,51 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-	let getTracklistParams = null
-
 	switch (to.name) {
-		case 'Tracklist':
-			getTracklistParams = {
-				type: to.params.type,
-				id: to.params.id
-			}
+		case 'Tracklist': {
+			// const getTracklistParams = {
+			// 	type: to.params.type,
+			// 	id: to.params.id
+			// }
+			console.warn('This should never happen.')
 			break
-		case 'Album':
-			getTracklistParams = {
+		}
+		case 'Album': {
+			const getTracklistParams = {
 				type: 'album',
 				id: to.params.id
 			}
+			fetchData('getTracklist', getTracklistParams).then(albumData => {
+				EventBus.$emit('showAlbum', albumData)
+			})
 			break
-		case 'Playlist':
-			getTracklistParams = {
+		}
+		case 'Playlist': {
+			const getTracklistParams = {
 				type: 'playlist',
 				id: to.params.id
 			}
+			fetchData('getTracklist', getTracklistParams).then(playlistData => {
+				EventBus.$emit('showPlaylist', playlistData)
+			})
 			break
-		case 'Spotify Playlist':
-			getTracklistParams = {
+		}
+		case 'Spotify Playlist': {
+			const getTracklistParams = {
 				type: 'spotifyplaylist',
 				id: to.params.id
 			}
+			fetchData('getTracklist', getTracklistParams).then(spotifyPlaylistData => {
+				EventBus.$emit('showSpotifyPlaylist', spotifyPlaylistData)
+			})
 			break
+		}
 
 		default:
 			break
-	}
-
-	if (getTracklistParams) {
-		socket.emit('getTracklist', getTracklistParams)
 	}
 
 	next()
 })
 
 export default router
-

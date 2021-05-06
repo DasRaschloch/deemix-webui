@@ -38,10 +38,10 @@ async function startApp() {
 	const connectResponse = await (await fetch('connect')).json()
 
 	store.dispatch('setAppInfo', connectResponse.update)
+	let arl = localStorage.getItem('arl')
 
 	if (connectResponse.autologin) {
 		console.info('Autologin')
-		let arl = localStorage.getItem('arl')
 		const accountNum = localStorage.getItem('accountNum')
 
 		if (arl) {
@@ -56,6 +56,8 @@ async function startApp() {
 
 			loggedIn(result)
 		}
+	} else {
+		loggedIn({ status: 3, user: connectResponse.currentUser, arl })
 	}
 }
 

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1 class="mb-8 text-5xl">{{ $t('charts.title') }}</h1>
+		<h1 class="mb-8 text-5xl">{{ $t('charts.title') }} {{ country ? (`- ${country}`) : '' }}</h1>
 
 		<div v-if="country === ''">
 			<div class="release-grid">
@@ -14,7 +14,7 @@
 					role="button"
 					@click="getTrackList"
 				>
-					<img :src="release.picture_medium" class="w-full rounded coverart" />
+					<img :src="release.picture_medium" class="w-full rounded coverart" :alt="release.title"/>
 				</div>
 			</div>
 		</div>
@@ -26,9 +26,9 @@
 			</button>
 			<table class="table table--charts">
 				<tbody>
-					<tr v-for="track in chart" class="track_row">
-						<td :class="{ first: track.position === 1 }" class="p-3 text-center cursor-default">
-							{{ track.position }}
+					<tr v-for="track, pos in chart" class="track_row">
+						<td :class="{ first: pos === 0 }" class="p-3 text-center cursor-default">
+							{{ pos+1 }}
 						</td>
 						<td class="table__icon table__icon--big">
 							<span
@@ -85,7 +85,6 @@
 </template>
 
 <script>
-import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 import { getChartsData, getChartTracks } from '@/data/charts'
@@ -175,7 +174,7 @@ export default {
 
 			if (i !== this.countries.length) {
 				this.id = this.countries[i].id
-				socket.emit('getChartTracks', this.id)
+				getChartTracks(this.id).then(response => this.setTracklist(response.data))
 			} else {
 				this.country = ''
 				localStorage.setItem('chart', this.country)
@@ -187,7 +186,7 @@ export default {
 			const isActualChart = newId !== 0
 
 			if (isActualChart) {
-				getChartTracks(newId).then(response => this.setTracklist(response.result))
+				getChartTracks(newId).then(response => this.setTracklist(response.data))
 			}
 		}
 	}

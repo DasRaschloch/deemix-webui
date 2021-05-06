@@ -959,7 +959,7 @@ export default {
 			let newArl = this.$refs.loginInput.value.trim()
 
 			if (newArl && newArl !== this.arl) {
-				const res = await fetchData('login', { arl: newArl, force: true, child: this.accountNum })
+				const res = await fetchData('login-arl', { arl: newArl, force: true, child: this.accountNum }, 'POST')
 				this.loggedInViaDeezer(res.arl)
 			}
 		},

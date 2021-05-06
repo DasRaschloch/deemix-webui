@@ -22,23 +22,31 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 				const messages = toast.querySelectorAll('.toast-message')
 
 				messages.forEach(message => {
-					message.innerHTML = msg
+					message.innerText = msg
 				})
 			})
 		}
 
 		if (icon) {
+			let iconNode = document.createElement('span')
+			iconNode.classList.add('toast-icon')
+
 			if (icon == 'loading') {
-				icon = `<div class="circle-loader"></div>`
+				let loader = document.createElement('div')
+				loader.classList.add('circle-loader')
+				iconNode.appendChild(loader)
 			} else {
-				icon = `<i class="material-icons">${icon}</i>`
+				let materialIcon = document.createElement('i')
+				materialIcon.classList.add('material-icons')
+				materialIcon.appendChild(document.createTextNode(icon))
+				iconNode.appendChild(materialIcon)
 			}
 
 			toastElement.forEach(toast => {
 				const icons = toast.querySelectorAll('.toast-icon')
 
 				icons.forEach(toastIcon => {
-					toastIcon.innerHTML = icon
+					toastIcon.parentNode.replaceChild(iconNode, toastIcon)
 				})
 			})
 		}
@@ -54,17 +62,31 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 			}, 3000)
 		}
 	} else {
+		let iconNode = document.createElement('span')
+		iconNode.classList.add('toast-icon')
 		if (icon == null) {
-			icon = ''
+			iconNode.appendChild(document.createTextNode(''))
 		} else if (icon == 'loading') {
-			icon = `<div class="circle-loader"></div>`
+			let loader = document.createElement('div')
+			loader.classList.add('circle-loader')
+			iconNode.appendChild(loader)
 		} else {
-			icon = `<i class="material-icons">${icon}</i>`
+			let materialIcon = document.createElement('i')
+			materialIcon.classList.add('material-icons')
+			materialIcon.appendChild(document.createTextNode(icon))
+			iconNode.appendChild(materialIcon)
 		}
+		let messageNode = document.createElement('span')
+		messageNode.classList.add('toast-message')
+		messageNode.appendChild(document.createTextNode(msg))
+
+		let toastNode = document.createElement('toast')
+		toastNode.appendChild(iconNode)
+		toastNode.appendChild(messageNode)
 
 		let toastObj = Toastify({
 			...sharedOptions,
-			text: `<span class="toast-icon">${icon}</span><span class="toast-message">${msg}</toast>`,
+			node: toastNode,
 			duration: dismiss ? 3000 : 0,
 			className: dismiss ? 'dismissable' : '',
 			onClick: function() {

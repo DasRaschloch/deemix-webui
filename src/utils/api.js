@@ -1,11 +1,11 @@
-export function fetchData(key, data = {}) {
+export function fetchData(key, data = {}, method = 'GET') {
 	const url = new URL(`${window.location.origin}/api/${key}`)
 
 	Object.keys(data).forEach(key => {
 		url.searchParams.append(key, data[key])
 	})
 
-	return fetch(url.href)
+	return fetch(url.href, {method})
 		.then(response => response.json())
 		.catch(() => {})
 }

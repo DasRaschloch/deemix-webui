@@ -11,11 +11,11 @@
 </template>
 
 <style>
-details > summary::-webkit-details-marker {
+details > summary::marker {
 	display: none;
 }
 
-details.with-arrow > summary::-webkit-details-marker {
+details.with-arrow > summary::marker {
 	display: initial;
 	vertical-align: var(--arrow-v-align, super);
 }

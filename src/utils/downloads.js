@@ -1,4 +1,4 @@
-import { sendToServer } from '@/utils/api'
+import { fetchData } from '@/utils/api'
 
 /**
  * @param	{string}	url
@@ -7,7 +7,7 @@ import { sendToServer } from '@/utils/api'
 export function sendAddToQueue(url, bitrate = null) {
 	if (!url) throw new Error('No URL given to sendAddToQueue function!')
 
-	sendToServer('addToQueue', { url, bitrate })
+	fetchData('addToQueue', { url, bitrate }, 'POST')
 }
 
 export function aggregateDownloadLinks(releases) {

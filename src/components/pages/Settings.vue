@@ -934,7 +934,11 @@ export default {
 				changed = true
 			}
 
-			socket.emit('saveSettings', this.lastSettings, this.lastCredentials, changed ? this.lastUser : false)
+			socket.emit('saveSettings', {
+				settings: this.lastSettings,
+				spotifySettings: this.lastCredentials,
+				spotifyUser: changed ? this.lastUser : false
+			})
 		},
 		selectDownloadFolder() {
 			socket.emit('selectDownloadFolder')
@@ -989,7 +993,8 @@ export default {
 
 			toast(this.$t('settings.toasts.init'), 'settings')
 		},
-		updateSettings(newSettings, newCredentials) {
+		updateSettings(data) {
+			const {settings: newSettings, spotifySettings: newCredentials} = data
 			this.loadSettings(newSettings)
 			this.loadCredentials(newCredentials)
 

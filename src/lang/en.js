@@ -218,6 +218,10 @@ const en = {
 			logout: 'Logout',
 			login: 'Login via deezer.com'
 		},
+		loginWithCredentials: {
+			title: 'Login with credentials',
+			login: 'Login'
+		},
 		appearance: {
 			title: 'Appearance',
 			slimDownloadTab: 'Slim download tab',

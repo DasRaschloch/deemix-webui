@@ -220,6 +220,10 @@ const it = {
 			logout: 'Disconnettiti',
 			login: 'Accedi tramite deezer.com'
 		},
+		loginWithCredentials: {
+			title: 'Login con credentiali',
+			login: 'Login'
+		},
 		appearance: {
 			title: 'Aspetto',
 			slimDownloadTab: 'Tab dei download slim',

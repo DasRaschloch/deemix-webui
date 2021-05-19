@@ -61,6 +61,23 @@
 		</div>
 
 		<div class="settings-group">
+			<h3 class="settings-group__header"><i class="material-icons">person</i>{{ $t('settings.loginWithCredentials.title') }}</h3>
+
+			<form class="my-5 space-y-5" @submit.prevent="loginWithCredentials" ref="loginWithCredentialsForm">
+				<label>
+					<span>Username</span>
+					<input type="text" name="username">
+				</label>
+				<label>
+					<span>Password</span>
+					<input type="password" name="password">
+				</label>
+
+				<button class="btn btn-primary" type="submit">{{ $t('settings.loginWithCredentials.login') }}</button>
+			</form>
+		</div>
+
+		<div class="settings-group">
 			<h3 class="settings-group__header"><i class="material-icons">language</i>{{ $t('settings.languages') }}</h3>
 
 			<ul class="my-5">
@@ -783,7 +800,8 @@ import { copyToClipboard } from '@/utils/utils'
 
 import BaseAccordion from '@/components/globals/BaseAccordion.vue'
 import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
-import { fetchData, sendToServer } from '@/utils/api'
+import { fetchData } from '@/utils/api'
+import { getFormItem } from '@/utils/forms'
 
 export default {
 	components: {
@@ -966,6 +984,14 @@ export default {
 				const res = await fetchData('login-arl', { arl: newArl, force: true, child: this.accountNum }, 'POST')
 				this.loggedInViaDeezer(res.arl)
 			}
+		},
+		loginWithCredentials() {
+			const fromLoginForm = getFormItem(this.$refs.loginWithCredentialsForm)
+
+			const { username } = fromLoginForm('username')
+			const { password } = fromLoginForm('password')
+
+			// console.log({ username,password })
 		},
 		appLogin(e) {
 			socket.emit('applogin')

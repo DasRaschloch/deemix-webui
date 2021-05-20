@@ -121,6 +121,7 @@ import QueueItem from '@components/downloads/QueueItem.vue'
 
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
+import { fetchData, sendToServer } from '@/utils/api'
 
 const tabMinWidth = 250
 const tabMaxWidth = 500
@@ -160,13 +161,22 @@ export default {
 	mounted() {
 		socket.on('startDownload', this.startDownload)
 		socket.on('startConversion', this.startConversion)
-		socket.on('init_downloadQueue', this.initQueue)
+		// socket.on('init_downloadQueue', this.initQueue)
 		socket.on('addedToQueue', this.addToQueue)
 		socket.on('updateQueue', this.updateQueue)
 		socket.on('removedFromQueue', this.removeFromQueue)
 		socket.on('finishDownload', this.finishDownload)
 		socket.on('removedAllDownloads', this.removeAllDownloads)
 		socket.on('removedFinishedDownloads', this.removedFinishedDownloads)
+
+		fetchData('getQueue')
+		// fetch('connect')
+		// 	.then(res => res.json())
+			.then(res => {
+				console.log(res)
+				this.initQueue(res)
+			})
+			.catch(console.error)
 
 		// Check if download tab has slim entries
 		if ('true' === localStorage.getItem('slimDownloads')) {
@@ -201,14 +211,19 @@ export default {
 		},
 		initQueue(data) {
 			const {
-				queue: initQueue,
-				queueComplete: initQueueComplete,
+				order: initQueue,
+		//		queueComplete: initQueueComplete,
 				currentItem,
-				queueList: initQueueList,
+				queue: initQueueList,
 				restored
 			} = data
+			console.log({ initQueueList })
 
-			if (initQueueComplete.length) {
+			const initQueueComplete = Object.values(initQueueList).filter(el => el.status === 'completed').map(el => el.uuid)
+
+			console.log({initQueueComplete})
+
+			if (initQueueComplete && initQueueComplete.length) {
 				initQueueComplete.forEach(item => {
 					initQueueList[item].silent = true
 					this.addToQueue(initQueueList[item])

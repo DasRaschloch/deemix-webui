@@ -214,7 +214,7 @@
 </style>
 
 <script>
-const possibleStates = ['converting', 'downloading', 'download finished']
+const possibleStates = ['converting', 'downloading', 'download finished', 'completed']
 
 export default {
 	data() {

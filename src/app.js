@@ -37,7 +37,8 @@ async function startApp() {
 
 	const connectResponse = await (await fetch('connect')).json()
 
-	store.dispatch('setAppInfo', connectResponse.update)
+	store.dispatch('setAppInfo', connectResponse.update).catch(console.error)
+
 	let arl = localStorage.getItem('arl')
 
 	if (connectResponse.autologin) {

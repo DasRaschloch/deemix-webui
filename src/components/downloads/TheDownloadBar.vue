@@ -219,7 +219,7 @@ export default {
 			} = data
 			console.log({ initQueueList })
 
-			const initQueueComplete = Object.values(initQueueList).filter(el => el.status === 'completed').map(el => el.uuid)
+			const initQueueComplete = Object.values(initQueueList).filter(el => ['completed', 'withErrors', 'failed'].includes(el.status)).map(el => el.uuid)
 
 			console.log({initQueueComplete})
 
@@ -231,8 +231,8 @@ export default {
 			}
 
 			if (currentItem) {
-				initQueueList[currentItem].silent = true
-				this.addToQueue(initQueueList[currentItem], true)
+				currentItem.silent = true
+				this.addToQueue(currentItem, true)
 			}
 
 			initQueue.forEach(item => {
@@ -258,6 +258,13 @@ export default {
 					queueItem = queueItem[0]
 				}
 			}
+
+			// Add implicit values back
+			queueItem.downloaded = queueItem.downloaded || 0
+			queueItem.failed = queueItem.failed || 0
+			queueItem.progress = queueItem.progress || 0
+			queueItem.conversion = queueItem.conversion || 0
+			queueItem.errors = queueItem.errors || []
 
 			// * Here we have only queueItem objects
 			this.$set(queueItem, 'current', current)

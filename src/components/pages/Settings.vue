@@ -710,8 +710,8 @@
 	}
 
 	&.locale-flag--current {
-		svg {
-			filter: brightness(1);
+		::v-deep svg {
+			filter: brightness(1) !important;
 		}
 	}
 

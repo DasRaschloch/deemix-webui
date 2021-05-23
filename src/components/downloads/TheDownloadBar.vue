@@ -1,29 +1,29 @@
 <template>
 	<section
 		id="download_tab_container"
+		ref="container"
 		class="block h-screen bg-panels-bg text-foreground"
 		:class="{ 'tab-hidden': !isExpanded, 'w-8': !isExpanded }"
-		@transitionend="$refs.container.style.transition = ''"
-		ref="container"
 		:data-label="$t('downloads')"
 		aria-label="downloads"
+		@transitionend="$refs.container.style.transition = ''"
 	>
 		<!-- Drag handler -->
 		<div
 			v-show="isExpanded"
 			class="absolute w-4 h-full bg-grayscale-200"
-			@mousedown.prevent="startDrag"
 			style="cursor: ew-resize"
+			@mousedown.prevent="startDrag"
 		></div>
 
 		<!-- Bar toggler -->
 		<i
 			id="toggle_download_tab"
+			ref="toggler"
 			class="m-1 text-2xl cursor-pointer material-icons"
 			:class="{ 'ml-1': !isExpanded, 'ml-5': isExpanded }"
-			@click.prevent="toggleDownloadTab"
-			ref="toggler"
 			:title="$t('globals.toggle_download_tab_hint')"
+			@click.prevent="toggleDownloadTab"
 		></i>
 
 		<!-- Queue buttons -->
@@ -39,23 +39,23 @@
 			>
 				folder_open
 			</i>
-			<i class="m-1 text-2xl cursor-pointer material-icons" @click="cleanQueue" :title="$t('globals.clean_queue_hint')">
+			<i class="m-1 text-2xl cursor-pointer material-icons" :title="$t('globals.clean_queue_hint')" @click="cleanQueue">
 				clear_all
 			</i>
 			<i
 				class="m-1 text-2xl cursor-pointer material-icons"
-				@click="cancelQueue"
 				:title="$t('globals.cancel_queue_hint')"
+				@click="cancelQueue"
 			>
 				delete_sweep
 			</i>
 		</div>
 
-		<div v-show="isExpanded" id="download_list" class="w-full pr-2" :class="{ slim: isSlim }" ref="list">
+		<div v-show="isExpanded" id="download_list" ref="list" class="w-full pr-2" :class="{ slim: isSlim }">
 			<QueueItem
 				v-for="item in queueList"
-				:queue-item="item"
 				:key="item.uuid"
+				:queue-item="item"
 				@show-errors="showErrorsTab"
 				@remove-item="onRemoveItem"
 			/>
@@ -170,8 +170,8 @@ export default {
 		socket.on('removedFinishedDownloads', this.removedFinishedDownloads)
 
 		fetchData('getQueue')
-		// fetch('connect')
-		// 	.then(res => res.json())
+			// fetch('connect')
+			// 	.then(res => res.json())
 			.then(res => {
 				console.log(res)
 				this.initQueue(res)
@@ -179,7 +179,7 @@ export default {
 			.catch(console.error)
 
 		// Check if download tab has slim entries
-		if ('true' === localStorage.getItem('slimDownloads')) {
+		if (localStorage.getItem('slimDownloads') === 'true') {
 			this.$refs.list.classList.add('slim')
 		}
 
@@ -212,16 +212,18 @@ export default {
 		initQueue(data) {
 			const {
 				order: initQueue,
-		//		queueComplete: initQueueComplete,
+				//		queueComplete: initQueueComplete,
 				currentItem,
 				queue: initQueueList,
 				restored
 			} = data
 			console.log({ initQueueList })
 
-			const initQueueComplete = Object.values(initQueueList).filter(el => ['completed', 'withErrors', 'failed'].includes(el.status)).map(el => el.uuid)
+			const initQueueComplete = Object.values(initQueueList)
+				.filter(el => ['completed', 'withErrors', 'failed'].includes(el.status))
+				.map(el => el.uuid)
 
-			console.log({initQueueComplete})
+			console.log({ initQueueComplete })
 
 			if (initQueueComplete && initQueueComplete.length) {
 				initQueueComplete.forEach(item => {
@@ -274,7 +276,7 @@ export default {
 			const itemIsAlreadyDownloaded = queueItem.downloaded + queueItem.failed == queueItem.size
 
 			if (itemIsAlreadyDownloaded) {
-				const itemIsNotInCompletedQueue = this.queueComplete.indexOf(queueItem.uuid) == -1
+				const itemIsNotInCompletedQueue = !this.queueComplete.includes(queueItem.uuid)
 
 				this.$set(this.queueList[queueItem.uuid], 'status', 'download finished')
 
@@ -283,7 +285,7 @@ export default {
 					this.queueComplete.push(queueItem.uuid)
 				}
 			} else {
-				const itemIsNotInQueue = this.queue.indexOf(queueItem.uuid) == -1
+				const itemIsNotInQueue = !this.queue.includes(queueItem.uuid)
 
 				if (itemIsNotInQueue) {
 					this.queue.push(queueItem.uuid)
@@ -304,14 +306,14 @@ export default {
 			// downloaded and failed default to false?
 			const { uuid, downloaded, failed, progress, conversion, error, data, errid } = update
 
-			if (uuid && this.queue.indexOf(uuid) > -1) {
+			if (uuid && this.queue.includes(uuid)) {
 				if (downloaded) {
 					this.queueList[uuid].downloaded++
 				}
 
 				if (failed) {
 					this.queueList[uuid].failed++
-					this.queueList[uuid].errors.push({ message: error, data: data, errid: errid })
+					this.queueList[uuid].errors.push({ message: error, data, errid })
 				}
 
 				if (progress) {
@@ -324,7 +326,7 @@ export default {
 			}
 		},
 		removeFromQueue(uuid) {
-			let index = this.queue.indexOf(uuid)
+			const index = this.queue.indexOf(uuid)
 
 			if (index > -1) {
 				this.$delete(this.queue, index)
@@ -340,7 +342,7 @@ export default {
 			} else {
 				this.queue = [currentItem]
 
-				let tempQueueItem = this.queueList[currentItem]
+				const tempQueueItem = this.queueList[currentItem]
 
 				this.queueList = {}
 				this.queueList[currentItem] = tempQueueItem
@@ -397,14 +399,14 @@ export default {
 			this.$set(this.queueList[uuid], 'status', 'downloading')
 		},
 		finishDownload(uuid) {
-			let isInQueue = this.queue.indexOf(uuid) > -1
+			const isInQueue = this.queue.includes(uuid)
 
 			if (!isInQueue) return
 
 			this.$set(this.queueList[uuid], 'status', 'download finished')
 			toast(this.$t('toasts.finishDownload', { item: this.queueList[uuid].title }), 'done')
 
-			let index = this.queue.indexOf(uuid)
+			const index = this.queue.indexOf(uuid)
 
 			if (index > -1) {
 				this.queue.splice(index, 1)

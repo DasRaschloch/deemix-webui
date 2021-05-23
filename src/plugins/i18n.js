@@ -20,9 +20,9 @@ const i18n = new VueI18n({
 		 * @param {number}	choicesLength		An overall amount of available choices
 		 * @returns 				A final choice index to select plural word by
 		 */
-		ru: function(choice, choicesLength) {
-			var n = Math.abs(choice) % 100
-			var n1 = n % 10
+		ru(choice, choicesLength) {
+			const n = Math.abs(choice) % 100
+			const n1 = n % 10
 
 			if (n > 10 && n < 20) {
 				return 2

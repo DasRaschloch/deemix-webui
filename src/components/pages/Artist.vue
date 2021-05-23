@@ -5,10 +5,10 @@
 
 			<div
 				class="grid w-16 h-16 ml-auto rounded-full cursor-pointer bg-primary text-grayscale-870 place-items-center"
-				@click.stop="sendAddToQueue(downloadLink)"
 				aria-label="download"
 				role="button"
 				:data-cm-link="downloadLink"
+				@click.stop="sendAddToQueue(downloadLink)"
 			>
 				<i class="text-4xl material-icons" :title="$t('globals.download_hint')">get_app</i>
 			</div>
@@ -18,8 +18,8 @@
 			<BaseTab
 				v-for="(item, name) in artistReleases"
 				:key="name"
-				@click="currentTab = name"
 				:class="{ active: currentTab === name }"
+				@click="currentTab = name"
 			>
 				{{ $tc(`globals.listTabs.${name}`, 2) }}
 			</BaseTab>
@@ -31,7 +31,6 @@
 					<th
 						v-for="data in head"
 						:key="data.title"
-						@click="data.sortKey ? sortBy(data.sortKey) : null"
 						:style="{ width: data.width ? data.width : 'auto' }"
 						class="uppercase-first-letter"
 						:class="{
@@ -40,6 +39,7 @@
 							sortable: data.sortKey,
 							clickable: data.sortKey
 						}"
+						@click="data.sortKey ? sortBy(data.sortKey) : null"
 					>
 						<!-- Need to change this behaviour for translations -->
 						{{ data.title }}
@@ -74,9 +74,9 @@
 					<td class="w-32 text-center xl:w-40">{{ release.releaseDate }}</td>
 					<td class="w-20 text-center xl:w-32">{{ release.releaseTracksNumber }}</td>
 					<td
-						@click.stop="sendAddToQueue(release.releaseLink)"
 						:data-cm-link="release.releaseLink"
 						class="w-8 cursor-pointer"
+						@click.stop="sendAddToQueue(release.releaseLink)"
 					>
 						<i class="material-icons hover:text-primary" :title="$t('globals.download_hint')">file_download</i>
 					</td>

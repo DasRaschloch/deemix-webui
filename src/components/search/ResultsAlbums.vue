@@ -7,8 +7,8 @@
 				<h1>{{ $t('search.noResultsAlbum') }}</h1>
 			</div>
 
-			<div class="release-grid" v-else>
-				<div class="w-40 release" v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.albumID">
+			<div v-else class="release-grid">
+				<div v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.albumID" class="w-40 release">
 					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Album', params: { id: release.albumID } }">
 						<CoverContainer
 							is-rounded
@@ -53,9 +53,9 @@ export default {
 	},
 	props: {
 		viewInfo: {
-			validator: function (value) {
-				let isNull = Object.is(value, null)
-				let isObject = Object.prototype.toString.call(value) === '[object Object]'
+			validator(value) {
+				const isNull = Object.is(value, null)
+				const isObject = Object.prototype.toString.call(value) === '[object Object]'
 
 				return isNull || isObject
 			},

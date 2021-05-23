@@ -1,10 +1,10 @@
 <template>
-	<div class="context-menu" v-show="menuOpen" ref="contextMenu" :style="{ top: yPos, left: xPos }">
+	<div v-show="menuOpen" ref="contextMenu" class="context-menu" :style="{ top: yPos, left: xPos }">
 		<button
-			class="btn menu-option"
 			v-for="option of sortedOptions"
-			:key="option.label"
 			v-show="option.show"
+			:key="option.label"
+			class="btn menu-option"
 			@click.prevent="option.action"
 		>
 			<span class="menu-option__text">{{ option.label }}</span>
@@ -91,7 +91,7 @@ export default {
 				}
 			}
 
-			let nextValuePosition = Object.values(options).length + 1
+			const nextValuePosition = Object.values(options).length + 1
 
 			downloadQualities.forEach((quality, index) => {
 				options[quality.objName] = {
@@ -125,9 +125,9 @@ export default {
 	methods: {
 		showSearchbarMenu(url) {
 			console.log(url)
-			let searchbar = document.getElementById("searchbar")
+			const searchbar = document.getElementById('searchbar')
 			searchbar.dataset.cmLink = url
-			let contextMenuEvent = {
+			const contextMenuEvent = {
 				pageX: 115,
 				pageY: 57,
 				target: searchbar,

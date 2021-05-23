@@ -28,7 +28,6 @@
 	</div>
 </template>
 
-
 <script>
 import { upperCaseFirstLowerCaseRest } from '@/utils/texts'
 import CoverContainer from '@components/globals/CoverContainer.vue'
@@ -36,9 +35,6 @@ import CoverContainer from '@components/globals/CoverContainer.vue'
 export default {
 	components: {
 		CoverContainer
-	},
-	methods: {
-		upperCaseFirstLowerCaseRest
 	},
 	computed: {
 		fansNumber() {
@@ -56,6 +52,9 @@ export default {
 						' - ' +
 						this.$tc('globals.listTabs.trackN', this.$attrs.info.nb_song)
 		}
+	},
+	methods: {
+		upperCaseFirstLowerCaseRest
 	}
 }
 </script>

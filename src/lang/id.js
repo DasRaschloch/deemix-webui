@@ -39,11 +39,12 @@ const id = {
 			license: 'Lisensi'
 		},
 		subtitles: {
-			bugReports: "Ada yang tidak bekerja dengan baik di deemix? Beri tahu kami!",
+			bugReports: 'Ada yang tidak bekerja dengan baik di deemix? Beri tahu kami!',
 			contributing: 'Mau kontribusi dalam proyek ini? Kamu bisa lakukan dengan banyak hal!',
 			donations: 'Mau kontribusi secara finansial? Kamu bisa beri donasi!'
 		},
-		usesLibrary: 'Aplikasi ini menggunakan pustaka <strong>deemix</strong>, yang bisa kamu gunakan untuk membuat UI deemix milikmu sendiri.',
+		usesLibrary:
+			'Aplikasi ini menggunakan pustaka <strong>deemix</strong>, yang bisa kamu gunakan untuk membuat UI deemix milikmu sendiri.',
 		thanks: `Terima kasih kepada <strong>rtonno</strong>, <strong>uhwot</strong> dan <strong>lollilol</strong> yang telah membantuku dalam proyek ini, serta kepada <strong>BasCurtiz</strong> yang telah membuat ikon.`,
 		upToDate: {
 			text: `Ikuti {newsChannel} di Telegram agar tidak ketinggalan berita terbaru.`,
@@ -91,7 +92,7 @@ const id = {
 			invalidURL: 'URL tidak dikenal',
 			unsupportedURL: 'URL belum didukung',
 			ISRCnotOnDeezer: 'Lagu ISRC tidak tersedia di deezer',
-			notYourPrivatePlaylist: "Kamu tidak bisa mengunduh daftar putar privat orang lain.",
+			notYourPrivatePlaylist: 'Kamu tidak bisa mengunduh daftar putar privat orang lain.',
 			spotifyDisabled: 'Fitur Spotify tidak diatur dengan benar.',
 			trackNotOnDeezer: 'Lagu tidak ditemukan di deezer!',
 			albumNotOnDeezer: 'Album tidak ditemukan di deezer!',
@@ -101,8 +102,8 @@ const id = {
 			wrongBitrate: 'Lagu tidak tersedia pada bitrate yang diinginkan.',
 			wrongBitrateNoAlternative: 'Lagu tidak tersedia pada bitrate yang diinginkan dan tidak ada alternatif lain!',
 			no360RA: 'Lagu tidak tersedia pada Reality Audio 360.',
-			notAvailable: "Lagu tidak tersedia pada server deezer!",
-			notAvailableNoAlternative: "Lagu tidak tersedia pada server deezer dan tidak ada alternatif lain!"
+			notAvailable: 'Lagu tidak tersedia pada server deezer!',
+			notAvailableNoAlternative: 'Lagu tidak tersedia pada server deezer dan tidak ada alternatif lain!'
 		}
 	},
 	favorites: {
@@ -123,7 +124,7 @@ const id = {
 	linkAnalyzer: {
 		info: 'Di sini, kamu bisa mencari informasi lebih lanjut tentang tautan yang ingin kamu unduh.',
 		useful:
-			"Contohnya, ini dapat berguna jika kamu ingin mengunduh lagu yang tidak tersedia di negaramu dan ingin tahu di negara mana lagu itu tersedia.",
+			'Contohnya, ini dapat berguna jika kamu ingin mengunduh lagu yang tidak tersedia di negaramu dan ingin tahu di negara mana lagu itu tersedia.',
 		linkNotSupported: 'Tautan seperti ini belum didukung',
 		linkNotSupportedYet: 'Sepertinya tautan ini belum didukung, silakan coba analisa tautan lain.',
 		table: {
@@ -163,7 +164,7 @@ const id = {
 		loggingIn: 'Masuk',
 		loggedIn: 'Telah masuk',
 		alreadyLogged: 'Telah masuk',
-		loginFailed: "Tidak bisa masuk",
+		loginFailed: 'Tidak bisa masuk',
 		loggedOut: 'Belum masuk',
 		cancellingCurrentItem: 'Membatalkan item.',
 		currentItemCancelled: 'Item telah dibatalan.',
@@ -227,7 +228,7 @@ const id = {
 			overwriteFile: {
 				title: 'Apakah file mau ditimpa?',
 				y: 'Ya, silakan',
-				n: "Tidak, jangan ditimpa",
+				n: 'Tidak, jangan ditimpa',
 				t: 'Timpa tag-nya saja'
 			},
 			fallbackBitrate: 'Rendahkan bitrate',

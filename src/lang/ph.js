@@ -55,11 +55,12 @@ const ph = {
 			license: 'Lisensiya'
 		},
 		subtitles: {
-			bugReports: "Meron bang hindi gumagana sa deemix? Ipaalam mo sa amin!",
+			bugReports: 'Meron bang hindi gumagana sa deemix? Ipaalam mo sa amin!',
 			contributing: 'Gusto mo bang tumulong sa proyektong ito? Pwede mong gawin iyan sa maraming paraan!',
 			donations: 'Gusto mo bang tumulong sa pamamagitan ng pera? Pwede kang magbigay ng donasiyon!'
 		},
-		usesLibrary: 'Ang app na ito ay gumagamit ng library galing sa <strong>deemix</strong>, na kung saan ay pwede mong gamitin para gumawa ng sarili mong UI ng deemix.',
+		usesLibrary:
+			'Ang app na ito ay gumagamit ng library galing sa <strong>deemix</strong>, na kung saan ay pwede mong gamitin para gumawa ng sarili mong UI ng deemix.',
 		thanks: `Salamat kay <strong>rtonno</strong>, <strong>uhwot</strong> at <strong>lollilol</strong> sa pagtulong sa akin para sa proyektong ito at kay <strong>BasCurtiz</strong> sa paggawa ng icon.`,
 		upToDate: {
 			text: `Huwag magpapahuli sa mga update patungkol dito sa pamamagitan ng pagsali sa {newsChannel} sa Telegram.`,
@@ -107,7 +108,7 @@ const ph = {
 			invalidURL: 'Hindi makilala ang URL',
 			unsupportedURL: 'Hindi pa suportado ang URL',
 			ISRCnotOnDeezer: 'Ang Track ISRC ay hindi pwede sa Deezer',
-			notYourPrivatePlaylist: "Hindi pwedeng i-download ang mga pribadong playlist ng iba.",
+			notYourPrivatePlaylist: 'Hindi pwedeng i-download ang mga pribadong playlist ng iba.',
 			spotifyDisabled: 'Hindi mo nai-set nang tama ang Spotify Features.',
 			trackNotOnDeezer: 'Hindi mahanap ang track sa Deezer!',
 			albumNotOnDeezer: 'Hindi mahanap ang album sa Deezer!',
@@ -117,9 +118,9 @@ const ph = {
 			wrongBitrate: 'Hindi mahanap ang track sa gusto mong bitrate.',
 			wrongBitrateNoAlternative: 'Hindi mahanap ang track sa gusto mong bitrate at walang mahanap na iba!',
 			no360RA: 'Hindi pwede ang track para sa Reality Audio 360.',
-			notAvailable: "Walang available na track sa server ng Deezer!",
-			notAvailableNoAlternative: "Walang available na track sa server ng Deezer at walang mahanap na iba!",
-			noSpaceLeft: "Wala nang natitirang space sa iyong device!"
+			notAvailable: 'Walang available na track sa server ng Deezer!',
+			notAvailableNoAlternative: 'Walang available na track sa server ng Deezer at walang mahanap na iba!',
+			noSpaceLeft: 'Wala nang natitirang space sa iyong device!'
 		}
 	},
 	favorites: {
@@ -139,7 +140,8 @@ const ph = {
 	},
 	linkAnalyzer: {
 		info: 'Pwede gamitin ang section na ito para sa iba pang impormasyon patungkol sa link na gusto mong i-download.',
-		useful: "Makatutulong ito kung meron kang gustong i-download na track na hindi available sa bansa mo at gusto mong malaman kung meron bang ganito kapag sa iba.",
+		useful:
+			'Makatutulong ito kung meron kang gustong i-download na track na hindi available sa bansa mo at gusto mong malaman kung meron bang ganito kapag sa iba.',
 		linkNotSupported: 'Hindi pa suportado ang link',
 		linkNotSupportedYet: 'Mukhang hindi pa suportado itong link, iba na lang ang ilagay mo.',
 		table: {
@@ -159,7 +161,8 @@ const ph = {
 	},
 	search: {
 		startSearching: 'Simulang Maghanap!',
-		description: 'Pwede kang maghanap ng track, buong album, artist, playlist.... kahit ano! Pwede ka ring mag-paste dito ng link na galing sa Deezer',
+		description:
+			'Pwede kang maghanap ng track, buong album, artist, playlist.... kahit ano! Pwede ka ring mag-paste dito ng link na galing sa Deezer',
 		fans: '{n} mga fan',
 		noResults: 'Walang resulta',
 		noResultsTrack: 'Walang mahanap na mga Track',
@@ -181,7 +184,7 @@ const ph = {
 		loggingIn: 'Nagla-log in...',
 		loggedIn: 'Na-login na',
 		alreadyLogged: 'Nakalogin ka na',
-		loginFailed: "Hindi maka-log in",
+		loginFailed: 'Hindi maka-log in',
 		loggedOut: 'Na-logout na',
 		cancellingCurrentItem: 'Kinakansel ang item.',
 		currentItemCancelled: 'Nakansel na ang item.',
@@ -248,10 +251,10 @@ const ph = {
 			overwriteFile: {
 				title: 'Papatungan ko ba ang file?',
 				y: 'Oo, patungan mo ang file',
-				n: "Hindi, huwag mong patungan ang file",
+				n: 'Hindi, huwag mong patungan ang file',
 				t: 'Patungan mo lang ang mga tag',
 				b: 'Hindi, hayaan mo silang dalawa at lagyan mo lang ng numero sa kapareho niya',
-				e: "Hindi, at huwag mong tignan ang mga extension"
+				e: 'Hindi, at huwag mong tignan ang mga extension'
 			},
 			fallbackBitrate: 'Binabaang bitrate',
 			fallbackSearch: 'Maghanap para sa binabaan',
@@ -279,7 +282,8 @@ const ph = {
 			jpegImageQuality: 'Kalidad ng JPEG na imahe',
 			embeddedArtworkPNG: 'I-save ang nakadikit na artwork bilang PNG',
 			embeddedPNGWarning: 'Ang mga PNG ay hindi opisyal na suportado ng Deezer at maaaring magkaroon ng bug',
-			imageSizeWarning: 'Lahat ng mas mataas sa x1200 ay hindi opisyal na ginagamit sa Deezer, at posibleng magkaroon ng isyu',
+			imageSizeWarning:
+				'Lahat ng mas mataas sa x1200 ay hindi opisyal na ginagamit sa Deezer, at posibleng magkaroon ng isyu',
 			coverDescriptionUTF8: 'I-save ang deskripsyon ng cover gamit ng UTF8 (iTunes Cover Fix)'
 		},
 		tags: {

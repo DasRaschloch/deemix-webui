@@ -63,11 +63,12 @@ const ko = {
 			license: '이용정책'
 		},
 		subtitles: {
-			bugReports: "무언가 안되는 것이 있다고요? 말해주세요!",
+			bugReports: '무언가 안되는 것이 있다고요? 말해주세요!',
 			contributing: '이 프로젝트에 기여하고 싶다고요? 어렵지 않아요!',
 			donations: '금전적으로 지원하고 싶다고요? 후원하세요!'
 		},
-		usesLibrary: '이 프로그램은 <strong>deemix</strong> 라이브러리를 사용합니다, 해당 라이브러리로 자신만의 deemix를 만들 수 있습니다.',
+		usesLibrary:
+			'이 프로그램은 <strong>deemix</strong> 라이브러리를 사용합니다, 해당 라이브러리로 자신만의 deemix를 만들 수 있습니다.',
 		thanks: `이 프로젝트를 도와준 <strong>rtonno</strong>, <strong>uhwot</strong> 그리고 <strong>lollilol</strong>님과 아이콘을 만들어준 <strong>BasCurtiz</strong> 그리고 <strong>scarvimane</strong>님에게 감사를.`,
 		upToDate: {
 			text: `새로운 업데이트 소식을 듣고 싶으면 텔레그램 {newsChannel}을 참고하세요.`,
@@ -115,7 +116,7 @@ const ko = {
 			unsupportedURL: 'URL 지원 누락',
 			invalidURL: 'URL 인식 실패',
 			ISRCnotOnDeezer: '트랙 코드 식별이 불가능합니다',
-			notYourPrivatePlaylist: "다른 사람의 비공개 재생 목록을 다운로드 할 수 없습니다.",
+			notYourPrivatePlaylist: '다른 사람의 비공개 재생 목록을 다운로드 할 수 없습니다.',
 			spotifyDisabled: '스포티파이 기능이 올바르게 설정되지 않았습니다.',
 			trackNotOnDeezer: 'Deezer에서 트랙을 찾을 수 없습니다!',
 			albumNotOnDeezer: 'Deezer에서 앨범을 찾을 수 없습니다!',
@@ -125,10 +126,10 @@ const ko = {
 			wrongBitrate: '요구하는 비트레이트의 트랙을 찾을 수 없습니다.',
 			wrongBitrateNoAlternative: '요구하는 비트레이트를 찾을 수 없을 뿐더러 대체할 것을 찾지 못했습니다!',
 			no360RA: '해당 트랙은 360 리얼리티 오디오에 존재하지 않습니다.',
-			notAvailable: "해당 트랙은 Deezer 서버에 존재하지 않습니다!",
-			notAvailableNoAlternative: "해당 트랙은 Deezer 서버에 존재하지 않을 뿐더러 대체할 것을 찾지 못했습니다!",
-			noSpaceLeft: "장치에 여유 공간이 없습니다!",
-			albumDoesntExists: "트랙의 앨범이 존재하지 않습니다, 정보 수집에 실패했습니다."
+			notAvailable: '해당 트랙은 Deezer 서버에 존재하지 않습니다!',
+			notAvailableNoAlternative: '해당 트랙은 Deezer 서버에 존재하지 않을 뿐더러 대체할 것을 찾지 못했습니다!',
+			noSpaceLeft: '장치에 여유 공간이 없습니다!',
+			albumDoesntExists: '트랙의 앨범이 존재하지 않습니다, 정보 수집에 실패했습니다.'
 		}
 	},
 	favorites: {
@@ -148,10 +149,10 @@ const ko = {
 	},
 	linkAnalyzer: {
 		info: '이 항목에서는 다운로드를 시도할 링크에 대한 더 많은 정보를 찾을 수 있습니다.',
-		useful: "접속한 국가에서는 재생할 수 없는 특정 트랙을 다운로드 하기 위해서 가능한 국가를 찾는데 유용하게 쓰입니다.",
+		useful: '접속한 국가에서는 재생할 수 없는 특정 트랙을 다운로드 하기 위해서 가능한 국가를 찾는데 유용하게 쓰입니다.',
 		linkNotSupported: '해당 링크는 아직 지원하지 않습니다',
 		linkNotSupportedYet: '해당 링크는 아직 지원하지 않습니다, 다른 링크로 시도해보세요.',
-																							   
+
 		table: {
 			id: 'ID',
 			isrc: 'ISRC',
@@ -170,7 +171,7 @@ const ko = {
 	search: {
 		startSearching: '검색을 해보세요!',
 		description: '트랙, 아티스트, 재생목록, Deezer 링크 등으로 검색할 수 있습니다!',
-																												   
+
 		fans: '{n}명의 팬들',
 		noResults: '결과 없음',
 		noResultsTrack: '발견된 트랙 없음',
@@ -192,7 +193,7 @@ const ko = {
 		loggingIn: '로그인 하는 중...',
 		loggedIn: '로그인 되었습니다',
 		alreadyLogged: '이미 로그인되어 있습니다',
-		loginFailed: "로그인 할 수 없습니다",
+		loginFailed: '로그인 할 수 없습니다',
 		loggedOut: '로그아웃 하였습니다',
 		cancellingCurrentItem: '현재 항목을 취소 중입니다.',
 		currentItemCancelled: '항목이 취소되었습니다.',
@@ -265,10 +266,10 @@ const ko = {
 			overwriteFile: {
 				title: '파일을 덮어쓸까요?',
 				y: '네, 파일을 덮어쓰세요',
-				n: "아뇨, 파일을 덮어쓰지 마세요",
+				n: '아뇨, 파일을 덮어쓰지 마세요',
 				t: '태그만 덮어쓰세요',
 				b: '아뇨, 양쪽 다 놔두고 중복되는 파일에 번호를 추가하세요',
-				e: "아뇨, 확장명을 변경하세요"
+				e: '아뇨, 확장명을 변경하세요'
 			},
 			fallbackBitrate: '비트레이트 대비책',
 			fallbackSearch: '검색 대비책',
@@ -321,7 +322,7 @@ const ko = {
 			replayGain: '리플레이 게인',
 			label: '앨범 라벨',
 			lyrics: '비동기 가사',
-									   
+
 			copyright: '저작권',
 			composer: '작곡가',
 			involvedPeople: '관련있는 사람들',
@@ -376,7 +377,7 @@ const ko = {
 			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
 			username: 'Spotify 사용자이름',
-			question: '스포티파이 기능들을 사용하려면 어떻게 해야 합니까?'									
+			question: '스포티파이 기능들을 사용하려면 어떻게 해야 합니까?'
 		},
 		reset: '기본 설정으로 초기화',
 		resetMessage: '정말 기본 설정으로 돌아가시겠습니까?',

@@ -10,7 +10,7 @@ export function formatArtistData(artistData) {
 }
 
 function formatArtistReleases(artistReleases) {
-	let formattedReleases = {}
+	const formattedReleases = {}
 
 	for (const releaseType in artistReleases) {
 		if (artistReleases.hasOwnProperty(releaseType)) {

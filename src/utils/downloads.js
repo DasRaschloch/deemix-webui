@@ -11,7 +11,7 @@ export function sendAddToQueue(url, bitrate = null) {
 }
 
 export function aggregateDownloadLinks(releases) {
-	let links = []
+	const links = []
 
 	releases.forEach(release => {
 		links.push(release.link)

@@ -24,9 +24,9 @@
 					<tr v-for="track in viewInfo.data.slice(0, itemsToShow)" :key="track.trackLink">
 						<td class="table__icon table__icon--big">
 							<span
-								@click="playPausePreview($event)"
 								class="relative inline-block rounded cursor-pointer"
 								:data-preview="track.trackPreview"
+								@click="playPausePreview($event)"
 							>
 								<PreviewControls v-if="track.trackPreview" />
 
@@ -67,9 +67,9 @@
 
 						<td
 							class="cursor-pointer table__cell--center group"
-							@click.stop="$emit('add-to-queue', $event)"
 							:data-link="track.trackLink"
 							aria-label="download"
+							@click.stop="$emit('add-to-queue', $event)"
 						>
 							<i
 								class="transition-colors duration-150 ease-in-out material-icons group-hover:text-primary"
@@ -101,9 +101,9 @@ export default {
 	},
 	props: {
 		viewInfo: {
-			validator: function (value) {
-				let isNull = Object.is(value, null)
-				let isObject = Object.prototype.toString.call(value) === '[object Object]'
+			validator(value) {
+				const isNull = Object.is(value, null)
+				const isObject = Object.prototype.toString.call(value) === '[object Object]'
 
 				return isNull || isObject
 			},

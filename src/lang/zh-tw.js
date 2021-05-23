@@ -63,7 +63,7 @@ const zh_tw = {
 			license: '使用許可'
 		},
 		subtitles: {
-			bugReports: "使用 deemix 時，遇到了什麼問題嗎？歡迎回報錯誤！",
+			bugReports: '使用 deemix 時，遇到了什麼問題嗎？歡迎回報錯誤！',
 			contributing: '您想替這個專案提出貢獻嗎？您可以透過許多不同的方式來幫忙！',
 			donations: '您想要捐款嗎？可以贊助我們！'
 		},
@@ -115,7 +115,7 @@ const zh_tw = {
 			invalidURL: '無法識別網址',
 			unsupportedURL: '尚不支持此網址',
 			ISRCnotOnDeezer: '無法在 Deezer 上使用單曲 ISRC',
-			notYourPrivatePlaylist: "您無法下載他人的私人播放清單。",
+			notYourPrivatePlaylist: '您無法下載他人的私人播放清單。',
 			spotifyDisabled: 'Spotify 功能未正確設定。',
 			trackNotOnDeezer: '在 Deezer 上找不到此歌曲！',
 			albumNotOnDeezer: '在 Deezer 上找不到此專輯！',
@@ -125,10 +125,10 @@ const zh_tw = {
 			wrongBitrate: '找不到符合所設位元率的歌曲。',
 			wrongBitrateNoAlternative: '找不到符合所設位元率的歌曲，且無法找到其他替代歌曲！',
 			no360RA: '本歌曲並不支援 Reality Audio 360。',
-			notAvailable: "無法在 Deezer 伺服器載入此歌曲！",
-			notAvailableNoAlternative: "無法在 Deezer 伺服器載入此歌曲，且無法找到其他替代歌曲！",
-			noSpaceLeft: "本裝置可用空間已用盡！",
-			albumDoesntExists: "本歌曲的專輯不存在，無法取得資訊"
+			notAvailable: '無法在 Deezer 伺服器載入此歌曲！',
+			notAvailableNoAlternative: '無法在 Deezer 伺服器載入此歌曲，且無法找到其他替代歌曲！',
+			noSpaceLeft: '本裝置可用空間已用盡！',
+			albumDoesntExists: '本歌曲的專輯不存在，無法取得資訊'
 		}
 	},
 	favorites: {
@@ -148,8 +148,7 @@ const zh_tw = {
 	},
 	linkAnalyzer: {
 		info: '您可以透過此工具取得您所想下載的連結的相關資訊。',
-		useful:
-			"比如，當您所想下載的歌曲無法在您的國家播放，且您想知道哪些國家可以播放此歌曲時，您可使用此工具。",
+		useful: '比如，當您所想下載的歌曲無法在您的國家播放，且您想知道哪些國家可以播放此歌曲時，您可使用此工具。',
 		linkNotSupported: '尚未支援此連結',
 		linkNotSupportedYet: '我們似乎尚未支援此連結，請改用其他連結。',
 		table: {
@@ -169,8 +168,7 @@ const zh_tw = {
 	},
 	search: {
 		startSearching: '開始搜尋！',
-		description:
-			'您可以搜索歌曲名稱、專輯、藝人、播放清單...等等。您也可以直接貼上 Deezer 網址。',
+		description: '您可以搜索歌曲名稱、專輯、藝人、播放清單...等等。您也可以直接貼上 Deezer 網址。',
 		fans: '{n} 個粉絲',
 		noResults: '無搜尋結果',
 		noResultsTrack: '找不到歌曲',
@@ -192,7 +190,7 @@ const zh_tw = {
 		loggingIn: '登入中...',
 		loggedIn: '登入',
 		alreadyLogged: '已登入',
-		loginFailed: "無法登入",
+		loginFailed: '無法登入',
 		loggedOut: '登出',
 		cancellingCurrentItem: '取消當前項目。',
 		currentItemCancelled: '當前項目已取消。',
@@ -262,10 +260,10 @@ const zh_tw = {
 			overwriteFile: {
 				title: '是否要覆蓋檔案？',
 				y: '是，覆蓋檔案',
-				n: "否，請勿覆蓋檔案",
+				n: '否，請勿覆蓋檔案',
 				t: '僅覆蓋標籤',
 				b: '否，保留兩個檔案並在重複的檔名中加入一個數字',
-				e: "否，不顧慮附檔名"
+				e: '否，不顧慮附檔名'
 			},
 			fallbackBitrate: '當偏好位元率無法下載時，下載其他版本',
 			fallbackSearch: '當搜尋結果無法使用時，使用其他搜尋結果',

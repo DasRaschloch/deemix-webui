@@ -6,7 +6,7 @@ export function standardizeData(rawObj, formatFunc) {
 		const formattedData = []
 
 		for (const dataElement of rawData) {
-			let formatted = formatFunc(dataElement)
+			const formatted = formatFunc(dataElement)
 
 			formattedData.push(formatted)
 		}

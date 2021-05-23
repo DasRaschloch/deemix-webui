@@ -5,7 +5,7 @@ export function fetchData(key, data = {}, method = 'GET') {
 		url.searchParams.append(key, data[key])
 	})
 
-	return fetch(url.href, {method})
+	return fetch(url.href, { method })
 		.then(response => response.json())
 		.catch(() => {})
 }

@@ -39,11 +39,12 @@ const vn = {
 			license: 'Bằng phép'
 		},
 		subtitles: {
-			bugReports: "Bạn thấy có gì đó không hoạt động trong deemix? Xin hãy báo với chúng tôi!",
+			bugReports: 'Bạn thấy có gì đó không hoạt động trong deemix? Xin hãy báo với chúng tôi!',
 			contributing: 'Bạn muốn đóng góp cho dự án này? Bạn có thể làm điều đó với nhiều cách khác nhau!',
 			donations: 'Bạn muốn ủng hộ kinh phí? Bạn có thể quyên góp tại đây!'
 		},
-		usesLibrary: 'Ứng dụng này sử dụng thư viện <strong>deemix</strong>, bạn có thể dùng nó để tạo một UI riêng cho deemix.',
+		usesLibrary:
+			'Ứng dụng này sử dụng thư viện <strong>deemix</strong>, bạn có thể dùng nó để tạo một UI riêng cho deemix.',
 		thanks: `Cảm ơn <strong>rtonno</strong>, <strong>uhwot</strong> và <strong>lollilol</strong> đã giúp tôi với dự án này và <strong>BasCurtiz</strong> với việc thiết kế biểu tượng.`,
 		upToDate: {
 			text: `Cập nhật app bằng cách theo dõi {newsChannel} trên Telegram.`,
@@ -91,7 +92,7 @@ const vn = {
 			invalidURL: 'Không nhận diện được URL',
 			unsupportedURL: 'URL này chưa được hỗ trợ',
 			ISRCnotOnDeezer: 'ISRC của bài hát này hiện không có trên Deezer',
-			notYourPrivatePlaylist: "Bạn không thể tải xuống playlist riêng của người khác.",
+			notYourPrivatePlaylist: 'Bạn không thể tải xuống playlist riêng của người khác.',
 			spotifyDisabled: 'Chức năng Spotify chưa được thiết lập đúng cách.',
 			trackNotOnDeezer: 'Bài hát không có trên Deezer!',
 			albumNotOnDeezer: 'Album không có trên Deezer!',
@@ -101,8 +102,8 @@ const vn = {
 			wrongBitrate: 'Bài hát này không có ở bitrate bạn muốn.',
 			wrongBitrateNoAlternative: 'Bài hát này không có ở bitrate bạn muốn và không có bản thay thế nào khác!',
 			no360RA: 'Bài hát này không có ở dạng Reality Audio 360.',
-			notAvailable: "Bài hát này không có trên server của Deezer!",
-			notAvailableNoAlternative: "Bài hát này không có trên server của Deezer và không có bản thay thế nào khác!"
+			notAvailable: 'Bài hát này không có trên server của Deezer!',
+			notAvailableNoAlternative: 'Bài hát này không có trên server của Deezer và không có bản thay thế nào khác!'
 		}
 	},
 	favorites: {
@@ -123,7 +124,7 @@ const vn = {
 	linkAnalyzer: {
 		info: 'Bạn có thể sử dụng chức năng này để kiếm thêm thông tin về đường link mà bạn muốn tải xuống.',
 		useful:
-			"Chức năng này rất hữu dụng nếu bạn muốn tải các bài hát hiện không có sẵn ở quốc gia của bạn và muốn biết các quốc gia được hỗ trợ.",
+			'Chức năng này rất hữu dụng nếu bạn muốn tải các bài hát hiện không có sẵn ở quốc gia của bạn và muốn biết các quốc gia được hỗ trợ.',
 		linkNotSupported: 'Đường link này chưa được hỗ trợ',
 		linkNotSupportedYet: 'Đường link này chưa được hỗ trợ, xin hãy thử lại với một đường link khác.',
 		table: {
@@ -143,8 +144,7 @@ const vn = {
 	},
 	search: {
 		startSearching: 'Bắt đầu tìm kiếm!',
-		description:
-			'Bạn có thể tìm một bài hát, album, nghệ sĩ, playlist, v.v...! Bạn cũng có thể dùng link của Deezer',
+		description: 'Bạn có thể tìm một bài hát, album, nghệ sĩ, playlist, v.v...! Bạn cũng có thể dùng link của Deezer',
 		fans: '{n} người hâm mộ',
 		noResults: 'Không có kết quả',
 		noResultsTrack: 'Không tìm được bài hát nào',
@@ -163,7 +163,7 @@ const vn = {
 		loggingIn: 'Đang đăng nhập',
 		loggedIn: 'Đăng nhập thành công',
 		alreadyLogged: 'Đã đăng nhập',
-		loginFailed: "Không thể đăng nhập",
+		loginFailed: 'Không thể đăng nhập',
 		loggedOut: 'Đăng xuất',
 		cancellingCurrentItem: 'Đang hủy file hiện tại.',
 		currentItemCancelled: 'File hiện tại đã bị hủy.',
@@ -228,7 +228,7 @@ const vn = {
 			overwriteFile: {
 				title: 'Tôi có nên ghi đè file này không?',
 				y: 'Có, hãy ghi đè file này',
-				n: "Không, đừng ghi đè file này",
+				n: 'Không, đừng ghi đè file này',
 				t: 'Chỉ ghi đè các tag'
 			},
 			fallbackBitrate: 'Bitrate dự phòng',

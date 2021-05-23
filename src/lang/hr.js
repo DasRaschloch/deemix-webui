@@ -39,11 +39,12 @@ const hr = {
 			license: 'Licenca'
 		},
 		subtitles: {
-			bugReports: "Postoji nešto što ne radi u deemixu? Reci nam!",
+			bugReports: 'Postoji nešto što ne radi u deemixu? Reci nam!',
 			contributing: 'Želiš doprinijeti ovom projektu? Možeš i to čak u više načina!',
 			donations: 'Želiš doprijeniti odmah? Možeš donirati!'
 		},
-		usesLibrary: 'Ova aplikacija koristi <strong>deemix</strong> biblioteku, koju možeš koristiti i ti kako bi napravio svoj UI za demix.',
+		usesLibrary:
+			'Ova aplikacija koristi <strong>deemix</strong> biblioteku, koju možeš koristiti i ti kako bi napravio svoj UI za demix.',
 		thanks: `Hvala <strong>rtonno</strong>, <strong>uhwot</strong> i <strong>lollilol</strong> što su mi pomogli s ovim projektom te <strong>BasCurtiz</strong> što su napravili ikonu.`,
 		upToDate: {
 			text: `Ostani u tijeku s nadogradnjama prateći {newsChannel} na Telegramu.`,
@@ -91,7 +92,7 @@ const hr = {
 			invalidURL: 'URL nije prepoznat',
 			unsupportedURL: 'URL još nije podržan',
 			ISRCnotOnDeezer: 'Zapis ISRC još nije podržan na Deezeru',
-			notYourPrivatePlaylist: "Ne možete preuzeti tuđe privatne playliste.",
+			notYourPrivatePlaylist: 'Ne možete preuzeti tuđe privatne playliste.',
 			spotifyDisabled: 'Spotify značajke nisu podešene ispravno.',
 			trackNotOnDeezer: 'Pjesma nije pronađena na Deezeru!',
 			albumNotOnDeezer: 'Album nije pronađen na Deezeru!',
@@ -101,8 +102,8 @@ const hr = {
 			wrongBitrate: 'Pjesma nije pronađena u željenom bitrateu.',
 			wrongBitrateNoAlternative: 'Pjesma nije pronađena u željenom bitrateu i nije pronađena alternativa!',
 			no360RA: 'Pjesma nije dostupna u Reality Audio 360.',
-			notAvailable: "Pjesma nije dostupna na Deezerovim serverima!",
-			notAvailableNoAlternative: "Pjesma nije dostupna na Deezerovim serverima i alternativa nije pronađena!"
+			notAvailable: 'Pjesma nije dostupna na Deezerovim serverima!',
+			notAvailableNoAlternative: 'Pjesma nije dostupna na Deezerovim serverima i alternativa nije pronađena!'
 		}
 	},
 	favorites: {
@@ -123,7 +124,7 @@ const hr = {
 	linkAnalyzer: {
 		info: 'Ovu sekciju možete koristiti kako biste saznali više informacija o linku koji pokušavate preuzeti.',
 		useful:
-			"Ovo je korisno ako pokušavate preuzeti pjesme koje još nisu dostupne u vašoj zemlji i želite, na primjer, znati gdje su dostupne.",
+			'Ovo je korisno ako pokušavate preuzeti pjesme koje još nisu dostupne u vašoj zemlji i želite, na primjer, znati gdje su dostupne.',
 		linkNotSupported: 'Ovaj link još nije podržan',
 		linkNotSupportedYet: 'Čini se da ovaj link još nije podržan, pokušaj analizirati neki drugi.',
 		table: {
@@ -163,7 +164,7 @@ const hr = {
 		loggingIn: 'Prijavljivanje...',
 		loggedIn: 'Prijavljeni',
 		alreadyLogged: 'Već prijavljeni',
-		loginFailed: "Prijava nije bila moguća",
+		loginFailed: 'Prijava nije bila moguća',
 		loggedOut: 'Odjavljeni',
 		cancellingCurrentItem: 'Otkazujem trenutnu stavku.',
 		currentItemCancelled: 'Trenutna stavka otkazana.',
@@ -228,7 +229,7 @@ const hr = {
 			overwriteFile: {
 				title: 'Trebam li prepisati datoteke?',
 				y: 'Da, prepiši datoteke',
-				n: "Ne, nemoj prepisati datoteke",
+				n: 'Ne, nemoj prepisati datoteke',
 				t: 'Prepiši samo oznake',
 				b: 'Ne, zadrži obje datoteke i dodaj broj duplikatu'
 			},

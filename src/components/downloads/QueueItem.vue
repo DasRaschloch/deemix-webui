@@ -217,13 +217,13 @@
 const possibleStates = ['converting', 'downloading', 'download finished', 'completed']
 
 export default {
+	props: {
+		queueItem: Object
+	},
 	data() {
 		return {
 			isLoading: false
 		}
-	},
-	props: {
-		queueItem: Object
 	},
 	computed: {
 		hasFails() {
@@ -242,7 +242,7 @@ export default {
 			return this.queueItem.status === 'download finished' && this.hasFails
 		},
 		isDeterminateStatus() {
-			return possibleStates.indexOf(this.queueItem.status) !== -1
+			return possibleStates.includes(this.queueItem.status)
 		},
 		barClass() {
 			return {
@@ -292,12 +292,10 @@ export default {
 			if (this.queueItem.status === 'download finished') {
 				if (!this.hasFails) {
 					text = 'done'
+				} else if (this.queueItem.failed >= this.queueItem.size) {
+					text = 'error'
 				} else {
-					if (this.queueItem.failed >= this.queueItem.size) {
-						text = 'error'
-					} else {
-						text = 'warning'
-					}
+					text = 'warning'
 				}
 			}
 

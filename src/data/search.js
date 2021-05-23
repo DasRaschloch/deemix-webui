@@ -54,7 +54,7 @@ export function formatAlbums(album) {
 		'EXPLICIT_ALBUM_CONTENT.EXPLICIT_LYRICS_STATUS'
 	)
 
-	if ('number' === typeof isAlbumExplicit) {
+	if (typeof isAlbumExplicit === 'number') {
 		isAlbumExplicit = isAlbumExplicit === 1
 	}
 
@@ -95,9 +95,7 @@ export function formatPlaylist(playlist) {
 		playlistTitle: getPropertyWithFallback(playlist, 'title', 'TITLE'),
 		playlistPictureMedium:
 			getPropertyWithFallback(playlist, 'picture_medium') ||
-			`https://e-cdns-images.dzcdn.net/images/${playlist.PICTURE_TYPE}/${
-				playlist.PLAYLIST_PICTURE
-			}/156x156-000000-80-0-0.jpg`,
+			`https://e-cdns-images.dzcdn.net/images/${playlist.PICTURE_TYPE}/${playlist.PLAYLIST_PICTURE}/156x156-000000-80-0-0.jpg`,
 		playlistLink: getPropertyWithFallback(playlist, 'link') || `https://deezer.com/playlist/${playlist.PLAYLIST_ID}`,
 		playlistTracksNumber: getPropertyWithFallback(playlist, 'nb_tracks', 'NB_SONG'),
 
@@ -107,7 +105,7 @@ export function formatPlaylist(playlist) {
 }
 
 export function formatTitle(track) {
-	const hasTitleVersion = track.trackTitleVersion && track.trackTitle.indexOf(track.trackTitleVersion) === -1
+	const hasTitleVersion = track.trackTitleVersion && !track.trackTitle.includes(track.trackTitleVersion)
 
 	return `${track.trackTitle}${hasTitleVersion ? ` ${track.trackTitleVersion}` : ''}`
 }

@@ -1,5 +1,5 @@
 <template>
-	<div id="modal_quality" class="smallmodal" v-show="open" @click="tryToDownloadTrack($event)" ref="modal">
+	<div v-show="open" id="modal_quality" ref="modal" class="smallmodal" @click="tryToDownloadTrack($event)">
 		<div class="smallmodal-content">
 			<button class="btn btn-primary quality-button" data-quality-value="9">
 				{{ $t('globals.download', { thing: 'FLAC' }) }}

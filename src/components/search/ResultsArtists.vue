@@ -8,7 +8,7 @@
 			</div>
 
 			<div v-else class="release-grid">
-				<div class="w-40 release" v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.artistID">
+				<div v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.artistID" class="w-40 release">
 					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Artist', params: { id: release.artistID } }">
 						<CoverContainer
 							is-circle
@@ -41,9 +41,9 @@ export default {
 	},
 	props: {
 		viewInfo: {
-			validator: function (value) {
-				let isNull = Object.is(value, null)
-				let isObject = Object.prototype.toString.call(value) === '[object Object]'
+			validator(value) {
+				const isNull = Object.is(value, null)
+				const isObject = Object.prototype.toString.call(value) === '[object Object]'
 
 				return isNull || isObject
 			},

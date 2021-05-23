@@ -41,7 +41,6 @@
 							<td class="table__cell--x-small table__cell--center">
 								<div class="table__cell-content table__cell-content--vertical-center">
 									<i
-										v-on="{ click: track.preview ? playPausePreview : false }"
 										:class="{
 											preview_playlist_controls: track.preview,
 											'cursor-pointer': track.preview,
@@ -50,6 +49,7 @@
 										:data-preview="track.preview"
 										:title="$t('globals.play_hint')"
 										class="material-icons"
+										v-on="{ click: track.preview ? playPausePreview : false }"
 									>
 										play_arrow
 									</i>

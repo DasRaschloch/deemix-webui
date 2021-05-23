@@ -9,13 +9,13 @@ const sharedOptions = {
 	position: 'left'
 }
 
-let toastsWithId = {}
+const toastsWithId = {}
 
-export const toast = function(msg, icon = null, dismiss = true, id = null) {
+export const toast = function (msg, icon = null, dismiss = true, id = null) {
 	if (toastsWithId[id]) {
-		let toastObj = toastsWithId[id]
+		const toastObj = toastsWithId[id]
 
-		let toastElement = document.querySelectorAll(`div.toastify[toast_id=${id}]`)
+		const toastElement = document.querySelectorAll(`div.toastify[toast_id=${id}]`)
 
 		if (msg) {
 			toastElement.forEach(toast => {
@@ -28,15 +28,15 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 		}
 
 		if (icon) {
-			let iconNode = document.createElement('span')
+			const iconNode = document.createElement('span')
 			iconNode.classList.add('toast-icon')
 
 			if (icon == 'loading') {
-				let loader = document.createElement('div')
+				const loader = document.createElement('div')
 				loader.classList.add('circle-loader')
 				iconNode.appendChild(loader)
 			} else {
-				let materialIcon = document.createElement('i')
+				const materialIcon = document.createElement('i')
 				materialIcon.classList.add('material-icons')
 				materialIcon.appendChild(document.createTextNode(icon))
 				iconNode.appendChild(materialIcon)
@@ -62,41 +62,41 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 			}, 3000)
 		}
 	} else {
-		let iconNode = document.createElement('span')
+		const iconNode = document.createElement('span')
 		iconNode.classList.add('toast-icon')
 		if (icon == null) {
 			iconNode.appendChild(document.createTextNode(''))
 		} else if (icon == 'loading') {
-			let loader = document.createElement('div')
+			const loader = document.createElement('div')
 			loader.classList.add('circle-loader')
 			iconNode.appendChild(loader)
 		} else {
-			let materialIcon = document.createElement('i')
+			const materialIcon = document.createElement('i')
 			materialIcon.classList.add('material-icons')
 			materialIcon.appendChild(document.createTextNode(icon))
 			iconNode.appendChild(materialIcon)
 		}
-		let messageNode = document.createElement('span')
+		const messageNode = document.createElement('span')
 		messageNode.classList.add('toast-message')
 		messageNode.appendChild(document.createTextNode(msg))
 
-		let toastNode = document.createElement('toast')
+		const toastNode = document.createElement('toast')
 		toastNode.appendChild(iconNode)
 		toastNode.appendChild(messageNode)
 
-		let toastObj = Toastify({
+		const toastObj = Toastify({
 			...sharedOptions,
 			node: toastNode,
 			duration: dismiss ? 3000 : 0,
 			className: dismiss ? 'dismissable' : '',
-			onClick: function() {
+			onClick() {
 				let dismissable = true
 
 				if (id) {
-					let toastClasses = document.querySelector(`div.toastify[toast_id=${id}]`).classList
+					const toastClasses = document.querySelector(`div.toastify[toast_id=${id}]`).classList
 
 					if (toastClasses) {
-						dismissable = Array.prototype.slice.call(toastClasses).indexOf('dismissable') != -1
+						dismissable = Array.prototype.slice.call(toastClasses).includes('dismissable')
 					}
 				}
 				if (toastObj && dismissable) {
@@ -108,7 +108,7 @@ export const toast = function(msg, icon = null, dismiss = true, id = null) {
 				}
 			},
 			offset: {
-				x: 'true' === localStorage.getItem('slimSidebar') ? '3rem': '14rem'
+				x: localStorage.getItem('slimSidebar') === 'true' ? '3rem' : '14rem'
 			}
 		}).showToast()
 		if (id) {

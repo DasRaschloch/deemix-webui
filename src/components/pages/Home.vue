@@ -2,7 +2,7 @@
 	<div id="home_tab">
 		<h1 class="mb-8 text-5xl">{{ $t('globals.welcome') }}</h1>
 
-		<section class="py-6 border-0 border-t border-solid border-grayscale-500" ref="notLogged" v-if="!isLoggedIn">
+		<section v-if="!isLoggedIn" ref="notLogged" class="py-6 border-0 border-t border-solid border-grayscale-500">
 			<p id="home_not_logged_text" class="mb-4">{{ $t('home.needTologin') }}</p>
 			<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Settings' }">
 				{{ $t('home.openSettings') }}
@@ -13,13 +13,13 @@
 			<h2 class="mb-6 text-3xl">{{ $t('home.sections.popularPlaylists') }}</h2>
 			<div class="release-grid">
 				<router-link
-					tag="div"
 					v-for="release in playlists"
 					:key="release.id"
+					tag="div"
 					class="release clickable"
 					:to="{ name: 'Playlist', params: { id: release.id } }"
-					@keyup.enter.native="$router.push({ name: 'Playlist', params: { id: release.id } })"
 					tabindex="0"
+					@keyup.enter.native="$router.push({ name: 'Playlist', params: { id: release.id } })"
 				>
 					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
@@ -39,14 +39,14 @@
 			<h2 class="mb-6 text-3xl">{{ $t('home.sections.popularAlbums') }}</h2>
 			<div class="release-grid">
 				<router-link
-					tag="div"
 					v-for="release in albums"
 					:key="release.id"
+					tag="div"
 					class="release clickable"
 					:to="{ name: 'Album', params: { id: release.id } }"
-					@keyup.enter.native="$router.push({ name: 'Album', params: { id: release.id } })"
 					:data-id="release.id"
 					tabindex="0"
+					@keyup.enter.native="$router.push({ name: 'Album', params: { id: release.id } })"
 				>
 					<CoverContainer is-rounded :cover="release.cover_medium" :link="release.link" @click.stop="addToQueue" />
 					<p class="primary-text">{{ release.title }}</p>
@@ -100,5 +100,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

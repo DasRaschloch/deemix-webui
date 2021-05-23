@@ -3,13 +3,15 @@ class CustomSocket extends WebSocket {
 		super(args)
 		this.listeners = {}
 	}
+
 	emit(key, data) {
 		if (this.readyState !== WebSocket.OPEN) return false
 
 		this.send(JSON.stringify({ key, data }))
 	}
+
 	on(key, cb) {
-		if (Object.keys(this.listeners).indexOf(key) == -1){
+		if (!Object.keys(this.listeners).includes(key)) {
 			console.log('on:', key)
 			this.listeners[key] = cb
 
@@ -21,10 +23,10 @@ class CustomSocket extends WebSocket {
 				}
 			})
 		}
-
 	}
+
 	off(key) {
-		if (Object.keys(this.listeners).indexOf(key) != -1){
+		if (Object.keys(this.listeners).includes(key)) {
 			console.log('off:', key)
 			this.removeEventListener('message', this.listeners[key])
 			delete this.listeners[key]

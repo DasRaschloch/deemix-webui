@@ -81,11 +81,11 @@ document.addEventListener('paste', pasteEvent => {
 		if (router.currentRoute.name === 'Link Analyzer') {
 			socket.emit('analyzeLink', pastedText)
 		} else {
-			if (pastedText.indexOf('\n') != -1) pastedText = pastedText.replace(/\n/g, ';')
+			if (pastedText.includes('\n')) pastedText = pastedText.replace(/\n/g, ';')
 			sendAddToQueue(pastedText)
 		}
 	} else {
-		let searchbar = document.querySelector('#searchbar')
+		const searchbar = document.querySelector('#searchbar')
 		searchbar.select()
 		searchbar.setSelectionRange(0, 99999)
 	}
@@ -140,7 +140,7 @@ function loggedIn(data) {
 			break
 		case -1:
 			toast(i18n.t('toasts.deezerNotAvailable'), 'close', true, 'login-toast')
-			return
+
 		// TODO
 		// $('#open_login_prompt').show()
 		// document.getElementById('logged_in_info').classList.add('hide')

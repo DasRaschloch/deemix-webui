@@ -1,9 +1,9 @@
 <template>
 	<main
 		id="content"
-		@scroll="$route.name === 'Search' ? handleContentScroll($event) : null"
 		ref="content"
 		aria-label="main content"
+		@scroll="$route.name === 'Search' ? handleContentScroll($event) : null"
 	>
 		<div id="container">
 			<BackButton v-if="showBackButton" class="sticky -ml-20" style="top: 1rem" />
@@ -11,16 +11,16 @@
 			<keep-alive>
 				<router-view
 					v-if="!$route.meta.notKeepAlive"
-					:class="{ '-mt-16': showBackButton }"
 					:key="$route.fullPath"
+					:class="{ '-mt-16': showBackButton }"
 					:perform-scrolled-search="performScrolledSearch"
 				></router-view>
 			</keep-alive>
 
 			<router-view
 				v-if="$route.meta.notKeepAlive"
-				:class="{ '-mt-16': showBackButton }"
 				:key="$route.fullPath"
+				:class="{ '-mt-16': showBackButton }"
 				:perform-scrolled-search="performScrolledSearch"
 			></router-view>
 		</div>
@@ -83,7 +83,7 @@ export default {
 	}),
 	computed: {
 		showBackButton() {
-			return ['Tracklist', 'Artist', 'Album', 'Playlist', 'Spotify Playlist'].indexOf(this.$route.name) !== -1
+			return ['Tracklist', 'Artist', 'Album', 'Playlist', 'Spotify Playlist'].includes(this.$route.name)
 		}
 	},
 	mounted() {

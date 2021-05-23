@@ -223,7 +223,7 @@ export default defineComponent({
 	},
 	computed: {
 		activeTabEmpty() {
-			let toCheck = this.getActiveRelease()
+			const toCheck = this.getActiveRelease()
 
 			return toCheck?.length === 0
 		}
@@ -233,10 +233,10 @@ export default defineComponent({
 		convertDuration,
 		downloadAllOfType() {
 			try {
-				let toDownload = this.getActiveRelease()
+				const toDownload = this.getActiveRelease()
 
 				if (this.activeTab === 'track') {
-					let lovedTracks = this.getLovedTracksPlaylist()
+					const lovedTracks = this.getLovedTracksPlaylist()
 
 					sendAddToQueue(lovedTracks.link)
 				} else {
@@ -274,13 +274,13 @@ export default defineComponent({
 			return toDownload
 		},
 		getTabLength(tab = this.activeTab) {
-			let total = this[`${tab}s`]?.length
+			const total = this[`${tab}s`]?.length
 			// TODO: Add Spotify playlists to downlaod queue as well
-			//if (tab === "playlist") total += this.spotifyPlaylists.length
+			// if (tab === "playlist") total += this.spotifyPlaylists.length
 			return total || 0
 		},
 		getLovedTracksPlaylist() {
-			let lovedTracks = this.playlists.filter(playlist => {
+			const lovedTracks = this.playlists.filter(playlist => {
 				return playlist.is_loved_track
 			})
 

@@ -2,9 +2,9 @@
 	<div>
 		<h1 class="mb-8 text-5xl">{{ $t('settings.login.arl.question') }}</h1>
 		<p class="mb-2 text-base">
-			Deezer keeps track of login session by using a cookie called ARL.<br>
-			deemix uses that cookie to get the metadata that it needs to download the tracks from Deezer.<br>
-			ARLs last for 3 months, after that Deezer asks you to log in again. The same method is used in deemix<br>
+			Deezer keeps track of login session by using a cookie called ARL.<br />
+			deemix uses that cookie to get the metadata that it needs to download the tracks from Deezer.<br />
+			ARLs last for 3 months, after that Deezer asks you to log in again. The same method is used in deemix<br />
 			Following one of the guides below you can get your own account ARL.
 		</p>
 
@@ -26,7 +26,7 @@
 			<li>Go under the Application tab (if you don't see it click the double arrow)</li>
 			<li>Open the cookie dropdown</li>
 			<li>Select www.deezer.com</li>
-			<li>Find the `arl` cookie (It should be 192 chars long) </li>
+			<li>Find the `arl` cookie (It should be 192 chars long)</li>
 			<li>That's your ARL, now you can use it in the app</li>
 		</ul>
 

@@ -1,6 +1,6 @@
 <template>
-	<div class="wrapper" ref="wrapper">
-		<div class="body animate__animated animate__bounce" ref="body">
+	<div ref="wrapper" class="wrapper">
+		<div ref="body" class="body animate__animated animate__bounce">
 			<h1 style="flex: 1">{{ titleText }}</h1>
 
 			<div class="confirm-area">

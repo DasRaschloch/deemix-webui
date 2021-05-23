@@ -14,7 +14,7 @@
 		<BaseLoadingPlaceholder
 			text="Connecting to local server..."
 			:hidden="isSocketConnected"
-			additionalClasses="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50"
+			additional-classes="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50"
 		/>
 
 		<TheTrackPreview />
@@ -52,11 +52,6 @@ import TheContent from '@components/TheContent.vue'
 import TheDownloadBar from '@components/downloads/TheDownloadBar.vue'
 
 export default {
-	data() {
-		return {
-			isSocketConnected: false
-		}
-	},
 	components: {
 		TheSidebar,
 		TheSearchBar,
@@ -68,9 +63,14 @@ export default {
 		TheContent
 		// ConfirmModal
 	},
+	data() {
+		return {
+			isSocketConnected: false
+		}
+	},
 	mounted() {
-		socket.addEventListener('open', (event) => {
-			console.log("Connected to WebSocket")
+		socket.addEventListener('open', event => {
+			console.log('Connected to WebSocket')
 			this.isSocketConnected = true
 		})
 	}

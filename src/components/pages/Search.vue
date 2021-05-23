@@ -12,8 +12,8 @@
 				<BaseTab
 					v-for="tab in tabs"
 					:key="tab.name"
-					@click="changeSearchTab(tab.searchType)"
 					:class="{ active: currentTab.name === tab.name }"
+					@click="changeSearchTab(tab.searchType)"
 				>
 					{{ tab.name }}
 				</BaseTab>
@@ -22,7 +22,7 @@
 			<keep-alive>
 				<component
 					:is="currentTab.component"
-					:viewInfo="getViewInfo()"
+					:view-info="getViewInfo()"
 					want-headers
 					@add-to-queue="addToQueue"
 					@change-search-tab="changeSearchTab"
@@ -245,6 +245,22 @@ export default defineComponent({
 			return tabsLoaded
 		}
 	},
+	watch: {
+		performScrolledSearch(needToSearch) {
+			if (!needToSearch) return
+
+			this.scrolledSearch(needToSearch)
+		},
+		currentTab(newTab, old) {
+			if (this.isTabLoaded(newTab)) return
+
+			this.performSearch({
+				term: this.results.query,
+				type: newTab.searchType,
+				start: this.results[`${newTab.searchType}Tab`].next
+			})
+		}
+	},
 	methods: {
 		numberWithDots,
 		convertDuration,
@@ -289,29 +305,10 @@ export default defineComponent({
 			}
 		},
 		isTabLoaded(tab) {
-			return this.loadedTabs.indexOf(tab.searchType) !== -1 || tab.searchType === 'all'
-		}
-	},
-	watch: {
-		performScrolledSearch(needToSearch) {
-			if (!needToSearch) return
-
-			this.scrolledSearch(needToSearch)
-		},
-		currentTab(newTab, old) {
-			if (this.isTabLoaded(newTab)) return
-
-			this.performSearch({
-				term: this.results.query,
-				type: newTab.searchType,
-				start: this.results[`${newTab.searchType}Tab`].next
-			})
+			return this.loadedTabs.includes(tab.searchType) || tab.searchType === 'all'
 		}
 	}
 })
 </script>
 
-<style>
-</style>
-
-
+<style></style>

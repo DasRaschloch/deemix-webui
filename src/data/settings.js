@@ -4,12 +4,12 @@ let settingsData = {}
 let defaultSettingsData = {}
 let spotifyCredentials = {}
 
-let cached = false
+const cached = false
 
 export async function getSettingsData() {
 	if (!cached) {
-		let data = await fetchData('getSettings')
-		let { settings, defaultSettings, spotifySettings } = data
+		const data = await fetchData('getSettings')
+		const { settings, defaultSettings, spotifySettings } = data
 		// cached = true
 		settingsData = settings
 		defaultSettingsData = defaultSettings
@@ -36,12 +36,12 @@ export function getInitialPreviewVolume() {
  * @returns	{boolean}
  */
 export function checkInitialSlimDownloads() {
-	return 'true' === localStorage.getItem('slimDownloads')
+	return localStorage.getItem('slimDownloads') === 'true'
 }
 
 /**
  * @returns	{boolean}
  */
 export function checkInitialSlimSidebar() {
-	return 'true' === localStorage.getItem('slimSidebar')
+	return localStorage.getItem('slimSidebar') === 'true'
 }

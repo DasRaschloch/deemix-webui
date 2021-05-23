@@ -12,13 +12,13 @@
 			>
 				<template v-if="checkSectionResults(section)">
 					<h2
-						@click="$emit('change-search-tab', section)"
 						class="mb-6 capitalize"
 						:class="{
 							'text-4xl text-center': section === 'TOP_RESULT',
 							'inline-block cursor-pointer text-3xl hover:text-primary transition-colors duration-200 ease-in-out':
 								section !== 'TOP_RESULT'
 						}"
+						@click="$emit('change-search-tab', section)"
 					>
 						{{ $tc(`globals.listTabs.${section.toLowerCase()}`, 2) }}
 					</h2>
@@ -31,29 +31,29 @@
 
 					<ResultsTracks
 						v-else-if="section === 'TRACK'"
-						:viewInfo="standardizeData(viewInfo.TRACK, formatSingleTrack)"
-						:itemsToShow="6"
+						:view-info="standardizeData(viewInfo.TRACK, formatSingleTrack)"
+						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsAlbums
 						v-else-if="section == 'ALBUM'"
-						:viewInfo="standardizeData(viewInfo.ALBUM, formatAlbums)"
-						:itemsToShow="6"
+						:view-info="standardizeData(viewInfo.ALBUM, formatAlbums)"
+						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsPlaylists
 						v-else-if="section == 'PLAYLIST'"
-						:viewInfo="standardizeData(viewInfo.PLAYLIST, formatPlaylist)"
-						:itemsToShow="6"
+						:view-info="standardizeData(viewInfo.PLAYLIST, formatPlaylist)"
+						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsArtists
 						v-else-if="section === 'ARTIST'"
-						:viewInfo="standardizeData(viewInfo.ARTIST, formatArtist)"
-						:itemsToShow="6"
+						:view-info="standardizeData(viewInfo.ARTIST, formatArtist)"
+						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 				</template>
@@ -90,13 +90,13 @@ export default {
 	},
 	computed: {
 		thereAreResults() {
-			let areInfosLoaded = !!this.viewInfo
+			const areInfosLoaded = !!this.viewInfo
 
 			if (!areInfosLoaded) {
 				return false
 			}
 
-			let noResultsPresent = this.viewInfo.ORDER.every(section =>
+			const noResultsPresent = this.viewInfo.ORDER.every(section =>
 				section === 'TOP_RESULT' ? this.viewInfo[section].length === 0 : this.viewInfo[section].data.length === 0
 			)
 

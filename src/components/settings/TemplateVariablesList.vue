@@ -1,5 +1,5 @@
 <template>
-	<BaseAccordion style="--arrow-v-align: baseline; margin-bottom: 3rem;">
+	<BaseAccordion style="--arrow-v-align: baseline; margin-bottom: 3rem">
 		<template #title>
 			<slot name="title"></slot>
 		</template>

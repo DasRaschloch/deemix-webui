@@ -61,16 +61,18 @@
 		</div>
 
 		<div class="settings-group">
-			<h3 class="settings-group__header"><i class="material-icons">person</i>{{ $t('settings.loginWithCredentials.title') }}</h3>
+			<h3 class="settings-group__header">
+				<i class="material-icons">person</i>{{ $t('settings.loginWithCredentials.title') }}
+			</h3>
 
-			<form class="my-5 space-y-5" @submit.prevent="loginWithCredentials" ref="loginWithCredentialsForm">
+			<form ref="loginWithCredentialsForm" class="my-5 space-y-5" @submit.prevent="loginWithCredentials">
 				<label>
 					<span>Username</span>
-					<input type="text" name="username">
+					<input type="text" name="username" />
 				</label>
 				<label>
 					<span>Password</span>
-					<input type="password" name="password">
+					<input type="password" name="password" />
 				</label>
 
 				<button class="btn btn-primary" type="submit">{{ $t('settings.loginWithCredentials.login') }}</button>
@@ -876,14 +878,14 @@ export default {
 		this.initSettings(settingsData, spotifyCredentials)
 
 		// TODO Move in store
-		let storedAccountNum = localStorage.getItem('accountNum')
+		const storedAccountNum = localStorage.getItem('accountNum')
 
 		if (storedAccountNum) {
 			this.accountNum = storedAccountNum
 		}
 
 		// TODO Move in store
-		let spotifyUser = localStorage.getItem('spotifyUser')
+		const spotifyUser = localStorage.getItem('spotifyUser')
 
 		if (spotifyUser) {
 			this.lastUser = spotifyUser
@@ -924,7 +926,7 @@ export default {
 			this.spotifyUser = (' ' + this.lastUser).slice(1)
 		},
 		copyARLtoClipboard() {
-			let copyText = this.$refs.loginInput
+			const copyText = this.$refs.loginInput
 
 			copyText.setAttribute('type', 'text')
 			copyText.select()
@@ -978,7 +980,7 @@ export default {
 			// const res = await fetchData('login', { arl, force: true, child: this.accountNum })
 		},
 		async login() {
-			let newArl = this.$refs.loginInput.value.trim()
+			const newArl = this.$refs.loginInput.value.trim()
 
 			if (newArl && newArl !== this.arl) {
 				const res = await fetchData('login-arl', { arl: newArl, force: true, child: this.accountNum }, 'POST')
@@ -1020,7 +1022,7 @@ export default {
 			toast(this.$t('settings.toasts.init'), 'settings')
 		},
 		updateSettings(data) {
-			const {settings: newSettings, spotifySettings: newCredentials} = data
+			const { settings: newSettings, spotifySettings: newCredentials } = data
 			this.loadSettings(newSettings)
 			this.loadCredentials(newCredentials)
 

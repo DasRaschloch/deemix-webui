@@ -1,5 +1,5 @@
 <template>
-	<audio id="preview-track" @canplay="onCanPlay" @timeupdate="onTimeUpdate" ref="preview">
+	<audio id="preview-track" ref="preview" @canplay="onCanPlay" @timeupdate="onTimeUpdate">
 		<source id="preview-track_source" src="" type="audio/mpeg" />
 	</audio>
 </template>
@@ -86,7 +86,7 @@ export default {
 
 			const { currentTarget: obj } = e
 
-			var icon = obj.tagName == 'I' ? obj : obj.querySelector('i')
+			const icon = obj.tagName == 'I' ? obj : obj.querySelector('i')
 
 			if (obj.hasAttribute('playing')) {
 				if (this.$refs.preview.paused) {
@@ -133,7 +133,7 @@ export default {
 			}
 		},
 		async stopStackedTabsPreview() {
-			let controls = Array.prototype.slice.call(document.querySelectorAll('.preview_playlist_controls[playing]'))
+			const controls = Array.prototype.slice.call(document.querySelectorAll('.preview_playlist_controls[playing]'))
 
 			if (controls.length === 0) return
 
@@ -161,4 +161,3 @@ export default {
 	}
 }
 </script>
-

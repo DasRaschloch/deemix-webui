@@ -43,8 +43,10 @@ const de = {
 			contributing: 'Du möchtest bei dem Projekt helfen? Das kannst du auf verschiedene Arten machen!',
 			donations: 'Du möchtest deemix finanziell unterstützen? Dann lasse eine kleine Spende da!'
 		},
-		usesLibrary: 'Dieses Programm nutzt die <strong>deemix</strong> Bibliothek, die du dazu nutzen kannst deine eigene deemix UI zu erstellen.',
-		thanks: 'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> für die Erstellung des Logos.',
+		usesLibrary:
+			'Dieses Programm nutzt die <strong>deemix</strong> Bibliothek, die du dazu nutzen kannst deine eigene deemix UI zu erstellen.',
+		thanks:
+			'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> für die Erstellung des Logos.',
 		upToDate: {
 			text: 'Bleib auf dem Laufenden mit den Updates indem du dem {newsChannel} auf Telegram folgst.',
 			newsChannel: 'News Channel'
@@ -55,27 +57,35 @@ const de = {
 		officialSubreddit: 'Offizieller Subreddit',
 		newsChannel: 'News Channel',
 		questions: {
-			text:'Bei Fragen oder Problemen mit der App, suche als erstes nach einer Lösung im {subreddit}. Wenn du da nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
+			text:
+				'Bei Fragen oder Problemen mit der App, suche als erstes nach einer Lösung im {subreddit}. Wenn du da nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 			subreddit: 'Subreddit'
 		},
-		beforeReporting: 'Bevor du einen Bug meldest, stelle sicher, dass du die neueste Version der App hast und dass das, was du melden möchtest, tatsächlich ein Bug ist und nicht nur bei dir falsch ist.',
-		beSure: 'Stelle sicher, dass der Bug auf anderen Computern auch vorhanden ist <strong>MELDEN NICHT</strong> einen Bug, wenn er schon gemeldet worden ist.',
+		beforeReporting:
+			'Bevor du einen Bug meldest, stelle sicher, dass du die neueste Version der App hast und dass das, was du melden möchtest, tatsächlich ein Bug ist und nicht nur bei dir falsch ist.',
+		beSure:
+			'Stelle sicher, dass der Bug auf anderen Computern auch vorhanden ist <strong>MELDEN NICHT</strong> einen Bug, wenn er schon gemeldet worden ist.',
 		duplicateReports: 'Doppelte Fehlerberichte werden geschlossen, achte darauf.',
-		dontOpenIssues: '<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es gibt einen Subreddit dafür.',
+		dontOpenIssues:
+			'<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es gibt einen Subreddit dafür.',
 		newUI: {
-			text: 'Wenn du Python fließend beherrschst, kannst du versuchen, mit hilfe der base library eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
+			text:
+				'Wenn du Python fließend beherrschst, kannst du versuchen, mit hilfe der base library eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
 			repo: 'deemix Repo'
 		},
-		acceptFeatures: 'Ich akzeptiere auch Funktionen, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.',
-		otherLanguages: 'Wenn du eine andere Programmiersprache fließend beherrschst, kannst du versuchen, deemix in andere Programmiersprachen zu portieren!',
+		acceptFeatures:
+			'Ich akzeptiere auch Funktionen, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.',
+		otherLanguages:
+			'Wenn du eine andere Programmiersprache fließend beherrschst, kannst du versuchen, deemix in andere Programmiersprachen zu portieren!',
 		understandingCode: 'Du benötigst Hilfe beim verstehen des Codes? Frag einfach RemixDev auf Telegram oder Reddit.',
 		contributeWebUI: {
 			text: 'Wenn du Vue.js (JavaScript) oder HTML und CSS kennst, könntest du etwas zum {webui} beitragen.',
 			webui: 'WebUI'
 		},
-		itsFree: 'Du solltest im Kopf behalten das <strong>dies ein kostenloses Projekt ist</strong> und <strong>Du solltest die Künstler unterstützen, die du magst </strong> bevor du die Entwickler unterstützt.',
+		itsFree:
+			'Du solltest im Kopf behalten das <strong>dies ein kostenloses Projekt ist</strong> und <strong>Du solltest die Künstler unterstützen, die du magst </strong> bevor du die Entwickler unterstützt.',
 		notObligated: 'Fühle dich nicht gezwungen zu spenden, danke, dass du deemix verwendest!',
-		lincensedUnder:{
+		lincensedUnder: {
 			text: 'Diese Arbeit ist lizensiert unter der {gpl3}.',
 			gpl3: 'GNU General Public License 3.0'
 		}
@@ -91,7 +101,7 @@ const de = {
 			invalidURL: 'URL nicht erkannt',
 			unsupportedURL: 'URL noch nicht unterstützt',
 			ISRCnotOnDeezer: 'Track ISRC ist auf deezer nicht verfügbar',
-			notYourPrivatePlaylist: "Du kannst keine privaten Playlisten anderer herunterladen.",
+			notYourPrivatePlaylist: 'Du kannst keine privaten Playlisten anderer herunterladen.',
 			spotifyDisabled: 'Spotify-Funktionen sind nicht richtig eingerichtet',
 			trackNotOnDeezer: 'Track ist nicht verfügbar auf Deezer!',
 			albumNotOnDeezer: 'Album auf Deezer nicht gefunden!',
@@ -101,8 +111,9 @@ const de = {
 			wrongBitrate: 'Track mit gewünschter Bitrate nicht gefunden.',
 			wrongBitrateNoAlternative: 'Track mit gewünschter Bitrate nicht gefunden und keine Alternative gefunden!',
 			no360RA: 'Track ist nicht verfügbar in Reality Audio 360.',
-			notAvailable: "Track ist noch nicht verfügbar auf den Servern von Deezer!",
-			notAvailableNoAlternative: "Track ist noch nicht verfügbar auf den Servern von Deezer und keine Alternativen gefunden!!"
+			notAvailable: 'Track ist noch nicht verfügbar auf den Servern von Deezer!',
+			notAvailableNoAlternative:
+				'Track ist noch nicht verfügbar auf den Servern von Deezer und keine Alternativen gefunden!!'
 		}
 	},
 	favorites: {
@@ -121,10 +132,13 @@ const de = {
 		}
 	},
 	linkAnalyzer: {
-		info: 'Diesen Abschnitt kannst du nutzen, um weitere Informationen über den gewünschten Link zu erhalten, den du herunterladen möchtest.',
-		useful: "Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.",
+		info:
+			'Diesen Abschnitt kannst du nutzen, um weitere Informationen über den gewünschten Link zu erhalten, den du herunterladen möchtest.',
+		useful:
+			'Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.',
 		linkNotSupported: 'Dieser Link wird noch nicht unterstützt',
-		linkNotSupportedYet: 'Es scheint so, als ob dieser Link noch nicht unterstützt wird. Versuche einen anderen Link zu analysieren.',
+		linkNotSupportedYet:
+			'Es scheint so, als ob dieser Link noch nicht unterstützt wird. Versuche einen anderen Link zu analysieren.',
 		table: {
 			id: 'ID',
 			isrc: 'ISRC',
@@ -142,7 +156,8 @@ const de = {
 	},
 	search: {
 		startSearching: 'Suche starten!',
-		description: 'Du kannst einen Titel, ein ganzes Album, einen Künstler, eine Playlist suchen ... alles! Du kannst auch einen Deezer-Link einfügen',
+		description:
+			'Du kannst einen Titel, ein ganzes Album, einen Künstler, eine Playlist suchen ... alles! Du kannst auch einen Deezer-Link einfügen',
 		fans: '{n} Fans',
 		noResults: 'Keine Ergebnisse',
 		noResultsTrack: 'Keine Tracks gefunden',
@@ -161,7 +176,7 @@ const de = {
 		loggingIn: 'Einloggen',
 		loggedIn: 'Eingeloggt',
 		alreadyLogged: 'Bereits eingeloggt',
-		loginFailed: "Login fehlgeschlagen",
+		loginFailed: 'Login fehlgeschlagen',
 		loggedOut: 'Ausgeloggt',
 		cancellingCurrentItem: 'Aktuelle Auswahl abbrechen.',
 		currentItemCancelled: 'Aktuelle Auswahl wurde abgebrochen',
@@ -228,7 +243,6 @@ const de = {
 				n: 'Nein überschreibe die Dateien nicht',
 				t: 'Überschreibe nur die Tags',
 				b: 'Nein, behalte beide Dateien und füge der Kopie eine Nummer hinzu'
-
 			},
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
 			fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',

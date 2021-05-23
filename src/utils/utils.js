@@ -8,7 +8,7 @@ export function generatePath(el) {
 		throw new Error('No element passed to the generatePath function!')
 	}
 
-	let path = [el]
+	const path = [el]
 
 	while ((el = el.parentNode) && el !== document) {
 		path.push(el)
@@ -18,14 +18,14 @@ export function generatePath(el) {
 }
 
 export function isValidURL(text) {
-	let lowerCaseText = text.toLowerCase()
+	const lowerCaseText = text.toLowerCase()
 
 	if (lowerCaseText.startsWith('http')) {
 		if (
-			lowerCaseText.indexOf('deezer.com') >= 0 ||
-			lowerCaseText.indexOf('deezer.page.link') >= 0 ||
-			lowerCaseText.indexOf('open.spotify.com') >= 0 ||
-			lowerCaseText.indexOf('link.tospotify.com') >= 0
+			lowerCaseText.includes('deezer.com') ||
+			lowerCaseText.includes('deezer.page.link') ||
+			lowerCaseText.includes('open.spotify.com') ||
+			lowerCaseText.includes('link.tospotify.com')
 		) {
 			return true
 		}
@@ -63,15 +63,15 @@ export function numberWithDots(x) {
 // On scroll event, returns currentTarget = null
 // Probably on other events too
 export function debounce(func, wait, immediate) {
-	var timeout
-	return function() {
-		var context = this
-		var args = arguments
-		var later = function() {
+	let timeout
+	return function () {
+		const context = this
+		const args = arguments
+		const later = function () {
 			timeout = null
 			if (!immediate) func.apply(context, args)
 		}
-		var callNow = immediate && !timeout
+		const callNow = immediate && !timeout
 		clearTimeout(timeout)
 		timeout = setTimeout(later, wait)
 		if (callNow) func.apply(context, args)
@@ -104,10 +104,10 @@ export function copyToClipboard(text) {
 export function getPropertyWithFallback(obj, ...props) {
 	for (const prop of props) {
 		// Example: this.is.an.example
-		let hasDotNotation = /\./.test(prop)
+		const hasDotNotation = /\./.test(prop)
 
 		// Searching the properties in the object
-		let valueToTest = hasDotNotation
+		const valueToTest = hasDotNotation
 			? prop.split('.').reduce((o, i) => {
 					if (o) {
 						return o[i]
@@ -115,7 +115,7 @@ export function getPropertyWithFallback(obj, ...props) {
 			  }, obj)
 			: obj[prop]
 
-		if ('undefined' !== typeof valueToTest) {
+		if (typeof valueToTest !== 'undefined') {
 			return valueToTest
 		}
 	}

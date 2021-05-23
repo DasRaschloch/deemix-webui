@@ -65,10 +65,10 @@
 				<div
 					role="button"
 					aria-label="download"
-					@contextmenu.prevent="openQualityModal"
-					@click.stop="addToQueue"
 					:data-link="link"
 					class="grid w-16 h-16 ml-auto rounded-full cursor-pointer bg-primary text-grayscale-870 place-items-center"
+					@contextmenu.prevent="openQualityModal"
+					@click.stop="addToQueue"
 				>
 					<i class="text-4xl material-icons" :title="$t('globals.download_hint')">get_app</i>
 				</div>
@@ -152,6 +152,11 @@ export default {
 			countries: []
 		}
 	},
+	mounted() {
+		socket.on('analyze_track', this.showTrack)
+		socket.on('analyze_album', this.showAlbum)
+		socket.on('analyze_notSupported', this.notSupported)
+	},
 	methods: {
 		convertDuration,
 		reset() {
@@ -174,15 +179,15 @@ export default {
 				id
 			} = data
 
-			this.title = title + (title_version && title.indexOf(title_version) == -1 ? ' ' + title_version : '')
+			this.title = title + (title_version && !title.includes(title_version) ? ' ' + title_version : '')
 			this.image = cover_xl
 			this.type = 'track'
 			this.link = link
 			this.id = id
 
 			available_countries.forEach(cc => {
-				let temp = []
-				let chars = [...cc].map(c => c.charCodeAt() + 127397)
+				const temp = []
+				const chars = [...cc].map(c => c.charCodeAt() + 127397)
 				temp.push(String.fromCodePoint(...chars))
 				temp.push(COUNTRIES[cc])
 				this.countries.push(temp)
@@ -207,14 +212,8 @@ export default {
 		addToQueue(e) {
 			sendAddToQueue(e.currentTarget.dataset.link)
 		}
-	},
-	mounted() {
-		socket.on('analyze_track', this.showTrack)
-		socket.on('analyze_album', this.showAlbum)
-		socket.on('analyze_notSupported', this.notSupported)
 	}
 }
 </script>
 
-<style>
-</style>
+<style></style>

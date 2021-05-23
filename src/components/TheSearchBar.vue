@@ -6,6 +6,7 @@
 
 		<input
 			id="searchbar"
+			ref="searchbar"
 			class="w-full"
 			autocomplete="off"
 			type="search"
@@ -13,7 +14,6 @@
 			value=""
 			:placeholder="$t('searchbar')"
 			autofocus
-			ref="searchbar"
 			@keyup="performSearch($event)"
 		/>
 		<!-- @keyup.enter.exact="onEnter"
@@ -134,20 +134,20 @@ export default defineComponent({
 	},
 	methods: {
 		async performSearch(keyEvent) {
-			let isEnterPressed = keyEvent.keyCode === 13
+			const isEnterPressed = keyEvent.keyCode === 13
 
 			if (!isEnterPressed) return
 
-			let term = this.$refs.searchbar.value
-			let isEmptySearch = term === ''
+			const term = this.$refs.searchbar.value
+			const isEmptySearch = term === ''
 
 			if (isEmptySearch) return
 
-			let isSearchingURL = isValidURL(term)
-			let isCtrlPressed = keyEvent.ctrlKey
-			let isShowingAnalyzer = this.$route.name === 'Link Analyzer'
-			let isShowingSearch = this.$route.name === 'Search'
-			let isSameAsLastSearch = term === this.lastTextSearch
+			const isSearchingURL = isValidURL(term)
+			const isCtrlPressed = keyEvent.ctrlKey
+			const isShowingAnalyzer = this.$route.name === 'Link Analyzer'
+			const isShowingSearch = this.$route.name === 'Search'
+			const isSameAsLastSearch = term === this.lastTextSearch
 
 			if (isSearchingURL) {
 				if (isCtrlPressed) {

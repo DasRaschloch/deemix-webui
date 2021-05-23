@@ -58,7 +58,8 @@ const es = {
 			contributing: '¿Quieres contribuir a este proyecto? ¡Puedes hacerlo de diferentes maneras!',
 			donations: '¿Quiere contribuir monetariamente? ¡Puedes hacer una donación!'
 		},
-		usesLibrary: 'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
+		usesLibrary:
+			'Esta aplicación usa la biblioteca <strong>deemix</strong>, que puedes usar para hacer tu propia interfaz de usuario para deemix.',
 		thanks: `Gracias a <strong>rtonno</strong>, <strong>uhwot</strong> y <strong>lollilol</strong> por ayudarme con este proyecto, a <strong>BasCurtiz</strong> por hacer el icono.`,
 		upToDate: {
 			text: `Mantente al día con las actualizaciones siguiendo el {newsChannel} en Telegram.`,
@@ -73,22 +74,27 @@ const es = {
 			text: `Si tienes preguntas o problemas con la aplicación, busca una solución en el {subreddit} primero. Luego, si no encuentras nada puedes hacer un post con tu problema en el subreddit.`,
 			subreddit: 'subreddit'
 		},
-		beforeReporting: 'Antes de informar de un error asegúrese de que está ejecutando la última versión de la aplicación y que lo que quiere informar es en realidad un error y no algo que está mal sólo en su extremo.',
-		beSure: 'Asegúrate de que el fallo es reproducible en otras máquinas y también <strong>NO</strong> reporte un fallo si ya ha sido reportado.',
+		beforeReporting:
+			'Antes de informar de un error asegúrese de que está ejecutando la última versión de la aplicación y que lo que quiere informar es en realidad un error y no algo que está mal sólo en su extremo.',
+		beSure:
+			'Asegúrate de que el fallo es reproducible en otras máquinas y también <strong>NO</strong> reporte un fallo si ya ha sido reportado.',
 		duplicateReports: 'Los informes de errores duplicados se cerrarán, así que manténgase al tanto de eso.',
 		dontOpenIssues: '<strong>NO</strong> abra problemas para hacer preguntas, hay un subreddit para eso.',
 		newUI: {
 			text: `Si tienes fluidez en Python podrías intentar hacer una nueva interfaz de usuario para la aplicación usando la biblioteca base, o arreglar los errores de la biblioteca con una petición pull en el {repo}.`,
 			repo: 'repo'
 		},
-		acceptFeatures: 'También acepto características, pero no cosas complejas, ya que se pueden implementar directamente en la aplicación y no en la biblioteca.',
-		otherLanguages: '¡Si dominas otro lenguaje de programación podrías intentar portar Deemix a otros lenguajes de programación!',
+		acceptFeatures:
+			'También acepto características, pero no cosas complejas, ya que se pueden implementar directamente en la aplicación y no en la biblioteca.',
+		otherLanguages:
+			'¡Si dominas otro lenguaje de programación podrías intentar portar Deemix a otros lenguajes de programación!',
 		understandingCode: '¿Necesitas ayuda para entender el código? Sólo tienes que poner RemixDev en Telegram o Reddit.',
 		contributeWebUI: {
 			text: `Si conoces Vue.js (JavaScript), HTML o CSS podrías contribuir a la {webui}.`,
 			webui: 'WebUI'
 		},
-		itsFree: 'Debes recordar que <strong>este es un proyecto libre</strong> y <strong>debes apoyar a los artistas que amas</strong> antes de apoyar a los desarrolladores.',
+		itsFree:
+			'Debes recordar que <strong>este es un proyecto libre</strong> y <strong>debes apoyar a los artistas que amas</strong> antes de apoyar a los desarrolladores.',
 		notObligated: 'No te sientas obligado a donar, ¡te aprecio de todas formas!',
 		lincensedUnder: {
 			text: `Esta obra está autorizada bajo una {gpl3}.`,
@@ -114,10 +120,12 @@ const es = {
 			notEncoded: '¡Pista aún no codificada!',
 			notEncodedNoAlternative: '¡Pista aún no codificada y no se ha encontrado ninguna alternativa!',
 			wrongBitrate: 'La pista no se encuentra a la velocidad de bitrate deseada.',
-			wrongBitrateNoAlternative: '¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
+			wrongBitrateNoAlternative:
+				'¡Pista no encontrada a la tasa de bits deseada y no se ha encontrado ninguna alternativa!',
 			no360RA: 'La pista no está disponible en Reality Audio 360.',
 			notAvailable: '¡La pista no está disponible en los servidores de Deezer!',
-			notAvailableNoAlternative: '¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!',
+			notAvailableNoAlternative:
+				'¡La pista no está disponible en los servidores de Deezer y no se ha encontrado ninguna alternativa!',
 			noSpaceLeft: '¡No queda espacio en el dispositivo!'
 		}
 	},
@@ -138,7 +146,8 @@ const es = {
 	},
 	linkAnalyzer: {
 		info: 'Puedes usar esta sección para encontrar más información sobre el enlace que estás tratando de descargar.',
-		useful: 'Esto es útil si está tratando de descargar algunas pistas que no están disponibles en su país y quiere saber dónde están disponibles, por ejemplo.',
+		useful:
+			'Esto es útil si está tratando de descargar algunas pistas que no están disponibles en su país y quiere saber dónde están disponibles, por ejemplo.',
 		linkNotSupported: 'Este enlace aún no está soportado',
 		linkNotSupportedYet: 'Parece que este enlace aún no está soportado, intenta analizar otro.',
 		table: {
@@ -158,7 +167,8 @@ const es = {
 	},
 	search: {
 		startSearching: '¡Comienza a buscar!',
-		description: 'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
+		description:
+			'Puedes buscar un tema, un álbum entero, un artista, una lista de reproducción... ¡todo! También puedes pegar un enlace de Deezer',
 		fans: '{n} fans',
 		noResults: 'Ningun resultado',
 		noResultsTrack: 'No se encontraron pistas',
@@ -278,7 +288,8 @@ const es = {
 			jpegImageQuality: 'Calidad de la imagen JPEG',
 			embeddedArtworkPNG: 'Guardar las imágenes incrustadas como PNG',
 			embeddedPNGWarning: 'Las PNG no están oficialmente soportadas por Deezer y puedes encontrar errores.',
-			imageSizeWarning: 'Nada por encima de x1200 no es usado oficialmente por Deezer, puede que encuentres inconvenientes',
+			imageSizeWarning:
+				'Nada por encima de x1200 no es usado oficialmente por Deezer, puede que encuentres inconvenientes',
 			coverDescriptionUTF8: 'Guardar la descripción de la portada usando UTF8 (arregla la portada de iTunes)'
 		},
 		tags: {

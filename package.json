@@ -11,7 +11,8 @@
 		"minify": "esbuild public/js/bundle.temp.js --outfile=public/js/bundle.js --minify",
 		"dev": "npm-run-all --parallel serve watch:js",
 		"dev:gui": "npm-run-all --parallel serve:gui watch:js",
-		"build": "npm-run-all --sequential clean build:js minify clean-temp"
+		"build": "npm-run-all --sequential clean build:js minify clean-temp",
+		"lint": "eslint src/**/*.{js,vue} --fix"
 	},
 	"dependencies": {
 		"@vue/composition-api": "1.0.0-beta.21",
@@ -25,14 +26,21 @@
 		"vuex": "^3.6.0"
 	},
 	"devDependencies": {
+		"@nuxtjs/eslint-config": "6.0.0",
 		"@rollup/plugin-alias": "^3.1.1",
 		"@rollup/plugin-commonjs": "^16.0.0",
 		"@rollup/plugin-node-resolve": "^10.0.0",
 		"@rollup/plugin-replace": "^2.3.4",
+		"@typescript-eslint/eslint-plugin": "4.21.0",
+		"@typescript-eslint/parser": "4.21.0",
 		"esbuild": "^0.8.22",
+		"eslint": "7.23.0",
+		"eslint-config-prettier": "^8.1.0",
+		"eslint-plugin-prettier": "3.3.1",
 		"node-sass": "^5.0.0",
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.2.1",
+		"prettier": "2.2.1",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.35.0",
 		"rollup-plugin-analyzer": "^3.3.0",
@@ -41,6 +49,7 @@
 		"rollup-plugin-vue": "4.2.0",
 		"sass": "^1.30.0",
 		"tailwindcss": "^1.9.6",
+		"typescript": "4.2.4",
 		"vue-template-compiler": "^2.6.12"
 	}
 }

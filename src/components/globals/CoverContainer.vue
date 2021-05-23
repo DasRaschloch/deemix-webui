@@ -10,10 +10,10 @@
 		<button
 			role="button"
 			aria-label="download"
-			v-on="$listeners"
 			:data-link="link"
 			class="absolute p-0 text-center bg-black border-0 rounded-full opacity-0 download_overlay hover:bg-primary"
 			tabindex="0"
+			v-on="$listeners"
 		>
 			<i class="text-white cursor-pointer material-icons" :title="$t('globals.download_hint')">get_app</i>
 		</button>

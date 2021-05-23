@@ -19,3 +19,15 @@ export function sendToServer(key, data) {
 
 	fetch(url.href).catch(console.error)
 }
+
+export const postToServer = (endpoint, data) => {
+	const url = new URL(`${window.location.origin}/api/${endpoint}`)
+
+	fetch(url, {
+		body: JSON.stringify(data),
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		method: 'POST'
+	}).catch(console.error)
+}

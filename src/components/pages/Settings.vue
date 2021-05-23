@@ -802,7 +802,7 @@ import { copyToClipboard } from '@/utils/utils'
 
 import BaseAccordion from '@/components/globals/BaseAccordion.vue'
 import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
-import { fetchData } from '@/utils/api'
+import { fetchData, postToServer } from '@/utils/api'
 import { getFormItem } from '@/utils/forms'
 
 export default {
@@ -993,9 +993,9 @@ export default {
 			const { username } = fromLoginForm('username')
 			const { password } = fromLoginForm('password')
 
-			// console.log({ username,password })
+			postToServer('loginWithCredentials', { username, password })
 		},
-		appLogin(e) {
+		appLogin() {
 			socket.emit('applogin')
 		},
 		changeAccount() {

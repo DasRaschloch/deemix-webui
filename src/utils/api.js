@@ -6,8 +6,15 @@ export function fetchData(key, data = {}, method = 'GET') {
 	})
 
 	return fetch(url.href, { method })
-		.then(response => response.json())
-		.catch(() => {})
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok')
+			}
+			return response.json()
+		})
+		.catch(error => {
+			console.error('There has been a problem with your fetch operation:', error)
+		})
 }
 
 export function sendToServer(key, data) {
@@ -17,17 +24,28 @@ export function sendToServer(key, data) {
 		url.searchParams.append(key, data[key])
 	})
 
-	fetch(url.href).catch(console.error)
+	fetch(url.href).catch(error => {
+		console.error('There has been a problem with your fetch operation:', error)
+	})
 }
 
 export const postToServer = (endpoint, data) => {
 	const url = new URL(`${window.location.origin}/api/${endpoint}`)
 
-	fetch(url, {
+	return fetch(url, {
 		body: JSON.stringify(data),
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		method: 'POST'
-	}).catch(console.error)
+	})
+		.then(response => {
+			if (!response.ok) {
+				throw new Error('Network response was not ok')
+			}
+			return response.json()
+		})
+		.catch(error => {
+			console.error('There has been a problem with your fetch operation:', error)
+		})
 }

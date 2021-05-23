@@ -987,13 +987,14 @@ export default {
 				this.loggedInViaDeezer(res.arl)
 			}
 		},
-		loginWithCredentials() {
+		async loginWithCredentials() {
 			const fromLoginForm = getFormItem(this.$refs.loginWithCredentialsForm)
 
 			const { username } = fromLoginForm('username')
 			const { password } = fromLoginForm('password')
 
-			postToServer('loginWithCredentials', { username, password })
+			const response = await postToServer('loginWithCredentials', { username, password })
+			console.log({ response })
 		},
 		appLogin() {
 			socket.emit('applogin')

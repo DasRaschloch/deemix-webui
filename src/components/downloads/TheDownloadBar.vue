@@ -121,7 +121,7 @@ import QueueItem from '@components/downloads/QueueItem.vue'
 
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
-import { fetchData, sendToServer } from '@/utils/api'
+import { fetchData } from '@/utils/api'
 
 const tabMinWidth = 250
 const tabMaxWidth = 500
@@ -143,7 +143,12 @@ export default {
 		...mapGetters({
 			clientMode: 'getClientMode',
 			isSlim: 'getSlimDownloads'
-		})
+		}),
+		finishedWithoutErrors() {
+			const isCompletedWithoutErrors = el => el.errors.length === 0
+
+			return Object.values(this.queueList).filter(isCompletedWithoutErrors)
+		}
 	},
 	created() {
 		const checkIfToggleBar = keyEvent => {
@@ -170,10 +175,7 @@ export default {
 		socket.on('removedFinishedDownloads', this.removedFinishedDownloads)
 
 		fetchData('getQueue')
-			// fetch('connect')
-			// 	.then(res => res.json())
 			.then(res => {
-				console.log(res)
 				this.initQueue(res)
 			})
 			.catch(console.error)
@@ -349,6 +351,9 @@ export default {
 			}
 		},
 		removedFinishedDownloads() {
+			// TODO: Make this a computed property
+			this.queueComplete = this.finishedWithoutErrors.map(el => el.uuid)
+
 			this.queueComplete.forEach(uuid => {
 				this.$delete(this.queueList, uuid)
 			})

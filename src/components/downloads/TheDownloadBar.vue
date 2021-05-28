@@ -382,7 +382,7 @@ export default {
 		},
 		openDownloadsFolder() {
 			// if (this.clientMode) {
-			socket.emit('openDownloadsFolder')
+			window.api.send('openDownloadsFolder')
 			// }
 		},
 		handleDrag(event) {

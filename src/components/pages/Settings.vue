@@ -896,14 +896,13 @@ export default {
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
-		socket.on('downloadFolderSelected', this.downloadFolderSelected)
-		socket.on('applogin_arl', this.loggedInViaDeezer)
+		window.api.receive('downloadFolderSelected', this.downloadFolderSelected)
+		window.api.receive('applogin_arl', this.loggedInViaDeezer)
 
 		this.$on('hook:destroyed', () => {
 			socket.off('updateSettings')
 			socket.off('accountChanged')
 			socket.off('familyAccounts')
-			socket.off('downloadFolderSelected')
 			socket.off('applogin_arl')
 		})
 	},
@@ -961,7 +960,7 @@ export default {
 			})
 		},
 		selectDownloadFolder() {
-			socket.emit('selectDownloadFolder')
+			window.api.send('selectDownloadFolder', this.settings.downloadLocation)
 		},
 		downloadFolderSelected(folder) {
 			this.$set(this.settings, 'downloadLocation', folder)
@@ -997,7 +996,7 @@ export default {
 			console.log({ response })
 		},
 		appLogin() {
-			socket.emit('applogin')
+			window.api.send('applogin')
 		},
 		changeAccount() {
 			socket.emit('changeAccount', this.accountNum)

@@ -68,7 +68,9 @@ function initClient() {
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
-window.addEventListener('pywebviewready', initClient)
+if (window.api){
+	initClient()
+}
 
 /* ===== Global shortcuts ===== */
 

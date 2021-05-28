@@ -54,21 +54,21 @@
 					{{ $t('settings.login.login') }}
 				</a>
 
-				<button class="btn btn-primary" style="width: 100%" @click="login">
+				<button class="btn btn-primary" style="width: 100%" @click="loginButton">
 					{{ $t('settings.login.arl.update') }}
 				</button>
 			</div>
 		</div>
 
-		<div class="settings-group">
+		<div v-if="!isLoggedIn" class="settings-group">
 			<h3 class="settings-group__header">
 				<i class="material-icons">person</i>{{ $t('settings.loginWithCredentials.title') }}
 			</h3>
 
 			<form ref="loginWithCredentialsForm" class="my-5 space-y-5" @submit.prevent="loginWithCredentials">
 				<label>
-					<span>Username</span>
-					<input type="text" name="username" />
+					<span>E-mail</span>
+					<input type="text" name="email" />
 				</label>
 				<label>
 					<span>Password</span>
@@ -832,6 +832,7 @@ export default {
 	computed: {
 		...mapGetters({
 			arl: 'getARL',
+			accessToken: 'getAccessToken',
 			user: 'getUser',
 			isLoggedIn: 'isLoggedIn',
 			clientMode: 'getClientMode',
@@ -896,22 +897,28 @@ export default {
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
-		window.api.receive('downloadFolderSelected', this.downloadFolderSelected)
-		window.api.receive('applogin_arl', this.loggedInViaDeezer)
+		if (this.clientMode){
+			window.api.receive('downloadFolderSelected', this.downloadFolderSelected)
+			window.api.receive('applogin_arl', this.loggedInViaDeezer)
+		}
 
 		this.$on('hook:destroyed', () => {
 			socket.off('updateSettings')
 			socket.off('accountChanged')
 			socket.off('familyAccounts')
-			socket.off('applogin_arl')
 		})
 	},
 	methods: {
 		...mapActions({
 			dispatchARL: 'setARL',
+			dispatchAccessTocken: 'setAccessToken',
+			dispatchUser: 'setUser',
+			removeARL: 'removeARL',
 			setPreviewVolume: 'setPreviewVolume',
 			setSlimDownloads: 'setSlimDownloads',
-			setSlimSidebar: 'setSlimSidebar'
+			setSlimSidebar: 'setSlimSidebar',
+			dispatchLogout: 'logout',
+			dispatchLogin: 'login'
 		}),
 		onTemplateVariableClick(templateName) {
 			copyToClipboard(templateName)
@@ -978,22 +985,48 @@ export default {
 			// this.login()
 			// const res = await fetchData('login', { arl, force: true, child: this.accountNum })
 		},
-		async login() {
+		async login(arl, force = false) {
+			toast(this.$t('toasts.loggingIn'), 'loading', false, 'login-toast')
+			const data = await fetchData('login-arl', { arl, force, child: this.accountNum }, 'POST')
+			const { status, user } = data
+			switch (status) {
+				case 1:
+				case 3:
+					// Login ok
+					toast(this.$t('toasts.loggedIn'), 'done', true, 'login-toast')
+					this.dispatchLogin(data)
+					break
+				case 2:
+					// Already logged in
+					toast(this.$t('toasts.alreadyLogged'), 'done', true, 'login-toast')
+					this.dispatchUser(user)
+					break
+				case 0:
+					// Login failed
+					toast(this.$t('toasts.loginFailed'), 'close', true, 'login-toast')
+					this.removeARL()
+					break
+				case -1:
+					toast(this.$t('toasts.deezerNotAvailable'), 'close', true, 'login-toast')
+			}
+		},
+		async loginButton() {
 			const newArl = this.$refs.loginInput.value.trim()
 
 			if (newArl && newArl !== this.arl) {
-				const res = await fetchData('login-arl', { arl: newArl, force: true, child: this.accountNum }, 'POST')
-				this.loggedInViaDeezer(res.arl)
+				this.login(newArl, true)
 			}
 		},
 		async loginWithCredentials() {
 			const fromLoginForm = getFormItem(this.$refs.loginWithCredentialsForm)
 
-			const { username } = fromLoginForm('username')
+			const { email } = fromLoginForm('email')
 			const { password } = fromLoginForm('password')
 
-			const response = await postToServer('loginWithCredentials', { username, password })
-			console.log({ response })
+			const { accessToken, arl } = await postToServer('loginWithCredentials', { email, password, accessToken: this.accessToken})
+
+			if (accessToken !== this.accessToken) this.dispatchAccessTocken({ accessToken })
+			if (arl) this.login(arl)
 		},
 		appLogin() {
 			window.api.send('applogin')
@@ -1011,8 +1044,13 @@ export default {
 		initAccounts(accounts) {
 			this.accounts = accounts
 		},
-		logout() {
-			socket.emit('logout')
+		async logout() {
+			const result = await postToServer('logout')
+			console.log(result)
+			if (result.logged_out) {
+				toast(this.$t('toasts.loggedOut'), 'done', true, 'login-toast')
+				this.dispatchLogout()
+			}
 		},
 		initSettings(settings, credentials) {
 			// this.loadDefaultSettings()

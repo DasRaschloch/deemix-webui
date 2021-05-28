@@ -21,7 +21,7 @@ import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
-import { fetchData } from '@/utils/api'
+import { fetchData, postToServer } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -40,12 +40,14 @@ async function startApp() {
 	store.dispatch('setAppInfo', connectResponse.update).catch(console.error)
 
 	let arl = localStorage.getItem('arl')
+	const accessToken = localStorage.getItem('accessToken')
 
 	if (connectResponse.autologin) {
 		console.info('Autologin')
 		const accountNum = localStorage.getItem('accountNum')
 
-		if (arl) {
+		async function login(arl, accountNum) {
+			toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
 			arl = arl.trim()
 			let result
 
@@ -55,6 +57,19 @@ async function startApp() {
 				result = await fetchData('login-arl', { arl }, 'POST')
 			}
 
+			return result
+		}
+
+		if (arl) {
+			let result = await login(arl, accountNum)
+			if (result.status === 0 && accessToken) {
+				const { arl: newArl } = await postToServer('loginWithCredentials', { accessToken })
+				if (newArl && newArl !== arl) {
+					arl = newArl
+					store.dispatch('setARL', { arl })
+				}
+				result = await login(newArl, accountNum)
+			}
 			loggedIn(result)
 		}
 	} else {
@@ -68,7 +83,7 @@ function initClient() {
 }
 
 document.addEventListener('DOMContentLoaded', startApp)
-if (window.api){
+if (window.api) {
 	initClient()
 }
 
@@ -152,22 +167,6 @@ function loggedIn(data) {
 	}
 }
 
-/*
-socket.on('logging_in', function() {
-	toast(i18n.t('toasts.loggingIn'), 'loading', false, 'login-toast')
-})
-
-socket.on('logged_in', function(data) {
-
-})
-
-socket.on('logged_out', function() {
-	toast(i18n.t('toasts.loggedOut'), 'done', true, 'login-toast')
-
-	store.dispatch('logout')
-})
-*/
-
 socket.on('restoringQueue', function () {
 	toast(i18n.t('toasts.restoringQueue'), 'loading', false, 'restoring_queue')
 })
@@ -212,7 +211,7 @@ socket.on('alreadyInQueue', function (data) {
 	toast(i18n.t('toasts.alreadyInQueue', { item: data.title }), 'playlist_add_check')
 })
 
-socket.on('loginNeededToDownload', function (data) {
+socket.on('loginNeededToDownload', function () {
 	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
 })
 

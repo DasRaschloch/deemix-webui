@@ -1,5 +1,6 @@
 const getDefaultState = () => ({
 	arl: localStorage.getItem('arl') || '',
+	accessToken: localStorage.getItem('accessToken') || '',
 	status: null,
 	user: {
 		id: null,
@@ -28,6 +29,7 @@ const actions = {
 	},
 	logout({ commit }) {
 		localStorage.removeItem('arl')
+		localStorage.removeItem('accessToken')
 
 		commit('RESET_LOGIN')
 	},
@@ -42,10 +44,26 @@ const actions = {
 			localStorage.setItem('arl', arl)
 		}
 	},
+	setAccessToken({ commit }, payload) {
+		let { accessToken, saveOnLocalStorage } = payload
+
+		saveOnLocalStorage = typeof saveOnLocalStorage === 'undefined' ? true : saveOnLocalStorage
+
+		commit('SET_ACCESS_TOKEN', accessToken)
+
+		if (saveOnLocalStorage) {
+			localStorage.setItem('accessToken', accessToken)
+		}
+	},
 	removeARL({ commit }) {
 		commit('SET_ARL', '')
 
 		localStorage.removeItem('arl')
+	},
+	removeAccessToken({ commit }) {
+		commit('SET_ACCESS_TOKEN', '')
+
+		localStorage.removeItem('accessToken')
 	},
 	setUser({ commit }, payload) {
 		commit('SET_USER', payload)
@@ -57,6 +75,7 @@ const actions = {
 
 const getters = {
 	getARL: state => state.arl,
+	getAccessToken: state => state.accessToken,
 	getUser: state => state.user,
 	getSpotifyUser: state => state.spotifyUser,
 	getClientMode: state => state.clientMode,
@@ -68,6 +87,9 @@ const getters = {
 const mutations = {
 	SET_ARL(state, payload) {
 		state.arl = payload
+	},
+	SET_ACCESS_TOKEN(state, payload) {
+		state.accessToken = payload
 	},
 	SET_STATUS(state, payload) {
 		state.status = payload

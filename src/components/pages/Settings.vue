@@ -50,9 +50,12 @@
 					{{ $t('settings.login.arl.question') }}
 				</RouterLink>
 
+				<!--
+				Uncomment when implemented
 				<a v-if="clientMode" class="block" href="#" @click="appLogin">
 					{{ $t('settings.login.login') }}
 				</a>
+				-->
 
 				<button class="btn btn-primary" style="width: 100%" @click="loginButton">
 					{{ $t('settings.login.arl.update') }}

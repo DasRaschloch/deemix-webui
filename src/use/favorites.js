@@ -22,7 +22,7 @@ function refreshFavorites({ isInitial = false }) {
 		fetchData('getUserSpotifyPlaylists', {
 			spotifyUser: store.getters.getSpotifyUser.id
 		})
-			.then(({ data: spotifyPlaylists }) => {
+			.then(spotifyPlaylists => {
 				favoriteSpotifyPlaylists.value = spotifyPlaylists
 			})
 			.catch(console.error)

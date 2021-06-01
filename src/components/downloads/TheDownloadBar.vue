@@ -166,6 +166,7 @@ export default {
 	mounted() {
 		socket.on('startDownload', this.startDownload)
 		socket.on('startConversion', this.startConversion)
+		socket.on('finishConversion', this.finishConversion)
 		// socket.on('init_downloadQueue', this.initQueue)
 		socket.on('addedToQueue', this.addToQueue)
 		socket.on('updateQueue', this.updateQueue)
@@ -425,6 +426,9 @@ export default {
 		startConversion(uuid) {
 			this.$set(this.queueList[uuid], 'status', 'converting')
 			this.$set(this.queueList[uuid], 'conversion', 0)
+		},
+		finishConversion(downloadObject) {
+			this.$set(this.queueList[downloadObject.uuid], 'size', downloadObject.size)
 		},
 		async showErrorsTab(item) {
 			await this.setErrors(item)

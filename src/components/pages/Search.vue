@@ -191,12 +191,9 @@ export default defineComponent({
 			const currentTabKey = `${type}Tab`
 			let next = total
 
-			// console.log({ currentTabKey, test: state.currentTab.searchType })
-
 			if (nextResult) {
 				next = parseInt(nextResult.match(/index=(\d*)/)[1])
 			}
-			// console.log({ next, total, type, newData })
 
 			if (state.results[currentTabKey].total !== total) {
 				state.results[currentTabKey].total = total

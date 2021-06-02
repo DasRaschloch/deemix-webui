@@ -124,7 +124,6 @@ export default {
 	},
 	methods: {
 		showSearchbarMenu(url) {
-			console.log(url)
 			const searchbar = document.getElementById('searchbar')
 			searchbar.dataset.cmLink = url
 			const contextMenuEvent = {

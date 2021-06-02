@@ -12,7 +12,7 @@ class CustomSocket extends WebSocket {
 
 	on(key, cb) {
 		if (!Object.keys(this.listeners).includes(key)) {
-			console.log('on:', key)
+			// console.log('on:', key)
 			this.listeners[key] = cb
 
 			this.addEventListener('message', event => {
@@ -27,7 +27,7 @@ class CustomSocket extends WebSocket {
 
 	off(key) {
 		if (Object.keys(this.listeners).includes(key)) {
-			console.log('off:', key)
+			// console.log('off:', key)
 			this.removeEventListener('message', this.listeners[key])
 			delete this.listeners[key]
 		}

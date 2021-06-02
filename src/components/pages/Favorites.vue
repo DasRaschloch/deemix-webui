@@ -27,7 +27,7 @@
 			<div v-if="playlists.length == 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
-			<div v-if="playlists.length > 0 || spotifyPlaylists > 0" class="release-grid">
+			<div v-if="playlists.length > 0 || spotifyPlaylists.length > 0" class="release-grid">
 				<div v-for="release in playlists" :key="release.id" class="release">
 					<router-link :to="{ name: 'Playlist', params: { id: release.id } }" class="cursor-pointer" tag="div">
 						<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
@@ -63,7 +63,7 @@
 		</div>
 
 		<div v-show="activeTab === 'album'">
-			<div v-if="albums.length == 0">
+			<div v-if="albums.length === 0">
 				<h1>{{ $t('favorites.noAlbums') }}</h1>
 			</div>
 			<div v-if="albums.length > 0" class="release-grid">
@@ -183,7 +183,7 @@ export default defineComponent({
 		BaseTabs,
 		BaseTab
 	},
-	setup(props, ctx) {
+	setup(_, ctx) {
 		const state = reactive({
 			activeTab: 'playlist',
 			tabs: ['playlist', 'album', 'artist', 'track']
@@ -251,7 +251,6 @@ export default defineComponent({
 		},
 		getActiveRelease(tab = this.activeTab) {
 			let toDownload
-			// console.log({ tab, play: this.playlists })
 
 			switch (tab) {
 				case 'playlist':

@@ -220,13 +220,10 @@ export default {
 				queue: initQueueList,
 				restored
 			} = data
-			console.log({ initQueueList })
 
 			const initQueueComplete = Object.values(initQueueList)
 				.filter(el => ['completed', 'withErrors', 'failed'].includes(el.status))
 				.map(el => el.uuid)
-
-			console.log({ initQueueComplete })
 
 			if (initQueueComplete && initQueueComplete.length) {
 				initQueueComplete.forEach(item => {

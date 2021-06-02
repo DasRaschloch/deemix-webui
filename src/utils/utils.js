@@ -2,6 +2,7 @@
  * Climbs the DOM until the root is reached, storing every node passed.
  * @param 	{HTMLElement} el
  * @return	{Array}				Contains all the nodes between el and the root
+ * @since		0.0.0
  */
 export function generatePath(el) {
 	if (!el) {
@@ -17,6 +18,11 @@ export function generatePath(el) {
 	return path
 }
 
+/**
+ * @param		{string}	text
+ * @returns {boolean}
+ * @since		0.0.0
+ */
 export function isValidURL(text) {
 	const lowerCaseText = text.toLowerCase()
 
@@ -35,6 +41,11 @@ export function isValidURL(text) {
 	return false
 }
 
+/**
+ * @param		{number}	duration
+ * @returns {string}
+ * @since		0.0.0
+ */
 export function convertDuration(duration) {
 	// Convert from seconds only to mm:ss format
 	let mm, ss
@@ -47,6 +58,11 @@ export function convertDuration(duration) {
 	return mm + ':' + ss
 }
 
+/**
+ * @param {number} duration
+ * @returns {[number, number, number]}
+ * @since	0.0.0
+ */
 export function convertDurationSeparated(duration) {
 	let hh, mm, ss
 	mm = Math.floor(duration / 60)
@@ -56,9 +72,13 @@ export function convertDurationSeparated(duration) {
 	return [hh, mm, ss]
 }
 
-export function numberWithDots(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-}
+/**
+ * @param 	{number}	x
+ * @returns {string}
+ * @since		0.0.0
+ * @deprecated
+ */
+export const numberWithDots = x => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
 
 // On scroll event, returns currentTarget = null
 // Probably on other events too
@@ -82,7 +102,9 @@ export function debounce(func, wait, immediate) {
  * Workaround to copy to the clipboard cross-OS by generating a
  * ghost input and copying the passed String
  *
- * @param {string}	text Text to copy
+ * @param 	{string}	text Text to copy
+ * @returns	void
+ * @since		0.0.0
  */
 export function copyToClipboard(text) {
 	const ghostInput = document.createElement('input')
@@ -100,6 +122,7 @@ export function copyToClipboard(text) {
  * @param		{object|array}	obj
  * @param		{...any}				props
  * @returns	{any|null}			property requested
+ * @since		0.0.0
  */
 export function getPropertyWithFallback(obj, ...props) {
 	for (const prop of props) {

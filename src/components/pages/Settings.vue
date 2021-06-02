@@ -900,7 +900,7 @@ export default {
 		socket.on('updateSettings', this.updateSettings)
 		socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
-		if (this.clientMode){
+		if (this.clientMode) {
 			window.api.receive('downloadFolderSelected', this.downloadFolderSelected)
 			window.api.receive('applogin_arl', this.loggedInViaDeezer)
 		}
@@ -1026,7 +1026,11 @@ export default {
 			const { email } = fromLoginForm('email')
 			const { password } = fromLoginForm('password')
 
-			const { accessToken, arl } = await postToServer('loginWithCredentials', { email, password, accessToken: this.accessToken})
+			const { accessToken, arl } = await postToServer('loginWithCredentials', {
+				email,
+				password,
+				accessToken: this.accessToken
+			})
 
 			if (accessToken !== this.accessToken) this.dispatchAccessTocken({ accessToken })
 			if (arl) this.login(arl)

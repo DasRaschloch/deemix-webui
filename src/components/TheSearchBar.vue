@@ -102,6 +102,8 @@ import { defineComponent, ref } from '@vue/composition-api'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
 import { socket } from '@/utils/socket'
+import { fetchData } from '@/utils/api'
+import EventBus from '@/utils/EventBus'
 
 export default defineComponent({
 	setup() {
@@ -156,8 +158,27 @@ export default defineComponent({
 				}
 
 				if (isShowingAnalyzer) {
-					socket.emit('analyzeLink', term)
-					return
+					try {
+						const analyzedData = await fetchData('analyzeLink', { term })
+						const isError = !!analyzedData.errorCode
+
+						if (isError) {
+							throw new Error(analyzedData.errorMessage)
+						}
+
+						if (analyzedData.type === 'track') {
+							EventBus.$emit('analyze_track', analyzedData)
+						}
+
+						if (analyzedData.type === 'album') {
+							EventBus.$emit('analyze_album', analyzedData)
+						}
+						// socket.emit('analyzeLink', term)
+						return
+					} catch (error) {
+						console.error(error)
+						return
+					}
 				}
 
 				// ? Open downloads tab maybe?

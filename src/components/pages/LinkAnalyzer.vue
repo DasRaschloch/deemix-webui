@@ -134,10 +134,12 @@
 </template>
 
 <script>
+/* eslint-disable camelcase */
 import { socket } from '@/utils/socket'
 import { convertDuration } from '@/utils/utils'
 import { COUNTRIES } from '@/utils/countries'
 import { sendAddToQueue } from '@/utils/downloads'
+import EventBus from '@/utils/EventBus'
 
 export default {
 	data() {
@@ -153,8 +155,8 @@ export default {
 		}
 	},
 	mounted() {
-		socket.on('analyze_track', this.showTrack)
-		socket.on('analyze_album', this.showAlbum)
+		EventBus.$on('analyze_track', this.showTrack)
+		EventBus.$on('analyze_album', this.showAlbum)
 		socket.on('analyze_notSupported', this.notSupported)
 	},
 	methods: {

@@ -10,12 +10,12 @@ export function sendAddToQueue(url, bitrate = null) {
 	fetchData('addToQueue', { url, bitrate }, 'POST')
 }
 
+/**
+ * @param {{ link: string }[]} releases
+ * @returns {string}
+ */
 export function aggregateDownloadLinks(releases) {
-	const links = []
-
-	releases.forEach(release => {
-		links.push(release.link)
-	})
+	const links = releases.map(release => release.link)
 
 	return links.join(';')
 }

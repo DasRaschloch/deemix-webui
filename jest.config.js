@@ -6,5 +6,8 @@ module.exports = {
 	setupFiles: ['dotenv/config'],
 	transform: {
 		'^.+\\.[t|j]sx?$': 'babel-jest'
+	},
+	moduleNameMapper: {
+		'@/(.*)': ['<rootDir>/src/$1']
 	}
 }

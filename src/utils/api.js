@@ -6,14 +6,10 @@ export function fetchData(key, data = {}, method = 'GET') {
 	})
 
 	return fetch(url.href, { method })
-		.then(response => {
-			if (!response.ok) {
-				throw new Error('Network response was not ok')
-			}
-			return response.json()
-		})
+		.then(response => response.json())
 		.catch(error => {
 			console.error('There has been a problem with your fetch operation:', error)
+			return Promise.reject(error)
 		})
 }
 

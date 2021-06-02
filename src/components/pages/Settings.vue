@@ -898,7 +898,7 @@ export default {
 		}
 
 		socket.on('updateSettings', this.updateSettings)
-		socket.on('accountChanged', this.accountChanged)
+		// socket.on('accountChanged', this.accountChanged)
 		socket.on('familyAccounts', this.initAccounts)
 		if (this.clientMode) {
 			window.api.receive('downloadFolderSelected', this.downloadFolderSelected)
@@ -907,7 +907,7 @@ export default {
 
 		this.$on('hook:destroyed', () => {
 			socket.off('updateSettings')
-			socket.off('accountChanged')
+			// socket.off('accountChanged')
 			socket.off('familyAccounts')
 		})
 	},
@@ -1038,8 +1038,11 @@ export default {
 		appLogin() {
 			window.api.send('applogin')
 		},
-		changeAccount() {
-			socket.emit('changeAccount', this.accountNum)
+		async changeAccount() {
+			// socket.emit('changeAccount', this.accountNum)
+			const [user, accountNum] = await fetchData('changeAccount', this.accountNum)
+
+			this.accountChanged(user, accountNum)
 		},
 		accountChanged(user, accountNum) {
 			this.$refs.username.innerText = user.name

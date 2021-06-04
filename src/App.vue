@@ -45,7 +45,6 @@ import TheContextMenu from '@components/globals/TheContextMenu.vue'
 import TheTrackPreview from '@components/globals/TheTrackPreview.vue'
 import TheQualityModal from '@components/globals/TheQualityModal.vue'
 // import ConfirmModal from '@components/globals/ConfirmModal.vue'
-
 import TheSidebar from '@components/TheSidebar.vue'
 import TheSearchBar from '@components/TheSearchBar.vue'
 import TheContent from '@components/TheContent.vue'
@@ -69,7 +68,7 @@ export default {
 		}
 	},
 	mounted() {
-		socket.addEventListener('open', event => {
+		socket.addEventListener('open', () => {
 			console.log('Connected to WebSocket')
 			this.isSocketConnected = true
 		})

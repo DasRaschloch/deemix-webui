@@ -402,6 +402,7 @@ const it = {
 		favorites: 'preferiti',
 		linkAnalyzer: 'analizza link',
 		settings: 'impostazioni',
+		logs: 'log',
 		about: 'info'
 	},
 	tracklist: {

@@ -42,6 +42,13 @@ export const links = [
 		label: 'sidebar.settings'
 	},
 	{
+		name: 'logs',
+		ariaLabel: 'logs',
+		routerName: 'Logs',
+		icon: 'description',
+		label: 'sidebar.logs'
+	},
+	{
 		name: 'about',
 		ariaLabel: 'info',
 		routerName: 'About',

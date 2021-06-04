@@ -399,6 +399,7 @@ const en = {
 		favorites: 'favorites',
 		linkAnalyzer: 'link analyzer',
 		settings: 'settings',
+		logs: 'logs',
 		about: 'about'
 	},
 	tracklist: {

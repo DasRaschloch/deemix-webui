@@ -52,6 +52,7 @@ import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@
 import { standardizeData } from '@/data/standardize'
 import { useMainSearch } from '@/use/main-search'
 import { useSearch } from '@/use/search'
+import { useLogs } from '@/use/logs'
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
 

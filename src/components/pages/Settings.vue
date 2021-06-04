@@ -101,6 +101,20 @@
 		<BaseAccordion class="settings-group">
 			<template #title>
 				<h3 class="settings-group__header">
+					<i class="material-icons">description</i>
+					{{ $t('settings.logs.title') }}
+				</h3>
+			</template>
+
+			<label class="with-checkbox">
+				<input v-model="areLogsActive" type="checkbox" />
+				<span class="checkbox-text">{{ $t('settings.logs.areLogsActive') }}</span>
+			</label>
+		</BaseAccordion>
+
+		<BaseAccordion class="settings-group">
+			<template #title>
+				<h3 class="settings-group__header">
 					<i class="material-icons">web</i>
 					{{ $t('settings.appearance.title') }}
 				</h3>
@@ -807,11 +821,17 @@ import BaseAccordion from '@/components/globals/BaseAccordion.vue'
 import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
 import { fetchData, postToServer } from '@/utils/api'
 import { getFormItem } from '@/utils/forms'
+import { useLogs } from '@/use/logs'
 
 export default {
 	components: {
 		BaseAccordion,
 		TemplateVariablesList
+	},
+	setup() {
+		const { areLogsActive, saveLogsSettings } = useLogs()
+
+		return { areLogsActive, saveLogsSettings }
 	},
 	data() {
 		return {
@@ -951,6 +971,8 @@ export default {
 			localStorage.setItem('locale', newLocale)
 		},
 		saveSettings() {
+			this.saveLogsSettings()
+
 			this.lastSettings = JSON.parse(JSON.stringify(this.settings))
 			this.lastCredentials = JSON.parse(JSON.stringify(this.spotifyFeatures))
 

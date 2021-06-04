@@ -393,6 +393,10 @@ const it = {
 			update: 'Impostazioni aggiornate!',
 			reset: 'Impostazioni di default ripristinate!',
 			ARLcopied: 'ARL copiato negli appunti'
+		},
+		logs: {
+			title: 'Log',
+			areLogsActive: 'Attivi'
 		}
 	},
 	sidebar: {

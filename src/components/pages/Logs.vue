@@ -24,7 +24,7 @@ import { computed } from '@vue/composition-api'
 export default {
 	name: 'Logs',
 	setup() {
-		const messages = useLogs()
+		const { messages } = useLogs()
 		const logMessages = computed(() => messages.value.slice(0, 50).reverse())
 
 		return {

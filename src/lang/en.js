@@ -404,6 +404,10 @@ const en = {
 	},
 	tracklist: {
 		downloadSelection: 'Download selection'
+	},
+	logs: {
+		event: 'Event',
+		data: 'Data'
 	}
 }
 

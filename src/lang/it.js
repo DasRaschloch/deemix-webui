@@ -407,6 +407,10 @@ const it = {
 	},
 	tracklist: {
 		downloadSelection: 'Scarica selezionati'
+	},
+	logs: {
+		event: 'Evento',
+		data: 'Dati'
 	}
 }
 

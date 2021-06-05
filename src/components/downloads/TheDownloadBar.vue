@@ -145,7 +145,7 @@ export default {
 			isSlim: 'getSlimDownloads'
 		}),
 		finishedWithoutErrors() {
-			const isCompletedWithoutErrors = el => el.errors.length === 0
+			const isCompletedWithoutErrors = el => (el.status || '') === 'download finished' && el.errors.length === 0
 
 			return Object.values(this.queueList).filter(isCompletedWithoutErrors)
 		}
@@ -214,9 +214,9 @@ export default {
 		},
 		initQueue(data) {
 			const {
-				order: initQueue,
+				queueOrder: initQueue,
 				//		queueComplete: initQueueComplete,
-				currentItem,
+				current: currentItem,
 				queue: initQueueList,
 				restored
 			} = data

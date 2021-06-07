@@ -224,10 +224,14 @@ const fr = {
 			loggedIn: 'Vous êtes connecté en tant que {username}',
 			arl: {
 				question: 'Comment obtenir mon ARL personnel ?',
-				update: "Mettre à jour l'ARL"
+				update: "Actualiser l'ARL"
 			},
 			logout: 'Déconnexion',
 			login: 'Connexion via deezer.com'
+		},
+		loginWithCredentials: {
+			title: "Connexion avec vos informations d'identification",
+			login: 'Connexion'
 		},
 		appearance: {
 			title: 'Apparence',
@@ -400,6 +404,10 @@ const fr = {
 			update: 'Paramètres mis à jour !',
 			reset: 'Paramètres réinitialisés à leur valeur par défaut !',
 			ARLcopied: 'ARL copié dans le presse-papier'
+		},
+		logs: {
+			title: "Journaux (Logs)",
+			areLogsActive: 'Actifs'
 		}
 	},
 	sidebar: {
@@ -409,10 +417,15 @@ const fr = {
 		favorites: 'favoris',
 		linkAnalyzer: 'analyseur de lien',
 		settings: 'paramètres',
+		logs: "journaux (logs)",
 		about: 'à propos'
 	},
 	tracklist: {
 		downloadSelection: 'Télécharger la sélection'
+	},
+	logs: {
+		event: 'Événement',
+		data: 'Données'
 	}
 }
 

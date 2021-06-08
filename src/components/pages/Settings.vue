@@ -523,10 +523,13 @@
 				<input v-model="settings.playlistFilenameTemplate" type="text" />
 			</div>
 
+			<!--
+			TODO: Uncomment when implemented
 			<label class="with-checkbox">
 				<input v-model="settings.saveDownloadQueue" type="checkbox" />
 				<span class="checkbox-text">{{ $t('settings.downloads.saveDownloadQueue') }}</span>
 			</label>
+			-->
 		</BaseAccordion>
 
 		<BaseAccordion class="settings-group">
@@ -701,6 +704,11 @@
 				<p class="input-group-text">{{ $t('settings.spotify.username') }}</p>
 				<input v-model="spotifyUser" type="text" />
 			</div>
+
+			<label class="with-checkbox">
+				<input v-model="spotifyFeatures.fallbackSearch" type="checkbox" />
+				<span class="checkbox-text">{{ $t('settings.downloads.fallbackSearch') }}</span>
+			</label>
 		</BaseAccordion>
 
 		<footer class="bg-background-main">

@@ -81,7 +81,7 @@ const getters = {
 	getClientMode: state => state.clientMode,
 
 	isLoggedIn: state => !!state.arl,
-	isLoggedWithSpotify: state => !!state.spotifyUser.id && !!state.spotifyUser.name
+	isLoggedWithSpotify: state => !!state.spotifyUser.id
 }
 
 const mutations = {

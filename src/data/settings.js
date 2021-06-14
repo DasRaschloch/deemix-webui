@@ -4,17 +4,13 @@ let settingsData = {}
 let defaultSettingsData = {}
 let spotifyCredentials = {}
 
-const cached = false
-
 export async function getSettingsData() {
-	if (!cached) {
-		const data = await fetchData('getSettings')
-		const { settings, defaultSettings, spotifySettings } = data
-		// cached = true
-		settingsData = settings
-		defaultSettingsData = defaultSettings
-		spotifyCredentials = spotifySettings || {}
-	}
+	const data = await fetchData('getSettings')
+	const { settings, defaultSettings, spotifySettings } = data
+	settingsData = settings
+	defaultSettingsData = defaultSettings
+	spotifyCredentials = spotifySettings || {}
+
 	return { settingsData, defaultSettingsData, spotifyCredentials }
 }
 

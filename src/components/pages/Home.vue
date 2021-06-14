@@ -75,13 +75,13 @@ export default {
 			albums: []
 		}
 	},
+	computed: {
+		...mapGetters(['isLoggedIn'])
+	},
 	async created() {
 		const homeData = await getHomeData()
 
 		this.initHome(homeData)
-	},
-	computed: {
-		...mapGetters(['isLoggedIn'])
 	},
 	methods: {
 		addToQueue(e) {

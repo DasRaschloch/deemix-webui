@@ -65,6 +65,45 @@
 	</aside>
 </template>
 
+<script>
+import { computed, defineComponent, reactive, toRefs } from '@vue/composition-api'
+
+import { links } from '@/data/sidebar'
+import { useTheme } from '@/use/theme'
+
+import deemixIcon from '@/assets/deemix-icon.svg'
+
+export default defineComponent({
+	setup(_, ctx) {
+		const state = reactive({
+			activeTablink: 'home',
+			links
+		})
+		const { THEMES, currentTheme } = useTheme()
+
+		/* === Add update notification near info === */
+		const updateAvailable = computed(() => ctx.root.$store.state.appInfo.updateAvailable)
+
+		ctx.root.$router.afterEach(to => {
+			const linkInSidebar = state.links.find(link => link.routerName === to.name)
+
+			if (!linkInSidebar) return
+
+			state.activeTablink = linkInSidebar.name
+		})
+
+		return {
+			...toRefs(state),
+			updateAvailable,
+			THEMES,
+			currentTheme,
+			isSlim: computed(() => ctx.root.$store.getters.getSlimSidebar),
+			deemixIcon
+		}
+	}
+})
+</script>
+
 <style lang="scss" scoped>
 .deemix-icon-container {
 	display: grid;
@@ -108,42 +147,3 @@
 	}
 }
 </style>
-
-<script>
-import { computed, defineComponent, reactive, toRefs } from '@vue/composition-api'
-
-import { links } from '@/data/sidebar'
-import { useTheme } from '@/use/theme'
-
-import deemixIcon from '@/assets/deemix-icon.svg'
-
-export default defineComponent({
-	setup(props, ctx) {
-		const state = reactive({
-			activeTablink: 'home',
-			links
-		})
-		const { THEMES, currentTheme } = useTheme()
-
-		/* === Add update notification near info === */
-		const updateAvailable = computed(() => ctx.root.$store.state.appInfo.updateAvailable)
-
-		ctx.root.$router.afterEach((to, from) => {
-			const linkInSidebar = state.links.find(link => link.routerName === to.name)
-
-			if (!linkInSidebar) return
-
-			state.activeTablink = linkInSidebar.name
-		})
-
-		return {
-			...toRefs(state),
-			updateAvailable,
-			THEMES,
-			currentTheme,
-			isSlim: computed(() => ctx.root.$store.getters.getSlimSidebar),
-			deemixIcon
-		}
-	}
-})
-</script>

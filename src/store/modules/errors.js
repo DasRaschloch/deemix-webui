@@ -28,10 +28,9 @@ const mutations = {
 	SET_ERRORS(state, payload) {
 		// The payload has useless data for the GUI, so only the needed data is saved in the store
 		for (const errorName in state) {
+			// eslint-disable-next-line no-prototype-builtins
 			if (state.hasOwnProperty(errorName)) {
-				const error = payload[errorName]
-
-				state[errorName] = error
+				state[errorName] = payload[errorName]
 			}
 		}
 	}

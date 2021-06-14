@@ -22,43 +22,7 @@
 		</div>
 	</div>
 </template>
-<style lang="scss">
-.smallmodal {
-	position: fixed;
-	z-index: 1250;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: hsla(0, 0%, 0%, 0.4);
-	animation-duration: 0.3s;
-}
 
-.smallmodal-content {
-	--modal-content-width: 95%;
-
-	background-color: transparent;
-	margin: auto;
-	width: var(--modal-content-width);
-	position: relative;
-	top: 50%;
-	transform: translateY(-50%);
-
-	@media only screen and (min-width: 601px) {
-		--modal-content-width: 85%;
-	}
-
-	@media only screen and (min-width: 993px) {
-		--modal-content-width: 70%;
-	}
-}
-
-.smallmodal-content button {
-	width: 100%;
-	margin-bottom: 8px;
-}
-</style>
 <script>
 import { sendAddToQueue } from '@/utils/downloads'
 
@@ -99,3 +63,41 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss">
+.smallmodal {
+	position: fixed;
+	z-index: 1250;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: hsla(0, 0%, 0%, 0.4);
+	animation-duration: 0.3s;
+}
+
+.smallmodal-content {
+	--modal-content-width: 95%;
+
+	background-color: transparent;
+	margin: auto;
+	width: var(--modal-content-width);
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+
+	@media only screen and (min-width: 601px) {
+		--modal-content-width: 85%;
+	}
+
+	@media only screen and (min-width: 993px) {
+		--modal-content-width: 70%;
+	}
+}
+
+.smallmodal-content button {
+	width: 100%;
+	margin-bottom: 8px;
+}
+</style>

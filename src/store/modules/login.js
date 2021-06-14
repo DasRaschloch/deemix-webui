@@ -34,7 +34,8 @@ const actions = {
 		commit('RESET_LOGIN')
 	},
 	setARL({ commit }, payload) {
-		let { arl, saveOnLocalStorage } = payload
+		let { saveOnLocalStorage } = payload
+		const { arl } = payload
 
 		saveOnLocalStorage = typeof saveOnLocalStorage === 'undefined' ? true : saveOnLocalStorage
 
@@ -45,7 +46,8 @@ const actions = {
 		}
 	},
 	setAccessToken({ commit }, payload) {
-		let { accessToken, saveOnLocalStorage } = payload
+		let { saveOnLocalStorage } = payload
+		const { accessToken } = payload
 
 		saveOnLocalStorage = typeof saveOnLocalStorage === 'undefined' ? true : saveOnLocalStorage
 

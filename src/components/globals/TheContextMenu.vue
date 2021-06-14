@@ -80,7 +80,7 @@ export default {
 					position: 6,
 					action: () => {
 						// Paste does not always work
-						if (clipboard in navigator) {
+						if ('clipboard' in navigator) {
 							navigator.clipboard.readText().then(text => {
 								document.execCommand('insertText', undefined, text)
 							})

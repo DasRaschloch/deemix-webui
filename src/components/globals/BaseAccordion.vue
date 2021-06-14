@@ -10,17 +10,6 @@
 	</details>
 </template>
 
-<style>
-details > summary::marker {
-	display: none;
-}
-
-details.with-arrow > summary::marker {
-	display: initial;
-	vertical-align: var(--arrow-v-align, super);
-}
-</style>
-
 <script>
 export default {
 	props: {
@@ -31,3 +20,14 @@ export default {
 	}
 }
 </script>
+
+<style>
+details > summary::marker {
+	display: none;
+}
+
+details.with-arrow > summary::marker {
+	display: initial;
+	vertical-align: var(--arrow-v-align, super);
+}
+</style>

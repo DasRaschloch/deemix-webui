@@ -37,7 +37,7 @@
 			<tbody>
 				<template v-if="type !== 'spotifyPlaylist'">
 					<template v-for="(track, index) in body">
-						<tr v-if="track.type == 'track'" @click="selectRow(index, track)">
+						<tr v-if="track.type === 'track'" @click="selectRow(index, track)">
 							<td class="table__cell--x-small table__cell--center">
 								<div class="table__cell-content table__cell-content--vertical-center">
 									<i
@@ -299,7 +299,7 @@ export default {
 				this.body = playlistTracks
 			}
 		},
-		selectRow(index, track) {
+		selectRow(_, track) {
 			track.selected = !track.selected
 		}
 	}

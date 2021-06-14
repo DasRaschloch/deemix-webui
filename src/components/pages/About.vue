@@ -144,6 +144,49 @@
 	</div>
 </template>
 
+<script>
+import { computed, defineComponent, onMounted, reactive, toRefs } from '@vue/composition-api'
+
+import { useOnline } from '@/use/online'
+
+import paypal from '@/assets/paypal.svg'
+import ethereum from '@/assets/ethereum.svg'
+
+export default defineComponent({
+	setup(_, ctx) {
+		const state = reactive({
+			current: null,
+			latest: null,
+			updateAvailable: false,
+			deemixVersion: null
+		})
+		const { isOnline } = useOnline()
+
+		function initUpdate(appInfo) {
+			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = appInfo
+
+			state.current = currentCommit
+			state.latest = latestCommit
+			state.updateAvailable = updateAvailable
+			state.deemixVersion = deemixVersion
+		}
+
+		const getAppInfo = computed(() => ctx.root.$store.getters.getAppInfo)
+
+		onMounted(() => {
+			initUpdate(getAppInfo.value)
+		})
+
+		return {
+			...toRefs(state),
+			paypal,
+			ethereum,
+			isOnline
+		}
+	}
+})
+</script>
+
 <style lang="scss" scoped>
 li,
 p,
@@ -233,46 +276,3 @@ ul {
 	}
 }
 </style>
-
-<script>
-import { computed, defineComponent, onMounted, reactive, toRefs } from '@vue/composition-api'
-
-import { useOnline } from '@/use/online'
-
-import paypal from '@/assets/paypal.svg'
-import ethereum from '@/assets/ethereum.svg'
-
-export default defineComponent({
-	setup(props, ctx) {
-		const state = reactive({
-			current: null,
-			latest: null,
-			updateAvailable: false,
-			deemixVersion: null
-		})
-		const { isOnline } = useOnline()
-
-		function initUpdate(appInfo) {
-			const { currentCommit, latestCommit, updateAvailable, deemixVersion } = appInfo
-
-			state.current = currentCommit
-			state.latest = latestCommit
-			state.updateAvailable = updateAvailable
-			state.deemixVersion = deemixVersion
-		}
-
-		const getAppInfo = computed(() => ctx.root.$store.getters.getAppInfo)
-
-		onMounted(() => {
-			initUpdate(getAppInfo.value)
-		})
-
-		return {
-			...toRefs(state),
-			paypal,
-			ethereum,
-			isOnline
-		}
-	}
-})
-</script>

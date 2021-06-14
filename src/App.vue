@@ -25,18 +25,6 @@
 	</div>
 </template>
 
-<style>
-.app-container {
-	display: flex;
-}
-
-.content-container {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-}
-</style>
-
 <script>
 import { socket } from '@/utils/socket'
 
@@ -75,3 +63,15 @@ export default {
 	}
 }
 </script>
+
+<style>
+.app-container {
+	display: flex;
+}
+
+.content-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+</style>

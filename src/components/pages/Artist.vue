@@ -102,7 +102,7 @@ export default defineComponent({
 		BaseTabs,
 		BaseTab
 	},
-	setup(props, ctx) {
+	setup(_, ctx) {
 		const state = reactive({
 			currentTab: '',
 			sortKey: 'releaseDate',
@@ -145,7 +145,7 @@ export default defineComponent({
 			let sortKey = state.sortKey
 
 			if (sortKey === 'releaseTracksNumber') {
-				sortKey = o => new Number(o.releaseTracksNumber)
+				sortKey = o => Number(o.releaseTracksNumber)
 			}
 
 			return orderBy(state.currentRelease, sortKey, state.sortOrder)

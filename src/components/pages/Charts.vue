@@ -26,7 +26,7 @@
 			</button>
 			<table class="table table--charts">
 				<tbody>
-					<tr v-for="(track, pos) in chart" class="track_row">
+					<tr v-for="(track, pos) in chart" :key="pos" class="track_row">
 						<td :class="{ first: pos === 0 }" class="p-3 text-center cursor-default">
 							{{ pos + 1 }}
 						</td>
@@ -177,7 +177,7 @@ export default {
 
 			let i = 0
 			for (; i < this.countries.length; i++) {
-				if (this.countries[i].title == this.country) break
+				if (this.countries[i].title === this.country) break
 			}
 
 			if (i !== this.countries.length) {

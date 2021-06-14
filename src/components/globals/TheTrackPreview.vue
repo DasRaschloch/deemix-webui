@@ -34,7 +34,7 @@ export default {
 	mounted() {
 		this.$refs.preview.volume = 1
 
-		this.$router.beforeEach((to, from, next) => {
+		this.$router.beforeEach((_, __, next) => {
 			this.stopStackedTabsPreview()
 			next()
 		})
@@ -86,7 +86,7 @@ export default {
 
 			const { currentTarget: obj } = e
 
-			const icon = obj.tagName == 'I' ? obj : obj.querySelector('i')
+			const icon = obj.tagName === 'I' ? obj : obj.querySelector('i')
 
 			if (obj.hasAttribute('playing')) {
 				if (this.$refs.preview.paused) {

@@ -1,5 +1,5 @@
 // https://stackoverflow.com/questions/7451508/html5-audio-playback-with-fade-in-and-fade-out#answer-13149848
-export async function adjustVolume(element, newVolume, { duration = 1000, easing = swing, interval = 13 } = {}) {
+export function adjustVolume(element, newVolume, { duration = 1000, easing = swing, interval = 13 } = {}) {
 	const originalVolume = element.volume
 	const delta = newVolume - originalVolume
 

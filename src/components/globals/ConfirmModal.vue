@@ -13,6 +13,22 @@
 	</div>
 </template>
 
+<script>
+export default {
+	data() {
+		return {
+			titleText: 'Are you sure you want to reset settings to default?'
+		}
+	},
+	mounted() {
+		setTimeout(() => {
+			// this.$refs.wrapper.classList.add('bounceIn')
+			// this.$refs.body.classList.add('bounceIn')
+		}, 2000)
+	}
+}
+</script>
+
 <style lang="scss" scoped>
 $body-padding: 2rem;
 $body-radius: 15px;
@@ -68,19 +84,3 @@ $body-radius: 15px;
 	z-index: 1;
 }
 </style>
-
-<script>
-export default {
-	data() {
-		return {
-			titleText: 'Are you sure you want to reset settings to default?'
-		}
-	},
-	mounted() {
-		setTimeout(() => {
-			// this.$refs.wrapper.classList.add('bounceIn')
-			// this.$refs.body.classList.add('bounceIn')
-		}, 2000)
-	}
-}
-</script>

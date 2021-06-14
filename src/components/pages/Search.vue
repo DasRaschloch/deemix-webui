@@ -67,7 +67,7 @@ export default defineComponent({
 			required: false
 		}
 	},
-	setup(props, ctx) {
+	setup(_, ctx) {
 		const state = reactive({
 			currentTab: {
 				name: '',
@@ -246,7 +246,7 @@ export default defineComponent({
 
 			this.scrolledSearch(needToSearch)
 		},
-		currentTab(newTab, old) {
+		currentTab(newTab) {
 			if (this.isTabLoaded(newTab)) return
 
 			this.performSearch({

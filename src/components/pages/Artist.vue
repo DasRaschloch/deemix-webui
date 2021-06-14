@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, unref, reactive, computed, onMounted, toRefs, watch } from '@vue/composition-api'
+import { defineComponent, ref, unref, reactive, computed, toRefs } from '@vue/composition-api'
 import { orderBy } from 'lodash-es'
 
 import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'

@@ -152,7 +152,6 @@
 
 <script>
 import { isEmpty } from 'lodash-es'
-import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import Utils from '@/utils/utils'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'

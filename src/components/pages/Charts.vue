@@ -91,7 +91,6 @@ import { getChartsData, getChartTracks } from '@/data/charts'
 
 import PreviewControls from '@components/globals/PreviewControls.vue'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
-import { fetchData } from '@/utils/api'
 
 export default {
 	components: {

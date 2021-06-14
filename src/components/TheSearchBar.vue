@@ -101,7 +101,6 @@ input[type='search']::-webkit-search-cancel-button {
 import { defineComponent, ref } from '@vue/composition-api'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
-import { socket } from '@/utils/socket'
 import { fetchData } from '@/utils/api'
 import EventBus from '@/utils/EventBus'
 

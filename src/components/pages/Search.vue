@@ -43,8 +43,6 @@ import ResultsArtists from '@components/search/ResultsArtists.vue'
 import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
 import ResultsTracks from '@components/search/ResultsTracks.vue'
 import { BaseTabs, BaseTab } from '@components/globals/BaseTabs'
-
-import { socket } from '@/utils/socket'
 import { sendAddToQueue } from '@/utils/downloads'
 import { numberWithDots, convertDuration } from '@/utils/utils'
 
@@ -52,7 +50,6 @@ import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@
 import { standardizeData } from '@/data/standardize'
 import { useMainSearch } from '@/use/main-search'
 import { useSearch } from '@/use/search'
-import { useLogs } from '@/use/logs'
 
 const resetObj = { data: [], next: 0, total: 0, hasLoaded: false }
 

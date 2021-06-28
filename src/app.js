@@ -36,6 +36,7 @@ async function startApp() {
 	}).$mount('#app')
 
 	const connectResponse = await (await fetch('connect')).json()
+	if (!connectResponse.deezerAvailable) document.getElementById('deezer_not_available').classList.remove('hide')
 
 	store.dispatch('setAppInfo', connectResponse.update).catch(console.error)
 

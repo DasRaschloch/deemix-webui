@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-import '@/plugins/composition-api'
+import '@/plugins/composition-api.js'
 
 import '@/styles/vendor/material-icons.css'
 import '@/styles/vendor/OpenSans.css'
@@ -21,7 +21,7 @@ import router from '@/router'
 import store from '@/store'
 
 import { socket } from '@/utils/socket'
-import { fetchData, postToServer } from '@/utils/api'
+import { fetchData, postToServer, SERVER_ENDPOINT } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -35,7 +35,7 @@ async function startApp() {
 		render: h => h(App)
 	}).$mount('#app')
 
-	const connectResponse = await (await fetch('connect')).json()
+	const connectResponse = await (await fetch(`${SERVER_ENDPOINT}/connect`, { credentials: 'include' })).json()
 	if (!connectResponse.deezerAvailable) document.getElementById('deezer_not_available').classList.remove('hide')
 
 	store.dispatch('setAppInfo', connectResponse.update).catch(console.error)

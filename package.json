@@ -1,5 +1,6 @@
 {
-	"version": "0.0.0",
+	"name": "deemix-webui",
+	"version": "1.8.0",
 	"scripts": {
 		"vite": "vite",
 		"serve": "yarn --cwd ../server start",

@@ -32,28 +32,24 @@
 					<ResultsTracks
 						v-else-if="section === 'TRACK'"
 						:view-info="standardizeData(viewInfo.TRACK, formatSingleTrack)"
-						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsAlbums
-						v-else-if="section == 'ALBUM'"
+						v-else-if="section === 'ALBUM'"
 						:view-info="standardizeData(viewInfo.ALBUM, formatAlbums)"
-						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsPlaylists
-						v-else-if="section == 'PLAYLIST'"
+						v-else-if="section === 'PLAYLIST'"
 						:view-info="standardizeData(viewInfo.PLAYLIST, formatPlaylist)"
-						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 
 					<ResultsArtists
 						v-else-if="section === 'ARTIST'"
 						:view-info="standardizeData(viewInfo.ARTIST, formatArtist)"
-						:items-to-show="6"
 						@add-to-queue="$emit('add-to-queue', $event)"
 					/>
 				</template>
@@ -85,7 +81,7 @@ export default {
 	props: {
 		viewInfo: {
 			type: Object,
-			required: false
+			required: true
 		}
 	},
 	computed: {

@@ -718,101 +718,6 @@
 	</div>
 </template>
 
-<style lang="scss" scoped>
-#logged_in_info {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: space-evenly;
-	height: 250px;
-}
-
-.locale-flag {
-	justify-content: center;
-	cursor: pointer;
-	width: 60px;
-
-	&:not(:last-child) {
-		margin-right: 10px;
-	}
-
-	&.locale-flag--current {
-		::v-deep svg {
-			filter: brightness(1) !important;
-		}
-	}
-
-	&::v-deep svg {
-		width: 40px !important;
-		height: 40px !important;
-		filter: brightness(0.5);
-	}
-}
-
-.settings-group {
-	border-top-width: 1px;
-	border-color: hsl(0, 0%, 50%);
-}
-
-.settings-group__header {
-	display: inline-flex;
-	align-items: center;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
-	font-size: 1.5rem;
-
-	i.material-icons {
-		margin-right: 1rem;
-	}
-}
-
-.settings-container {
-	display: flex;
-
-	&__half {
-		width: 50%;
-	}
-
-	&__third {
-		width: 33%;
-
-		&--only-checkbox {
-			display: flex;
-			align-items: start;
-			flex-direction: column;
-			justify-content: center;
-		}
-	}
-
-	&__half > *,
-	&__third > * {
-		margin-bottom: 1rem;
-	}
-}
-
-.with-checkbox {
-	display: flex;
-	align-items: center;
-
-	[type='checkbox'] {
-		cursor: pointer;
-	}
-
-	.checkbox-text {
-		margin-left: 10px;
-		cursor: pointer;
-		user-select: none;
-	}
-}
-
-/* Input group */
-.input-group {
-	.input-group-text {
-		margin-bottom: 0.5rem;
-	}
-}
-</style>
-
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { debounce } from 'lodash-es'
@@ -1013,7 +918,7 @@ export default {
 			this.lastCredentials = JSON.parse(JSON.stringify(credentials))
 			this.spotifyFeatures = JSON.parse(JSON.stringify(credentials))
 		},
-		async loggedInViaDeezer(arl) {
+		loggedInViaDeezer(arl) {
 			this.dispatchARL({ arl })
 			// this.login()
 			// const res = await fetchData('login', { arl, force: true, child: this.accountNum })
@@ -1043,7 +948,7 @@ export default {
 					toast(this.$t('toasts.deezerNotAvailable'), 'close', true, 'login-toast')
 			}
 		},
-		async loginButton() {
+		loginButton() {
 			const newArl = this.$refs.loginInput.value.trim()
 
 			if (newArl && newArl !== this.arl) {
@@ -1117,3 +1022,98 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+#logged_in_info {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+	height: 250px;
+}
+
+.locale-flag {
+	justify-content: center;
+	cursor: pointer;
+	width: 60px;
+
+	&:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	&.locale-flag--current {
+		::v-deep svg {
+			filter: brightness(1) !important;
+		}
+	}
+
+	&::v-deep svg {
+		width: 40px !important;
+		height: 40px !important;
+		filter: brightness(0.5);
+	}
+}
+
+.settings-group {
+	border-top-width: 1px;
+	border-color: hsl(0, 0%, 50%);
+}
+
+.settings-group__header {
+	display: inline-flex;
+	align-items: center;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	font-size: 1.5rem;
+
+	i.material-icons {
+		margin-right: 1rem;
+	}
+}
+
+.settings-container {
+	display: flex;
+
+	&__half {
+		width: 50%;
+	}
+
+	&__third {
+		width: 33%;
+
+		&--only-checkbox {
+			display: flex;
+			align-items: start;
+			flex-direction: column;
+			justify-content: center;
+		}
+	}
+
+	&__half > *,
+	&__third > * {
+		margin-bottom: 1rem;
+	}
+}
+
+.with-checkbox {
+	display: flex;
+	align-items: center;
+
+	[type='checkbox'] {
+		cursor: pointer;
+	}
+
+	.checkbox-text {
+		margin-left: 10px;
+		cursor: pointer;
+		user-select: none;
+	}
+}
+
+/* Input group */
+.input-group {
+	.input-group-text {
+		margin-bottom: 0.5rem;
+	}
+}
+</style>

@@ -6,7 +6,8 @@
 
 		<div class="flex flex-wrap p-4 space-x-2 rounded-2xl bg-background-secondary">
 			<span
-				v-for="templateVariable in templateVariables"
+				v-for="(templateVariable, i) in templateVariables"
+				:key="i"
 				class="inline-block p-2 mt-2 tracking-wider rounded cursor-pointer bg-panels-bg first:ml-2 hover:shadow-outline"
 				@click="$emit('variable-click', templateVariable)"
 			>

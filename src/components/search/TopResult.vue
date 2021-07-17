@@ -46,7 +46,7 @@ export default {
 				number = this.$n(this.$attrs.info.nb_fan, { locale: 'en' })
 			}
 
-			return this.$attrs.info.type == 'artist'
+			return this.$attrs.info.type === 'artist'
 				? this.$t('search.fans', { n: number })
 				: this.$t('globals.by', { artist: this.$attrs.info.artist }) +
 						' - ' +

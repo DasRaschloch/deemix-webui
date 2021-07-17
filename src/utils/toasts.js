@@ -31,7 +31,7 @@ export const toast = function (msg, icon = null, dismiss = true, id = null) {
 			const iconNode = document.createElement('span')
 			iconNode.classList.add('toast-icon')
 
-			if (icon == 'loading') {
+			if (icon === 'loading') {
 				const loader = document.createElement('div')
 				loader.classList.add('circle-loader')
 				iconNode.appendChild(loader)
@@ -66,7 +66,7 @@ export const toast = function (msg, icon = null, dismiss = true, id = null) {
 		iconNode.classList.add('toast-icon')
 		if (icon == null) {
 			iconNode.appendChild(document.createTextNode(''))
-		} else if (icon == 'loading') {
+		} else if (icon === 'loading') {
 			const loader = document.createElement('div')
 			loader.classList.add('circle-loader')
 			iconNode.appendChild(loader)

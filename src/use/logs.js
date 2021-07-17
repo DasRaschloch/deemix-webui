@@ -1,4 +1,4 @@
-import { ref, watch } from '@vue/composition-api'
+import { ref } from '@vue/composition-api'
 import { socket } from '@/utils/socket'
 
 const messages = ref([])

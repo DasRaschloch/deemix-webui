@@ -24,7 +24,7 @@
 		</button>
 
 		<div v-show="activeTab === 'playlist'">
-			<div v-if="playlists.length == 0">
+			<div v-if="playlists.length === 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
 			<div v-if="playlists.length > 0 || spotifyPlaylists.length > 0" class="release-grid">

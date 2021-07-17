@@ -27,6 +27,41 @@
 	</main>
 </template>
 
+<script>
+import { debounce } from '@/utils/utils'
+import BackButton from '@components/globals/BackButton.vue'
+
+export default {
+	components: {
+		BackButton
+	},
+	data: () => ({
+		performScrolledSearch: false
+	}),
+	computed: {
+		showBackButton() {
+			return ['Tracklist', 'Artist', 'Album', 'Playlist', 'Spotify Playlist'].includes(this.$route.name)
+		}
+	},
+	mounted() {
+		this.$router.beforeEach((_, __, next) => {
+			this.$refs.content.scrollTo(0, 0)
+			next()
+		})
+	},
+	methods: {
+		handleContentScroll: debounce(async function () {
+			if (this.$refs.content.scrollTop + this.$refs.content.clientHeight < this.$refs.content.scrollHeight) return
+			this.performScrolledSearch = true
+
+			await this.$nextTick()
+
+			this.performScrolledSearch = false
+		}, 100)
+	}
+}
+</script>
+
 <style lang="scss">
 #container {
 	--container-width: 95%;
@@ -69,38 +104,3 @@ main::-webkit-scrollbar-thumb {
 	padding: 0px 2px;
 }
 </style>
-
-<script>
-import { debounce } from '@/utils/utils'
-import BackButton from '@components/globals/BackButton.vue'
-
-export default {
-	components: {
-		BackButton
-	},
-	data: () => ({
-		performScrolledSearch: false
-	}),
-	computed: {
-		showBackButton() {
-			return ['Tracklist', 'Artist', 'Album', 'Playlist', 'Spotify Playlist'].includes(this.$route.name)
-		}
-	},
-	mounted() {
-		this.$router.beforeEach((to, from, next) => {
-			this.$refs.content.scrollTo(0, 0)
-			next()
-		})
-	},
-	methods: {
-		handleContentScroll: debounce(async function () {
-			if (this.$refs.content.scrollTop + this.$refs.content.clientHeight < this.$refs.content.scrollHeight) return
-			this.performScrolledSearch = true
-
-			await this.$nextTick()
-
-			this.performScrolledSearch = false
-		}, 100)
-	}
-}
-</script>

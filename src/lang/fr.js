@@ -406,7 +406,7 @@ const fr = {
 			ARLcopied: 'ARL copié dans le presse-papier'
 		},
 		logs: {
-			title: "Journaux (Logs)",
+			title: 'Journaux (Logs)',
 			areLogsActive: 'Actifs'
 		}
 	},
@@ -417,7 +417,7 @@ const fr = {
 		favorites: 'favoris',
 		linkAnalyzer: 'analyseur de lien',
 		settings: 'paramètres',
-		logs: "journaux (logs)",
+		logs: 'journaux (logs)',
 		about: 'à propos'
 	},
 	tracklist: {

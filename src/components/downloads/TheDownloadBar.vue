@@ -63,58 +63,6 @@
 	</section>
 </template>
 
-<style lang="scss" scoped>
-#toggle_download_tab {
-	width: 25px;
-	height: 25px;
-
-	&::before {
-		font-family: 'Material Icons';
-		font-style: normal;
-		font-weight: 400;
-		content: 'chevron_right';
-	}
-}
-
-#download_tab_container.tab-hidden {
-	#toggle_download_tab {
-		&::before {
-			content: 'chevron_left';
-		}
-	}
-
-	&::after {
-		content: attr(data-label);
-		display: flex;
-		align-items: center;
-		text-transform: capitalize;
-		writing-mode: vertical-rl;
-		line-height: 2rem;
-	}
-}
-
-#download_list {
-	height: calc(100% - 32px);
-	padding-left: 28px;
-	overflow-y: scroll;
-
-	&::-webkit-scrollbar {
-		width: 10px;
-	}
-
-	&::-webkit-scrollbar-track {
-		background: var(--panels-background);
-	}
-
-	&::-webkit-scrollbar-thumb {
-		background: var(--panels-scroll);
-		border-radius: 4px;
-		width: 6px;
-		padding: 0px 2px;
-	}
-}
-</style>
-
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import QueueItem from '@components/downloads/QueueItem.vue'
@@ -250,7 +198,7 @@ export default {
 		addToQueue(queueItem, current = false) {
 			if (Array.isArray(queueItem)) {
 				if (queueItem.length > 1) {
-					queueItem.forEach((item, i) => {
+					queueItem.forEach(item => {
 						item.silent = true
 						this.addToQueue(item)
 					})
@@ -435,3 +383,55 @@ export default {
 	}
 }
 </script>
+
+<style lang="scss" scoped>
+#toggle_download_tab {
+	width: 25px;
+	height: 25px;
+
+	&::before {
+		font-family: 'Material Icons';
+		font-style: normal;
+		font-weight: 400;
+		content: 'chevron_right';
+	}
+}
+
+#download_tab_container.tab-hidden {
+	#toggle_download_tab {
+		&::before {
+			content: 'chevron_left';
+		}
+	}
+
+	&::after {
+		content: attr(data-label);
+		display: flex;
+		align-items: center;
+		text-transform: capitalize;
+		writing-mode: vertical-rl;
+		line-height: 2rem;
+	}
+}
+
+#download_list {
+	height: calc(100% - 32px);
+	padding-left: 28px;
+	overflow-y: scroll;
+
+	&::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--panels-background);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--panels-scroll);
+		border-radius: 4px;
+		width: 6px;
+		padding: 0px 2px;
+	}
+}
+</style>

@@ -20,6 +20,30 @@
 	</div>
 </template>
 
+<script>
+export default {
+	inheritAttrs: false,
+	props: {
+		cover: {
+			type: String,
+			required: true
+		},
+		isRounded: {
+			type: Boolean,
+			required: false
+		},
+		isCircle: {
+			type: Boolean,
+			required: false
+		},
+		link: {
+			type: String,
+			required: true
+		}
+	}
+}
+</script>
+
 <style lang="scss" scoped>
 .cover-container {
 	width: 156px;
@@ -58,32 +82,8 @@
 
 		.download_overlay {
 			opacity: 1;
-			border: 0px;
+			border: 0;
 		}
 	}
 }
 </style>
-
-<script>
-export default {
-	inheritAttrs: false,
-	props: {
-		cover: {
-			type: String,
-			reqired: true
-		},
-		isRounded: {
-			type: Boolean,
-			required: false
-		},
-		isCircle: {
-			type: Boolean,
-			required: false
-		},
-		link: {
-			type: String,
-			reqired: true
-		}
-	}
-}
-</script>

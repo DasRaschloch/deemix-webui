@@ -1,3 +1,4 @@
+/* eslint-disable vue/one-component-per-file */
 import { defineComponent } from '@vue/composition-api'
 
 // https://vuejs.org/v2/guide/render-function.html

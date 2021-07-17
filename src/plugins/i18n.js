@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 
-import { locales } from '@/lang/index'
+import { locales } from '@/lang'
 
 Vue.use(VueI18n)
 
@@ -20,7 +20,7 @@ const i18n = new VueI18n({
 		 * @param {number}	choicesLength		An overall amount of available choices
 		 * @returns 				A final choice index to select plural word by
 		 */
-		ru(choice, choicesLength) {
+		ru(choice /*, choicesLength */) {
 			const n = Math.abs(choice) % 100
 			const n1 = n % 10
 

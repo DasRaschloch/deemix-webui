@@ -47,14 +47,15 @@ export function isValidURL(text) {
  * @since		0.0.0
  */
 export function convertDuration(duration) {
+	const mm = Math.floor(duration / 60)
+
 	// Convert from seconds only to mm:ss format
-	let mm, ss
-	mm = Math.floor(duration / 60)
-	ss = duration - mm * 60
-	// Add leading zero if ss < 0
+	let ss = duration - mm * 60 // Add leading zero if ss < 0
+
 	if (ss < 10) {
 		ss = '0' + ss
 	}
+
 	return mm + ':' + ss
 }
 
@@ -64,11 +65,13 @@ export function convertDuration(duration) {
  * @since	0.0.0
  */
 export function convertDurationSeparated(duration) {
-	let hh, mm, ss
-	mm = Math.floor(duration / 60)
-	hh = Math.floor(mm / 60)
-	ss = duration - mm * 60
+	let mm = Math.floor(duration / 60)
+
+	const hh = Math.floor(mm / 60)
+	const ss = duration - mm * 60
+
 	mm -= hh * 60
+
 	return [hh, mm, ss]
 }
 

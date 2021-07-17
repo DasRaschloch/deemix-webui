@@ -56,7 +56,7 @@ export default {
 		},
 		itemsToShow: {
 			type: Number,
-			required: false
+			default: 6
 		},
 		wantHeaders: {
 			type: Boolean,

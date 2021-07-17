@@ -1,9 +1,11 @@
 {
 	"version": "0.0.0",
 	"scripts": {
-		"dev": "vite",
+		"vite": "vite",
+		"serve": "yarn --cwd ../server start",
+		"dev": "npm-run-all --parallel serve vite",
 		"build": "vite build",
-		"serve": "vite preview"
+		"start": "vite preview"
 	},
 	"dependencies": {
 		"vue": "2.6.14",

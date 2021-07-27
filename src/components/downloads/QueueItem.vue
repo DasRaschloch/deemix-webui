@@ -1,5 +1,5 @@
 <template>
-	<div class="download-object">
+	<div class="download-object" :data-cm-link="generateLink">
 		<div class="download-info">
 			<img width="75px" class="rounded coverart" :src="queueItem.cover" :alt="`Cover ${queueItem.title}`" />
 
@@ -131,6 +131,21 @@ export default {
 			}
 
 			return text
+		},
+		generateLink() {
+			switch (this.queueItem.type) {
+				case "track":
+					return `https://deezer.com/track/${this.queueItem.id}`
+				case "album":
+					return `https://deezer.com/album/${this.queueItem.id}`
+				case "playlist":
+					if (this.queueItem.id.endsWith("_top_track")) return `https://www.deezer.com/artist/${this.queueItem.id.slice(0, -10)}/top_track`
+					return `https://deezer.com/playlist/${this.queueItem.id}`
+				case "spotify_playlist":
+					return `https://open.spotify.com/playlist/${this.queueItem.id}`
+				default:
+					return ""
+			}
 		}
 	},
 	methods: {

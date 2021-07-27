@@ -37,10 +37,10 @@
 				<a href="" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li> -->
 			<li>
-				<a href="https://git.rip/RemixDev/deemix" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
+				<a href="https://git.freezer.life/RemixDev/deemix-js" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>
 			<li>
-				<a href="https://git.rip/RemixDev/deemix-webui" target="_blank"> 💻 {{ $t('about.officialWebuiRepo') }} </a>
+				<a href="https://gitlab.com/RemixDev/deemix-webui" target="_blank"> 💻 {{ $t('about.officialWebuiRepo') }} </a>
 			</li>
 			<li>
 				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>

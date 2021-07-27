@@ -31,3 +31,6 @@ yarn-error.log*
 # Private configs
 /config.py
 tailwind.config.full.js
+
+# development
+*.map

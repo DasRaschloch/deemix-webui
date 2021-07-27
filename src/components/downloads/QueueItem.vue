@@ -14,9 +14,9 @@
 				<span
 					v-if="hasFails"
 					class="flex items-center"
-					:class="{ clickable: finishedWithFails }"
+					:class="{ clickable: hasFails }"
 					style="justify-content: center"
-					@click="finishedWithFails ? $emit('show-errors', queueItem) : null"
+					@click="hasFails ? $emit('show-errors', queueItem) : null"
 				>
 					{{ queueItem.failed }}
 					<i class="material-icons">error_outline</i>

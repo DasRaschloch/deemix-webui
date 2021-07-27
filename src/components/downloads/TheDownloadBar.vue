@@ -350,7 +350,7 @@ export default {
 			this.$set(this.queueList[uuid], 'status', 'downloading')
 		},
 		finishDownload(uuid) {
-			const isInQueue = this.queue.includes(uuid)
+			const isInQueue = this.queue.includes(uuid) || this.queueComplete.includes(uuid)
 
 			if (!isInQueue) return
 

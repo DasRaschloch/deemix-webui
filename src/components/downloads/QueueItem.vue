@@ -64,7 +64,7 @@ export default {
 			let allFailed = false
 
 			if (this.queueItem.status === 'download finished') {
-				allFailed = this.queueItem.failed === this.queueItem.size
+				allFailed = this.queueItem.size !== 0 && this.queueItem.failed === this.queueItem.size
 			}
 
 			return allFailed

@@ -98,6 +98,7 @@
 			</ul>
 		</div>
 
+		<!--
 		<BaseAccordion class="settings-group">
 			<template #title>
 				<h3 class="settings-group__header">
@@ -111,6 +112,7 @@
 				<span class="checkbox-text">{{ $t('settings.logs.areLogsActive') }}</span>
 			</label>
 		</BaseAccordion>
+		-->
 
 		<BaseAccordion class="settings-group">
 			<template #title>
@@ -661,11 +663,13 @@
 				<span>{{ previewVolume }}%</span>
 			</div>
 
+			<!--
 			<div class="input-group">
 				<p class="input-group-text">{{ $t('settings.other.executeCommand.title') }}</p>
 				<p class="secondary-text">{{ $t('settings.other.executeCommand.description') }}</p>
 				<input v-model="settings.executeCommand" type="text" />
 			</div>
+			-->
 		</BaseAccordion>
 
 		<BaseAccordion class="settings-group">

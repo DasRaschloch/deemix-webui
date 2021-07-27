@@ -128,8 +128,9 @@ const en = {
 			notAvailable: "Track not available on Deezer's servers!",
 			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!",
 			noSpaceLeft: 'No space left on the device!',
-			albumDoesntExists: "Track's album doesn't exist, failed to gather info",
-			wrongLicense: "Your account can't stream the track at the desired bitrate"
+			albumDoesntExists: "Track's album doesn't exist, failed to gather info.",
+			wrongLicense: "Your account can't stream the track at the desired bitrate.",
+			wrongGeolocation: "Your account can't stream the track from your current country."
 		}
 	},
 	favorites: {

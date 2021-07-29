@@ -138,7 +138,9 @@ const fr = {
 			notAvailableNoAlternative:
 				"La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
 			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !",
-			albumDoesntExists: "Aucun album n'existe pour cette piste, impossible de collecter les informations nécessaires"
+			albumDoesntExists: "Aucun album n'existe pour cette piste, impossible de collecter les informations nécessaires.",
+			wrongLicense: 'Votre compte ne prend pas en charge la piste au débit souhaité.',
+			wrongGeolocation: 'Votre compte ne prend pas en charge la piste depuis votre pays actuel.'
 		}
 	},
 	favorites: {

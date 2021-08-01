@@ -24,6 +24,7 @@
 					:is="currentTab.component"
 					:view-info="getViewInfo()"
 					want-headers
+					:items-to-show="Infinity"
 					@add-to-queue="addToQueue"
 					@change-search-tab="changeSearchTab"
 				></component>

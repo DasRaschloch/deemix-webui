@@ -1,6 +1,6 @@
 # deemix-webui
 
-This is just the WebUI for deemix, it should be used with deemix-pyweb or something like that.
+This is just the WebUI for deemix, it should be used with deemix-gui or something like that.
 If you are a web developer and want to contribute to this project, please read the [COMPILE-UI](COMPILE-UI.md) file.
 
 # "Hidden" features
@@ -11,6 +11,10 @@ If you are a web developer and want to contribute to this project, please read t
 - `ALT+Left` goes back to the previous page, if present (like would happen in the browser)
 - `ALT+Right` goes forward to the next page, if present (like would happen in the browser)
 - Custom context menu: on certain elements, like download buttons or album covers, when opening the context menu, a custom one with more options will appear instead of the default one
+
+# Deps
+
+- `rollup-plugin-vue@6` cannot be installed until vue is updated to v3
 
 # License
 

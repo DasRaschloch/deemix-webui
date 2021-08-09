@@ -40,8 +40,11 @@ export default {
 		}),
 		// Needed for Vue imports
 		replace({
-			'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-			__VER__: JSON.stringify(version)
+			preventAssignment: true,
+			values: {
+				'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+				__VER__: JSON.stringify(version)
+			}
 		}),
 		resolve(), // Tells Rollup how to find imported modules in node_modules
 		commonjs(), // Converts imported modules to ES modules, if necessary

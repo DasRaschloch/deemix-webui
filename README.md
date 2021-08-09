@@ -14,7 +14,7 @@ If you are a web developer and want to contribute to this project, please read t
 
 # Deps
 
-- `rollup-plugin-vue@6` cannot be installed until vue is updated to v3
+- `rollup-plugin-vue@4.2.0` is needed because of https://github.com/vuejs/rollup-plugin-vue/issues/238
 
 # License
 

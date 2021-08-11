@@ -273,9 +273,12 @@ export default defineComponent({
 			return toDownload
 		},
 		getTabLength(tab = this.activeTab) {
-			const total = this[`${tab}s`]?.length
-			// TODO: Add Spotify playlists to downlaod queue as well
-			// if (tab === "playlist") total += this.spotifyPlaylists.length
+			let total = this[`${tab}s`]?.length
+
+			if (tab === 'playlist') {
+				total += this.spotifyPlaylists.length
+			}
+
 			return total || 0
 		},
 		getLovedTracksPlaylist() {

@@ -34,6 +34,11 @@ const refreshFavorites = ({ isInitial = false }) => {
 			spotifyUser: store.getters.getSpotifyUser.id
 		})
 			.then(spotifyPlaylists => {
+				if (spotifyPlaylists.error === 'spotifyNotEnabled') {
+					favoriteSpotifyPlaylists.value = []
+					return
+				}
+
 				favoriteSpotifyPlaylists.value = spotifyPlaylists
 			})
 			.catch(console.error)

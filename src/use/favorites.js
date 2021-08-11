@@ -11,7 +11,18 @@ const favoriteTracks = ref([])
 
 const isRefreshingFavorites = ref(false)
 
-function refreshFavorites({ isInitial = false }) {
+const setAllFavorites = data => {
+	const { tracks, albums, artists, playlists } = data
+
+	isRefreshingFavorites.value = false
+
+	favoriteArtists.value = artists
+	favoriteAlbums.value = albums
+	favoritePlaylists.value = playlists
+	favoriteTracks.value = tracks
+}
+
+const refreshFavorites = ({ isInitial = false }) => {
 	if (!isInitial) {
 		isRefreshingFavorites.value = true
 	}
@@ -26,28 +37,17 @@ function refreshFavorites({ isInitial = false }) {
 				favoriteSpotifyPlaylists.value = spotifyPlaylists
 			})
 			.catch(console.error)
+	} else {
+		favoriteSpotifyPlaylists.value = []
 	}
 }
 
-function setAllFavorites(data) {
-	const { tracks, albums, artists, playlists } = data
-
-	isRefreshingFavorites.value = false
-
-	favoriteArtists.value = artists
-	favoriteAlbums.value = albums
-	favoritePlaylists.value = playlists
-	favoriteTracks.value = tracks
-}
-
-export function useFavorites() {
-	return {
-		favoriteArtists,
-		favoriteAlbums,
-		favoriteSpotifyPlaylists,
-		favoritePlaylists,
-		favoriteTracks,
-		isRefreshingFavorites,
-		refreshFavorites
-	}
-}
+export const useFavorites = () => ({
+	favoriteArtists,
+	favoriteAlbums,
+	favoriteSpotifyPlaylists,
+	favoritePlaylists,
+	favoriteTracks,
+	isRefreshingFavorites,
+	refreshFavorites
+})

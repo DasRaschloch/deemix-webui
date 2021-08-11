@@ -723,9 +723,10 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters, mapMutations } from 'vuex'
 import { debounce } from 'lodash-es'
 
+import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
 import { getSettingsData } from '@/data/settings'
 import { trackTemplateVariables } from '@/data/file-templates'
 
@@ -735,7 +736,6 @@ import { flags } from '@/utils/flags'
 import { copyToClipboard } from '@/utils/utils'
 
 import BaseAccordion from '@/components/globals/BaseAccordion.vue'
-import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
 import { fetchData, postToServer } from '@/utils/api'
 import { getFormItem } from '@/utils/forms'
 import { useLogs } from '@/use/logs'
@@ -860,6 +860,9 @@ export default {
 			dispatchLogout: 'logout',
 			dispatchLogin: 'login'
 		}),
+		...mapMutations({
+			setSpotifyUserId: 'SET_SPOTIFY_USER_ID'
+		}),
 		onTemplateVariableClick(templateName) {
 			copyToClipboard(templateName)
 			toast(`Copied ${templateName} to clipboard!`)
@@ -895,10 +898,11 @@ export default {
 
 			let changed = false
 
-			if (this.lastUser != this.spotifyUser) {
+			if (this.lastUser !== this.spotifyUser) {
 				// force cloning without linking
 				this.lastUser = (' ' + this.spotifyUser).slice(1)
 				localStorage.setItem('spotifyUser', this.lastUser)
+				this.setSpotifyUserId(this.lastUser)
 				changed = true
 			}
 

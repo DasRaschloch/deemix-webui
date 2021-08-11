@@ -107,6 +107,13 @@ const mutations = {
 		const clientMode = state.clientMode
 		Object.assign(state, getDefaultState())
 		state.clientMode = clientMode
+	},
+	SET_SPOTIFY_USER_ID(state, newSpotifyUserId) {
+		console.log('setting spotify user', { newSpotifyUserId })
+		state.spotifyUser = {
+			...state.spotifyUser,
+			id: newSpotifyUserId
+		}
 	}
 }
 

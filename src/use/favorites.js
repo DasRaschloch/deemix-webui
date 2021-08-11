@@ -1,13 +1,15 @@
-import { ref } from '@vue/composition-api'
+import { ref, computed, watchEffect } from '@vue/composition-api'
 
 import store from '@/store'
 import { fetchData } from '@/utils/api'
+import { SPOTIFY_STATUS } from '@/constants'
 
 const favoriteArtists = ref([])
 const favoriteAlbums = ref([])
 const favoriteSpotifyPlaylists = ref([])
 const favoritePlaylists = ref([])
 const favoriteTracks = ref([])
+const isLoggedWithSpotify = computed(() => store.getters.isLoggedWithSpotify)
 
 const isRefreshingFavorites = ref(false)
 
@@ -22,26 +24,30 @@ const setAllFavorites = data => {
 	favoriteTracks.value = tracks
 }
 
-const refreshFavorites = ({ isInitial = false }) => {
+const setSpotifyPlaylists = response => {
+	if (response.error === 'spotifyNotEnabled') {
+		favoriteSpotifyPlaylists.value = []
+
+		store.dispatch('setSpotifyStatus', SPOTIFY_STATUS.DISABLED).catch(console.error)
+		return
+	}
+
+	favoriteSpotifyPlaylists.value = response
+}
+
+const refreshFavorites = async ({ isInitial = false }) => {
 	if (!isInitial) {
 		isRefreshingFavorites.value = true
 	}
 
+	await store.dispatch('refreshSpotifyStatus')
+
 	fetchData('getUserFavorites').then(setAllFavorites).catch(console.error)
 
-	if (store.getters.isLoggedWithSpotify) {
-		fetchData('getUserSpotifyPlaylists', {
-			spotifyUser: store.getters.getSpotifyUser.id
-		})
-			.then(spotifyPlaylists => {
-				if (spotifyPlaylists.error === 'spotifyNotEnabled') {
-					favoriteSpotifyPlaylists.value = []
-					return
-				}
+	if (isLoggedWithSpotify.value) {
+		const spotifyUser = store.getters.getSpotifyUser.id
 
-				favoriteSpotifyPlaylists.value = spotifyPlaylists
-			})
-			.catch(console.error)
+		fetchData('getUserSpotifyPlaylists', { spotifyUser }).then(setSpotifyPlaylists).catch(console.error)
 	} else {
 		favoriteSpotifyPlaylists.value = []
 	}

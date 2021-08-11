@@ -25,6 +25,7 @@ import { fetchData, postToServer } from '@/utils/api'
 import { toast } from '@/utils/toasts'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
+import { SPOTIFY_STATUS } from '@/constants'
 
 /* ===== App initialization ===== */
 async function startApp() {
@@ -36,9 +37,14 @@ async function startApp() {
 	}).$mount('#app')
 
 	const connectResponse = await (await fetch('connect')).json()
-	if (!connectResponse.deezerAvailable) document.getElementById('deezer_not_available').classList.remove('hide')
+	const spotifyStatus = connectResponse.spotifyEnabled ? SPOTIFY_STATUS.ENABLED : SPOTIFY_STATUS.DISABLED
+
+	if (!connectResponse.deezerAvailable) {
+		document.getElementById('deezer_not_available').classList.remove('hide')
+	}
 
 	store.dispatch('setAppInfo', connectResponse.update).catch(console.error)
+	store.dispatch('setSpotifyStatus', spotifyStatus).catch(console.error)
 
 	let arl = localStorage.getItem('arl')
 	const accessToken = localStorage.getItem('accessToken')

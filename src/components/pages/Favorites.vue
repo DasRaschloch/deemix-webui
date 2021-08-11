@@ -198,7 +198,7 @@ export default defineComponent({
 			refreshFavorites
 		} = useFavorites()
 
-		refreshFavorites({ isInitial: true })
+		refreshFavorites({ isInitial: true }).catch(console.error)
 
 		watch(isRefreshingFavorites, (newVal, oldVal) => {
 			// If oldVal is true and newOne is false, it means that a refreshing has just terminated

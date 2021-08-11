@@ -723,7 +723,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import { debounce } from 'lodash-es'
 
 import TemplateVariablesList from '@components/settings/TemplateVariablesList.vue'
@@ -858,10 +858,9 @@ export default {
 			setSlimDownloads: 'setSlimDownloads',
 			setSlimSidebar: 'setSlimSidebar',
 			dispatchLogout: 'logout',
-			dispatchLogin: 'login'
-		}),
-		...mapMutations({
-			setSpotifyUserId: 'SET_SPOTIFY_USER_ID'
+			dispatchLogin: 'login',
+			setSpotifyUserId: 'setSpotifyUserId',
+			refreshSpotifyStatus: 'refreshSpotifyStatus'
 		}),
 		onTemplateVariableClick(templateName) {
 			copyToClipboard(templateName)
@@ -911,6 +910,8 @@ export default {
 				spotifySettings: this.lastCredentials,
 				spotifyUser: changed ? this.lastUser : false
 			})
+
+			// this.refreshSpotifyStatus()
 		},
 		selectDownloadFolder() {
 			window.api.send('selectDownloadFolder', this.settings.downloadLocation)
@@ -1018,6 +1019,8 @@ export default {
 			this.loadCredentials(newCredentials)
 
 			toast(this.$t('settings.toasts.update'), 'settings')
+
+			this.refreshSpotifyStatus()
 		},
 		resetToDefault() {
 			const wantsToReset = confirm(this.$t('settings.resetMessage'))

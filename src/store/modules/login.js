@@ -1,3 +1,6 @@
+import { SPOTIFY_STATUS } from '@/constants'
+import { fetchData } from '@/utils/api'
+
 const getDefaultState = () => ({
 	arl: localStorage.getItem('arl') || '',
 	accessToken: localStorage.getItem('accessToken') || '',
@@ -12,6 +15,10 @@ const getDefaultState = () => ({
 		name: null,
 		picture: null
 	},
+	// This does not always represent the truth because the status update on the server is async
+	// and at the moment there's no way to notice the status change. Therefore a fetch of the status
+	// is needed everytime we need to use it
+	spotifyStatus: SPOTIFY_STATUS.DISABLED,
 	clientMode: false
 })
 
@@ -72,6 +79,25 @@ const actions = {
 	},
 	setClientMode({ commit }, payload) {
 		commit('SET_CLIENT_MODE', payload)
+	},
+	setSpotifyStatus({ commit }, newSpotifyStatus) {
+		commit('SET_SPOTIFY_STATUS', newSpotifyStatus)
+	},
+	setSpotifyUserId({ commit }, newSpotifyUserId) {
+		commit('SET_SPOTIFY_USER_ID', newSpotifyUserId)
+	},
+	/**
+	 * Returning a Promise so that who calls this action is sure that
+	 * the fetching is complete after the statement
+	 *
+	 * @example
+	 * await store.dispatch('refreshSpotifyStatus')
+	 * // From here the status is refreshed
+	 */
+	refreshSpotifyStatus({ commit }) {
+		return fetchData('spotifyStatus').then(response => {
+			commit('SET_SPOTIFY_STATUS', response.spotifyEnabled ? SPOTIFY_STATUS.ENABLED : SPOTIFY_STATUS.DISABLED)
+		})
 	}
 }
 
@@ -83,7 +109,7 @@ const getters = {
 	getClientMode: state => state.clientMode,
 
 	isLoggedIn: state => !!state.arl,
-	isLoggedWithSpotify: state => !!state.spotifyUser.id
+	isLoggedWithSpotify: state => !!state.spotifyUser.id && state.spotifyStatus === SPOTIFY_STATUS.ENABLED
 }
 
 const mutations = {
@@ -108,8 +134,10 @@ const mutations = {
 		Object.assign(state, getDefaultState())
 		state.clientMode = clientMode
 	},
+	SET_SPOTIFY_STATUS(state, newSpotifyStatus) {
+		state.spotifyStatus = newSpotifyStatus
+	},
 	SET_SPOTIFY_USER_ID(state, newSpotifyUserId) {
-		console.log('setting spotify user', { newSpotifyUserId })
 		state.spotifyUser = {
 			...state.spotifyUser,
 			id: newSpotifyUserId

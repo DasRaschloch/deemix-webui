@@ -1,4 +1,4 @@
-const en = {
+const th = {
 	globals: {
 		welcome: 'ยินดีต้อนรับสู่ deemix',
 		back: 'กลับ',

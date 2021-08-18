@@ -935,7 +935,9 @@ export default {
 		async login(arl, force = false) {
 			toast(this.$t('toasts.loggingIn'), 'loading', false, 'login-toast')
 			const data = await fetchData('login-arl', { arl, force, child: this.accountNum }, 'POST')
-			const { status, user } = data
+			const { status, user, childs, currentChild } = data
+			this.accounts = childs
+			this.accountNum = currentChild
 			switch (status) {
 				case 1:
 				case 3:

@@ -986,7 +986,7 @@ export default {
 		},
 		async changeAccount() {
 			// socket.emit('changeAccount', this.accountNum)
-			const [user, accountNum] = await fetchData('changeAccount', this.accountNum)
+			const [user, accountNum] = await fetchData('changeAccount', { child: this.accountNum })
 
 			this.accountChanged(user, accountNum)
 		},

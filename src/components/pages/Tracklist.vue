@@ -219,7 +219,7 @@ export default {
 				label: albumLabel,
 				artist: { name: artistName },
 				tracks: albumTracks,
-				tracks: { length: numberOfTracks },
+				nb_tracks: numberOfTracks,
 				release_date,
 				cover_xl
 			} = data

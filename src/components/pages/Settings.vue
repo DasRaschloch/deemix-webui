@@ -16,6 +16,7 @@
 					<strong id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
 				</template>
 			</i18n>
+			<p>{{userLicense}} | {{user.country}}</p>
 
 			<button class="btn btn-primary" @click="logout">
 				{{ $t('settings.login.logout') }}
@@ -810,6 +811,11 @@ export default {
 		pictureHref() {
 			// Default image: https://e-cdns-images.dzcdn.net/images/user/125x125-000000-80-0-0.jpg
 			return `https://e-cdns-images.dzcdn.net/images/user/${this.user.picture}/125x125-000000-80-0-0.jpg`
+		},
+		userLicense() {
+			if (this.user.can_stream_lossless) return "Hi-Fi"
+			else if (this.user.can_stream_hq) return "Premium"
+			else return "Free"
 		}
 	},
 	async mounted() {

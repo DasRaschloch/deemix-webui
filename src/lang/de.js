@@ -228,7 +228,7 @@ const de = {
 			playlistTracknameTemplate: 'Vorlage für Tracks in einer Playlist'
 		},
 		folders: {
-			title: 'Folders',
+			title: 'Ordner',
 			createPlaylistFolder: 'Ordner für Playlist erstellen',
 			playlistNameTemplate: 'Vorlage für Playlist-Ordner',
 			createArtistFolder: 'Ordner für Künstler erstellen',

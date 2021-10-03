@@ -7,7 +7,7 @@ const de = {
 		by: 'von {artist}',
 		in: 'in {album}',
 		download_hint: 'Download',
-		play_hint: 'Play',
+		play_hint: 'Abspielen',
 		toggle_download_tab_hint: 'Erweitern/Minimieren',
 		clean_queue_hint: 'Vollständige entfernen',
 		cancel_queue_hint: 'Alle abbrechen',
@@ -206,11 +206,15 @@ const de = {
 				question: 'Wie bekomme ich meine eigene ARL?',
 				update: 'Update ARL'
 			},
-			logout: 'Logout'
+			logout: 'Ausloggen'
+		},
+		loginWithCredentials: {
+			title: 'Mit Zugangsdaten einloggen',
+			login: 'Einloggen'
 		},
 		appearance: {
 			title: 'Design',
-			slimDownloadTab: 'schmaler Download-Tab'
+			slimDownloadTab: 'Schmaler Download-Tab'
 		},
 		downloadPath: {
 			title: 'Download Pfad'

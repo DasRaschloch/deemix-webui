@@ -1,7 +1,7 @@
 const de = {
 	globals: {
 		welcome: 'Willkommen bei deemix',
-		back: 'Turück',
+		back: 'Zurück',
 		loading: 'Lädt',
 		download: '{thing} herunterladen',
 		by: 'von {artist}',

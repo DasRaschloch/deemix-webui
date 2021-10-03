@@ -1,19 +1,19 @@
 const de = {
 	globals: {
 		welcome: 'Willkommen bei deemix',
-		back: 'zurück',
-		loading: 'lädt',
-		download: 'Download {thing}',
+		back: 'Turück',
+		loading: 'Lädt',
+		download: '{thing} herunterladen',
 		by: 'von {artist}',
 		in: 'in {album}',
 		download_hint: 'Download',
 		play_hint: 'Play',
 		toggle_download_tab_hint: 'Erweitern/Minimieren',
-		clean_queue_hint: 'Entferne vollständige',
+		clean_queue_hint: 'Vollständige entfernen',
 		cancel_queue_hint: 'Alle abbrechen',
 		listTabs: {
 			empty: '',
-			all: 'alle',
+			all: 'Alle',
 			top_result: 'Top Ergebnis',
 			album: 'Album | Alben',
 			artist: 'Künstler | Künstler',
@@ -31,6 +31,17 @@ const de = {
 		}
 	},
 	about: {
+		appStatus: {
+			online: 'App Online',
+			offline: 'App Offline'
+		},
+		updates: {
+			currentVersion: 'Aktuelle Version',
+			currentWebuiVersion: 'Aktuelle WebUI Version',
+			versionNotAvailable: 'N/A',
+			updateAvailable: `Du verwendest nicht die neuste Version ({version})`,
+			deemixVersion: 'Deemix Lib Version'
+		},
 		titles: {
 			usefulLinks: 'Nützliche Links',
 			bugReports: 'Fehlermeldung',
@@ -48,29 +59,29 @@ const de = {
 		thanks:
 			'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> für die Erstellung des Logos.',
 		upToDate: {
-			text: 'Bleib auf dem Laufenden mit den Updates indem du dem {newsChannel} auf Telegram folgst.',
+			text: 'Bleib mit den Updates auf dem Laufenden, indem du dem {newsChannel} auf Telegram folgst.',
 			newsChannel: 'News Channel'
 		},
 		officialWebsite: 'Offizielle Website',
-		officialRepo: 'Offizielle Library Repository',
+		officialRepo: 'Offizielle Bibliotheks Repository',
 		officialWebuiRepo: 'Offizielle WebUI Repository',
 		officialSubreddit: 'Offizieller Subreddit',
-		newsChannel: 'News Channel',
+		newsChannel: 'Neuigkeiten Kanal',
 		questions: {
 			text:
-				'Bei Fragen oder Problemen mit der App, suche als erstes nach einer Lösung im {subreddit}. Wenn du da nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
+				'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 			subreddit: 'Subreddit'
 		},
 		beforeReporting:
-			'Bevor du einen Bug meldest, stelle sicher, dass du die neueste Version der App hast und dass das, was du melden möchtest, tatsächlich ein Bug ist und nicht nur bei dir falsch ist.',
+			'Bevor du einen Fehler meldest, stelle sicher, dass die Version deiner App auf dem neusten Stand ist und dass dies, was du melden möchtest, tatsächlich ein Fehler und nicht nur bei dir falsch ist.',
 		beSure:
-			'Stelle sicher, dass der Bug auf anderen Computern auch vorhanden ist <strong>MELDEN NICHT</strong> einen Bug, wenn er schon gemeldet worden ist.',
-		duplicateReports: 'Doppelte Fehlerberichte werden geschlossen, achte darauf.',
+			'Stelle sicher, dass der Fehler auf anderen Computern auch vorhanden ist... <strong>MELDE DEN FEHLER NICHT	</strong>, wenn dieser schon gemeldet worden ist.',
+		duplicateReports: 'Achte darauf, dass doppelte Fehlerberichte geschlossen, werden.',
 		dontOpenIssues:
-			'<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es gibt einen Subreddit dafür.',
+			'<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es existiert ein Subreddit dafür.',
 		newUI: {
 			text:
-				'Wenn du Python fließend beherrschst, kannst du versuchen, mit hilfe der base library eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
+				'Wenn du Python fließend beherrschst, kannst du versuchen, mithilfe der Basisbibliothek eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
 			repo: 'deemix Repo'
 		},
 		acceptFeatures:
@@ -83,7 +94,7 @@ const de = {
 			webui: 'WebUI'
 		},
 		itsFree:
-			'Du solltest im Kopf behalten das <strong>dies ein kostenloses Projekt ist</strong> und <strong>Du solltest die Künstler unterstützen, die du magst </strong> bevor du die Entwickler unterstützt.',
+			'Du solltest im Kopf behalten das <strong>dies ein kostenfreies Projekt ist</strong> und <strong>Du die Künstler unterstützen sollst, die du magst</strong> bevor du die Entwickler unterstützt.',
 		notObligated: 'Fühle dich nicht gezwungen zu spenden, danke, dass du deemix verwendest!',
 		lincensedUnder: {
 			text: 'Diese Arbeit ist lizensiert unter der {gpl3}.',
@@ -93,17 +104,17 @@ const de = {
 	charts: {
 		title: 'Charts',
 		changeCountry: 'Land wechseln',
-		download: 'Download Chart'
+		download: 'Chart herunterladen'
 	},
 	errors: {
-		title: 'Errors für {name}',
+		title: 'Fehler für {name}',
 		ids: {
 			invalidURL: 'URL nicht erkannt',
 			unsupportedURL: 'URL noch nicht unterstützt',
-			ISRCnotOnDeezer: 'Track ISRC ist auf deezer nicht verfügbar',
+			ISRCnotOnDeezer: 'Track ISRC ist auf Deezer nicht verfügbar',
 			notYourPrivatePlaylist: 'Du kannst keine privaten Playlisten anderer herunterladen.',
 			spotifyDisabled: 'Spotify-Funktionen sind nicht richtig eingerichtet',
-			trackNotOnDeezer: 'Track ist nicht verfügbar auf Deezer!',
+			trackNotOnDeezer: 'Track ist auf Deezer nicht verfügbar!',
 			albumNotOnDeezer: 'Album auf Deezer nicht gefunden!',
 			notOnDeezer: 'Track auf Deezer nicht verfügbar!',
 			notEncoded: 'Track noch nicht codiert!',

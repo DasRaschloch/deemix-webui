@@ -210,7 +210,9 @@ const de = {
 		},
 		loginWithCredentials: {
 			title: 'Mit Zugangsdaten einloggen',
-			login: 'Einloggen'
+			login: 'Einloggen',
+			email: 'E-Mail',
+			password: 'Passwort'
 		},
 		appearance: {
 			title: 'Design',

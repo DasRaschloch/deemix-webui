@@ -329,7 +329,7 @@ const de = {
 				day: 'TT'
 			},
 			featuredToTitle: {
-				title: 'Was soll ich mit featured Artists machen?',
+				title: 'Was soll ich mit featured Artists tun?',
 				0: 'Nichts',
 				1: 'Vom Titel entfernen',
 				3: 'Vom Titel und Albumtitel entfernen',
@@ -365,7 +365,7 @@ const de = {
 		}
 	},
 	sidebar: {
-		home: 'Home',
+		home: 'Startseite',
 		search: 'Suche',
 		charts: 'Charts',
 		favorites: 'Favoriten',

@@ -71,11 +71,11 @@
 
 			<form ref="loginWithCredentialsForm" class="my-5 space-y-5" @submit.prevent="loginWithCredentials">
 				<label>
-					<span>E-mail</span>
+					<span>{{ $t('settings.loginWithCredentials.email') }}</span>
 					<input type="text" name="email" />
 				</label>
 				<label>
-					<span>Password</span>
+					<span>{{ $t('settings.loginWithCredentials.password') }}</span>
 					<input type="password" name="password" />
 				</label>
 

@@ -59,7 +59,7 @@ const de = {
 		thanks:
 			'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> für die Erstellung des Logos.',
 		upToDate: {
-			text: 'Bleib mit den Updates auf dem Laufenden, indem du dem {newsChannel} auf Telegram folgst.',
+			text: 'Bleib auf dem Laufenden, indem du dem {newsChannel} auf Telegram folgst.',
 			newsChannel: 'News Channel'
 		},
 		officialWebsite: 'Offizielle Website',

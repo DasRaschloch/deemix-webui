@@ -16,6 +16,7 @@ import ph from '@/lang/ph'
 import zh_tw from '@/lang/zh-tw'
 import pl from '@/lang/pl'
 import gr from '@/lang/gr'
+import sr from '@/lang/sr'
 
 export const locales = {
 	it,
@@ -35,5 +36,6 @@ export const locales = {
 	ph,
 	zh_tw,
 	pl,
-	gr
+	gr,
+	sr
 }

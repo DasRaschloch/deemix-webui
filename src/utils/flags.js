@@ -15,6 +15,7 @@ import ko from 'flag-icon-css/flags/4x3/kr.svg'
 import ph from 'flag-icon-css/flags/4x3/ph.svg'
 import tw from 'flag-icon-css/flags/4x3/tw.svg'
 import pl from 'flag-icon-css/flags/4x3/pl.svg'
+import rs from 'flag-icon-css/flags/4x3/rs.svg'
 
 export const flags = {
 	it,
@@ -33,5 +34,6 @@ export const flags = {
 	ko,
 	ph,
 	zh_tw: tw,
-	pl
+	pl, 
+	sr: rs
 }

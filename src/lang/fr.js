@@ -41,7 +41,10 @@ const fr = {
 			albumN: '0 album | {n} album | {n} albums',
 			artistN: '0 artiste | {n} artiste | {n} artistes',
 			playlistN: '0 playlist | {n} playlist | {n} playlists'
-		}
+		},
+		yes: 'oui',
+		no: 'non',
+		empty: 'vide'
 	},
 	about: {
 		appStatus: {
@@ -177,8 +180,12 @@ const fr = {
 			label: 'Label',
 			recordType: "Type d'Enregistrement",
 			genres: 'Genres',
-			tracklist: 'Liste Des Pistes'
-		}
+			tracklist: 'Liste Des Pistes',
+			readable: 'Lisible',
+			available: 'Disponible'
+		},
+		countries: 'Pays',
+		noCountries: "Cette piste n'est disponible dans aucun pays."
 	},
 	search: {
 		startSearching: 'Démarrer une recherche !',
@@ -233,12 +240,16 @@ const fr = {
 		},
 		loginWithCredentials: {
 			title: "Connexion avec vos informations d'identification",
-			login: 'Connexion'
+			login: 'Connexion',
+			email: 'E-mail',
+			password: 'Mot de passe'
 		},
 		appearance: {
 			title: 'Apparence',
 			slimDownloadTab: 'Onglet de téléchargement compact',
-			slimSidebar: 'Barre latérale compacte'
+			slimSidebar: 'Barre latérale compacte',
+			searchButton: 'Afficher le bouton de recherche',
+			bitrateTags: "Afficher l'indicateur de qualité audio dans la file d'attente de téléchargement"
 		},
 		downloadPath: {
 			title: 'Emplacement De Téléchargement'

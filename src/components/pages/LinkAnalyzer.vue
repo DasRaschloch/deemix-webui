@@ -118,16 +118,16 @@
 					<td>{{ $t('linkAnalyzer.table.genres') }}</td>
 					<td>{{ data.genres.data.map(x => x.name).join('; ') }}</td>
 				</tr>
+				<tr v-if="countries.length">
+					<td>{{ $t('linkAnalyzer.table.countries') }}</td>
+					<td v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</td>
+				</tr>
 			</table>
 
 			<div v-if="type === 'album'">
 				<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Album', params: { id } }">
 					{{ $t('linkAnalyzer.table.tracklist') }}
 				</router-link>
-			</div>
-
-			<div v-if="countries.length">
-				<p v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</p>
 			</div>
 		</div>
 	</div>

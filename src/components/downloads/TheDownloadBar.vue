@@ -56,6 +56,7 @@
 				v-for="item in queueList"
 				:key="item.uuid"
 				:queue-item="item"
+				:show-tags="showTags"
 				@show-errors="showErrorsTab"
 				@remove-item="onRemoveItem"
 			/>
@@ -90,7 +91,8 @@ export default {
 	computed: {
 		...mapGetters({
 			clientMode: 'getClientMode',
-			isSlim: 'getSlimDownloads'
+			isSlim: 'getSlimDownloads',
+			showTags: 'getShowBitrateTags'
 		}),
 		finishedWithoutErrors() {
 			const isCompletedWithoutErrors = el => (el.status || '') === 'download finished' && el.errors.length === 0

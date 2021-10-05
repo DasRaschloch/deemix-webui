@@ -133,6 +133,14 @@
 				<input v-model="modelSlimSidebar" type="checkbox" />
 				<span class="checkbox-text">{{ $t('settings.appearance.slimSidebar') }}</span>
 			</label>
+			<label class="mb-4 with-checkbox">
+				<input v-model="modelShowBitrateTags" type="checkbox" />
+				<span class="checkbox-text">{{ $t('settings.appearance.bitrateTags') }}</span>
+			</label>
+			<label class="mb-4 with-checkbox">
+				<input v-model="modelShowSearchButton" type="checkbox" />
+				<span class="checkbox-text">{{ $t('settings.appearance.searchButton') }}</span>
+			</label>
 		</BaseAccordion>
 
 		<BaseAccordion class="settings-group">
@@ -666,13 +674,12 @@
 				<span>{{ previewVolume }}%</span>
 			</div>
 
-			<!--
 			<div class="input-group">
 				<p class="input-group-text">{{ $t('settings.other.executeCommand.title') }}</p>
 				<p class="secondary-text">{{ $t('settings.other.executeCommand.description') }}</p>
-				<input v-model="settings.executeCommand" type="text" />
+				<p v-if="settings.executeCommand"> {{ settings.executeCommand }} </p>
+				<p v-else>{{ $t('globals.empty').capitalize() }}</p>
 			</div>
-			-->
 		</BaseAccordion>
 
 		<BaseAccordion class="settings-group">
@@ -781,7 +788,9 @@ export default {
 			clientMode: 'getClientMode',
 			previewVolume: 'getPreviewVolume',
 			hasSlimDownloads: 'getSlimDownloads',
-			hasSlimSidebar: 'getSlimSidebar'
+			hasSlimSidebar: 'getSlimSidebar',
+			showBitrateTags: 'getShowBitrateTags',
+			showSearchButton: 'getShowSearchButton',
 		}),
 		needToWait() {
 			return Object.keys(this.getSettings).length === 0
@@ -808,6 +817,22 @@ export default {
 			},
 			set(wantSlimSidebar) {
 				this.setSlimSidebar(wantSlimSidebar)
+			}
+		},
+		modelShowBitrateTags: {
+			get() {
+				return this.showBitrateTags
+			},
+			set(wantShowBitrateTags) {
+				this.setShowBitrateTags(wantShowBitrateTags)
+			}
+		},
+		modelShowSearchButton: {
+			get() {
+				return this.showSearchButton
+			},
+			set(wantShowSearchButton) {
+				this.setShowSearchButton(wantShowSearchButton)
 			}
 		},
 		pictureHref() {
@@ -865,6 +890,8 @@ export default {
 			setPreviewVolume: 'setPreviewVolume',
 			setSlimDownloads: 'setSlimDownloads',
 			setSlimSidebar: 'setSlimSidebar',
+			setShowBitrateTags: 'setShowBitrateTags',
+			setShowSearchButton: 'setShowSearchButton',
 			dispatchLogout: 'logout',
 			dispatchLogin: 'login',
 			setSpotifyUserId: 'setSpotifyUserId',

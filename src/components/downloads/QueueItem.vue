@@ -3,7 +3,7 @@
 		<div class="download-info">
 			<div class="relative coverart rounded">
 				<img width="75px" :src="queueItem.cover" :alt="`Cover ${queueItem.title}`">
-				<span class="tag">{{ bitrateText }}</span>
+				<span v-if="showTags" class="tag">{{ bitrateText }}</span>
 			</div>
 
 			<div class="download-info-data">
@@ -55,7 +55,8 @@ export default {
 		queueItem: {
 			type: Object,
 			default: () => ({})
-		}
+		},
+		showTags: Boolean
 	},
 	data() {
 		return {

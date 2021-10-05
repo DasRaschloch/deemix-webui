@@ -43,7 +43,8 @@ const en = {
 			playlistN: '0 playlists | {n} playlist | {n} playlists'
 		},
 		yes: 'yes',
-		no: 'no'
+		no: 'no',
+		empty: 'empty'
 	},
 	about: {
 		appStatus: {
@@ -235,7 +236,9 @@ const en = {
 		appearance: {
 			title: 'Appearance',
 			slimDownloadTab: 'Slim download tab',
-			slimSidebar: 'Slim Sidebar'
+			slimSidebar: 'Slim Sidebar',
+			searchButton: 'Show search button',
+			bitrateTags: 'Show quality tag in download queue'
 		},
 		downloadPath: {
 			title: 'Download Path'

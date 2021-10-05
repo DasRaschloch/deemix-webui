@@ -1,6 +1,6 @@
 <template>
-	<header id="search" aria-label="searchbar">
-		<div class="search__icon">
+	<header id="search" aria-label="searchbar" :class="{ showSearchButton }">
+		<div v-if="!showSearchButton" class="search__icon">
 			<i class="material-icons">search</i>
 		</div>
 
@@ -14,14 +14,22 @@
 			value=""
 			:placeholder="$t('searchbar')"
 			autofocus
-			@keyup="performSearch($event)"
+			@keyup="keyPerformSearch($event)"
 		/>
 		<!-- @keyup.enter.exact="onEnter"
 			@keyup.ctrl.enter="onCTRLEnter" -->
+		<a
+			href="#"
+			class="searchButton"
+			@contextmenu="rightClickPerformSearch"
+			@click="clickPerformSearch"
+			v-if="showSearchButton"
+		><i class="material-icons">search</i></a>
 	</header>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import { defineComponent, ref } from '@vue/composition-api'
 import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -57,25 +65,48 @@ export default defineComponent({
 			document.removeEventListener('keyup', deleteSearchBarContent)
 		})
 	},
+	computed: {
+		...mapGetters({
+			showSearchButton: 'getShowSearchButton',
+		})
+	},
 	methods: {
-		async performSearch(keyEvent) {
-			const isEnterPressed = keyEvent.keyCode === 13
+		async clickPerformSearch(ev) {
+			ev.preventDefault()
+			const term = this.$refs.searchbar.value
+			const isEmptySearch = term === ''
+			if (isEmptySearch) return
 
+			await this.performSearch(term, false)
+		},
+		async rightClickPerformSearch(ev){
+			ev.preventDefault()
+			ev.stopPropagation()
+			const term = this.$refs.searchbar.value
+			const isEmptySearch = term === ''
+			if (isEmptySearch) return
+
+			await this.performSearch(term, true)
+		},
+		async keyPerformSearch(keyEvent) {
+			const isEnterPressed = keyEvent.keyCode === 13
 			if (!isEnterPressed) return
 
 			const term = this.$refs.searchbar.value
 			const isEmptySearch = term === ''
-
 			if (isEmptySearch) return
 
-			const isSearchingURL = isValidURL(term)
 			const isCtrlPressed = keyEvent.ctrlKey
+			await this.performSearch(term, isCtrlPressed)
+		},
+		async performSearch(term, modifierKey){
+			const isSearchingURL = isValidURL(term)
 			const isShowingAnalyzer = this.$route.name === 'Link Analyzer'
 			const isShowingSearch = this.$route.name === 'Search'
 			const isSameAsLastSearch = term === this.lastTextSearch
 
 			if (isSearchingURL) {
-				if (isCtrlPressed) {
+				if (modifierKey) {
 					this.$root.$emit('ContextMenu:searchbar', term)
 					return
 				}
@@ -153,6 +184,7 @@ input[type='search']::-webkit-search-cancel-button {
 	transition: border 200ms ease-in-out;
 	border-radius: 15px;
 	margin: 10px 10px 20px 10px;
+	overflow: hidden;
 
 	.search__icon {
 		width: $icon-dimension;
@@ -201,8 +233,33 @@ input[type='search']::-webkit-search-cancel-button {
 		}
 	}
 
+	.searchButton {
+		background-color: var(--primary-color);
+		color: var(--primary-text);
+		height: 100%;
+		width: 48px;
+		display: flex;
+		text-decoration: none;
+		align-items: center;
+		justify-content: center;
+		border-radius: 0px 15px 15px 0px;
+		margin-left: 1em;
+
+		i {
+			font-size: $icon-dimension;
+
+			&::selection {
+				background: none;
+			}
+		}
+	}
+
 	&:focus-within {
 		border: 1px solid var(--foreground);
+	}
+
+	&.showSearchButton {
+		padding: 0 0 0 1em;
 	}
 }
 </style>

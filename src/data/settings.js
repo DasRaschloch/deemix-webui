@@ -41,3 +41,17 @@ export function checkInitialSlimDownloads() {
 export function checkInitialSlimSidebar() {
 	return localStorage.getItem('slimSidebar') === 'true'
 }
+
+/**
+ * @returns	{boolean}
+ */
+export function checkInitialShowBitrateTags() {
+	return localStorage.getItem('showBitrateTags') === 'true'
+}
+
+/**
+ * @returns	{boolean}
+ */
+export function checkInitialShowSearchButton() {
+	return localStorage.getItem('showSearchButton') === 'true'
+}

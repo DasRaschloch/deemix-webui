@@ -43,7 +43,8 @@ const it = {
 			playlistN: '{n} playlist'
 		},
 		yes: 'sì',
-		no: 'no'
+		no: 'no',
+		empty: 'vuoto'
 	},
 	about: {
 		appStatus: {
@@ -235,7 +236,9 @@ const it = {
 		appearance: {
 			title: 'Aspetto',
 			slimDownloadTab: 'Tab dei download slim',
-			slimSidebar: 'Sidebar slim'
+			slimSidebar: 'Sidebar slim',
+			searchButton: 'Mostra bottone di ricerca',
+			bitrateTags: 'Mostra targhetta qualità nei download'
 		},
 		downloadPath: {
 			title: 'Cartella di download'

@@ -9,7 +9,13 @@
  * @property	{boolean}	hasSlimSidebar
  */
 
-import { getInitialPreviewVolume, checkInitialSlimDownloads, checkInitialSlimSidebar } from '@/data/settings'
+import {
+	getInitialPreviewVolume,
+	checkInitialSlimDownloads,
+	checkInitialSlimSidebar,
+	checkInitialShowBitrateTags,
+	checkInitialShowSearchButton
+} from '@/data/settings'
 
 /**
  * @returns	{AppInfo}
@@ -21,7 +27,9 @@ const state = () => ({
 	deemixVersion: null,
 	previewVolume: getInitialPreviewVolume(),
 	hasSlimDownloads: checkInitialSlimDownloads(),
-	hasSlimSidebar: checkInitialSlimSidebar()
+	hasSlimSidebar: checkInitialSlimSidebar(),
+	showBitrateTags: checkInitialShowBitrateTags(),
+	showSearchButton: checkInitialShowSearchButton()
 })
 
 const actions = {
@@ -63,6 +71,22 @@ const actions = {
 		Array.from(document.getElementsByClassName('toastify')).forEach(toast => {
 			toast.style.transform = `translate(${payload ? '3rem' : '14rem'}, 0)`
 		})
+	},
+	/**
+	 * @param {any}													action
+	 * @param {AppInfo['showBitrateTags']}	payload
+	 */
+	setShowBitrateTags({ commit }, payload) {
+		commit('SET_SHOW_BITRATE_TAGS', payload)
+		localStorage.setItem('showBitrateTags', payload.toString())
+	},
+	/**
+	 * @param {any}													action
+	 * @param {AppInfo['showBitrateTags']}	payload
+	 */
+	setShowSearchButton({ commit }, payload) {
+		commit('SET_SHOW_SEARCH_BUTTON', payload)
+		localStorage.setItem('showSearchButton', payload.toString())
 	}
 }
 
@@ -86,7 +110,17 @@ const getters = {
 	 * @param		{AppInfo}										state
 	 * @returns	{AppInfo['hasSlimSidebar']}
 	 */
-	getSlimSidebar: state => state.hasSlimSidebar
+	getSlimSidebar: state => state.hasSlimSidebar,
+	/**
+	 * @param		{AppInfo}										state
+	 * @returns	{AppInfo['showBitrateTags']}
+	 */
+	getShowBitrateTags: state => state.showBitrateTags,
+	/**
+	 * @param		{AppInfo}										state
+	 * @returns	{AppInfo['showSearchButton']}
+	 */
+	getShowSearchButton: state => state.showSearchButton
 }
 
 const mutations = {
@@ -138,6 +172,20 @@ const mutations = {
 	 */
 	SET_SLIM_SIDEBAR(state, payload) {
 		state.hasSlimSidebar = payload
+	},
+	/**
+	 * @param {AppInfo} 									state
+	 * @param {AppInfo['showBitrateTags']}	payload
+	 */
+	SET_SHOW_BITRATE_TAGS(state, payload) {
+		state.showBitrateTags = payload
+	},
+	/**
+	 * @param {AppInfo} 									state
+	 * @param {AppInfo['showSearchButton']}	payload
+	 */
+	SET_SHOW_SEARCH_BUTTON(state, payload) {
+		state.showSearchButton = payload
 	}
 }
 

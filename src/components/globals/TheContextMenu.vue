@@ -139,6 +139,7 @@ export default {
 			const { pageX, pageY, target: elementClicked } = contextMenuEvent
 			const path = generatePath(elementClicked)
 			let deezerLink = null
+			let isLinkOnly = false
 
 			// Searching for the first element with a data-link attribute
 			// let deezerLink = this.searchForDataLink(...)
@@ -152,6 +153,12 @@ export default {
 
 				if (path[i].matches('[data-cm-link]')) {
 					deezerLink = path[i].dataset.cmLink
+					break
+				}
+
+				if (path[i].matches('[data-link-only]')) {
+					deezerLink = path[i].dataset.linkOnly
+					isLinkOnly = true
 					break
 				}
 			}
@@ -182,7 +189,7 @@ export default {
 			if (deezerLink) {
 				// Show 'Copy Deezer Link' option
 				this.deezerHref = deezerLink
-				this.showDeezerOptions(isSearchbar)
+				this.showDeezerOptions(isSearchbar, isLinkOnly)
 			}
 		},
 		hideMenu() {
@@ -225,10 +232,10 @@ export default {
 				}
 			})
 		},
-		showDeezerOptions(isSearchbar) {
+		showDeezerOptions(isSearchbar, isLinkOnly) {
 			if (!isSearchbar) this.options.copyDeezerLink.show = true
 
-			downloadQualities.forEach(quality => {
+			if (!isLinkOnly) downloadQualities.forEach(quality => {
 				this.options[quality.objName].show = true
 			})
 		}

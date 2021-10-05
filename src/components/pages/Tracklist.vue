@@ -47,6 +47,7 @@
 											disabled: !track.preview
 										}"
 										:data-preview="track.preview"
+										:data-link-only="track.link"
 										:title="$t('globals.play_hint')"
 										class="material-icons"
 										v-on="{ click: track.preview ? playPausePreview : false }"

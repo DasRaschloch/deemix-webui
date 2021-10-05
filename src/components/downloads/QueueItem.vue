@@ -1,5 +1,5 @@
 <template>
-	<div class="download-object" :data-cm-link="generateLink">
+	<div class="download-object" :data-link-only="generateLink">
 		<div class="download-info">
 			<img width="75px" class="rounded coverart" :src="queueItem.cover" :alt="`Cover ${queueItem.title}`" />
 

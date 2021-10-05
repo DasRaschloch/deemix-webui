@@ -1,3 +1,4 @@
+// Using ISO 639-1 where possible
 import it from '@/lang/it'
 import en from '@/lang/en'
 import es from '@/lang/es'
@@ -8,15 +9,16 @@ import pt from '@/lang/pt-pt'
 import pt_br from '@/lang/pt-br'
 import ru from '@/lang/ru'
 import tr from '@/lang/tr'
-import vn from '@/lang/vn'
+import vi from '@/lang/vi'
 import hr from '@/lang/hr'
 import ar from '@/lang/ar'
 import ko from '@/lang/ko'
-import ph from '@/lang/ph'
+import fil from '@/lang/fil'
 import zh_tw from '@/lang/zh-tw'
 import pl from '@/lang/pl'
-import gr from '@/lang/gr'
+import el from '@/lang/el'
 import sr from '@/lang/sr'
+import th from '@/lang/th'
 
 export const locales = {
 	it,
@@ -29,13 +31,14 @@ export const locales = {
 	pt_br,
 	ru,
 	tr,
-	vn,
+	vi,
 	hr,
 	ar,
 	ko,
-	ph,
+	fil,
 	zh_tw,
 	pl,
-	gr,
-	sr
+	el,
+	sr,
+	th
 }

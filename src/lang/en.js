@@ -222,7 +222,9 @@ const en = {
 		},
 		loginWithCredentials: {
 			title: 'Login with credentials',
-			login: 'Login'
+			login: 'Login',
+			email: 'E-mail',
+			password: 'Password'
 		},
 		appearance: {
 			title: 'Appearance',

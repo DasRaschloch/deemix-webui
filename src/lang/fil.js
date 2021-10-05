@@ -1,4 +1,4 @@
-const ph = {
+const fil = {
 	globals: {
 		welcome: 'Welcome sa deemix',
 		back: 'bumalik',
@@ -386,4 +386,4 @@ const ph = {
 	}
 }
 
-export default ph
+export default fil

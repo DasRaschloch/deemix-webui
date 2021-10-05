@@ -222,7 +222,9 @@ const it = {
 		},
 		loginWithCredentials: {
 			title: 'Login con credentiali',
-			login: 'Login'
+			login: 'Login',
+			email: 'E-mail',
+			password: 'Password'
 		},
 		appearance: {
 			title: 'Aspetto',

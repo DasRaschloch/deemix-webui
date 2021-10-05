@@ -91,10 +91,12 @@
 					v-for="locale in locales"
 					:key="locale"
 					:class="{ 'locale-flag--current': currentLocale === locale }"
-					:title="locale"
+					:title="`${flags[locale].eng} (${flags[locale].name})`"
+					tabindex="0"
 					class="inline-flex items-center locale-flag"
 					@click="changeLocale(locale)"
-					v-html="flags[locale]"
+					@keyup.enter="changeLocale(locale)"
+					v-html="flags[locale].flag"
 				/>
 			</ul>
 		</div>

@@ -1,4 +1,4 @@
-const vn = {
+const vi = {
 	globals: {
 		welcome: 'Chào mừng đến với deemix',
 		back: 'trở lại',
@@ -354,4 +354,4 @@ const vn = {
 	}
 }
 
-export default vn
+export default vi

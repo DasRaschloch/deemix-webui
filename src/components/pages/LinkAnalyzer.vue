@@ -122,7 +122,7 @@
 					<td>{{ $t('linkAnalyzer.table.readable') }}</td>
 					<td>{{ $t( data.readable ? 'globals.yes' : 'globals.no').capitalize() }}</td>
 				</tr>
-				<tr v-if="countries.length">
+				<tr v-if="countries.length && user.country">
 					<td>{{ $t('linkAnalyzer.table.available') }}</td>
 					<td>{{ $t( available_countries.includes(user.country.toLowerCase()) ? 'globals.yes' : 'globals.no').capitalize() }}</td>
 				</tr>

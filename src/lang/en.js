@@ -41,7 +41,9 @@ const en = {
 			albumN: '0 albums | {n} album | {n} albums',
 			artistN: '0 artists | {n} artist | {n} artists',
 			playlistN: '0 playlists | {n} playlist | {n} playlists'
-		}
+		},
+		yes: 'yes',
+		no: 'no'
 	},
 	about: {
 		appStatus: {
@@ -166,8 +168,12 @@ const en = {
 			label: 'Label',
 			recordType: 'Record Type',
 			genres: 'Genres',
-			tracklist: 'Tracklist'
-		}
+			tracklist: 'Tracklist',
+			readable: 'Readable',
+			available: 'Available'
+		},
+		countries: 'Countries',
+		noCountries: 'This track is not available in any country.'
 	},
 	search: {
 		startSearching: 'Start searching!',

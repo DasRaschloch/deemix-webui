@@ -41,7 +41,9 @@ const it = {
 			albumN: '{n} album',
 			artistN: '0 artisti | {n} artista | {n} artisti',
 			playlistN: '{n} playlist'
-		}
+		},
+		yes: 'sì',
+		no: 'no'
 	},
 	about: {
 		appStatus: {
@@ -166,8 +168,12 @@ const it = {
 			label: 'Etichetta',
 			recordType: 'Tipologia di registrazione',
 			genres: 'Generi',
-			tracklist: 'Lista tracce'
-		}
+			tracklist: 'Lista tracce',
+			readable: 'Leggibile',
+			available: 'Disponibile'
+		},
+		countries: 'Paesi',
+		noCountries: 'Questo brano non è disponibile in nessun paese.'
 	},
 	search: {
 		startSearching: 'Inizia a cercare!',

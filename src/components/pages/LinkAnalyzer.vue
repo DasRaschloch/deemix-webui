@@ -118,11 +118,23 @@
 					<td>{{ $t('linkAnalyzer.table.genres') }}</td>
 					<td>{{ data.genres.data.map(x => x.name).join('; ') }}</td>
 				</tr>
+				<tr v-if="data.readable !== undefined">
+					<td>{{ $t('linkAnalyzer.table.readable') }}</td>
+					<td>{{ $t( data.readable ? 'globals.yes' : 'globals.no').capitalize() }}</td>
+				</tr>
 				<tr v-if="countries.length">
-					<td>{{ $t('linkAnalyzer.table.countries') }}</td>
-					<td v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</td>
+					<td>{{ $t('linkAnalyzer.table.available') }}</td>
+					<td>{{ $t( available_countries.includes(user.country.toLowerCase()) ? 'globals.yes' : 'globals.no').capitalize() }}</td>
 				</tr>
 			</table>
+
+			<template v-if="countries.length">
+				<h3>{{ $t('linkAnalyzer.countries') }}</h3>
+				<p v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</p>
+			</template>
+			<template v-else>
+				<h3>{{ $t('linkAnalyzer.noCountries') }}</h3>
+			</template>
 
 			<div v-if="type === 'album'">
 				<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Album', params: { id } }">
@@ -135,6 +147,7 @@
 
 <script>
 /* eslint-disable camelcase */
+import { mapGetters } from 'vuex'
 import { socket } from '@/utils/socket'
 import { convertDuration } from '@/utils/utils'
 import { COUNTRIES } from '@/utils/countries'
@@ -151,8 +164,14 @@ export default {
 			data: {},
 			type: '',
 			id: '0',
-			countries: []
+			countries: [],
+			available_countries: []
 		}
+	},
+	computed: {
+		...mapGetters({
+			user: 'getUser'
+		})
 	},
 	mounted() {
 		EventBus.$on('analyze_track', this.showTrack)
@@ -169,6 +188,7 @@ export default {
 			this.type = ''
 			this.link = ''
 			this.countries = []
+			this.available_countries = []
 		},
 		showTrack(data) {
 			this.reset()
@@ -193,6 +213,7 @@ export default {
 				temp.push(String.fromCodePoint(...chars))
 				temp.push(COUNTRIES[cc])
 				this.countries.push(temp)
+				this.available_countries.push(cc.toLowerCase())
 			})
 
 			this.data = data

@@ -27,6 +27,13 @@ import { isValidURL } from '@/utils/utils'
 import { sendAddToQueue } from '@/utils/downloads'
 import { SPOTIFY_STATUS } from '@/constants'
 
+/* ===== Random utils ===== */
+
+/* eslint-disable no-extend-native */
+String.prototype.capitalize = function () {
+	return this.charAt(0).toUpperCase() + this.slice(1)
+}
+
 /* ===== App initialization ===== */
 async function startApp() {
 	new Vue({

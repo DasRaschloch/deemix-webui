@@ -65,4 +65,11 @@
 
 		grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
 	}
+
+	.tag {
+		padding: 3px;
+		background-color: var(--primary-color);
+		font-size: 10px;
+		border-radius: 3px;
+	}
 }

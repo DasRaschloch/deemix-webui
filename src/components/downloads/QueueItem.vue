@@ -1,10 +1,16 @@
 <template>
 	<div class="download-object" :data-link-only="generateLink">
 		<div class="download-info">
-			<img width="75px" class="rounded coverart" :src="queueItem.cover" :alt="`Cover ${queueItem.title}`" />
+			<div class="relative coverart rounded">
+				<img width="75px" :src="queueItem.cover" :alt="`Cover ${queueItem.title}`">
+				<span class="tag">{{ bitrateText }}</span>
+			</div>
 
 			<div class="download-info-data">
-				<span class="download-line">{{ queueItem.title }}</span> <span class="download-slim-separator"> - </span>
+				<span class="download-line">
+					<i v-if="queueItem.explicit" class="material-icons explicit-icon">explicit</i> {{ queueItem.title }}
+				</span>
+				<span class="download-slim-separator"> - </span>
 				<span>{{ queueItem.artist }}</span>
 			</div>
 
@@ -146,6 +152,17 @@ export default {
 				default:
 					return ""
 			}
+		},
+		bitrateText() {
+			switch (parseInt(this.queueItem.bitrate)) {
+				case 9: return "FLAC";
+				case 3: return "320";
+				case 1: return "128";
+				case 15: return "360HQ";
+				case 14: return "360MQ";
+				case 13: return "360LQ";
+				default: return "MISC";
+			}
 		}
 	},
 	methods: {
@@ -176,13 +193,25 @@ export default {
 		display: flex;
 		align-items: center;
 
-		img {
+		.coverart {
 			height: 75px;
+			width: 75px;
 			flex: 0 0 75px;
+			overflow: hidden;
+		}
+
+		.coverart .tag {
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
 		}
 
 		.download-line {
 			display: block;
+
+			.explicit-icon {
+		    vertical-align: bottom;
+			}
 		}
 
 		.download-slim-separator {
@@ -229,7 +258,7 @@ export default {
 		.download-info {
 			display: block;
 
-			img {
+			.coverart {
 				display: none;
 			}
 

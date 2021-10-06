@@ -121,10 +121,13 @@ const de = {
 			notEncodedNoAlternative: 'Track noch nicht codiert und keine Alternative gefunden!',
 			wrongBitrate: 'Track mit gewünschter Bitrate nicht gefunden.',
 			wrongBitrateNoAlternative: 'Track mit gewünschter Bitrate nicht gefunden und keine Alternative gefunden!',
-			no360RA: 'Track ist nicht verfügbar in Reality Audio 360.',
+			no360RA: 'Track ist nicht in Reality Audio 360 verfügbar.',
 			notAvailable: 'Track ist noch nicht verfügbar auf den Servern von Deezer!',
-			notAvailableNoAlternative:
-				'Track ist noch nicht verfügbar auf den Servern von Deezer und keine Alternativen gefunden!!'
+			notAvailableNoAlternative: 'Track ist noch nicht auf den Servern von Deezer verfügbar, keine Alternativen gefunden!',
+			noSpaceLeft: 'Kein Speicherplatz auf dem Gerät!',
+			albumDoesntExists: "Das Album des Tracks ist nicht vorhanden, konnte keine Informationen sammeln.",
+			wrongLicense: "Dein Account kann die Spur nicht an der gewünschten Bitrate streamen.",
+			wrongGeolocation: "Dein Account kann den Track nicht aus Deinem aktuellen Land streamen."
 		}
 	},
 	favorites: {

@@ -165,7 +165,9 @@ const de = {
 			label: 'Label',
 			recordType: 'Art der Aufnahme',
 			genres: 'Genres',
-			tracklist: 'Trackliste'
+			tracklist: 'Trackliste',
+			readable: 'Lesbar',
+			available: 'Verfügbar'
 		}
 	},
 	search: {

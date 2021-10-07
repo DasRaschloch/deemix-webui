@@ -319,7 +319,7 @@ const de = {
 			replayGain: 'Wiedergabe Lautstärke',
 			label: 'Album Plattenlabel',
 			lyrics: 'Nicht synchronisierte Texte',
-			syncedLyrics: 'Synchronisiierte Texte',
+			syncedLyrics: 'Synchronisierte Texte',
 			copyright: 'Copyright',
 			composer: 'Komponist',
 			involvedPeople: 'Mitwirkende Personen'

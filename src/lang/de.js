@@ -68,8 +68,7 @@ const de = {
 		officialSubreddit: 'Offizieller Subreddit',
 		newsChannel: 'Neuigkeiten Kanal',
 		questions: {
-			text:
-				'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
+			text: 'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 			subreddit: 'Subreddit'
 		},
 		beforeReporting:
@@ -233,8 +232,11 @@ const de = {
 		templates: {
 			title: 'Vorlagen',
 			tracknameTemplate: 'Vorlage für den Tracknamen',
-			albumTracknameTemplate: 'Vorlage für Tracks in einem Album',
-			playlistTracknameTemplate: 'Vorlage für Tracks in einer Playlist'
+			tracknameAvailableVariables: 'Verfügbare Trackname Variablen',
+			albumTracknameTemplate: 'Album-Track-Vorlage.',
+			albumTracknameAvailableVariables: 'Verfügbare Album-Track-Variablen',
+			playlistTracknameTemplate: 'Vorlage für Tracks in einer Playlist',
+			playlistTracknameAvailableVariables: 'Verfügbare Playlist Trackvariablen'
 		},
 		folders: {
 			title: 'Ordner',
@@ -317,6 +319,7 @@ const de = {
 			replayGain: 'Wiedergabe Lautstärke',
 			label: 'Album Plattenlabel',
 			lyrics: 'Nicht synchronisierte Texte',
+			syncedLyrics: 'Synchronisiierte Texte',
 			copyright: 'Copyright',
 			composer: 'Komponist',
 			involvedPeople: 'Mitwirkende Personen'
@@ -369,14 +372,20 @@ const de = {
 			title: 'Spotify Features',
 			clientID: 'Spotify Client ID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify Benutzername'
+			username: 'Spotify Benutzername',
+			question: 'Wie aktiviere ich die Spotify Features?'
 		},
 		reset: 'Auf Standardwerte zurücksetzen',
+		resetMessage: 'Bist du sicher, dass du zu den Standarteinstellungen zurückkehren willst?',
 		save: 'Speichern',
 		toasts: {
 			init: 'Einstellungen geladen!',
 			update: 'Einstellungen aktualisiert!',
 			ARLcopied: 'ARL wurde in die Zwischenablage kopiert'
+		},
+		logs: {
+			title: 'Logs',
+			areLogsActive: 'Aktiv'
 		}
 	},
 	sidebar: {
@@ -390,6 +399,10 @@ const de = {
 	},
 	tracklist: {
 		downloadSelection: 'Downloads'
+	},
+	logs: {
+		event: 'Event',
+		data: 'Daten'
 	}
 }
 

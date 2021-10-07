@@ -224,7 +224,10 @@ const de = {
 		},
 		appearance: {
 			title: 'Design',
-			slimDownloadTab: 'Schmaler Download-Tab'
+			slimDownloadTab: 'Schmaler Download-Tab',
+			slimSidebar: 'Schlanke Seitenleiste',
+			searchButton: 'Suchschaltfläche anzeigen',
+			bitrateTags: 'Qualitäts-Tag in Download-Warteschlange anzeigen'
 		},
 		downloadPath: {
 			title: 'Download Pfad'
@@ -270,7 +273,8 @@ const de = {
 				y: 'Ja überschreibe die Dateien',
 				n: 'Nein überschreibe die Dateien nicht',
 				t: 'Überschreibe nur die Tags',
-				b: 'Nein, behalte beide Dateien und füge der Kopie eine Nummer hinzu'
+				b: 'Nein, behalte beide Dateien und füge der Kopie eine Nummer hinzu',
+				e: "Nein, und schau nicht auf die Erweiterungen"
 			},
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
 			fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',
@@ -295,7 +299,11 @@ const de = {
 				png: 'Ein png Bild',
 				both: 'Beides (jpg + png)'
 			},
-			jpegImageQuality: 'JPEG Qualität'
+			jpegImageQuality: 'JPEG Qualität',
+			embeddedArtworkPNG: 'Eingebettete Grafiken als PNG speichern',
+			embeddedPNGWarning: 'PNGs werden von Deezer nicht offiziell unterstützt und können fehlerhaft sein',
+			imageSizeWarning: 'Alles über x1200 wird nicht offiziell von Deezer verwendet, es können Probleme auftreten',
+			coverDescriptionUTF8: 'Cover-Beschreibung mit UTF8 speichern (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Welche Tags sollen gespeichert werden?',
@@ -322,7 +330,8 @@ const de = {
 			syncedLyrics: 'Synchronisierte Texte',
 			copyright: 'Copyright',
 			composer: 'Komponist',
-			involvedPeople: 'Mitwirkende Personen'
+			involvedPeople: 'Mitwirkende Personen',
+			source: 'Quelle und Song ID'
 		},
 		other: {
 			title: 'Sonstige',

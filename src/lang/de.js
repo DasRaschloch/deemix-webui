@@ -196,10 +196,14 @@ const de = {
 		loggedOut: 'Ausgeloggt',
 		cancellingCurrentItem: 'Aktuelle Auswahl abbrechen.',
 		currentItemCancelled: 'Aktuelle Auswahl wurde abgebrochen',
-		startAddingArtist: '{artist} Alben werden hinzugefügt',
-		finishAddingArtist: '{artist} Alben wurden hinzugefügt',
+		startAddingArtist: 'Alben von {artist} werden hinzugefügt',
+		finishAddingArtist: 'Alben von {artist} wurden hinzugefügt',
 		startConvertingSpotifyPlaylist: 'Konvertierern von Spotify-Tracks zu Deezer-Tracks',
-		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert'
+		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert',
+		loginNeededToDownload: 'Du musst eingeloggt sein, um Tracks herunterladen zu können!',
+		deezerNotAvailable: 'Deezer ist in deinem Land nicht verfügbar. Du solltest eine VPN nutzen.',
+		startGeneratingItems: 'Verarbeite {n} Artikeln....',
+		finishGeneratingItems: '{n} Items generiert.'
 	},
 	settings: {
 		title: 'Einstellungen',

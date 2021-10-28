@@ -1007,6 +1007,8 @@ export default {
 			const { email } = fromLoginForm('email')
 			const { password } = fromLoginForm('password')
 
+			toast(this.$t('toasts.loggingIn'), 'loading', false, 'login-toast')
+
 			const { accessToken, arl } = await postToServer('loginWithCredentials', {
 				email,
 				password,

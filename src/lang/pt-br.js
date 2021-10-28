@@ -36,7 +36,7 @@ const pt_br = {
 			featured: 'Participação em',
 			spotifyPlaylist: 'playlist do spotify | playlists do spotify',
 			releaseDate: 'data de lançamento',
-			error: 'erro'
+			error: 'erro',
 			trackN: '0 faixas | {n} faixa | {n} faixas',
 			albumN: '0 álbuns | {n} álbum | {n} álbuns',
 			artistN: '0 artistas | {n} artista | {n} artistas',
@@ -130,11 +130,12 @@ const pt_br = {
 			wrongBitrateNoAlternative: 'Faixa não encontrada no bitrate desejado e nenhuma outra alternativa encontrada!',
 			no360RA: 'Faixa não disponível na qualidade Reality Audio 360.',
 			notAvailable: 'Faixa não disponível nos servidores do deezer!',
-			notAvailableNoAlternative: 'Faixa não disponível nos servidores do deezer e nenhuma outra alternativa encontrada!'
+			notAvailableNoAlternative:
+				'Faixa não disponível nos servidores do deezer e nenhuma outra alternativa encontrada!',
 			noSpaceLeft: 'Espaço insuficiente no dispositivo!',
-			albumDoesntExists: "O álbum da faixa não exite, falha ao obter informações.",
-			wrongLicense: "A sua conta não permite reproduzir a faixa na qualidade desejada.",
-			wrongGeolocation: "A sua conta não permite reproduzir a faixa a partir do país atual."
+			albumDoesntExists: 'O álbum da faixa não exite, falha ao obter informações.',
+			wrongLicense: 'A sua conta não permite reproduzir a faixa na qualidade desejada.',
+			wrongGeolocation: 'A sua conta não permite reproduzir a faixa a partir do país atual.'
 		}
 	},
 	favorites: {
@@ -170,10 +171,10 @@ const pt_br = {
 			label: 'Gravadora',
 			recordType: 'Tipo de Gravação',
 			genres: 'Gêneros',
-			tracklist: 'Tracklist'
+			tracklist: 'Tracklist',
 			readable: 'Leitura possível',
 			available: 'Disponível'
-		}
+		},
 		countries: 'Países',
 		noCountries: 'Esta faixa não está disponível em qualquer país.'
 	},
@@ -209,7 +210,7 @@ const pt_br = {
 		startAddingArtist: 'Adicionando {artist} álbuns à fila',
 		finishAddingArtist: '{artist} álbuns adicionados a fila',
 		startConvertingSpotifyPlaylist: 'Convertendo faixas do spotify para faixas do deezer',
-		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas'
+		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas',
 		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
 		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
 		startGeneratingItems: 'Processando {n} itens...',
@@ -225,7 +226,7 @@ const pt_br = {
 				question: 'Como eu consigo o meu ARL?',
 				update: 'Atualizar ARL'
 			},
-			logout: 'Sair'
+			logout: 'Sair',
 			login: 'Entrar via deezer.com'
 		},
 		loginWithCredentials: {
@@ -236,7 +237,7 @@ const pt_br = {
 		},
 		appearance: {
 			title: 'Aparência',
-			slimDownloadTab: 'Aba de download slim'
+			slimDownloadTab: 'Aba de download slim',
 			slimSidebar: 'Barra lateral slim',
 			searchButton: 'Mostrar botão de pesquisa',
 			bitrateTags: 'Mostrar tag de qualidade na fila de downloads'
@@ -250,7 +251,7 @@ const pt_br = {
 			tracknameAvailableVariables: 'Variáveis de nomes de faixas dis´poníveis',
 			albumTracknameTemplate: 'Modelo da faixa do álbum',
 			albumTracknameAvailableVariables: 'Variáveis de faixa do álbum disponíveis',
-			playlistTracknameTemplate: 'Modelo da faixa da playlist'
+			playlistTracknameTemplate: 'Modelo da faixa da playlist',
 			playlistTracknameAvailableVariables: 'Variáveis de faixa da playlist disponíveis'
 		},
 		folders: {
@@ -284,9 +285,9 @@ const pt_br = {
 				title: 'Sobrescrever arquivos?',
 				y: 'Sim, sobrescrever arquivos',
 				n: 'Não, não sobrescrever arquivos',
-				t: 'Sobrescrever apenas as tags'
+				t: 'Sobrescrever apenas as tags',
 				b: 'Não, manter ambos os arquivos e adicionar número ao duplicado',
-				e: "Não, e não olhar para as extensões"
+				e: 'Não, e não olhar para as extensões'
 			},
 			fallbackBitrate: 'Taxa de bits reserva',
 			fallbackSearch: 'Procurar reserva',
@@ -311,7 +312,7 @@ const pt_br = {
 				png: '.png',
 				both: 'Ambas, .jpeg e .png'
 			},
-			jpegImageQuality: 'Qualidade da imagem JPEG'
+			jpegImageQuality: 'Qualidade da imagem JPEG',
 			embeddedArtworkPNG: 'Salvar capa embutida como PNG',
 			embeddedPNGWarning: 'PNGs não são oficialmente suportados pelo Deezer e podem ficar bugados',
 			imageSizeWarning: 'Tudo acima de x1200 não é oficialmente usado pelo Deezer,  você pode encontrar problemas',
@@ -342,7 +343,7 @@ const pt_br = {
 			syncedLyrics: 'Letras sincronizadas',
 			copyright: 'Copyright',
 			composer: 'Compositor',
-			involvedPeople: 'Pessoas Envolvidas'
+			involvedPeople: 'Pessoas Envolvidas',
 			source: 'Fonte e ID da música'
 		},
 		other: {
@@ -393,7 +394,7 @@ const pt_br = {
 			title: 'Recursos do Spotify',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'usuário do Spotify'
+			username: 'usuário do Spotify',
 			question: 'Como ativo os Recursos do Spotify?'
 		},
 		reset: 'Restaurar para o padrão',

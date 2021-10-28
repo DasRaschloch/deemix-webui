@@ -81,6 +81,7 @@ const en = {
 		officialWebuiRepo: 'Official WebUI Repository',
 		officialSubreddit: 'Official Subreddit',
 		newsChannel: 'News Channel',
+		devlogChannel: 'Devlog Channel',
 		questions: {
 			text: `If you have questions or problems with the app, search for a solution on the {subreddit} first. Then, if you don't find anything you can make a post with your issue on the subreddit.`,
 			subreddit: 'subreddit'

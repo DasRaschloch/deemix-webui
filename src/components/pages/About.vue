@@ -26,7 +26,7 @@
 			<li v-html="$t('about.thanks')"></li>
 			<i18n path="about.upToDate.text" tag="li">
 				<template #newsChannel>
-					<a href="https://t.me/RemixDevNews" target="_blank">{{ $t('about.upToDate.newsChannel') }}</a>
+					<a href="https://tg.deemix.app" target="_blank">{{ $t('about.upToDate.newsChannel') }}</a>
 				</template>
 			</i18n>
 		</ul>
@@ -46,7 +46,10 @@
 				<a href="https://www.reddit.com/r/deemix" target="_blank">🤖 {{ $t('about.officialSubreddit') }}</a>
 			</li>
 			<li>
-				<a href="https://t.me/RemixDevNews" target="_blank">📰 {{ $t('about.newsChannel') }}</a>
+				<a href="https://tg.deemix.app" target="_blank">📰 {{ $t('about.newsChannel') }}</a>
+			</li>
+			<li>
+				<a href="https://t.me/RemixDevNews" target="_blank">💾 {{ $t('about.devlogChannel') }}</a>
 			</li>
 		</ul>
 
@@ -117,10 +120,6 @@
 				<i v-html="paypal" />
 				<strong>PayPal:</strong>
 				<a href="https://paypal.me/RemixDev" target="_blank">PayPal.me/RemixDev</a>
-			</li>
-			<li>
-				<i class="ethereum" v-html="ethereum" />
-				<strong>Ethereum:</strong> 0x1d2aa67e671485CD4062289772B662e0A6Ff976c
 			</li>
 		</ul>
 

@@ -132,7 +132,7 @@
 				<h3>{{ $t('linkAnalyzer.countries') }}</h3>
 				<p v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</p>
 			</template>
-			<template v-else>
+			<template v-else-if="this.type === 'track'">
 				<h3>{{ $t('linkAnalyzer.noCountries') }}</h3>
 			</template>
 

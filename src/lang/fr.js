@@ -52,11 +52,11 @@ const fr = {
 			offline: 'app hors ligne'
 		},
 		updates: {
-			currentVersion: 'Version Actuelle',
+			currentVersion: 'Version Actuelle Du Logiciel',
 			currentWebuiVersion: 'Version Actuelle De La WebUI',
 			versionNotAvailable: 'N/A',
 			updateAvailable: "Vous n'utilisez pas la dernière version disponible : {version}",
-			deemixVersion: 'Version de la bibliothèque deemix'
+			deemixVersion: 'Version Actuelle De La Bibliothèque deemix'
 		},
 		titles: {
 			usefulLinks: 'Liens Utiles',
@@ -83,6 +83,7 @@ const fr = {
 		officialWebuiRepo: 'Répertoire De Dépôt Officiel De La WebUI',
 		officialSubreddit: 'Subreddit Officiel',
 		newsChannel: "Canal d'Informations",
+		devlogChannel: 'Canal De Développement',
 		questions: {
 			text: `Si vous avez des questions ou des problèmes avec l'application, cherchez d'abord une solution dans le {subreddit}. Ensuite, si la solution ne s'y trouve pas, vous pouvez publier un message dans le subreddit en décrivant votre problème.`,
 			subreddit: 'subreddit'

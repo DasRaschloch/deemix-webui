@@ -15,7 +15,7 @@ const de = {
 		cut: 'Ausschneiden',
 		copy: 'Kopieren',
 		copyLink: 'Link kopieren',
-		copyImageLink: 'Bildlink kppieren',
+		copyImageLink: 'Bildlink kopieren',
 		copyDeezerLink: 'Deezer Link kopieren',
 		paste: 'Einfügen',
 		listTabs: {
@@ -408,7 +408,7 @@ const de = {
 		about: 'Info'
 	},
 	tracklist: {
-		downloadSelection: 'Downloads'
+		downloadSelection: 'Herunterladen'
 	},
 	logs: {
 		event: 'Event',

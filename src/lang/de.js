@@ -211,7 +211,7 @@ const de = {
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
 				question: 'Wie bekomme ich meine eigene ARL?',
-				update: 'Update ARL'
+				update: 'ARL aktualisieren'
 			},
 			logout: 'Ausloggen',
 			login: 'Über deezer.com einloggen'

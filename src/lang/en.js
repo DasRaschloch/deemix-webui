@@ -222,6 +222,7 @@ const en = {
 			title: 'Login',
 			loggedIn: 'You are logged in as {username}',
 			arl: {
+				title: 'Use ARL instead',
 				question: 'How do I get my own ARL?',
 				update: 'Update ARL'
 			},

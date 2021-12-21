@@ -2,85 +2,78 @@
 	<div class="fixed-footer">
 		<h1 class="mb-8 text-5xl">{{ $t('settings.title') }}</h1>
 
-		<div v-if="isLoggedIn" id="logged_in_info" ref="loggedInInfo">
-			<img
-				id="settings_picture"
-				ref="userpicture"
-				:src="pictureHref"
-				alt="Profile Picture"
-				class="w-32 h-32 rounded-full"
-			/>
-
-			<i18n path="settings.login.loggedIn" tag="p">
-				<template #username>
-					<strong id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
-				</template>
-			</i18n>
-			<p>{{userLicense}} | {{user.country}}</p>
-
-			<button class="btn btn-primary" @click="logout">
-				{{ $t('settings.login.logout') }}
-			</button>
-
-			<select v-if="accounts.length > 1" id="family_account" v-model="accountNum" @change="changeAccount">
-				<option v-for="(account, i) in accounts" :key="account" :value="i.toString()">
-					{{ account.name }}
-				</option>
-			</select>
-		</div>
-
 		<div class="settings-group">
 			<h3 class="settings-group__header"><i class="material-icons">person</i>{{ $t('settings.login.title') }}</h3>
 
-			<div class="my-5 space-y-5">
-				<div class="flex items-center">
-					<input
-						id="login_input_arl"
-						ref="loginInput"
-						:value="arl"
-						autocomplete="off"
-						placeholder="ARL"
-						type="password"
-					/>
-					<button class="ml-2 btn btn-primary btn-only-icon" @click="copyARLtoClipboard">
-						<i class="material-icons">assignment</i>
+			<div v-if="isLoggedIn" id="logged_in_info" ref="loggedInInfo">
+				<img
+					id="settings_picture"
+					ref="userpicture"
+					:src="pictureHref"
+					alt="Profile Picture"
+					class="w-32 h-32 rounded-full"
+				/>
+				<div class="user_info">
+					<i18n path="settings.login.loggedIn" tag="p">
+						<template #username>
+							<strong id="settings_username" ref="username">{{ user.name || 'not logged' }}</strong>
+						</template>
+					</i18n>
+					<p>{{userLicense}} | {{user.country}}</p>
+
+					<button class="btn btn-primary mt-3" @click="logout">
+						{{ $t('settings.login.logout') }}
 					</button>
 				</div>
-
-				<RouterLink :to="{ name: 'ARL' }" class="block">
-					{{ $t('settings.login.arl.question') }}
-				</RouterLink>
-
-				<!--
-				Uncomment when implemented
-				<a v-if="clientMode" class="block" href="#" @click="appLogin">
-					{{ $t('settings.login.login') }}
-				</a>
-				-->
-
-				<button class="btn btn-primary" style="width: 100%" @click="loginButton">
-					{{ $t('settings.login.arl.update') }}
-				</button>
+				<select v-if="accounts.length > 1" id="family_account" v-model="accountNum" @change="changeAccount">
+					<option v-for="(account, i) in accounts" :key="account" :value="i.toString()">
+						{{ account.name }}
+					</option>
+				</select>
 			</div>
-		</div>
 
-		<div v-if="!isLoggedIn" class="settings-group">
-			<h3 class="settings-group__header">
-				<i class="material-icons">person</i>{{ $t('settings.loginWithCredentials.title') }}
-			</h3>
+			<div v-else>
+				<form ref="loginWithCredentialsForm" @submit.prevent="loginWithCredentials">
+					<label>
+						<span>{{ $t('settings.loginWithCredentials.email') }}</span>
+						<input type="text" name="email" placeholder="email@example.com" class="mb-6"/>
+					</label>
+					<label>
+						<span>{{ $t('settings.loginWithCredentials.password') }}</span>
+						<input type="password" name="password" placeholder="●●●●●●●●" class="mb-6"/>
+					</label>
+					<button class="btn btn-primary login-button" type="submit">{{ $t('settings.loginWithCredentials.login') }}</button>
+				</form>
+			</div>
 
-			<form ref="loginWithCredentialsForm" class="my-5 space-y-5" @submit.prevent="loginWithCredentials">
-				<label>
-					<span>{{ $t('settings.loginWithCredentials.email') }}</span>
-					<input type="text" name="email" />
-				</label>
-				<label>
-					<span>{{ $t('settings.loginWithCredentials.password') }}</span>
-					<input type="password" name="password" />
-				</label>
+			<BaseAccordion class="my-5 space-y-5">
+				<template #title>
+					<span>{{ $t('settings.login.arl.title') }}</span>
+				</template>
+				<div class="my-5 space-y-5">
+					<div class="flex items-center">
+						<input
+							id="login_input_arl"
+							ref="loginInput"
+							:value="arl"
+							autocomplete="off"
+							placeholder="ARL"
+							type="password"
+						/>
+						<button class="ml-2 btn btn-primary btn-only-icon" @click="copyARLtoClipboard">
+							<i class="material-icons">assignment</i>
+						</button>
+					</div>
 
-				<button class="btn btn-primary" type="submit">{{ $t('settings.loginWithCredentials.login') }}</button>
-			</form>
+					<RouterLink :to="{ name: 'ARL' }" class="block">
+						{{ $t('settings.login.arl.question') }}
+					</RouterLink>
+
+					<button class="btn btn-primary" style="width: 100%" @click="loginButton">
+						{{ $t('settings.login.arl.update') }}
+					</button>
+				</div>
+			</BaseAccordion>
 		</div>
 
 		<div class="settings-group">
@@ -1007,6 +1000,8 @@ export default {
 			const { email } = fromLoginForm('email')
 			const { password } = fromLoginForm('password')
 
+			if (!email || !password) return
+
 			toast(this.$t('toasts.loggingIn'), 'loading', false, 'login-toast')
 
 			const { accessToken, arl } = await postToServer('loginWithCredentials', {
@@ -1017,6 +1012,7 @@ export default {
 
 			if (accessToken !== this.accessToken) this.dispatchAccessTocken({ accessToken })
 			if (arl) this.login(arl)
+			else toast(this.$t('toasts.loginFailed'), 'close', true, 'login-toast')
 		},
 		appLogin() {
 			window.api.send('applogin')
@@ -1075,11 +1071,21 @@ export default {
 
 <style lang="scss" scoped>
 #logged_in_info {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	justify-content: space-evenly;
-	height: 250px;
+	display: grid;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  grid-template-columns: 128px auto;
+  grid-template-rows: auto auto;
+}
+
+#logged_in_info .user_info {
+	padding-left: 24px;
+}
+
+#family_account {
+	margin-top: 24px;
+	grid-column: 1 / span 2;
 }
 
 .locale-flag {
@@ -1165,5 +1171,13 @@ export default {
 	.input-group-text {
 		margin-bottom: 0.5rem;
 	}
+}
+
+.login-button {
+	display: block;
+  margin-left: auto;
+	padding-left: 24px;
+	padding-right: 24px;
+	margin-top: 0px;
 }
 </style>

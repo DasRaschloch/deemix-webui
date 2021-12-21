@@ -26,8 +26,7 @@
 			</i>
 			<span
 				:class="{ hidden: isSlim }"
-				class="ml-5 overflow-hidden capitalize whitespace-no-wrap main-tablinks-text"
-				style="letter-spacing: 1.3px"
+				class="ml-3 overflow-hidden capitalize whitespace-no-wrap main-tablinks-text"
 			>
 				{{ $t(link.label) }}
 			</span>

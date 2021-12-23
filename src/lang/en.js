@@ -134,7 +134,9 @@ const en = {
 			noSpaceLeft: 'No space left on the device!',
 			albumDoesntExists: "Track's album doesn't exist, failed to gather info.",
 			wrongLicense: "Your account can't stream the track at the desired bitrate.",
-			wrongGeolocation: "Your account can't stream the track from your current country."
+			wrongGeolocation: "Your account can't stream the track from your current country.",
+			wrongGeolocationNoAlternative:
+				"Your account can't stream the track from your current country and no alternative found."
 		}
 	},
 	favorites: {
@@ -291,6 +293,8 @@ const en = {
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Search fallback',
+			fallbackISRC: 'Fallback with ISRC search',
+			feelingLucky: 'Gamble with CDNs and caches',
 			logErrors: 'Create log files for errors',
 			logSearched: 'Create log files for searched tracks',
 			createM3U8File: 'Create playlist file',
@@ -322,6 +326,7 @@ const en = {
 			head: 'Which tags to save',
 			title: 'Title',
 			artist: 'Artist',
+			artists: 'Extra ARTISTS tag',
 			album: 'Album',
 			cover: 'Cover',
 			trackNumber: 'Track Number',
@@ -344,7 +349,9 @@ const en = {
 			copyright: 'Copyright',
 			composer: 'Composer',
 			involvedPeople: 'Involved People',
-			source: 'Source and song ID'
+			source: 'Source and song ID',
+			artistsWarning:
+				"Disabling the ARTISTS tag while not using standard specification won't preserve multiartist support"
 		},
 		other: {
 			title: 'Other',
@@ -356,7 +363,9 @@ const en = {
 				nothing: 'Save only the main artist',
 				default: 'Using standard specification',
 				andFeat: 'Using & and feat.',
-				using: 'Using "{separator}"'
+				using: 'Using "{separator}"',
+				warning:
+					'Using any separator other than the standard specification will add a extra ARTISTS tag to preserve multiartist support'
 			},
 			singleAlbumArtist: 'Save only the main album artist',
 			albumVariousArtists: 'Keep "Various Artists" in the Album Artists',

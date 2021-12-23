@@ -357,6 +357,10 @@
 						<input v-model="settings.tags.artist" type="checkbox" />
 						<span class="checkbox-text">{{ $t('settings.tags.artist') }}</span>
 					</label>
+					<label class="with-checkbox" v-if="settings.tags.multiArtistSeparator != 'default'">
+						<input v-model="settings.tags.artists" type="checkbox" />
+						<span class="checkbox-text">{{ $t('settings.tags.artists') }}</span>
+					</label>
 					<label class="with-checkbox">
 						<input v-model="settings.tags.album" type="checkbox" />
 						<span class="checkbox-text">{{ $t('settings.tags.album') }}</span>
@@ -454,6 +458,9 @@
 					</label>
 				</div>
 			</div>
+			<p v-if="settings.tags.multiArtistSeparator != 'default' && !settings.tags.artists" style="opacity: 0.75; color: #ffcc22">
+				⚠️ {{ $t('settings.tags.artistsWarning') }}
+			</p>
 		</BaseAccordion>
 
 		<BaseAccordion class="settings-group">
@@ -499,6 +506,11 @@
 						<input v-model="settings.fallbackSearch" type="checkbox" />
 						<span class="checkbox-text">{{ $t('settings.downloads.fallbackSearch') }}</span>
 					</label>
+
+					<label class="with-checkbox">
+						<input v-model="settings.fallbackISRC" type="checkbox" />
+						<span class="checkbox-text">{{ $t('settings.downloads.fallbackISRC') }}</span>
+					</label>
 				</div>
 				<div class="settings-container__third settings-container__third--only-checkbox">
 					<label class="with-checkbox">
@@ -509,6 +521,11 @@
 					<label class="with-checkbox">
 						<input v-model="settings.logSearched" type="checkbox" />
 						<span class="checkbox-text">{{ $t('settings.downloads.logSearched') }}</span>
+					</label>
+
+					<label class="with-checkbox">
+						<input v-model="settings.feelingLucky" type="checkbox" />
+						<span class="checkbox-text">{{ $t('settings.downloads.feelingLucky') }}</span>
 					</label>
 				</div>
 				<div class="settings-container__third settings-container__third--only-checkbox">
@@ -572,6 +589,9 @@
 					<option value=";">{{ $t('settings.other.multiArtistSeparator.using', { separator: ';' }) }}</option>
 					<option value="; ">{{ $t('settings.other.multiArtistSeparator.using', { separator: '; ' }) }}</option>
 				</select>
+				<p v-if="settings.tags.multiArtistSeparator != 'default'" style="opacity: 0.75; color: #ffcc22">
+					⚠️ {{ $t('settings.other.multiArtistSeparator.warning') }}
+				</p>
 			</div>
 
 			<label class="with-checkbox">

@@ -144,12 +144,14 @@ const fr = {
 			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !",
 			albumDoesntExists: "Aucun album n'existe pour cette piste, impossible de collecter les informations nécessaires.",
 			wrongLicense: 'Votre compte ne prend pas en charge la piste au débit souhaité.',
-			wrongGeolocation: 'Votre compte ne prend pas en charge la piste depuis votre pays actuel.'
+			wrongGeolocation: 'Votre compte ne prend pas en charge la piste depuis votre pays actuel.',
+			wrongGeolocationNoAlternative:
+				"Votre compte ne prend pas en charge la piste depuis votre pays actuel et aucune alternative n'a été trouvée."
 		}
 	},
 	favorites: {
 		title: 'Favoris',
-		noPlaylists: "Aucune Playlist n'a été trouvée",
+		noPlaylists: "Aucune Playlist Favorite n'a été trouvée",
 		noAlbums: "Aucun Album Favori n'a été trouvé",
 		noArtists: "Aucun Artiste Favori n'a été trouvé",
 		noTracks: "Aucune Piste Favorite n'a été trouvée"
@@ -233,6 +235,7 @@ const fr = {
 			title: 'Connexion',
 			loggedIn: 'Vous êtes connecté en tant que {username}',
 			arl: {
+				title: 'Utiliser de préférence la connexion via ARL',
 				question: 'Comment obtenir mon ARL personnel ?',
 				update: "Actualiser l'ARL"
 			},
@@ -301,7 +304,9 @@ const fr = {
 				e: "Non, et ne pas tenir compte de l'extension du fichier"
 			},
 			fallbackBitrate: "Recourir à un débit plus faible si le débit préféré n'est pas disponible",
-			fallbackSearch: "Rechercher la piste si le lien original n'est pas disponible",
+			fallbackSearch: "Rechercher la piste ailleurs si le lien original n'est pas disponible",
+			fallbackISRC: "Rechercher la piste à l'aide de son ISRC si le lien original n'est pas disponible",
+			feelingLucky: "Utiliser les CDNs et les caches (ancienne méthode de téléchargement des pistes)",
 			logErrors: "Créer un fichier journal d'erreurs",
 			logSearched: 'Créer un fichier journal des pistes recherchées',
 			createM3U8File: 'Créer un fichier de playlist',
@@ -335,6 +340,7 @@ const fr = {
 			head: 'Métadonnées à sauvegarder',
 			title: 'Titre',
 			artist: 'Artiste',
+			artists: 'Métadonnée supplémentaire ARTISTS',
 			album: 'Album',
 			cover: 'Pochette',
 			trackNumber: 'Numéro De Piste',
@@ -357,7 +363,9 @@ const fr = {
 			copyright: "Droits d'Auteur (Copyright)",
 			composer: 'Compositeur',
 			involvedPeople: 'Personnes Impliquées',
-			source: 'ID de la source et de la piste'
+			source: 'ID de la source et de la piste',
+			artistsWarning:
+				"La désactivation de la métadonnée ARTISTS sans utiliser la spécification standard ne préservera pas le support multi-artiste."
 		},
 		other: {
 			title: 'Autre',
@@ -369,7 +377,9 @@ const fr = {
 				nothing: "Enregistrer uniquement l'artiste principal",
 				default: 'En utilisant la spécification standard',
 				andFeat: 'En utilisant & et feat.',
-				using: 'En utilisant "{separator}"'
+				using: 'En utilisant "{separator}"',
+				warning:
+					"L'utilisation d'un séparateur autre que la spécification standard nécessitera l'ajout d'une métadonnée ARTISTS afin de préserver le support multi-artiste."
 			},
 			singleAlbumArtist: "Enregistrer uniquement l'artiste principal de l'album",
 			albumVariousArtists: `Conserver "Various Artists" dans les Artistes de l'Album`,

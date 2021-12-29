@@ -194,6 +194,7 @@ export default defineComponent({
 			favoriteSpotifyPlaylists,
 			favoritePlaylists,
 			favoriteTracks,
+			lovedTracksPlaylist,
 			isRefreshingFavorites,
 			refreshFavorites
 		} = useFavorites()
@@ -217,6 +218,7 @@ export default defineComponent({
 			artists: favoriteArtists,
 			playlists: favoritePlaylists,
 			spotifyPlaylists: favoriteSpotifyPlaylists,
+			lovedTracks: lovedTracksPlaylist,
 			refreshFavorites,
 			isRefreshingFavorites
 		}
@@ -236,9 +238,12 @@ export default defineComponent({
 				const toDownload = this.getActiveRelease()
 
 				if (this.activeTab === 'track') {
-					const lovedTracks = this.getLovedTracksPlaylist()
-
-					sendAddToQueue(lovedTracks.link)
+					if (this.lovedTracks){
+						sendAddToQueue(this.lovedTracks)
+					} else {
+						const lovedTracks = this.getLovedTracksPlaylist()
+						sendAddToQueue(lovedTracks.link)
+					}
 				} else {
 					sendAddToQueue(aggregateDownloadLinks(toDownload))
 				}
@@ -290,6 +295,7 @@ export default defineComponent({
 			if (lovedTracks.length !== 0) {
 				return lovedTracks[0]
 			} else {
+				toast(this.$t('toasts.noLovedPlaylist'), 'warning', true)
 				throw new Error('No loved tracks playlist!')
 			}
 		}

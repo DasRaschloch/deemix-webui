@@ -9,12 +9,13 @@ const favoriteAlbums = ref([])
 const favoriteSpotifyPlaylists = ref([])
 const favoritePlaylists = ref([])
 const favoriteTracks = ref([])
+const lovedTracksPlaylist = ref('')
 const isLoggedWithSpotify = computed(() => store.getters.isLoggedWithSpotify)
 
 const isRefreshingFavorites = ref(false)
 
 const setAllFavorites = data => {
-	const { tracks, albums, artists, playlists } = data
+	const { tracks, albums, artists, playlists, lovedTracks } = data
 
 	isRefreshingFavorites.value = false
 
@@ -22,6 +23,7 @@ const setAllFavorites = data => {
 	favoriteAlbums.value = albums
 	favoritePlaylists.value = playlists
 	favoriteTracks.value = tracks
+	lovedTracksPlaylist.value = lovedTracks
 }
 
 const setSpotifyPlaylists = response => {
@@ -59,6 +61,7 @@ export const useFavorites = () => ({
 	favoriteSpotifyPlaylists,
 	favoritePlaylists,
 	favoriteTracks,
+	lovedTracksPlaylist,
 	isRefreshingFavorites,
 	refreshFavorites
 })

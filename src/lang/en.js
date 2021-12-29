@@ -215,7 +215,8 @@ const en = {
 		loginNeededToDownload: 'You need to log in to download tracks!',
 		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.',
 		startGeneratingItems: 'Processing {n} items...',
-		finishGeneratingItems: 'Generated {n} items.'
+		finishGeneratingItems: 'Generated {n} items.',
+		noLovedPlaylist: 'No loved tracks playlist!'
 	},
 	settings: {
 		title: 'Settings',

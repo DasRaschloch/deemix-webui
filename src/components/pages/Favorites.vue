@@ -24,10 +24,10 @@
 		</button>
 
 		<div v-show="activeTab === 'playlist'">
-			<div v-if="playlists.length === 0">
+			<div v-if="(playlists.length + spotifyPlaylists.length) === 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
-			<div v-if="playlists.length > 0 || spotifyPlaylists.length > 0" class="release-grid">
+			<div v-if="(playlists.length + spotifyPlaylists.length) > 0" class="release-grid">
 				<div v-for="release in playlists" :key="release.id" class="release">
 					<router-link :to="{ name: 'Playlist', params: { id: release.id } }" class="cursor-pointer" tag="div">
 						<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
@@ -255,6 +255,7 @@ export default defineComponent({
 			switch (tab) {
 				case 'playlist':
 					toDownload = this.playlists
+					toDownload += this.spotifyPlaylists
 					break
 				case 'album':
 					toDownload = this.albums

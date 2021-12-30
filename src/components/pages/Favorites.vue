@@ -24,10 +24,10 @@
 		</button>
 
 		<div v-show="activeTab === 'playlist'">
-			<div v-if="playlists.length === 0">
+			<div v-if="(playlists.length + spotifyPlaylists.length) === 0">
 				<h1>{{ $t('favorites.noPlaylists') }}</h1>
 			</div>
-			<div v-if="playlists.length > 0 || spotifyPlaylists.length > 0" class="release-grid">
+			<div v-if="(playlists.length + spotifyPlaylists.length) > 0" class="release-grid">
 				<div v-for="release in playlists" :key="release.id" class="release">
 					<router-link :to="{ name: 'Playlist', params: { id: release.id } }" class="cursor-pointer" tag="div">
 						<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
@@ -194,6 +194,7 @@ export default defineComponent({
 			favoriteSpotifyPlaylists,
 			favoritePlaylists,
 			favoriteTracks,
+			lovedTracksPlaylist,
 			isRefreshingFavorites,
 			refreshFavorites
 		} = useFavorites()
@@ -217,6 +218,7 @@ export default defineComponent({
 			artists: favoriteArtists,
 			playlists: favoritePlaylists,
 			spotifyPlaylists: favoriteSpotifyPlaylists,
+			lovedTracks: lovedTracksPlaylist,
 			refreshFavorites,
 			isRefreshingFavorites
 		}
@@ -236,9 +238,12 @@ export default defineComponent({
 				const toDownload = this.getActiveRelease()
 
 				if (this.activeTab === 'track') {
-					const lovedTracks = this.getLovedTracksPlaylist()
-
-					sendAddToQueue(lovedTracks.link)
+					if (this.lovedTracks){
+						sendAddToQueue(this.lovedTracks)
+					} else {
+						const lovedTracks = this.getLovedTracksPlaylist()
+						sendAddToQueue(lovedTracks.link)
+					}
 				} else {
 					sendAddToQueue(aggregateDownloadLinks(toDownload))
 				}
@@ -255,6 +260,7 @@ export default defineComponent({
 			switch (tab) {
 				case 'playlist':
 					toDownload = this.playlists
+					toDownload += this.spotifyPlaylists
 					break
 				case 'album':
 					toDownload = this.albums
@@ -289,6 +295,7 @@ export default defineComponent({
 			if (lovedTracks.length !== 0) {
 				return lovedTracks[0]
 			} else {
+				toast(this.$t('toasts.noLovedPlaylist'), 'warning', true)
 				throw new Error('No loved tracks playlist!')
 			}
 		}

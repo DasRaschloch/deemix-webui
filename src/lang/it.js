@@ -82,6 +82,7 @@ const it = {
 		officialWebuiRepo: `Repository Ufficiale dell'Interfaccia Web`,
 		officialSubreddit: 'Subreddit Ufficiale',
 		newsChannel: 'Canale delle news',
+		devlogChannel: 'Canale Devlog',
 		questions: {
 			text: `Se dovessi avere domande o problemi con l'app, cerca prima una soluzione nel {subreddit}. Se non trovi nulla, puoi postare li il tuo problema.`,
 			subreddit: 'subreddit ufficiale'

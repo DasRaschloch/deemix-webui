@@ -11,6 +11,13 @@ const de = {
 		toggle_download_tab_hint: 'Erweitern/Minimieren',
 		clean_queue_hint: 'Vollständige entfernen',
 		cancel_queue_hint: 'Alle abbrechen',
+		open_downloads_folder: 'Download Ordner öffnen',
+		cut: 'Ausschneiden',
+		copy: 'Kopieren',
+		copyLink: 'Link kopieren',
+		copyImageLink: 'Bildlink kopieren',
+		copyDeezerLink: 'Deezer Link kopieren',
+		paste: 'Einfügen',
 		listTabs: {
 			empty: '',
 			all: 'Alle',
@@ -28,7 +35,10 @@ const de = {
 			spotifyPlaylist: 'Spotify Playlist | Spotify Playlists',
 			releaseDate: 'Veröffentlichungsdatum',
 			error: 'Fehler'
-		}
+		},
+		yes: 'Ja',
+		no: 'Nein',
+		empty: 'Leer'
 	},
 	about: {
 		appStatus: {
@@ -68,8 +78,7 @@ const de = {
 		officialSubreddit: 'Offizieller Subreddit',
 		newsChannel: 'Neuigkeiten Kanal',
 		questions: {
-			text:
-				'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
+			text: 'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 			subreddit: 'Subreddit'
 		},
 		beforeReporting:
@@ -80,8 +89,7 @@ const de = {
 		dontOpenIssues:
 			'<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es existiert ein Subreddit dafür.',
 		newUI: {
-			text:
-				'Wenn du Python fließend beherrschst, kannst du versuchen, mithilfe der Basisbibliothek eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
+			text: 'Wenn du Python fließend beherrschst, kannst du versuchen, mithilfe der Basisbibliothek eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
 			repo: 'deemix Repo'
 		},
 		acceptFeatures:
@@ -121,10 +129,13 @@ const de = {
 			notEncodedNoAlternative: 'Track noch nicht codiert und keine Alternative gefunden!',
 			wrongBitrate: 'Track mit gewünschter Bitrate nicht gefunden.',
 			wrongBitrateNoAlternative: 'Track mit gewünschter Bitrate nicht gefunden und keine Alternative gefunden!',
-			no360RA: 'Track ist nicht verfügbar in Reality Audio 360.',
-			notAvailable: 'Track ist noch nicht verfügbar auf den Servern von Deezer!',
-			notAvailableNoAlternative:
-				'Track ist noch nicht verfügbar auf den Servern von Deezer und keine Alternativen gefunden!!'
+			no360RA: 'Track ist nicht in Reality Audio 360 verfügbar.',
+			notAvailable: 'Track ist nicht verfügbar auf den Servern von Deezer!',
+			notAvailableNoAlternative: 'Track ist nicht auf den Servern von Deezer verfügbar, keine Alternativen gefunden!',
+			noSpaceLeft: 'Kein Speicherplatz auf dem Gerät!',
+			albumDoesntExists: 'Das Album des Tracks ist nicht vorhanden, konnte keine Informationen sammeln.',
+			wrongLicense: 'Dein Account kann die Spur nicht an der gewünschten Bitrate streamen.',
+			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.'
 		}
 	},
 	favorites: {
@@ -143,8 +154,7 @@ const de = {
 		}
 	},
 	linkAnalyzer: {
-		info:
-			'Diesen Abschnitt kannst du nutzen, um weitere Informationen über den gewünschten Link zu erhalten, den du herunterladen möchtest.',
+		info: 'Diesen Abschnitt kannst du nutzen, um weitere Informationen über den gewünschten Link zu erhalten, den du herunterladen möchtest.',
 		useful:
 			'Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.',
 		linkNotSupported: 'Dieser Link wird noch nicht unterstützt',
@@ -162,8 +172,12 @@ const de = {
 			label: 'Label',
 			recordType: 'Art der Aufnahme',
 			genres: 'Genres',
-			tracklist: 'Trackliste'
-		}
+			tracklist: 'Trackliste',
+			readable: 'Lesbar',
+			available: 'Verfügbar'
+		},
+		countries: 'Länder',
+		noCountries: 'Dieser Track ist in keinem Land verfügbar.'
 	},
 	search: {
 		startSearching: 'Suche starten!',
@@ -183,7 +197,7 @@ const de = {
 		alreadyInQueue: '{item} ist bereits in der Warteschlange!',
 		finishDownload: '{item} vollständig heruntergeladen.',
 		allDownloaded: 'Alle Downloads abgeschlossen!',
-		refreshFavs: 'Abgeschlossene Downloads neu laden!',
+		refreshFavs: 'Abgeschlossene Downloads neuladen!',
 		loggingIn: 'Einloggen',
 		loggedIn: 'Eingeloggt',
 		alreadyLogged: 'Bereits eingeloggt',
@@ -191,10 +205,14 @@ const de = {
 		loggedOut: 'Ausgeloggt',
 		cancellingCurrentItem: 'Aktuelle Auswahl abbrechen.',
 		currentItemCancelled: 'Aktuelle Auswahl wurde abgebrochen',
-		startAddingArtist: '{artist} Alben werden hinzugefügt',
-		finishAddingArtist: '{artist} Alben wurden hinzugefügt',
+		startAddingArtist: 'Alben von {artist} werden hinzugefügt',
+		finishAddingArtist: 'Alben von {artist} wurden hinzugefügt',
 		startConvertingSpotifyPlaylist: 'Konvertierern von Spotify-Tracks zu Deezer-Tracks',
-		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert'
+		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert',
+		loginNeededToDownload: 'Du musst eingeloggt sein, um Tracks herunterladen zu können!',
+		deezerNotAvailable: 'Deezer ist in deinem Land nicht verfügbar. Du solltest eine VPN nutzen.',
+		startGeneratingItems: 'Verarbeite {n} Artikeln....',
+		finishGeneratingItems: '{n} Items generiert.'
 	},
 	settings: {
 		title: 'Einstellungen',
@@ -204,9 +222,10 @@ const de = {
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
 				question: 'Wie bekomme ich meine eigene ARL?',
-				update: 'Update ARL'
+				update: 'ARL aktualisieren'
 			},
-			logout: 'Ausloggen'
+			logout: 'Ausloggen',
+			login: 'Über deezer.com einloggen'
 		},
 		loginWithCredentials: {
 			title: 'Mit Zugangsdaten einloggen',
@@ -216,7 +235,10 @@ const de = {
 		},
 		appearance: {
 			title: 'Design',
-			slimDownloadTab: 'Schmaler Download-Tab'
+			slimDownloadTab: 'Schmaler Download-Tab',
+			slimSidebar: 'Schlanke Seitenleiste',
+			searchButton: 'Suchschaltfläche anzeigen',
+			bitrateTags: 'Qualitäts-Tag in Download-Warteschlange anzeigen'
 		},
 		downloadPath: {
 			title: 'Download Pfad'
@@ -224,8 +246,11 @@ const de = {
 		templates: {
 			title: 'Vorlagen',
 			tracknameTemplate: 'Vorlage für den Tracknamen',
-			albumTracknameTemplate: 'Vorlage für Tracks in einem Album',
-			playlistTracknameTemplate: 'Vorlage für Tracks in einer Playlist'
+			tracknameAvailableVariables: 'Verfügbare Trackname Variablen',
+			albumTracknameTemplate: 'Album-Track-Vorlage.',
+			albumTracknameAvailableVariables: 'Verfügbare Album-Track-Variablen',
+			playlistTracknameTemplate: 'Vorlage für Tracks in einer Playlist',
+			playlistTracknameAvailableVariables: 'Verfügbare Playlist Trackvariablen'
 		},
 		folders: {
 			title: 'Ordner',
@@ -259,7 +284,8 @@ const de = {
 				y: 'Ja überschreibe die Dateien',
 				n: 'Nein überschreibe die Dateien nicht',
 				t: 'Überschreibe nur die Tags',
-				b: 'Nein, behalte beide Dateien und füge der Kopie eine Nummer hinzu'
+				b: 'Nein, behalte beide Dateien und füge der Kopie eine Nummer hinzu',
+				e: 'Nein, und schau nicht auf die Erweiterungen'
 			},
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
 			fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',
@@ -284,7 +310,11 @@ const de = {
 				png: 'Ein png Bild',
 				both: 'Beides (jpg + png)'
 			},
-			jpegImageQuality: 'JPEG Qualität'
+			jpegImageQuality: 'JPEG Qualität',
+			embeddedArtworkPNG: 'Eingebettete Grafiken als PNG speichern',
+			embeddedPNGWarning: 'PNGs werden von Deezer nicht offiziell unterstützt und können fehlerhaft sein',
+			imageSizeWarning: 'Alles über x1200 wird nicht offiziell von Deezer verwendet, es können Probleme auftreten',
+			coverDescriptionUTF8: 'Cover-Beschreibung mit UTF8 speichern (iTunes Cover Fix)'
 		},
 		tags: {
 			head: 'Welche Tags sollen gespeichert werden?',
@@ -308,9 +338,11 @@ const de = {
 			replayGain: 'Wiedergabe Lautstärke',
 			label: 'Album Plattenlabel',
 			lyrics: 'Nicht synchronisierte Texte',
+			syncedLyrics: 'Synchronisierte Texte',
 			copyright: 'Copyright',
 			composer: 'Komponist',
-			involvedPeople: 'Mitwirkende Personen'
+			involvedPeople: 'Mitwirkende Personen',
+			source: 'Quelle und Song ID'
 		},
 		other: {
 			title: 'Sonstige',
@@ -360,14 +392,21 @@ const de = {
 			title: 'Spotify Features',
 			clientID: 'Spotify Client ID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify Benutzername'
+			username: 'Spotify Benutzername',
+			question: 'Wie aktiviere ich die Spotify Features?'
 		},
 		reset: 'Auf Standardwerte zurücksetzen',
+		resetMessage: 'Bist du sicher, dass du zu den Standarteinstellungen zurückkehren willst?',
 		save: 'Speichern',
 		toasts: {
 			init: 'Einstellungen geladen!',
 			update: 'Einstellungen aktualisiert!',
+			reset: 'Einstellungen auf den Standart zurückgesetzt!',
 			ARLcopied: 'ARL wurde in die Zwischenablage kopiert'
+		},
+		logs: {
+			title: 'Logs',
+			areLogsActive: 'Aktiv'
 		}
 	},
 	sidebar: {
@@ -380,7 +419,11 @@ const de = {
 		about: 'Info'
 	},
 	tracklist: {
-		downloadSelection: 'Downloads'
+		downloadSelection: 'Herunterladen'
+	},
+	logs: {
+		event: 'Event',
+		data: 'Daten'
 	}
 }
 

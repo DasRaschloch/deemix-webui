@@ -1,11 +1,11 @@
 const ko = {
 	globals: {
-		welcome: '잘왔다, deemix에',
+		welcome: 'Deemix에 오신 것을 환영합니다',
 		back: '뒤로',
 		loading: '불러오는 중',
 		download: '{thing} 다운로드',
-		by: 'by {artist}',
-		in: 'in {album}',
+		by: '- {artist}',
+		in: '{album} 중',
 		download_hint: '다운로드',
 		play_hint: '재생',
 		toggle_download_tab_hint: '펼치기/접기',
@@ -52,7 +52,7 @@ const ko = {
 			currentVersion: '현재 버전',
 			currentWebuiVersion: '현재 WebUI 버전',
 			versionNotAvailable: 'N/A',
-			updateAvailable: `최신버전으로 업데이트 할 수 있습니다: {version}`,
+			updateAvailable: `최신 버전 ({version})으로 업데이트 할 수 있습니다`,
 			deemixVersion: 'deemix lib 버전'
 		},
 		titles: {
@@ -169,7 +169,7 @@ const ko = {
 		}
 	},
 	search: {
-		startSearching: '검색을 해보세요!',
+		startSearching: '검색하세요!',
 		description: '트랙, 아티스트, 재생목록, Deezer 링크 등으로 검색할 수 있습니다!',
 
 		fans: '{n}명의 팬들',
@@ -180,7 +180,7 @@ const ko = {
 		noResultsPlaylist: '발견된 재생목록 없음'
 	},
 	searchbar: '원하는 것을 검색하세요 (링크를 붙여넣을 수도 있습니다)',
-	downloads: '다운로드들',
+	downloads: '다운로드',
 	toasts: {
 		restoringQueue: '다운로드 대기 열 복원중...',
 		queueRestored: '다운로드 대기 열이 복원되었습니다!',
@@ -204,7 +204,7 @@ const ko = {
 		loginNeededToDownload: '트랙을 다운로드하려면 로그인이 필요합니다!',
 		deezerNotAvailable: 'Deezer 사이트는 현재 귀하의 국가에서 사용이 불가능합니다. VPN을 사용하세요.',
 		startGeneratingItems: '{n}개의 항목 진행중...',
-		finishGeneratingItems: '{n}개의 항목 생성.'
+		finishGeneratingItems: '{n}개의 항목이 생성되었습니다.'
 	},
 	settings: {
 		title: '설정',
@@ -264,12 +264,12 @@ const ko = {
 				1: 'MP3 128kbps'
 			},
 			overwriteFile: {
-				title: '파일을 덮어쓸까요?',
-				y: '네, 파일을 덮어쓰세요',
-				n: '아뇨, 파일을 덮어쓰지 마세요',
-				t: '태그만 덮어쓰세요',
-				b: '아뇨, 양쪽 다 놔두고 중복되는 파일에 번호를 추가하세요',
-				e: '아뇨, 확장명을 변경하세요'
+				title: '파일 덮어쓰기 여부',
+				y: '파일 덮어쓰기',
+				n: '파일 덮어쓰지 않기',
+				t: '태그만 덮어쓰기',
+				b: '모두 유지한 뒤 새 파일에 번호 넣기',
+				e: '확장자 변경하기'
 			},
 			fallbackBitrate: '비트레이트 대비책',
 			fallbackSearch: '검색 대비책',
@@ -289,10 +289,10 @@ const ko = {
 			localArtworkSize: '외부 저장 그림 크기',
 			embeddedArtworkSize: '내부 저장 그림 크기',
 			localArtworkFormat: {
-				title: '별도로 저장할 그림의 형식을 무엇으로 하시겠습니까?',
+				title: '별도로 저장할 그림의 형식',
 				jpg: 'jpeg 이미지',
 				png: 'png 이미지',
-				both: 'jpeg와 png 둘 다'
+				both: 'jpeg와 png 모두'
 			},
 			jpegImageQuality: 'JPEG 이미지 품질',
 			embeddedArtworkPNG: '포함된 그림의 형식을 PNG로 저장합니다',
@@ -376,7 +376,7 @@ const ko = {
 			title: '스포티파이 기능',
 			clientID: 'Spotify ClientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify 사용자이름',
+			username: 'Spotify 사용자 이름',
 			question: '스포티파이 기능들을 사용하려면 어떻게 해야 합니까?'
 		},
 		reset: '기본 설정으로 초기화',

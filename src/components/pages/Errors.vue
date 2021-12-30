@@ -13,7 +13,7 @@
 				<td>{{ error.data.id }}</td>
 				<td>{{ error.data.artist }}</td>
 				<td>{{ error.data.title }}</td>
-				<td>{{ error.errid ? $t(`errors.ids.${error.errid}`) : error.message }}</td>
+				<td><span :title="error.stack">{{ error.errid ? $t(`errors.ids.${error.errid}`) : error.message }}</span></td>
 			</tr>
 		</table>
 	</div>

@@ -1,4 +1,4 @@
-﻿const pt_br = {
+const pt_br = {
 	globals: {
 		welcome: 'bem vindo ao deemix',
 		back: 'voltar',
@@ -11,6 +11,13 @@
 		toggle_download_tab_hint: 'Expandir/Diminuir',
 		clean_queue_hint: 'Limpar',
 		cancel_queue_hint: 'Cancelar Todos',
+		open_downloads_folder: 'Abrir pasta de downloads',
+		cut: 'recortar',
+		copy: 'copiar',
+		copyLink: 'copiar link',
+		copyImageLink: 'copiar link da imagem',
+		copyDeezerLink: 'copiar link do deezer',
+		paste: 'colar',
 		listTabs: {
 			empty: '',
 			all: 'todos',
@@ -20,17 +27,37 @@
 			single: 'single | singles',
 			title: 'título | títulos',
 			track: 'faixa | faixas',
-			trackN: '0 faixas | {n} faixa | {n} faixas',
 			releaseN: '0 lançamento | {n} lançamento | {n} lançamentos',
 			playlist: 'playlist | playlists',
 			compile: 'compilação | compilações',
 			ep: 'ep | eps',
+			bundle: 'pacote | pacotes',
+			more: 'Mais álbuns',
+			featured: 'Participação em',
 			spotifyPlaylist: 'playlist do spotify | playlists do spotify',
 			releaseDate: 'data de lançamento',
-			error: 'erro'
-		}
+			error: 'erro',
+			trackN: '0 faixas | {n} faixa | {n} faixas',
+			albumN: '0 álbuns | {n} álbum | {n} álbuns',
+			artistN: '0 artistas | {n} artista | {n} artistas',
+			playlistN: '0 playlists | {n} playlist | {n} playlists'
+		},
+		yes: 'sim',
+		no: 'não',
+		empty: 'vazio'
 	},
 	about: {
+		appStatus: {
+			online: 'app online',
+			offline: 'app offline'
+		},
+		updates: {
+			currentVersion: 'Versão atual',
+			currentWebuiVersion: 'Versão WebUI atual',
+			versionNotAvailable: 'N/A',
+			updateAvailable: `Você está executando a versão mais recente: {version}`,
+			deemixVersion: 'versão do deemix lib'
+		},
 		titles: {
 			usefulLinks: 'Links Úteis',
 			bugReports: 'Relatar Bugs',
@@ -55,6 +82,7 @@
 		officialWebuiRepo: 'Repositório da WebUI Oficial',
 		officialSubreddit: 'Subreddit Oficial',
 		newsChannel: 'Canal de Notícias',
+		devlogChannel: 'Devlog Channel',
 		questions: {
 			text: `Se você tiver dúvidas ou problemas com o app, procure uma solução em {subreddit} primeiro. Caso você não encontre, você pode fazer um post explicando seu problema no subreddit.`,
 			subreddit: 'subreddit'
@@ -82,9 +110,9 @@
 		}
 	},
 	charts: {
-		title: 'Charts',
+		title: 'Mais Ouvidas',
 		changeCountry: 'Mudar País',
-		download: 'Download Chart'
+		download: 'Baixar Mais Ouvidas'
 	},
 	errors: {
 		title: 'Erros para {name}',
@@ -103,7 +131,12 @@
 			wrongBitrateNoAlternative: 'Faixa não encontrada no bitrate desejado e nenhuma outra alternativa encontrada!',
 			no360RA: 'Faixa não disponível na qualidade Reality Audio 360.',
 			notAvailable: 'Faixa não disponível nos servidores do deezer!',
-			notAvailableNoAlternative: 'Faixa não disponível nos servidores do deezer e nenhuma outra alternativa encontrada!'
+			notAvailableNoAlternative:
+				'Faixa não disponível nos servidores do deezer e nenhuma outra alternativa encontrada!',
+			noSpaceLeft: 'Espaço insuficiente no dispositivo!',
+			albumDoesntExists: 'O álbum da faixa não exite, falha ao obter informações.',
+			wrongLicense: 'A sua conta não permite reproduzir a faixa na qualidade desejada.',
+			wrongGeolocation: 'A sua conta não permite reproduzir a faixa a partir do país atual.'
 		}
 	},
 	favorites: {
@@ -139,8 +172,12 @@
 			label: 'Gravadora',
 			recordType: 'Tipo de Gravação',
 			genres: 'Gêneros',
-			tracklist: 'Tracklist'
-		}
+			tracklist: 'Tracklist',
+			readable: 'Leitura possível',
+			available: 'Disponível'
+		},
+		countries: 'Países',
+		noCountries: 'Esta faixa não está disponível em qualquer país.'
 	},
 	search: {
 		startSearching: 'Comece pesquisando!',
@@ -156,7 +193,10 @@
 	searchbar: 'Pesquise algo (ou apenas cole um link)',
 	downloads: 'downloads',
 	toasts: {
+		restoringQueue: 'Restaurando fila de downloads...',
+		queueRestored: 'Fila de downloads restaurada!',
 		addedToQueue: '{item} adicionado à fila',
+		addedMoreToQueue: '{n} itens adicionados à fila',
 		alreadyInQueue: '{item} já está na fila!',
 		finishDownload: '{item} download terminado.',
 		allDownloaded: 'Todos os downloads foram feitos!',
@@ -171,7 +211,12 @@
 		startAddingArtist: 'Adicionando {artist} álbuns à fila',
 		finishAddingArtist: '{artist} álbuns adicionados a fila',
 		startConvertingSpotifyPlaylist: 'Convertendo faixas do spotify para faixas do deezer',
-		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas'
+		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas',
+		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
+		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
+		startGeneratingItems: 'Processando {n} itens...',
+		finishGeneratingItems: '{n} itens gerados.'
+		noLovedPlaylist: 'Nenhuma playlist de músicas curtidas!'
 	},
 	settings: {
 		title: 'Configurações',
@@ -180,32 +225,46 @@
 			title: 'Login',
 			loggedIn: 'Você está logado como {username}',
 			arl: {
+				title: 'Usar ARL em vez disso',
 				question: 'Como eu consigo o meu ARL?',
 				update: 'Atualizar ARL'
 			},
-			logout: 'Sair'
+			logout: 'Sair',
+			login: 'Entrar via deezer.com'
+		},
+		loginWithCredentials: {
+			title: 'Entrar com credenciais',
+			login: 'Entrar',
+			email: 'E-mail',
+			password: 'Senha'
 		},
 		appearance: {
 			title: 'Aparência',
-			slimDownloadTab: 'Aba de download slim'
+			slimDownloadTab: 'Aba de download slim',
+			slimSidebar: 'Barra lateral slim',
+			searchButton: 'Mostrar botão de pesquisa',
+			bitrateTags: 'Mostrar tag de qualidade na fila de downloads'
 		},
 		downloadPath: {
-			title: 'Diretório de Downloads'
+			title: 'Pasta de Downloads'
 		},
 		templates: {
 			title: 'Templates',
 			tracknameTemplate: 'Template do nome da faixa',
-			albumTracknameTemplate: 'Template da faixa do álbum',
-			playlistTracknameTemplate: 'Template da faixa da playlist'
+			tracknameAvailableVariables: 'Variáveis de nomes de faixas dis´poníveis',
+			albumTracknameTemplate: 'Modelo da faixa do álbum',
+			albumTracknameAvailableVariables: 'Variáveis de faixa do álbum disponíveis',
+			playlistTracknameTemplate: 'Modelo da faixa da playlist',
+			playlistTracknameAvailableVariables: 'Variáveis de faixa da playlist disponíveis'
 		},
 		folders: {
 			title: 'Pastas',
 			createPlaylistFolder: 'Criar pasta para playlists',
-			playlistNameTemplate: 'Template da pasta de playlist',
+			playlistNameTemplate: 'Modelo da pasta de playlist',
 			createArtistFolder: 'Criar pasta para os artistas',
-			artistNameTemplate: 'Template da pasta de artistas',
+			artistNameTemplate: 'Modelo da pasta de artistas',
 			createAlbumFolder: 'Criar pasta para álbuns',
-			albumNameTemplate: 'Template da pasta de álbuns',
+			albumNameTemplate: 'Modelo da pasta de álbuns',
 			createCDFolder: 'Criar pasta para CDs',
 			createStructurePlaylist: 'Criar estrutura de pastas para playlists',
 			createSingleFolder: 'Criar estrutura de pastas para singles'
@@ -229,10 +288,14 @@
 				title: 'Sobrescrever arquivos?',
 				y: 'Sim, sobrescrever arquivos',
 				n: 'Não, não sobrescrever arquivos',
-				t: 'Sobrescrever apenas as tags'
+				t: 'Sobrescrever apenas as tags',
+				b: 'Não, manter ambos os arquivos e adicionar número ao duplicado',
+				e: 'Não, e não olhar para as extensões'
 			},
 			fallbackBitrate: 'Taxa de bits reserva',
 			fallbackSearch: 'Procurar reserva',
+			fallbackISRC: 'Reserva com pesquisa ISRC'
+			feelingLucky: 'Negociar com CDNs e caches',
 			logErrors: 'Criar arquivos de log para erros',
 			logSearched: 'Criar arquivos de log para faixas pesquisadas',
 			createM3U8File: 'Criar arquivo de playlist',
@@ -254,12 +317,17 @@
 				png: '.png',
 				both: 'Ambas, .jpeg e .png'
 			},
-			jpegImageQuality: 'Qualidade da imagem JPEG'
+			jpegImageQuality: 'Qualidade da imagem JPEG',
+			embeddedArtworkPNG: 'Salvar capa embutida como PNG',
+			embeddedPNGWarning: 'PNGs não são oficialmente suportados pelo Deezer e podem ficar bugados',
+			imageSizeWarning: 'Tudo acima de x1200 não é oficialmente usado pelo Deezer,  você pode encontrar problemas',
+			coverDescriptionUTF8: 'Salvar descrição da capa usando UTF-8 (correção para capa do iTunes)'
 		},
 		tags: {
 			head: 'Quais tags salvar',
 			title: 'Título',
 			artist: 'Artista',
+			artists: 'Tag de ARTISTAS Extras',
 			album: 'Álbum',
 			cover: 'Capa',
 			trackNumber: 'Número da Faixa',
@@ -277,10 +345,14 @@
 			bpm: 'BPM',
 			replayGain: 'Replay Gain',
 			label: 'Gravadora',
-			lyrics: 'Letras Dessincronizadas',
+			lyrics: 'Letras não sincronizadas',
+			syncedLyrics: 'Letras sincronizadas',
 			copyright: 'Copyright',
 			composer: 'Compositor',
-			involvedPeople: 'Pessoas Envolvidas'
+			involvedPeople: 'Pessoas Envolvidas',
+			source: 'Fonte e ID da música'
+			artistsWarning:
+				"Desabilitar a tag ARTISTAS embora não use a especificação padrão, não preservará o suporte para vários artistas"
 		},
 		other: {
 			title: 'Outros',
@@ -293,6 +365,8 @@
 				default: 'Usar a especificação padrão',
 				andFeat: 'Usar & e feat.',
 				using: 'Usar "{separator}"'
+				warning:
+					'Usar qualquer separador diferente do que a especificação padrão irá adicionar uma tag de ARTISTAS extra para preservar o suporte a vários artistas'
 			},
 			singleAlbumArtist: 'Salvar apenas o artista principal',
 			albumVariousArtists: 'Manter "Various Artists" nos Artistas do Álbum',
@@ -330,27 +404,39 @@
 			title: 'Recursos do Spotify',
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'usuário do Spotify'
+			username: 'usuário do Spotify',
+			question: 'Como ativo os Recursos do Spotify?'
 		},
 		reset: 'Restaurar para o padrão',
+		resetMessage: 'Deseja realmente restaurar as configurações padrão?',
 		save: 'Salvar',
 		toasts: {
 			init: 'Configurações carregadas!',
 			update: 'Configurações atualizadas!',
+			reset: 'Configurações restauradas para o padrão!',
 			ARLcopied: 'ARL copiada para a área de transferência'
+		},
+		logs: {
+			title: 'Logs',
+			areLogsActive: 'Ativo'
 		}
 	},
 	sidebar: {
 		home: 'início',
 		search: 'pesquisa',
-		charts: 'charts',
+		charts: 'paradas',
 		favorites: 'favoritos',
-		linkAnalyzer: 'analizador de links',
+		linkAnalyzer: 'analisar links',
 		settings: 'configurações',
+		logs: 'logs',
 		about: 'sobre'
 	},
 	tracklist: {
 		downloadSelection: 'Baixar seleção'
+	},
+	logs: {
+		event: 'Evento',
+		data: 'Dados'
 	}
 }
 

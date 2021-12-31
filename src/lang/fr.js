@@ -226,7 +226,8 @@ const fr = {
 		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !',
 		deezerNotAvailable: 'Deezer est indisponible dans votre pays. Vous devez utiliser un VPN.',
 		startGeneratingItems: 'Traitement de {n} éléments...',
-		finishGeneratingItems: '{n} éléments ont été générés.'
+		finishGeneratingItems: '{n} éléments ont été générés.',
+		noLovedPlaylist: 'Aucune playlist de pistes favorites !'
 	},
 	settings: {
 		title: 'Paramètres',

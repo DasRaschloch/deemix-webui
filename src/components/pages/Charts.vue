@@ -182,7 +182,6 @@ export default {
 
 			if (i !== this.countries.length) {
 				this.id = this.countries[i].id
-				getChartTracks(this.id).then(response => this.setTracklist(response.data))
 			} else {
 				this.country = ''
 				localStorage.setItem('chart', this.country)

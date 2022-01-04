@@ -215,7 +215,7 @@ const pt_br = {
 		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
 		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
 		startGeneratingItems: 'Processando {n} itens...',
-		finishGeneratingItems: '{n} itens gerados.'
+		finishGeneratingItems: '{n} itens gerados.',
 		noLovedPlaylist: 'Nenhuma playlist de músicas curtidas!'
 	},
 	settings: {
@@ -294,7 +294,7 @@ const pt_br = {
 			},
 			fallbackBitrate: 'Taxa de bits reserva',
 			fallbackSearch: 'Procurar reserva',
-			fallbackISRC: 'Reserva com pesquisa ISRC'
+			fallbackISRC: 'Reserva com pesquisa ISRC',
 			feelingLucky: 'Negociar com CDNs e caches',
 			logErrors: 'Criar arquivos de log para erros',
 			logSearched: 'Criar arquivos de log para faixas pesquisadas',
@@ -350,9 +350,9 @@ const pt_br = {
 			copyright: 'Copyright',
 			composer: 'Compositor',
 			involvedPeople: 'Pessoas Envolvidas',
-			source: 'Fonte e ID da música'
+			source: 'Fonte e ID da música',
 			artistsWarning:
-				"Desabilitar a tag ARTISTAS embora não use a especificação padrão, não preservará o suporte para vários artistas"
+				'Desabilitar a tag ARTISTAS embora não use a especificação padrão, não preservará o suporte para vários artistas'
 		},
 		other: {
 			title: 'Outros',
@@ -364,7 +364,7 @@ const pt_br = {
 				nothing: 'Salvar apenas o artista principal',
 				default: 'Usar a especificação padrão',
 				andFeat: 'Usar & e feat.',
-				using: 'Usar "{separator}"'
+				using: 'Usar "{separator}"',
 				warning:
 					'Usar qualquer separador diferente do que a especificação padrão irá adicionar uma tag de ARTISTAS extra para preservar o suporte a vários artistas'
 			},

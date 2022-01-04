@@ -12,7 +12,9 @@
 					:data-title="release.title"
 					class="w-40 h-40 release clickable"
 					role="button"
+					tabindex="0"
 					@click="getTrackList"
+					@keyup.enter="getTrackList"
 				>
 					<img :src="release.picture_medium" class="w-full rounded coverart" :alt="release.title" />
 				</div>
@@ -118,6 +120,7 @@ export default {
 			const isActualChart = newId !== 0
 
 			if (isActualChart) {
+				this.setTracklist([])
 				getChartTracks(newId).then(response => this.setTracklist(response.data))
 			}
 		}

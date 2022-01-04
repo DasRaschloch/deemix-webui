@@ -139,11 +139,12 @@ export default defineComponent({
 		})
 		const { searchResult, performMainSearch } = useMainSearch()
 		const { result, performSearch } = useSearch()
-		const searchedTerm = computed(() => ctx.root.$route.query.term)
+		const cachedSearchedTerm = computed(() => searchResult.value.QUERY)
+		const searchedTerm = computed(() => ctx.root.$route.query.term || cachedSearchedTerm.value)
 		const isQueryEmpty = computed(() => state.results.query === '')
 		const isSearching = ref(false)
 		const isMainSearchCached = computed(() => Object.keys(searchResult.value).length !== 0)
-		const isNewSearch = computed(() => searchResult.value.QUERY !== searchedTerm.value)
+		const isNewSearch = computed(() => cachedSearchedTerm.value !== searchedTerm.value)
 
 		if (isMainSearchCached.value && !isNewSearch.value) {
 			onMounted(() => {

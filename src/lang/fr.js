@@ -124,6 +124,7 @@ const fr = {
 	},
 	errors: {
 		title: 'Erreurs pour {name}',
+		postTitle: 'Erreurs survenues après le téléchargement',
 		ids: {
 			invalidURL: "Cette URL n'est pas reconnue",
 			unsupportedURL: "Cette URL n'est actuellement pas supportée",
@@ -238,13 +239,9 @@ const fr = {
 			arl: {
 				title: 'Utiliser de préférence la connexion via ARL',
 				question: 'Comment obtenir mon ARL personnel ?',
-				update: "Actualiser l'ARL"
+				update: "Forcer la réactualisation de l'ARL"
 			},
 			logout: 'Déconnexion',
-			login: 'Connexion via deezer.com'
-		},
-		loginWithCredentials: {
-			title: "Connexion avec vos informations d'identification",
 			login: 'Connexion',
 			email: 'E-mail',
 			password: 'Mot de passe'

@@ -115,6 +115,7 @@ const en = {
 	},
 	errors: {
 		title: 'Errors for {name}',
+		postTitle: 'After download errors',
 		ids: {
 			invalidURL: 'URL not recognized',
 			unsupportedURL: 'URL not supported yet',
@@ -227,13 +228,9 @@ const en = {
 			arl: {
 				title: 'Use ARL instead',
 				question: 'How do I get my own ARL?',
-				update: 'Update ARL'
+				update: 'Force Update ARL'
 			},
 			logout: 'Logout',
-			login: 'Login via deezer.com'
-		},
-		loginWithCredentials: {
-			title: 'Login with credentials',
 			login: 'Login',
 			email: 'E-mail',
 			password: 'Password'

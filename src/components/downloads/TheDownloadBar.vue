@@ -254,7 +254,7 @@ export default {
 		},
 		updateQueue(update) {
 			// downloaded and failed default to false?
-			const { uuid, downloaded, failed, progress, conversion, error, data, errid, stack } = update
+			const { uuid, downloaded, failed, progress, conversion, error, data, errid, stack, postFailed } = update
 
 			if (uuid && this.queue.includes(uuid)) {
 				if (downloaded) {
@@ -272,6 +272,10 @@ export default {
 
 				if (conversion) {
 					this.queueList[uuid].conversion = conversion
+				}
+
+				if (postFailed) {
+					this.queueList[uuid].errors.push({ message: error, data, stack })
 				}
 			}
 		},

@@ -116,6 +116,7 @@ const it = {
 	},
 	errors: {
 		title: 'Errori riguardanti {name}',
+		postTitle: 'Errori dopo il download',
 		ids: {
 			invalidURL: 'URL non riconosciuto',
 			unsupportedURL: 'URL non ancora supportato',
@@ -133,7 +134,10 @@ const it = {
 			notAvailable: 'Brano non presente sui server di Deezer!',
 			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!',
 			noSpaceLeft: 'Spazio su disco esaurito!',
-			albumDoesntExists: 'Il brano non ha nessun album, impossibile ottenere informazioni'
+			albumDoesntExists: 'Il brano non ha nessun album, impossibile ottenere informazioni',
+			wrongLicense: 'Il tuo account non può ascoltare questo brano con il bitrate specificato.',
+			wrongGeolocation: 'Il tuo account non può ascoltare questo brano dal tuo paese.',
+			wrongGeolocationNoAlternative: 'Il tuo account non può ascoltare questo brano dal e nessuna alternativa trovata.'
 		}
 	},
 	favorites: {
@@ -152,8 +156,7 @@ const it = {
 		}
 	},
 	linkAnalyzer: {
-		info:
-			'Puoi utilizzare questa sezione per avere più informazioni riguardanti il link che stai cercando di scaricare.',
+		info: 'Puoi utilizzare questa sezione per avere più informazioni riguardanti il link che stai cercando di scaricare.',
 		useful:
 			'Ciò può esserti utile se stai cercando di scaricare brani che non sono disponibili nel tuo Paese e vuoi sapere in quale Paese sono invece disponibili, per esempio.',
 		linkNotSupported: 'Questo link non è ancora supportato',
@@ -213,7 +216,8 @@ const it = {
 		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
 		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.',
 		startGeneratingItems: 'Elaborando {n} oggetti...',
-		finishGeneratingItems: '{n} oggetti generati.'
+		finishGeneratingItems: '{n} oggetti generati.',
+		noLovedPlaylist: 'Nessuna playlist "Canzoni del cuore"!'
 	},
 	settings: {
 		title: 'Impostazioni',
@@ -222,14 +226,11 @@ const it = {
 			title: 'Login',
 			loggedIn: 'Sei loggato come {username}',
 			arl: {
+				title: "Usa l'ARL",
 				question: 'Come ottengo il mio ARL?',
 				update: 'Aggiorna ARL'
 			},
 			logout: 'Disconnettiti',
-			login: 'Accedi tramite deezer.com'
-		},
-		loginWithCredentials: {
-			title: 'Login con credentiali',
 			login: 'Login',
 			email: 'E-mail',
 			password: 'Password'
@@ -290,6 +291,8 @@ const it = {
 			},
 			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
 			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',
+			fallbackISRC: 'Cerca tramite ISRC se il brano non è disponibile',
+			feelingLucky: 'Prova e usa il metodo vecchio di generazione degli URL',
 			logErrors: 'Crea file di log per gli errori',
 			logSearched: 'Crea file di log per le alternative cercate',
 			syncedLyrics: 'Crea i file .lyr (Testi Sincronizzati)',
@@ -322,6 +325,7 @@ const it = {
 			head: 'Quali tag salvare',
 			title: 'Titolo',
 			artist: 'Artista',
+			artists: 'Tag ARTISTS extra',
 			album: 'Album',
 			cover: 'Copertina',
 			trackNumber: 'Numero Traccia',
@@ -344,7 +348,9 @@ const it = {
 			copyright: 'Copyright',
 			composer: 'Compositori',
 			involvedPeople: 'Persone Coinvolte',
-			source: 'Sorgente e ID brano'
+			source: 'Sorgente e ID brano',
+			artistsWarning:
+				'Disabilitare il tag ARTSITS mentre non si sta usando la specificazione standard non salverà il multiartist'
 		},
 		other: {
 			title: 'Altro',
@@ -356,7 +362,9 @@ const it = {
 				nothing: "Salva solo l'artista principale",
 				default: 'Usando la specificazione standard',
 				andFeat: 'Usando & e feat.',
-				using: 'Usando "{separator}"'
+				using: 'Usando "{separator}"',
+				warning:
+					'Usando qualisasi separatore diverso dallo standard aggiugerà il tag ARTISTS per salvare il multiartist'
 			},
 			singleAlbumArtist: "Salva solo l'artista dell'album principale",
 			albumVariousArtists: 'Lascia "Artisti Vari" negli artisti dell\'album',

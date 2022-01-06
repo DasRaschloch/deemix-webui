@@ -67,6 +67,9 @@ export default {
 		hasFails() {
 			return this.queueItem.failed >= 1
 		},
+		hasErrors() {
+			return this.queueItem.errors.length >= 1
+		},
 		allFailed() {
 			let allFailed = false
 
@@ -77,7 +80,7 @@ export default {
 			return allFailed
 		},
 		finishedWithFails() {
-			return this.queueItem.status === 'download finished' && this.hasFails
+			return this.queueItem.status === 'download finished' && (this.hasFails || this.hasErrors)
 		},
 		isDeterminateStatus() {
 			return possibleStates.includes(this.queueItem.status)
@@ -93,7 +96,7 @@ export default {
 			let width = 0
 			let backgroundColor = 'var(--primary-color)'
 
-			if (this.hasFails) {
+			if (this.hasFails || this.hasErrors) {
 				// Orange
 				backgroundColor = 'hsl(33, 100%, 47%)'
 			} else {
@@ -128,7 +131,7 @@ export default {
 			let text = 'delete_forever'
 
 			if (this.queueItem.status === 'download finished') {
-				if (!this.hasFails) {
+				if (!(this.hasFails || this.hasErrors)) {
 					text = 'done'
 				} else if (this.queueItem.failed >= this.queueItem.size) {
 					text = 'error'

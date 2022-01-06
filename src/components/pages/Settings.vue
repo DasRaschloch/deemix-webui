@@ -35,14 +35,14 @@
 			<div v-else>
 				<form ref="loginWithCredentialsForm" @submit.prevent="loginWithCredentials">
 					<label>
-						<span>{{ $t('settings.loginWithCredentials.email') }}</span>
+						<span>{{ $t('settings.login.email') }}</span>
 						<input type="text" name="email" placeholder="email@example.com" class="mb-6"/>
 					</label>
 					<label>
-						<span>{{ $t('settings.loginWithCredentials.password') }}</span>
+						<span>{{ $t('settings.login.password') }}</span>
 						<input type="password" name="password" placeholder="●●●●●●●●" class="mb-6"/>
 					</label>
-					<button class="btn btn-primary login-button" type="submit">{{ $t('settings.loginWithCredentials.login') }}</button>
+					<button class="btn btn-primary login-button" type="submit">{{ $t('settings.login.login') }}</button>
 				</form>
 			</div>
 

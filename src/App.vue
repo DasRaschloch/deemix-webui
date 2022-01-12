@@ -59,6 +59,7 @@ export default {
 		}
 	},
 	mounted() {
+		this.isSocketConnected = socket.readyState === WebSocket.OPEN
 		socket.addEventListener('open', () => {
 			console.log('Connected to WebSocket')
 			this.isSocketConnected = true

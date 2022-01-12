@@ -260,7 +260,7 @@ export default defineComponent({
 			switch (tab) {
 				case 'playlist':
 					toDownload = this.playlists
-					toDownload += this.spotifyPlaylists
+					toDownload.concat(this.spotifyPlaylists)
 					break
 				case 'album':
 					toDownload = this.albums

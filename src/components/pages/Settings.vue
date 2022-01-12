@@ -982,7 +982,7 @@ export default {
 		},
 		async login(arl, force = false) {
 			toast(this.$t('toasts.loggingIn'), 'loading', false, 'login-toast')
-			const data = await fetchData('login-arl', { arl, force, child: this.accountNum }, 'POST')
+			const data = await postToServer('loginArl', { arl, force, child: this.accountNum })
 			const { status, user, childs, currentChild } = data
 			this.accounts = childs
 			this.accountNum = currentChild
@@ -1024,7 +1024,7 @@ export default {
 
 			toast(this.$t('toasts.loggingIn'), 'loading', false, 'login-toast')
 
-			const { accessToken, arl } = await postToServer('loginWithCredentials', {
+			const { accessToken, arl } = await postToServer('loginEmail', {
 				email,
 				password,
 				accessToken: this.accessToken
@@ -1038,8 +1038,7 @@ export default {
 			window.api.send('applogin')
 		},
 		async changeAccount() {
-			// socket.emit('changeAccount', this.accountNum)
-			const [user, accountNum] = await fetchData('changeAccount', { child: this.accountNum })
+			const [user, accountNum] = await fetchData('changeAccount', { child: this.accountNum }, 'POST')
 
 			this.accountChanged(user, accountNum)
 		},

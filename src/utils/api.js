@@ -25,7 +25,7 @@ export function sendToServer(key, data) {
 	})
 }
 
-export const postToServer = (endpoint, data) => {
+export function postToServer(endpoint, data) {
 	const url = new URL(`${window.location.origin}/api/${endpoint}`)
 
 	return fetch(url, {

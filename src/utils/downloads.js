@@ -1,4 +1,4 @@
-import { fetchData } from '@/utils/api'
+import { postToServer } from '@/utils/api'
 
 /**
  * @param	{string}	url
@@ -7,7 +7,7 @@ import { fetchData } from '@/utils/api'
 export function sendAddToQueue(url, bitrate = null) {
 	if (!url) throw new Error('No URL given to sendAddToQueue function!')
 
-	fetchData('addToQueue', { url, bitrate }, 'POST')
+	postToServer('addToQueue', { url, bitrate })
 }
 
 /**

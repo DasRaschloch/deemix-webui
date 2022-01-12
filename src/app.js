@@ -66,9 +66,9 @@ async function startApp() {
 			let result
 
 			if (accountNum !== 0) {
-				result = await fetchData('login-arl', { arl, force: true, child: accountNum || 0 }, 'POST')
+				result = await postToServer('loginArl', { arl, force: true, child: accountNum || 0 })
 			} else {
-				result = await fetchData('login-arl', { arl }, 'POST')
+				result = await postToServer('loginArl', { arl })
 			}
 
 			return result

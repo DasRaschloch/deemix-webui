@@ -357,6 +357,7 @@ const it = {
 		},
 		other: {
 			title: 'Altro',
+			autoCheckForUpdates: "Controlla aggiornamenti all'avvio",
 			savePlaylistAsCompilation: 'Salva le playlist come Compilation',
 			useNullSeparator: 'Usa il carattere NULL come separatore',
 			saveID3v1: "Salva anche l'ID3v1",

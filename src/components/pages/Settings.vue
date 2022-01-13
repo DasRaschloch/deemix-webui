@@ -561,6 +561,11 @@
 			</template>
 
 			<label class="with-checkbox">
+				<input v-model="settings.autoCheckForUpdates" type="checkbox" />
+				<span class="checkbox-text">{{ $t('settings.other.autoCheckForUpdates') }}</span>
+			</label>
+
+			<label class="with-checkbox">
 				<input v-model="settings.tags.savePlaylistAsCompilation" type="checkbox" />
 				<span class="checkbox-text">{{ $t('settings.other.savePlaylistAsCompilation') }}</span>
 			</label>

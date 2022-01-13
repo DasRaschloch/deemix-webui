@@ -356,6 +356,7 @@ const en = {
 		},
 		other: {
 			title: 'Other',
+			autoCheckForUpdates: 'Check for updates on startup',
 			savePlaylistAsCompilation: 'Save playlists as compilation',
 			useNullSeparator: 'Use null separator',
 			saveID3v1: 'Save ID3v1 as well',

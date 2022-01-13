@@ -228,7 +228,10 @@ const fr = {
 		deezerNotAvailable: 'Deezer est indisponible dans votre pays. Vous devez utiliser un VPN.',
 		startGeneratingItems: 'Traitement de {n} éléments...',
 		finishGeneratingItems: '{n} éléments ont été générés.',
-		noLovedPlaylist: 'Aucune playlist de pistes favorites !'
+		noLovedPlaylist: 'Aucune playlist de pistes favorites !',
+		checkingUpdates: 'Recherche des mises à jour...',
+		noUpdateAvailable: 'Aucune mise à jour disponible.',
+		updateAvailable: 'Une mise à jour est disponible !'
 	},
 	settings: {
 		title: 'Paramètres',
@@ -367,6 +370,7 @@ const fr = {
 		},
 		other: {
 			title: 'Autre',
+			autoCheckForUpdates: "Vérifier les mises à jour au démarrage de l'app",
 			savePlaylistAsCompilation: 'Enregistrer les playlists en tant que compilation',
 			useNullSeparator: 'Utiliser le caractère NULL comme séparateur',
 			saveID3v1: 'Enregistrer également les métadonnées ID3v1',

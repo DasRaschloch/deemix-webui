@@ -89,6 +89,17 @@ async function startApp() {
 	} else {
 		loggedIn({ status: 3, user: connectResponse.currentUser, arl })
 	}
+
+	if (connectResponse.checkForUpdates) {
+		toast(i18n.t('toasts.checkingUpdates'), 'loading', false, 'updates-toast')
+		const updates = await fetchData('checkForUpdates')
+		store.dispatch('setUpdateInfo', updates).catch(console.error)
+		if (updates.updateAvailable) {
+			toast(i18n.t('toasts.updateAvailable'), 'chevron-triple-up', true, 'updates-toast')
+		} else {
+			toast(i18n.t('toasts.noUpdateAvailable'), 'done', true, 'updates-toast')
+		}
+	}
 }
 
 function initClient() {

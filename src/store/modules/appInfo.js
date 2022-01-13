@@ -39,9 +39,11 @@ const actions = {
 	 */
 	setAppInfo({ commit }, payload) {
 		commit('SET_CURRENT_COMMIT', payload.currentCommit)
+		commit('SET_DEEMIX_VERSION', payload.deemixVersion)
+	},
+	setUpdateInfo({ commit }, payload) {
 		commit('SET_LATEST_COMMIT', payload.latestCommit)
 		commit('SET_UPDATE_AVAILABLE', payload.updateAvailable)
-		commit('SET_DEEMIX_VERSION', payload.deemixVersion)
 	},
 	/**
 	 * @param {any}												action

@@ -33,9 +33,9 @@
 
 		<h2>{{ $t('about.titles.usefulLinks') }}</h2>
 		<ul class="no-dots">
-			<!-- <li>
-				<a href="" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
-			</li> -->
+			<li>
+				<a href="https://deemix.app/gui" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
+			</li>
 			<li>
 				<a href="https://git.freezer.life/RemixDev/deemix-js" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>

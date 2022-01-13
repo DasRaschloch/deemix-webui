@@ -217,7 +217,10 @@ const en = {
 		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.',
 		startGeneratingItems: 'Processing {n} items...',
 		finishGeneratingItems: 'Generated {n} items.',
-		noLovedPlaylist: 'No loved tracks playlist!'
+		noLovedPlaylist: 'No loved tracks playlist!',
+		checkingUpdates: 'Checking for updates...',
+		noUpdateAvailable: 'No updates found',
+		updateAvailable: 'An update is available!'
 	},
 	settings: {
 		title: 'Settings',

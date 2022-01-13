@@ -217,7 +217,10 @@ const it = {
 		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.',
 		startGeneratingItems: 'Elaborando {n} oggetti...',
 		finishGeneratingItems: '{n} oggetti generati.',
-		noLovedPlaylist: 'Nessuna playlist "Canzoni del cuore"!'
+		noLovedPlaylist: 'Nessuna playlist "Canzoni del cuore"!',
+		checkingUpdates: 'Cercando aggiornamenti...',
+		noUpdateAvailable: 'Nessun aggiornamento trovato',
+		updateAvailable: 'È disponibile un aggiornamento!'
 	},
 	settings: {
 		title: 'Impostazioni',

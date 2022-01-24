@@ -9,7 +9,7 @@ const gr = {
 		download_hint: 'Λήψη',
 		play_hint: 'Αναπαραγωγή',
 		toggle_download_tab_hint: 'Ανάπτυξη/Σύμπτυξη',
-		clean_queue_hint: 'Ο Καθαρισμός Ολοκληρώθηκε',
+		clean_queue_hint: 'Καθαρισμός Ολοκληρωμένων',
 		cancel_queue_hint: 'Ακύρωση Όλων',
 		open_downloads_folder: 'Άνοιγμα Φακέλου Λήψεων',
 		cut: 'αποκοπή',

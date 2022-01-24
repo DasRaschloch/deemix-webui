@@ -33,7 +33,7 @@ const gr = {
 			ep: 'ep | eps',
 			bundle: 'δέσμη | δέσμες',
 			more: 'Περισσότερα άλμπουμ',
-			featured: 'Προτεινόμενα στο',
+			featured: 'Συμμετοχές',
 			spotifyPlaylist: 'λίστα αναπαραγωγής spotify | λίστες αναπαραγωγής spotify',
 			releaseDate: 'ημερομηνία κυκλοφορίας',
 			error: 'σφάλμα',

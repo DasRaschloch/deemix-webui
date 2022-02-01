@@ -234,7 +234,7 @@ const pt_br = {
 				update: 'Atualizar ARL'
 			},
 			logout: 'Sair',
-			login: 'Entrar'
+			login: 'Entrar',
 			email: 'E-mail',
 			password: 'Senha'
 		},

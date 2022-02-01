@@ -188,6 +188,7 @@ export default {
 			}
 
 			initQueue.forEach(item => {
+				if (!initQueueList[item]) return
 				initQueueList[item].silent = true
 				this.addToQueue(initQueueList[item])
 			})

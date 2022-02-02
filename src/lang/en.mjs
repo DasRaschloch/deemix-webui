@@ -231,13 +231,14 @@ const en = {
 			arl: {
 				title: 'Use ARL instead',
 				question: 'How do I get my own ARL?',
-				howTo: 'Deezer keeps track of login session by using a cookie called ARL.\nDeemix uses that cookie to get the metadata that it needs to download the tracks from Deezer.\nARLs last for 3 months, after that Deezer asks you to log in again. The same method is used in deemix.\nFollowing one of the guides below you can get your own account ARL.',
+				howTo:
+					'Deezer keeps track of login session by using a cookie called ARL.\nDeemix uses that cookie to get the metadata that it needs to download the tracks from Deezer.\nARLs last for 3 months, after that Deezer asks you to log in again. The same method is used in deemix.\nFollowing one of the guides below you can get your own account ARL.',
 				chromeSteps: {
 					easyWay: {
 						title: 'Chrome (Easy way)',
 						stepThree: 'Click on the little "lock" icon next the URL',
 						stepFour: 'Click on Cookies > deezer.com > cookies > arl',
-						stepFive: 'Select the string next to Content, and Copy',
+						stepFive: 'Select the string next to Content, and Copy'
 					},
 					title: 'Chrome',
 					stepFour: "Go under the Application tab (if you don't see it click the double arrow)",
@@ -247,16 +248,16 @@ const en = {
 				firefoxSteps: {
 					title: 'Firefox',
 					stepOne: 'Open Firefox',
-					stepFour: "Go under the Storage tab (if you don't see it click the double arrow)",
+					stepFour: "Go under the Storage tab (if you don't see it click the double arrow)"
 				},
 				commonSteps: {
 					stepOne: 'Open Chrome',
 					stepTwo: 'Go to www.deezer.com and log into your account',
 					stepThree: 'After logging in press F12 to open up Developer Tools',
 					stepFive: 'Open the cookie dropdown',
-					stepSix: "Select www.deezer.com",
-					stepSeven: "Find the `arl` cookie (It should be 192 chars long)",
-					stepEight: "Make sure only copy the value and not the entire cookie",
+					stepSix: 'Select www.deezer.com',
+					stepSeven: 'Find the `arl` cookie (It should be 192 chars long)',
+					stepEight: 'Make sure only copy the value and not the entire cookie',
 					stepLast: "That's your ARL, now you can use it in the app"
 				},
 				update: 'Force Update ARL'
@@ -436,7 +437,8 @@ const en = {
 			username: 'Spotify Username',
 			question: 'How do I enable Spotify Features?',
 			howTo: {
-				prologue:'"Spotify Features" is a set of features that lets you convert Spotify tracks and albums links into Deezer ones. If you provide a Spotify Playlist link the app will automatically convert all the links of the tracks inside it into deezer tracks. Enabling this set of features will let you see your public Spotify playlists in the favorites tab as well.',
+				prologue:
+					'"Spotify Features" is a set of features that lets you convert Spotify tracks and albums links into Deezer ones. If you provide a Spotify Playlist link the app will automatically convert all the links of the tracks inside it into deezer tracks. Enabling this set of features will let you see your public Spotify playlists in the favorites tab as well.',
 				info: 'For security reasons you will need to provide your own Client ID and Client Secret',
 				questionOne: {
 					title: 'How do I get my Client ID and Client Secret?',
@@ -447,11 +449,13 @@ const en = {
 					},
 					stepTwo: 'Click on "Create an App".\n',
 					stepTwoAlt: "Create an App button on Spotify for Developers's Dashboard",
-					stepThree: 'Fill out the "App name" and "App description" fields and check both checkboxes. Then click on the "Create" button.\n',
+					stepThree:
+						'Fill out the "App name" and "App description" fields and check both checkboxes. Then click on the "Create" button.\n',
 					stepThreeAlt: 'Create an app form',
-					stepFour: 'Now you can see the Client ID. If you click on "Show Client Secret" the client secret will be revealed.\n',
+					stepFour:
+						'Now you can see the Client ID. If you click on "Show Client Secret" the client secret will be revealed.\n',
 					stepFourAlt: 'Screen of client ID and Secret',
-					stepFive: 'Now you can copy-paste those results in the appropriate fields in the settings.',
+					stepFive: 'Now you can copy-paste those results in the appropriate fields in the settings.'
 				},
 				questionTwo: {
 					title: 'How do I get my Spotify Username?',

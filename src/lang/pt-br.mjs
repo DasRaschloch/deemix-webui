@@ -231,7 +231,45 @@ const pt_br = {
 			arl: {
 				title: 'Usar ARL',
 				question: 'Como eu consigo o meu ARL?',
-				update: 'Atualizar ARL'
+				howTo: {
+					prologue: {
+						p1: 'O Deezer mantém o registro de login da sessão usando um cookie chamado ARL.',
+						p2: 'O Deemix usa este cookie para obter os metadados necessários para fazer o download das faixas do Deezer.',
+						p3: 'ARLs duram por 3 meses, após isto o Deezer solicita que você faça login novamente. O mesmo método é usado no Deemix.',
+						p4: 'Seguindo um dos guias abaixo, você pode obter o ARL da sua conta.',
+						warning: "Use este método somente se e-mail/senha não funcionar."
+					},
+					chromeSteps: {
+						title: 'Chrome',
+						step1: 'Abra o Chrome',
+						easyWay: {
+							title: 'Chrome (Modo fácil)',
+							step3: 'Clique no pequeno ícone de "cadeado" próximo ao URL',
+							step4: 'Clique em Cookies > deezer.com > cookies > arl',
+							step5: 'Selecione a string ao lado de Conteúdo, e Copiar'
+						},
+						step4: "Acesse a aba Aplicativo (se você não ver, clique na seta dupla)",
+						videoGuide: {
+							text: "Aqui está um {videoGuide}",
+							link: 'guia em vídeo'
+						}
+					},
+					firefoxSteps: {
+						title: 'Firefox',
+						step1: 'Abra o Firefox',
+						step4: "Acesse a aba Armazenamento (se você não ver, clique na seta dupla)"
+					},
+					commonSteps: {
+						step2: 'Acesse www.deezer.com e faça login na sua conta',
+						step3: 'Após fazer login, pressione F12 para abrir as Ferramentas de Desenvolvedor',
+						step5: 'Abra a lista Cookies',
+						step6: 'Selecione www.deezer.com',
+						step7: 'Encontre o cookie `arl` (Ele deve ter 192 caracteres de comprimento)',
+						step8: 'Certifique-se de copiar somente o valor e não o cookie completo',
+						lastStep: "Este é o seu ARL, agora você pode usá-lo no aplicativo"
+					}
+				},
+				update: 'Forçar atualizar ARL'
 			},
 			logout: 'Sair',
 			login: 'Entrar',
@@ -407,6 +445,41 @@ const pt_br = {
 			clientSecret: 'Spotify Client Secret',
 			username: 'Usuário do Spotify',
 			question: 'Como habilitar os Recursos do Spotify?'
+			howTo: {
+				prologue: {
+					p1: '"Recursos do Spotify" é um conjunto de recursos que lhe permite converter links de faixas e álbuns do Spotify para links do Deezer.',
+					p2: 'Se você fornecer um link para uma playlist do Spotify, o aplicativo vai automaticamente converter todos os links das faixas dentro dela para faixas do Deezer.',
+					p3: 'Ativar este conjunto de recursos irá permitir que você veja as suas playlists públicas do Spotify também na aba Favoritos.'
+				},
+				info: 'Por motivos de segurança, você vai precisar fornecer o seu próprio Client ID e Client Secret',
+				clientSecretQuestion: {
+					title: 'Como obtenho o meu Client ID e Client Secret?',
+					step1: {
+						text: 'Acesse o {spotifyDevelopersDashboard} e faça login com a sua conta do Spotify.',
+						spotifyDevelopersDashboard: "Spotify for Developers's Dashboard"
+					},
+					step2: {
+						text: 'Clique em "Create an App".',
+						imageAlt: "Create an App button on Spotify for Developers's Dashboard"
+					},
+					step3: {
+						text: 'Preencha os campos "App name" e "App description" e marque ambas as caixas de seleção. Então clique em "Create".',
+						imageAlt: 'Create an app form'
+					},
+					step4: {
+						text: 'Agora você poderá ver o Client ID. Se você clicar em "Show Client Secret" ele será revelado.',
+						imageAlt: 'Screen of client ID and Secret'
+					},
+					step5: 'Agora você pode copiar e colar estes resultados nos campos apropriados nas configurações.'
+				},
+				usernameQuestion: {
+					title: 'Como obtenho meu nome de usuário do Spotify?',
+					step1: {
+						text: "Você pode obter o seu nome de usuário do Spotify na página {overviewPage} no site do Spotify.",
+						overviewPage: 'Visão geral da conta'
+					}
+				}
+			}
 		},
 		reset: 'Restaurar padrão',
 		resetMessage: 'Deseja realmente restaurar as configurações padrão?',

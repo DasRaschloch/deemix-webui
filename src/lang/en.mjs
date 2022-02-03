@@ -231,34 +231,43 @@ const en = {
 			arl: {
 				title: 'Use ARL instead',
 				question: 'How do I get my own ARL?',
-				howTo:
-					'Deezer keeps track of login session by using a cookie called ARL.\nDeemix uses that cookie to get the metadata that it needs to download the tracks from Deezer.\nARLs last for 3 months, after that Deezer asks you to log in again. The same method is used in deemix.\nFollowing one of the guides below you can get your own account ARL.',
-				chromeSteps: {
-					easyWay: {
-						title: 'Chrome (Easy way)',
-						stepThree: 'Click on the little "lock" icon next the URL',
-						stepFour: 'Click on Cookies > deezer.com > cookies > arl',
-						stepFive: 'Select the string next to Content, and Copy'
+				howTo: {
+					prologue: {
+						p1: 'Deezer keeps track of login session by using a cookie called ARL.',
+						p2: 'Deemix uses that cookie to get the metadata that it needs to download the tracks from Deezer.',
+						p3: 'ARLs last for 3 months, after that Deezer asks you to log in again. The same method is used in deemix.',
+						p4: 'Following one of the guides below you can get your own account ARL.',
+						warning: "Use this method only if email and password doesn't work."
 					},
-					title: 'Chrome',
-					stepFour: "Go under the Application tab (if you don't see it click the double arrow)",
-					hereIs: "Here's a",
-					videoGuide: 'video guide'
-				},
-				firefoxSteps: {
-					title: 'Firefox',
-					stepOne: 'Open Firefox',
-					stepFour: "Go under the Storage tab (if you don't see it click the double arrow)"
-				},
-				commonSteps: {
-					stepOne: 'Open Chrome',
-					stepTwo: 'Go to www.deezer.com and log into your account',
-					stepThree: 'After logging in press F12 to open up Developer Tools',
-					stepFive: 'Open the cookie dropdown',
-					stepSix: 'Select www.deezer.com',
-					stepSeven: 'Find the `arl` cookie (It should be 192 chars long)',
-					stepEight: 'Make sure only copy the value and not the entire cookie',
-					stepLast: "That's your ARL, now you can use it in the app"
+					chromeSteps: {
+						title: 'Chrome',
+						step1: 'Open Chrome',
+						easyWay: {
+							title: 'Chrome (Easy way)',
+							step3: 'Click on the little "lock" icon next the URL',
+							step4: 'Click on Cookies > deezer.com > cookies > arl',
+							step5: 'Select the string next to Content, and Copy'
+						},
+						step4: "Go under the Application tab (if you don't see it click the double arrow)",
+						videoGuide: {
+							text: "Here's a {videoGuide}",
+							link: 'video guide'
+						}
+					},
+					firefoxSteps: {
+						title: 'Firefox',
+						step1: 'Open Firefox',
+						step4: "Go under the Storage tab (if you don't see it click the double arrow)"
+					},
+					commonSteps: {
+						step2: 'Go to www.deezer.com and log into your account',
+						step3: 'After logging in press F12 to open up Developer Tools',
+						step5: 'Open the cookie dropdown',
+						step6: 'Select www.deezer.com',
+						step7: 'Find the `arl` cookie (It should be 192 chars long)',
+						step8: 'Make sure only copy the value and not the entire cookie',
+						lastStep: "That's your ARL, now you can use it in the app"
+					}
 				},
 				update: 'Force Update ARL'
 			},
@@ -437,32 +446,37 @@ const en = {
 			username: 'Spotify Username',
 			question: 'How do I enable Spotify Features?',
 			howTo: {
-				prologue:
-					'"Spotify Features" is a set of features that lets you convert Spotify tracks and albums links into Deezer ones. If you provide a Spotify Playlist link the app will automatically convert all the links of the tracks inside it into deezer tracks. Enabling this set of features will let you see your public Spotify playlists in the favorites tab as well.',
-				info: 'For security reasons you will need to provide your own Client ID and Client Secret',
-				questionOne: {
-					title: 'How do I get my Client ID and Client Secret?',
-					stepOne: {
-						partOne: 'Connect to',
-						partTwo: "Spotify for Developers's Dashboard",
-						partThree: 'and login with your Spotify account.'
-					},
-					stepTwo: 'Click on "Create an App".\n',
-					stepTwoAlt: "Create an App button on Spotify for Developers's Dashboard",
-					stepThree:
-						'Fill out the "App name" and "App description" fields and check both checkboxes. Then click on the "Create" button.\n',
-					stepThreeAlt: 'Create an app form',
-					stepFour:
-						'Now you can see the Client ID. If you click on "Show Client Secret" the client secret will be revealed.\n',
-					stepFourAlt: 'Screen of client ID and Secret',
-					stepFive: 'Now you can copy-paste those results in the appropriate fields in the settings.'
+				prologue: {
+					p1: '"Spotify Features" is a set of features that lets you convert Spotify tracks and albums links into Deezer ones.',
+					p2: 'If you provide a Spotify Playlist link the app will automatically convert all the links of the tracks inside it into deezer tracks.',
+					p3: 'Enabling this set of features will let you see your public Spotify playlists in the favorites tab as well.'
 				},
-				questionTwo: {
+				info: 'For security reasons you will need to provide your own Client ID and Client Secret',
+				clientSecretQuestion: {
+					title: 'How do I get my Client ID and Client Secret?',
+					step1: {
+						text: 'Connect to {spotifyDevelopersDashboard} and login with your Spotify account.',
+						spotifyDevelopersDashboard: "Spotify for Developers's Dashboard"
+					},
+					step2: {
+						text: 'Click on "Create an App".',
+						imageAlt: "Create an App button on Spotify for Developers's Dashboard"
+					},
+					step3: {
+						text: 'Fill out the "App name" and "App description" fields and check both checkboxes. Then click on the "Create" button.',
+						imageAlt: 'Create an app form'
+					},
+					step4: {
+						text: 'Now you can see the Client ID. If you click on "Show Client Secret" the client secret will be revealed.',
+						imageAlt: 'Screen of client ID and Secret'
+					},
+					step5: 'Now you can copy-paste those results in the appropriate fields in the settings.'
+				},
+				usernameQuestion: {
 					title: 'How do I get my Spotify Username?',
-					stepOne: {
-						partOne: 'You can get your Spotify Username from the',
-						partTwo: 'Overview page',
-						partThree: "on Spotify's Website"
+					step1: {
+						text: "You can get your Spotify Username from the {overviewPage} on Spotify's Website.",
+						overviewPage: 'Overview page'
 					}
 				}
 			}

@@ -20,11 +20,11 @@
 		</p>
 		<p class="mb-4 text-base">
 			{{ $t('settings.spotify.howTo.clientSecretQuestion.step3.text') }}<br/>
-			<img src="https://i.imgur.com/A9cvDkK.png" :alt="$t('settings.spotify.howTo.clientSecretQuestion.step3.imageAlt')" />
+			<img src="https://i.imgur.com/TpzAVDc.png" :alt="$t('settings.spotify.howTo.clientSecretQuestion.step3.imageAlt')" />
 		</p>
 		<p class="mb-4 text-base">
 			{{ $t('settings.spotify.howTo.clientSecretQuestion.step4.text') }}<br/>
-			<img src="https://i.imgur.com/foEfIhO.png" :alt="$t('settings.spotify.howTo.clientSecretQuestion.step4.imageAlt')" />
+			<img src="https://i.imgur.com/MtpcIsC.png" :alt="$t('settings.spotify.howTo.clientSecretQuestion.step4.imageAlt')" />
 		</p>
 		<p class="mb-4 text-base">{{ $t('settings.spotify.howTo.clientSecretQuestion.step5') }}</p>
 

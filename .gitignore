@@ -34,3 +34,4 @@ tailwind.config.full.js
 
 # development
 *.map
+public/js/bundle.js

@@ -237,7 +237,7 @@ const pt_br = {
 						p2: 'O Deemix usa este cookie para obter os metadados necessários para fazer o download das faixas do Deezer.',
 						p3: 'ARLs duram por 3 meses, após isto o Deezer solicita que você faça login novamente. O mesmo método é usado no Deemix.',
 						p4: 'Seguindo um dos guias abaixo, você pode obter o ARL da sua conta.',
-						warning: "Use este método somente se e-mail/senha não funcionar."
+						warning: 'Use este método somente se e-mail/senha não funcionar.'
 					},
 					chromeSteps: {
 						title: 'Chrome',
@@ -248,16 +248,16 @@ const pt_br = {
 							step4: 'Clique em Cookies > deezer.com > cookies > arl',
 							step5: 'Selecione a string ao lado de Conteúdo, e Copiar'
 						},
-						step4: "Acesse a aba Aplicativo (se você não ver, clique na seta dupla)",
+						step4: 'Acesse a aba Aplicativo (se você não ver, clique na seta dupla)',
 						videoGuide: {
-							text: "Aqui está um {videoGuide}",
+							text: 'Aqui está um {videoGuide}',
 							link: 'guia em vídeo'
 						}
 					},
 					firefoxSteps: {
 						title: 'Firefox',
 						step1: 'Abra o Firefox',
-						step4: "Acesse a aba Armazenamento (se você não ver, clique na seta dupla)"
+						step4: 'Acesse a aba Armazenamento (se você não ver, clique na seta dupla)'
 					},
 					commonSteps: {
 						step2: 'Acesse www.deezer.com e faça login na sua conta',
@@ -266,7 +266,7 @@ const pt_br = {
 						step6: 'Selecione www.deezer.com',
 						step7: 'Encontre o cookie `arl` (Ele deve ter 192 caracteres de comprimento)',
 						step8: 'Certifique-se de copiar somente o valor e não o cookie completo',
-						lastStep: "Este é o seu ARL, agora você pode usá-lo no aplicativo"
+						lastStep: 'Este é o seu ARL, agora você pode usá-lo no aplicativo'
 					}
 				},
 				update: 'Forçar atualizar ARL'
@@ -444,7 +444,7 @@ const pt_br = {
 			clientID: 'Spotify clientID',
 			clientSecret: 'Spotify Client Secret',
 			username: 'Usuário do Spotify',
-			question: 'Como habilitar os Recursos do Spotify?'
+			question: 'Como habilitar os Recursos do Spotify?',
 			howTo: {
 				prologue: {
 					p1: '"Recursos do Spotify" é um conjunto de recursos que lhe permite converter links de faixas e álbuns do Spotify para links do Deezer.',
@@ -475,7 +475,7 @@ const pt_br = {
 				usernameQuestion: {
 					title: 'Como obtenho meu nome de usuário do Spotify?',
 					step1: {
-						text: "Você pode obter o seu nome de usuário do Spotify na página {overviewPage} no site do Spotify.",
+						text: 'Você pode obter o seu nome de usuário do Spotify na página {overviewPage} no site do Spotify.',
 						overviewPage: 'Visão geral da conta'
 					}
 				}

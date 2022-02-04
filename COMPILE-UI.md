@@ -16,13 +16,37 @@ and then
 $ npm -v
 ```
 
-If you see the corresponding versions of node and npm, you are ready to code!
+If you see the corresponding versions of node and npm, you can move onto install yarn.
 
-3. Go to the root of this project, open your favorite terminal and run
+3. Install the yarn package manager by running in a terminal the command
 
 ```bash
-$ npm i
+$ npm install -g yarn
 ```
+
+You may want to use `sudo` with that if it gives you permission errors.
+
+4. Check if yarn has been installed correctly by running in a terminal the command
+
+```bash
+$ yarn --version
+```
+
+If you see the version number of yarm, you are ready to code!
+
+5. Go to the root of this project, open your favorite terminal and run
+
+```bash
+$ yarn install
+```
+
+To work on this webui you will need a working server as well. If you've downloaded this with deemix-gui you can run in a terminal positioned inside the deemix-gui folder the command
+
+```bash
+$ yarn install-all
+```
+
+To install all dependencies for all the modules (gui, server and webui)
 
 # Scripts
 
@@ -31,7 +55,7 @@ $ npm i
 By simply running
 
 ```bash
-$ npm run dev
+$ yarn dev
 ```
 
 you will have 2 tasks running at the same time:
@@ -50,16 +74,16 @@ However, if you need to edit the `public/index.html` file you'll have to kill th
 
 ### Adding files
 
-If you want to add new super-awesome `.js` or `.vue` files, just add them. Deemix uses ES6 synthax, so you'll probably need to export some functions or variables from your new file. Files that will export and import nothing will be ignored by the bundler (rollup).
+If you want to add new `.js` or `.vue` files, just add them. deemix uses ES6 synthax, so you'll probably need to export some functions or variables from your new file. Files that will export and import nothing will be ignored by the bundler (rollup).
 
-If you want to add new mega-awesome `.scss` (style) files, you need to import them in the main `style.scss` file. The `.scss` files **must** all start with an underscore _, except for the `style.scss` file.
+If you want to add new `.scss` (style) files, you need to import them in the main `style.scss` file. The `.scss` files **must** all start with an underscore _, except for the `style.scss` file.
 
 ## Building
 
 When you want to deploy your application, you **must** run
 
 ```bash
-$ npm run build
+$ yarn build
 ```
 
 This is necessary to get
@@ -74,7 +98,7 @@ in order to drop the final application size (we are talking about MBs, maps are 
 If you notice that another team member installed or updated one or more new packages, just run
 
 ```bash
-$ npm i
+$ yarn install
 ```
 
 and you will be fine.

@@ -1,4 +1,4 @@
-import { ref, computed, watchEffect } from '@vue/composition-api'
+import { ref, computed } from '@vue/composition-api'
 
 import store from '@/store'
 import { fetchData } from '@/utils/api'

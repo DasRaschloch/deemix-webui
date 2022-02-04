@@ -32,7 +32,7 @@ const i18n = new VueI18n({
 				return 1
 			}
 
-			if (n1 == 1) {
+			if (n1 === 1) {
 				return 0
 			}
 

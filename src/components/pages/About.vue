@@ -149,7 +149,6 @@ import { computed, defineComponent, onMounted, reactive, toRefs } from '@vue/com
 import { useOnline } from '@/use/online'
 
 import paypal from '@/assets/paypal.svg'
-import ethereum from '@/assets/ethereum.svg'
 
 export default defineComponent({
 	setup(_, ctx) {
@@ -179,7 +178,6 @@ export default defineComponent({
 		return {
 			...toRefs(state),
 			paypal,
-			ethereum,
 			isOnline
 		}
 	}
@@ -202,10 +200,6 @@ i {
 i::v-deep svg {
 	fill: white;
 	width: 20px;
-}
-
-.ethereum::v-deep svg {
-	fill: var(--foreground);
 }
 
 :link {

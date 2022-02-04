@@ -135,9 +135,8 @@ export function getPropertyWithFallback(obj, ...props) {
 		// Searching the properties in the object
 		const valueToTest = hasDotNotation
 			? prop.split('.').reduce((o, i) => {
-					if (o) {
-						return o[i]
-					}
+					if (o) return o[i]
+					return undefined
 			  }, obj)
 			: obj[prop]
 

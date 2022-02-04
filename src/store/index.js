@@ -1,4 +1,4 @@
-import Vuex from 'vuex'
+import Vuex, { Store } from 'vuex'
 import Vue from 'vue'
 
 import appInfo from '@/store/modules/appInfo'
@@ -7,7 +7,7 @@ import errors from '@/store/modules/errors'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
+export default new Store({
 	modules: {
 		appInfo,
 		login,

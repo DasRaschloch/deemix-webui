@@ -68,7 +68,7 @@ Note that in development mode 1 more file (`bundle.js.map`) will be created in t
 
 ### Editing files
 
-You can edit `.scss` and `.js` files and simply refresh the page to see your new and surely awesome code directly in the app 😉
+You can edit `.scss` and `.js` files and simply refresh the page to see your new code directly in the app.
 
 However, if you need to edit the `public/index.html` file you'll have to kill the terminal and re-run `npm run dev` to see your edits.
 

@@ -166,8 +166,7 @@ const fr = {
 		}
 	},
 	linkAnalyzer: {
-		info:
-			"Vous pouvez utiliser cette section pour obtenir davantage d'informations sur le lien que vous essayez de télécharger.",
+		info: "Vous pouvez utiliser cette section pour obtenir davantage d'informations sur le lien que vous essayez de télécharger.",
 		useful:
 			"C'est utile si vous essayez, par exemple, de télécharger des pistes indisponibles dans votre pays et que vous souhaitez savoir où elles sont disponibles.",
 		linkNotSupported: "Ce lien n'est pas encore pris en charge",
@@ -307,7 +306,7 @@ const fr = {
 			fallbackBitrate: "Recourir à un débit plus faible si le débit préféré n'est pas disponible",
 			fallbackSearch: "Rechercher la piste ailleurs si le lien original n'est pas disponible",
 			fallbackISRC: "Rechercher la piste à l'aide de son ISRC si le lien original n'est pas disponible",
-			feelingLucky: "Utiliser les CDNs et les caches (ancienne méthode de téléchargement des pistes)",
+			feelingLucky: 'Utiliser les CDNs et les caches (ancienne méthode de téléchargement des pistes)',
 			logErrors: "Créer un fichier journal d'erreurs",
 			logSearched: 'Créer un fichier journal des pistes recherchées',
 			createM3U8File: 'Créer un fichier de playlist',
@@ -366,7 +365,7 @@ const fr = {
 			involvedPeople: 'Personnes Impliquées',
 			source: 'ID de la source et de la piste',
 			artistsWarning:
-				"La désactivation de la métadonnée ARTISTS sans utiliser la spécification standard ne préservera pas le support multi-artiste."
+				'La désactivation de la métadonnée ARTISTS sans utiliser la spécification standard ne préservera pas le support multi-artiste.'
 		},
 		other: {
 			title: 'Autre',

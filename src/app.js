@@ -36,6 +36,7 @@ String.prototype.capitalize = function () {
 
 /* ===== App initialization ===== */
 async function startApp() {
+	document.getElementById('missingBundle').remove()
 	new Vue({
 		store,
 		router,

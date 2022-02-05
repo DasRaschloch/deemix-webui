@@ -26,6 +26,7 @@
 				font-family: sans-serif;
 				background-color: hsl(240, 12%, 16%);
 				border-radius: 10px;
+				display: none;
 			}
 		</style>
 
@@ -44,5 +45,11 @@
 		</p>
 	</body>
 
+	<script>
+		setTimeout(()=>{
+			let missingBundle = document.getElementById('missingBundle')
+			if (missingBundle) missingBundle.style.display = 'block'
+		}, 3000)
+	</script>
 	<script src="js/bundle.js"></script>
 </html>

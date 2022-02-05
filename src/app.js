@@ -11,6 +11,7 @@ import '@/styles/css/normalize.css'
 import '@/styles/css/base.css'
 import '@/styles/css/components.css'
 import '@/styles/css/helpers.css'
+import '@/styles/css/icons.css'
 import '@/styles/css/typography.css'
 
 import '@/styles/scss/tables.scss'
@@ -96,7 +97,7 @@ async function startApp() {
 		const updates = await fetchData('checkForUpdates')
 		store.dispatch('setUpdateInfo', updates).catch(console.error)
 		if (updates.updateAvailable) {
-			toast(i18n.t('toasts.updateAvailable'), 'chevron-triple-up', true, 'updates-toast')
+			toast(i18n.t('toasts.updateAvailable'), 'browser_updated', false, 'updates-toast')
 		} else {
 			toast(i18n.t('toasts.noUpdateAvailable'), 'done', true, 'updates-toast')
 		}

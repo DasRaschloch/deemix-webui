@@ -241,6 +241,44 @@ const fr = {
 			arl: {
 				title: 'Utiliser de préférence la connexion via ARL',
 				question: 'Comment obtenir mon ARL personnel ?',
+				howTo: {
+					prologue: {
+						p1: 'Deezer conserve une trace de votre connexion en utilisant un cookie appelé ARL.',
+						p2: 'Deemix utilise ce cookie pour obtenir les métadonnées dont il a besoin pour télécharger les pistes depuis Deezer.',
+						p3: 'Les ARLs restent valables pendant 3 mois, après quoi Deezer vous demande de vous reconnecter. La même méthode est utilisée dans deemix.',
+						p4: "En suivant l'un des modes opératoires ci-dessous, vous pouvez obtenir votre ARL personnel.",
+						warning: "N'utilisez cette méthode que si l'e-mail et le mot de passe ne fonctionnent pas."
+					},
+					chromeSteps: {
+						title: 'Chrome',
+						step1: 'Ouvrez Chrome',
+						easyWay: {
+							title: 'Chrome (Méthode simple)',
+							step3: "Cliquez sur la petite icône représentant un cadenas située à côté de l'URL.",
+							step4: 'Cliquez sur Cookies > deezer.com > cookies > arl',
+							step5: 'Sélectionnez la chaîne de caractères située à côté de Contenu, et copiez-la'
+						},
+						step4: "Allez sous l'onglet Application (si vous ne le voyez pas, cliquez sur la double flèche).",
+						videoGuide: {
+							text: "Voici un {videoGuide}",
+							link: 'tutoriel vidéo'
+						}
+					},
+					firefoxSteps: {
+						title: 'Firefox',
+						step1: 'Ouvrez Firefox',
+						step4: "Allez sous l'onglet Stockage (si vous ne le voyez pas, cliquez sur la double flèche)."
+					},
+					commonSteps: {
+						step2: 'Allez sur www.deezer.com et connectez-vous à votre compte',
+						step3: 'Une fois la connexion effectuée, appuyez sur F12 pour ouvrir les outils du développeur.',
+						step5: 'Ouvrez le menu déroulant Cookies',
+						step6: 'Sélectionnez www.deezer.com',
+						step7: 'Recherchez le cookie `arl` (il doit comporter 192 caractères).',
+						step8: "Assurez-vous de ne copier que la valeur et non l'intégralité du cookie.",
+						lastStep: "Il s'agit de votre ARL personnel, vous pouvez maintenant l'utiliser dans l'application."
+					}
+				},
 				update: "Forcer la réactualisation de l'ARL"
 			},
 			logout: 'Déconnexion',
@@ -416,10 +454,45 @@ const fr = {
 		},
 		spotify: {
 			title: 'Fonctionnalités Spotify',
-			clientID: 'clientID Spotify',
+			clientID: 'Client ID Spotify',
 			clientSecret: 'Client Secret Spotify',
 			username: "Nom d'utilisateur Spotify",
-			question: 'Comment activer les Fonctionnalités Spotify ?'
+			question: 'Comment activer les Fonctionnalités Spotify ?',
+			howTo: {
+				prologue: {
+					p1: 'Les "Fonctionnalités Spotify" sont un ensemble de fonctionnalités qui vous permet de convertir les liens des pistes et albums Spotify en équivalents Deezer.',
+					p2: "Si vous introduisez un lien d'une Playlist Spotify, l'application convertira automatiquement tous les liens des pistes qu'elle contient en pistes Deezer correspondantes.",
+					p3: "En activant ces fonctionnalités, vous pourrez également consulter vos Playlists Spotify publiques dans l'onglet Favoris."
+				},
+				info: 'Pour des raisons de sécurité, vous devrez fournir votre Client ID et votre Client Secret personnels.',
+				clientSecretQuestion: {
+					title: 'Comment obtenir mon Client ID ainsi que mon Client Secret personnels ?',
+					step1: {
+						text: 'Rendez-vous sur le {spotifyDevelopersDashboard} et connectez-vous avec votre compte Spotify.',
+						spotifyDevelopersDashboard: "Tableau de bord Spotify pour les développeurs"
+					},
+					step2: {
+						text: 'Cliquez sur "Create an App".',
+						imageAlt: "Bouton Create an App"
+					},
+					step3: {
+						text: 'Remplissez les champs "App name" et "App description" et cochez les deux cases. Cliquez ensuite sur le bouton "Create".',
+						imageAlt: 'Formulaire Create an App'
+					},
+					step4: {
+						text: 'Vous pouvez maintenant visualiser le Client ID. Si vous cliquez sur "Show Client Secret", le Client Secret vous sera révélé.',
+						imageAlt: 'Ecran Client ID et Client Secret'
+					},
+					step5: 'Vous pouvez maintenant copier-coller ces données dans les champs appropriés des paramètres.'
+				},
+				usernameQuestion: {
+					title: "Comment obtenir mon nom d'utilisateur Spotify ?",
+					step1: {
+						text: "Vous pouvez obtenir votre nom d'utilisateur Spotify à partir de la page {overviewPage} sur site Web de Spotify.",
+						overviewPage: "Vue d'ensemble du compte"
+					}
+				}
+			}
 		},
 		reset: 'Rétablir les valeurs par défaut',
 		resetMessage: 'Souhaitez-vous vraiment rétablir les paramètres par défaut ?',

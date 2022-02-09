@@ -260,7 +260,7 @@ const fr = {
 						},
 						step4: "Allez sous l'onglet Application (si vous ne le voyez pas, cliquez sur la double flèche).",
 						videoGuide: {
-							text: "Voici un {videoGuide}",
+							text: 'Voici un {videoGuide}',
 							link: 'tutoriel vidéo'
 						}
 					},
@@ -469,11 +469,11 @@ const fr = {
 					title: 'Comment obtenir mon Client ID ainsi que mon Client Secret personnels ?',
 					step1: {
 						text: 'Rendez-vous sur le {spotifyDevelopersDashboard} et connectez-vous avec votre compte Spotify.',
-						spotifyDevelopersDashboard: "Tableau de bord Spotify pour les développeurs"
+						spotifyDevelopersDashboard: 'Tableau de bord Spotify pour les développeurs'
 					},
 					step2: {
 						text: 'Cliquez sur "Create an App".',
-						imageAlt: "Bouton Create an App"
+						imageAlt: 'Bouton Create an App'
 					},
 					step3: {
 						text: 'Remplissez les champs "App name" et "App description" et cochez les deux cases. Cliquez ensuite sur le bouton "Create".',

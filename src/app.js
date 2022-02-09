@@ -97,7 +97,7 @@ async function startApp() {
 		const updates = await fetchData('checkForUpdates')
 		store.dispatch('setUpdateInfo', updates).catch(console.error)
 		if (updates.updateAvailable) {
-			toast(i18n.t('toasts.updateAvailable'), 'browser_updated', false, 'updates-toast')
+			toast(i18n.t('toasts.updateAvailable'), 'browser_updated', true, 'updates-toast')
 		} else {
 			toast(i18n.t('toasts.noUpdateAvailable'), 'done', true, 'updates-toast')
 		}

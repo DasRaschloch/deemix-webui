@@ -41,11 +41,19 @@ const ru = {
 			albumN: '{n} альбом | {n} альбома | {n} альбомов',
 			artistN: '{n} исполнитель | {n} исполнителя | {n} исполнителей',
 			playlistN: '{n} плейлист | {n} плейлиста | {n} плейлистов'
-		}
+		},
+		yes: 'да',
+		no: 'нет',
+		empty: 'пусто'
 	},
 	about: {
+		appStatus: {
+			online: 'приложение онлайн',
+			offline: 'приложение оффлайн'
+		},
 		updates: {
 			currentVersion: 'Текущая версия',
+			currentWebuiVersion: 'Текущая версия WebUI',
 			versionNotAvailable: 'Н/Д',
 			updateAvailable: `Вы используете не последнюю доступную версию: {version}`,
 			deemixVersion: 'Версия библиотеки deemix'
@@ -107,6 +115,7 @@ const ru = {
 	},
 	errors: {
 		title: 'Ошибки {name}',
+		postTitle: 'Ошибки после скачивания',
 		ids: {
 			invalidURL: 'URL не распознан',
 			unsupportedURL: 'URL не поддерживается',
@@ -124,7 +133,11 @@ const ru = {
 			notAvailable: 'Трек недоступен на серверах Deezer!',
 			notAvailableNoAlternative: 'Трек недоступен на серверах Deezer. Альтернатив не найдено!',
 			noSpaceLeft: 'На устройстве не осталось свободного места!',
-			albumDoesntExists: 'Альбома не существует, информация не получена'
+			albumDoesntExists: 'Альбома не существует, информация не получена',
+			wrongLicense: "Ваш аккаунт не может играть данный трек с желаемым битрейтом.",
+			wrongGeolocation: "Ваш аккаунт не может играть данный трек из вашей текущей страны.",
+			wrongGeolocationNoAlternative:
+				"Ваш аккаунт не может играть данный трек из вашей текущей страны. Альтернатив не найдено."
 		}
 	},
 	favorites: {
@@ -160,8 +173,12 @@ const ru = {
 			label: 'Издатель',
 			recordType: 'Тип',
 			genres: 'Жанр',
-			tracklist: 'Треклист'
-		}
+			tracklist: 'Треклист',
+			readable: 'Читабельный',
+			available: 'Доступен'
+		},
+		countries: 'Страны, где доступен данный трек',
+		noCountries: 'Этот трек недоступен ни в одной стране.'
 	},
 	search: {
 		startSearching: 'Начните искать!',
@@ -198,25 +215,72 @@ const ru = {
 		loginNeededToDownload: 'Войдите в аккаунт, чтобы скачивать треки!',
 		deezerNotAvailable: 'Deezer недоступен в вашей стране. Используйте VPN.',
 		startGeneratingItems: 'Обработка {n} загрузок...',
-		finishGeneratingItems: 'Обработано {n} загрузок.'
+		finishGeneratingItems: 'Обработано {n} загрузок.',
+		noLovedPlaylist: 'Нет плейлиста с любимыми треками!',
+		checkingUpdates: 'Проверка обновлений...',
+		noUpdateAvailable: 'Обновления программы не найдены',
+		updateAvailable: 'Доступно обновление программы!'
 	},
 	settings: {
 		title: 'Настройки',
-		languages: 'Язык',
+		languages: 'Языки',
 		login: {
 			title: 'Вход',
 			loggedIn: 'Вы вошли как {username}',
 			arl: {
+				title: 'Либо используйте ARL',
 				question: 'Как узнать свой ARL?',
+				howTo: {
+					prologue: {
+						p1: 'Deezer отслеживает сеанс входа в систему с помощью файла cookie под названием ARL.',
+						p2: 'Deemix использует этот файл cookie для получения метаданных, необходимых для загрузки треков с Deezer.',
+						p3: 'Длительность авторизации через ARL - 3 месяца, после чего Deezer снова просит вас войти в систему. Тот же метод используется в deemix.',
+						p4: 'Следуя одному из приведенных ниже руководств, вы можете получить ARL для собственной учетной записи.',
+						warning: "Используйте этот метод, только если электронная почта и пароль не работают."
+					},
+					chromeSteps: {
+						title: 'Chrome',
+						step1: 'Откройте Chrome',
+						easyWay: {
+							title: 'Chrome (простой способ)',
+							step3: 'Нажмите на маленький значок «замок» рядом с URL-адресом.',
+							step4: 'Выберите «Файлы cookie» > deezer.com > Файлы cookie > arl',
+							step5: 'Выберите строку рядом с Контент, выделите ее всю и скопируйте'
+						},
+						step4: "Перейдите на вкладку «Application» (если вы ее не видите, нажмите двойную стрелку )",
+						videoGuide: {
+							text: "Вот {videoGuide}",
+							link: 'видео инструкция'
+						}
+					},
+					firefoxSteps: {
+						title: 'Firefox',
+						step1: 'Откройте Firefox',
+						step4: "Перейдите на вкладку «Хранилище» (если вы ее не видите, нажмите двойную стрелку)"
+					},
+					commonSteps: {
+						step2: 'Перейдите на сайт www.deezer.com и войдите в свою учетную запись.',
+						step3: 'После входа в систему нажмите F12, чтобы открыть инструменты разработчика.',
+						step5: 'Откройте раскрывающийся список файлов cookie',
+						step6: 'Выберите www.deezer.com',
+						step7: 'Найдите файл cookie `arl` (он должен быть длиной 192 символа)',
+						step8: 'Убедитесь, что скопировано только значение, а не весь файл cookie.',
+						lastStep: "Это ваш ARL, теперь вы можете использовать его в приложении"
+					}
+				},
 				update: 'Обновить ARL'
 			},
 			logout: 'Выйти',
-			login: 'Войти через deezer.com'
+			login: 'Авторизоваться',
+			email: 'Электронная почта',
+			password: 'Пароль'
 		},
 		appearance: {
 			title: 'Внешний вид',
 			slimDownloadTab: 'Компактная вкладка с загрузками',
-			slimSidebar: 'Компактная левая панель'
+			slimSidebar: 'Компактная левая панель',
+			searchButton: 'Показывать кнопку поиска',
+			bitrateTags: 'Показывать битрейт в очереди загрузок'
 		},
 		downloadPath: {
 			title: 'Путь для сохранения'
@@ -224,8 +288,11 @@ const ru = {
 		templates: {
 			title: 'Шаблоны',
 			tracknameTemplate: 'Шаблон названия трека',
+			tracknameAvailableVariables: 'Доступные переменные для названия трека',
 			albumTracknameTemplate: 'Шаблон названия трека альбома',
-			playlistTracknameTemplate: 'Шаблон названия трека плейлиста'
+			albumTracknameAvailableVariables: 'Доступные переменные для названия трека альбома',
+			playlistTracknameTemplate: 'Шаблон названия трека плейлиста',
+			playlistTracknameAvailableVariables: 'Доступные переменные для названия трека плейлиста'
 		},
 		folders: {
 			title: 'Папки',
@@ -264,6 +331,8 @@ const ru = {
 			},
 			fallbackBitrate: 'Загружать с битрейтом ниже, если текущий недоступен',
 			fallbackSearch: 'Искать похожий трек, если запрашиваемый недоступен',
+			fallbackISRC: 'Искать похожий трек, если запрашиваемый по ISRC недоступен',
+			feelingLucky: 'Скачать при наличии на CDN и в кэше',
 			logErrors: 'Сохранять логи ошибок',
 			logSearched: 'Сохранять лог истории поиска',
 			createM3U8File: 'Создавать файлы плейлистов',
@@ -295,6 +364,7 @@ const ru = {
 			head: 'Какие теги сохранять',
 			title: 'Название',
 			artist: 'Исполнитель',
+			artists: 'Дополнительный тег ARTISTS',
 			album: 'Альбом',
 			cover: 'Обложка',
 			trackNumber: 'Номер трека',
@@ -306,7 +376,7 @@ const ru = {
 			year: 'Год',
 			date: 'Дата',
 			explicit: 'Метка о нецензурной лексике',
-			isrc: 'Номер записи (ISRC)',
+			isrc: 'Уникальный код трека (ISRC)',
 			length: 'Продолжительность',
 			barcode: 'Уникальный код альбома (UPC)',
 			bpm: 'BPM',
@@ -317,19 +387,24 @@ const ru = {
 			copyright: 'Права (копирайт)',
 			composer: 'Композитор',
 			involvedPeople: 'Вовлечённые люди',
-			source: 'Источник и ID песни'
+			source: 'Источник и ID песни',
+			artistsWarning:
+				"Отключение тега ARTISTS без использования стандартной спецификации не сохранит поддержку нескольких исполнителей."
 		},
 		other: {
 			title: 'Разное',
+			autoCheckForUpdates: 'Проверять наличие обновлений программы при запуске',
 			savePlaylistAsCompilation: 'Сохранять плейлисты как сборники',
 			useNullSeparator: 'Использовать null в качестве разделителя',
-			saveID3v1: 'Сохранять ID3v1',
+			saveID3v1: 'Сохранить также ID3v1',
 			multiArtistSeparator: {
 				title: 'Как разделять несколько исполнителей?',
 				nothing: 'Сохранить только основного',
 				default: 'Используя стандартную спецификацию',
 				andFeat: 'Используя & и feat.',
-				using: 'Используя "{separator}"'
+				using: 'Используя "{separator}"',
+				warning:
+					'Использование любого разделителя, отличного от стандартной спецификации, добавит дополнительный тег ARTISTS, чтобы сохранить поддержку нескольких исполнителей.'
 			},
 			singleAlbumArtist: 'Сохранить только основного исполнителя альбома',
 			albumVariousArtists: 'Оставить "Various Artists" в исполнителях альбома',
@@ -364,18 +439,59 @@ const ru = {
 			}
 		},
 		spotify: {
-			title: 'Настройки Spotify',
-			clientID: 'Spotify clientID',
+			title: 'Функции Spotify',
+			clientID: 'Spotify Client ID',
 			clientSecret: 'Spotify Client Secret',
-			username: 'Spotify username',
-			question: 'Как включить функции Spotify?'
+			username: 'имя пользователя Spotify',
+			question: 'Как включить «Функции Spotify»?',
+			howTo: {
+				prologue: {
+					p1: '«Функции Spotify» — это набор функций, которые позволяют конвертировать ссылки на треки и альбомы Spotify в ссылки Deezer.',
+					p2: 'Если вы предоставите ссылку на плейлист Spotify, приложение автоматически преобразует все ссылки на треки внутри него в треки deezer.',
+					p3: 'Включение этого набора функций позволит вам также видеть общедоступные плейлисты Spotify на вкладке «Избранное».'
+				},
+				info: 'Из соображений безопасности вам нужно будет указать свои Client ID и Client Secret.',
+				clientSecretQuestion: {
+					title: 'Как получить Client ID и Client Secret?',
+					step1: {
+						text: 'Перейдите на страницу {spotifyDevelopersDashboard} и войдите в свою учетную запись Spotify.',
+						spotifyDevelopersDashboard: "информационной панели Spotify для разработчиков"
+					},
+					step2: {
+						text: 'Нажмите «Создать приложение».',
+						imageAlt: "Кнопка «Создать приложение» на информационной панели Spotify для разработчиков"
+					},
+					step3: {
+						text: 'Заполните поля «Имя приложения» и «Описание приложения» и установите флажок. Затем нажмите на кнопку «Создать».',
+						imageAlt: 'Создание формы приложения'
+					},
+					step4: {
+						text: 'Теперь вы можете увидеть Client ID. Если вы нажмете «Показать Client Secret», Client Secret будет раскрыт.',
+						imageAlt: 'Скриншот с Client ID и Client Secret'
+					},
+					step5: 'Теперь вы можете скопировать и вставить эти результаты в соответствующие поля в настройках.'
+				},
+				usernameQuestion: {
+					title: 'Как мне получить свое имя пользователя Spotify?',
+					step1: {
+						text: "Вы можете получить свое имя пользователя Spotify на {overviewPage} на веб-сайте Spotify.",
+						overviewPage: 'странице обзора профиля'
+					}
+				}
+			}
 		},
 		reset: 'По умолчанию',
+		resetMessage: 'Вы уверены, что хотите вернуться к настройкам по умолчанию?',
 		save: 'Сохранить',
 		toasts: {
 			init: 'Настройки загружены!',
 			update: 'Настройки обновлены!',
+			reset: 'Настройки сброшены по умолчанию!',
 			ARLcopied: 'ARL скопирован в буфер обмена'
+		},
+		logs: {
+			title: 'Логи',
+			areLogsActive: 'Активно'
 		}
 	},
 	sidebar: {
@@ -385,10 +501,15 @@ const ru = {
 		favorites: 'избранное',
 		linkAnalyzer: 'анализ ссылок',
 		settings: 'настройки',
+		logs: 'логи',
 		about: 'о проекте'
 	},
 	tracklist: {
 		downloadSelection: 'Скачать выбранные'
+	},
+	logs: {
+		event: 'Событие',
+		data: 'Данные'
 	}
 }
 

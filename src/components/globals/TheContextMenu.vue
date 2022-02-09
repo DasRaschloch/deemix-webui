@@ -243,7 +243,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .context-menu {
 	position: absolute;
 	top: 0;
@@ -265,18 +265,16 @@ export default {
 	padding-right: 10px;
 	color: var(--foreground);
 	cursor: pointer;
-
-	&:hover {
-		background: var(--table-highlight);
-		filter: brightness(150%);
-	}
-
-	&__text {
-		text-transform: capitalize;
-	}
+}
+.menu-option:hover {
+	background: var(--table-highlight);
+	filter: brightness(150%);
+}
+.menu-option__text {
+	text-transform: capitalize;
 }
 
-// Resetting buttons only for this component (because the style is scoped)
+/* Resetting buttons only for this component (because the style is scoped) */
 button {
 	color: var(--primary-text);
 	color: unset;
@@ -295,19 +293,16 @@ button {
 	text-transform: unset;
 	cursor: unset;
 	transition: unset;
-
-	&:focus {
-		outline: none;
-	}
-
-	&:active {
-		background-color: unset;
-		transform: unset;
-	}
-
-	&:hover {
-		background: unset;
-		border: unset;
-	}
+}
+button:focus {
+	outline: none;
+}
+button:active {
+	background-color: unset;
+	transform: unset;
+}
+button:hover {
+	background: unset;
+	border: unset;
 }
 </style>

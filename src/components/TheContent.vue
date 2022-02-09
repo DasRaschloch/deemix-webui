@@ -62,20 +62,21 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 #container {
 	--container-width: 95%;
-
 	margin: 0 auto;
 	max-width: 1280px;
 	width: var(--container-width);
 	transform: scale(1);
-
-	@media only screen and (min-width: 601px) {
+}
+@media only screen and (min-width: 601px) {
+	#container {
 		--container-width: 85%;
 	}
-
-	@media only screen and (min-width: 993px) {
+}
+@media only screen and (min-width: 993px) {
+	#container {
 		--container-width: 70%;
 	}
 }

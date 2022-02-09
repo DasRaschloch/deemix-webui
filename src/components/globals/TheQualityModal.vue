@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .smallmodal {
 	position: fixed;
 	z-index: 1250;
@@ -79,22 +79,24 @@ export default {
 
 .smallmodal-content {
 	--modal-content-width: 95%;
-
 	background-color: transparent;
 	margin: auto;
 	width: var(--modal-content-width);
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
-
-	@media only screen and (min-width: 601px) {
+}
+@media only screen and (min-width: 601px) {
+	.smallmodal-content {
 		--modal-content-width: 85%;
 	}
-
-	@media only screen and (min-width: 993px) {
+}
+@media only screen and (min-width: 993px) {
+	.smallmodal-content {
 		--modal-content-width: 70%;
 	}
 }
+
 
 .smallmodal-content button {
 	width: 100%;

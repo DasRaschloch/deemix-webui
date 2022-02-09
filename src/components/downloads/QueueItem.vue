@@ -189,66 +189,55 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 .download-object {
 	padding-bottom: 8px;
-
-	.download-info {
-		display: flex;
-		align-items: center;
-
-		.coverart {
-			height: 75px;
-			width: 75px;
-			flex: 0 0 75px;
-			overflow: hidden;
-		}
-
-		.coverart .tag {
-			position: absolute;
-			bottom: 0px;
-			right: 0px;
-		}
-
-		.download-line {
-			display: block;
-
-			.explicit-icon {
-		    vertical-align: bottom;
-			}
-		}
-
-		.download-slim-separator {
-			display: none;
-		}
-	}
-
-	.download-info-data {
-		flex: 1 50%;
-		margin-left: 8px;
-		overflow: hidden;
-	}
-
-	.download-info-status {
-		flex: 1 15%;
-		margin-left: 8px;
-		width: 80px;
-	}
-
-	> .download-bar {
-		display: flex;
-		align-items: center;
-		height: 24px;
-
-		> .queue_icon {
-			cursor: default;
-			margin-left: 8px;
-		}
-
-		> .progress {
-			margin: 0;
-		}
-	}
+}
+.download-object .download-info {
+	display: flex;
+	align-items: center;
+}
+.download-object .download-info .coverart {
+	height: 75px;
+	width: 75px;
+	flex: 0 0 75px;
+	overflow: hidden;
+}
+.download-object .download-info .coverart .tag {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}
+.download-object .download-info .download-line {
+	display: block;
+}
+.download-object .download-info .download-line .explicit-icon {
+	vertical-align: bottom;
+}
+.download-object .download-info .download-slim-separator {
+	display: none;
+}
+.download-object .download-info-data {
+	flex: 1 50%;
+	margin-left: 8px;
+	overflow: hidden;
+}
+.download-object .download-info-status {
+	flex: 1 15%;
+	margin-left: 8px;
+	width: 80px;
+}
+.download-object > .download-bar {
+	display: flex;
+	align-items: center;
+	height: 24px;
+}
+.download-object > .download-bar > .queue_icon {
+	cursor: default;
+	margin-left: 8px;
+}
+.download-object > .download-bar > .progress {
+	margin: 0;
 }
 
 #download_list:not(.slim) .download-line {
@@ -257,36 +246,27 @@ export default {
 	text-overflow: ellipsis;
 }
 
-#download_list.slim {
-	> .download-object {
-		.download-info {
-			display: block;
-
-			.coverart {
-				display: none;
-			}
-
-			.download-line {
-				display: inline-block;
-			}
-
-			.download-slim-separator {
-				display: inline-block;
-			}
-		}
-
-		.download-info-data {
-			width: calc(80% - 16px);
-			display: inline-block;
-			padding-left: 0;
-		}
-
-		.download-info-status {
-			width: 20%;
-			display: inline-block; // ignored due to float
-			float: right;
-		}
-	}
+#download_list.slim > .download-object .download-info {
+	display: block;
+}
+#download_list.slim > .download-object .download-info .coverart {
+	display: none;
+}
+#download_list.slim > .download-object .download-info .download-line {
+	display: inline-block;
+}
+#download_list.slim > .download-object .download-info .download-slim-separator {
+	display: inline-block;
+}
+#download_list.slim > .download-object .download-info-data {
+	width: calc(80% - 16px);
+	display: inline-block;
+	padding-left: 0;
+}
+#download_list.slim > .download-object .download-info-status {
+	width: 20%;
+	display: inline-block;
+	float: right;
 }
 
 .progress {
@@ -298,47 +278,42 @@ export default {
 	border-radius: 2px;
 	margin: 0.5rem 0 1rem 0;
 	overflow: hidden;
-
-	.determinate {
-		position: absolute;
-		top: 0;
-		left: 0;
-		bottom: 0;
-		background-color: var(--primary-color);
-		transition: width 0.3s linear;
-	}
-
-	.converting {
-		background-color: var(--secondary-color);
-		transition: none !important;
-	}
-
-	.indeterminate {
-		background-color: var(--primary-color);
-
-		&::before {
-			content: '';
-			position: absolute;
-			background-color: inherit;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			will-change: left, right;
-			animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
-		}
-
-		&::after {
-			content: '';
-			position: absolute;
-			background-color: inherit;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			will-change: left, right;
-			animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-			animation-delay: 1.15s;
-		}
-	}
+}
+.progress .determinate {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background-color: var(--primary-color);
+	transition: width 0.3s linear;
+}
+.progress .converting {
+	background-color: var(--secondary-color);
+	transition: none !important;
+}
+.progress .indeterminate {
+	background-color: var(--primary-color);
+}
+.progress .indeterminate::before {
+	content: '';
+	position: absolute;
+	background-color: inherit;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	will-change: left, right;
+	animation: indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+}
+.progress .indeterminate::after {
+	content: '';
+	position: absolute;
+	background-color: inherit;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	will-change: left, right;
+	animation: indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+	animation-delay: 1.15s;
 }
 
 @keyframes indeterminate {

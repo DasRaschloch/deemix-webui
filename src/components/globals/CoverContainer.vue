@@ -44,46 +44,38 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .cover-container {
 	width: 156px;
 	height: 156px;
 	margin-bottom: 10px;
-
-	.coverart {
-		backface-visibility: hidden;
-		transition: 0.5s ease;
-		height: auto;
-	}
-
-	.download_overlay {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		transition: 0.5s ease;
-		opacity: 0;
-		min-width: 2rem;
-		height: 2.75rem;
-		text-align: center;
-
-		i {
-			padding: 0.625rem;
-		}
-
-		&:focus {
-			opacity: 1;
-		}
-	}
-
-	&:hover {
-		.coverart {
-			opacity: 0.75;
-		}
-
-		.download_overlay {
-			opacity: 1;
-			border: 0;
-		}
-	}
+}
+.cover-container .coverart {
+	backface-visibility: hidden;
+	transition: 0.5s ease;
+	height: auto;
+}
+.cover-container .download_overlay {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: 0.5s ease;
+	opacity: 0;
+	min-width: 2rem;
+	height: 2.75rem;
+	text-align: center;
+}
+.cover-container .download_overlay i {
+	padding: 0.625rem;
+}
+.cover-container .download_overlay:focus {
+	opacity: 1;
+}
+.cover-container:hover .coverart {
+	opacity: 0.75;
+}
+.cover-container:hover .download_overlay {
+	opacity: 1;
+	border: 0;
 }
 </style>

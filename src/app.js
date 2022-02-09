@@ -12,9 +12,9 @@ import '@/styles/css/base.css'
 import '@/styles/css/components.css'
 import '@/styles/css/helpers.css'
 import '@/styles/css/icons.css'
+import '@/styles/css/tables.css'
 import '@/styles/css/typography.css'
 
-import '@/styles/scss/tables.scss'
 
 import App from '@/App.vue'
 import i18n from '@/plugins/i18n'

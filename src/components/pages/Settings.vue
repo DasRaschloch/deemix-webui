@@ -1093,7 +1093,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 #logged_in_info {
 	display: grid;
   align-items: center;
@@ -1116,22 +1116,17 @@ export default {
 	justify-content: center;
 	cursor: pointer;
 	width: 60px;
-
-	&:not(:last-child) {
-		margin-right: 10px;
-	}
-
-	&.locale-flag--current {
-		::v-deep svg {
-			filter: brightness(1) !important;
-		}
-	}
-
-	&::v-deep svg {
-		width: 40px !important;
-		height: 40px !important;
-		filter: brightness(0.5);
-	}
+}
+.locale-flag:not(:last-child) {
+	margin-right: 10px;
+}
+.locale-flag.locale-flag--current ::v-deep svg {
+	filter: brightness(1) !important;
+}
+.locale-flag::v-deep svg {
+	width: 40px !important;
+	height: 40px !important;
+	filter: brightness(0.5);
 }
 
 .settings-group {
@@ -1145,56 +1140,46 @@ export default {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	font-size: 1.5rem;
-
-	i.material-icons {
-		margin-right: 1rem;
-	}
+}
+.settings-group__header i.material-icons {
+	margin-right: 1rem;
 }
 
 .settings-container {
 	display: flex;
-
-	&__half {
-		width: 50%;
-	}
-
-	&__third {
-		width: 33%;
-
-		&--only-checkbox {
-			display: flex;
-			align-items: start;
-			flex-direction: column;
-			justify-content: center;
-		}
-	}
-
-	&__half > *,
-	&__third > * {
-		margin-bottom: 1rem;
-	}
+}
+.settings-container__half {
+	width: 50%;
+}
+.settings-container__third {
+	width: 33%;
+}
+.settings-container__third--only-checkbox {
+	display: flex;
+	align-items: start;
+	flex-direction: column;
+	justify-content: center;
+}
+.settings-container__half > *, .settings-container__third > * {
+	margin-bottom: 1rem;
 }
 
 .with-checkbox {
 	display: flex;
 	align-items: center;
-
-	[type='checkbox'] {
-		cursor: pointer;
-	}
-
-	.checkbox-text {
-		margin-left: 10px;
-		cursor: pointer;
-		user-select: none;
-	}
+}
+.with-checkbox [type='checkbox'] {
+	cursor: pointer;
+}
+.with-checkbox .checkbox-text {
+	margin-left: 10px;
+	cursor: pointer;
+	user-select: none;
 }
 
 /* Input group */
-.input-group {
-	.input-group-text {
-		margin-bottom: 0.5rem;
-	}
+.input-group .input-group-text{
+	margin-bottom: 0.5rem;
 }
 
 .login-button {

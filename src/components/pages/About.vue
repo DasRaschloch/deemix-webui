@@ -184,10 +184,8 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
-li,
-p,
-a {
+<style scoped>
+li, p, a {
 	letter-spacing: 0.4px;
 	font-size: 20px;
 	line-height: 1.2;
@@ -212,60 +210,50 @@ i::v-deep svg {
 
 h2 {
 	text-transform: capitalize;
+}
 
-	&:not(.page_heading) {
-		font-size: 2rem;
-		border-bottom: 1px solid hsla(0, 0%, 20%, 0.25);
-		padding: {
-			top: 2rem;
-			bottom: 1rem;
-		}
-	}
+h2:not(.page_heading) {
+	font-size: 2rem;
+	border-bottom: 1px solid rgba(51, 51, 51, 0.25);
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+}
 
-	.subheading {
-		display: block;
-		font-size: 0.5em;
-		margin-top: 0.5em;
-		font-weight: normal;
-		opacity: 0.8;
-		text-transform: none;
-	}
+h2 .subheading {
+	display: block;
+	font-size: 0.5em;
+	margin-top: 0.5em;
+	font-weight: normal;
+	opacity: 0.8;
+	text-transform: none;
 }
 
 p {
 	margin: 0 !important;
 }
 
-ul {
-	li {
-		margin-bottom: 7px;
-	}
-
-	h2 + & {
-		margin-top: 1rem;
-	}
-
-	ul + & {
-		margin-top: 1.25rem;
-	}
-
-	&.no-dots {
-		list-style-type: none;
-	}
-
-	&:not(.no-dots) {
-		list-style-type: none;
-
-		li {
-			position: relative;
-
-			&::before {
-				content: '—';
-				position: absolute;
-				left: -30px;
-				opacity: 0.25;
-			}
-		}
-	}
+ul li {
+	margin-bottom: 7px;
+}
+h2 + ul {
+	margin-top: 1rem;
+}
+ul + ul {
+	margin-top: 1.25rem;
+}
+ul.no-dots {
+	list-style-type: none;
+}
+ul:not(.no-dots) {
+	list-style-type: none;
+}
+ul:not(.no-dots) li {
+	position: relative;
+}
+ul:not(.no-dots) li::before {
+	content: '—';
+	position: absolute;
+	left: -30px;
+	opacity: 0.25;
 }
 </style>

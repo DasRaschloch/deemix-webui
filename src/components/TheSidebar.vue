@@ -103,22 +103,19 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .deemix-icon-container {
 	display: grid;
 	place-content: center;
-
-	.slim-sidebar & {
-		margin: 0.5rem 0;
-
-		&::v-deep svg {
-			height: 30px;
-		}
-	}
-
-	&::v-deep svg {
-		height: 75px;
-	}
+}
+.slim-sidebar .deemix-icon-container {
+	margin: 0.5rem 0;
+}
+.slim-sidebar .deemix-icon-container::v-deep svg {
+	height: 30px;
+}
+.deemix-icon-container::v-deep svg {
+	height: 75px;
 }
 
 #update-notification {
@@ -128,21 +125,17 @@ export default defineComponent({
 
 .theme_toggler {
 	transition: border 200ms ease-in-out;
-
-	&--active {
-		border-width: 3px;
-	}
-
-	&--light {
-		background-color: #fff;
-	}
-
-	&--dark {
-		background-color: hsl(0, 0%, 8%);
-	}
-
-	&--purple {
-		background: hsl(261, 85%, 37%);
-	}
+}
+.theme_toggler--active {
+	border-width: 3px;
+}
+.theme_toggler--light {
+	background-color: #fff;
+}
+.theme_toggler--dark {
+	background-color: #141414;
+}
+.theme_toggler--purple {
+	background: #460eaf;
 }
 </style>

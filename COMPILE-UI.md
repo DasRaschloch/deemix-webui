@@ -43,7 +43,7 @@ $ yarn install
 To work on this webui you will need a working server as well. If you've downloaded this with deemix-gui you can run in a terminal positioned inside the deemix-gui folder the command
 
 ```bash
-$ yarn install-all
+$ yarn install-all-dev
 ```
 
 To install all dependencies for all the modules (gui, server and webui)

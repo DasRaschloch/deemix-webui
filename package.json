@@ -8,10 +8,10 @@
 		"minify": "esbuild public/js/bundle.temp.js --outfile=public/js/bundle.js --minify",
 		"build": "npm-run-all --sequential clean build:js minify clean-temp",
 
-		"start:server": "yarn --cwd ../server start",
 		"start:gui": "yarn --cwd ../ start",
+		"watch:server": "yarn --cwd ../server watch",
 		"watch:js": "rollup -c -w",
-		"dev": "npm-run-all --parallel start:server watch:js",
+		"dev": "npm-run-all --parallel watch:server watch:js",
 
 		"lint": "eslint src/**/*.{js,vue,mjs} --fix",
 		"lint-tests": "eslint src/**/*.js --fix",

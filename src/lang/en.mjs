@@ -215,6 +215,7 @@ const en = {
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
 		loginNeededToDownload: 'You need to log in to download tracks!',
 		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.',
+		deezerNotReachable: "The app can't reach Deezer. Check your internet connection, your firewall or your antivirus.",
 		startGeneratingItems: 'Processing {n} items...',
 		finishGeneratingItems: 'Generated {n} items.',
 		noLovedPlaylist: 'No loved tracks playlist!',

@@ -15,7 +15,6 @@ import '@/styles/css/icons.css'
 import '@/styles/css/tables.css'
 import '@/styles/css/typography.css'
 
-
 import App from '@/App.vue'
 import i18n from '@/plugins/i18n'
 import router from '@/router'
@@ -48,7 +47,10 @@ async function startApp() {
 	const connectResponse = await (await fetch('connect')).json()
 	const spotifyStatus = connectResponse.spotifyEnabled ? SPOTIFY_STATUS.ENABLED : SPOTIFY_STATUS.DISABLED
 
-	if (!connectResponse.deezerAvailable) {
+	if (connectResponse.deezerAvailable === 'no-network') {
+		document.getElementById('deezer_not_reachable').classList.remove('hide')
+	}
+	if (connectResponse.deezerAvailable === 'no') {
 		document.getElementById('deezer_not_available').classList.remove('hide')
 	}
 

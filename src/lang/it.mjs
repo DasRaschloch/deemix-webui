@@ -215,6 +215,8 @@ const it = {
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
 		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
 		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.',
+		deezerNotReachable:
+			"L'applicazione non riesce a contattare Deezer. Controlla la tua connessione internet, il tuo firewall o il tuo antivirus.",
 		startGeneratingItems: 'Elaborando {n} oggetti...',
 		finishGeneratingItems: '{n} oggetti generati.',
 		noLovedPlaylist: 'Nessuna playlist "Canzoni del cuore"!',

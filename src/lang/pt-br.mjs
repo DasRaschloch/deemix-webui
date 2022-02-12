@@ -72,7 +72,7 @@ const pt_br = {
 		},
 		usesLibrary:
 			'Esse app usa a biblioteca do <strong>deemix</strong>, no qual você pode usar para criar sua própria UI para o deemix',
-		thanks: `Agradecimentos para <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> por ajudar neste projeto, e para <strong>BasCurtiz</strong> por fazerem o ícone`,
+		thanks: `Agradecimentos para <strong>rtonno</strong>, <strong>uhwot</strong> e <strong>lollilol</strong> por ajudar neste projeto, e para <strong>BasCurtiz</strong> por fazer o ícone`,
 		upToDate: {
 			text: `Para mais novidades siga o {newsChannel} no Telegram.`,
 			newsChannel: 'canal de notícias'
@@ -215,6 +215,7 @@ const pt_br = {
 		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas',
 		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
 		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
+		deezerNotReachable: "O aplicativo não pôde conectar-se no Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.",
 		startGeneratingItems: 'Processando {n} itens...',
 		finishGeneratingItems: '{n} itens gerados.',
 		noLovedPlaylist: 'Nenhuma playlist de músicas curtidas!',

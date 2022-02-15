@@ -48,8 +48,8 @@ const fr = {
 	},
 	about: {
 		appStatus: {
-			online: 'app en ligne',
-			offline: 'app hors ligne'
+			online: 'application en ligne',
+			offline: 'application hors ligne'
 		},
 		updates: {
 			currentVersion: 'Version Actuelle Du Logiciel',
@@ -225,6 +225,7 @@ const fr = {
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
 		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !',
 		deezerNotAvailable: 'Deezer est indisponible dans votre pays. Vous devez utiliser un VPN.',
+		deezerNotReachable: "L'application ne semble pas pouvoir communiquer avec Deezer. Vérifiez votre connexion internet, votre pare-feu ou votre antivirus.",
 		startGeneratingItems: 'Traitement de {n} éléments...',
 		finishGeneratingItems: '{n} éléments ont été générés.',
 		noLovedPlaylist: 'Aucune playlist de pistes favorites !',
@@ -407,7 +408,7 @@ const fr = {
 		},
 		other: {
 			title: 'Autre',
-			autoCheckForUpdates: "Vérifier les mises à jour au démarrage de l'app",
+			autoCheckForUpdates: "Vérifier les mises à jour au démarrage de l'application",
 			savePlaylistAsCompilation: 'Enregistrer les playlists en tant que compilation',
 			useNullSeparator: 'Utiliser le caractère NULL comme séparateur',
 			saveID3v1: 'Enregistrer également les métadonnées ID3v1',

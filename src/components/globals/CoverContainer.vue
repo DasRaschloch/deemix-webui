@@ -48,7 +48,7 @@ export default {
 .cover-container {
 	width: 156px;
 	height: 156px;
-	margin-bottom: 10px;
+	margin: 0px auto 10px;
 }
 .cover-container .coverart {
 	backface-visibility: hidden;

@@ -100,7 +100,7 @@ export function formatPlaylist(playlist) {
 		playlistTracksNumber: getPropertyWithFallback(playlist, 'nb_tracks', 'NB_SONG'),
 
 		/* Artist */
-		artistName: getPropertyWithFallback(playlist, 'user.name')
+		artistName: getPropertyWithFallback(playlist, 'user.name', 'PARENT_USERNAME')
 	}
 }
 

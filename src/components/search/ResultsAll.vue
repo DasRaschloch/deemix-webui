@@ -1,7 +1,8 @@
 <template>
 	<section>
-		<div v-if="!thereAreResults">
-			<h1>{{ $t('search.noResults') }}</h1>
+		<ResultsError v-if="viewInfo.ERROR" :error="viewInfo.ERROR"></ResultsError>
+		<div v-else-if="!thereAreResults">
+			<h1 class="text-center">{{ $t('search.noResults') }}</h1>
 		</div>
 
 		<template v-else>
@@ -66,6 +67,7 @@ import ResultsTracks from '@components/search/ResultsTracks.vue'
 import ResultsAlbums from '@components/search/ResultsAlbums.vue'
 import ResultsArtists from '@components/search/ResultsArtists.vue'
 import ResultsPlaylists from '@components/search/ResultsPlaylists.vue'
+import ResultsError from '@components/search/ResultsError.vue'
 
 import { formatSingleTrack, formatAlbums, formatArtist, formatPlaylist } from '@/data/search'
 import { standardizeData } from '@/data/standardize'
@@ -76,7 +78,8 @@ export default {
 		ResultsTracks,
 		ResultsAlbums,
 		ResultsArtists,
-		ResultsPlaylists
+		ResultsPlaylists,
+		ResultsError
 	},
 	props: {
 		viewInfo: {

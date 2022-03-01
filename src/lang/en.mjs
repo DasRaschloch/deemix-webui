@@ -189,7 +189,8 @@ const en = {
 		noResultsTrack: 'No Tracks found',
 		noResultsAlbum: 'No Albums found',
 		noResultsArtist: 'No Artists found',
-		noResultsPlaylist: 'No Playlists found'
+		noResultsPlaylist: 'No Playlists found',
+		error: 'An error occurred, please try again later.'
 	},
 	searchbar: 'Search anything you want (or just paste a link)',
 	downloads: 'downloads',

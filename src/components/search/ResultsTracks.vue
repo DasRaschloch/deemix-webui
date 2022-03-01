@@ -3,8 +3,9 @@
 		<BaseLoadingPlaceholder v-if="isLoading" />
 
 		<template v-else>
-			<div v-if="viewInfo.data.length === 0">
-				<h1>{{ $t('search.noResultsTrack') }}</h1>
+			<ResultsError v-if="viewInfo.error" :error="viewInfo.error"></ResultsError>
+			<div v-else-if="viewInfo.data.length === 0">
+				<h1 class="text-center">{{ $t('search.noResultsTrack') }}</h1>
 			</div>
 
 			<table v-else class="table w-full table--tracks">
@@ -88,6 +89,7 @@
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import PreviewControls from '@components/globals/PreviewControls.vue'
+import ResultsError from '@components/search/ResultsError.vue'
 import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 
 import { convertDuration } from '@/utils/utils'
@@ -97,7 +99,8 @@ import { formatTitle } from '@/data/search'
 export default {
 	components: {
 		BaseLoadingPlaceholder,
-		PreviewControls
+		PreviewControls,
+		ResultsError
 	},
 	props: {
 		viewInfo: {

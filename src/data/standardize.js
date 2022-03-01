@@ -13,7 +13,8 @@ export function standardizeData(rawObj, formatFunc) {
 
 		return {
 			data: formattedData,
-			hasLoaded: rawObj.hasLoaded
+			hasLoaded: rawObj.hasLoaded,
+			error: rawObj.error
 		}
 	}
 }

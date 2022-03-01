@@ -186,10 +186,11 @@ export default defineComponent({
 
 		// Search watcher
 		watch(result, newValue => {
-			const { next: nextResult, total, type, data: newData } = newValue
+			const { next: nextResult, total, type, data: newData, error } = newValue
 
 			const currentTabKey = `${type}Tab`
 			let next = total
+			state.results[currentTabKey].error = error
 
 			if (nextResult) {
 				next = parseInt(nextResult.match(/index=(\d*)/)[1])

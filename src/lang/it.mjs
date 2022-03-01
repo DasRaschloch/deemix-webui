@@ -189,7 +189,8 @@ const it = {
 		noResultsTrack: 'Nessun brano trovato',
 		noResultsAlbum: 'Nessun album trovato',
 		noResultsArtist: 'Nessun artista trovato',
-		noResultsPlaylist: 'Nessuna playlist trovata'
+		noResultsPlaylist: 'Nessuna playlist trovata',
+		error: 'Si è verificato un errore, riprova più tardi.'
 	},
 	searchbar: 'Cerca qualsiasi cosa (o incolla semplicemente un link)',
 	downloads: 'download',

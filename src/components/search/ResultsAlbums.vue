@@ -3,8 +3,9 @@
 		<BaseLoadingPlaceholder v-if="isLoading" />
 
 		<template v-else>
-			<div v-if="viewInfo.data.length === 0">
-				<h1>{{ $t('search.noResultsAlbum') }}</h1>
+			<ResultsError v-if="viewInfo.error" :error="viewInfo.error"></ResultsError>
+			<div v-else-if="viewInfo.data.length === 0">
+				<h1 class="text-center">{{ $t('search.noResultsAlbum') }}</h1>
 			</div>
 
 			<div v-else class="release-grid">
@@ -45,11 +46,13 @@
 <script>
 import BaseLoadingPlaceholder from '@components/globals/BaseLoadingPlaceholder.vue'
 import CoverContainer from '@components/globals/CoverContainer.vue'
+import ResultsError from '@components/search/ResultsError.vue'
 
 export default {
 	components: {
 		BaseLoadingPlaceholder,
-		CoverContainer
+		CoverContainer,
+		ResultsError
 	},
 	props: {
 		viewInfo: {

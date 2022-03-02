@@ -27,7 +27,6 @@ const en = {
 			single: 'single | singles',
 			title: 'title | titles',
 			track: 'track | tracks',
-			releaseN: '0 releases | {n} release | {n} releases',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
@@ -40,6 +39,7 @@ const en = {
 			trackN: '0 tracks | {n} track | {n} tracks',
 			albumN: '0 albums | {n} album | {n} albums',
 			artistN: '0 artists | {n} artist | {n} artists',
+			releaseN: '0 releases | {n} release | {n} releases',
 			playlistN: '0 playlists | {n} playlist | {n} playlists'
 		},
 		yes: 'yes',

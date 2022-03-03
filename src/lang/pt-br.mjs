@@ -215,7 +215,8 @@ const pt_br = {
 		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas',
 		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
 		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
-		deezerNotReachable: "O aplicativo não pôde conectar-se no Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.",
+		deezerNotReachable:
+			'O aplicativo não pôde conectar-se no Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.',
 		startGeneratingItems: 'Processando {n} itens...',
 		finishGeneratingItems: '{n} itens gerados.',
 		noLovedPlaylist: 'Nenhuma playlist de músicas curtidas!',

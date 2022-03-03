@@ -27,14 +27,20 @@ const de = {
 			single: 'Single | Singles',
 			title: 'Titel | Titel',
 			track: 'Track | Tracks',
-			trackN: '0 Tracks | {n} Track | {n} Tracks',
-			releaseN: '0 Releases | {n} Release | {n} Releases',
 			playlist: 'Playlist | Playlists',
 			compile: 'Sammlung | Sammlungen',
 			ep: 'EP | EPs',
+			bundle: 'Bündel | Bündel',
+			more: 'Weitere Alben',
+			featured: 'Bekannt in',
 			spotifyPlaylist: 'Spotify Playlist | Spotify Playlists',
 			releaseDate: 'Veröffentlichungsdatum',
-			error: 'Fehler'
+			error: 'Fehler',
+			trackN: '0 Tracks | {n} Track | {n} Tracks',
+			albumN: '0 Alben | {n} Album | {n} Alben',
+			artistN: '0 Künstler | {n} Künstler | {n} Künstler',
+			releaseN: '0 Veröffentlichungen | {n} Veröffentlichung | {n} Veröffentlichungen',
+			playlistN: '0 Playlisten | {n} Playlist | {n} Playlisten'
 		},
 		yes: 'Ja',
 		no: 'Nein',
@@ -64,10 +70,8 @@ const de = {
 			contributing: 'Du möchtest bei dem Projekt helfen? Das kannst du auf verschiedene Arten machen!',
 			donations: 'Du möchtest deemix finanziell unterstützen? Dann lasse eine kleine Spende da!'
 		},
-		usesLibrary:
-			'Dieses Programm nutzt die <strong>deemix</strong> Bibliothek, die du dazu nutzen kannst deine eigene deemix UI zu erstellen.',
-		thanks:
-			'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> für die Erstellung des Logos.',
+		usesLibrary: 'Dieses Programm nutzt die <strong>deemix</strong> Bibliothek, die du dazu nutzen kannst, deine eigene deemix UI zu erstellen.',
+		thanks: 'Ein Dankeschön geht an <strong>rtonno</strong>, <strong>uhwot</strong> and <strong>lollilol</strong> für die Hilfe bei diesem Projekt und an <strong>BasCurtiz</strong> für die Erstellung des Logos.',
 		upToDate: {
 			text: 'Bleib auf dem Laufenden, indem du dem {newsChannel} auf Telegram folgst.',
 			newsChannel: 'News Channel'
@@ -77,6 +81,7 @@ const de = {
 		officialWebuiRepo: 'Offizielle WebUI Repository',
 		officialSubreddit: 'Offizieller Subreddit',
 		newsChannel: 'Neuigkeiten Kanal',
+		devlogChannel: 'Devlog Kanal',
 		questions: {
 			text: 'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 			subreddit: 'Subreddit'
@@ -116,6 +121,7 @@ const de = {
 	},
 	errors: {
 		title: 'Fehler für {name}',
+		postTitle: 'Nach dem Herunterladen von Fehlern.',
 		ids: {
 			invalidURL: 'URL nicht erkannt',
 			unsupportedURL: 'URL noch nicht unterstützt',
@@ -188,12 +194,16 @@ const de = {
 		noResultsTrack: 'Keine Tracks gefunden',
 		noResultsAlbum: 'Keine Alben gefunden',
 		noResultsArtist: 'Keinen Künstler gefunden',
-		noResultsPlaylist: 'Keine Playlist gefunden'
+		noResultsPlaylist: 'Keine Playlist gefunden',
+		error: 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.'
 	},
 	searchbar: 'Suche nach allem, was dir gefällt (oder füge einfach einen Link ein)',
 	downloads: 'Downloads',
 	toasts: {
+		restoringQueue: 'Download-Warteschlange wiederherstellen...',
+		queueRestored: 'Download-Warteschlange wiederhergestellt!',
 		addedToQueue: '{item} zur Warteschlange hinzugefügt',
+		addedMoreToQueue: '{n} Einträge zur Warteschlange hinzugefügt',
 		alreadyInQueue: '{item} ist bereits in der Warteschlange!',
 		finishDownload: '{item} vollständig heruntergeladen.',
 		allDownloaded: 'Alle Downloads abgeschlossen!',
@@ -211,8 +221,13 @@ const de = {
 		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert',
 		loginNeededToDownload: 'Du musst eingeloggt sein, um Tracks herunterladen zu können!',
 		deezerNotAvailable: 'Deezer ist in deinem Land nicht verfügbar. Du solltest eine VPN nutzen.',
-		startGeneratingItems: 'Verarbeite {n} Artikeln....',
-		finishGeneratingItems: '{n} Items generiert.'
+		deezerNotReachable: "Die App kann Deezer nicht erreichen. Prüfe deine Internet-Verbindung, deine Firewall oder dein Antivirus.",
+		startGeneratingItems: 'Verarbeite {n} Einträge....',
+		finishGeneratingItems: '{n} Einträge generiert.',
+		noLovedPlaylist: 'Keine Geliebten-Tracks-Wiedergabeliste!',
+		checkingUpdates: 'Auf Aktualisierungen prüfen...',
+		noUpdateAvailable: 'Keine Aktualisierungen gefunden',
+		updateAvailable: 'Eine Aktualisierung ist verfügbar!'
 	},
 	settings: {
 		title: 'Einstellungen',
@@ -221,17 +236,52 @@ const de = {
 			title: 'Login',
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
+				title: 'Use ARL instead',
 				question: 'Wie bekomme ich meine eigene ARL?',
+				howTo: {
+					prologue: {
+						p1: 'Deezer verfolgt die Anmeldesitzung mithilfe eines Cookies namens ARL.',
+						p2: 'Deemix verwendet dieses Cookie, um die Metadaten abzurufen, die es benötigt, um die Tracks von Deezer herunterzuladen.',
+						p3: 'ARLs sind 3 Monate gültig, danach fordert Deezer Dich auf, sich erneut anzumelden. Die gleiche Methode wird in deemix verwendet.',
+						p4: 'Wenn Du einer der folgenden Anleitungen folgst, kannst Du eigene Konto-ARL erhalten.',
+						warning: "Verwende diese Methode nur, wenn E-Mail und Passwort nicht funktionieren."
+					},
+					chromeSteps: {
+						title: 'Chrome',
+						step1: 'Öffne Chrome',
+						easyWay: {
+							title: 'Chrome (Easy way)',
+							step3: 'Klicke auf das kleine "Schloss"-Symbol neben der URL',
+							step4: 'Klicke auf Cookies > deezer.com > cookies > arl',
+							step5: 'Wähle die Zeichenfolge neben Inhalt und Kopieren aus'
+						},
+						step4: "Gehe zum Application Tab (if you don't see it click the double arrow)",
+						videoGuide: {
+							text: "Hier ist eine {videoGuide}",
+							link: 'Video Guide'
+						}
+					},
+					firefoxSteps: {
+						title: 'Firefox',
+						step1: 'Öffne Firefox',
+						step4: "Gehe unter die Registerkarte Speicher (wenn Du sie nicht siehst, klicke auf den Doppelpfeil)"
+					},
+					commonSteps: {
+						step2: 'Gehe zu www.deezer.com und logge dich in deinen Account ein',
+						step3: 'Drücke nach der Anmeldung F12, um die Entwicklertools zu öffnen',
+						step5: 'Öffne den Cookie-Dropdown',
+						step6: 'Wähle www.deezer.com',
+						step7: 'Finde das `arl` Cookie (It should be 192 chars long)',
+						step8: 'Stelle sicher, dass Du nur den Wert kopierst und nicht das gesamte Cookie',
+						lastStep: "Das ist Deine ARL, jetzt kannst Du sie in der App verwenden"
+					}
+				},
 				update: 'ARL aktualisieren'
 			},
 			logout: 'Ausloggen',
-			login: 'Über deezer.com einloggen'
-		},
-		loginWithCredentials: {
-			title: 'Mit Zugangsdaten einloggen',
-			login: 'Einloggen',
-			email: 'E-Mail',
-			password: 'Passwort'
+			login: 'Über deezer.com einloggen',
+			email: 'E-mail',
+			password: 'Password'
 		},
 		appearance: {
 			title: 'Design',
@@ -289,6 +339,8 @@ const de = {
 			},
 			fallbackBitrate: 'Falls gewünschte Bitrate nicht verfügbar, auf niedrigere Bitrate zurückgreifen',
 			fallbackSearch: 'Zur Suche zurückkehren, wenn der Song nicht verfügbar ist',
+			fallbackISRC: 'Fallback mit ISRC-Suche',
+			feelingLucky: 'Spielen mit CDNs und Caches',
 			logErrors: 'Protokolldatei für Fehler im Download-Ordner erstellen',
 			logSearched: 'Protokolldatei für gesuchte Titel erstellen',
 			createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
@@ -320,6 +372,7 @@ const de = {
 			head: 'Welche Tags sollen gespeichert werden?',
 			title: 'Titel',
 			artist: 'Künstler',
+			artists: 'Zusätzlicher ARTISTS Tag',
 			album: 'Album',
 			cover: 'Cover',
 			trackNumber: 'Titelnummer',
@@ -342,10 +395,12 @@ const de = {
 			copyright: 'Copyright',
 			composer: 'Komponist',
 			involvedPeople: 'Mitwirkende Personen',
-			source: 'Quelle und Song ID'
+			source: 'Quelle und Song ID',
+			artistsWarning: 'Das Deaktivieren des ARTISTS- Tags, während die Standardspezifikation nicht verwendet wird, wird die Multiartist- Unterstützung nicht erhalten'
 		},
 		other: {
 			title: 'Sonstige',
+			autoCheckForUpdates: 'Check for updates on startup',
 			savePlaylistAsCompilation: 'Speichere Playlist als Zusammenstellung',
 			useNullSeparator: 'Verwende Nulltrennzeichen',
 			saveID3v1: 'Speichere ID3v1 ebenfalls',
@@ -354,7 +409,8 @@ const de = {
 				nothing: 'Speichere nur den Hauptkünstler',
 				default: 'Verwende Standard Spezifikationen',
 				andFeat: 'Verwende & und feat.',
-				using: 'Verwende "{separator}"'
+				using: 'Verwende "{separator}"',
+				warning: 'Wenn Du ein anderes Trennzeichen als die Standardspezifikation verwendest, wird ein zusätzliches ARTISTS-Tag hinzugefügt, um die Unterstützung mehrerer Künstler zu erhalten'
 			},
 			singleAlbumArtist: 'Nur den Hauptkünstler speichern',
 			albumVariousArtists: 'Verschiedene Künstler" im Album Künstler Tag behalten',
@@ -393,7 +449,42 @@ const de = {
 			clientID: 'Spotify Client ID',
 			clientSecret: 'Spotify Client Secret',
 			username: 'Spotify Benutzername',
-			question: 'Wie aktiviere ich die Spotify Features?'
+			question: 'Wie aktiviere ich die Spotify Features?',
+			howTo: {
+				prologue: {
+					p1: '"Spotify Features" ist eine Reihe von Funktionen, mit denen Du Spotify-Tracks und Alben-Links in Deezer-Links konvertieren kannst.',
+					p2: 'Wenn Du einen Spotify-Playlist-Link bereitstellst, konvertiert die App automatisch alle Links der darin enthaltenen Titel in Deezer-Titel.',
+					p3: 'Wenn Du diese Funktionen aktivierst, kannst Du Deine öffentlichen Spotify-Wiedergabelisten auch auf der Registerkarte "Favoriten" sehen.'
+				},
+				info: 'Aus Sicherheitsgründen musst Du Deine eigene Client-ID und Dein Client-Secret angeben',
+				clientSecretQuestion: {
+					title: 'Wie erhalte ich meine Client-ID und mein Client-Secret?',
+					step1: {
+						text: 'Verbinde dich mit {spotifyDevelopersDashboard} und melde dich mit Deinem Spotify-Konto an.',
+						spotifyDevelopersDashboard: "Spotify Entwickler-Dashboard"
+					},
+					step2: {
+						text: 'Klicke auf "App erstellen"..',
+						imageAlt: 'Erstelle eine App-Schaltfläche auf Spotify für das Entwickler-Dashboard'
+					},
+					step3: {
+						text: 'Fülle die Felder „App-Name“ und „App-Beschreibung“ aus und aktiviere beide Kontrollkästchen. Klicke dann auf die Schaltfläche "Erstellen".',
+						imageAlt: 'Erstelle ein App-Formular'
+					},
+					step4: {
+						text: 'Jetzt kannst Du die Client-ID sehen. Wenn Du auf "„"Kundengeheimnis anzeigen"“" klickst, wird das Kundengeheimnis angezeigt.',
+						imageAlt: 'Screen mit Client-ID und Geheimnis'
+					},
+					step5: 'Jetzt kannst Du diese Ergebnisse kopieren und in die entsprechenden Felder in den Einstellungen einfügen.'
+				},
+				usernameQuestion: {
+					title: 'Wie erhalte ich meinen Spotify-Benutzernamen?',
+					step1: {
+						text: 'Du kannst Deinen Spotify-Benutzernamen auf der {overviewPage} auf der Spotify-Website abrufen.',
+						overviewPage: 'Übersichtsseite'
+					}
+				}
+			}
 		},
 		reset: 'Auf Standardwerte zurücksetzen',
 		resetMessage: 'Bist du sicher, dass du zu den Standarteinstellungen zurückkehren willst?',
@@ -416,6 +507,7 @@ const de = {
 		favorites: 'Favoriten',
 		linkAnalyzer: 'Link Analyse',
 		settings: 'Einstellungen',
+		logs: 'Protokolle',
 		about: 'Info'
 	},
 	tracklist: {

@@ -86,22 +86,28 @@ const de = {
 			text: 'Suche bei Fragen oder Problemen mit der App als erstes nach einer Lösung im {subreddit}. Wenn du dort nichts findest, kannst du einen Beitrag mit deinen Problem auf dem Subreddit verfassen.',
 			subreddit: 'Subreddit'
 		},
-		beforeReporting: 'Bevor du einen Fehler meldest, stelle sicher, dass die Version deiner App auf dem neusten Stand ist und dass dies, was du melden möchtest, tatsächlich ein Fehler und nicht nur bei dir falsch ist.',
-		beSure: 'Stelle sicher, dass der Fehler auf anderen Computern auch vorhanden ist... <strong>MELDE DEN FEHLER NICHT	</strong>, wenn dieser schon gemeldet worden ist.',
+		beforeReporting:
+			'Bevor du einen Fehler meldest, stelle sicher, dass die Version deiner App auf dem neusten Stand ist und dass dies, was du melden möchtest, tatsächlich ein Fehler und nicht nur bei dir falsch ist.',
+		beSure:
+			'Stelle sicher, dass der Fehler auf anderen Computern auch vorhanden ist... <strong>MELDE DEN FEHLER NICHT	</strong>, wenn dieser schon gemeldet worden ist.',
 		duplicateReports: 'Achte darauf, dass doppelte Fehlerberichte geschlossen, werden.',
-		dontOpenIssues: '<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es existiert ein Subreddit dafür.',
+		dontOpenIssues:
+			'<strong>ERSTELLE KEINE</strong> Fehlermeldungen um Fragen zu stellen, es existiert ein Subreddit dafür.',
 		newUI: {
 			text: 'Wenn du Python fließend beherrschst, kannst du versuchen, mithilfe der Basisbibliothek eine neue Benutzeroberfläche für die App zu erstellen oder Fehler in der Bibliothek mit einem Pull-Request in der {repo} zu beheben.',
 			repo: 'deemix Repo'
 		},
-		acceptFeatures: 'Ich akzeptiere auch Funktionen, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.',
-		otherLanguages: 'Wenn du eine andere Programmiersprache fließend beherrschst, kannst du versuchen, deemix in andere Programmiersprachen zu portieren!',
+		acceptFeatures:
+			'Ich akzeptiere auch Funktionen, aber keine komplexen Dinge, da sie direkt in der App und nicht in der Bibliothek implementiert werden können.',
+		otherLanguages:
+			'Wenn du eine andere Programmiersprache fließend beherrschst, kannst du versuchen, deemix in andere Programmiersprachen zu portieren!',
 		understandingCode: 'Du benötigst Hilfe beim verstehen des Codes? Frag einfach RemixDev auf Telegram oder Reddit.',
 		contributeWebUI: {
 			text: 'Wenn du Vue.js (JavaScript) oder HTML und CSS kennst, könntest du etwas zum {webui} beitragen.',
 			webui: 'WebUI'
 		},
-		itsFree: 'Du solltest im Kopf behalten das <strong>dies ein kostenfreies Projekt ist</strong> und <strong>Du die Künstler unterstützen sollst, die du magst</strong> bevor du die Entwickler unterstützt.',
+		itsFree:
+			'Du solltest im Kopf behalten das <strong>dies ein kostenfreies Projekt ist</strong> und <strong>Du die Künstler unterstützen sollst, die du magst</strong> bevor du die Entwickler unterstützt.',
 		notObligated: 'Fühle dich nicht gezwungen zu spenden, danke, dass du deemix verwendest!',
 		lincensedUnder: {
 			text: 'Diese Arbeit ist lizensiert unter der {gpl3}.',
@@ -155,9 +161,11 @@ const de = {
 	},
 	linkAnalyzer: {
 		info: 'Diesen Abschnitt kannst du nutzen, um weitere Informationen über den gewünschten Link zu erhalten, den du herunterladen möchtest.',
-		useful: 'Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.',
+		useful:
+			'Dies ist z.B. nützlich, wenn du versuchst einige Titel herunterzuladen, welche in deinem Land nicht verfügbar sind, und du wissen möchtest, wo sie verfügbar sind.',
 		linkNotSupported: 'Dieser Link wird noch nicht unterstützt',
-		linkNotSupportedYet: 'Es scheint so, als ob dieser Link noch nicht unterstützt wird. Versuche einen anderen Link zu analysieren.',
+		linkNotSupportedYet:
+			'Es scheint so, als ob dieser Link noch nicht unterstützt wird. Versuche einen anderen Link zu analysieren.',
 		table: {
 			id: 'ID',
 			isrc: 'ISRC',

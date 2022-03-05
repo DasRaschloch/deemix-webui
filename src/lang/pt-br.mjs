@@ -339,7 +339,7 @@ const pt_br = {
 			logErrors: 'Criar arquivos de log para erros',
 			logSearched: 'Criar arquivos de log para faixas pesquisadas',
 			createM3U8File: 'Criar arquivo de playlist',
-			syncedLyrics: 'Criar arquivos .lyr (Letras)',
+			syncedLyrics: 'Criar arquivos .lrc (Letras)',
 			playlistFilenameTemplate: 'Modelo do nome do arquivo da playlist',
 			saveDownloadQueue: 'Salvar a fila de downloads quando fechar o app'
 		},

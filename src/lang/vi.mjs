@@ -236,7 +236,7 @@ const vi = {
 			logErrors: 'Tạo file log khi có lỗi',
 			logSearched: 'Tạo file log khi bạn tìm Bài hát',
 			createM3U8File: 'Tạo file playlist',
-			syncedLyrics: 'Tạo file .lyr (Lời Bài hát)',
+			syncedLyrics: 'Tạo file .lrc (Lời Bài hát)',
 			playlistFilenameTemplate: 'Tên playlist mẫu',
 			saveDownloadQueue: 'Lưu hàng chờ download khi đóng ứng dụng'
 		},

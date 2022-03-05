@@ -280,7 +280,7 @@ const th = {
 			logErrors: 'สร้างไฟล์บันทึกข้อผิดพลาด',
 			logSearched: 'สร้างไฟล์บันทึกรายการเพลงที่ค้นหา',
 			createM3U8File: 'สร้างไฟล์เพลย์ลิสต์',
-			syncedLyrics: 'สร้างไฟล์ .lyr (เนื้อเพลงซิงโครไนซ์)',
+			syncedLyrics: 'สร้างไฟล์ .lrc (เนื้อเพลงซิงโครไนซ์)',
 			playlistFilenameTemplate: 'เทมเพลตชื่อไฟล์เพลย์ลิสต์',
 			saveDownloadQueue: 'บันทึกคิวดาวน์โหลดเมื่อปิดแอป'
 		},

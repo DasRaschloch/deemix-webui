@@ -350,7 +350,7 @@ const fr = {
 			logErrors: "Créer un fichier journal d'erreurs",
 			logSearched: 'Créer un fichier journal des pistes recherchées',
 			createM3U8File: 'Créer un fichier de playlist',
-			syncedLyrics: 'Créer des fichiers .lyr (Paroles Synchronisées)',
+			syncedLyrics: 'Créer des fichiers .lrc (Paroles Synchronisées)',
 			playlistFilenameTemplate: 'Modèle du nom de fichier de la playlist',
 			saveDownloadQueue: "Enregistrer la file d'attente de téléchargement à la fermeture de l'application"
 		},

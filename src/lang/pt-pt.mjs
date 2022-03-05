@@ -236,7 +236,7 @@ const pt = {
 			logErrors: 'Criar histórico para erros',
 			logSearched: 'Criar histórico para faixas pesquisadas',
 			createM3U8File: 'Criar ficheiro de lista de reprodução',
-			syncedLyrics: 'Criar ficheiro .lyr (Letra Sincronizada)',
+			syncedLyrics: 'Criar ficheiro .lrc (Letra Sincronizada)',
 			playlistFilenameTemplate: 'Formato do nome de ficheiro da lista de reprodução',
 			saveDownloadQueue: 'Guardar fila de transferências ao fechar a aplicação'
 		},

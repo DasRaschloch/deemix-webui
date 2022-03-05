@@ -267,7 +267,7 @@ const es = {
 			logErrors: 'Crear archivos de registro de errores',
 			logSearched: 'Crear archivos de registro para las pistas buscadas',
 			createM3U8File: 'Crear archivo de la lista de reproducción',
-			syncedLyrics: 'Crear archivos .lyr (lyrics sincronizadas)',
+			syncedLyrics: 'Crear archivos .lrc (lyrics sincronizadas)',
 			playlistFilenameTemplate: 'Plantilla de nombres de archivos de la lista de reproducción',
 			saveDownloadQueue: 'Guardar la cola de descarga al cerrar la aplicación'
 		},

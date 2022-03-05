@@ -339,7 +339,7 @@ const en = {
 			logErrors: 'Create log files for errors',
 			logSearched: 'Create log files for searched tracks',
 			createM3U8File: 'Create playlist file',
-			syncedLyrics: 'Create .lyr files (Sync Lyrics)',
+			syncedLyrics: 'Create .lrc files (Sync Lyrics)',
 			playlistFilenameTemplate: 'Playlist filename template',
 			clearQueueOnExit: 'Clear download queue when closing the app'
 		},

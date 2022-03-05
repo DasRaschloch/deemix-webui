@@ -261,7 +261,7 @@ const fil = {
 			logErrors: 'Gumawa ng log file para sa mga error',
 			logSearched: 'Gumawa ng log file para sa mga hinanap na track',
 			createM3U8File: 'Gumawa ng file sa playlist',
-			syncedLyrics: 'Gumawa ng mga .lyr file (Mga Sync Lyric)',
+			syncedLyrics: 'Gumawa ng mga .lrc file (Mga Sync Lyric)',
 			playlistFilenameTemplate: 'Template sa pangalan ng Playlist file',
 			saveDownloadQueue: 'I-save ang download queue kapag isasara the app'
 		},

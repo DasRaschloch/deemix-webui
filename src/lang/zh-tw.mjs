@@ -270,7 +270,7 @@ const zh_tw = {
 			logErrors: '記錄錯誤至日誌',
 			logSearched: '記錄搜尋歌曲至日誌',
 			createM3U8File: '建立播放清單檔案',
-			syncedLyrics: '建立 .lyr 檔案（同步歌詞）',
+			syncedLyrics: '建立 .lrc 檔案（同步歌詞）',
 			playlistFilenameTemplate: '播放清單檔名格式',
 			saveDownloadQueue: '關閉應用程式時，保存下載清單'
 		},

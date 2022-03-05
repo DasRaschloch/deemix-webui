@@ -238,7 +238,7 @@ const hr = {
 			logErrors: 'Izradi zapisnik datoteku za greške',
 			logSearched: 'Izradi zapisnik datoteku za pretražene pjesme',
 			createM3U8File: 'Izradi playlist datoteku',
-			syncedLyrics: 'Izradi .lyr datoteke (sinkronizirani lyrics)',
+			syncedLyrics: 'Izradi .lrc datoteke (sinkronizirani lyrics)',
 			playlistFilenameTemplate: 'Naziv playliste predložak',
 			saveDownloadQueue: 'Spremi red za preuzimanje prilikom zatvaranja aplikacije'
 		},

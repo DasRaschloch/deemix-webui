@@ -276,7 +276,7 @@ const ko = {
 			logErrors: '오류 발생시 로그 파일 생성',
 			logSearched: '검색한 트랙에 대한 로그 파일 생성',
 			createM3U8File: '재생목록 파일 생성',
-			syncedLyrics: '.lyr 파일 생성 (가사 동기화)',
+			syncedLyrics: '.lrc 파일 생성 (가사 동기화)',
 			playlistFilenameTemplate: '재생목록 파일이름 템플릿',
 			saveDownloadQueue: '프로그램을 닫을 때 다운로드 대기열 저장'
 		},

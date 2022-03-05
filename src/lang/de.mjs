@@ -347,7 +347,7 @@ const de = {
 			logErrors: 'Protokolldatei für Fehler im Download-Ordner erstellen',
 			logSearched: 'Protokolldatei für gesuchte Titel erstellen',
 			createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
-			syncedLyrics: 'Erstelle synchrone Lyrics-Datei (.lyr)',
+			syncedLyrics: 'Erstelle synchrone Lyrics-Datei (.lrc)',
 			playlistFilenameTemplate: 'Vorlage für den Namen der Playlist',
 			saveDownloadQueue: 'Download-Warteschlange beim Schließen der App speichern'
 		},

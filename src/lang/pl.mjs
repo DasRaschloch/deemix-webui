@@ -258,7 +258,7 @@ const pl = {
 			logErrors: 'Utwórz plik dziennika błędów',
 			logSearched: 'Utwórz plik dziennika wyszukiwanych utworów',
 			createM3U8File: 'Utwórz plik playlisty',
-			syncedLyrics: 'Utwórz plik .lyr (synchronizowany tekst)',
+			syncedLyrics: 'Utwórz plik .lrc (synchronizowany tekst)',
 			playlistFilenameTemplate: 'Szablon pliku playlisty',
 			saveDownloadQueue: 'Zapisz kolejkę pobierania przy zamykaniu aplikacji'
 		},

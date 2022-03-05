@@ -282,7 +282,7 @@ const sr = {
 			logErrors: 'Направи фајл са извештајем о грешкама',
 			logSearched: 'Направи фајл са извештајем о претраживаним песмама',
 			createM3U8File: 'Направи фајл за плејлисту',
-			syncedLyrics: 'Направи .lyr фајлове (Sync Lyrics)',
+			syncedLyrics: 'Направи .lrc фајлове (Sync Lyrics)',
 			playlistFilenameTemplate: 'Шаблон за фајл за плејлисте',
 			saveDownloadQueue: 'Сними ред за преузимање приликом затварања апликације'
 		},

@@ -236,7 +236,7 @@ const id = {
 			logErrors: 'Buat file log untuk galat',
 			logSearched: 'Buat file log untuk lagu yang dicari',
 			createM3U8File: 'Buat file daftar putar',
-			syncedLyrics: 'Buat file .lyr (Sinkronisasikan Lirik)',
+			syncedLyrics: 'Buat file .lrc (Sinkronisasikan Lirik)',
 			playlistFilenameTemplate: 'Templat nama file untuk daftar putar',
 			saveDownloadQueue: 'Simpan antrian pengunduhan saat menutup aplikasi'
 		},

@@ -339,7 +339,7 @@ const it = {
 			feelingLucky: 'Prova e usa il metodo vecchio di generazione degli URL',
 			logErrors: 'Crea file di log per gli errori',
 			logSearched: 'Crea file di log per le alternative cercate',
-			syncedLyrics: 'Crea i file .lyr (Testi Sincronizzati)',
+			syncedLyrics: 'Crea i file .lrc (Testi Sincronizzati)',
 			createM3U8File: 'Crea i file playlist',
 			playlistFilenameTemplate: 'Template nome del file playlist',
 			clearQueueOnExit: "Pulisci la coda di download quando chiudi l'app"

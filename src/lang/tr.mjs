@@ -235,7 +235,7 @@ const tr = {
 			logErrors: 'Hatalar için günlük tut',
 			logSearched: 'Aranmış parçalar için günlük tut',
 			createM3U8File: 'Oynatma sıra listesi oluştur',
-			syncedLyrics: '.lyr dosyaları oluştur (Senkronize şarkı sözleri)',
+			syncedLyrics: '.lrc dosyaları oluştur (Senkronize şarkı sözleri)',
 			playlistFilenameTemplate: 'Oynatma listesi şablonu',
 			saveDownloadQueue: 'Uygulamayı kapatırken indirme kuyruğunu kaydet'
 		},

@@ -94,22 +94,6 @@
 			</ul>
 		</div>
 
-		<!--
-		<BaseAccordion class="settings-group">
-			<template #title>
-				<h3 class="settings-group__header">
-					<i class="material-icons">description</i>
-					{{ $t('settings.logs.title') }}
-				</h3>
-			</template>
-
-			<label class="with-checkbox">
-				<input v-model="areLogsActive" type="checkbox" />
-				<span class="checkbox-text">{{ $t('settings.logs.areLogsActive') }}</span>
-			</label>
-		</BaseAccordion>
-		-->
-
 		<BaseAccordion class="settings-group">
 			<template #title>
 				<h3 class="settings-group__header">

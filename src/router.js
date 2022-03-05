@@ -11,7 +11,6 @@ import Errors from '@components/pages/Errors.vue'
 import Favorites from '@components/pages/Favorites.vue'
 import Home from '@components/pages/Home.vue'
 import LinkAnalyzer from '@components/pages/LinkAnalyzer.vue'
-import Logs from '@components/pages/Logs.vue'
 import Search from '@components/pages/Search.vue'
 import Settings from '@components/pages/Settings.vue'
 import Tracklist from '@components/pages/Tracklist.vue'
@@ -78,11 +77,6 @@ const routes = [
 		path: '/errors',
 		name: 'Errors',
 		component: Errors
-	},
-	{
-		path: '/logs',
-		name: 'Logs',
-		component: Logs
 	},
 	{
 		path: '/link-analyzer',

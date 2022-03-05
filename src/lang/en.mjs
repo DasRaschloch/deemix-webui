@@ -491,10 +491,6 @@ const en = {
 			update: 'Settings updated!',
 			reset: 'Settings reset to default!',
 			ARLcopied: 'ARL copied to clipboard'
-		},
-		logs: {
-			title: 'Logs',
-			areLogsActive: 'Active'
 		}
 	},
 	sidebar: {
@@ -509,10 +505,6 @@ const en = {
 	},
 	tracklist: {
 		downloadSelection: 'Download selection'
-	},
-	logs: {
-		event: 'Event',
-		data: 'Data'
 	}
 }
 

@@ -27,7 +27,6 @@ const fr = {
 			single: 'single | singles',
 			title: 'titre | titres',
 			track: 'piste | pistes',
-			releaseN: '0 sortie | {n} sortie | {n} sorties',
 			playlist: 'playlist | playlists',
 			compile: 'compilation | compilations',
 			ep: 'ep | eps',
@@ -40,6 +39,7 @@ const fr = {
 			trackN: '0 piste | {n} piste | {n} pistes',
 			albumN: '0 album | {n} album | {n} albums',
 			artistN: '0 artiste | {n} artiste | {n} artistes',
+			releaseN: '0 sortie | {n} sortie | {n} sorties',
 			playlistN: '0 playlist | {n} playlist | {n} playlists'
 		},
 		yes: 'oui',
@@ -199,7 +199,8 @@ const fr = {
 		noResultsTrack: "Aucune piste n'a été trouvée",
 		noResultsAlbum: "Aucun album n'a été trouvé",
 		noResultsArtist: "Aucun artiste n'a été trouvé",
-		noResultsPlaylist: "Aucune playlist n'a été trouvée"
+		noResultsPlaylist: "Aucune playlist n'a été trouvée",
+		error: 'Une erreur est survenue, veuillez réessayer ultérieurement.'
 	},
 	searchbar: 'Saisissez une requête (ou collez simplement un lien)',
 	downloads: 'téléchargements',
@@ -352,7 +353,7 @@ const fr = {
 			createM3U8File: 'Créer un fichier de playlist',
 			syncedLyrics: 'Créer des fichiers .lrc (Paroles Synchronisées)',
 			playlistFilenameTemplate: 'Modèle du nom de fichier de la playlist',
-			saveDownloadQueue: "Enregistrer la file d'attente de téléchargement à la fermeture de l'application"
+			clearQueueOnExit: "Effacer la file d'attente de téléchargement lors de la fermeture de l'application"
 		},
 		covers: {
 			title: "Pochettes d'albums",
@@ -505,10 +506,6 @@ const fr = {
 			reset: 'Paramètres réinitialisés à leur valeur par défaut !',
 			ARLcopied: 'ARL copié dans le presse-papier'
 		},
-		logs: {
-			title: 'Journaux (Logs)',
-			areLogsActive: 'Actifs'
-		}
 	},
 	sidebar: {
 		home: 'accueil',
@@ -522,10 +519,6 @@ const fr = {
 	},
 	tracklist: {
 		downloadSelection: 'Télécharger la sélection'
-	},
-	logs: {
-		event: 'Événement',
-		data: 'Données'
 	}
 }
 

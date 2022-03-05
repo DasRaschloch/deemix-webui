@@ -530,13 +530,11 @@
 				<input v-model="settings.playlistFilenameTemplate" type="text" />
 			</div>
 
-			<!--
-			TODO: Uncomment when implemented
-			<label class="with-checkbox">
-				<input v-model="settings.saveDownloadQueue" type="checkbox" />
-				<span class="checkbox-text">{{ $t('settings.downloads.saveDownloadQueue') }}</span>
+			<label v-if="clientMode" class="with-checkbox">
+				<input v-model="settings.clearQueueOnExit" type="checkbox" />
+				<span class="checkbox-text">{{ $t('settings.downloads.clearQueueOnExit') }}</span>
 			</label>
-			-->
+
 		</BaseAccordion>
 
 		<BaseAccordion class="settings-group">
@@ -885,6 +883,7 @@ export default {
 	},
 	methods: {
 		...mapActions({
+			clientMode: 'getClientMode',
 			dispatchARL: 'setARL',
 			dispatchAccessTocken: 'setAccessToken',
 			dispatchUser: 'setUser',

@@ -341,7 +341,7 @@ const en = {
 			createM3U8File: 'Create playlist file',
 			syncedLyrics: 'Create .lyr files (Sync Lyrics)',
 			playlistFilenameTemplate: 'Playlist filename template',
-			saveDownloadQueue: 'Save download queue when closing the app'
+			clearQueueOnExit: 'Clear download queue when closing the app'
 		},
 		covers: {
 			title: 'Album covers',

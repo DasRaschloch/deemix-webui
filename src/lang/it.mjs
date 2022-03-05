@@ -342,7 +342,7 @@ const it = {
 			syncedLyrics: 'Crea i file .lyr (Testi Sincronizzati)',
 			createM3U8File: 'Crea i file playlist',
 			playlistFilenameTemplate: 'Template nome del file playlist',
-			saveDownloadQueue: "Salva la coda di download quando chiudi l'app"
+			clearQueueOnExit: "Pulisci la coda di download quando chiudi l'app"
 		},
 		covers: {
 			title: 'Copertine',

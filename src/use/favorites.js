@@ -19,11 +19,11 @@ const setAllFavorites = data => {
 
 	isRefreshingFavorites.value = false
 
-	favoriteArtists.value = artists
-	favoriteAlbums.value = albums
-	favoritePlaylists.value = playlists
-	favoriteTracks.value = tracks
-	lovedTracksPlaylist.value = lovedTracks
+	favoriteArtists.value = artists || []
+	favoriteAlbums.value = albums || []
+	favoritePlaylists.value = playlists || []
+	favoriteTracks.value = tracks || []
+	lovedTracksPlaylist.value = lovedTracks || []
 }
 
 const setSpotifyPlaylists = response => {
@@ -34,7 +34,7 @@ const setSpotifyPlaylists = response => {
 		return
 	}
 
-	favoriteSpotifyPlaylists.value = response
+	favoriteSpotifyPlaylists.value = response || []
 }
 
 const refreshFavorites = async ({ isInitial = false }) => {

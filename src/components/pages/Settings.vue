@@ -883,7 +883,6 @@ export default {
 	},
 	methods: {
 		...mapActions({
-			clientMode: 'getClientMode',
 			dispatchARL: 'setARL',
 			dispatchAccessTocken: 'setAccessToken',
 			dispatchUser: 'setUser',

@@ -462,9 +462,9 @@
 			<div class="input-group">
 				<p class="input-group-text">{{ $t('settings.downloads.maxBitrate.title') }}</p>
 				<select v-model="settings.maxBitrate">
-					<option value="9">{{ $t('settings.downloads.maxBitrate.9') }}</option>
-					<option value="3">{{ $t('settings.downloads.maxBitrate.3') }}</option>
-					<option value="1">{{ $t('settings.downloads.maxBitrate.1') }}</option>
+					<option value="9" :disabled="!canDownload(9)">{{ $t('settings.downloads.maxBitrate.9') }}</option>
+					<option value="3" :disabled="!canDownload(3)">{{ $t('settings.downloads.maxBitrate.3') }}</option>
+					<option value="1" :disabled="!canDownload(1)">{{ $t('settings.downloads.maxBitrate.1') }}</option>
 				</select>
 			</div>
 
@@ -1070,6 +1070,14 @@ export default {
 
 			this.settings = JSON.parse(JSON.stringify(this.defaultSettings))
 			toast(this.$t('settings.toasts.reset'), 'settings')
+		},
+		canDownload(bitrate){
+			if (!this.user.id) return false
+			if (this.settings.feelingLucky) return true
+			if (this.userLicense == "Free" && bitrate == 1) return true
+			if (this.userLicense == "Premium" && bitrate == 3) return true
+			if (this.userLicense == "Hi-Fi" && bitrate == 9) return true
+			return false
 		}
 	}
 }

@@ -1074,9 +1074,9 @@ export default {
 		canDownload(bitrate){
 			if (!this.user.id) return false
 			if (this.settings.feelingLucky) return true
-			if (this.userLicense == "Free" && bitrate == 1) return true
-			if (this.userLicense == "Premium" && bitrate == 3) return true
-			if (this.userLicense == "Hi-Fi" && bitrate == 9) return true
+			if (this.user.id && bitrate == 1) return true
+			if (this.user.can_stream_hq && bitrate == 3) return true
+			if (this.user.can_stream_lossless && bitrate == 9) return true
 			return false
 		}
 	}

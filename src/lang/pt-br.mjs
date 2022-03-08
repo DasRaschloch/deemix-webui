@@ -27,7 +27,6 @@ const pt_br = {
 			single: 'single | singles',
 			title: 'título | títulos',
 			track: 'faixa | faixas',
-			releaseN: '0 lançamento | {n} lançamento | {n} lançamentos',
 			playlist: 'playlist | playlists',
 			compile: 'compilação | compilações',
 			ep: 'ep | eps',
@@ -40,6 +39,7 @@ const pt_br = {
 			trackN: '0 faixas | {n} faixa | {n} faixas',
 			albumN: '0 álbuns | {n} álbum | {n} álbuns',
 			artistN: '0 artistas | {n} artista | {n} artistas',
+			releaseN: '0 lançamentos | {n} lançamento | {n} lançamentos',
 			playlistN: '0 playlists | {n} playlist | {n} playlists'
 		},
 		yes: 'sim',
@@ -60,7 +60,7 @@ const pt_br = {
 		},
 		titles: {
 			usefulLinks: 'Links úteis',
-			bugReports: 'Relatar bugs',
+			bugReports: 'Reportar bugs',
 			contributing: 'Contribuições',
 			donations: 'Doações',
 			license: 'Licença'
@@ -137,7 +137,9 @@ const pt_br = {
 			noSpaceLeft: 'Espaço insuficiente no dispositivo!',
 			albumDoesntExists: 'O álbum da faixa não exite, falha ao obter informações.',
 			wrongLicense: 'A sua conta não permite reproduzir a faixa na qualidade desejada.',
-			wrongGeolocation: 'A sua conta não permite reproduzir a faixa a partir do país atual.'
+			wrongGeolocation: 'A sua conta não permite reproduzir a faixa a partir do país atual.',
+			wrongGeolocationNoAlternative:
+				'A sua conta não permite reproduzir a faixa a partir do país atual e nenhuma alternativa foi encontrada.'
 		}
 	},
 	favorites: {
@@ -189,7 +191,8 @@ const pt_br = {
 		noResultsTrack: 'Nenhuma faixa encontrada',
 		noResultsAlbum: 'Nenhum álbum encontrado',
 		noResultsArtist: 'Nenhum artista encontrado',
-		noResultsPlaylist: 'Nenhuma playlist encontrada'
+		noResultsPlaylist: 'Nenhuma playlist encontrada',
+		error: 'Ocorreu um erro. Tente novamente mais tarde.'
 	},
 	searchbar: 'Pesquise algo (ou apenas cole um link)',
 	downloads: 'downloads',
@@ -216,7 +219,7 @@ const pt_br = {
 		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
 		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
 		deezerNotReachable:
-			'O aplicativo não pôde conectar-se no Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.',
+			'O aplicativo não consegue conectar-se ao Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.',
 		startGeneratingItems: 'Processando {n} itens...',
 		finishGeneratingItems: '{n} itens gerados.',
 		noLovedPlaylist: 'Nenhuma playlist de músicas curtidas!',
@@ -339,9 +342,9 @@ const pt_br = {
 			logErrors: 'Criar arquivos de log para erros',
 			logSearched: 'Criar arquivos de log para faixas pesquisadas',
 			createM3U8File: 'Criar arquivo de playlist',
-			syncedLyrics: 'Criar arquivos .lrc (Letras)',
+			syncedLyrics: 'Criar arquivos .lrc (Letras sincronizadas)',
 			playlistFilenameTemplate: 'Modelo do nome do arquivo da playlist',
-			saveDownloadQueue: 'Salvar a fila de downloads quando fechar o app'
+			clearQueueOnExit: 'Limpar a fila de downloads quando fechar o app'
 		},
 		covers: {
 			title: 'Capa dos álbuns',
@@ -491,10 +494,6 @@ const pt_br = {
 			update: 'Configurações atualizadas!',
 			reset: 'Configurações restauradas para o padrão!',
 			ARLcopied: 'ARL copiado para a área de transferência'
-		},
-		logs: {
-			title: 'Logs',
-			areLogsActive: 'Ativo'
 		}
 	},
 	sidebar: {
@@ -509,10 +508,6 @@ const pt_br = {
 	},
 	tracklist: {
 		downloadSelection: 'Baixar seleção'
-	},
-	logs: {
-		event: 'Evento',
-		data: 'Dados'
 	}
 }
 

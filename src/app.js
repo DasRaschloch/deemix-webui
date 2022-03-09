@@ -58,7 +58,12 @@ async function startApp() {
 	store.dispatch('setSpotifyStatus', spotifyStatus).catch(console.error)
 
 	let arl = localStorage.getItem('arl')
-	const accessToken = localStorage.getItem('accessToken')
+	let accessToken = localStorage.getItem('accessToken')
+
+	if (connectResponse.singleUser) {
+		if (connectResponse.singleUser.arl) arl = connectResponse.singleUser.arl
+		if (connectResponse.singleUser.accessToken) accessToken = connectResponse.singleUser.accessToken
+	}
 
 	if (connectResponse.autologin) {
 		console.info('Autologin')

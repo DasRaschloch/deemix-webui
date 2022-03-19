@@ -6,7 +6,7 @@ const de = {
 		download: '{thing} herunterladen',
 		by: 'von {artist}',
 		in: 'in {album}',
-		download_hint: 'Download',
+		download_hint: 'Herunterladen',
 		play_hint: 'Abspielen',
 		toggle_download_tab_hint: 'Erweitern/Minimieren',
 		clean_queue_hint: 'Vollständige entfernen',
@@ -241,7 +241,7 @@ const de = {
 			title: 'Login',
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
-				title: 'Statdessen ARL verwenden',
+				title: 'Stattdessen ARL verwenden',
 				question: 'Wie bekomme ich meine eigene ARL?',
 				howTo: {
 					prologue: {

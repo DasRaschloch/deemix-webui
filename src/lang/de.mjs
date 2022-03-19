@@ -285,7 +285,7 @@ const de = {
 			},
 			logout: 'Ausloggen',
 			login: 'Über deezer.com einloggen',
-			email: 'E-mail',
+			email: 'E-Mail',
 			password: 'Password'
 		},
 		appearance: {

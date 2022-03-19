@@ -145,7 +145,7 @@ const de = {
 			wrongLicense: 'Dein Account kann die Spur nicht an der gewünschten Bitrate streamen.',
 			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.',
 			wrongGeolocationNoAlternative:
-				"Dein Konto kann den Titel nicht aus Deinem aktuellen Land streamen und es ist keine Alternative verfügbar."
+				"Dein Account kann den Titel nicht aus Deinem aktuellen Land streamen und es ist keine Alternative verfügbar."
 		}
 	},
 	favorites: {
@@ -248,7 +248,7 @@ const de = {
 						p1: 'Deezer verfolgt die Anmeldesitzung mithilfe eines Cookies namens ARL.',
 						p2: 'Deemix verwendet dieses Cookie, um die Metadaten abzurufen, die es benötigt, um die Tracks von Deezer herunterzuladen.',
 						p3: 'ARLs sind 3 Monate gültig, danach fordert Deezer Dich auf, sich erneut anzumelden. Die gleiche Methode wird in deemix verwendet.',
-						p4: 'Wenn Du einer der folgenden Anleitungen folgst, kannst Du eigene Konto-ARL erhalten.',
+						p4: 'Wenn Du einer der folgenden Anleitungen folgst, kannst Du deine eigene Account-ARL erhalten.',
 						warning: 'Verwende diese Methode nur, wenn E-Mail und Passwort nicht funktionieren.'
 					},
 					chromeSteps: {
@@ -467,7 +467,7 @@ const de = {
 				clientSecretQuestion: {
 					title: 'Wie erhalte ich meine Client-ID und mein Client-Secret?',
 					step1: {
-						text: 'Verbinde dich mit {spotifyDevelopersDashboard} und melde dich mit Deinem Spotify-Konto an.',
+						text: 'Verbinde dich mit {spotifyDevelopersDashboard} und melde dich mit Deinem Spotify-Account an.',
 						spotifyDevelopersDashboard: 'Spotify Entwickler-Dashboard'
 					},
 					step2: {

@@ -143,7 +143,9 @@ const de = {
 			noSpaceLeft: 'Kein Speicherplatz auf dem Gerät!',
 			albumDoesntExists: 'Das Album des Tracks ist nicht vorhanden, konnte keine Informationen sammeln.',
 			wrongLicense: 'Dein Account kann die Spur nicht an der gewünschten Bitrate streamen.',
-			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.'
+			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.',
+			wrongGeolocationNoAlternative:
+				"Dein Konto kann den Titel nicht aus Deinem aktuellen Land streamen und es ist keine Alternative verfügbar."
 		}
 	},
 	favorites: {
@@ -239,7 +241,7 @@ const de = {
 			title: 'Login',
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
-				title: 'Use ARL instead',
+				title: 'Statdessen ARL verwenden',
 				question: 'Wie bekomme ich meine eigene ARL?',
 				howTo: {
 					prologue: {
@@ -349,7 +351,7 @@ const de = {
 			createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
 			syncedLyrics: 'Erstelle synchrone Lyrics-Datei (.lrc)',
 			playlistFilenameTemplate: 'Vorlage für den Namen der Playlist',
-			saveDownloadQueue: 'Download-Warteschlange beim Schließen der App speichern'
+			clearQueueOnExit: 'Download-Warteschlange beim Schließen der App leeren'
 		},
 		covers: {
 			title: 'Album Cover',
@@ -500,10 +502,6 @@ const de = {
 			update: 'Einstellungen aktualisiert!',
 			reset: 'Einstellungen auf den Standart zurückgesetzt!',
 			ARLcopied: 'ARL wurde in die Zwischenablage kopiert'
-		},
-		logs: {
-			title: 'Logs',
-			areLogsActive: 'Aktiv'
 		}
 	},
 	sidebar: {
@@ -518,10 +516,6 @@ const de = {
 	},
 	tracklist: {
 		downloadSelection: 'Herunterladen'
-	},
-	logs: {
-		event: 'Event',
-		data: 'Daten'
 	}
 }
 

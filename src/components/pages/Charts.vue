@@ -87,12 +87,11 @@
 </template>
 
 <script>
+import PreviewControls from '@components/globals/PreviewControls.vue'
+import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 import { sendAddToQueue } from '@/utils/downloads'
 import { convertDuration } from '@/utils/utils'
 import { getChartsData, getChartTracks } from '@/data/charts'
-
-import PreviewControls from '@components/globals/PreviewControls.vue'
-import { playPausePreview } from '@components/globals/TheTrackPreview.vue'
 
 export default {
 	components: {
@@ -131,18 +130,7 @@ export default {
 		// 	socket.off('setChartTracks')
 		// })
 
-		let { data: chartsData } = await getChartsData()
-		let worldwideChart
-
-		chartsData = chartsData.filter(item => {
-			if (item.title === 'Worldwide') {
-				worldwideChart = item
-			}
-
-			return item.title !== 'Worldwide'
-		})
-		chartsData.unshift(worldwideChart)
-
+		const { data: chartsData } = await getChartsData()
 		this.initCharts(chartsData)
 	},
 	methods: {

@@ -464,7 +464,7 @@ const gr = {
 				clientSecretQuestion: {
 					title: 'Πώς μπορώ να βρω το δικό μου "Client ID" και το "Client Secret"; ',
 					step1: {
-						text: 'Μεταβείτε στο {} και συνδεθείτε με τον λογαριασμό σας στο "Spotify".',
+						text: 'Μεταβείτε στο {spotifyDevelopersDashboard} και συνδεθείτε με τον λογαριασμό σας στο "Spotify".',
 						spotifyDevelopersDashboard: "Spotify for Developers's Dashboard"
 					},
 					step2: {

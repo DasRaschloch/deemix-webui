@@ -4,8 +4,8 @@
 
 		<section v-if="!isLoggedIn" ref="notLogged" class="py-6 border-0 border-t border-solid border-grayscale-500">
 			<p id="home_not_logged_text" class="mb-4">{{ $t('home.needTologin') }}</p>
-			<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Settings' }">
-				{{ $t('home.openSettings') }}
+			<router-link custom v-slot="{ navigate }" class="btn btn-primary" name="button" :to="{ name: 'Settings' }">
+				<button @click="navigate" @keypress.enter="navigate" role="link">{{ $t('home.openSettings') }}</button>
 			</router-link>
 		</section>
 
@@ -15,22 +15,25 @@
 				<router-link
 					v-for="release in playlists"
 					:key="release.id"
-					tag="div"
+					custom
+					v-slot="{ navigate }"
 					class="release clickable"
 					:to="{ name: 'Playlist', params: { id: release.id } }"
 					tabindex="0"
 					@keyup.enter.native="$router.push({ name: 'Playlist', params: { id: release.id } })"
 				>
-					<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
-					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">
-						{{
-							`${$t('globals.by', { artist: release.user.name })} - ${$tc(
-								'globals.listTabs.trackN',
-								release.nb_tracks
-							)}`
-						}}
-					</p>
+					<div @click="navigate" @keypress.enter="navigate" role="link">
+						<CoverContainer is-rounded :cover="release.picture_medium" :link="release.link" @click.stop="addToQueue" />
+						<p class="primary-text">{{ release.title }}</p>
+						<p class="secondary-text">
+							{{
+								`${$t('globals.by', { artist: release.user.name })} - ${$tc(
+									'globals.listTabs.trackN',
+									release.nb_tracks
+								)}`
+							}}
+						</p>
+					</div>
 				</router-link>
 			</div>
 		</section>
@@ -41,16 +44,19 @@
 				<router-link
 					v-for="release in albums"
 					:key="release.id"
-					tag="div"
+					custom
+					v-slot="{ navigate }"
 					class="release clickable"
 					:to="{ name: 'Album', params: { id: release.id } }"
 					:data-id="release.id"
 					tabindex="0"
 					@keyup.enter.native="$router.push({ name: 'Album', params: { id: release.id } })"
 				>
-					<CoverContainer is-rounded :cover="release.cover_medium" :link="release.link" @click.stop="addToQueue" />
-					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
+					<div @click="navigate" @keypress.enter="navigate" role="link">
+						<CoverContainer is-rounded :cover="release.cover_medium" :link="release.link" @click.stop="addToQueue" />
+						<p class="primary-text">{{ release.title }}</p>
+						<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
+					</div>
 				</router-link>
 			</div>
 		</section>

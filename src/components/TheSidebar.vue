@@ -15,7 +15,6 @@
 			:class="{ 'bg-background-main': activeTablink === link.name }"
 			:to="{ name: link.routerName }"
 			class="relative flex items-center h-16 no-underline group main_tablinks hover:bg-background-main text-foreground"
-			tag="a"
 			@click.native="activeTablink = link.name"
 		>
 			<i

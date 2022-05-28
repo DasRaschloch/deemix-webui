@@ -10,24 +10,26 @@
 
 			<div v-else class="release-grid">
 				<div v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.albumID" class="w-40 release">
-					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Album', params: { id: release.albumID } }">
-						<CoverContainer
-							is-rounded
-							:cover="release.albumCoverMedium"
-							:link="release.albumLink"
-							@click.stop="$emit('add-to-queue', $event)"
-						/>
+					<router-link custom v-slot="{ navigate }" class="cursor-pointer" :to="{ name: 'Album', params: { id: release.albumID } }">
+						<div @click="navigate" @keypress.enter="navigate" role="link">
+							<CoverContainer
+								is-rounded
+								:cover="release.albumCoverMedium"
+								:link="release.albumLink"
+								@click.stop="$emit('add-to-queue', $event)"
+							/>
 
-						<span class="primary-text">
-							<i
-								v-if="release.isAlbumExplicit"
-								class="material-icons title-icon"
-								style="font-size: 1.0625rem !important"
-							>
-								explicit
-							</i>
-							{{ release.albumTitle }}
-						</span>
+							<span class="primary-text">
+								<i
+									v-if="release.isAlbumExplicit"
+									class="material-icons title-icon"
+									style="font-size: 1.0625rem !important"
+								>
+									explicit
+								</i>
+								{{ release.albumTitle }}
+							</span>
+						</div>
 					</router-link>
 
 					<p class="secondary-text">

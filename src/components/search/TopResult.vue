@@ -1,22 +1,25 @@
 <template>
 	<div class="flex flex-col items-center justify-center">
 		<router-link
-			tag="div"
+			custom
+			v-slot="{ navigate }"
 			class="cursor-pointer"
 			:to="{ name: upperCaseFirstLowerCaseRest($attrs.info.type), params: { id: $attrs.info.id } }"
 		>
-			<CoverContainer
-				class="w-40 h-40"
-				:is-rounded="$attrs.info.type !== 'artist'"
-				:is-circle="$attrs.info.type === 'artist'"
-				:cover="$attrs.info.picture"
-				:link="$attrs.info.link"
-				@click.stop="$emit('add-to-queue', $event)"
-			/>
+			<div @click="navigate" @keypress.enter="navigate" role="link">
+				<CoverContainer
+					class="w-40 h-40"
+					:is-rounded="$attrs.info.type !== 'artist'"
+					:is-circle="$attrs.info.type === 'artist'"
+					:cover="$attrs.info.picture"
+					:link="$attrs.info.link"
+					@click.stop="$emit('add-to-queue', $event)"
+				/>
 
-			<p class="mt-4 mb-1 text-xl text-center transition-colors duration-200 ease-in-out hover:text-primary">
-				{{ $attrs.info.title }}
-			</p>
+				<p class="mt-4 mb-1 text-xl text-center transition-colors duration-200 ease-in-out hover:text-primary">
+					{{ $attrs.info.title }}
+				</p>
+			</div>
 		</router-link>
 
 		<p class="mb-3 text-center secondary-text">

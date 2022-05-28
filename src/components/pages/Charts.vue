@@ -51,16 +51,18 @@
 						<router-link
 							:to="{ name: 'Artist', params: { id: track.artist.id } }"
 							class="table__cell table__cell--medium table__cell--center clickable"
-							tag="td"
+							custom
+							v-slot="{ navigate }"
 						>
-							{{ track.artist.name }}
+							<td @click="navigate" @keypress.enter="navigate" role="link">{{ track.artist.name }}</td>
 						</router-link>
 						<router-link
 							:to="{ name: 'Album', params: { id: track.album.id } }"
 							class="table__cell--medium table__cell--center clickable"
-							tag="td"
+							custom
+							v-slot="{ navigate }"
 						>
-							{{ track.album.title }}
+							<td @click="navigate" @keypress.enter="navigate" role="link">{{ track.album.title }}</td>
 						</router-link>
 						<td class="table__cell--small table__cell--center">
 							{{ convertDuration(track.duration) }}

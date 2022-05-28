@@ -10,17 +10,19 @@
 
 			<div v-else class="release-grid">
 				<div v-for="release in viewInfo.data.slice(0, itemsToShow)" :key="release.artistID" class="w-40 release">
-					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Artist', params: { id: release.artistID } }">
-						<CoverContainer
-							is-circle
-							:cover="release.artistPictureMedium"
-							:link="release.artistLink"
-							@click.stop="$emit('add-to-queue', $event)"
-						/>
+					<router-link custom v-slot="{ navigate }" class="cursor-pointer" :to="{ name: 'Artist', params: { id: release.artistID } }">
+						<div @click="navigate" @keypress.enter="navigate" role="link">
+							<CoverContainer
+								is-circle
+								:cover="release.artistPictureMedium"
+								:link="release.artistLink"
+								@click.stop="$emit('add-to-queue', $event)"
+							/>
 
-						<span class="primary-text">
-							{{ release.artistName }}
-						</span>
+							<span class="primary-text">
+								{{ release.artistName }}
+							</span>
+						</div>
 					</router-link>
 
 					<!-- TODO Fix, depending on the tab there are albums number or fans number -->

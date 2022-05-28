@@ -29,9 +29,11 @@
 			</div>
 			<div v-if="(playlists.length + spotifyPlaylists.length) > 0" class="release-grid">
 				<div v-for="release in playlists" :key="release.id" class="release">
-					<router-link :to="{ name: 'Playlist', params: { id: release.id } }" class="cursor-pointer" tag="div">
-						<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
-						<p class="primary-text">{{ release.title }}</p>
+					<router-link :to="{ name: 'Playlist', params: { id: release.id } }" class="cursor-pointer" custom v-slot="{ navigate }">
+						<div @click="navigate" @keypress.enter="navigate" role="link">
+							<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
+							<p class="primary-text">{{ release.title }}</p>
+						</div>
 					</router-link>
 
 					<p class="secondary-text">
@@ -45,9 +47,11 @@
 				</div>
 
 				<div v-for="release in spotifyPlaylists" :key="release.id" class="release">
-					<router-link :to="{ name: 'Spotify Playlist', params: { id: release.id } }" class="cursor-pointer" tag="div">
-						<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
-						<p class="primary-text">{{ release.title }}</p>
+					<router-link :to="{ name: 'Spotify Playlist', params: { id: release.id } }" class="cursor-pointer" custom v-slot="{ navigate }">
+						<div @click="navigate" @keypress.enter="navigate" role="link">
+							<CoverContainer :cover="release.picture_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
+							<p class="primary-text">{{ release.title }}</p>
+						</div>
 					</router-link>
 
 					<p class="secondary-text">
@@ -72,11 +76,14 @@
 					:key="release.id"
 					:to="{ name: 'Album', params: { id: release.id } }"
 					class="release clickable"
-					tag="div"
+					custom
+					v-slot="{ navigate }"
 				>
-					<CoverContainer :cover="release.cover_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
-					<p class="primary-text">{{ release.title }}</p>
-					<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
+					<div @click="navigate" @keypress.enter="navigate" role="link">
+						<CoverContainer :cover="release.cover_medium" :link="release.link" is-rounded @click.stop="addToQueue" />
+						<p class="primary-text">{{ release.title }}</p>
+						<p class="secondary-text">{{ `${$t('globals.by', { artist: release.artist.name })}` }}</p>
+					</div>
 				</router-link>
 			</div>
 		</div>
@@ -91,10 +98,13 @@
 					:key="release.id"
 					:to="{ name: 'Artist', params: { id: release.id } }"
 					class="release clickable"
-					tag="div"
+					custom
+					v-slot="{ navigate }"
 				>
-					<CoverContainer :cover="release.picture_medium" :link="release.link" is-circle @click.stop="addToQueue" />
-					<p class="primary-text">{{ release.name }}</p>
+					<div @click="navigate" @keypress.enter="navigate" role="link">
+						<CoverContainer :cover="release.picture_medium" :link="release.link" is-circle @click.stop="addToQueue" />
+						<p class="primary-text">{{ release.name }}</p>
+					</div>
 				</router-link>
 			</div>
 		</div>
@@ -127,16 +137,18 @@
 					<router-link
 						:to="{ name: 'Artist', params: { id: track.artist.id } }"
 						class="table__cell table__cell--medium table__cell--center clickable"
-						tag="td"
+						custom
+						v-slot="{ navigate }"
 					>
-						{{ track.artist.name }}
+						<td @click="navigate" @keypress.enter="navigate" role="link">{{ track.artist.name }}</td>
 					</router-link>
 					<router-link
 						:to="{ name: 'Album', params: { id: track.album.id } }"
 						class="table__cell--medium table__cell--center clickable"
-						tag="td"
+						custom
+						v-slot="{ navigate }"
 					>
-						{{ track.album.title }}
+						<td @click="navigate" @keypress.enter="navigate" role="link">{{ track.album.title }}</td>
 					</router-link>
 					<td class="table__cell--small">
 						{{ convertDuration(track.duration) }}

@@ -9,17 +9,19 @@
 			</div>
 			<div v-else class="release-grid">
 				<div v-for="playlist in viewInfo.data.slice(0, itemsToShow)" :key="playlist.playlistID" class="w-40 release">
-					<router-link tag="div" class="cursor-pointer" :to="{ name: 'Playlist', params: { id: playlist.playlistID } }">
-						<CoverContainer
-							is-rounded
-							:cover="playlist.playlistPictureMedium"
-							:link="playlist.playlistLink"
-							@click.stop="$emit('add-to-queue', $event)"
-						/>
+					<router-link custom v-slot="{ navigate }" class="cursor-pointer" :to="{ name: 'Playlist', params: { id: playlist.playlistID } }">
+						<div @click="navigate" @keypress.enter="navigate" role="link">
+							<CoverContainer
+								is-rounded
+								:cover="playlist.playlistPictureMedium"
+								:link="playlist.playlistLink"
+								@click.stop="$emit('add-to-queue', $event)"
+							/>
 
-						<span class="primary-text">
-							{{ playlist.playlistTitle }}
-						</span>
+							<span class="primary-text">
+								{{ playlist.playlistTitle }}
+							</span>
+						</div>
 					</router-link>
 
 					<p class="secondary-text">

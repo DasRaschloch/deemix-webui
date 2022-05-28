@@ -49,27 +49,30 @@
 			<tbody>
 				<tr v-for="release in sortedData" :key="release.releaseID">
 					<router-link
-						tag="td"
+						custom
+						v-slot="{ navigate }"
 						class="flex items-center clickable"
 						:data-cm-link="release.releaseLink"
 						:to="{ name: 'Album', params: { id: release.releaseID } }"
 					>
-						<img class="mr-4 rounded coverart" :src="release.releaseCover" style="width: 56px; height: 56px" />
-						<i v-if="release.isReleaseExplicit" class="material-icons title-icon title-icon--explicit">explicit</i>
-						<div>
-							<span class="flex hover:text-primary">
-								{{ release.releaseTitle }}
-								<i
-									v-if="checkNewRelease(release.releaseDate)"
-									class="material-icons title-icon title-icon--right title-icon--new"
-								>
-									fiber_new
-								</i>
-							</span>
-							<span v-show="currentTab === 'all'" class="block text-xs opacity-50 uppercase-first-letter">
-								{{ $tc(`globals.listTabs.${release.releaseType}`) }}
-							</span>
-						</div>
+						<td @click="navigate" @keypress.enter="navigate" role="link">
+							<img class="mr-4 rounded coverart" :src="release.releaseCover" style="width: 56px; height: 56px" />
+							<i v-if="release.isReleaseExplicit" class="material-icons title-icon title-icon--explicit">explicit</i>
+							<div>
+								<span class="flex hover:text-primary">
+									{{ release.releaseTitle }}
+									<i
+										v-if="checkNewRelease(release.releaseDate)"
+										class="material-icons title-icon title-icon--right title-icon--new"
+									>
+										fiber_new
+									</i>
+								</span>
+								<span v-show="currentTab === 'all'" class="block text-xs opacity-50 uppercase-first-letter">
+									{{ $tc(`globals.listTabs.${release.releaseType}`) }}
+								</span>
+							</div>
+						</td>
 					</router-link>
 					<td class="w-32 text-center xl:w-40">{{ release.releaseDate }}</td>
 					<td class="w-20 text-center xl:w-32">{{ release.releaseTracksNumber }}</td>

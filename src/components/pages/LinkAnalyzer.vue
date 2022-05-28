@@ -27,37 +27,43 @@
 					<h1 class="m-0">{{ title }}</h1>
 					<h2 v-if="type === 'track'" class="m-0 mb-3 text-lg">
 						<i18n path="globals.by" tag="span">
-							<router-link
-								tag="span"
-								place="artist"
-								class="clickable"
-								:to="{ name: 'Artist', params: { id: data.artist.id } }"
-							>
-								{{ data.artist.name }}
-							</router-link>
+							<template #artist>
+								<router-link
+									custom
+									v-slot="{ navigate }"
+									class="clickable"
+									:to="{ name: 'Artist', params: { id: data.artist.id } }"
+								>
+									<span place="artist" @click="navigate" @keypress.enter="navigate" role="link">{{ data.artist.name }}</span>
+								</router-link>
+							</template>
 						</i18n>
 						•
 						<i18n path="globals.in" tag="span">
-							<router-link
-								tag="span"
-								place="album"
-								class="clickable"
-								:to="{ name: 'Album', params: { id: data.album.id } }"
-							>
-								{{ data.album.title }}
-							</router-link>
+							<template #album>
+								<router-link
+									custom
+									v-slot="{ navigate }"
+									class="clickable"
+									:to="{ name: 'Album', params: { id: data.album.id } }"
+								>
+									<span @click="navigate" @keypress.enter="navigate" role="link">{{ data.album.title }}</span>
+								</router-link>
+							</template>
 						</i18n>
 					</h2>
 					<h2 v-else-if="type === 'album'" class="m-0 mb-3 text-lg">
 						<i18n path="globals.by" tag="span">
-							<router-link
-								tag="span"
-								place="artist"
-								class="clickable"
-								:to="{ name: 'Artist', params: { id: data.artist.id } }"
-							>
-								{{ data.artist.name }}
-							</router-link>
+							<template #artist>
+								<router-link
+									custom
+									v-slot="{ navigate }"
+									class="clickable"
+									:to="{ name: 'Artist', params: { id: data.artist.id } }"
+								>
+									<span @click="navigate" @keypress.enter="navigate" role="link">{{ data.artist.name }}</span>
+								</router-link>
+							</template>
 						</i18n>
 						{{ ` • ${$tc('globals.listTabs.trackN', data.nb_tracks)}` }}
 					</h2>
@@ -137,8 +143,8 @@
 			</template>
 
 			<div v-if="type === 'album'">
-				<router-link tag="button" class="btn btn-primary" name="button" :to="{ name: 'Album', params: { id } }">
-					{{ $t('linkAnalyzer.table.tracklist') }}
+				<router-link custom v-slot="{ navigate }" class="btn btn-primary" name="button" :to="{ name: 'Album', params: { id } }">
+					<button @click="navigate" @keypress.enter="navigate" role="link">{{ $t('linkAnalyzer.table.tracklist') }}</button>
 				</router-link>
 			</div>
 		</div>

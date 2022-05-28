@@ -19,12 +19,13 @@
 		<!-- @keyup.enter.exact="onEnter"
 			@keyup.ctrl.enter="onCTRLEnter" -->
 		<a
+			v-if="showSearchButton"
 			href="#"
 			class="searchButton"
 			@contextmenu="rightClickPerformSearch"
 			@click="clickPerformSearch"
-			v-if="showSearchButton"
-		><i class="material-icons">search</i></a>
+			><i class="material-icons">search</i></a
+		>
 	</header>
 </template>
 
@@ -41,6 +42,11 @@ export default defineComponent({
 		return {
 			lastTextSearch: ref('')
 		}
+	},
+	computed: {
+		...mapGetters({
+			showSearchButton: 'getShowSearchButton'
+		})
 	},
 	created() {
 		const focusSearchBar = keyEvent => {
@@ -65,11 +71,6 @@ export default defineComponent({
 			document.removeEventListener('keyup', deleteSearchBarContent)
 		})
 	},
-	computed: {
-		...mapGetters({
-			showSearchButton: 'getShowSearchButton',
-		})
-	},
 	methods: {
 		async clickPerformSearch(ev) {
 			ev.preventDefault()
@@ -79,7 +80,7 @@ export default defineComponent({
 
 			await this.performSearch(term, false)
 		},
-		async rightClickPerformSearch(ev){
+		async rightClickPerformSearch(ev) {
 			ev.preventDefault()
 			ev.stopPropagation()
 			const term = this.$refs.searchbar.value
@@ -99,7 +100,7 @@ export default defineComponent({
 			const isCtrlPressed = keyEvent.ctrlKey
 			await this.performSearch(term, isCtrlPressed)
 		},
-		async performSearch(term, modifierKey){
+		async performSearch(term, modifierKey) {
 			const isSearchingURL = isValidURL(term)
 			const isShowingAnalyzer = this.$route.name === 'Link Analyzer'
 			const isShowingSearch = this.$route.name === 'Search'
@@ -117,7 +118,8 @@ export default defineComponent({
 						const isError = !!analyzedData.errorCode
 
 						if (isError) {
-							throw new Error(analyzedData.errorMessage)
+							EventBus.$emit('analyze_notSupported', analyzedData)
+							return
 						}
 
 						if (analyzedData.type === 'track') {
@@ -127,7 +129,6 @@ export default defineComponent({
 						if (analyzedData.type === 'album') {
 							EventBus.$emit('analyze_album', analyzedData)
 						}
-						// socket.emit('analyzeLink', term)
 						return
 					} catch (error) {
 						console.error(error)
@@ -216,7 +217,10 @@ input[type='search']::-webkit-search-cancel-button {
 	background-color: var(--foreground);
 	mask-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' height='28' viewBox='0 0 24 24' width='28'%3E%%3Cpath fill='%23ffffff' d='M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 12.59L17.59 17 14 13.41 10.41 17 9 15.59 12.59 12 9 8.41 10.41 7 14 10.59 17.59 7 19 8.41 15.41 12 19 15.59z'/%3E3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
 }
-#search #searchbar:-webkit-autofill, #search #searchbar:-webkit-autofill:hover, #search #searchbar:-webkit-autofill:focus, #search #searchbar:-webkit-autofill:active {
+#search #searchbar:-webkit-autofill,
+#search #searchbar:-webkit-autofill:hover,
+#search #searchbar:-webkit-autofill:focus,
+#search #searchbar:-webkit-autofill:active {
 	box-shadow: 0 0 0 45px var(--secondary-background) inset !important;
 }
 #search .searchButton {

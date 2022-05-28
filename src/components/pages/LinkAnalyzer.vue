@@ -29,12 +29,14 @@
 						<i18n path="globals.by" tag="span">
 							<template #artist>
 								<router-link
-									custom
 									v-slot="{ navigate }"
+									custom
 									class="clickable"
 									:to="{ name: 'Artist', params: { id: data.artist.id } }"
 								>
-									<span place="artist" @click="navigate" @keypress.enter="navigate" role="link">{{ data.artist.name }}</span>
+									<span place="artist" role="link" @click="navigate" @keypress.enter="navigate">{{
+										data.artist.name
+									}}</span>
 								</router-link>
 							</template>
 						</i18n>
@@ -42,12 +44,12 @@
 						<i18n path="globals.in" tag="span">
 							<template #album>
 								<router-link
-									custom
 									v-slot="{ navigate }"
+									custom
 									class="clickable"
 									:to="{ name: 'Album', params: { id: data.album.id } }"
 								>
-									<span @click="navigate" @keypress.enter="navigate" role="link">{{ data.album.title }}</span>
+									<span role="link" @click="navigate" @keypress.enter="navigate">{{ data.album.title }}</span>
 								</router-link>
 							</template>
 						</i18n>
@@ -56,12 +58,12 @@
 						<i18n path="globals.by" tag="span">
 							<template #artist>
 								<router-link
-									custom
 									v-slot="{ navigate }"
+									custom
 									class="clickable"
 									:to="{ name: 'Artist', params: { id: data.artist.id } }"
 								>
-									<span @click="navigate" @keypress.enter="navigate" role="link">{{ data.artist.name }}</span>
+									<span role="link" @click="navigate" @keypress.enter="navigate">{{ data.artist.name }}</span>
 								</router-link>
 							</template>
 						</i18n>
@@ -126,11 +128,15 @@
 				</tr>
 				<tr v-if="data.readable !== undefined">
 					<td>{{ $t('linkAnalyzer.table.readable') }}</td>
-					<td>{{ $t( data.readable ? 'globals.yes' : 'globals.no').capitalize() }}</td>
+					<td>{{ $t(data.readable ? 'globals.yes' : 'globals.no').capitalize() }}</td>
 				</tr>
 				<tr v-if="countries.length && user.country">
 					<td>{{ $t('linkAnalyzer.table.available') }}</td>
-					<td>{{ $t( available_countries.includes(user.country.toLowerCase()) ? 'globals.yes' : 'globals.no').capitalize() }}</td>
+					<td>
+						{{
+							$t(available_countries.includes(user.country.toLowerCase()) ? 'globals.yes' : 'globals.no').capitalize()
+						}}
+					</td>
 				</tr>
 			</table>
 
@@ -138,13 +144,21 @@
 				<h3>{{ $t('linkAnalyzer.countries') }}</h3>
 				<p v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</p>
 			</template>
-			<template v-else-if="this.type === 'track'">
+			<template v-else-if="type === 'track'">
 				<h3>{{ $t('linkAnalyzer.noCountries') }}</h3>
 			</template>
 
 			<div v-if="type === 'album'">
-				<router-link custom v-slot="{ navigate }" class="btn btn-primary" name="button" :to="{ name: 'Album', params: { id } }">
-					<button @click="navigate" @keypress.enter="navigate" role="link">{{ $t('linkAnalyzer.table.tracklist') }}</button>
+				<router-link
+					v-slot="{ navigate }"
+					custom
+					class="btn btn-primary"
+					name="button"
+					:to="{ name: 'Album', params: { id } }"
+				>
+					<button role="link" @click="navigate" @keypress.enter="navigate">
+						{{ $t('linkAnalyzer.table.tracklist') }}
+					</button>
 				</router-link>
 			</div>
 		</div>
@@ -154,7 +168,6 @@
 <script>
 /* eslint-disable camelcase */
 import { mapGetters } from 'vuex'
-import { socket } from '@/utils/socket'
 import { convertDuration } from '@/utils/utils'
 import { COUNTRIES } from '@/utils/countries'
 import { sendAddToQueue } from '@/utils/downloads'
@@ -182,7 +195,7 @@ export default {
 	mounted() {
 		EventBus.$on('analyze_track', this.showTrack)
 		EventBus.$on('analyze_album', this.showAlbum)
-		socket.on('analyze_notSupported', this.notSupported)
+		EventBus.$on('analyze_notSupported', this.notSupported)
 	},
 	methods: {
 		convertDuration,

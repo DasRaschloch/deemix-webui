@@ -43,7 +43,7 @@ const es = {
 		updates: {
 			currentVersion: 'Versión actual',
 			versionNotAvailable: 'N/D',
-			updateAvailable: `No estás ejecutando la última versión disponible: {versión}`,
+			updateAvailable: `No estás ejecutando la última versión disponible: {version}`,
 			deemixVersion: 'versión de la biblioteca deemix'
 		},
 		titles: {

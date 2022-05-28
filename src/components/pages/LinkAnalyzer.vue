@@ -142,7 +142,7 @@
 
 			<template v-if="countries.length">
 				<h3>{{ $t('linkAnalyzer.countries') }}</h3>
-				<p v-for="(country, i) in countries" :key="i">{{ country[0] }} - {{ country[1] }}</p>
+				<p v-for="(country, i) in countries" :key="i">{{ country[0] }} - [{{ country[2] }}] {{ country[1] }}</p>
 			</template>
 			<template v-else-if="type === 'track'">
 				<h3>{{ $t('linkAnalyzer.noCountries') }}</h3>
@@ -231,6 +231,7 @@ export default {
 				const chars = [...cc].map(c => c.charCodeAt() + 127397)
 				temp.push(String.fromCodePoint(...chars))
 				temp.push(COUNTRIES[cc])
+				temp.push(cc.toUpperCase())
 				this.countries.push(temp)
 				this.available_countries.push(cc.toLowerCase())
 			})

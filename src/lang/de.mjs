@@ -145,7 +145,7 @@ const de = {
 			wrongLicense: 'Dein Account kann die Spur nicht an der gewünschten Bitrate streamen.',
 			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.',
 			wrongGeolocationNoAlternative:
-				"Dein Account kann den Titel nicht aus Deinem aktuellen Land streamen und es ist keine Alternative verfügbar."
+				'Dein Account kann den Titel nicht aus Deinem aktuellen Land streamen und es ist keine Alternative verfügbar.'
 		}
 	},
 	favorites: {

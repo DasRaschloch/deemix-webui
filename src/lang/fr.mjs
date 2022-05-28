@@ -505,7 +505,7 @@ const fr = {
 			update: 'Paramètres mis à jour !',
 			reset: 'Paramètres réinitialisés à leur valeur par défaut !',
 			ARLcopied: 'ARL copié dans le presse-papier'
-		},
+		}
 	},
 	sidebar: {
 		home: 'accueil',

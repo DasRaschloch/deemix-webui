@@ -65,9 +65,9 @@
 						</button>
 					</div>
 
-					<RouterLink :to="{ name: 'ARL' }" class="block">
+					<router-link :to="{ name: 'ARL' }" class="block">
 						{{ $t('settings.login.arl.question') }}
-					</RouterLink>
+					</router-link>
 
 					<button class="btn btn-primary" style="width: 100%" @click="loginButton">
 						{{ $t('settings.login.arl.update') }}
@@ -700,9 +700,9 @@
 				</h3>
 			</template>
 
-			<RouterLink :to="{ name: 'Spotify Features' }">
+			<router-link :to="{ name: 'Spotify Features' }">
 				{{ $t('settings.spotify.question') }}
-			</RouterLink>
+			</router-link>
 
 			<div class="input-group">
 				<p class="input-group-text">{{ $t('settings.spotify.clientID') }}</p>

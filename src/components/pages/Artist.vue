@@ -48,7 +48,7 @@
 			</thead>
 			<tbody>
 				<tr v-for="release in sortedData" :key="release.releaseID">
-					<RouterLink
+					<router-link
 						tag="td"
 						class="flex items-center clickable"
 						:data-cm-link="release.releaseLink"
@@ -70,7 +70,7 @@
 								{{ $tc(`globals.listTabs.${release.releaseType}`) }}
 							</span>
 						</div>
-					</RouterLink>
+					</router-link>
 					<td class="w-32 text-center xl:w-40">{{ release.releaseDate }}</td>
 					<td class="w-20 text-center xl:w-32">{{ release.releaseTracksNumber }}</td>
 					<td

@@ -6,7 +6,7 @@ const de = {
 		download: '{thing} herunterladen',
 		by: 'von {artist}',
 		in: 'in {album}',
-		download_hint: 'Download',
+		download_hint: 'Herunterladen',
 		play_hint: 'Abspielen',
 		toggle_download_tab_hint: 'Erweitern/Minimieren',
 		clean_queue_hint: 'Vollständige entfernen',
@@ -143,7 +143,9 @@ const de = {
 			noSpaceLeft: 'Kein Speicherplatz auf dem Gerät!',
 			albumDoesntExists: 'Das Album des Tracks ist nicht vorhanden, konnte keine Informationen sammeln.',
 			wrongLicense: 'Dein Account kann die Spur nicht an der gewünschten Bitrate streamen.',
-			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.'
+			wrongGeolocation: 'Dein Account kann den Track nicht aus Deinem aktuellen Land streamen.',
+			wrongGeolocationNoAlternative:
+				"Dein Account kann den Titel nicht aus Deinem aktuellen Land streamen und es ist keine Alternative verfügbar."
 		}
 	},
 	favorites: {
@@ -239,14 +241,14 @@ const de = {
 			title: 'Login',
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
-				title: 'Use ARL instead',
+				title: 'Stattdessen ARL verwenden',
 				question: 'Wie bekomme ich meine eigene ARL?',
 				howTo: {
 					prologue: {
 						p1: 'Deezer verfolgt die Anmeldesitzung mithilfe eines Cookies namens ARL.',
 						p2: 'Deemix verwendet dieses Cookie, um die Metadaten abzurufen, die es benötigt, um die Tracks von Deezer herunterzuladen.',
 						p3: 'ARLs sind 3 Monate gültig, danach fordert Deezer Dich auf, sich erneut anzumelden. Die gleiche Methode wird in deemix verwendet.',
-						p4: 'Wenn Du einer der folgenden Anleitungen folgst, kannst Du eigene Konto-ARL erhalten.',
+						p4: 'Wenn Du einer der folgenden Anleitungen folgst, kannst Du deine eigene Account-ARL erhalten.',
 						warning: 'Verwende diese Methode nur, wenn E-Mail und Passwort nicht funktionieren.'
 					},
 					chromeSteps: {
@@ -283,8 +285,8 @@ const de = {
 			},
 			logout: 'Ausloggen',
 			login: 'Über deezer.com einloggen',
-			email: 'E-mail',
-			password: 'Password'
+			email: 'E-Mail',
+			password: 'Passwort'
 		},
 		appearance: {
 			title: 'Design',
@@ -349,7 +351,7 @@ const de = {
 			createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
 			syncedLyrics: 'Erstelle synchrone Lyrics-Datei (.lrc)',
 			playlistFilenameTemplate: 'Vorlage für den Namen der Playlist',
-			saveDownloadQueue: 'Download-Warteschlange beim Schließen der App speichern'
+			clearQueueOnExit: 'Download-Warteschlange beim Schließen der App leeren'
 		},
 		covers: {
 			title: 'Album Cover',
@@ -465,7 +467,7 @@ const de = {
 				clientSecretQuestion: {
 					title: 'Wie erhalte ich meine Client-ID und mein Client-Secret?',
 					step1: {
-						text: 'Verbinde dich mit {spotifyDevelopersDashboard} und melde dich mit Deinem Spotify-Konto an.',
+						text: 'Verbinde dich mit {spotifyDevelopersDashboard} und melde dich mit Deinem Spotify-Account an.',
 						spotifyDevelopersDashboard: 'Spotify Entwickler-Dashboard'
 					},
 					step2: {
@@ -500,10 +502,6 @@ const de = {
 			update: 'Einstellungen aktualisiert!',
 			reset: 'Einstellungen auf den Standart zurückgesetzt!',
 			ARLcopied: 'ARL wurde in die Zwischenablage kopiert'
-		},
-		logs: {
-			title: 'Logs',
-			areLogsActive: 'Aktiv'
 		}
 	},
 	sidebar: {
@@ -518,10 +516,6 @@ const de = {
 	},
 	tracklist: {
 		downloadSelection: 'Herunterladen'
-	},
-	logs: {
-		event: 'Event',
-		data: 'Daten'
 	}
 }
 

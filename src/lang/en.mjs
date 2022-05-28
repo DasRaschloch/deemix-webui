@@ -137,7 +137,7 @@ const en = {
 			wrongLicense: "Your account can't stream the track at the desired bitrate.",
 			wrongGeolocation: "Your account can't stream the track from your current country.",
 			wrongGeolocationNoAlternative:
-				"Your account can't stream the track from your current country and it is no alternative avaible."
+				"Your account can't stream the track from your current country and no alternative found."
 		}
 	},
 	favorites: {

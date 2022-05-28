@@ -222,7 +222,8 @@ const en = {
 		noLovedPlaylist: 'No loved tracks playlist!',
 		checkingUpdates: 'Checking for updates...',
 		noUpdateAvailable: 'No updates found',
-		updateAvailable: 'An update is available!'
+		updateAvailable: 'An update is available!',
+		wrongSpotifyUsername: '{username} is not a valid spotify username'
 	},
 	settings: {
 		title: 'Settings',

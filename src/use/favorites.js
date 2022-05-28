@@ -2,6 +2,8 @@ import { ref, computed } from '@vue/composition-api'
 
 import store from '@/store'
 import { fetchData } from '@/utils/api'
+import { toast } from '@/utils/toasts'
+import i18n from '@/plugins/i18n'
 import { SPOTIFY_STATUS } from '@/constants'
 
 const favoriteArtists = ref([])
@@ -27,10 +29,18 @@ const setAllFavorites = data => {
 }
 
 const setSpotifyPlaylists = response => {
-	if (response.error === 'spotifyNotEnabled') {
+	if (response.error) {
 		favoriteSpotifyPlaylists.value = []
-
-		store.dispatch('setSpotifyStatus', SPOTIFY_STATUS.DISABLED).catch(console.error)
+		switch (response.error) {
+			case 'spotifyNotEnabled':
+				store.dispatch('setSpotifyStatus', SPOTIFY_STATUS.DISABLED).catch(console.error)
+				break
+			case 'wrongSpotifyUsername':
+				toast(i18n.t('toasts.wrongSpotifyUsername', { username: response.username }), 'person_off')
+				break
+			default:
+				break
+		}
 		return
 	}
 

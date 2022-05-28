@@ -223,7 +223,8 @@ const it = {
 		noLovedPlaylist: 'Nessuna playlist "Canzoni del cuore"!',
 		checkingUpdates: 'Cercando aggiornamenti...',
 		noUpdateAvailable: 'Nessun aggiornamento trovato',
-		updateAvailable: 'È disponibile un aggiornamento!'
+		updateAvailable: 'È disponibile un aggiornamento!',
+		wrongSpotifyUsername: '{username} non è un username di Spotify valido'
 	},
 	settings: {
 		title: 'Impostazioni',

@@ -18,7 +18,11 @@
 				<span>{{ current || $t('about.updates.versionNotAvailable') }}</span>
 			</li>
 			<li>{{ $t('about.updates.deemixVersion') }}: {{ deemixVersion }}</li>
-			<li v-if="updateAvailable && latest">{{ $t('about.updates.updateAvailable', { version: latest }) }}</li>
+			<i18n path="about.updates.updateAvailable" tag="li" v-if="updateAvailable && latest">
+				<template #version>
+					<a href="https://deemix.app/gui" target="_blank">{{ latest }}</a>
+				</template>
+			</i18n>
 		</ul>
 
 		<ul>

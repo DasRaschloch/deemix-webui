@@ -233,7 +233,8 @@ const fr = {
 		noLovedPlaylist: 'Aucune playlist de pistes favorites !',
 		checkingUpdates: 'Recherche des mises à jour...',
 		noUpdateAvailable: 'Aucune mise à jour disponible.',
-		updateAvailable: 'Une mise à jour est disponible !'
+		updateAvailable: 'Une mise à jour est disponible !',
+		wrongSpotifyUsername: "{username} n'est pas un nom d'utilisateur Spotify valide"
 	},
 	settings: {
 		title: 'Paramètres',

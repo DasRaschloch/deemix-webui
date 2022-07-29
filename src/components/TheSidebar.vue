@@ -73,8 +73,10 @@ import deemixIcon from '@/assets/deemix-icon.svg'
 
 export default defineComponent({
 	setup(_, ctx) {
+		const activeTab = links.find(link => link.routerName === ctx.root.$route.name)
+
 		const state = reactive({
-			activeTablink: 'home',
+			activeTablink: activeTab ? activeTab.name : 'home',
 			links
 		})
 		const { THEMES, currentTheme } = useTheme()

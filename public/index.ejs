@@ -29,7 +29,7 @@
 				display: none;
 			}
 		</style>
-
+		<script>location.base = "<%= locationBase %>"</script>
 		<script>
 			if (localStorage.getItem('selectedTheme')) {
 				document.documentElement.setAttribute('data-theme', localStorage.getItem('selectedTheme'))

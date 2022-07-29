@@ -1,5 +1,5 @@
 export function fetchData(key, data = {}, method = 'GET') {
-	const url = new URL(`${window.location.origin}/api/${key}`)
+	const url = new URL(`${window.location.origin}${location.base}api/${key}`)
 
 	Object.keys(data).forEach(key => {
 		url.searchParams.append(key, data[key])
@@ -14,7 +14,7 @@ export function fetchData(key, data = {}, method = 'GET') {
 }
 
 export function sendToServer(key, data) {
-	const url = new URL(`${window.location.origin}/api/${key}`)
+	const url = new URL(`${window.location.origin}${location.base}api/${key}`)
 
 	Object.keys(data).forEach(key => {
 		url.searchParams.append(key, data[key])
@@ -26,7 +26,7 @@ export function sendToServer(key, data) {
 }
 
 export function postToServer(endpoint, data) {
-	const url = new URL(`${window.location.origin}/api/${endpoint}`)
+	const url = new URL(`${window.location.origin}${location.base}api/${endpoint}`)
 
 	return fetch(url, {
 		body: JSON.stringify(data),

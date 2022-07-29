@@ -33,6 +33,8 @@ import { SPOTIFY_STATUS } from '@/constants'
 String.prototype.capitalize = function () {
 	return this.charAt(0).toUpperCase() + this.slice(1)
 }
+// Reset if ejs fails
+if (location.base == "<%= locationBase %>") location.base = "/"
 
 /* ===== App initialization ===== */
 async function startApp() {
@@ -44,7 +46,7 @@ async function startApp() {
 		render: h => h(App)
 	}).$mount('#app')
 
-	const connectResponse = await (await fetch('connect')).json()
+	const connectResponse = await fetchData('connect')
 	const spotifyStatus = connectResponse.spotifyEnabled ? SPOTIFY_STATUS.ENABLED : SPOTIFY_STATUS.DISABLED
 
 	if (connectResponse.deezerAvailable === 'no-network') {

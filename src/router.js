@@ -22,7 +22,7 @@ Vue.use(VueRouter)
 
 const routes = [
 	{
-		path: window.location.pathname,
+		path: '/',
 		name: 'Home',
 		component: Home,
 		meta: {
@@ -120,6 +120,7 @@ const routes = [
 
 const router = new VueRouter({
 	mode: 'history',
+	base: location.base,
 	routes,
 	scrollBehavior() {
 		return { x: 0, y: 0 }

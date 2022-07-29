@@ -748,17 +748,11 @@ import { copyToClipboard } from '@/utils/utils'
 import BaseAccordion from '@/components/globals/BaseAccordion.vue'
 import { fetchData, postToServer } from '@/utils/api'
 import { getFormItem } from '@/utils/forms'
-import { useLogs } from '@/use/logs'
 
 export default {
 	components: {
 		BaseAccordion,
 		TemplateVariablesList
-	},
-	setup() {
-		const { areLogsActive, saveLogsSettings } = useLogs()
-
-		return { areLogsActive, saveLogsSettings }
 	},
 	data() {
 		return {
@@ -925,8 +919,6 @@ export default {
 			localStorage.setItem('locale', newLocale)
 		},
 		saveSettings() {
-			this.saveLogsSettings()
-
 			this.lastSettings = JSON.parse(JSON.stringify(this.settings))
 			this.lastCredentials = JSON.parse(JSON.stringify(this.spotifyFeatures))
 

@@ -33,5 +33,5 @@ class CustomSocket extends WebSocket {
 		}
 	}
 }
-
-export const socket = new CustomSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '/')
+const domain = process.env.WEBSOCKET_URL || location.host
+export const socket = new CustomSocket((location.protocol === 'https:' ? 'wss://' : 'ws://') + domain + '/')

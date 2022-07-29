@@ -158,14 +158,6 @@ function setClientModeKeyBindings() {
 		}
 	})
 }
-
-/* ===== Socketio listeners ===== */
-
-// Debug messages for socketio
-socket.on('message', function (msg) {
-	console.log(msg)
-})
-
 function loggedIn(data) {
 	const { status, user } = data
 
@@ -201,6 +193,12 @@ function loggedIn(data) {
 	}
 }
 
+/* ===== Socketio listeners ===== */
+
+// Debug messages for socketio
+socket.on('message', function (msg) {
+	console.log(msg)
+})
 socket.on('restoringQueue', function () {
 	toast(i18n.t('toasts.restoringQueue'), 'loading', false, 'restoring_queue')
 })
@@ -255,4 +253,8 @@ socket.on('startGeneratingItems', function (data) {
 
 socket.on('finishGeneratingItems', function (data) {
 	toast(i18n.t('toasts.finishGeneratingItems', { n: data.total }), 'done', true, 'batch_' + data.uuid)
+})
+socket.on('toast', data => {
+	const { msg, icon, dismiss, id } = data
+	toast(msg, icon || null, dismiss !== undefined ? dismiss : true, id || null)
 })

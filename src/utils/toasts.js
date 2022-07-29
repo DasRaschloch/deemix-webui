@@ -2,8 +2,6 @@ import Toastify from 'toastify-js'
 import 'toastify-js/src/toastify.css'
 import '@/styles/css/toasts.css'
 
-import { socket } from '@/utils/socket'
-
 const sharedOptions = {
 	gravity: 'bottom',
 	position: 'left'
@@ -118,9 +116,3 @@ export const toast = function (msg, icon = null, dismiss = true, id = null) {
 		}
 	}
 }
-
-socket.on('toast', data => {
-	const { msg, icon, dismiss, id } = data
-
-	toast(msg, icon || null, dismiss !== undefined ? dismiss : true, id || null)
-})

@@ -13,7 +13,7 @@
 		</div>
 
 		<BaseLoadingPlaceholder
-			text="Connecting to local server..."
+			:text=loadingText
 			:hidden="isSocketConnected"
 			additional-classes="absolute top-0 left-0 w-screen h-screen bg-black bg-opacity-50 z-50"
 		/>
@@ -55,7 +55,8 @@ export default {
 	},
 	data() {
 		return {
-			isSocketConnected: false
+			isSocketConnected: false,
+			loadingText: "Connecting to local server..."
 		}
 	},
 	mounted() {
@@ -63,6 +64,10 @@ export default {
 		socket.addEventListener('open', () => {
 			console.log('Connected to WebSocket')
 			this.isSocketConnected = true
+		})
+		socket.addEventListener('error', (event) => {
+			console.log(event)
+			this.loadingText = "Couldn't connect to local server."
 		})
 	}
 }

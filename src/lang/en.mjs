@@ -135,7 +135,7 @@ const en = {
 			notAvailableNoAlternative: "Track not available on Deezer's servers and no alternative found!",
 			noSpaceLeft: 'No space left on the device!',
 			albumDoesntExists: "Track's album doesn't exist, failed to gather info.",
-			wrongLicense: "Your account can't stream the track at the desired bitrate.",
+			wrongLicense: "Your account can't stream tracks in {bitrate}.",
 			wrongGeolocation: "Your account can't stream the track from your current country.",
 			wrongGeolocationNoAlternative:
 				"Your account can't stream the track from your current country and no alternative found."
@@ -216,6 +216,7 @@ const en = {
 		startConvertingSpotifyPlaylist: 'Converting spotify tracks to Deezer tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify playlist converted',
 		loginNeededToDownload: 'You need to log in to download tracks!',
+		queueErrorCantStream: `Your account can't stream at {bitrate}!`,
 		deezerNotAvailable: 'Deezer is not available in your country. You should use a VPN.',
 		deezerNotReachable: "The app can't reach Deezer. Check your internet connection, your firewall or your antivirus.",
 		startGeneratingItems: 'Processing {n} items...',

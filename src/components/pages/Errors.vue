@@ -13,7 +13,9 @@
 				<td>{{ error.data.id }}</td>
 				<td>{{ error.data.artist }}</td>
 				<td>{{ error.data.title }}</td>
-				<td><span :title="error.stack">{{ error.errid ? $t(`errors.ids.${error.errid}`) : error.message }}</span></td>
+				<td><span :title="error.stack">
+					{{ error.errid ? $t(`errors.ids.${error.errid}`, { 'bitrate': downloadBitrate }) : error.message }}
+				</span></td>
 			</tr>
 		</table>
 		<div v-if="postErrors.length >= 1">
@@ -38,6 +40,20 @@
 import { mapGetters } from 'vuex'
 
 export default {
+	data() {
+		return {
+			BITRATE_LABELS: {
+				15: '360 HQ',
+				14: '360 MQ',
+				13: '360 LQ',
+				9: 'FLAC',
+				3: '320kbps',
+				1: '128kbps',
+				8: '128kbps',
+				0: 'MP3'
+			}
+		}
+	},
 	computed: {
 		...mapGetters(['getErrors']),
 		title() {
@@ -56,6 +72,9 @@ export default {
 				if(error.type === "post") errors.push(error)
 			})
 			return errors
+		},
+		downloadBitrate(){
+			return this.BITRATE_LABELS[this.getErrors.bitrate]
 		}
 	}
 }

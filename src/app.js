@@ -245,8 +245,21 @@ socket.on('alreadyInQueue', function (data) {
 	toast(i18n.t('toasts.alreadyInQueue', { item: data.title }), 'playlist_add_check')
 })
 
-socket.on('loginNeededToDownload', function () {
+socket.on('queueErrorNotLoggedIn', function () {
 	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
+})
+const bitrateLabels = {
+	15: '360 HQ',
+	14: '360 MQ',
+	13: '360 LQ',
+	9: 'FLAC',
+	3: '320kbps',
+	1: '128kbps',
+	8: '128kbps',
+	0: 'MP3'
+}
+socket.on('queueErrorCantStream', function (bitrate) {
+	toast(i18n.t('toasts.queueErrorCantStream', {bitrate: bitrateLabels[bitrate]}), 'report')
 })
 
 socket.on('startGeneratingItems', function (data) {

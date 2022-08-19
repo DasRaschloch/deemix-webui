@@ -20,6 +20,7 @@ const it = {
 		paste: 'incolla',
 		listTabs: {
 			all: 'tutto',
+			discography: 'discografia',
 			top_result: 'miglior risultato',
 			album: 'album',
 			artist: 'artista | artisti',
@@ -135,7 +136,7 @@ const it = {
 			notAvailableNoAlternative: 'Brano non presente sui server di Deezer e nessuna alternativa trovata!',
 			noSpaceLeft: 'Spazio su disco esaurito!',
 			albumDoesntExists: 'Il brano non ha nessun album, impossibile ottenere informazioni',
-			wrongLicense: 'Il tuo account non può ascoltare questo brano con il bitrate specificato.',
+			wrongLicense: 'Il tuo account non può ascoltare brani in {bitrate}.',
 			wrongGeolocation: 'Il tuo account non può ascoltare questo brano dal tuo paese.',
 			wrongGeolocationNoAlternative: 'Il tuo account non può ascoltare questo brano dal e nessuna alternativa trovata.'
 		}
@@ -215,6 +216,7 @@ const it = {
 		startConvertingSpotifyPlaylist: 'Convertendo i brani da spotify a deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist di spotify convertita',
 		loginNeededToDownload: 'Devi accedere prima di poter scaricare brani!',
+		queueErrorCantStream: `Il tuo account non può ascoltare brani in {bitrate}!`,
 		deezerNotAvailable: 'Deezer non è disponibile nel tuo paese. Dovresti usare una VPN.',
 		deezerNotReachable:
 			"L'applicazione non riesce a contattare Deezer. Controlla la tua connessione internet, il tuo firewall o il tuo antivirus.",
@@ -332,7 +334,8 @@ const it = {
 				n: 'No, non sovrascrivere i file',
 				t: 'Sovrascrivi solo i tag',
 				b: 'No, mantieni entrambi i file e aggiungi un numero al duplicato',
-				e: 'No, e non tener conto della estensione del file'
+				e: 'No, e non tener conto della estensione del file',
+				l: 'Sovrascrivi solo se il bitrate migliora (solo per mp3)'
 			},
 			fallbackBitrate: 'Utilizza bitrate più bassi se il bitrate preferito non è disponibile',
 			fallbackSearch: 'Cerca il brano se il link originale non è disponibile',

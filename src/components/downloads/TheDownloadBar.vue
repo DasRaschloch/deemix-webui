@@ -243,7 +243,7 @@ export default {
 				}
 			}
 
-			const needToStartDownload = (queueItem.progress > 0 && queueItem.progress < 100) || current
+			const needToStartDownload = !itemIsAlreadyDownloaded && ((queueItem.progress > 0 && queueItem.progress < 100) || current)
 
 			if (needToStartDownload) {
 				this.startDownload(queueItem.uuid)

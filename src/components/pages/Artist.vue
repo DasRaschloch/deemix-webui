@@ -1,5 +1,5 @@
 <template>
-	<div class="relative image-header">
+	<div class="relative fixed-footer image-header">
 		<header class="flex items-center" :style="headerStyle">
 			<h1 class="m-0">{{ artistName }}</h1>
 
@@ -86,6 +86,16 @@
 				</tr>
 			</tbody>
 		</table>
+		<footer class="bg-background-main">
+			<div style="flex-grow: 1;">
+				<button :data-link="downloadLink+'/discography'" class="btn btn-flat" @click.stop="sendAddToQueue(downloadLink)">
+					{{ `${$t('globals.download', { thing: $t('globals.listTabs.discography') })}` }}
+				</button>
+			</div>
+			<button :data-link="downloadLink+'/'+currentTab" class="flex items-center btn btn-primary" @click.stop="sendAddToQueue(downloadLink+'/'+currentTab)">
+				{{ `${$t('globals.download', { thing: $tc(`globals.listTabs.${currentTab}`, 2) })}` }}<i class="ml-2 material-icons">file_download</i>
+			</button>
+		</footer>
 	</div>
 </template>
 

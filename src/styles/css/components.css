@@ -24,6 +24,10 @@
 	.btn-primary {
 		@apply bg-primary;
 	}
+	.btn-flat {
+		background-color: rgba(0, 0, 0, 0);
+		color: var(--foreground);
+	}
 
 	.btn-primary:hover {
 		@apply bg-blue-600 border-foreground;

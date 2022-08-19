@@ -21,6 +21,7 @@ const en = {
 		listTabs: {
 			empty: '',
 			all: 'all',
+			discography: 'discography',
 			top_result: 'top result',
 			album: 'album | albums',
 			artist: 'artist | artists',

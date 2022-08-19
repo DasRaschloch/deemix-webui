@@ -476,6 +476,7 @@
 					<option value="e">{{ $t('settings.downloads.overwriteFile.e') }}</option>
 					<option value="b">{{ $t('settings.downloads.overwriteFile.b') }}</option>
 					<option value="t">{{ $t('settings.downloads.overwriteFile.t') }}</option>
+					<option value="l">{{ $t('settings.downloads.overwriteFile.l') }}</option>
 				</select>
 			</div>
 

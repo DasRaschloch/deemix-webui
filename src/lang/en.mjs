@@ -331,7 +331,8 @@ const en = {
 				n: "No, don't overwrite the file",
 				t: 'Overwrite only the tags',
 				b: 'No, keep both files and add a number to the duplicate',
-				e: "No, and don't look at the extensions"
+				e: "No, and don't look at the extensions",
+				l: 'Overwrite only if upgrading bitrate (mp3 only)'
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Search fallback',

@@ -173,7 +173,7 @@ export default {
 		onResultIconClick() {
 			if (this.isDeterminateStatus) {
 				if (this.finishedWithFails) {
-					this.$emit('show-errors', this.queueItem)
+					this.$emit('retry-download', this.queueItem.uuid)
 				}
 
 				if (this.queueItem.status === 'downloading') {

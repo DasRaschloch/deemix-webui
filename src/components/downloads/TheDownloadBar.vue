@@ -59,6 +59,7 @@
 				:show-tags="showTags"
 				@show-errors="showErrorsTab"
 				@remove-item="onRemoveItem"
+				@retry-download="onRetryDownload"
 			/>
 		</div>
 	</section>
@@ -70,7 +71,7 @@ import QueueItem from '@components/downloads/QueueItem.vue'
 
 import { socket } from '@/utils/socket'
 import { toast } from '@/utils/toasts'
-import { fetchData } from '@/utils/api'
+import { fetchData, postToServer } from '@/utils/api'
 
 const tabMinWidth = 250
 const tabMaxWidth = 500
@@ -152,6 +153,10 @@ export default {
 		...mapActions(['setErrors']),
 		onRemoveItem(uuid) {
 			socket.emit('removeFromQueue', uuid)
+		},
+		onRetryDownload(uuid) {
+			console.log("Retry", uuid)
+			postToServer('retryDownload', {uuid})
 		},
 		setTabWidth(newWidth) {
 			if (undefined === newWidth) {

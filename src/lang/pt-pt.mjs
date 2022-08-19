@@ -40,7 +40,7 @@ const pt = {
 			albumN: '0 albuns | {n} album | {n} albuns',
 			artistN: '0 artistas | {n} artista | {n} artistas',
 			releaseN: '0 lançamentos | {n} lançamento | {n} lançamento',
-			playlistN: '0 listas de reprodução | {n} lista de reprodução | {n} listas de reprodução'	
+			playlistN: '0 listas de reprodução | {n} lista de reprodução | {n} listas de reprodução'
 		},
 		yes: 'sim',
 		no: 'no',
@@ -133,11 +133,11 @@ const pt = {
 			notAvailable: 'Faixa não disponível nos servidores do deezer!',
 			notAvailableNoAlternative: 'Faixa não disponível nos servidores do deezer e não foi encontrada alternativa!',
 			noSpaceLeft: 'O dispositivo não tem armazenamento disponível!',
-			albumDoesntExists: "A faixa do álbum não existe, recolha de informação falhou.",
-			wrongLicense: "A tua conta não permite fazer streaming da faixa com o bitrate desejado.",
-			wrongGeolocation: "A tua conta não permite fazer streaming da faixa a partir do teu país.",
+			albumDoesntExists: 'A faixa do álbum não existe, recolha de informação falhou.',
+			wrongLicense: 'A tua conta não permite fazer streaming da faixa com o bitrate desejado.',
+			wrongGeolocation: 'A tua conta não permite fazer streaming da faixa a partir do teu país.',
 			wrongGeolocationNoAlternative:
-				"A tua conta não permite fazer streaming da faixa a partir do teu país e não foi encontrada nenhuma alternativa."
+				'A tua conta não permite fazer streaming da faixa a partir do teu país e não foi encontrada nenhuma alternativa.'
 		}
 	},
 	favorites: {
@@ -213,7 +213,8 @@ const pt = {
 		finishConvertingSpotifyPlaylist: 'Lista de reprodução do Spotify convertida.',
 		loginNeededToDownload: 'É necessário iniciar sessão para transferir faixas!',
 		deezerNotAvailable: 'O Deezer não está disponível no teu país. Deverás utilizar uma VPN.',
-		deezerNotReachable: "A app não consegue ligar-se ao Deezer. Verifica a tua ligação à internet, a tua firewall ou o teu antivirus.",
+		deezerNotReachable:
+			'A app não consegue ligar-se ao Deezer. Verifica a tua ligação à internet, a tua firewall ou o teu antivirus.',
 		startGeneratingItems: 'A processar {n} itens...',
 		finishGeneratingItems: '{n} itens gerados.',
 		noLovedPlaylist: 'No loved tracks playlist!',
@@ -237,7 +238,7 @@ const pt = {
 						p2: 'O Deemix utiliza este cookie para obter metadata necessária para transferir faixas do Deezer.',
 						p3: 'Os ARL duram 3 meses, após esse período o Deezer solicita novo inicio de sessão. O mesmo método é usado no deemix.',
 						p4: 'Seguindo um dos guias mais abaixo poderás obter o teu próprio ARL.',
-						warning: "Utiliza este método apenas no caso do email e palavra-passe não funcionarem."
+						warning: 'Utiliza este método apenas no caso do email e palavra-passe não funcionarem.'
 					},
 					chromeSteps: {
 						title: 'Chrome',
@@ -248,16 +249,16 @@ const pt = {
 							step4: 'Clique em Cookies > deezer.com > cookies > arl',
 							step5: 'Seleciona o texto após Conteúdo, e faz cópia'
 						},
-						step4: "Vai ao separador Aplicação (caso não o vejas clique na seta dupla)",
+						step4: 'Vai ao separador Aplicação (caso não o vejas clique na seta dupla)',
 						videoGuide: {
-							text: "Aqui tens um {videoGuide}",
+							text: 'Aqui tens um {videoGuide}',
 							link: 'guia em vídeo'
 						}
 					},
 					firefoxSteps: {
 						title: 'Firefox',
 						step1: 'Abrir Firefox',
-						step4: "Ir ao separador Armazenamento (caso não o vejas clique na seta dupla)"
+						step4: 'Ir ao separador Armazenamento (caso não o vejas clique na seta dupla)'
 					},
 					commonSteps: {
 						step2: 'Acede a www.deezer.com e inicia a sessão na tua conta',
@@ -266,9 +267,9 @@ const pt = {
 						step6: 'Seleciona www.deezer.com',
 						step7: 'Procura o cookie `arl` (Deverá ter 192 caracteres)',
 						step8: 'Certifica-te que apenas copias o valor e não o cookie completo',
-						lastStep: "E isso é o teu ARL que agora poderás utilizar na tua app"
+						lastStep: 'E isso é o teu ARL que agora poderás utilizar na tua app'
 					}
-				},
+				}
 			},
 			logout: 'Sair',
 			login: 'Iniciar sessão',
@@ -327,7 +328,7 @@ const pt = {
 				n: 'Não substituir o ficheiro',
 				t: 'Substituir apenas as etiquetas',
 				b: 'Não, manter ambos os ficheiros e numerar o ficheiro duplicado',
-				e: "Não e ignorar as extensões"
+				e: 'Não e ignorar as extensões'
 			},
 			fallbackBitrate: 'Bitrate fallback',
 			fallbackSearch: 'Fallback de pesquisa',
@@ -357,9 +358,9 @@ const pt = {
 			jpegImageQuality: 'Qualidade de imagem JPEG',
 			embeddedArtworkPNG: 'Guardar arte gráfica incorporada como PNG',
 			embeddedPNGWarning: 'PNGs não são oficialmente suportados pelo Deezer e podem ocorrer erros',
-			imageSizeWarning: 'Qualquer resolução acima de x1200 não são oficialmente suportados pelo Deezer e podem ocorrer erros',
+			imageSizeWarning:
+				'Qualquer resolução acima de x1200 não são oficialmente suportados pelo Deezer e podem ocorrer erros',
 			coverDescriptionUTF8: 'Guardar descrição da capa como UTF8? (iTunes Cover Fix)'
-
 		},
 		tags: {
 			head: 'Etiquetas a guardar',
@@ -389,7 +390,7 @@ const pt = {
 			composer: 'Compositor',
 			involvedPeople: 'Pessoas envolvidas',
 			artistsWarning:
-			"Desativar a etiqueta ARTISTAS ao não usar especificações padrão, não preservará o suporte a multi-artistas"
+				'Desativar a etiqueta ARTISTAS ao não usar especificações padrão, não preservará o suporte a multi-artistas'
 		},
 		other: {
 			title: 'Outros',
@@ -404,7 +405,7 @@ const pt = {
 				andFeat: 'Usar & e feat.',
 				using: 'Usar "{separator}"',
 				warning:
-				'Utilizar outro separador para além das especificações standard irão adicionar uma etiqueta extra ARTISTAS para perservar o suporte a multi-artistas'
+					'Utilizar outro separador para além das especificações standard irão adicionar uma etiqueta extra ARTISTAS para perservar o suporte a multi-artistas'
 			},
 			singleAlbumArtist: 'Guardar apenas o artista principal do álbum',
 			albumVariousArtists: 'Manter "Various Artists" nos Artistas do Álbum',
@@ -474,7 +475,7 @@ const pt = {
 				usernameQuestion: {
 					title: 'Como obtenho o meu nome de utilizador Spotify?',
 					step1: {
-						text: "Podes obter o teu nome de utilizador na {overviewPage} no site do Spotify.",
+						text: 'Podes obter o teu nome de utilizador na {overviewPage} no site do Spotify.',
 						overviewPage: 'Overview page'
 					}
 				}

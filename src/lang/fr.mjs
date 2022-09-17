@@ -21,6 +21,7 @@ const fr = {
 		listTabs: {
 			empty: '',
 			all: 'tout',
+			discography: 'discographie',
 			top_result: 'meilleur résultat',
 			album: 'album | albums',
 			artist: 'artiste | artistes',
@@ -144,7 +145,7 @@ const fr = {
 				"La piste est indisponible sur les serveurs de Deezer et aucune alternative n'a été trouvée !",
 			noSpaceLeft: "L'espace disponible sur cet appareil est insuffisant !",
 			albumDoesntExists: "Aucun album n'existe pour cette piste, impossible de collecter les informations nécessaires.",
-			wrongLicense: 'Votre compte ne prend pas en charge la piste au débit souhaité.',
+			wrongLicense: 'Votre compte ne prend pas en charge les pistes en {bitrate}.',
 			wrongGeolocation: 'Votre compte ne prend pas en charge la piste depuis votre pays actuel.',
 			wrongGeolocationNoAlternative:
 				"Votre compte ne prend pas en charge la piste depuis votre pays actuel et aucune alternative n'a été trouvée."
@@ -225,6 +226,7 @@ const fr = {
 		startConvertingSpotifyPlaylist: 'Conversion de pistes Spotify en équivalents Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlist Spotify convertie',
 		loginNeededToDownload: 'Vous devez vous connecter pour pouvoir télécharger des pistes !',
+		queueErrorCantStream: 'Votre compte ne prend pas en charge les téléchargements en {bitrate}.',
 		deezerNotAvailable: 'Deezer est indisponible dans votre pays. Vous devez utiliser un VPN.',
 		deezerNotReachable:
 			"L'application ne semble pas pouvoir communiquer avec Deezer. Vérifiez votre connexion internet, votre pare-feu ou votre antivirus.",
@@ -343,7 +345,8 @@ const fr = {
 				n: 'Non, ne pas écraser le fichier',
 				t: 'Écraser uniquement les métadonnées',
 				b: 'Non, conserver les deux fichiers et ajouter un numéro au doublon',
-				e: "Non, et ne pas tenir compte de l'extension du fichier"
+				e: "Non, et ne pas tenir compte de l'extension du fichier",
+				l: 'Écraser uniquement si le débit est plus élevé (mp3 seulement)'
 			},
 			fallbackBitrate: "Recourir à un débit plus faible si le débit préféré n'est pas disponible",
 			fallbackSearch: "Rechercher la piste ailleurs si le lien original n'est pas disponible",

@@ -41,7 +41,7 @@
 				<a href="https://deemix.app/gui" target="_blank">🌍 {{ $t('about.officialWebsite') }}</a>
 			</li>
 			<li>
-				<a href="https://git.freezer.life/RemixDev/deemix-js" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
+				<a href="https://gitlab.com/RemixDev/deemix-js" target="_blank">🚀 {{ $t('about.officialRepo') }}</a>
 			</li>
 			<li>
 				<a href="https://gitlab.com/RemixDev/deemix-webui" target="_blank"> 💻 {{ $t('about.officialWebuiRepo') }} </a>

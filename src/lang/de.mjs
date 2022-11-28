@@ -21,6 +21,7 @@ const de = {
 		listTabs: {
 			empty: '',
 			all: 'Alle',
+			discography: 'Diskographie',
 			top_result: 'Top Ergebnis',
 			album: 'Album | Alben',
 			artist: 'Künstler | Künstler',
@@ -224,6 +225,7 @@ const de = {
 		startConvertingSpotifyPlaylist: 'Konvertierern von Spotify-Tracks zu Deezer-Tracks',
 		finishConvertingSpotifyPlaylist: 'Spotify Playlist convertiert',
 		loginNeededToDownload: 'Du musst eingeloggt sein, um Tracks herunterladen zu können!',
+		queueErrorCantStream: `Dein Konto kann nicht mit {Bitrate} streamen!`,
 		deezerNotAvailable: 'Deezer ist in deinem Land nicht verfügbar. Du solltest eine VPN nutzen.',
 		deezerNotReachable:
 			'Die App kann Deezer nicht erreichen. Prüfe deine Internet-Verbindung, deine Firewall oder dein Antivirus.',
@@ -238,7 +240,7 @@ const de = {
 		title: 'Einstellungen',
 		languages: 'Sprachen',
 		login: {
-			title: 'Login',
+			title: 'Einloggen',
 			loggedIn: 'Du bist eingeloggt als {username}',
 			arl: {
 				title: 'Stattdessen ARL verwenden',
@@ -255,7 +257,7 @@ const de = {
 						title: 'Chrome',
 						step1: 'Öffne Chrome',
 						easyWay: {
-							title: 'Chrome (Easy way)',
+							title: 'Chrome (Einfacher Weg)',
 							step3: 'Klicke auf das kleine "Schloss"-Symbol neben der URL',
 							step4: 'Klicke auf Cookies > deezer.com > cookies > arl',
 							step5: 'Wähle die Zeichenfolge neben Inhalt und Kopieren aus'
@@ -406,7 +408,7 @@ const de = {
 		},
 		other: {
 			title: 'Sonstige',
-			autoCheckForUpdates: 'Check for updates on startup',
+			autoCheckForUpdates: 'Beim Start nach Updates suchen',
 			savePlaylistAsCompilation: 'Speichere Playlist als Zusammenstellung',
 			useNullSeparator: 'Verwende Nulltrennzeichen',
 			saveID3v1: 'Speichere ID3v1 ebenfalls',
@@ -452,14 +454,14 @@ const de = {
 			}
 		},
 		spotify: {
-			title: 'Spotify Features',
+			title: 'Spotify Funktionen',
 			clientID: 'Spotify Client ID',
 			clientSecret: 'Spotify Client Secret',
 			username: 'Spotify Benutzername',
-			question: 'Wie aktiviere ich die Spotify Features?',
+			question: 'Wie aktiviere ich die Spotify Funktionen?',
 			howTo: {
 				prologue: {
-					p1: '"Spotify Features" ist eine Reihe von Funktionen, mit denen Du Spotify-Tracks und Alben-Links in Deezer-Links konvertieren kannst.',
+					p1: '"Spotify Funktionen" ist eine Reihe von Funktionen, mit denen Du Spotify-Tracks und Alben-Links in Deezer-Links konvertieren kannst.',
 					p2: 'Wenn Du einen Spotify-Playlist-Link bereitstellst, konvertiert die App automatisch alle Links der darin enthaltenen Titel in Deezer-Titel.',
 					p3: 'Wenn Du diese Funktionen aktivierst, kannst Du Deine öffentlichen Spotify-Wiedergabelisten auch auf der Registerkarte "Favoriten" sehen.'
 				},

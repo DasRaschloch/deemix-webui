@@ -192,7 +192,7 @@ const pt_br = {
 		noResultsTrack: 'Nenhuma faixa encontrada',
 		noResultsAlbum: 'Nenhum álbum encontrado',
 		noResultsArtist: 'Nenhum artista encontrado',
-		noResultsPlaylist: 'Nenhuma playlist encontrada'
+		noResultsPlaylist: 'Nenhuma playlist encontrada',
 		error: 'Ocorreu um erro. Tente novamente mais tarde.'
 	},
 	searchbar: 'Pesquise algo (ou apenas cole um link)',

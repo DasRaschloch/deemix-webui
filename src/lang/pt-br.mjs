@@ -21,6 +21,7 @@ const pt_br = {
 		listTabs: {
 			empty: '',
 			all: 'todos',
+			discography: 'discografia',
 			top_result: 'resultado principal',
 			album: 'álbum | álbuns',
 			artist: 'artista | artistas',
@@ -139,7 +140,7 @@ const pt_br = {
 			wrongLicense: 'A sua conta não permite reproduzir a faixa na qualidade desejada.',
 			wrongGeolocation: 'A sua conta não permite reproduzir a faixa a partir do país atual.',
 			wrongGeolocationNoAlternative:
-				'A sua conta não permite reproduzir a faixa a partir do país atual e nenhuma alternativa foi encontrada.'
+				"A sua conta não permite reproduzir a faixa a partir do país atual e nenhuma alternativa foi encontrada."
 		}
 	},
 	favorites: {
@@ -191,7 +192,7 @@ const pt_br = {
 		noResultsTrack: 'Nenhuma faixa encontrada',
 		noResultsAlbum: 'Nenhum álbum encontrado',
 		noResultsArtist: 'Nenhum artista encontrado',
-		noResultsPlaylist: 'Nenhuma playlist encontrada',
+		noResultsPlaylist: 'Nenhuma playlist encontrada'
 		error: 'Ocorreu um erro. Tente novamente mais tarde.'
 	},
 	searchbar: 'Pesquise algo (ou apenas cole um link)',
@@ -217,15 +218,16 @@ const pt_br = {
 		startConvertingSpotifyPlaylist: 'Convertendo faixas do Spotify para faixas do Deezer',
 		finishConvertingSpotifyPlaylist: 'Playlists do Spotify convertidas',
 		loginNeededToDownload: 'Você precisa fazer login para baixar faixas!',
+		queueErrorCantStream: `Sua conta não pode reproduzir a {bitrate}!`,
 		deezerNotAvailable: 'Deezer não disponível no seu país. Você precisa usar uma VPN.',
-		deezerNotReachable:
-			'O aplicativo não consegue conectar-se ao Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.',
+		deezerNotReachable: "O aplicativo não consegue conectar-se ao Deezer. Verifique sua conexão com a Internet, firewall ou antivírus.",
 		startGeneratingItems: 'Processando {n} itens...',
 		finishGeneratingItems: '{n} itens gerados.',
 		noLovedPlaylist: 'Nenhuma playlist de músicas curtidas!',
 		checkingUpdates: 'Verificando por atualizações...',
 		noUpdateAvailable: 'Nenhuma atualização disponível',
-		updateAvailable: 'Uma atualização está disponível!'
+		updateAvailable: 'Uma atualização está disponível!',
+		wrongSpotifyUsername: '{username} não é um nome de usuário válido do Spotify'
 	},
 	settings: {
 		title: 'Configurações',
@@ -333,7 +335,8 @@ const pt_br = {
 				n: 'Não, não sobrescrever arquivos',
 				t: 'Sobrescrever apenas as tags',
 				b: 'Não, manter ambos os arquivos e adicionar número ao duplicado',
-				e: 'Não, e não olhar para as extensões'
+				e: 'Não, e não olhar para as extensões',
+				l: 'Sobrescrever somente se atualizar o bitrate (somente MP3)'
 			},
 			fallbackBitrate: 'Taxa de bits reserva',
 			fallbackSearch: 'Procurar reserva',

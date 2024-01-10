@@ -158,6 +158,7 @@ const id = {
 	toasts: {
 		addedToQueue: '{item} ditambah ke antrian',
 		alreadyInQueue: '{item} sudah ada di antrian!',
+		alreadyDownloaded: '{item} sudah diunduh',
 		finishDownload: '{item} selesai diunduh.',
 		allDownloaded: 'Seluruh unduhan selesai!',
 		refreshFavs: 'Penyegaran selesai!',
@@ -236,8 +237,10 @@ const id = {
 			logErrors: 'Buat file log untuk galat',
 			logSearched: 'Buat file log untuk lagu yang dicari',
 			createM3U8File: 'Buat file daftar putar',
+			filterByReleaseDate: 'Filter berdasarkan Tanggal Rilis',
 			syncedLyrics: 'Buat file .lrc (Sinkronisasikan Lirik)',
 			playlistFilenameTemplate: 'Templat nama file untuk daftar putar',
+			filterDate: 'Unduh semua yang dirilis setelah tanggal yang ditetapkan',
 			saveDownloadQueue: 'Simpan antrian pengunduhan saat menutup aplikasi'
 		},
 		covers: {

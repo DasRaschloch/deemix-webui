@@ -178,6 +178,7 @@ const fil = {
 		addedToQueue: '{item} ay naidagdag sa queue',
 		addedMoreToQueue: '{n} naidagdag rin sa queue',
 		alreadyInQueue: '{item} ay meron na sa queue!',
+		alreadyDownloaded: 'Na-download na ang {item}',
 		finishDownload: '{item} ay natapos nang i-download.',
 		allDownloaded: 'Nadownload na lahat!',
 		refreshFavs: 'Narefresh na!',
@@ -261,8 +262,10 @@ const fil = {
 			logErrors: 'Gumawa ng log file para sa mga error',
 			logSearched: 'Gumawa ng log file para sa mga hinanap na track',
 			createM3U8File: 'Gumawa ng file sa playlist',
+			filterByReleaseDate: 'I-filter ayon sa petsa ng Paglabas',
 			syncedLyrics: 'Gumawa ng mga .lrc file (Mga Sync Lyric)',
 			playlistFilenameTemplate: 'Template sa pangalan ng Playlist file',
+			filterDate: 'I-download ang lahat ng inilabas pagkatapos ng itinakdang petsa',
 			saveDownloadQueue: 'I-save ang download queue kapag isasara the app'
 		},
 		covers: {

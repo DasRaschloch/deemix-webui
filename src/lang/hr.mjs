@@ -158,6 +158,7 @@ const hr = {
 	toasts: {
 		addedToQueue: '{item} dodan u red',
 		alreadyInQueue: '{item} je već u redu!',
+		alreadyDownloaded: '{item} već je preuzet',
 		finishDownload: '{item} završeno preuzimanje.',
 		allDownloaded: 'Sva preuzimanja završena!',
 		refreshFavs: 'Osvježavanje završeno!',
@@ -238,8 +239,10 @@ const hr = {
 			logErrors: 'Izradi zapisnik datoteku za greške',
 			logSearched: 'Izradi zapisnik datoteku za pretražene pjesme',
 			createM3U8File: 'Izradi playlist datoteku',
+			filterByReleaseDate: 'Filtriraj prema datumu objave',
 			syncedLyrics: 'Izradi .lrc datoteke (sinkronizirani lyrics)',
 			playlistFilenameTemplate: 'Naziv playliste predložak',
+			filterDate: 'Preuzmi sve objavljeno nakon postavljenog datuma',
 			saveDownloadQueue: 'Spremi red za preuzimanje prilikom zatvaranja aplikacije'
 		},
 		covers: {

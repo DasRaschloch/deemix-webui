@@ -187,6 +187,7 @@ const th = {
 		addedToQueue: '{item} ถูกเพิ่มในคิวแล้ว',
 		addedMoreToQueue: 'เพิ่ม {n} รายการในคิวแล้ว',
 		alreadyInQueue: '{item} อยู่ในคิวแล้ว!',
+		alreadyDownloaded: 'ไฟล์ {item} ถูกดาวน์โหลดแล้ว',
 		finishDownload: 'ดาวน์โหลด {item} เสร็จแล้ว',
 		allDownloaded: 'การดาวน์โหลดทั้งหมดเสร็จสิ้น!',
 		refreshFavs: 'รีเฟรชเสร็จแล้ว!',
@@ -280,8 +281,10 @@ const th = {
 			logErrors: 'สร้างไฟล์บันทึกข้อผิดพลาด',
 			logSearched: 'สร้างไฟล์บันทึกรายการเพลงที่ค้นหา',
 			createM3U8File: 'สร้างไฟล์เพลย์ลิสต์',
+			filterByReleaseDate: 'กรองตามวันที่เผยแพร่',
 			syncedLyrics: 'สร้างไฟล์ .lrc (เนื้อเพลงซิงโครไนซ์)',
 			playlistFilenameTemplate: 'เทมเพลตชื่อไฟล์เพลย์ลิสต์',
+			filterDate: 'ดาวน์โหลดทุกอย่างที่เผยแพร่หลังจากวันที่กำหนด',
 			saveDownloadQueue: 'บันทึกคิวดาวน์โหลดเมื่อปิดแอป'
 		},
 		covers: {

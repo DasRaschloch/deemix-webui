@@ -49,6 +49,7 @@
 	input[type='text'],
 	input[type='password'],
 	input[type='number'],
+	input[type='date'],
 	select {
 		border-radius: 4px;
 		background-color: var(--secondary-background);
@@ -61,7 +62,8 @@
 
 	input[type='text'],
 	input[type='password'],
-	input[type='number'] {
+	input[type='number'],
+	input[type='date'] {
 		padding: 0 16px;
 	}
 

@@ -184,6 +184,7 @@ const zh_tw = {
 		addedToQueue: '已新增 {item} 到下載清單中',
 		addedMoreToQueue: '已新增 {n} 個項目到下載清單中',
 		alreadyInQueue: '{item} 已在下載清單中！',
+		alreadyDownloaded: '{item} 已經下載過',
 		finishDownload: '{item} 已完成下載。',
 		allDownloaded: '全部下載完成！',
 		refreshFavs: '刷新完成！',
@@ -270,8 +271,10 @@ const zh_tw = {
 			logErrors: '記錄錯誤至日誌',
 			logSearched: '記錄搜尋歌曲至日誌',
 			createM3U8File: '建立播放清單檔案',
+			filterByReleaseDate: '依發行日期過濾',
 			syncedLyrics: '建立 .lrc 檔案（同步歌詞）',
 			playlistFilenameTemplate: '播放清單檔名格式',
+			filterDate: '在設定日期之後下載所有已發布的內容',
 			saveDownloadQueue: '關閉應用程式時，保存下載清單'
 		},
 		covers: {

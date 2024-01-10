@@ -198,6 +198,7 @@ const ru = {
 		addedToQueue: '{item} добавлено в очередь',
 		addedMoreToQueue: '{n} загрузок добавлены в очередь',
 		alreadyInQueue: '{item} уже присутствует в очереди!',
+		alreadyDownloaded: '{item} уже скачан',
 		finishDownload: 'Загрузка {item} завершена.',
 		allDownloaded: 'Все загрузки завершены!',
 		refreshFavs: 'Обновление завершено!',
@@ -336,8 +337,10 @@ const ru = {
 			logErrors: 'Сохранять логи ошибок',
 			logSearched: 'Сохранять лог истории поиска',
 			createM3U8File: 'Создавать файлы плейлистов',
+			filterByReleaseDate: 'Фильтр по дате выпуска',
 			syncedLyrics: 'Создать .lrc файлы (синхронизированная лирика)',
 			playlistFilenameTemplate: 'Шаблон названия плейлиста',
+			filterDate: 'Скачать всё, выпущенное после установленной даты',
 			saveDownloadQueue: 'Сохранять текущую очередь загрузок при закрытии приложения'
 		},
 		covers: {

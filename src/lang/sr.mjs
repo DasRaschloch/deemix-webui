@@ -189,6 +189,7 @@ const sr = {
 		addedToQueue: '{item} - додато у ред',
 		addedMoreToQueue: '{n} ставке(и) додате у ред',
 		alreadyInQueue: '{item} је већ у реду!',
+		alreadyDownloaded: '{item} je već preuzet',
 		finishDownload: '{item} - завршено преузимање.',
 		allDownloaded: 'Сва преузимања су завршена!',
 		refreshFavs: 'Освежавање завршено!',
@@ -282,8 +283,10 @@ const sr = {
 			logErrors: 'Направи фајл са извештајем о грешкама',
 			logSearched: 'Направи фајл са извештајем о претраживаним песмама',
 			createM3U8File: 'Направи фајл за плејлисту',
+			filterByReleaseDate: 'Filtriraj po datumu izdavanja',
 			syncedLyrics: 'Направи .lrc фајлове (Sync Lyrics)',
 			playlistFilenameTemplate: 'Шаблон за фајл за плејлисте',
+			filterDate: 'Preuzmi sve objavljeno nakon postavljenog datuma',
 			saveDownloadQueue: 'Сними ред за преузимање приликом затварања апликације'
 		},
 		covers: {

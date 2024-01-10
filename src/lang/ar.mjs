@@ -136,6 +136,7 @@ const ar = {
 	toasts: {
 		addedToQueue: '{item} تمت إلأضافة إلى قائمة الانتظار',
 		alreadyInQueue: '{item} حالياً  في قائمة الانتظار!',
+		alreadyDownloaded: 'تم تحميل {item} بالفعل',
 		finishDownload: '{item} انتهى تحميل.',
 		allDownloaded: 'اكتملت جميع التنزيلات!',
 		refreshFavs: 'اكتمل التحديث!',
@@ -216,8 +217,10 @@ const ar = {
 			logErrors: 'إنشاء ملفات سجل للأخطاء',
 			logSearched: 'إنشاء ملفات سجل للمقاطع التي تم البحث عنها',
 			createM3U8File: 'انشاء ملف لقوائم التشغيل',
+			filterByReleaseDate: 'التصفية حسب تاريخ الإصدار',
 			syncedLyrics: 'انشاء ملف لكلمات الاغنية',
 			playlistFilenameTemplate: 'قالب اسم ملف قائمة التشغيل',
+			filterDate: 'تنزيل كل ما تم إصداره بعد تاريخ الضبط',
 			saveDownloadQueue: 'حفظ قائمة انتظار التنزيل عند إغلاق التطبيق'
 		},
 		covers: {

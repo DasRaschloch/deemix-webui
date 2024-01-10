@@ -211,6 +211,7 @@ const fr = {
 		addedToQueue: "{item} ajouté à la file d'attente",
 		addedMoreToQueue: "{n} éléments ajoutés à la file d'attente",
 		alreadyInQueue: "{item} est déjà dans la file d'attente !",
+		alreadyDownloaded: '{item} a déjà été téléchargé',
 		finishDownload: '{item} a été téléchargé.',
 		allDownloaded: 'Tous les téléchargements sont terminés !',
 		refreshFavs: 'Actualisation terminée !',
@@ -355,8 +356,10 @@ const fr = {
 			logErrors: "Créer un fichier journal d'erreurs",
 			logSearched: 'Créer un fichier journal des pistes recherchées',
 			createM3U8File: 'Créer un fichier de playlist',
+			filterByReleaseDate: 'Filtrer par date de sortie',
 			syncedLyrics: 'Créer des fichiers .lrc (Paroles Synchronisées)',
 			playlistFilenameTemplate: 'Modèle du nom de fichier de la playlist',
+			filterDate: 'Télécharger tout ce qui a été publié après la date définie',
 			clearQueueOnExit: "Effacer la file d'attente de téléchargement lors de la fermeture de l'application"
 		},
 		covers: {

@@ -157,6 +157,7 @@ const tr = {
 	toasts: {
 		addedToQueue: '{item} kuyruğa eklendi',
 		alreadyInQueue: '{item} çoktan kuyrukta!',
+		alreadyDownloaded: '{item} zaten indirildi',
 		finishDownload: '{item} indirmesi tamamlandı.',
 		allDownloaded: 'Tüm indirmeler tamamlandı!',
 		refreshFavs: 'Yenileme tamamlandı.!',
@@ -235,8 +236,10 @@ const tr = {
 			logErrors: 'Hatalar için günlük tut',
 			logSearched: 'Aranmış parçalar için günlük tut',
 			createM3U8File: 'Oynatma sıra listesi oluştur',
+			filterByReleaseDate: 'Yayın Tarihine Göre Filtrele',
 			syncedLyrics: '.lrc dosyaları oluştur (Senkronize şarkı sözleri)',
 			playlistFilenameTemplate: 'Oynatma listesi şablonu',
+			filterDate: 'Belirlenen tarihten sonra yayınlanan her şeyi indir',
 			saveDownloadQueue: 'Uygulamayı kapatırken indirme kuyruğunu kaydet'
 		},
 		covers: {

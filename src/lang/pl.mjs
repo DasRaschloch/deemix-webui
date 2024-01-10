@@ -176,6 +176,7 @@ const pl = {
 		addedToQueue: 'Dodano {item} do kolejki',
 		addedMoreToQueue: 'Dodano {n} przedmiotów do kolejki',
 		alreadyInQueue: '{item} jest już w kolejce!',
+		alreadyDownloaded: '{item} został już pobrany',
 		finishDownload: 'Ukończono pobieranie {item}.',
 		allDownloaded: 'Pobrano wszystkie!',
 		refreshFavs: 'Ukończono odświeżanie!',
@@ -258,8 +259,10 @@ const pl = {
 			logErrors: 'Utwórz plik dziennika błędów',
 			logSearched: 'Utwórz plik dziennika wyszukiwanych utworów',
 			createM3U8File: 'Utwórz plik playlisty',
+			filterByReleaseDate: 'Filtruj według daty wydania',
 			syncedLyrics: 'Utwórz plik .lrc (synchronizowany tekst)',
 			playlistFilenameTemplate: 'Szablon pliku playlisty',
+			filterDate: 'Pobierz wszystko, co zostało wydane po ustawionej dacie',
 			saveDownloadQueue: 'Zapisz kolejkę pobierania przy zamykaniu aplikacji'
 		},
 		covers: {

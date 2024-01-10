@@ -184,6 +184,7 @@ const es = {
 		addedToQueue: '{item} añadidos a la cola',
 		addedMoreToQueue: '{n} elementos añadidos a la cola',
 		alreadyInQueue: '¡{item} ya está en la cola!',
+		alreadyDownloaded: '{item} ya se descargó',
 		finishDownload: '{item} terminado de descargar.',
 		allDownloaded: '¡Todas las descargas se han completado!',
 		refreshFavs: '¡Actualización completada!',
@@ -267,8 +268,10 @@ const es = {
 			logErrors: 'Crear archivos de registro de errores',
 			logSearched: 'Crear archivos de registro para las pistas buscadas',
 			createM3U8File: 'Crear archivo de la lista de reproducción',
+			filterByReleaseDate: 'Filtrar por fecha de lanzamiento',
 			syncedLyrics: 'Crear archivos .lrc (lyrics sincronizadas)',
 			playlistFilenameTemplate: 'Plantilla de nombres de archivos de la lista de reproducción',
+			filterDate: 'Descargar todo lo lanzado después de la fecha establecida',
 			saveDownloadQueue: 'Guardar la cola de descarga al cerrar la aplicación'
 		},
 		covers: {

@@ -15,7 +15,7 @@ export function sendAddToQueue(url, bitrate = null) {
  * @returns {string}
  */
 export function aggregateDownloadLinks(releases) {
-	const links = releases.map(release => release.link)
 
+	const links = releases.map(release => release.link)
 	return links.join(';')
 }

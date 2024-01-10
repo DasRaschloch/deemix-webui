@@ -187,6 +187,7 @@ const ko = {
 		addedToQueue: '대기열에 {item}(이)가 추가되었습니다',
 		addedMoreToQueue: '대기열에 {n} 항목이 추가되었습니다',
 		alreadyInQueue: '{item}(이)가 이미 대기열에 존재합니다!',
+		alreadyDownloaded: '{item}이(가) 이미 다운로드되었습니다',
 		finishDownload: '{item} 항목이 다운로드 완료되었습니다.',
 		allDownloaded: '모든 다운로드가 완료되었습니다!',
 		refreshFavs: '새로고침이 완료되었습니다!',
@@ -276,8 +277,10 @@ const ko = {
 			logErrors: '오류 발생시 로그 파일 생성',
 			logSearched: '검색한 트랙에 대한 로그 파일 생성',
 			createM3U8File: '재생목록 파일 생성',
+			filterByReleaseDate: '출시 날짜별로 필터링',
 			syncedLyrics: '.lrc 파일 생성 (가사 동기화)',
 			playlistFilenameTemplate: '재생목록 파일이름 템플릿',
+			filterDate: '설정된 날짜 이후로 출시된 모든 항목 다운로드',
 			saveDownloadQueue: '프로그램을 닫을 때 다운로드 대기열 저장'
 		},
 		covers: {

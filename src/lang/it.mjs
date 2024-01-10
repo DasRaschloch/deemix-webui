@@ -201,6 +201,7 @@ const it = {
 		addedToQueue: '{item} aggiunto alla coda',
 		addedMoreToQueue: '{n} oggetti aggiunti alla coda',
 		alreadyInQueue: '{item} è già nella coda!',
+		alreadyDownloaded: '{item} è stato già scaricato',
 		finishDownload: '{item} ha finito di scaricarsi.',
 		allDownloaded: 'Tutti i download completati!',
 		refreshFavs: 'Preferiti ricaricati!',
@@ -345,7 +346,9 @@ const it = {
 			logSearched: 'Crea file di log per le alternative cercate',
 			syncedLyrics: 'Crea i file .lrc (Testi Sincronizzati)',
 			createM3U8File: 'Crea i file playlist',
+			filterByReleaseDate: 'Filtra per data di pubblicazione',
 			playlistFilenameTemplate: 'Template nome del file playlist',
+			filterDate: 'Scarica tutto ciò che è stato rilasciato dopo la data impostata',
 			clearQueueOnExit: "Pulisci la coda di download quando chiudi l'app"
 		},
 		covers: {

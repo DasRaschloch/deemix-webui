@@ -210,6 +210,7 @@ const de = {
 		addedToQueue: '{item} zur Warteschlange hinzugefügt',
 		addedMoreToQueue: '{n} Einträge zur Warteschlange hinzugefügt',
 		alreadyInQueue: '{item} ist bereits in der Warteschlange!',
+		alreadyDownloaded: '{item} wurde bereits heruntergeladen',
 		finishDownload: '{item} vollständig heruntergeladen.',
 		allDownloaded: 'Alle Downloads abgeschlossen!',
 		refreshFavs: 'Abgeschlossene Downloads neuladen!',
@@ -351,8 +352,10 @@ const de = {
 			logErrors: 'Protokolldatei für Fehler im Download-Ordner erstellen',
 			logSearched: 'Protokolldatei für gesuchte Titel erstellen',
 			createM3U8File: 'Erstelle Playlist-Datei (M3U8)',
+			filterByReleaseDate: 'Filtern nach Veröffentlichungsdatum',
 			syncedLyrics: 'Erstelle synchrone Lyrics-Datei (.lrc)',
 			playlistFilenameTemplate: 'Vorlage für den Namen der Playlist',
+			filterDate: 'Alles herunterladen, was nach dem festgelegten Datum veröffentlicht wurde',
 			clearQueueOnExit: 'Download-Warteschlange beim Schließen der App leeren'
 		},
 		covers: {

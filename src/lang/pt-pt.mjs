@@ -197,6 +197,7 @@ const pt = {
 	toasts: {
 		addedToQueue: '{item} adicionados à fila',
 		alreadyInQueue: '{item} já está na fila!',
+		alreadyDownloaded: '{item} já foi descarregado',
 		finishDownload: '{item} foi transferido.',
 		allDownloaded: 'Todas as transferências terminadas!',
 		refreshFavs: 'Recarregamento terminado!',
@@ -337,8 +338,10 @@ const pt = {
 			logErrors: 'Criar histórico para erros',
 			logSearched: 'Criar histórico para faixas pesquisadas',
 			createM3U8File: 'Criar ficheiro de lista de reprodução',
+			filterByReleaseDate: 'Filtrar por Data de Lançamento',
 			syncedLyrics: 'Criar ficheiro .lrc (Letra Sincronizada)',
 			playlistFilenameTemplate: 'Formato do nome de ficheiro da lista de reprodução',
+			filterDate: 'Descarregar tudo lançado após a data definida',
 			clearQueueOnExit: 'Limpar fila de transferências ao fechar a aplicação'
 		},
 		covers: {

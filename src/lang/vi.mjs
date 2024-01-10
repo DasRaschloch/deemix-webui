@@ -157,6 +157,7 @@ const vi = {
 	toasts: {
 		addedToQueue: '{item} đã được đưa vào hàng chờ',
 		alreadyInQueue: '{item} đã đang trong hàng chờ!',
+		alreadyDownloaded: '{item} đã được tải xuống',
 		finishDownload: '{item} đã tải xong.',
 		allDownloaded: 'Tất cả các bài hát đã được tải xuống!',
 		refreshFavs: 'Tải lại hoàn tất!',
@@ -236,8 +237,10 @@ const vi = {
 			logErrors: 'Tạo file log khi có lỗi',
 			logSearched: 'Tạo file log khi bạn tìm Bài hát',
 			createM3U8File: 'Tạo file playlist',
+			filterByReleaseDate: 'Lọc theo Ngày Phát hành',
 			syncedLyrics: 'Tạo file .lrc (Lời Bài hát)',
 			playlistFilenameTemplate: 'Tên playlist mẫu',
+			filterDate: 'Tải xuống mọi thứ được phát hành sau ngày đặt',
 			saveDownloadQueue: 'Lưu hàng chờ download khi đóng ứng dụng'
 		},
 		covers: {

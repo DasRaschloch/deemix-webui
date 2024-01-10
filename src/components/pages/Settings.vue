@@ -523,6 +523,11 @@
 						<input v-model="settings.createM3U8File" type="checkbox" />
 						<span class="checkbox-text">{{ $t('settings.downloads.createM3U8File') }}</span>
 					</label>
+
+					<label class="with-checkbox">
+						<input v-model="settings.filterByReleaseDate" type="checkbox" />
+						<span class="checkbox-text">{{ $t('settings.downloads.filterByReleaseDate') }}</span>
+					</label>
 				</div>
 			</div>
 
@@ -535,6 +540,11 @@
 				<input v-model="settings.clearQueueOnExit" type="checkbox" />
 				<span class="checkbox-text">{{ $t('settings.downloads.clearQueueOnExit') }}</span>
 			</label>
+
+			<div v-if="settings.filterByReleaseDate" class="input-group">
+				<p class="input-group-text">{{ $t('settings.downloads.filterDate') }}</p>
+				<input v-model="settings.filterDate" type="date" />
+			</div>
 
 		</BaseAccordion>
 

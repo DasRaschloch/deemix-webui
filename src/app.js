@@ -245,6 +245,10 @@ socket.on('alreadyInQueue', function (data) {
 	toast(i18n.t('toasts.alreadyInQueue', { item: data.title }), 'playlist_add_check')
 })
 
+socket.on('alreadyDownloaded', function (data) {
+	toast(i18n.t('toasts.alreadyDownloaded', { item: data.title }), 'playlist_add_check')
+})
+
 socket.on('queueErrorNotLoggedIn', function () {
 	toast(i18n.t('toasts.loginNeededToDownload'), 'report')
 })

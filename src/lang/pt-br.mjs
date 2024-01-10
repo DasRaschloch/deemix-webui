@@ -203,6 +203,7 @@ const pt_br = {
 		addedToQueue: '{item} adicionado à fila',
 		addedMoreToQueue: '{n} itens adicionados à fila',
 		alreadyInQueue: '{item} já está na fila!',
+		alreadyDownloaded: '{item} já foi baixado',
 		finishDownload: '{item} download concluído.',
 		allDownloaded: 'Todos os downloads foram concluídos!',
 		refreshFavs: 'Atualização concluída!',
@@ -345,8 +346,10 @@ const pt_br = {
 			logErrors: 'Criar arquivos de log para erros',
 			logSearched: 'Criar arquivos de log para faixas pesquisadas',
 			createM3U8File: 'Criar arquivo de playlist',
+			filterByReleaseDate: 'Filtrar por Data de Lançamento',
 			syncedLyrics: 'Criar arquivos .lrc (Letras sincronizadas)',
 			playlistFilenameTemplate: 'Modelo do nome do arquivo da playlist',
+			filterDate: 'Baixar tudo lançado após a data definida',
 			clearQueueOnExit: 'Limpar a fila de downloads quando fechar o app'
 		},
 		covers: {

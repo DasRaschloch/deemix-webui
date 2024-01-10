@@ -201,6 +201,7 @@ const en = {
 		addedToQueue: '{item} added to queue',
 		addedMoreToQueue: '{n} items added to queue',
 		alreadyInQueue: '{item} is already in queue!',
+		alreadyDownloaded: '{item} was already downloaded',
 		finishDownload: '{item} finished downloading.',
 		allDownloaded: 'All downloads completed!',
 		refreshFavs: 'Refresh completed!',
@@ -343,8 +344,10 @@ const en = {
 			logErrors: 'Create log files for errors',
 			logSearched: 'Create log files for searched tracks',
 			createM3U8File: 'Create playlist file',
+			filterByReleaseDate: 'Filter by release date',
 			syncedLyrics: 'Create .lrc files (Sync Lyrics)',
 			playlistFilenameTemplate: 'Playlist filename template',
+			filterDate: 'Download everything released after set date',
 			clearQueueOnExit: 'Clear download queue when closing the app'
 		},
 		covers: {
